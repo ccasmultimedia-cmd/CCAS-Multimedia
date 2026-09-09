@@ -2,7 +2,6 @@
 <html lang="fr">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,9 +9,9 @@
 
 <style>
 
-/* =========================
-   RÉGLAGES GÉNÉRAUX
-========================= */
+/* =========================================
+   GÉNÉRAL
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -21,19 +20,14 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
+    background: #f4f7fb;
     color: #24344d;
-    line-height: 1.6;
-}
-
-button {
-    font-family: inherit;
 }
 
 
-/* =========================
+/* =========================================
    MENU
-========================= */
+========================================= */
 
 header {
     background: #1f3656;
@@ -44,427 +38,396 @@ header {
     max-width: 1200px;
     margin: auto;
     padding: 18px 25px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
-}
-
-.logo {
-    display: flex;
-    flex-direction: column;
+    gap: 20px;
 }
 
 .logo strong {
-    font-size: 26px;
+    display: block;
+    font-size: 23px;
 }
 
 .logo span {
-    font-size: 15px;
+    font-size: 14px;
     opacity: 0.85;
 }
 
 nav {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 8px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-
-    padding: 12px 18px;
+    padding: 10px 14px;
     border-radius: 8px;
-
-    font-size: 17px;
 }
 
 nav a:hover {
-    background: #3d76c5;
+    background: #3975c6;
 }
 
 
-/* =========================
+/* =========================================
    EN-TÊTE
-========================= */
+========================================= */
 
 .page-header {
     text-align: center;
-    padding: 60px 20px;
-
-    background: linear-gradient(
-        135deg,
-        #e9f0fa,
-        #ffffff,
-        #fff4df
-    );
+    padding: 55px 20px;
+    background: linear-gradient(135deg, #e8f0fb, #ffffff);
 }
 
 .page-header h1 {
     margin: 0 0 15px;
-    font-size: 44px;
     color: #203858;
+    font-size: 42px;
 }
 
 .page-header p {
-    max-width: 800px;
+    max-width: 850px;
     margin: auto;
-    font-size: 20px;
+    font-size: 19px;
+    line-height: 1.6;
     color: #617087;
 }
 
 
-/* =========================
+/* =========================================
    CONTENU
-========================= */
+========================================= */
 
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto;
-    padding: 45px 20px;
+    padding: 40px 20px 70px;
 }
 
 
-/* =========================
-   CARTE DU JEU
-========================= */
-
-.game-card {
-    background: white;
-    padding: 35px;
-    border-radius: 20px;
-
-    box-shadow: 0 5px 25px rgba(30, 50, 80, 0.10);
-}
-
-
-/* =========================
+/* =========================================
    PROGRESSION
-========================= */
+========================================= */
+
+.progress-container {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(30,50,80,0.1);
+    margin-bottom: 30px;
+}
 
 .progress-info {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-
+    flex-wrap: wrap;
+    gap: 15px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .progress-bar {
     width: 100%;
     height: 16px;
-
-    background: #e5eaf0;
+    background: #e3e8f0;
     border-radius: 20px;
     overflow: hidden;
-
-    margin-bottom: 30px;
 }
 
 .progress {
     height: 100%;
     width: 0%;
-
     background: #3975c6;
-
     transition: width 0.4s;
 }
 
 
-/* =========================
-   CONSIGNE
-========================= */
+/* =========================================
+   JEU
+========================================= */
 
-.level {
-    display: inline-block;
-
-    background: #d05f9d;
-    color: white;
-
-    padding: 7px 16px;
+.game-card {
+    background: white;
     border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 5px 25px rgba(30,50,80,0.12);
+}
 
+.category {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #eaf2ff;
+    color: #285d9e;
     font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.game-card h2 {
+    margin-top: 0;
+    color: #203858;
+    font-size: 30px;
 }
 
 .instruction {
-    font-size: 26px;
-    color: #203858;
-
-    margin: 20px 0 10px;
+    font-size: 20px;
+    line-height: 1.6;
 }
 
-.help {
-    color: #617087;
+.game-zone {
+    position: relative;
+    min-height: 430px;
+    margin-top: 30px;
+    background: #f7f9fc;
+    border: 3px dashed #cbd6e5;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BOUTONS
+========================================= */
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary-button {
+    background: #3975c6;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #285d9e;
+}
+
+.secondary-button {
+    background: #e7edf5;
+    color: #24344d;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    display: none;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 10px;
     font-size: 18px;
 }
 
+.success {
+    display: block;
+    background: #e9f7ec;
+    color: #236638;
+    border-left: 5px solid #4f9b63;
+}
 
-/* =========================
-   ZONE DE JEU
-========================= */
+.error {
+    display: block;
+    background: #fff0f0;
+    color: #9b3030;
+    border-left: 5px solid #c75b5b;
+}
 
-.game-area {
-    position: relative;
-
-    min-height: 400px;
-
-    margin-top: 30px;
-
-    background: #eef3f9;
-
-    border: 3px dashed #b9c8da;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    padding: 20px;
+.info {
+    display: block;
+    background: #eef4ff;
+    color: #285d9e;
+    border-left: 5px solid #3975c6;
 }
 
 
-/* =========================
-   CIBLES À CLIQUER
-========================= */
+/* =========================================
+   CIBLES
+========================================= */
 
 .target {
     position: absolute;
-
-    width: 85px;
-    height: 85px;
-
-    border: none;
-
     border-radius: 50%;
-
-    background: #3975c6;
-    color: white;
-
-    font-size: 24px;
-    font-weight: bold;
-
     cursor: pointer;
-
-    transition: transform 0.2s;
+    transition: transform 0.15s;
 }
 
 .target:hover {
     transform: scale(1.08);
 }
 
-
-/* =========================
-   BOUTON DOUBLE-CLIC
-========================= */
-
-.double-target {
-    padding: 25px 40px;
-
-    border: none;
-    border-radius: 12px;
-
-    background: #7b5fc7;
-    color: white;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* =========================
-   CLIC DROIT
-========================= */
-
-.right-target {
-    padding: 25px 40px;
-
-    border: none;
-    border-radius: 12px;
-
-    background: #e09b32;
-    color: white;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* =========================
-   OBJETS À DÉPLACER
-========================= */
-
-.drag-item {
+.big-target {
     width: 110px;
-    height: 70px;
+    height: 110px;
+    background: #3975c6;
+}
 
+.medium-target {
+    width: 70px;
+    height: 70px;
+    background: #5b9b6b;
+}
+
+.small-target {
+    width: 40px;
+    height: 40px;
+    background: #c75b5b;
+}
+
+
+/* =========================================
+   DOUBLE CLIC
+========================================= */
+
+.double-box {
+    width: 180px;
+    padding: 35px 15px;
+    background: #eaf2ff;
+    border: 3px solid #3975c6;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 120px auto;
+}
+
+
+/* =========================================
+   CLIC DROIT
+========================================= */
+
+.right-click-box {
+    width: 180px;
+    height: 180px;
+    margin: 100px auto;
+    background: #eef7ef;
+    border: 3px solid #5b9b6b;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 10px;
-
-    background: #2e8b78;
-    color: white;
-
-    font-size: 18px;
     font-weight: bold;
-
-    cursor: grab;
-
-    user-select: none;
-
-    position: absolute;
+    cursor: pointer;
 }
 
-.drag-item:active {
-    cursor: grabbing;
+.context-menu {
+    position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #cbd6e5;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    width: 180px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.context-menu div {
+    padding: 13px 15px;
+    cursor: pointer;
+}
+
+.context-menu div:hover {
+    background: #eef4ff;
+}
+
+
+/* =========================================
+   GLISSER-DÉPOSER
+========================================= */
+
+.draggable {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    background: #eaf2ff;
+    border: 2px solid #3975c6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    font-weight: bold;
+    user-select: none;
 }
 
 .drop-zone {
-    width: 160px;
-    height: 110px;
-
+    position: absolute;
+    width: 180px;
+    height: 130px;
+    border: 3px dashed #5b9b6b;
+    border-radius: 12px;
+    background: #eef7ef;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 3px dashed #617087;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    font-size: 17px;
     font-weight: bold;
-
-    color: #617087;
-
-    position: absolute;
 }
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* =========================================
+   FAUX FICHIERS
+========================================= */
 
-.message {
-    display: none;
-
-    margin-top: 25px;
+.file {
     padding: 18px;
-
-    border-radius: 12px;
-
-    background: #e6f5ef;
-
-    color: #236b58;
-
-    font-size: 19px;
-    font-weight: bold;
-
-    text-align: center;
-}
-
-
-/* =========================
-   BOUTON SUIVANT
-========================= */
-
-.next-button {
-    display: none;
-
-    margin-top: 25px;
-
-    padding: 15px 25px;
-
-    background: #3975c6;
-    color: white;
-
-    border: none;
-    border-radius: 8px;
-
-    font-size: 18px;
-    font-weight: bold;
-
+    background: white;
+    border: 2px solid #cbd6e5;
+    border-radius: 10px;
+    margin: 12px;
     cursor: pointer;
+    user-select: none;
 }
 
-.next-button:hover {
-    opacity: 0.9;
+.file.selected {
+    background: #dceaff;
+    border-color: #3975c6;
 }
 
 
-/* =========================
-   RÉSULTAT FINAL
-========================= */
+/* =========================================
+   FIN
+========================================= */
 
-.final-screen {
+.final-box {
     display: none;
     text-align: center;
-}
-
-.final-screen h2 {
-    font-size: 36px;
-    color: #203858;
+    background: white;
+    padding: 50px 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(30,50,80,0.12);
 }
 
 .final-score {
-    font-size: 70px;
+    font-size: 55px;
+    color: #3975c6;
     font-weight: bold;
-    color: #d05f9d;
-}
-
-.restart-button {
-    padding: 16px 28px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #3975c6;
-    color: white;
-
-    font-size: 18px;
-    font-weight: bold;
-
-    cursor: pointer;
+    margin: 20px;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    background: #1f3656;
-    color: white;
-
-    margin-top: 60px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-
-    padding: 35px 25px;
-
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 750px) {
 
     .navbar {
         flex-direction: column;
@@ -472,23 +435,15 @@ footer {
     }
 
     .page-header h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .game-card {
         padding: 20px;
     }
 
-    .instruction {
-        font-size: 22px;
-    }
-
-    .game-area {
-        min-height: 450px;
-    }
-
-    .footer-container {
-        flex-direction: column;
+    .game-zone {
+        min-height: 500px;
     }
 
 }
@@ -500,10 +455,6 @@ footer {
 
 <body>
 
-
-<!-- =========================
-     MENU
-========================= -->
 
 <header>
 
@@ -517,17 +468,12 @@ footer {
 
 </div>
 
-
 <nav>
 
 <a href="index.html">Accueil</a>
-
 <a href="cours.html">Mes cours</a>
-
 <a href="jeux.html">Jeux</a>
-
 <a href="exercices.html">Exercices</a>
-
 <a href="informations.html">Informations</a>
 
 </nav>
@@ -537,121 +483,114 @@ footer {
 </header>
 
 
-
-<!-- =========================
-     EN-TÊTE
-========================= -->
-
 <section class="page-header">
 
-<h1>Apprendre à utiliser la souris</h1>
+<h1>Grand jeu de la souris</h1>
 
 <p>
-Un entraînement progressif pour apprendre à cliquer,
-double-cliquer, faire un clic droit et déplacer des objets.
+
+Entraînez-vous progressivement à utiliser votre souris :
+clic, précision, double-clic, clic droit,
+glisser-déposer et sélection.
+
 </p>
 
 </section>
 
 
-
 <main>
 
 
-<div class="game-card" id="gameCard">
-
-
-<!-- PROGRESSION -->
+<div class="progress-container">
 
 <div class="progress-info">
 
-<span id="progressText">
-Défi 1 sur 16
-</span>
+<span id="progressText">Défi 1 sur 25</span>
 
-<span id="scoreText">
-Réussites : 0
-</span>
+<span id="scoreText">Réussites : 0</span>
 
 </div>
-
 
 <div class="progress-bar">
 
-<div class="progress" id="progress"></div>
+<div class="progress" id="progressBar"></div>
+
+</div>
 
 </div>
 
 
+<div id="gameArea">
 
-<!-- JEU -->
+<div class="game-card">
 
-<div id="gameScreen">
-
-
-<div class="level" id="level">
-Niveau 1
+<div class="category" id="category">
+Découverte
 </div>
 
-
-<h2 class="instruction" id="instruction">
-Chargement...
+<h2 id="title">
+Bienvenue !
 </h2>
 
-
-<p class="help" id="help">
+<p class="instruction" id="instruction">
+Préparez-vous à relever votre premier défi.
 </p>
 
 
-<div class="game-area" id="gameArea">
-</div>
+<div class="game-zone" id="gameZone"></div>
 
 
-<div class="message" id="message">
-Bravo !
-</div>
+<div id="message" class="message"></div>
 
 
-<button
-class="next-button"
-id="nextButton"
-onclick="nextChallenge()">
+<div class="buttons">
 
-Défi suivant
-
+<button class="secondary-button" onclick="restartChallenge()">
+Recommencer le défi
 </button>
 
+<button class="secondary-button" onclick="showHint()">
+Afficher une aide
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
+<div class="final-box" id="finalBox">
 
-<!-- FIN -->
+<h2>Bravo !</h2>
 
-<div class="final-screen" id="finalScreen">
+<p>Vous avez terminé le parcours complet de la souris.</p>
 
-<h2>Bravo ! Entraînement terminé !</h2>
-
-<p>
-Vous avez terminé les exercices de la souris.
-</p>
-
-<div class="final-score" id="finalScore">
-16 / 16
-</div>
+<div class="final-score" id="finalScore"></div>
 
 <p id="finalMessage"></p>
 
-<button
-class="restart-button"
-onclick="restartGame()">
+<div class="buttons" style="justify-content:center;">
 
-Recommencer l'entraînement
-
+<button class="primary-button" onclick="restartGame()">
+Recommencer le jeu
 </button>
 
-</div>
+<a href="exercices.html"
+style="
+padding:14px 22px;
+background:#e7edf5;
+color:#24344d;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+">
 
+Retour aux exercices
+
+</a>
+
+</div>
 
 </div>
 
@@ -659,323 +598,368 @@ Recommencer l'entraînement
 </main>
 
 
-
-<footer>
-
-<div class="footer-container">
-
-<div>
-
-<strong>Centre Multimédia du CCAS</strong>
-
-<br>
-
-<span>
-Apprendre • Découvrir • Progresser
-</span>
-
-</div>
-
-
-<div>
-© 2026 Centre Multimédia du CCAS
-</div>
-
-</div>
-
-</footer>
-
-
-
 <script>
 
 
-/* =========================
+/* =========================================
    VARIABLES
-========================= */
+========================================= */
 
 let currentChallenge = 0;
-
 let score = 0;
 
-let completed = false;
+const totalChallenges = 25;
+
+const zone = document.getElementById("gameZone");
+const message = document.getElementById("message");
 
 
-/* =========================
-   DÉFIS
-========================= */
+/* =========================================
+   DONNÉES DES DÉFIS
+========================================= */
 
 const challenges = [
 
-    {
-        level: "Niveau 1 : Clic simple",
-        instruction: "Cliquez sur le cercle bleu",
-        help: "Placez le pointeur de la souris sur le cercle et faites un clic gauche.",
-        type: "click"
-    },
+{
+category: "Découverte",
+title: "Défi 1 : Premier clic",
+instruction: "Cliquez sur le grand cercle.",
+type: "click",
+size: "big"
+},
 
-    {
-        level: "Niveau 1 : Clic simple",
-        instruction: "Cliquez sur le cercle bleu",
-        help: "Encore une fois : un seul clic avec le bouton gauche.",
-        type: "click"
-    },
+{
+category: "Découverte",
+title: "Défi 2 : Encore un clic",
+instruction: "Cliquez sur le cercle vert.",
+type: "click",
+size: "medium"
+},
 
-    {
-        level: "Niveau 1 : Clic simple",
-        instruction: "Cliquez sur les 3 cercles",
-        help: "Cliquez sur tous les cercles, dans l'ordre que vous voulez.",
-        type: "multi"
-    },
+{
+category: "Précision",
+title: "Défi 3 : Petite cible",
+instruction: "Cliquez sur la petite cible rouge.",
+type: "click",
+size: "small"
+},
 
-    {
-        level: "Niveau 1 : Clic simple",
-        instruction: "Cliquez sur les 5 cercles",
-        help: "Prenez votre temps et cliquez sur chaque cercle.",
-        type: "multi5"
-    },
+{
+category: "Précision",
+title: "Défi 4 : Plusieurs cibles",
+instruction: "Cliquez sur toutes les cibles dans l'ordre.",
+type: "multiClick",
+number: 3
+},
 
-    {
-        level: "Niveau 2 : Double-clic",
-        instruction: "Double-cliquez sur le bouton violet",
-        help: "Deux clics rapides avec le bouton gauche.",
-        type: "double"
-    },
+{
+category: "Précision",
+title: "Défi 5 : Cible mobile",
+instruction: "Cliquez rapidement sur la cible lorsqu'elle apparaît.",
+type: "moving"
+},
 
-    {
-        level: "Niveau 2 : Double-clic",
-        instruction: "Double-cliquez encore une fois",
-        help: "Essayez de faire deux clics assez rapidement.",
-        type: "double"
-    },
+{
+category: "Double-clic",
+title: "Défi 6 : Ouvrir",
+instruction: "Faites un double-clic sur la boîte.",
+type: "double"
+},
 
-    {
-        level: "Niveau 2 : Double-clic",
-        instruction: "Double-cliquez sur le bouton",
-        help: "Attention : deux clics rapides, sans trop attendre.",
-        type: "double"
-    },
+{
+category: "Double-clic",
+title: "Défi 7 : Encore un double-clic",
+instruction: "Faites un double-clic sur le dossier.",
+type: "double"
+},
 
-    {
-        level: "Niveau 3 : Clic droit",
-        instruction: "Faites un clic droit sur le bouton orange",
-        help: "Utilisez le bouton droit de votre souris.",
-        type: "right"
-    },
+{
+category: "Clic droit",
+title: "Défi 8 : Menu contextuel",
+instruction: "Faites un clic droit sur le carré.",
+type: "rightClick"
+},
 
-    {
-        level: "Niveau 3 : Clic droit",
-        instruction: "Refaites un clic droit",
-        help: "Cette fois, entraînez-vous à nouveau avec le bouton droit.",
-        type: "right"
-    },
+{
+category: "Clic droit",
+title: "Défi 9 : Choisir une action",
+instruction: "Faites un clic droit puis choisissez « Informations ».",
+type: "rightMenu"
+},
 
-    {
-        level: "Niveau 3 : Clic droit",
-        instruction: "Encore un clic droit",
-        help: "Le clic droit ouvre souvent un menu avec plusieurs choix.",
-        type: "right"
-    },
+{
+category: "Glisser-déposer",
+title: "Défi 10 : Déplacer un fichier",
+instruction: "Glissez le fichier dans le dossier.",
+type: "drag"
+},
 
-    {
-        level: "Niveau 4 : Cliquer-glisser",
-        instruction: "Glissez le bloc vert dans la zone",
-        help: "Cliquez sur le bloc, gardez le bouton enfoncé et déplacez-le.",
-        type: "drag"
-    },
+{
+category: "Glisser-déposer",
+title: "Défi 11 : Déplacer deux fichiers",
+instruction: "Glissez les deux fichiers dans le bon dossier.",
+type: "multiDrag"
+},
 
-    {
-        level: "Niveau 4 : Cliquer-glisser",
-        instruction: "Déplacez à nouveau le bloc vert",
-        help: "Maintenez le clic enfoncé pendant tout le déplacement.",
-        type: "drag"
-    },
+{
+category: "Glisser-déposer",
+title: "Défi 12 : Trier les fichiers",
+instruction: "Placez chaque fichier dans la bonne zone.",
+type: "sort"
+},
 
-    {
-        level: "Niveau 4 : Cliquer-glisser",
-        instruction: "Glissez le bloc dans la bonne zone",
-        help: "Relâchez le bouton seulement lorsque le bloc est dans la zone.",
-        type: "drag"
-    },
+{
+category: "Sélection",
+title: "Défi 13 : Sélection simple",
+instruction: "Cliquez sur le fichier demandé.",
+type: "selectOne"
+},
 
-    {
-        level: "Niveau 5 : Défi final",
-        instruction: "Cliquez sur tous les cercles",
-        help: "Un dernier entraînement au clic simple.",
-        type: "multi5"
-    },
+{
+category: "Sélection",
+title: "Défi 14 : Plusieurs fichiers",
+instruction: "Sélectionnez les fichiers 1 et 2.",
+type: "selectMultiple"
+},
 
-    {
-        level: "Niveau 5 : Défi final",
-        instruction: "Double-cliquez sur le bouton",
-        help: "Deux clics rapides !",
-        type: "double"
-    },
+{
+category: "Sélection",
+title: "Défi 15 : Ctrl + clic",
+instruction: "Maintenez Ctrl et cliquez sur deux fichiers.",
+type: "ctrlClick"
+},
 
-    {
-        level: "Niveau 5 : Grand final",
-        instruction: "Glissez le bloc vert dans la zone",
-        help: "Utilisez tout ce que vous avez appris.",
-        type: "drag"
-    }
+{
+category: "Précision",
+title: "Défi 16 : Quatre petites cibles",
+instruction: "Cliquez sur toutes les petites cibles.",
+type: "multiClick",
+number: 4
+},
+
+{
+category: "Précision",
+title: "Défi 17 : Encore plus de précision",
+instruction: "Cliquez sur toutes les petites cibles.",
+type: "multiClick",
+number: 5
+},
+
+{
+category: "Glisser-déposer",
+title: "Défi 18 : Organisation",
+instruction: "Déplacez chaque document dans son dossier.",
+type: "sort"
+},
+
+{
+category: "Double-clic",
+title: "Défi 19 : Ouvrir rapidement",
+instruction: "Double-cliquez sur le document.",
+type: "double"
+},
+
+{
+category: "Clic droit",
+title: "Défi 20 : Supprimer",
+instruction: "Faites un clic droit puis choisissez « Supprimer ».",
+type: "rightMenuDelete"
+},
+
+{
+category: "Mélange",
+title: "Défi 21 : Sélection",
+instruction: "Sélectionnez le bon fichier.",
+type: "selectOne"
+},
+
+{
+category: "Mélange",
+title: "Défi 22 : Déplacement",
+instruction: "Glissez le document dans le dossier.",
+type: "drag"
+},
+
+{
+category: "Mélange",
+title: "Défi 23 : Précision",
+instruction: "Cliquez sur toutes les cibles.",
+type: "multiClick",
+number: 6
+},
+
+{
+category: "Défi final",
+title: "Défi 24 : Le bon geste",
+instruction: "Faites un clic droit et choisissez la bonne action.",
+type: "rightMenu"
+},
+
+{
+category: "Défi final",
+title: "Défi 25 : Grand défi",
+instruction: "Cliquez sur toutes les cibles dans l'ordre, sans vous tromper.",
+type: "ordered"
+}
 
 ];
 
 
-
-/* =========================
-   CHARGER UN DÉFI
-========================= */
+/* =========================================
+   CHARGER LE DÉFI
+========================================= */
 
 function loadChallenge() {
 
-    completed = false;
+    zone.innerHTML = "";
+
+    message.className = "message";
+    message.textContent = "";
 
     const challenge = challenges[currentChallenge];
 
+    document.getElementById("category").textContent =
+        challenge.category;
 
-    document.getElementById("level").textContent =
-    challenge.level;
-
+    document.getElementById("title").textContent =
+        challenge.title;
 
     document.getElementById("instruction").textContent =
-    challenge.instruction;
+        challenge.instruction;
 
+    updateProgress();
 
-    document.getElementById("help").textContent =
-    challenge.help;
+    if (challenge.type === "click") createClick(challenge.size);
 
+    if (challenge.type === "multiClick")
+        createMultiClick(challenge.number);
 
-    document.getElementById("progressText").textContent =
-    "Défi " + (currentChallenge + 1) +
-    " sur " + challenges.length;
+    if (challenge.type === "moving")
+        createMoving();
 
+    if (challenge.type === "double")
+        createDouble();
 
-    document.getElementById("scoreText").textContent =
-    "Réussites : " + score;
+    if (challenge.type === "rightClick")
+        createRightClick(false);
 
+    if (challenge.type === "rightMenu")
+        createRightClick(true);
 
-    document.getElementById("progress").style.width =
-    (currentChallenge / challenges.length * 100) + "%";
+    if (challenge.type === "drag")
+        createDrag();
 
+    if (challenge.type === "multiDrag")
+        createMultiDrag();
 
-    document.getElementById("message").style.display =
-    "none";
+    if (challenge.type === "sort")
+        createSort();
 
+    if (challenge.type === "selectOne")
+        createSelectOne();
 
-    document.getElementById("nextButton").style.display =
-    "none";
+    if (challenge.type === "selectMultiple")
+        createSelectMultiple();
 
+    if (challenge.type === "ctrlClick")
+        createCtrlClick();
 
-    const area = document.getElementById("gameArea");
+    if (challenge.type === "rightMenuDelete")
+        createRightClickDelete();
 
-    area.innerHTML = "";
-
-
-    if (challenge.type === "click") {
-
-        createClickTarget(area);
-
-    }
-
-
-    if (challenge.type === "multi") {
-
-        createMultipleTargets(area, 3);
-
-    }
-
-
-    if (challenge.type === "multi5") {
-
-        createMultipleTargets(area, 5);
-
-    }
-
-
-    if (challenge.type === "double") {
-
-        createDoubleTarget(area);
-
-    }
-
-
-    if (challenge.type === "right") {
-
-        createRightTarget(area);
-
-    }
-
-
-    if (challenge.type === "drag") {
-
-        createDragGame(area);
-
-    }
+    if (challenge.type === "ordered")
+        createOrdered();
 
 }
 
 
+/* =========================================
+   RÉUSSITE
+========================================= */
 
-/* =========================
+function success() {
+
+    score++;
+
+    message.className = "message success";
+
+    message.textContent =
+        "Bravo ! Défi réussi.";
+
+    setTimeout(function() {
+
+        currentChallenge++;
+
+        if (currentChallenge < challenges.length) {
+
+            loadChallenge();
+
+        }
+
+        else {
+
+            endGame();
+
+        }
+
+    }, 1000);
+
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+function error(text) {
+
+    message.className = "message error";
+
+    message.textContent = text;
+
+}
+
+
+/* =========================================
    CLIC SIMPLE
-========================= */
+========================================= */
 
-function createClickTarget(area) {
+function createClick(size) {
 
-    const target =
-    document.createElement("button");
+    const target = document.createElement("div");
 
-    target.className = "target";
+    target.className =
+        "target " + size + "-target";
 
-    target.textContent = "CLIC";
+    target.style.left = "45%";
+    target.style.top = "35%";
 
+    target.onclick = success;
 
-    target.style.left = randomPosition(80, 600) + "px";
-
-    target.style.top = randomPosition(50, 250) + "px";
-
-
-    target.onclick = function() {
-
-        success();
-
-    };
-
-
-    area.appendChild(target);
+    zone.appendChild(target);
 
 }
 
 
+/* =========================================
+   PLUSIEURS CLICS
+========================================= */
 
-/* =========================
-   PLUSIEURS CIBLES
-========================= */
-
-function createMultipleTargets(area, number) {
+function createMultiClick(number) {
 
     let clicked = 0;
 
-
     for (let i = 0; i < number; i++) {
 
-        const target =
-        document.createElement("button");
+        const target = document.createElement("div");
 
-        target.className = "target";
-
-        target.textContent =
-        (i + 1);
-
+        target.className = "target small-target";
 
         target.style.left =
-        (40 + (i * 130)) + "px";
-
+            (10 + Math.random() * 75) + "%";
 
         target.style.top =
-        (70 + (i % 2) * 150) + "px";
-
+            (10 + Math.random() * 70) + "%";
 
         target.onclick = function() {
 
@@ -983,426 +967,864 @@ function createMultipleTargets(area, number) {
 
             clicked++;
 
-
-            if (clicked === number) {
-
-                success();
-
-            }
+            if (clicked === number) success();
 
         };
 
-
-        area.appendChild(target);
+        zone.appendChild(target);
 
     }
 
 }
 
 
+/* =========================================
+   CIBLE MOBILE
+========================================= */
 
-/* =========================
-   DOUBLE-CLIC
-========================= */
+function createMoving() {
 
-function createDoubleTarget(area) {
+    const target =
+        document.createElement("div");
 
-    const button =
-    document.createElement("button");
+    target.className =
+        "target medium-target";
 
-    button.className =
-    "double-target";
+    target.style.left = "20%";
+    target.style.top = "30%";
 
-    button.textContent =
-    "DOUBLE-CLIQUEZ ICI";
+    target.onclick = success;
 
+    zone.appendChild(target);
 
-    button.style.position = "absolute";
+    const interval = setInterval(function() {
 
-    button.style.left = "50%";
+        if (!zone.contains(target)) {
 
-    button.style.top = "50%";
+            clearInterval(interval);
+            return;
 
-    button.style.transform =
-    "translate(-50%, -50%)";
+        }
 
+        target.style.left =
+            Math.random() * 75 + "%";
 
-    button.ondblclick = function() {
+        target.style.top =
+            Math.random() * 70 + "%";
 
-        success();
-
-    };
-
-
-    area.appendChild(button);
+    }, 900);
 
 }
 
 
+/* =========================================
+   DOUBLE CLIC
+========================================= */
 
-/* =========================
+function createDouble() {
+
+    const box =
+        document.createElement("div");
+
+    box.className = "double-box";
+
+    box.textContent = "Double-cliquez ici";
+
+    box.ondblclick = success;
+
+    box.onclick = function() {
+
+        message.className = "message info";
+
+        message.textContent =
+            "Un simple clic ne suffit pas : essayez deux clics rapides.";
+
+    };
+
+    zone.appendChild(box);
+
+}
+
+
+/* =========================================
    CLIC DROIT
-========================= */
+========================================= */
 
-function createRightTarget(area) {
+function createRightClick(menu) {
 
-    const button =
-    document.createElement("button");
+    const box =
+        document.createElement("div");
 
-    button.className =
-    "right-target";
+    box.className =
+        "right-click-box";
 
-    button.textContent =
-    "CLIC DROIT ICI";
+    box.textContent =
+        "Clic droit ici";
 
-
-    button.style.position = "absolute";
-
-    button.style.left = "50%";
-
-    button.style.top = "50%";
-
-    button.style.transform =
-    "translate(-50%, -50%)";
-
-
-    button.oncontextmenu = function(event) {
+    box.oncontextmenu = function(event) {
 
         event.preventDefault();
 
-        success();
-
-    };
-
-
-    area.appendChild(button);
-
-}
-
-
-
-/* =========================
-   CLIQUER-GLISSER
-========================= */
-
-function createDragGame(area) {
-
-    const item =
-    document.createElement("div");
-
-    item.className =
-    "drag-item";
-
-    item.textContent =
-    "DÉPLACEZ-MOI";
-
-
-    item.style.left = "40px";
-
-    item.style.top = "150px";
-
-
-    const zone =
-    document.createElement("div");
-
-    zone.className =
-    "drop-zone";
-
-    zone.textContent =
-    "DÉPOSEZ ICI";
-
-
-    zone.style.right = "40px";
-
-    zone.style.top = "130px";
-
-
-    area.appendChild(item);
-
-    area.appendChild(zone);
-
-
-    let dragging = false;
-
-    let offsetX = 0;
-
-    let offsetY = 0;
-
-
-    item.addEventListener("mousedown", function(event) {
-
-        dragging = true;
-
-        offsetX =
-        event.clientX -
-        item.getBoundingClientRect().left;
-
-        offsetY =
-        event.clientY -
-        item.getBoundingClientRect().top;
-
-    });
-
-
-    document.addEventListener("mousemove", moveItem);
-
-
-    document.addEventListener("mouseup", function() {
-
-        if (!dragging) return;
-
-        dragging = false;
-
-
-        const itemRect =
-        item.getBoundingClientRect();
-
-        const zoneRect =
-        zone.getBoundingClientRect();
-
-
-        const itemCenterX =
-        itemRect.left + itemRect.width / 2;
-
-        const itemCenterY =
-        itemRect.top + itemRect.height / 2;
-
-
-        if (
-
-            itemCenterX > zoneRect.left &&
-            itemCenterX < zoneRect.right &&
-
-            itemCenterY > zoneRect.top &&
-            itemCenterY < zoneRect.bottom
-
-        ) {
-
-            item.style.display = "none";
+        if (!menu) {
 
             success();
 
         }
 
+        else {
+
+            showContextMenu(
+                event,
+                "Informations"
+            );
+
+        }
+
+    };
+
+    zone.appendChild(box);
+
+}
+
+
+function showContextMenu(event, correct) {
+
+    const menu =
+        document.createElement("div");
+
+    menu.className =
+        "context-menu";
+
+    menu.style.display = "block";
+
+    menu.style.left =
+        event.offsetX + "px";
+
+    menu.style.top =
+        event.offsetY + "px";
+
+    const options = [
+        "Ouvrir",
+        correct,
+        "Renommer"
+    ];
+
+    options.forEach(function(option) {
+
+        const item =
+            document.createElement("div");
+
+        item.textContent = option;
+
+        item.onclick = function() {
+
+            if (option === correct) {
+
+                success();
+
+            }
+
+            else {
+
+                error(
+                    "Ce n'était pas la bonne action."
+                );
+
+            }
+
+        };
+
+        menu.appendChild(item);
+
+    });
+
+    zone.appendChild(menu);
+
+}
+
+
+/* =========================================
+   GLISSER-DÉPOSER
+========================================= */
+
+function createDrag() {
+
+    const file =
+        document.createElement("div");
+
+    file.className = "draggable";
+
+    file.textContent = "Document";
+
+    file.style.left = "10%";
+    file.style.top = "40%";
+
+    file.draggable = true;
+
+
+    const folder =
+        document.createElement("div");
+
+    folder.className = "drop-zone";
+
+    folder.textContent = "Dossier";
+
+    folder.style.right = "10%";
+    folder.style.top = "30%";
+
+
+    file.addEventListener("dragstart", function(event) {
+
+        event.dataTransfer.setData(
+            "text",
+            "document"
+        );
+
     });
 
 
-    function moveItem(event) {
+    folder.addEventListener("dragover", function(event) {
 
-        if (!dragging) return;
+        event.preventDefault();
 
-
-        const areaRect =
-        area.getBoundingClientRect();
+    });
 
 
-        let newX =
-        event.clientX -
-        areaRect.left -
-        offsetX;
+    folder.addEventListener("drop", function(event) {
+
+        event.preventDefault();
+
+        file.style.display = "none";
+
+        success();
+
+    });
 
 
-        let newY =
-        event.clientY -
-        areaRect.top -
-        offsetY;
+    zone.appendChild(file);
+    zone.appendChild(folder);
+
+}
 
 
-        newX =
-        Math.max(
-            0,
-            Math.min(
-                newX,
-                area.clientWidth - item.offsetWidth
-            )
+/* =========================================
+   MULTI GLISSER
+========================================= */
+
+function createMultiDrag() {
+
+    let dropped = 0;
+
+    for (let i = 0; i < 2; i++) {
+
+        const file =
+            document.createElement("div");
+
+        file.className = "draggable";
+
+        file.textContent =
+            "Fichier " + (i + 1);
+
+        file.style.left =
+            (10 + i * 15) + "%";
+
+        file.style.top =
+            (20 + i * 30) + "%";
+
+        file.draggable = true;
+
+
+        const folder =
+            document.createElement("div");
+
+        folder.className =
+            "drop-zone";
+
+        folder.textContent =
+            "Dossier";
+
+        folder.style.right =
+            (10 + i * 5) + "%";
+
+        folder.style.top =
+            (20 + i * 30) + "%";
+
+
+        file.addEventListener(
+            "dragstart",
+            function(event) {
+
+                event.dataTransfer.setData(
+                    "text",
+                    "file"
+                );
+
+            }
         );
 
 
-        newY =
-        Math.max(
-            0,
-            Math.min(
-                newY,
-                area.clientHeight - item.offsetHeight
-            )
+        folder.addEventListener(
+            "dragover",
+            function(event) {
+
+                event.preventDefault();
+
+            }
         );
 
 
-        item.style.left =
-        newX + "px";
+        folder.addEventListener(
+            "drop",
+            function(event) {
+
+                event.preventDefault();
+
+                file.style.display = "none";
+
+                dropped++;
+
+                if (dropped === 2) success();
+
+            }
+        );
 
 
-        item.style.top =
-        newY + "px";
-
-    }
-
-}
-
-
-
-/* =========================
-   POSITION ALÉATOIRE
-========================= */
-
-function randomPosition(min, max) {
-
-    return Math.floor(
-        Math.random() *
-        (max - min) + min
-    );
-
-}
-
-
-
-/* =========================
-   RÉUSSITE
-========================= */
-
-function success() {
-
-    if (completed) return;
-
-    completed = true;
-
-    score++;
-
-
-    document.getElementById("scoreText").textContent =
-    "Réussites : " + score;
-
-
-    document.getElementById("message").textContent =
-    "Bravo ! Défi réussi !";
-
-
-    document.getElementById("message").style.display =
-    "block";
-
-
-    document.getElementById("nextButton").style.display =
-    "inline-block";
-
-
-    if (currentChallenge === challenges.length - 1) {
-
-        document.getElementById("nextButton").textContent =
-        "Voir mon résultat";
+        zone.appendChild(file);
+        zone.appendChild(folder);
 
     }
 
 }
 
 
+/* =========================================
+   TRI
+========================================= */
 
-/* =========================
-   DÉFI SUIVANT
-========================= */
+function createSort() {
 
-function nextChallenge() {
+    let completed = 0;
 
-    currentChallenge++;
+    const names = [
+        "Photo",
+        "Document",
+        "Musique"
+    ];
+
+    names.forEach(function(name, index) {
+
+        const file =
+            document.createElement("div");
+
+        file.className =
+            "draggable";
+
+        file.textContent = name;
+
+        file.style.left =
+            (5 + index * 12) + "%";
+
+        file.style.top =
+            (20 + index * 25) + "%";
+
+        file.draggable = true;
 
 
-    if (currentChallenge < challenges.length) {
+        const folder =
+            document.createElement("div");
 
-        loadChallenge();
+        folder.className =
+            "drop-zone";
 
-    }
+        folder.textContent =
+            "Dossier " + name;
 
-    else {
+        folder.style.right = "5%";
 
-        showFinal();
+        folder.style.top =
+            (10 + index * 28) + "%";
+
+
+        file.addEventListener(
+            "dragstart",
+            function(event) {
+
+                event.dataTransfer.setData(
+                    "name",
+                    name
+                );
+
+            }
+        );
+
+
+        folder.addEventListener(
+            "dragover",
+            function(event) {
+
+                event.preventDefault();
+
+            }
+        );
+
+
+        folder.addEventListener(
+            "drop",
+            function(event) {
+
+                event.preventDefault();
+
+                const dragged =
+                    event.dataTransfer.getData("name");
+
+                if (dragged === name) {
+
+                    file.style.display = "none";
+
+                    completed++;
+
+                    if (completed === names.length)
+                        success();
+
+                }
+
+                else {
+
+                    error(
+                        "Ce fichier ne va pas dans ce dossier."
+                    );
+
+                }
+
+            }
+        );
+
+
+        zone.appendChild(file);
+        zone.appendChild(folder);
+
+    });
+
+}
+
+
+/* =========================================
+   SÉLECTION SIMPLE
+========================================= */
+
+function createSelectOne() {
+
+    const files = [
+        "Photo",
+        "Document important",
+        "Musique"
+    ];
+
+    files.forEach(function(name) {
+
+        const file =
+            document.createElement("div");
+
+        file.className = "file";
+
+        file.textContent = name;
+
+        file.onclick = function() {
+
+            document
+                .querySelectorAll(".file")
+                .forEach(function(f) {
+
+                    f.classList.remove("selected");
+
+                });
+
+            file.classList.add("selected");
+
+            if (name === "Document important") {
+
+                setTimeout(success, 400);
+
+            }
+
+        };
+
+        zone.appendChild(file);
+
+    });
+
+}
+
+
+/* =========================================
+   SÉLECTION MULTIPLE
+========================================= */
+
+function createSelectMultiple() {
+
+    const selected = new Set();
+
+    ["Fichier 1", "Fichier 2", "Fichier 3"]
+        .forEach(function(name) {
+
+        const file =
+            document.createElement("div");
+
+        file.className = "file";
+
+        file.textContent = name;
+
+        file.onclick = function() {
+
+            if (
+                name === "Fichier 1" ||
+                name === "Fichier 2"
+            ) {
+
+                selected.add(name);
+
+                file.classList.add("selected");
+
+                if (selected.size === 2) {
+
+                    success();
+
+                }
+
+            }
+
+            else {
+
+                error(
+                    "Ce fichier ne devait pas être sélectionné."
+                );
+
+            }
+
+        };
+
+        zone.appendChild(file);
+
+    });
+
+}
+
+
+/* =========================================
+   CTRL + CLIC
+========================================= */
+
+function createCtrlClick() {
+
+    const selected = new Set();
+
+    ["Document A", "Document B", "Document C"]
+        .forEach(function(name) {
+
+        const file =
+            document.createElement("div");
+
+        file.className = "file";
+
+        file.textContent = name;
+
+        file.onclick = function(event) {
+
+            if (!event.ctrlKey) {
+
+                error(
+                    "Essayez de maintenir Ctrl pendant votre clic."
+                );
+
+                return;
+
+            }
+
+            if (
+                name === "Document A" ||
+                name === "Document B"
+            ) {
+
+                selected.add(name);
+
+                file.classList.add("selected");
+
+                if (selected.size === 2)
+                    success();
+
+            }
+
+        };
+
+        zone.appendChild(file);
+
+    });
+
+}
+
+
+/* =========================================
+   CLIC DROIT SUPPRIMER
+========================================= */
+
+function createRightClickDelete() {
+
+    const box =
+        document.createElement("div");
+
+    box.className =
+        "right-click-box";
+
+    box.textContent =
+        "Ancien fichier";
+
+    box.oncontextmenu = function(event) {
+
+        event.preventDefault();
+
+        showContextMenu(
+            event,
+            "Supprimer"
+        );
+
+    };
+
+    zone.appendChild(box);
+
+}
+
+
+/* =========================================
+   CLIC DANS L'ORDRE
+========================================= */
+
+function createOrdered() {
+
+    let expected = 1;
+
+    for (let i = 1; i <= 5; i++) {
+
+        const target =
+            document.createElement("div");
+
+        target.className =
+            "target medium-target";
+
+        target.textContent = i;
+
+        target.style.color = "white";
+
+        target.style.fontSize = "25px";
+
+        target.style.display = "flex";
+
+        target.style.alignItems = "center";
+
+        target.style.justifyContent = "center";
+
+        target.style.left =
+            (10 + Math.random() * 70) + "%";
+
+        target.style.top =
+            (10 + Math.random() * 70) + "%";
+
+
+        target.onclick = function() {
+
+            if (i === expected) {
+
+                target.style.display = "none";
+
+                expected++;
+
+                if (expected === 6)
+                    success();
+
+            }
+
+            else {
+
+                error(
+                    "Ce n'est pas le bon ordre. Recommencez."
+                );
+
+                expected = 1;
+
+            }
+
+        };
+
+        zone.appendChild(target);
 
     }
 
 }
 
 
+/* =========================================
+   PROGRESSION
+========================================= */
 
-/* =========================
-   FIN
-========================= */
+function updateProgress() {
 
-function showFinal() {
+    const percent =
+        (currentChallenge / totalChallenges) * 100;
 
-    document.getElementById("gameScreen").style.display =
-    "none";
-
-
-    document.getElementById("finalScreen").style.display =
-    "block";
-
-
-    document.getElementById("progress").style.width =
-    "100%";
+    document
+        .getElementById("progressBar")
+        .style.width =
+        percent + "%";
 
 
-    document.getElementById("finalScore").textContent =
-    score + " / " + challenges.length;
+    document
+        .getElementById("progressText")
+        .textContent =
+        "Défi " +
+        (currentChallenge + 1) +
+        " sur " +
+        totalChallenges;
 
 
-    let message = "";
-
-
-    if (score === challenges.length) {
-
-        message =
-        "Excellent ! Vous avez réussi tous les défis.";
-
-    }
-
-    else if (score >= 12) {
-
-        message =
-        "Très bon travail ! Continuez à vous entraîner.";
-
-    }
-
-    else {
-
-        message =
-        "Bravo pour vos efforts ! Recommencez autant de fois que vous le souhaitez.";
-
-    }
-
-
-    document.getElementById("finalMessage").textContent =
-    message;
+    document
+        .getElementById("scoreText")
+        .textContent =
+        "Réussites : " + score;
 
 }
 
 
+/* =========================================
+   AIDE
+========================================= */
 
-/* =========================
-   RECOMMENCER
-========================= */
+function showHint() {
 
-function restartGame() {
+    const hints = [
 
-    currentChallenge = 0;
+        "Regardez attentivement l'instruction et prenez votre temps.",
 
-    score = 0;
+        "Un double-clic correspond à deux clics rapides.",
+
+        "Le clic droit permet généralement d'afficher un menu.",
+
+        "Pour déplacer un objet, maintenez le bouton de la souris enfoncé puis déplacez la souris.",
+
+        "Pour sélectionner plusieurs éléments, on peut utiliser Ctrl + clic."
+
+    ];
+
+    message.className =
+        "message info";
+
+    message.textContent =
+        hints[
+            Math.floor(
+                Math.random() * hints.length
+            )
+        ];
+
+}
 
 
-    document.getElementById("finalScreen").style.display =
-    "none";
+/* =========================================
+   RECOMMENCER LE DÉFI
+========================================= */
 
-
-    document.getElementById("gameScreen").style.display =
-    "block";
-
+function restartChallenge() {
 
     loadChallenge();
 
 }
 
 
+/* =========================================
+   FIN
+========================================= */
 
-/* =========================
+function endGame() {
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("finalBox")
+        .style.display =
+        "block";
+
+
+    const finalScore =
+        Math.round(
+            (score / totalChallenges) * 10
+        );
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        finalScore + " / 10";
+
+
+    let text = "";
+
+    if (finalScore >= 9) {
+
+        text =
+        "Excellent ! Vous maîtrisez très bien les différentes actions de la souris.";
+
+    }
+
+    else if (finalScore >= 7) {
+
+        text =
+        "Très bon travail ! Continuez à vous entraîner.";
+
+    }
+
+    else {
+
+        text =
+        "Bravo pour avoir terminé le parcours. Recommencez autant de fois que nécessaire !";
+
+    }
+
+
+    document
+        .getElementById("finalMessage")
+        .textContent =
+        text;
+
+}
+
+
+/* =========================================
+   RECOMMENCER LE JEU
+========================================= */
+
+function restartGame() {
+
+    currentChallenge = 0;
+    score = 0;
+
+    document
+        .getElementById("finalBox")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "block";
+
+    loadChallenge();
+
+}
+
+
+/* =========================================
    DÉMARRAGE
-========================= */
+========================================= */
 
 loadChallenge();
 
