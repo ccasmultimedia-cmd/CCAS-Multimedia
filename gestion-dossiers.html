@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gestion des dossiers - Centre Multimédia du CCAS</title>
+
+<style>
+
+/* =========================
+   GÉNÉRAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #24344d;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 25px;
+}
+
+.logo span {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background: #3975c6;
+}
+
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+.page-header {
+    text-align: center;
+    padding: 55px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #e9f0fa,
+        #ffffff,
+        #eef7ef
+    );
+}
+
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 42px;
+    color: #203858;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 20px;
+    color: #617087;
+}
+
+
+/* =========================
+   CONTENU
+========================= */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.game-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(30,50,80,0.12);
+}
+
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 18px;
+    background: #e5eaf0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #3975c6;
+    transition: width 0.4s;
+}
+
+
+/* =========================
+   CONSIGNES
+========================= */
+
+.level {
+    display: inline-block;
+    margin-top: 30px;
+
+    padding: 8px 18px;
+    border-radius: 20px;
+
+    background: #5b9b6b;
+    color: white;
+
+    font-weight: bold;
+}
+
+.instruction {
+    font-size: 27px;
+    color: #203858;
+    margin-bottom: 10px;
+}
+
+.help {
+    font-size: 18px;
+    color: #617087;
+}
+
+
+/* =========================
+   EXPLORATEUR
+========================= */
+
+.explorer {
+    margin-top: 30px;
+    border: 2px solid #b9c8da;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+}
+
+
+/* BARRE DU HAUT */
+
+.explorer-top {
+    padding: 15px;
+    background: #e9eef5;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    border-bottom: 2px solid #ccd6e2;
+}
+
+.tool-button {
+    padding: 10px 15px;
+
+    background: white;
+    border: 2px solid #b9c8da;
+    border-radius: 8px;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tool-button:hover {
+    background: #edf4ff;
+}
+
+.path {
+    flex: 1;
+    min-width: 200px;
+
+    padding: 10px 15px;
+
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #b9c8da;
+
+    color: #4d607a;
+}
+
+
+/* CORPS EXPLORATEUR */
+
+.explorer-body {
+    display: flex;
+    min-height: 450px;
+}
+
+
+/* MENU LATÉRAL */
+
+.sidebar {
+    width: 220px;
+    background: #f4f7fa;
+    border-right: 2px solid #d6dee8;
+    padding: 20px 12px;
+}
+
+.sidebar-title {
+    font-weight: bold;
+    color: #617087;
+    margin-bottom: 12px;
+}
+
+.sidebar-item {
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    background: #dce9f9;
+}
+
+.sidebar-item.active {
+    background: #3975c6;
+    color: white;
+}
+
+
+/* FICHIERS */
+
+.files-area {
+    flex: 1;
+    padding: 25px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+
+    align-content: start;
+}
+
+.file {
+    padding: 15px 10px;
+
+    border: 2px solid transparent;
+    border-radius: 12px;
+
+    text-align: center;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.file:hover {
+    background: #eef5ff;
+    border-color: #8eb4e5;
+}
+
+.file.selected {
+    background: #dbeaff;
+    border-color: #3975c6;
+}
+
+.file.dragging {
+    opacity: 0.5;
+}
+
+.file-icon {
+    font-size: 50px;
+    margin-bottom: 8px;
+}
+
+.file-name {
+    font-size: 16px;
+    word-break: break-word;
+}
+
+
+/* DOSSIER CIBLE */
+
+.drop-zone {
+    border: 3px dashed #5b9b6b !important;
+    background: #eef8f0 !important;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+
+    margin-top: 25px;
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #e6f5ef;
+    color: #236b58;
+
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BOUTON SUIVANT
+========================= */
+
+.next-button,
+.restart-button {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 15px 28px;
+
+    background: #3975c6;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.next-button:hover,
+.restart-button:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   FIN
+========================= */
+
+.final-screen {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+.final-screen h2 {
+    font-size: 38px;
+    color: #203858;
+}
+
+.final-score {
+    font-size: 70px;
+    font-weight: bold;
+    color: #5b9b6b;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 60px;
+    background: #1f3656;
+    color: white;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .game-card {
+        padding: 18px;
+    }
+
+    .explorer-body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #d6dee8;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .sidebar-title {
+        width: 100%;
+    }
+
+    .files-area {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+    }
+
+    .file-icon {
+        font-size: 42px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<span>Apprendre • Découvrir • Progresser</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Accueil</a>
+<a href="cours.html">Mes cours</a>
+<a href="jeux.html">Jeux</a>
+<a href="exercices.html">Exercices</a>
+<a href="informations.html">Informations</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     EN-TÊTE
+========================= -->
+
+<section class="page-header">
+
+<h1>Apprendre à gérer ses dossiers</h1>
+
+<p>
+Entraînez-vous à ouvrir des dossiers, sélectionner des fichiers
+et ranger vos documents dans un faux explorateur.
+</p>
+
+</section>
+
+
+
+<main>
+
+<div class="game-card">
+
+
+<div id="gameScreen">
+
+
+<!-- PROGRESSION -->
+
+<div class="progress-info">
+
+<span id="progressText">
+Défi 1
+</span>
+
+<span id="scoreText">
+Réussites : 0
+</span>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+
+<div class="level" id="level">
+Niveau 1
+</div>
+
+
+<h2 class="instruction" id="instruction">
+Chargement...
+</h2>
+
+
+<p class="help" id="help"></p>
+
+
+
+<!-- EXPLORATEUR -->
+
+<div class="explorer">
+
+
+<div class="explorer-top">
+
+<button
+class="tool-button"
+onclick="goBack()">
+
+← Retour
+
+</button>
+
+
+<button
+class="tool-button"
+onclick="createFolder()">
+
+Nouveau dossier
+
+</button>
+
+
+<div class="path" id="path">
+
+Ce PC
+
+</div>
+
+</div>
+
+
+
+<div class="explorer-body">
+
+
+<!-- MENU LATÉRAL -->
+
+<div class="sidebar">
+
+<div class="sidebar-title">
+
+Accès rapide
+
+</div>
+
+
+<div
+class="sidebar-item"
+onclick="openLocation('documents')">
+
+Documents
+
+</div>
+
+
+<div
+class="sidebar-item"
+onclick="openLocation('images')">
+
+Images
+
+</div>
+
+
+<div
+class="sidebar-item"
+onclick="openLocation('bureau')">
+
+Bureau
+
+</div>
+
+
+<div
+class="sidebar-item"
+onclick="openLocation('corbeille')">
+
+Corbeille
+
+</div>
+
+
+</div>
+
+
+
+<!-- FICHIERS -->
+
+<div
+class="files-area"
+id="filesArea">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div
+class="message"
+id="message">
+
+Bravo !
+
+</div>
+
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextChallenge()">
+
+Défi suivant
+
+</button>
+
+
+</div>
+
+
+
+<!-- FIN -->
+
+<div
+class="final-screen"
+id="finalScreen">
+
+<h2>Bravo !</h2>
+
+<p>
+Vous avez terminé l'entraînement à la gestion des dossiers.
+</p>
+
+
+<div
+class="final-score"
+id="finalScore">
+
+0 / 0
+
+</div>
+
+
+<p id="finalMessage"></p>
+
+
+<button
+class="restart-button"
+id="restartButton"
+onclick="restartGame()">
+
+Recommencer
+
+</button>
+
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<div>
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<br>
+
+Apprendre • Découvrir • Progresser
+
+</div>
+
+
+<div>
+
+© 2026 Centre Multimédia du CCAS
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentChallenge = 0;
+
+let score = 0;
+
+let completed = false;
+
+let selectedFile = null;
+
+let currentLocation = "bureau";
+
+
+/* =========================
+   STRUCTURE DES FICHIERS
+========================= */
+
+let fileSystem = {
+
+bureau: [
+
+{
+name: "Mes documents",
+type: "folder",
+icon: "📁",
+location: "documents"
+},
+
+{
+name: "Mes photos",
+type: "folder",
+icon: "📁",
+location: "images"
+},
+
+{
+name: "lettre.docx",
+type: "document",
+icon: "📄"
+},
+
+{
+name: "vacances.jpg",
+type: "image",
+icon: "🖼️"
+}
+
+],
+
+
+documents: [
+
+{
+name: "Administratif",
+type: "folder",
+icon: "📁"
+},
+
+{
+name: "Santé",
+type: "folder",
+icon: "📁"
+},
+
+{
+name: "lettre.docx",
+type: "document",
+icon: "📄"
+},
+
+{
+name: "facture.pdf",
+type: "document",
+icon: "📄"
+}
+
+],
+
+
+images: [
+
+{
+name: "Vacances",
+type: "folder",
+icon: "📁"
+},
+
+{
+name: "Famille",
+type: "folder",
+icon: "📁"
+},
+
+{
+name: "plage.jpg",
+type: "image",
+icon: "🖼️"
+},
+
+{
+name: "chat.jpg",
+type: "image",
+icon: "🖼️"
+}
+
+],
+
+
+corbeille: []
+
+};
+
+
+/* =========================
+   DÉFIS
+========================= */
+
+const challenges = [
+
+{
+level: "Niveau 1 : Ouvrir un dossier",
+instruction: "Ouvrez le dossier « Mes documents »",
+help: "Double-cliquez sur le dossier demandé.",
+action: "open",
+target: "Mes documents"
+},
+
+{
+level: "Niveau 1 : Ouvrir un dossier",
+instruction: "Ouvrez le dossier « Mes photos »",
+help: "Revenez sur le Bureau puis ouvrez Mes photos.",
+action: "open",
+target: "Mes photos"
+},
+
+{
+level: "Niveau 2 : Sélectionner",
+instruction: "Sélectionnez le fichier « plage.jpg »",
+help: "Cliquez une fois sur le fichier demandé.",
+action: "select",
+target: "plage.jpg"
+},
+
+{
+level: "Niveau 2 : Sélectionner",
+instruction: "Sélectionnez le fichier « facture.pdf »",
+help: "Utilisez Documents pour retrouver le fichier.",
+action: "select",
+target: "facture.pdf"
+},
+
+{
+level: "Niveau 3 : Créer",
+instruction: "Créez un nouveau dossier",
+help: "Cliquez sur le bouton « Nouveau dossier ».",
+action: "create"
+},
+
+{
+level: "Niveau 4 : Ranger",
+instruction: "Déplacez « plage.jpg » dans le dossier « Vacances »",
+help: "Faites glisser le fichier vers le dossier Vacances.",
+action: "drag",
+file: "plage.jpg",
+target: "Vacances"
+},
+
+{
+level: "Niveau 4 : Ranger",
+instruction: "Déplacez « chat.jpg » dans le dossier « Famille »",
+help: "Faites glisser le fichier vers le dossier Famille.",
+action: "drag",
+file: "chat.jpg",
+target: "Famille"
+},
+
+{
+level: "Niveau 5 : Se repérer",
+instruction: "Ouvrez le dossier Documents",
+help: "Vous pouvez utiliser le menu à gauche.",
+action: "location",
+target: "documents"
+},
+
+{
+level: "Niveau 5 : Se repérer",
+instruction: "Ouvrez le dossier Images",
+help: "Utilisez le menu à gauche.",
+action: "location",
+target: "images"
+},
+
+{
+level: "Niveau 6 : Défi final",
+instruction: "Sélectionnez le fichier « chat.jpg »",
+help: "Retrouvez le fichier et cliquez dessus.",
+action: "select",
+target: "chat.jpg"
+}
+
+];
+
+
+
+/* =========================
+   DÉMARRER
+========================= */
+
+function loadChallenge() {
+
+completed = false;
+
+selectedFile = null;
+
+
+const challenge =
+challenges[currentChallenge];
+
+
+document.getElementById("level").textContent =
+challenge.level;
+
+
+document.getElementById("instruction").textContent =
+challenge.instruction;
+
+
+document.getElementById("help").textContent =
+challenge.help;
+
+
+document.getElementById("progressText").textContent =
+"Défi " +
+(currentChallenge + 1) +
+" sur " +
+challenges.length;
+
+
+document.getElementById("scoreText").textContent =
+"Réussites : " + score;
+
+
+document.getElementById("progress").style.width =
+(currentChallenge / challenges.length * 100) + "%";
+
+
+document.getElementById("message").style.display =
+"none";
+
+
+document.getElementById("nextButton").style.display =
+"none";
+
+
+currentLocation = "bureau";
+
+
+renderFiles();
+
+}
+
+
+
+/* =========================
+   AFFICHER LES FICHIERS
+========================= */
+
+function renderFiles() {
+
+const area =
+document.getElementById("filesArea");
+
+
+area.innerHTML = "";
+
+
+document.getElementById("path").textContent =
+getLocationName(currentLocation);
+
+
+const files =
+fileSystem[currentLocation] || [];
+
+
+files.forEach(function(file) {
+
+const element =
+document.createElement("div");
+
+
+element.className =
+"file";
+
+
+element.draggable = true;
+
+
+element.innerHTML =
+
+'<div class="file-icon">' +
+file.icon +
+'</div>' +
+
+'<div class="file-name">' +
+file.name +
+'</div>';
+
+
+/* CLIC */
+
+element.addEventListener(
+"click",
+function() {
+
+selectFile(file, element);
+
+}
+);
+
+
+/* DOUBLE CLIC */
+
+element.addEventListener(
+"dblclick",
+function() {
+
+if (
+file.type === "folder" &&
+file.location
+) {
+
+currentLocation =
+file.location;
+
+renderFiles();
+
+checkAction(
+"open",
+file.name
+);
+
+}
+
+}
+);
+
+
+/* DÉBUT GLISSER */
+
+element.addEventListener(
+"dragstart",
+function() {
+
+selectedFile =
+file;
+
+element.classList.add(
+"dragging"
+);
+
+}
+);
+
+
+/* FIN GLISSER */
+
+element.addEventListener(
+"dragend",
+function() {
+
+element.classList.remove(
+"dragging"
+);
+
+}
+);
+
+
+/* DOSSIER CIBLE */
+
+if (
+file.type === "folder"
+) {
+
+element.addEventListener(
+"dragover",
+function(event) {
+
+event.preventDefault();
+
+element.classList.add(
+"drop-zone"
+);
+
+}
+);
+
+
+element.addEventListener(
+"dragleave",
+function() {
+
+element.classList.remove(
+"drop-zone"
+);
+
+}
+);
+
+
+element.addEventListener(
+"drop",
+function(event) {
+
+event.preventDefault();
+
+element.classList.remove(
+"drop-zone"
+);
+
+
+if (
+selectedFile
+) {
+
+checkDrag(
+selectedFile.name,
+file.name
+);
+
+}
+
+}
+);
+
+}
+
+
+area.appendChild(element);
+
+});
+
+}
+
+
+
+/* =========================
+   SÉLECTIONNER
+========================= */
+
+function selectFile(file, element) {
+
+document
+.querySelectorAll(".file")
+.forEach(function(item) {
+
+item.classList.remove(
+"selected"
+);
+
+});
+
+
+element.classList.add(
+"selected"
+);
+
+
+selectedFile =
+file;
+
+
+checkAction(
+"select",
+file.name
+);
+
+}
+
+
+
+/* =========================
+   OUVRIR UN EMPLACEMENT
+========================= */
+
+function openLocation(location) {
+
+currentLocation = location;
+
+renderFiles();
+
+
+checkAction(
+"location",
+location
+);
+
+}
+
+
+
+/* =========================
+   RETOUR
+========================= */
+
+function goBack() {
+
+currentLocation = "bureau";
+
+renderFiles();
+
+}
+
+
+
+/* =========================
+   CRÉER DOSSIER
+========================= */
+
+function createFolder() {
+
+const name =
+"Mon nouveau dossier";
+
+
+fileSystem[currentLocation].push({
+
+name: name,
+type: "folder",
+icon: "📁"
+
+});
+
+
+renderFiles();
+
+
+checkAction(
+"create",
+name
+);
+
+}
+
+
+
+/* =========================
+   VÉRIFIER ACTION
+========================= */
+
+function checkAction(action, target) {
+
+if (completed) return;
+
+
+const challenge =
+challenges[currentChallenge];
+
+
+if (
+challenge.action === action
+) {
+
+if (
+!challenge.target ||
+challenge.target === target
+) {
+
+success();
+
+}
+
+}
+
+}
+
+
+
+/* =========================
+   VÉRIFIER GLISSER
+========================= */
+
+function checkDrag(fileName, folderName) {
+
+if (completed) return;
+
+
+const challenge =
+challenges[currentChallenge];
+
+
+if (
+challenge.action === "drag" &&
+challenge.file === fileName &&
+challenge.target === folderName
+) {
+
+success();
+
+}
+
+}
+
+
+
+/* =========================
+   RÉUSSITE
+========================= */
+
+function success() {
+
+if (completed) return;
+
+
+completed = true;
+
+score++;
+
+
+document.getElementById("scoreText").textContent =
+"Réussites : " + score;
+
+
+document.getElementById("message").textContent =
+"Bravo ! Défi réussi !";
+
+
+document.getElementById("message").style.display =
+"block";
+
+
+document.getElementById("nextButton").style.display =
+"inline-block";
+
+
+if (
+currentChallenge ===
+challenges.length - 1
+) {
+
+document.getElementById("nextButton").textContent =
+"Voir mon résultat";
+
+}
+
+}
+
+
+
+/* =========================
+   DÉFI SUIVANT
+========================= */
+
+function nextChallenge() {
+
+currentChallenge++;
+
+
+if (
+currentChallenge <
+challenges.length
+) {
+
+loadChallenge();
+
+}
+
+else {
+
+showFinal();
+
+}
+
+}
+
+
+
+/* =========================
+   FIN
+========================= */
+
+function showFinal() {
+
+document.getElementById("gameScreen").style.display =
+"none";
+
+
+document.getElementById("finalScreen").style.display =
+"block";
+
+
+document.getElementById("progress").style.width =
+"100%";
+
+
+document.getElementById("finalScore").textContent =
+score +
+" / " +
+challenges.length;
+
+
+document.getElementById("finalMessage").textContent =
+"Excellent travail ! Vous avez appris à ouvrir, sélectionner et ranger des fichiers dans des dossiers.";
+
+document.getElementById("restartButton").style.display =
+"inline-block";
+
+}
+
+
+
+/* =========================
+   RECOMMENCER
+========================= */
+
+function restartGame() {
+
+currentChallenge = 0;
+
+score = 0;
+
+completed = false;
+
+
+document.getElementById("finalScreen").style.display =
+"none";
+
+
+document.getElementById("gameScreen").style.display =
+"block";
+
+
+document.getElementById("nextButton").textContent =
+"Défi suivant";
+
+
+loadChallenge();
+
+}
+
+
+
+/* =========================
+   NOM DES EMPLACEMENTS
+========================= */
+
+function getLocationName(location) {
+
+if (location === "bureau") {
+return "Ce PC > Bureau";
+}
+
+if (location === "documents") {
+return "Ce PC > Documents";
+}
+
+if (location === "images") {
+return "Ce PC > Images";
+}
+
+if (location === "corbeille") {
+return "Ce PC > Corbeille";
+}
+
+return "Ce PC";
+
+}
+
+
+
+/* =========================
+   LANCEMENT
+========================= */
+
+loadChallenge();
+
+
+</script>
+
+
+</body>
+</html>
