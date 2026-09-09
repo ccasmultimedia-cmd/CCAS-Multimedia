@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cours Tablette - Centre Multimédia du CCAS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #24344d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* MENU */
+
+        header {
+            background: #1f3656;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo strong {
+            font-size: 26px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            background-color: #3d76c5;
+        }
+
+        /* EN-TÊTE */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #eee9fb,
+                #ffffff,
+                #e9f0fa
+            );
+
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px;
+            font-size: 46px;
+            color: #6045aa;
+        }
+
+        .page-header p {
+            margin: auto;
+            max-width: 700px;
+            font-size: 21px;
+            color: #617087;
+        }
+
+        /* CONTENU */
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .course {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 18px;
+
+            border-left: 7px solid #7b5fc7;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+            transition: 0.3s;
+        }
+
+        .course:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(30, 50, 80, 0.14);
+        }
+
+        .course h2 {
+            margin-top: 0;
+            color: #6045aa;
+            font-size: 27px;
+        }
+
+        .course p {
+            font-size: 18px;
+            color: #617087;
+        }
+
+        /* BOUTON */
+
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 14px 22px;
+            border-radius: 8px;
+
+            background: #7b5fc7;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #6045aa;
+        }
+
+        /* EXERCICES */
+
+        .exercise-section {
+            background: #eee9fb;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .exercise-section h2 {
+            margin-top: 0;
+            color: #6045aa;
+            font-size: 30px;
+        }
+
+        .exercise-section p {
+            font-size: 19px;
+            color: #617087;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #1f3656;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            .page-header {
+                padding: 50px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            main {
+                padding: 40px 20px;
+            }
+
+            .course {
+                padding: 25px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>Cours Tablette</h1>
+
+    <p>
+        Découvrez votre tablette et apprenez à utiliser simplement
+        les outils numériques du quotidien.
+    </p>
+
+</section>
+
+
+<main>
+
+    <div class="course">
+
+        <h2>Découvrir sa tablette</h2>
+
+        <p>
+            Apprendre à connaître sa tablette, utiliser l'écran,
+            les principaux boutons et les fonctions essentielles.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Utiliser Internet</h2>
+
+        <p>
+            Naviguer sur Internet, rechercher des informations
+            et consulter différents sites.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Utiliser les applications</h2>
+
+        <p>
+            Découvrir, installer et utiliser les applications
+            utiles au quotidien.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Photos et vidéos</h2>
+
+        <p>
+            Prendre des photos, retrouver ses images
+            et organiser ses souvenirs.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Utiliser sa messagerie</h2>
+
+        <p>
+            Envoyer et recevoir des emails depuis sa tablette.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>La sécurité</h2>
+
+        <p>
+            Adopter les bons réflexes pour protéger ses informations
+            et utiliser Internet en toute confiance.
+        </p>
+
+    </div>
+
+
+    <section class="exercise-section">
+
+        <h2>Exercices et entraînement</h2>
+
+        <p>
+            Des exercices pratiques seront ajoutés progressivement
+            pour vous permettre de vous entraîner.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-title">
+                Centre Multimédia du CCAS
+            </div>
+
+            <div class="footer-text">
+                Apprendre • Découvrir • Progresser
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            © 2026 Centre Multimédia du CCAS
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
