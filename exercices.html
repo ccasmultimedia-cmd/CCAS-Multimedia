@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercices - Centre Multimédia du CCAS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #24344d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        header {
+            background: #1f3656;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo strong {
+            font-size: 26px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 17px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #3d76c5;
+        }
+
+
+        /* =========================
+           EN-TÊTE
+        ========================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #e9f0fa,
+                #ffffff,
+                #fff4df
+            );
+
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px;
+            font-size: 46px;
+            color: #203858;
+        }
+
+        .page-header p {
+            margin: auto;
+            max-width: 800px;
+            font-size: 21px;
+            color: #617087;
+        }
+
+
+        /* =========================
+           CONTENU
+        ========================== */
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .intro {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+        }
+
+        .intro h2 {
+            margin-top: 0;
+            color: #203858;
+        }
+
+
+        /* =========================
+           QUESTIONS
+        ========================== */
+
+        .question {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #3975c6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question h2 {
+            font-size: 24px;
+            color: #24344d;
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           RÉPONSES
+        ========================== */
+
+        .answers {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .answer {
+            width: 100%;
+            text-align: left;
+
+            padding: 16px;
+
+            border: 2px solid #d9e1ec;
+            border-radius: 10px;
+
+            background: #f8fafc;
+
+            font-size: 17px;
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .answer:hover {
+            border-color: #3975c6;
+            background: #eef4fb;
+        }
+
+        .answer.correct {
+            background: #e6f5ef;
+            border-color: #2e8b78;
+            color: #17604f;
+        }
+
+        .answer.wrong {
+            background: #fdecec;
+            border-color: #c84b4b;
+            color: #8a2525;
+        }
+
+
+        /* =========================
+           EXPLICATIONS
+        ========================== */
+
+        .result {
+            display: none;
+
+            margin-top: 20px;
+            padding: 18px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+        }
+
+        .result.correct-result {
+            background: #e6f5ef;
+            color: #17604f;
+        }
+
+        .result.wrong-result {
+            background: #fff4df;
+            color: #795214;
+        }
+
+
+        /* =========================
+           SCORE
+        ========================== */
+
+        .score-box {
+            display: none;
+
+            background: #1f3656;
+            color: white;
+
+            text-align: center;
+
+            padding: 40px;
+            border-radius: 20px;
+
+            margin-top: 40px;
+        }
+
+        .score-box h2 {
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .restart-button {
+            display: inline-block;
+
+            margin-top: 15px;
+            padding: 14px 22px;
+
+            background: white;
+            color: #1f3656;
+
+            border: none;
+            border-radius: 8px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #1f3656;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-header {
+                padding: 50px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            main {
+                padding: 40px 20px;
+            }
+
+            .question {
+                padding: 22px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- MENU -->
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+
+            <strong>Centre Multimédia du CCAS</strong>
+
+            <span>Apprendre • Découvrir • Progresser</span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">Accueil</a>
+
+            <a href="cours.html">Mes cours</a>
+
+            <a href="jeux.html">Jeux</a>
+
+            <a href="exercices.html" class="active">Exercices</a>
+
+            <a href="informations.html">Informations</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- EN-TÊTE -->
+
+<section class="page-header">
+
+    <h1>Exercices</h1>
+
+    <p>
+        Testez vos connaissances et apprenez à mieux protéger
+        vos informations sur Internet.
+    </p>
+
+</section>
+
+
+
+<main>
+
+
+    <div class="intro">
+
+        <h2>Les mots de passe</h2>
+
+        <p>
+            Répondez aux questions en cliquant sur la réponse qui vous
+            semble correcte. Vous recevrez immédiatement une explication.
+        </p>
+
+    </div>
+
+
+
+    <!-- QUESTION 1 -->
+
+    <section class="question" data-question="1">
+
+        <div class="question-number">Question 1</div>
+
+        <h2>Quel mot de passe est le plus sécurisé ?</h2>
+
+        <div class="answers">
+
+            <button class="answer" data-correct="false">
+                123456
+            </button>
+
+            <button class="answer" data-correct="false">
+                marie2026
+            </button>
+
+            <button class="answer" data-correct="true">
+                Une phrase longue, personnelle et difficile à deviner
+            </button>
+
+        </div>
+
+        <div class="result correct-result">
+            Bonne réponse ! Une phrase longue et difficile à deviner est généralement beaucoup plus sûre.
+        </div>
+
+        <div class="result wrong-result">
+            Ce mot de passe est trop facile à deviner. Préférez une phrase longue et personnelle.
+        </div>
+
+    </section>
+
+
+
+    <!-- QUESTION 2 -->
+
+    <section class="question" data-question="2">
+
+        <div class="question-number">Question 2</div>
+
+        <h2>Peut-on utiliser le même mot de passe partout ?</h2>
+
+        <div class="answers">
+
+            <button class="answer" data-correct="false">
+                Oui, c'est plus facile à retenir
+            </button>
+
+            <button class="answer" data-correct="true">
+                Non, il vaut mieux utiliser des mots de passe différents
+            </button>
+
+            <button class="answer" data-correct="false">
+                Oui, si le mot de passe est très long
+            </button>
+
+        </div>
+
+        <div class="result correct-result">
+            Exact ! Si un mot de passe est découvert, les autres comptes restent ainsi mieux protégés.
+        </div>
+
+        <div class="result wrong-result">
+            Attention : utiliser le même mot de passe partout peut mettre plusieurs comptes en danger.
+        </div>
+
+    </section>
+
+
+
+    <!-- QUESTION 3 -->
+
+    <section class="question" data-question="3">
+
+        <div class="question-number">Question 3</div>
+
+        <h2>Faut-il communiquer son mot de passe par e-mail ?</h2>
+
+        <div class="answers">
+
+            <button class="answer" data-correct="false">
+                Oui, si la personne semble sérieuse
+            </button>
+
+            <button class="answer" data-correct="true">
+                Non, un mot de passe doit rester secret
+            </button>
+
+            <button class="answer" data-correct="false">
+                Oui, seulement à ses amis
+            </button>
+
+        </div>
+
+        <div class="result correct-result">
+            Correct ! Votre mot de passe est personnel et doit rester secret.
+        </div>
+
+        <div class="result wrong-result">
+            Non. Un mot de passe ne doit normalement jamais être envoyé par e-mail.
+        </div>
+
+    </section>
+
+
+
+    <!-- QUESTION 4 -->
+
+    <section class="question" data-question="4">
+
+        <div class="question-number">Question 4</div>
+
+        <h2>Que faire si vous pensez que votre mot de passe a été découvert ?</h2>
+
+        <div class="answers">
+
+            <button class="answer" data-correct="true">
+                Le changer rapidement
+            </button>
+
+            <button class="answer" data-correct="false">
+                Attendre quelques semaines
+            </button>
+
+            <button class="answer" data-correct="false">
+                Ne rien faire
+            </button>
+
+        </div>
+
+        <div class="result correct-result">
+            Très bien ! Il faut changer rapidement le mot de passe concerné.
+        </div>
+
+        <div class="result wrong-result">
+            En cas de doute, il est préférable de changer rapidement votre mot de passe.
+        </div>
+
+    </section>
+
+
+
+    <!-- QUESTION 5 -->
+
+    <section class="question" data-question="5">
+
+        <div class="question-number">Question 5</div>
+
+        <h2>Pourquoi l'authentification à deux facteurs est-elle utile ?</h2>
+
+        <div class="answers">
+
+            <button class="answer" data-correct="false">
+                Elle permet de supprimer son mot de passe
+            </button>
+
+            <button class="answer" data-correct="true">
+                Elle ajoute une protection supplémentaire à votre compte
+            </button>
+
+            <button class="answer" data-correct="false">
+                Elle rend Internet plus rapide
+            </button>
+
+        </div>
+
+        <div class="result correct-result">
+            Exact ! Même si quelqu'un connaît votre mot de passe, une deuxième vérification peut protéger votre compte.
+        </div>
+
+        <div class="result wrong-result">
+            L'authentification à deux facteurs ajoute une étape de sécurité supplémentaire.
+        </div>
+
+    </section>
+
+
+
+    <!-- SCORE -->
+
+    <section class="score-box" id="scoreBox">
+
+        <h2>Quiz terminé !</h2>
+
+        <p id="scoreText"></p>
+
+        <button class="restart-button" onclick="restartQuiz()">
+            Recommencer le quiz
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-title">
+                Centre Multimédia du CCAS
+            </div>
+
+            <div class="footer-text">
+                Apprendre • Découvrir • Progresser
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            © 2026 Centre Multimédia du CCAS
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    let score = 0;
+    let answeredQuestions = 0;
+
+    const questions = document.querySelectorAll(".question");
+
+
+    questions.forEach(question => {
+
+        const answers = question.querySelectorAll(".answer");
+
+        answers.forEach(answer => {
+
+            answer.addEventListener("click", function() {
+
+                if (question.classList.contains("answered")) {
+                    return;
+                }
+
+                question.classList.add("answered");
+
+                answeredQuestions++;
+
+                const isCorrect =
+                    this.getAttribute("data-correct") === "true";
+
+                if (isCorrect) {
+
+                    this.classList.add("correct");
+
+                    question.querySelector(".correct-result").style.display =
+                        "block";
+
+                    score++;
+
+                } else {
+
+                    this.classList.add("wrong");
+
+                    question.querySelector(".wrong-result").style.display =
+                        "block";
+
+                    answers.forEach(answer => {
+
+                        if (
+                            answer.getAttribute("data-correct") === "true"
+                        ) {
+                            answer.classList.add("correct");
+                        }
+
+                    });
+
+                }
+
+
+                answers.forEach(answer => {
+
+                    answer.disabled = true;
+
+                });
+
+
+                if (answeredQuestions === questions.length) {
+
+                    showScore();
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+
+    function showScore() {
+
+        const scoreBox =
+            document.getElementById("scoreBox");
+
+        const scoreText =
+            document.getElementById("scoreText");
+
+        scoreText.innerHTML =
+            "Votre score : <strong>" +
+            score +
+            " / " +
+            questions.length +
+            "</strong>";
+
+        scoreBox.style.display = "block";
+
+        scoreBox.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+
+
+    function restartQuiz() {
+
+        score = 0;
+
+        answeredQuestions = 0;
+
+
+        questions.forEach(question => {
+
+            question.classList.remove("answered");
+
+
+            const answers =
+                question.querySelectorAll(".answer");
+
+
+            answers.forEach(answer => {
+
+                answer.classList.remove(
+                    "correct",
+                    "wrong"
+                );
+
+                answer.disabled = false;
+
+            });
+
+
+            question.querySelector(".correct-result").style.display =
+                "none";
+
+            question.querySelector(".wrong-result").style.display =
+                "none";
+
+        });
+
+
+        document.getElementById("scoreBox").style.display =
+            "none";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
