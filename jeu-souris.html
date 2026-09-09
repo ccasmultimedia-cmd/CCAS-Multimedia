@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jeu de la souris - Centre Multimédia du CCAS</title>
+
+<style>
+
+/* =========================
+   RÉGLAGES GÉNÉRAUX
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #24344d;
+    line-height: 1.6;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 12px 18px;
+    border-radius: 8px;
+
+    font-size: 17px;
+}
+
+nav a:hover {
+    background: #3d76c5;
+}
+
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+.page-header {
+    text-align: center;
+    padding: 60px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #e9f0fa,
+        #ffffff,
+        #fff4df
+    );
+}
+
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 44px;
+    color: #203858;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 20px;
+    color: #617087;
+}
+
+
+/* =========================
+   CONTENU
+========================= */
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+
+/* =========================
+   CARTE DU JEU
+========================= */
+
+.game-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+
+    box-shadow: 0 5px 25px rgba(30, 50, 80, 0.10);
+}
+
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 16px;
+
+    background: #e5eaf0;
+    border-radius: 20px;
+    overflow: hidden;
+
+    margin-bottom: 30px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+
+    background: #3975c6;
+
+    transition: width 0.4s;
+}
+
+
+/* =========================
+   CONSIGNE
+========================= */
+
+.level {
+    display: inline-block;
+
+    background: #d05f9d;
+    color: white;
+
+    padding: 7px 16px;
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.instruction {
+    font-size: 26px;
+    color: #203858;
+
+    margin: 20px 0 10px;
+}
+
+.help {
+    color: #617087;
+    font-size: 18px;
+}
+
+
+/* =========================
+   ZONE DE JEU
+========================= */
+
+.game-area {
+    position: relative;
+
+    min-height: 400px;
+
+    margin-top: 30px;
+
+    background: #eef3f9;
+
+    border: 3px dashed #b9c8da;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   CIBLES À CLIQUER
+========================= */
+
+.target {
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #3975c6;
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+
+.target:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   BOUTON DOUBLE-CLIC
+========================= */
+
+.double-target {
+    padding: 25px 40px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #7b5fc7;
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   CLIC DROIT
+========================= */
+
+.right-target {
+    padding: 25px 40px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #e09b32;
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   OBJETS À DÉPLACER
+========================= */
+
+.drag-item {
+    width: 110px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #2e8b78;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: grab;
+
+    user-select: none;
+
+    position: absolute;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+.drop-zone {
+    width: 160px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px dashed #617087;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    color: #617087;
+
+    position: absolute;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+
+    margin-top: 25px;
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: #e6f5ef;
+
+    color: #236b58;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* =========================
+   BOUTON SUIVANT
+========================= */
+
+.next-button {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 15px 25px;
+
+    background: #3975c6;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.next-button:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   RÉSULTAT FINAL
+========================= */
+
+.final-screen {
+    display: none;
+    text-align: center;
+}
+
+.final-screen h2 {
+    font-size: 36px;
+    color: #203858;
+}
+
+.final-score {
+    font-size: 70px;
+    font-weight: bold;
+    color: #d05f9d;
+}
+
+.restart-button {
+    padding: 16px 28px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #3975c6;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 35px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 34px;
+    }
+
+    .game-card {
+        padding: 20px;
+    }
+
+    .instruction {
+        font-size: 22px;
+    }
+
+    .game-area {
+        min-height: 450px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<span>Apprendre • Découvrir • Progresser</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Accueil</a>
+
+<a href="cours.html">Mes cours</a>
+
+<a href="jeux.html">Jeux</a>
+
+<a href="exercices.html">Exercices</a>
+
+<a href="informations.html">Informations</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     EN-TÊTE
+========================= -->
+
+<section class="page-header">
+
+<h1>Apprendre à utiliser la souris</h1>
+
+<p>
+Un entraînement progressif pour apprendre à cliquer,
+double-cliquer, faire un clic droit et déplacer des objets.
+</p>
+
+</section>
+
+
+
+<main>
+
+
+<div class="game-card" id="gameCard">
+
+
+<!-- PROGRESSION -->
+
+<div class="progress-info">
+
+<span id="progressText">
+Défi 1 sur 16
+</span>
+
+<span id="scoreText">
+Réussites : 0
+</span>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+
+
+<!-- JEU -->
+
+<div id="gameScreen">
+
+
+<div class="level" id="level">
+Niveau 1
+</div>
+
+
+<h2 class="instruction" id="instruction">
+Chargement...
+</h2>
+
+
+<p class="help" id="help">
+</p>
+
+
+<div class="game-area" id="gameArea">
+</div>
+
+
+<div class="message" id="message">
+Bravo !
+</div>
+
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextChallenge()">
+
+Défi suivant
+
+</button>
+
+
+</div>
+
+
+
+<!-- FIN -->
+
+<div class="final-screen" id="finalScreen">
+
+<h2>Bravo ! Entraînement terminé !</h2>
+
+<p>
+Vous avez terminé les exercices de la souris.
+</p>
+
+<div class="final-score" id="finalScore">
+16 / 16
+</div>
+
+<p id="finalMessage"></p>
+
+<button
+class="restart-button"
+onclick="restartGame()">
+
+Recommencer l'entraînement
+
+</button>
+
+</div>
+
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<div>
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<br>
+
+<span>
+Apprendre • Découvrir • Progresser
+</span>
+
+</div>
+
+
+<div>
+© 2026 Centre Multimédia du CCAS
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentChallenge = 0;
+
+let score = 0;
+
+let completed = false;
+
+
+/* =========================
+   DÉFIS
+========================= */
+
+const challenges = [
+
+    {
+        level: "Niveau 1 : Clic simple",
+        instruction: "Cliquez sur le cercle bleu",
+        help: "Placez le pointeur de la souris sur le cercle et faites un clic gauche.",
+        type: "click"
+    },
+
+    {
+        level: "Niveau 1 : Clic simple",
+        instruction: "Cliquez sur le cercle bleu",
+        help: "Encore une fois : un seul clic avec le bouton gauche.",
+        type: "click"
+    },
+
+    {
+        level: "Niveau 1 : Clic simple",
+        instruction: "Cliquez sur les 3 cercles",
+        help: "Cliquez sur tous les cercles, dans l'ordre que vous voulez.",
+        type: "multi"
+    },
+
+    {
+        level: "Niveau 1 : Clic simple",
+        instruction: "Cliquez sur les 5 cercles",
+        help: "Prenez votre temps et cliquez sur chaque cercle.",
+        type: "multi5"
+    },
+
+    {
+        level: "Niveau 2 : Double-clic",
+        instruction: "Double-cliquez sur le bouton violet",
+        help: "Deux clics rapides avec le bouton gauche.",
+        type: "double"
+    },
+
+    {
+        level: "Niveau 2 : Double-clic",
+        instruction: "Double-cliquez encore une fois",
+        help: "Essayez de faire deux clics assez rapidement.",
+        type: "double"
+    },
+
+    {
+        level: "Niveau 2 : Double-clic",
+        instruction: "Double-cliquez sur le bouton",
+        help: "Attention : deux clics rapides, sans trop attendre.",
+        type: "double"
+    },
+
+    {
+        level: "Niveau 3 : Clic droit",
+        instruction: "Faites un clic droit sur le bouton orange",
+        help: "Utilisez le bouton droit de votre souris.",
+        type: "right"
+    },
+
+    {
+        level: "Niveau 3 : Clic droit",
+        instruction: "Refaites un clic droit",
+        help: "Cette fois, entraînez-vous à nouveau avec le bouton droit.",
+        type: "right"
+    },
+
+    {
+        level: "Niveau 3 : Clic droit",
+        instruction: "Encore un clic droit",
+        help: "Le clic droit ouvre souvent un menu avec plusieurs choix.",
+        type: "right"
+    },
+
+    {
+        level: "Niveau 4 : Cliquer-glisser",
+        instruction: "Glissez le bloc vert dans la zone",
+        help: "Cliquez sur le bloc, gardez le bouton enfoncé et déplacez-le.",
+        type: "drag"
+    },
+
+    {
+        level: "Niveau 4 : Cliquer-glisser",
+        instruction: "Déplacez à nouveau le bloc vert",
+        help: "Maintenez le clic enfoncé pendant tout le déplacement.",
+        type: "drag"
+    },
+
+    {
+        level: "Niveau 4 : Cliquer-glisser",
+        instruction: "Glissez le bloc dans la bonne zone",
+        help: "Relâchez le bouton seulement lorsque le bloc est dans la zone.",
+        type: "drag"
+    },
+
+    {
+        level: "Niveau 5 : Défi final",
+        instruction: "Cliquez sur tous les cercles",
+        help: "Un dernier entraînement au clic simple.",
+        type: "multi5"
+    },
+
+    {
+        level: "Niveau 5 : Défi final",
+        instruction: "Double-cliquez sur le bouton",
+        help: "Deux clics rapides !",
+        type: "double"
+    },
+
+    {
+        level: "Niveau 5 : Grand final",
+        instruction: "Glissez le bloc vert dans la zone",
+        help: "Utilisez tout ce que vous avez appris.",
+        type: "drag"
+    }
+
+];
+
+
+
+/* =========================
+   CHARGER UN DÉFI
+========================= */
+
+function loadChallenge() {
+
+    completed = false;
+
+    const challenge = challenges[currentChallenge];
+
+
+    document.getElementById("level").textContent =
+    challenge.level;
+
+
+    document.getElementById("instruction").textContent =
+    challenge.instruction;
+
+
+    document.getElementById("help").textContent =
+    challenge.help;
+
+
+    document.getElementById("progressText").textContent =
+    "Défi " + (currentChallenge + 1) +
+    " sur " + challenges.length;
+
+
+    document.getElementById("scoreText").textContent =
+    "Réussites : " + score;
+
+
+    document.getElementById("progress").style.width =
+    (currentChallenge / challenges.length * 100) + "%";
+
+
+    document.getElementById("message").style.display =
+    "none";
+
+
+    document.getElementById("nextButton").style.display =
+    "none";
+
+
+    const area = document.getElementById("gameArea");
+
+    area.innerHTML = "";
+
+
+    if (challenge.type === "click") {
+
+        createClickTarget(area);
+
+    }
+
+
+    if (challenge.type === "multi") {
+
+        createMultipleTargets(area, 3);
+
+    }
+
+
+    if (challenge.type === "multi5") {
+
+        createMultipleTargets(area, 5);
+
+    }
+
+
+    if (challenge.type === "double") {
+
+        createDoubleTarget(area);
+
+    }
+
+
+    if (challenge.type === "right") {
+
+        createRightTarget(area);
+
+    }
+
+
+    if (challenge.type === "drag") {
+
+        createDragGame(area);
+
+    }
+
+}
+
+
+
+/* =========================
+   CLIC SIMPLE
+========================= */
+
+function createClickTarget(area) {
+
+    const target =
+    document.createElement("button");
+
+    target.className = "target";
+
+    target.textContent = "CLIC";
+
+
+    target.style.left = randomPosition(80, 600) + "px";
+
+    target.style.top = randomPosition(50, 250) + "px";
+
+
+    target.onclick = function() {
+
+        success();
+
+    };
+
+
+    area.appendChild(target);
+
+}
+
+
+
+/* =========================
+   PLUSIEURS CIBLES
+========================= */
+
+function createMultipleTargets(area, number) {
+
+    let clicked = 0;
+
+
+    for (let i = 0; i < number; i++) {
+
+        const target =
+        document.createElement("button");
+
+        target.className = "target";
+
+        target.textContent =
+        (i + 1);
+
+
+        target.style.left =
+        (40 + (i * 130)) + "px";
+
+
+        target.style.top =
+        (70 + (i % 2) * 150) + "px";
+
+
+        target.onclick = function() {
+
+            target.style.display = "none";
+
+            clicked++;
+
+
+            if (clicked === number) {
+
+                success();
+
+            }
+
+        };
+
+
+        area.appendChild(target);
+
+    }
+
+}
+
+
+
+/* =========================
+   DOUBLE-CLIC
+========================= */
+
+function createDoubleTarget(area) {
+
+    const button =
+    document.createElement("button");
+
+    button.className =
+    "double-target";
+
+    button.textContent =
+    "DOUBLE-CLIQUEZ ICI";
+
+
+    button.style.position = "absolute";
+
+    button.style.left = "50%";
+
+    button.style.top = "50%";
+
+    button.style.transform =
+    "translate(-50%, -50%)";
+
+
+    button.ondblclick = function() {
+
+        success();
+
+    };
+
+
+    area.appendChild(button);
+
+}
+
+
+
+/* =========================
+   CLIC DROIT
+========================= */
+
+function createRightTarget(area) {
+
+    const button =
+    document.createElement("button");
+
+    button.className =
+    "right-target";
+
+    button.textContent =
+    "CLIC DROIT ICI";
+
+
+    button.style.position = "absolute";
+
+    button.style.left = "50%";
+
+    button.style.top = "50%";
+
+    button.style.transform =
+    "translate(-50%, -50%)";
+
+
+    button.oncontextmenu = function(event) {
+
+        event.preventDefault();
+
+        success();
+
+    };
+
+
+    area.appendChild(button);
+
+}
+
+
+
+/* =========================
+   CLIQUER-GLISSER
+========================= */
+
+function createDragGame(area) {
+
+    const item =
+    document.createElement("div");
+
+    item.className =
+    "drag-item";
+
+    item.textContent =
+    "DÉPLACEZ-MOI";
+
+
+    item.style.left = "40px";
+
+    item.style.top = "150px";
+
+
+    const zone =
+    document.createElement("div");
+
+    zone.className =
+    "drop-zone";
+
+    zone.textContent =
+    "DÉPOSEZ ICI";
+
+
+    zone.style.right = "40px";
+
+    zone.style.top = "130px";
+
+
+    area.appendChild(item);
+
+    area.appendChild(zone);
+
+
+    let dragging = false;
+
+    let offsetX = 0;
+
+    let offsetY = 0;
+
+
+    item.addEventListener("mousedown", function(event) {
+
+        dragging = true;
+
+        offsetX =
+        event.clientX -
+        item.getBoundingClientRect().left;
+
+        offsetY =
+        event.clientY -
+        item.getBoundingClientRect().top;
+
+    });
+
+
+    document.addEventListener("mousemove", moveItem);
+
+
+    document.addEventListener("mouseup", function() {
+
+        if (!dragging) return;
+
+        dragging = false;
+
+
+        const itemRect =
+        item.getBoundingClientRect();
+
+        const zoneRect =
+        zone.getBoundingClientRect();
+
+
+        const itemCenterX =
+        itemRect.left + itemRect.width / 2;
+
+        const itemCenterY =
+        itemRect.top + itemRect.height / 2;
+
+
+        if (
+
+            itemCenterX > zoneRect.left &&
+            itemCenterX < zoneRect.right &&
+
+            itemCenterY > zoneRect.top &&
+            itemCenterY < zoneRect.bottom
+
+        ) {
+
+            item.style.display = "none";
+
+            success();
+
+        }
+
+    });
+
+
+    function moveItem(event) {
+
+        if (!dragging) return;
+
+
+        const areaRect =
+        area.getBoundingClientRect();
+
+
+        let newX =
+        event.clientX -
+        areaRect.left -
+        offsetX;
+
+
+        let newY =
+        event.clientY -
+        areaRect.top -
+        offsetY;
+
+
+        newX =
+        Math.max(
+            0,
+            Math.min(
+                newX,
+                area.clientWidth - item.offsetWidth
+            )
+        );
+
+
+        newY =
+        Math.max(
+            0,
+            Math.min(
+                newY,
+                area.clientHeight - item.offsetHeight
+            )
+        );
+
+
+        item.style.left =
+        newX + "px";
+
+
+        item.style.top =
+        newY + "px";
+
+    }
+
+}
+
+
+
+/* =========================
+   POSITION ALÉATOIRE
+========================= */
+
+function randomPosition(min, max) {
+
+    return Math.floor(
+        Math.random() *
+        (max - min) + min
+    );
+
+}
+
+
+
+/* =========================
+   RÉUSSITE
+========================= */
+
+function success() {
+
+    if (completed) return;
+
+    completed = true;
+
+    score++;
+
+
+    document.getElementById("scoreText").textContent =
+    "Réussites : " + score;
+
+
+    document.getElementById("message").textContent =
+    "Bravo ! Défi réussi !";
+
+
+    document.getElementById("message").style.display =
+    "block";
+
+
+    document.getElementById("nextButton").style.display =
+    "inline-block";
+
+
+    if (currentChallenge === challenges.length - 1) {
+
+        document.getElementById("nextButton").textContent =
+        "Voir mon résultat";
+
+    }
+
+}
+
+
+
+/* =========================
+   DÉFI SUIVANT
+========================= */
+
+function nextChallenge() {
+
+    currentChallenge++;
+
+
+    if (currentChallenge < challenges.length) {
+
+        loadChallenge();
+
+    }
+
+    else {
+
+        showFinal();
+
+    }
+
+}
+
+
+
+/* =========================
+   FIN
+========================= */
+
+function showFinal() {
+
+    document.getElementById("gameScreen").style.display =
+    "none";
+
+
+    document.getElementById("finalScreen").style.display =
+    "block";
+
+
+    document.getElementById("progress").style.width =
+    "100%";
+
+
+    document.getElementById("finalScore").textContent =
+    score + " / " + challenges.length;
+
+
+    let message = "";
+
+
+    if (score === challenges.length) {
+
+        message =
+        "Excellent ! Vous avez réussi tous les défis.";
+
+    }
+
+    else if (score >= 12) {
+
+        message =
+        "Très bon travail ! Continuez à vous entraîner.";
+
+    }
+
+    else {
+
+        message =
+        "Bravo pour vos efforts ! Recommencez autant de fois que vous le souhaitez.";
+
+    }
+
+
+    document.getElementById("finalMessage").textContent =
+    message;
+
+}
+
+
+
+/* =========================
+   RECOMMENCER
+========================= */
+
+function restartGame() {
+
+    currentChallenge = 0;
+
+    score = 0;
+
+
+    document.getElementById("finalScreen").style.display =
+    "none";
+
+
+    document.getElementById("gameScreen").style.display =
+    "block";
+
+
+    loadChallenge();
+
+}
+
+
+
+/* =========================
+   DÉMARRAGE
+========================= */
+
+loadChallenge();
+
+
+</script>
+
+
+</body>
+
+</html>
