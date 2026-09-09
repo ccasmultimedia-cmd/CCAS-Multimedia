@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jeu souris appliqué - Centre Multimédia</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    background: #0086d1;
+}
+
+/* =====================================================
+   ACCUEIL
+===================================================== */
+
+#accueil {
+    min-height: 100vh;
+    padding: 30px;
+    text-align: center;
+    color: white;
+
+    background:
+        radial-gradient(circle at 80% 15%, #fff 0 35px, transparent 36px),
+        linear-gradient(#56b9f2 0%, #79c8f2 48%, #62b53b 49%, #3f8f2c 100%);
+}
+
+#accueil h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+}
+
+#accueil h2 {
+    font-weight: normal;
+}
+
+.presentation {
+    max-width: 850px;
+    margin: 30px auto;
+    background: rgba(255,255,255,0.94);
+    color: #222;
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    text-align: left;
+}
+
+.presentation h3 {
+    text-align: center;
+    color: #1565c0;
+    font-size: 26px;
+}
+
+.presentation li {
+    margin: 12px 0;
+    font-size: 18px;
+}
+
+.bouton {
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    background: #1565c0;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.bouton:hover {
+    transform: scale(1.05);
+    background: #0d47a1;
+}
+
+.bouton-retour {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10000;
+}
+
+/* =====================================================
+   JEU
+===================================================== */
+
+#jeu {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* =====================================================
+   BUREAU
+===================================================== */
+
+#bureau {
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 80% 15%, #ffffff 0 40px, transparent 42px),
+        linear-gradient(
+            180deg,
+            #52b9f0 0%,
+            #86cff4 45%,
+            #6fbf42 46%,
+            #4a9e31 100%
+        );
+}
+
+/* Nuages */
+
+.nuage {
+    position: absolute;
+    width: 170px;
+    height: 55px;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.85;
+}
+
+.nuage::before,
+.nuage::after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.nuage::before {
+    width: 70px;
+    height: 70px;
+    left: 25px;
+    bottom: 15px;
+}
+
+.nuage::after {
+    width: 90px;
+    height: 90px;
+    right: 20px;
+    bottom: 5px;
+}
+
+#nuage1 {
+    top: 10%;
+    left: 15%;
+}
+
+#nuage2 {
+    top: 25%;
+    right: 15%;
+    transform: scale(0.7);
+}
+
+/* Collines */
+
+.colline {
+    position: absolute;
+    bottom: 45px;
+    background: #4d9f30;
+    border-radius: 50% 50% 0 0;
+}
+
+#colline1 {
+    width: 900px;
+    height: 350px;
+    left: -200px;
+}
+
+#colline2 {
+    width: 1000px;
+    height: 420px;
+    right: -300px;
+    background: #62b43a;
+}
+
+/* =====================================================
+   BARRE DES MISSIONS
+===================================================== */
+
+#mission {
+
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(850px, 90%);
+
+    background: rgba(255,255,255,0.95);
+
+    padding: 15px 25px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+    z-index: 5000;
+
+    text-align: center;
+}
+
+#niveau {
+    color: #1565c0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#objectif {
+    font-size: 22px;
+    margin-top: 6px;
+}
+
+#message {
+    margin-top: 8px;
+    min-height: 22px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* =====================================================
+   ICONES
+===================================================== */
+
+.icone {
+
+    position: absolute;
+
+    width: 105px;
+
+    padding: 8px;
+
+    text-align: center;
+
+    color: white;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    border-radius: 10px;
+
+    text-shadow: 1px 1px 3px black;
+}
+
+.icone:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.icone.selectionnee {
+    background: rgba(0,120,215,0.65);
+}
+
+.symbole {
+    font-size: 48px;
+}
+
+.nom-icone {
+    font-size: 15px;
+    margin-top: 4px;
+    word-wrap: break-word;
+}
+
+/* Positions */
+
+#documents {
+    top: 150px;
+    left: 30px;
+}
+
+#photos {
+    top: 270px;
+    left: 30px;
+}
+
+#courrier {
+    top: 390px;
+    left: 30px;
+}
+
+#ordinateur {
+    top: 150px;
+    left: 160px;
+}
+
+#dossier-travail {
+    top: 270px;
+    left: 160px;
+}
+
+#corbeille {
+    bottom: 70px;
+    right: 30px;
+}
+
+/* =====================================================
+   BARRE DES TACHES
+===================================================== */
+
+#barre-taches {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 52px;
+
+    background: rgba(245,245,245,0.92);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    z-index: 9000;
+}
+
+.task-icon {
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    padding: 7px 12px;
+
+    border-radius: 8px;
+}
+
+.task-icon:hover {
+    background: #ddd;
+}
+
+/* =====================================================
+   FENETRES
+===================================================== */
+
+.fenetre {
+
+    position: absolute;
+
+    width: 520px;
+
+    min-width: 320px;
+
+    min-height: 250px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+
+    display: none;
+
+    resize: both;
+
+    z-index: 3000;
+}
+
+.fenetre.active {
+    display: block;
+}
+
+.barre-fenetre {
+
+    height: 45px;
+
+    background: #f4f4f4;
+
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 12px;
+
+    cursor: move;
+
+    user-select: none;
+}
+
+.titre-fenetre {
+    font-weight: bold;
+}
+
+.actions-fenetre {
+    display: flex;
+    gap: 8px;
+}
+
+.actions-fenetre button {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 5px;
+}
+
+.actions-fenetre button:hover {
+    background: #ddd;
+}
+
+.contenu-fenetre {
+    padding: 20px;
+    height: calc(100% - 45px);
+    overflow: auto;
+}
+
+/* =====================================================
+   FICHIERS
+===================================================== */
+
+.fichiers {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+
+    gap: 15px;
+}
+
+.fichier {
+
+    text-align: center;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.fichier:hover {
+    background: #eeeeee;
+}
+
+.fichier.selectionne {
+    background: #cfe8ff;
+    outline: 2px solid #2196f3;
+}
+
+.fichier .symbole {
+    font-size: 40px;
+}
+
+/* =====================================================
+   MENU CLIC DROIT
+===================================================== */
+
+#menu-contextuel {
+
+    position: absolute;
+
+    display: none;
+
+    width: 200px;
+
+    background: white;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+
+    border-radius: 8px;
+
+    padding: 8px;
+
+    z-index: 10000;
+}
+
+.option-menu {
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+.option-menu:hover {
+    background: #eeeeee;
+}
+
+/* =====================================================
+   BOITES DE DIALOGUE
+===================================================== */
+
+#dialogue {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0,0,0,0.35);
+
+    z-index: 20000;
+}
+
+#dialogue-box {
+
+    width: min(500px, 90%);
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+#dialogue h2 {
+    color: #1565c0;
+}
+
+/* =====================================================
+   SCORE
+===================================================== */
+
+#score-final {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #52b9f0,
+            #83cef4 48%,
+            #62b53b 49%,
+            #3f8f2c
+        );
+
+    z-index: 50000;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.score-box {
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 25px;
+
+    max-width: 600px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.score-box h1 {
+    color: #1565c0;
+    font-size: 42px;
+}
+
+.grand-score {
+    font-size: 70px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+/* =====================================================
+   INDICATEUR DE PROGRESSION
+===================================================== */
+
+#progression {
+
+    position: absolute;
+
+    bottom: 65px;
+
+    left: 20px;
+
+    width: 250px;
+
+    height: 14px;
+
+    background: rgba(255,255,255,0.5);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    z-index: 6000;
+}
+
+#barre-progression {
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #1565c0;
+
+    transition: 0.4s;
+}
+
+/* =====================================================
+   MOBILE / TABLETTE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .fenetre {
+        width: 90%;
+        left: 5% !important;
+    }
+
+    #mission {
+        top: 8px;
+        padding: 10px;
+    }
+
+    #objectif {
+        font-size: 17px;
+    }
+
+    .icone {
+        transform: scale(0.85);
+        transform-origin: top left;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     ACCUEIL
+===================================================== -->
+
+<div id="accueil">
+
+    <h1>🖱️ Jeu souris appliqué</h1>
+
+    <h2>30 défis progressifs dans un faux bureau informatique</h2>
+
+    <div class="presentation">
+
+        <h3>🎯 Votre mission</h3>
+
+        <p>
+            Vous allez utiliser la souris dans des situations proches
+            de celles que l'on rencontre réellement sur un ordinateur.
+        </p>
+
+        <ul>
+            <li>🖱️ Cliquer</li>
+            <li>🖱️🖱️ Double-cliquer</li>
+            <li>🖱️ Faire un clic droit</li>
+            <li>📦 Déplacer des fichiers</li>
+            <li>🗑️ Utiliser la corbeille</li>
+            <li>🪟 Déplacer des fenêtres</li>
+            <li>↔️ Redimensionner une fenêtre</li>
+            <li>☑️ Sélectionner plusieurs fichiers</li>
+            <li>📜 Utiliser le défilement</li>
+            <li>🏆 Réussir les 30 missions !</li>
+        </ul>
+
+    </div>
+
+    <button class="bouton" onclick="demarrerJeu()">
+        🚀 Commencer les 30 défis
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     JEU
+===================================================== -->
+
+<div id="jeu">
+
+    <div id="bureau">
+
+        <div class="nuage" id="nuage1"></div>
+        <div class="nuage" id="nuage2"></div>
+
+        <div class="colline" id="colline1"></div>
+        <div class="colline" id="colline2"></div>
+
+
+        <!-- MISSION -->
+
+        <div id="mission">
+
+            <div id="niveau">
+                Défi 1 sur 30
+            </div>
+
+            <div id="objectif">
+                Chargement...
+            </div>
+
+            <div id="message"></div>
+
+        </div>
+
+
+        <!-- PROGRESSION -->
+
+        <div id="progression">
+            <div id="barre-progression"></div>
+        </div>
+
+
+        <!-- ICONES -->
+
+        <div class="icone" id="documents">
+            <div class="symbole">📁</div>
+            <div class="nom-icone">Documents</div>
+        </div>
+
+        <div class="icone" id="photos">
+            <div class="symbole">🖼️</div>
+            <div class="nom-icone">Photos</div>
+        </div>
+
+        <div class="icone" id="courrier">
+            <div class="symbole">✉️</div>
+            <div class="nom-icone">Courrier</div>
+        </div>
+
+        <div class="icone" id="ordinateur">
+            <div class="symbole">💻</div>
+            <div class="nom-icone">Ce PC</div>
+        </div>
+
+        <div class="icone" id="dossier-travail">
+            <div class="symbole">📂</div>
+            <div class="nom-icone">Travail</div>
+        </div>
+
+        <div class="icone" id="corbeille">
+            <div class="symbole">🗑️</div>
+            <div class="nom-icone">Corbeille</div>
+        </div>
+
+
+        <!-- FENETRE DOCUMENTS -->
+
+        <div class="fenetre" id="fenetre-documents"
+             style="top:170px; left:260px;">
+
+            <div class="barre-fenetre">
+                <span class="titre-fenetre">📁 Documents</span>
+
+                <div class="actions-fenetre">
+                    <button class="minimiser">—</button>
+                    <button class="maximiser">□</button>
+                    <button class="fermer">✕</button>
+                </div>
+            </div>
+
+            <div class="contenu-fenetre">
+
+                <p><strong>Mes documents</strong></p>
+
+                <div class="fichiers">
+
+                    <div class="fichier" draggable="true" data-file="lettre">
+                        <div class="symbole">📄</div>
+                        Lettre.docx
+                    </div>
+
+                    <div class="fichier" draggable="true" data-file="courses">
+                        <div class="symbole">📄</div>
+                        Courses.txt
+                    </div>
+
+                    <div class="fichier" draggable="true" data-file="budget">
+                        <div class="symbole">📊</div>
+                        Budget.xlsx
+                    </div>
+
+                    <div class="fichier" draggable="true" data-file="vacances">
+                        <div class="symbole">📁</div>
+                        Vacances
+                    </div>
+
+                    <div class="fichier" draggable="true" data-file="recette">
+                        <div class="symbole">📄</div>
+                        Recette.pdf
+                    </div>
+
+                    <div class="fichier" draggable="true" data-file="important">
+                        <div class="symbole">⭐</div>
+                        Important
+                    </div>
+
+                </div>
+
+                <div style="height:350px;"></div>
+
+                <h3>Documents plus anciens</h3>
+
+                <p>📄 Archive 2022</p>
+                <p>📄 Archive 2021</p>
+                <p>📄 Archive 2020</p>
+                <p>📄 Archive 2019</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FENETRE PHOTOS -->
+
+        <div class="fenetre" id="fenetre-photos"
+             style="top:200px; left:330px;">
+
+            <div class="barre-fenetre">
+
+                <span class="titre-fenetre">🖼️ Photos</span>
+
+                <div class="actions-fenetre">
+                    <button class="minimiser">—</button>
+                    <button class="maximiser">□</button>
+                    <button class="fermer">✕</button>
+                </div>
+
+            </div>
+
+            <div class="contenu-fenetre">
+
+                <h3>Mes photos</h3>
+
+                <div class="fichiers">
+
+                    <div class="fichier">
+                        <div class="symbole">🏖️</div>
+                        Vacances
+                    </div>
+
+                    <div class="fichier">
+                        <div class="symbole">🌳</div>
+                        Nature
+                    </div>
+
+                    <div class="fichier">
+                        <div class="symbole">👨‍👩‍👧‍👦</div>
+                        Famille
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FENETRE COURRIER -->
+
+        <div class="fenetre" id="fenetre-courrier"
+             style="top:210px; left:300px;">
+
+            <div class="barre-fenetre">
+
+                <span class="titre-fenetre">✉️ Courrier</span>
+
+                <div class="actions-fenetre">
+                    <button class="minimiser">—</button>
+                    <button class="maximiser">□</button>
+                    <button class="fermer">✕</button>
+                </div>
+
+            </div>
+
+            <div class="contenu-fenetre">
+
+                <h3>📬 Boîte de réception</h3>
+
+                <p><strong>Centre Multimédia</strong><br>
+                Bienvenue dans votre messagerie.</p>
+
+                <hr>
+
+                <p><strong>Famille</strong><br>
+                Bonjour ! Comment vas-tu ?</p>
+
+                <hr>
+
+                <p><strong>Informations</strong><br>
+                Votre rendez-vous est confirmé.</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BARRE DES TACHES -->
+
+        <div id="barre-taches">
+
+            <div class="task-icon" id="task-documents">📁</div>
+
+            <div class="task-icon" id="task-photos">🖼️</div>
+
+            <div class="task-icon" id="task-courrier">✉️</div>
+
+        </div>
+
+
+        <!-- MENU CONTEXTUEL -->
+
+        <div id="menu-contextuel">
+
+            <div class="option-menu" data-action="ouvrir">
+                📂 Ouvrir
+            </div>
+
+            <div class="option-menu" data-action="renommer">
+                ✏️ Renommer
+            </div>
+
+            <div class="option-menu" data-action="supprimer">
+                🗑️ Supprimer
+            </div>
+
+            <div class="option-menu" data-action="proprietes">
+                ℹ️ Propriétés
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DIALOGUE
+===================================================== -->
+
+<div id="dialogue">
+
+    <div id="dialogue-box">
+
+        <h2 id="dialogue-titre"></h2>
+
+        <p id="dialogue-texte"></p>
+
+        <button class="bouton" onclick="fermerDialogue()">
+            Continuer
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCORE FINAL
+===================================================== -->
+
+<div id="score-final">
+
+    <div class="score-box">
+
+        <h1>🎉 Félicitations !</h1>
+
+        <p>Vous avez terminé les 30 défis.</p>
+
+        <div class="grand-score">
+            <span id="score"></span> / 30
+        </div>
+
+        <p id="commentaire-score"></p>
+
+        <br>
+
+        <button class="bouton" onclick="rejouer()">
+            🔄 Rejouer
+        </button>
+
+        <br><br>
+
+        <button class="bouton"
+                onclick="window.location.href='exercices.html'">
+            📚 Retour aux exercices
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let defiActuel = 0;
+let score = 0;
+
+let fenetreActive = null;
+
+let elementSelectionne = null;
+
+let fichiersSelectionnes = [];
+
+let dragElement = null;
+
+let positionDepart = null;
+
+let compteurAction = 0;
+
+
+/* =====================================================
+   LES 30 DEFIS
+===================================================== */
+
+const defis = [
+
+{
+    texte: "Cliquez une fois sur l'icône « Documents ».",
+    action: "click-icon",
+    cible: "documents"
+},
+
+{
+    texte: "Double-cliquez sur l'icône « Documents » pour ouvrir le dossier.",
+    action: "double-icon",
+    cible: "documents"
+},
+
+{
+    texte: "Cliquez sur le fichier « Lettre.docx ».",
+    action: "select-file",
+    cible: "lettre"
+},
+
+{
+    texte: "Cliquez sur le fichier « Courses.txt ».",
+    action: "select-file",
+    cible: "courses"
+},
+
+{
+    texte: "Maintenez Ctrl et sélectionnez « Lettre.docx » et « Courses.txt ».",
+    action: "multi-select"
+},
+
+{
+    texte: "Faites un clic droit sur « Budget.xlsx ».",
+    action: "right-file",
+    cible: "budget"
+},
+
+{
+    texte: "Dans le menu, cliquez sur « Propriétés ».",
+    action: "menu-action",
+    cible: "proprietes"
+},
+
+{
+    texte: "Fermez la fenêtre Documents avec la croix ✕.",
+    action: "close-window",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Double-cliquez sur l'icône « Photos ».",
+    action: "double-icon",
+    cible: "photos"
+},
+
+{
+    texte: "Fermez la fenêtre Photos.",
+    action: "close-window",
+    cible: "fenetre-photos"
+},
+
+{
+    texte: "Double-cliquez sur « Courrier ».",
+    action: "double-icon",
+    cible: "courrier"
+},
+
+{
+    texte: "Cliquez sur le bouton — pour réduire la fenêtre.",
+    action: "minimize",
+    cible: "fenetre-courrier"
+},
+
+{
+    texte: "Cliquez sur l'icône ✉️ dans la barre des tâches.",
+    action: "task-open",
+    cible: "task-courrier"
+},
+
+{
+    texte: "Déplacez la fenêtre Courrier vers la droite.",
+    action: "move-window",
+    cible: "fenetre-courrier"
+},
+
+{
+    texte: "Redimensionnez la fenêtre Courrier.",
+    action: "resize-window",
+    cible: "fenetre-courrier"
+},
+
+{
+    texte: "Fermez la fenêtre Courrier.",
+    action: "close-window",
+    cible: "fenetre-courrier"
+},
+
+{
+    texte: "Ouvrez à nouveau le dossier Documents.",
+    action: "double-icon",
+    cible: "documents"
+},
+
+{
+    texte: "Faites glisser « Lettre.docx » vers la Corbeille.",
+    action: "drag-trash",
+    cible: "lettre"
+},
+
+{
+    texte: "Faites glisser « Courses.txt » vers la Corbeille.",
+    action: "drag-trash",
+    cible: "courses"
+},
+
+{
+    texte: "Sélectionnez le dossier « Vacances ».",
+    action: "select-file",
+    cible: "vacances"
+},
+
+{
+    texte: "Double-cliquez sur « Vacances ».",
+    action: "double-file",
+    cible: "vacances"
+},
+
+{
+    texte: "Utilisez la molette ou la barre de défilement pour aller vers le bas.",
+    action: "scroll",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Remontez vers le haut de la fenêtre Documents.",
+    action: "scroll-top",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Cliquez droit sur « Important ».",
+    action: "right-file",
+    cible: "important"
+},
+
+{
+    texte: "Choisissez « Renommer » dans le menu.",
+    action: "menu-action",
+    cible: "renommer"
+},
+
+{
+    texte: "Fermez le menu en cliquant ailleurs sur le bureau.",
+    action: "close-menu"
+},
+
+{
+    texte: "Déplacez la fenêtre Documents vers la gauche.",
+    action: "move-window",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Redimensionnez la fenêtre Documents.",
+    action: "resize-window",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Fermez la fenêtre Documents.",
+    action: "close-window",
+    cible: "fenetre-documents"
+},
+
+{
+    texte: "Dernier défi : ouvrez Documents puis cliquez sur « Budget.xlsx ».",
+    action: "final",
+    cible: "budget"
+}
+
+];
+
+
+/* =====================================================
+   DEMARRAGE
+===================================================== */
+
+function demarrerJeu() {
+
+    document.getElementById("accueil").style.display = "none";
+
+    document.getElementById("jeu").style.display = "block";
+
+    defiActuel = 0;
+    score = 0;
+
+    chargerDefi();
+
+}
+
+
+/* =====================================================
+   CHARGER UN DEFI
+===================================================== */
+
+function chargerDefi() {
+
+    const defi = defis[defiActuel];
+
+    document.getElementById("niveau").textContent =
+        "Défi " + (defiActuel + 1) + " sur 30";
+
+    document.getElementById("objectif").textContent =
+        defi.texte;
+
+    document.getElementById("message").textContent = "";
+
+    const pourcentage =
+        (defiActuel / 30) * 100;
+
+    document.getElementById("barre-progression").style.width =
+        pourcentage + "%";
+
+}
+
+
+/* =====================================================
+   REUSSITE
+===================================================== */
+
+function reussite(message = "✅ Bravo ! Défi réussi !") {
+
+    document.getElementById("message").textContent = message;
+
+    score++;
+
+    setTimeout(() => {
+
+        defiActuel++;
+
+        if (defiActuel >= defis.length) {
+
+            terminerJeu();
+
+        } else {
+
+            chargerDefi();
+
+        }
+
+    }, 1000);
+
+}
+
+
+/* =====================================================
+   VERIFICATION
+===================================================== */
+
+function verifier(action, cible) {
+
+    const defi = defis[defiActuel];
+
+    if (
+        defi.action === action &&
+        (
+            defi.cible === cible ||
+            defi.cible === undefined
+        )
+    ) {
+
+        reussite();
+
+    }
+
+}
+
+
+/* =====================================================
+   OUVRIR FENETRE
+===================================================== */
+
+function ouvrirFenetre(id) {
+
+    const fenetre =
+        document.getElementById(id);
+
+    fenetre.classList.add("active");
+
+    fenetre.style.zIndex = 4000;
+
+    fenetreActive = fenetre;
+
+}
+
+
+/* =====================================================
+   FERMER FENETRE
+===================================================== */
+
+function fermerFenetre(fenetre) {
+
+    fenetre.classList.remove("active");
+
+}
+
+
+/* =====================================================
+   ICONES BUREAU
+===================================================== */
+
+document.querySelectorAll(".icone").forEach(icone => {
+
+    icone.addEventListener("click", function(e) {
+
+        e.stopPropagation();
+
+        document
+            .querySelectorAll(".icone")
+            .forEach(i => i.classList.remove("selectionnee"));
+
+        this.classList.add("selectionnee");
+
+        verifier("click-icon", this.id);
+
+    });
+
+
+    icone.addEventListener("dblclick", function(e) {
+
+        e.stopPropagation();
+
+        const id = this.id;
+
+        if (id === "documents") {
+
+            ouvrirFenetre("fenetre-documents");
+
+        }
+
+        if (id === "photos") {
+
+            ouvrirFenetre("fenetre-photos");
+
+        }
+
+        if (id === "courrier") {
+
+            ouvrirFenetre("fenetre-courrier");
+
+        }
+
+        verifier("double-icon", id);
+
+    });
+
+});
+
+
+/* =====================================================
+   FICHIERS
+===================================================== */
+
+document.querySelectorAll(".fichier").forEach(fichier => {
+
+    fichier.addEventListener("click", function(e) {
+
+        e.stopPropagation();
+
+        const nom = this.dataset.file;
+
+        if (e.ctrlKey) {
+
+            this.classList.toggle("selectionne");
+
+            if (!fichiersSelectionnes.includes(nom)) {
+
+                fichiersSelectionnes.push(nom);
+
+            }
+
+        } else {
+
+            document
+                .querySelectorAll(".fichier")
+                .forEach(f => f.classList.remove("selectionne"));
+
+            fichiersSelectionnes = [nom];
+
+            this.classList.add("selectionne");
+
+        }
+
+        verifier("select-file", nom);
+
+        const defi = defis[defiActuel];
+
+        if (defi.action === "multi-select") {
+
+            if (
+                fichiersSelectionnes.includes("lettre") &&
+                fichiersSelectionnes.includes("courses")
+            ) {
+
+                reussite("✅ Très bien ! Plusieurs fichiers sélectionnés.");
+
+            }
+
+        }
+
+    });
+
+
+    fichier.addEventListener("dblclick", function() {
+
+        verifier(
+            "double-file",
+            this.dataset.file
+        );
+
+    });
+
+
+    fichier.addEventListener("contextmenu", function(e) {
+
+        e.preventDefault();
+
+        ouvrirMenu(
+            e.clientX,
+            e.clientY
+        );
+
+        verifier(
+            "right-file",
+            this.dataset.file
+        );
+
+    });
+
+
+    fichier.addEventListener("dragstart", function() {
+
+        dragElement = this;
+
+    });
+
+});
+
+
+/* =====================================================
+   CORBEILLE
+===================================================== */
+
+document
+    .getElementById("corbeille")
+    .addEventListener("dragover", function(e) {
+
+        e.preventDefault();
+
+    });
+
+
+document
+    .getElementById("corbeille")
+    .addEventListener("drop", function(e) {
+
+        e.preventDefault();
+
+        if (!dragElement) return;
+
+        const fichier =
+            dragElement.dataset.file;
+
+        const defi = defis[defiActuel];
+
+        if (
+            defi.action === "drag-trash" &&
+            defi.cible === fichier
+        ) {
+
+            dragElement.style.display = "none";
+
+            reussite(
+                "🗑️ Fichier déplacé dans la Corbeille !"
+            );
+
+        }
+
+        dragElement = null;
+
+    });
+
+
+/* =====================================================
+   MENU CONTEXTUEL
+===================================================== */
+
+function ouvrirMenu(x, y) {
+
+    const menu =
+        document.getElementById("menu-contextuel");
+
+    menu.style.display = "block";
+
+    menu.style.left = x + "px";
+
+    menu.style.top = y + "px";
+
+}
+
+
+document
+    .querySelectorAll(".option-menu")
+    .forEach(option => {
+
+        option.addEventListener("click", function(e) {
+
+            e.stopPropagation();
+
+            const action =
+                this.dataset.action;
+
+            verifier("menu-action", action);
+
+            if (action === "proprietes") {
+
+                afficherDialogue(
+                    "ℹ️ Propriétés",
+                    "Voici les informations du fichier."
+                );
+
+            }
+
+            if (action === "renommer") {
+
+                afficherDialogue(
+                    "✏️ Renommer",
+                    "Dans un vrai ordinateur, vous pourriez maintenant modifier le nom du fichier."
+                );
+
+            }
+
+            document
+                .getElementById("menu-contextuel")
+                .style.display = "none";
+
+        });
+
+    });
+
+
+/* =====================================================
+   CLIC SUR LE BUREAU
+===================================================== */
+
+document
+    .getElementById("bureau")
+    .addEventListener("click", function() {
+
+        const menu =
+            document.getElementById("menu-contextuel");
+
+        if (menu.style.display === "block") {
+
+            menu.style.display = "none";
+
+            verifier("close-menu", undefined);
+
+        }
+
+    });
+
+
+/* =====================================================
+   BOUTONS DES FENETRES
+===================================================== */
+
+document
+    .querySelectorAll(".fenetre")
+    .forEach(fenetre => {
+
+        const fermer =
+            fenetre.querySelector(".fermer");
+
+        const minimiser =
+            fenetre.querySelector(".minimiser");
+
+        const maximiser =
+            fenetre.querySelector(".maximiser");
+
+
+        fermer.addEventListener("click", function(e) {
+
+            e.stopPropagation();
+
+            fermerFenetre(fenetre);
+
+            verifier(
+                "close-window",
+                fenetre.id
+            );
+
+        });
+
+
+        minimiser.addEventListener("click", function(e) {
+
+            e.stopPropagation();
+
+            fenetre.classList.remove("active");
+
+            verifier(
+                "minimize",
+                fenetre.id
+            );
+
+        });
+
+
+        maximiser.addEventListener("click", function(e) {
+
+            e.stopPropagation();
+
+            fenetre.style.top = "70px";
+            fenetre.style.left = "5%";
+            fenetre.style.width = "90%";
+            fenetre.style.height = "75%";
+
+        });
+
+    });
+
+
+/* =====================================================
+   BARRE DES TACHES
+===================================================== */
+
+document
+    .getElementById("task-documents")
+    .addEventListener("click", function() {
+
+        ouvrirFenetre("fenetre-documents");
+
+        verifier(
+            "task-open",
+            "task-documents"
+        );
+
+    });
+
+
+document
+    .getElementById("task-photos")
+    .addEventListener("click", function() {
+
+        ouvrirFenetre("fenetre-photos");
+
+        verifier(
+            "task-open",
+            "task-photos"
+        );
+
+    });
+
+
+document
+    .getElementById("task-courrier")
+    .addEventListener("click", function() {
+
+        ouvrirFenetre("fenetre-courrier");
+
+        verifier(
+            "task-open",
+            "task-courrier"
+        );
+
+    });
+
+
+/* =====================================================
+   DEPLACEMENT DES FENETRES
+===================================================== */
+
+document
+    .querySelectorAll(".fenetre")
+    .forEach(fenetre => {
+
+        const barre =
+            fenetre.querySelector(".barre-fenetre");
+
+        barre.addEventListener("mousedown", function(e) {
+
+            if (
+                e.target.tagName === "BUTTON"
+            ) return;
+
+            positionDepart = {
+
+                x: e.clientX,
+                y: e.clientY,
+
+                left: fenetre.offsetLeft,
+                top: fenetre.offsetTop
+
+            };
+
+            fenetre.style.zIndex = 8000;
+
+            function bouger(e) {
+
+                if (!positionDepart) return;
+
+                const x =
+                    positionDepart.left +
+                    e.clientX -
+                    positionDepart.x;
+
+                const y =
+                    positionDepart.top +
+                    e.clientY -
+                    positionDepart.y;
+
+                fenetre.style.left =
+                    Math.max(0, x) + "px";
+
+                fenetre.style.top =
+                    Math.max(60, y) + "px";
+
+            }
+
+            function fin() {
+
+                if (positionDepart) {
+
+                    const defi =
+                        defis[defiActuel];
+
+                    if (
+                        defi.action === "move-window" &&
+                        defi.cible === fenetre.id
+                    ) {
+
+                        reussite(
+                            "🪟 Très bien ! La fenêtre a été déplacée."
+                        );
+
+                    }
+
+                }
+
+                positionDepart = null;
+
+                document.removeEventListener(
+                    "mousemove",
+                    bouger
+                );
+
+                document.removeEventListener(
+                    "mouseup",
+                    fin
+                );
+
+            }
+
+            document.addEventListener(
+                "mousemove",
+                bouger
+            );
+
+            document.addEventListener(
+                "mouseup",
+                fin
+            );
+
+        });
+
+    });
+
+
+/* =====================================================
+   DETECTION REDIMENSIONNEMENT
+===================================================== */
+
+document
+    .querySelectorAll(".fenetre")
+    .forEach(fenetre => {
+
+        let largeurInitiale = fenetre.offsetWidth;
+        let hauteurInitiale = fenetre.offsetHeight;
+
+        const observer =
+            new ResizeObserver(() => {
+
+                const defi =
+                    defis[defiActuel];
+
+                if (
+                    defi &&
+                    defi.action === "resize-window" &&
+                    defi.cible === fenetre.id
+                ) {
+
+                    if (
+                        Math.abs(
+                            fenetre.offsetWidth -
+                            largeurInitiale
+                        ) > 40
+                        ||
+                        Math.abs(
+                            fenetre.offsetHeight -
+                            hauteurInitiale
+                        ) > 40
+                    ) {
+
+                        reussite(
+                            "↔️ Bravo ! La fenêtre a été redimensionnée."
+                        );
+
+                        largeurInitiale =
+                            fenetre.offsetWidth;
+
+                        hauteurInitiale =
+                            fenetre.offsetHeight;
+
+                    }
+
+                }
+
+            });
+
+        observer.observe(fenetre);
+
+    });
+
+
+/* =====================================================
+   DEFILEMENT
+===================================================== */
+
+const contenuDocuments =
+    document
+        .querySelector(
+            "#fenetre-documents .contenu-fenetre"
+        );
+
+
+contenuDocuments.addEventListener("scroll", function() {
+
+    const defi =
+        defis[defiActuel];
+
+    if (
+        defi.action === "scroll" &&
+        this.scrollTop > 100
+    ) {
+
+        reussite(
+            "📜 Très bien ! Vous avez utilisé le défilement."
+        );
+
+    }
+
+    if (
+        defi.action === "scroll-top" &&
+        this.scrollTop < 30
+    ) {
+
+        reussite(
+            "⬆️ Parfait ! Vous êtes revenu en haut."
+        );
+
+    }
+
+});
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+document
+    .querySelector('[data-file="budget"]')
+    .addEventListener("click", function() {
+
+        const defi =
+            defis[defiActuel];
+
+        if (
+            defi &&
+            defi.action === "final"
+        ) {
+
+            reussite(
+                "🏆 Dernier défi réussi !"
+            );
+
+        }
+
+    });
+
+
+/* =====================================================
+   DIALOGUE
+===================================================== */
+
+function afficherDialogue(titre, texte) {
+
+    document
+        .getElementById("dialogue-titre")
+        .textContent = titre;
+
+    document
+        .getElementById("dialogue-texte")
+        .textContent = texte;
+
+    document
+        .getElementById("dialogue")
+        .style.display = "flex";
+
+}
+
+
+function fermerDialogue() {
+
+    document
+        .getElementById("dialogue")
+        .style.display = "none";
+
+}
+
+
+/* =====================================================
+   FIN DU JEU
+===================================================== */
+
+function terminerJeu() {
+
+    document
+        .getElementById("barre-progression")
+        .style.width = "100%";
+
+    document
+        .getElementById("score")
+        .textContent = score;
+
+    let commentaire = "";
+
+    if (score >= 28) {
+
+        commentaire =
+            "🌟 Excellent ! Vous maîtrisez très bien les manipulations de la souris.";
+
+    } else if (score >= 20) {
+
+        commentaire =
+            "👏 Très bon travail ! Continuez à vous entraîner.";
+
+    } else {
+
+        commentaire =
+            "💪 Bravo ! La pratique permet de progresser. Vous pouvez refaire les défis.";
+
+    }
+
+    document
+        .getElementById("commentaire-score")
+        .textContent = commentaire;
+
+    document
+        .getElementById("score-final")
+        .style.display = "flex";
+
+}
+
+
+/* =====================================================
+   REJOUER
+===================================================== */
+
+function rejouer() {
+
+    location.reload();
+
+}
+
+</script>
+
+</body>
+</html>
