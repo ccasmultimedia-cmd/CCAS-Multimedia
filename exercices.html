@@ -4,16 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Exercices - Centre Multimédia CCAS Nîmes</title>
+<title>Exercices - Centre Multimédia du CCAS</title>
 
 <style>
 
-/* =====================================================
-   STYLE GENERAL
-===================================================== */
+/* =========================================
+   GÉNÉRAL
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -22,380 +21,406 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e8f4ff,
-            #f7fbff
-        );
-
-    color: #222;
+    background: #f5f7fb;
+    color: #24344d;
 }
 
 
-/* =====================================================
-   EN-TETE
-===================================================== */
+/* =========================================
+   MENU
+========================================= */
 
 header {
-
-    background:
-        linear-gradient(
-            135deg,
-            #1565c0,
-            #2196f3
-        );
-
+    background: #1f3656;
     color: white;
-
-    text-align: center;
-
-    padding: 35px 20px;
-
-    box-shadow:
-        0 3px 12px rgba(0,0,0,0.2);
 }
 
-header h1 {
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
 
-    margin: 0;
-
-    font-size: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
 }
 
-header p {
-
-    font-size: 20px;
-
-    margin-top: 12px;
-
+.logo {
+    display: flex;
+    flex-direction: column;
 }
 
+.logo strong {
+    font-size: 24px;
+}
 
-/* =====================================================
-   BOUTON RETOUR
-===================================================== */
+.logo span {
+    font-size: 14px;
+    opacity: 0.85;
+}
 
-.retour {
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
-    display: inline-block;
-
-    margin: 25px;
-
-    padding: 12px 20px;
-
-    background: #1565c0;
-
+nav a {
     color: white;
-
     text-decoration: none;
-
-    border-radius: 10px;
-
-    font-weight: bold;
-
+    padding: 10px 14px;
+    border-radius: 8px;
     transition: 0.2s;
 }
 
-.retour:hover {
-
-    background: #0d47a1;
-
-    transform: scale(1.03);
+nav a:hover,
+nav a.active {
+    background: #3975c6;
 }
 
 
-/* =====================================================
-   CONTENU
-===================================================== */
+/* =========================================
+   EN-TÊTE
+========================================= */
 
-main {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 10px 25px 50px;
-}
-
-
-.introduction {
-
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 18px;
-
-    margin-bottom: 35px;
-
-    box-shadow:
-        0 4px 18px rgba(0,0,0,0.1);
-
+.page-header {
     text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(
+        135deg,
+        #e9f0fa,
+        #ffffff,
+        #eef7ef
+    );
 }
 
-.introduction h2 {
-
-    color: #1565c0;
-
-    font-size: 30px;
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 42px;
+    color: #203858;
 }
 
-.introduction p {
-
-    font-size: 18px;
-
+.page-header p {
+    max-width: 850px;
+    margin: auto;
+    font-size: 20px;
+    color: #617087;
     line-height: 1.6;
 }
 
 
-/* =====================================================
-   TITRES DES CATEGORIES
-===================================================== */
+/* =========================================
+   CONTENU
+========================================= */
 
-.categorie-titre {
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+}
 
-    margin-top: 45px;
+.intro {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 45px;
+}
 
-    margin-bottom: 20px;
-
+.intro h2 {
     font-size: 30px;
+    color: #203858;
+}
 
-    color: #1565c0;
-
-    border-left: 7px solid #2196f3;
-
-    padding-left: 15px;
+.intro p {
+    font-size: 18px;
+    color: #617087;
+    line-height: 1.7;
 }
 
 
-/* =====================================================
-   GRILLE DES EXERCICES
-===================================================== */
+/* =========================================
+   GRILLE
+========================================= */
 
-.grille {
+.exercises-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-        );
+    repeat(auto-fit, minmax(280px, 1fr));
 
     gap: 25px;
+
 }
 
 
-/* =====================================================
+/* =========================================
    CARTES
-===================================================== */
+========================================= */
 
-.carte {
+.exercise-card {
 
     background: white;
 
     border-radius: 20px;
 
-    padding: 25px;
+    padding: 30px;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,0.12);
+    0 5px 25px rgba(30,50,80,0.12);
 
-    transition: 0.25s;
+    transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.exercise-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+    0 12px 30px rgba(30,50,80,0.18);
+
+}
+
+
+.exercise-icon {
+
+    width: 70px;
+    height: 70px;
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    min-height: 300px;
-}
+    border-radius: 18px;
 
-.carte:hover {
+    font-size: 35px;
 
-    transform:
-        translateY(-6px);
+    background: #eaf2ff;
 
-    box-shadow:
-        0 10px 28px rgba(0,0,0,0.18);
-}
+    margin-bottom: 20px;
 
-
-.icone {
-
-    font-size: 55px;
-
-    text-align: center;
-
-    margin-bottom: 10px;
 }
 
 
-.carte h3 {
+.exercise-card h3 {
 
-    color: #1565c0;
-
-    text-align: center;
+    margin: 0 0 12px;
 
     font-size: 24px;
 
-    margin: 10px 0;
+    color: #203858;
+
 }
 
 
-.carte p {
+.exercise-card p {
 
-    font-size: 17px;
+    margin: 0 0 25px;
 
-    line-height: 1.5;
+    color: #617087;
+
+    line-height: 1.6;
 
     flex-grow: 1;
+
 }
 
 
-/* =====================================================
-   LISTES
-===================================================== */
+/* =========================================
+   NIVEAUX
+========================================= */
 
-.carte ul {
+.level {
 
-    padding-left: 20px;
+    display: inline-block;
 
-    line-height: 1.7;
+    width: fit-content;
 
-    font-size: 16px;
+    padding: 7px 13px;
+
+    margin-bottom: 18px;
+
+    border-radius: 20px;
+
+    background: #eef7ef;
+
+    color: #39714b;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
 }
 
 
-/* =====================================================
+/* =========================================
    BOUTONS
-===================================================== */
+========================================= */
 
-.bouton {
+.exercise-button {
 
-    display: block;
+    display: inline-block;
 
     text-align: center;
 
-    padding: 14px;
+    padding: 14px 20px;
+
+    border-radius: 10px;
+
+    background: #3975c6;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+
+}
+
+.exercise-button:hover {
+
+    background: #285d9e;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================
+   CONSEIL
+========================================= */
+
+.tip-box {
+
+    margin-top: 55px;
+
+    padding: 30px;
+
+    background: #eef7ef;
+
+    border-left: 6px solid #5b9b6b;
 
     border-radius: 12px;
 
-    text-decoration: none;
+}
+
+.tip-box h2 {
+
+    margin-top: 0;
+
+    color: #2d6941;
+
+}
+
+.tip-box p {
+
+    margin-bottom: 0;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    margin-top: 60px;
+
+    background: #1f3656;
+
+    color: white;
+
+}
+
+.footer-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 35px 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+.footer-title {
 
     font-size: 18px;
 
     font-weight: bold;
 
-    background: #1565c0;
-
-    color: white;
-
-    transition: 0.2s;
-
-    margin-top: 15px;
-}
-
-.bouton:hover {
-
-    background: #0d47a1;
-
-    transform: scale(1.03);
 }
 
 
-/* =====================================================
-   COULEURS SPECIALES
-===================================================== */
-
-.souris .bouton {
-
-    background: #2e7d32;
-}
-
-.souris .bouton:hover {
-
-    background: #1b5e20;
-}
-
-
-.clavier .bouton {
-
-    background: #6a1b9a;
-}
-
-.clavier .bouton:hover {
-
-    background: #4a148c;
-}
-
-
-.dossiers .bouton {
-
-    background: #ef6c00;
-}
-
-.dossiers .bouton:hover {
-
-    background: #e65100;
-}
-
-
-.motsdepasse .bouton {
-
-    background: #c62828;
-}
-
-.motsdepasse .bouton:hover {
-
-    background: #8e0000;
-}
-
-
-/* =====================================================
-   PIED DE PAGE
-===================================================== */
-
-footer {
-
-    background: #1565c0;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 25px;
-
-    margin-top: 50px;
-}
-
-
-/* =====================================================
+/* =========================================
    MOBILE
-===================================================== */
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
 
-    header h1 {
+    .navbar {
 
-        font-size: 30px;
+        flex-direction: column;
+
+        align-items: flex-start;
+
     }
 
-    header p {
+    .page-header {
 
-        font-size: 17px;
+        padding: 45px 20px;
+
+    }
+
+    .page-header h1 {
+
+        font-size: 32px;
+
+    }
+
+    .page-header p {
+
+        font-size: 18px;
+
     }
 
     main {
 
-        padding: 10px 15px 40px;
+        padding: 35px 15px;
+
     }
 
-    .categorie-titre {
+    .exercise-card {
 
-        font-size: 25px;
+        padding: 25px;
+
+    }
+
+    .footer-container {
+
+        flex-direction: column;
+
     }
 
 }
@@ -408,400 +433,414 @@ footer {
 <body>
 
 
-<!-- =====================================================
-     EN-TETE
-===================================================== -->
+<!-- =========================================
+     MENU
+========================================= -->
 
 <header>
 
-    <h1>🧠 Exercices numériques</h1>
+<div class="navbar">
 
-    <p>
-        Apprendre l'informatique en pratiquant,
-        à son rythme et en s'amusant !
-    </p>
+<div class="logo">
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<span>Apprendre • Découvrir • Progresser</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Accueil</a>
+
+<a href="cours.html">Mes cours</a>
+
+<a href="jeux.html">Jeux</a>
+
+<a href="exercices.html" class="active">Exercices</a>
+
+<a href="informations.html">Informations</a>
+
+</nav>
+
+</div>
 
 </header>
 
 
-<!-- =====================================================
-     RETOUR
-===================================================== -->
 
-<a href="index.html" class="retour">
+<!-- =========================================
+     EN-TÊTE
+========================================= -->
 
-    ⬅ Retour à l'accueil
+<section class="page-header">
 
-</a>
+<h1>Exercices pratiques</h1>
 
+<p>
 
-<!-- =====================================================
-     CONTENU PRINCIPAL
-===================================================== -->
+Entraînez-vous tranquillement avec des exercices interactifs
+pour apprendre à utiliser l'ordinateur et gagner en confiance.
 
-<main>
-
-
-<!-- =====================================================
-     INTRODUCTION
-===================================================== -->
-
-<section class="introduction">
-
-    <h2>Bienvenue dans les exercices ! 👋</h2>
-
-    <p>
-
-        Ici, vous pouvez vous entraîner tranquillement
-        aux différentes manipulations utiles sur ordinateur.
-
-        <br><br>
-
-        Les exercices sont conçus pour être progressifs :
-        commencez par les plus simples et avancez à votre rythme.
-
-    </p>
+</p>
 
 </section>
 
 
-<!-- =====================================================
-     SOURIS
-===================================================== -->
 
-<h2 class="categorie-titre">
-    🖱️ Apprendre à utiliser la souris
-</h2>
+<!-- =========================================
+     CONTENU
+========================================= -->
 
+<main>
 
-<div class="grille">
 
+<section class="intro">
 
-<!-- JEU SOURIS DEBUTANT -->
+<h2>Apprendre en pratiquant</h2>
 
-<div class="carte souris">
+<p>
 
-    <div class="icone">🟢🖱️</div>
+Ces exercices permettent de répéter les manipulations importantes
+sur ordinateur : utiliser la souris, sélectionner du texte,
+copier et coller, utiliser le clavier et organiser ses fichiers.
 
-    <h3>Jeu souris débutant</h3>
+Prenez votre temps et recommencez autant de fois que nécessaire.
 
-    <p>
+</p>
 
-        Un jeu pour apprendre à mieux utiliser
-        la souris en s'amusant.
+</section>
 
-    </p>
 
-    <ul>
 
-        <li>Cliquer sur des cibles</li>
+<!-- =========================================
+     GRILLE DES EXERCICES
+========================================= -->
 
-        <li>Suivre des éléments qui bougent</li>
+<div class="exercises-grid">
 
-        <li>Améliorer sa précision</li>
 
-        <li>Travailler la rapidité</li>
-
-        <li>Prendre confiance avec la souris</li>
-
-    </ul>
-
-    <a href="jeu-souris.html" class="bouton">
-
-        🎮 Jouer
-
-    </a>
-
-</div>
-
-
-<!-- JEU SOURIS APPLIQUE -->
-
-<div class="carte souris">
-
-    <div class="icone">🖥️🖱️</div>
-
-    <h3>Jeu souris appliqué</h3>
-
-    <p>
-
-        Passez à un niveau supérieur avec
-        30 défis dans un faux bureau informatique !
-
-    </p>
-
-    <ul>
-
-        <li>Clic et double-clic</li>
-
-        <li>Clic droit</li>
-
-        <li>Déplacer des fichiers</li>
-
-        <li>Utiliser la Corbeille</li>
-
-        <li>Déplacer des fenêtres</li>
-
-        <li>Redimensionner des fenêtres</li>
-
-        <li>Sélectionner plusieurs fichiers</li>
-
-        <li>Utiliser le défilement</li>
-
-    </ul>
-
-    <a href="jeu-souris-applique.html" class="bouton">
-
-        🚀 Commencer les 30 défis
-
-    </a>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     CLAVIER
-===================================================== -->
-
-<h2 class="categorie-titre">
-    ⌨️ Apprendre à utiliser le clavier
-</h2>
-
-
-<div class="grille">
-
-
-<!-- JEU CLAVIER -->
-
-<div class="carte clavier">
-
-    <div class="icone">⌨️</div>
-
-    <h3>Jeu clavier</h3>
-
-    <p>
-
-        Apprenez progressivement à utiliser
-        les différentes touches du clavier.
-
-    </p>
-
-    <ul>
-
-        <li>Majuscules et minuscules</li>
-
-        <li>Accents</li>
-
-        <li>Chiffres</li>
-
-        <li>Ponctuation</li>
-
-        <li>Caractères spéciaux</li>
-
-        <li>Touches spéciales</li>
-
-        <li>Vitesse de frappe</li>
-
-    </ul>
-
-    <a href="jeu-clavier.html" class="bouton">
-
-        ⌨️ S'entraîner
-
-    </a>
-
-</div>
-
-
-<!-- RACCOURCIS CLAVIER -->
-
-<div class="carte clavier">
-
-    <div class="icone">⚡⌨️</div>
-
-    <h3>Raccourcis clavier</h3>
-
-    <p>
-
-        Découvrez les raccourcis les plus utiles
-        pour gagner du temps sur ordinateur.
-
-    </p>
-
-    <ul>
-
-        <li>Ctrl + C : Copier</li>
-
-        <li>Ctrl + V : Coller</li>
-
-        <li>Ctrl + X : Couper</li>
-
-        <li>Ctrl + A : Tout sélectionner</li>
-
-        <li>Ctrl + Z : Annuler</li>
-
-    </ul>
-
-    <a href="raccourcis-clavier.html" class="bouton">
-
-        ⚡ Faire les défis
-
-    </a>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     GESTION DES FICHIERS
-===================================================== -->
-
-<h2 class="categorie-titre">
-    📁 Gérer ses fichiers et ses dossiers
-</h2>
-
-
-<div class="grille">
-
-
-<!-- GESTION DOSSIERS -->
-
-<div class="carte dossiers">
-
-    <div class="icone">📂</div>
-
-    <h3>Gestion des dossiers</h3>
-
-    <p>
-
-        Entraînez-vous dans un faux explorateur
-        de fichiers avant de manipuler vos vrais documents.
-
-    </p>
-
-    <ul>
-
-        <li>Créer des dossiers</li>
-
-        <li>Ouvrir des dossiers</li>
-
-        <li>Déplacer des fichiers</li>
-
-        <li>Renommer</li>
-
-        <li>Supprimer</li>
-
-        <li>Organiser ses documents</li>
-
-    </ul>
-
-    <a href="gestion-dossiers.html" class="bouton">
-
-        📁 Ouvrir l'exercice
-
-    </a>
-
-</div>
-
-
-<!-- COPIER COLLER -->
-
-<div class="carte dossiers">
-
-    <div class="icone">📋✂️</div>
-
-    <h3>Copier, couper et coller</h3>
-
-    <p>
-
-        Apprenez les manipulations indispensables
-        pour travailler avec du texte et des fichiers.
-
-    </p>
-
-    <ul>
-
-        <li>Sélectionner du texte</li>
-
-        <li>Ctrl + A</li>
-
-        <li>Double-clic</li>
-
-        <li>Triple-clic</li>
-
-        <li>Copier</li>
-
-        <li>Couper</li>
-
-        <li>Coller</li>
-
-        <li>Déplacer du contenu</li>
-
-    </ul>
-
-    <a href="copier-coller.html" class="bouton">
-
-        📋 Faire l'exercice
-
-    </a>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
+<!-- =========================================
      MOTS DE PASSE
-===================================================== -->
+========================================= -->
 
-<h2 class="categorie-titre">
-    🔐 Sécurité et mots de passe
-</h2>
+<div class="exercise-card">
+
+<div class="exercise-icon">
+🔐
+</div>
+
+<div class="level">
+Progressif
+</div>
+
+<h3>Mots de passe</h3>
+
+<p>
+
+Apprenez à reconnaître les bons réflexes pour créer
+et protéger vos mots de passe grâce à plusieurs questions
+et défis progressifs.
+
+</p>
+
+<a
+href="mots-de-passe.html"
+class="exercise-button">
+
+Commencer l'exercice
+
+</a>
+
+</div>
 
 
-<div class="grille">
+
+<!-- =========================================
+     SÉLECTION DE TEXTE
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+📝
+</div>
+
+<div class="level">
+Débutant → Intermédiaire
+</div>
+
+<h3>Sélection de texte</h3>
+
+<p>
+
+Apprenez à sélectionner du texte avec la souris,
+à utiliser le double clic, le triple clic
+et Ctrl + A.
+
+</p>
+
+<a
+href="selection-texte.html"
+class="exercise-button">
+
+S'entraîner
+
+</a>
+
+</div>
 
 
-<!-- MOTS DE PASSE -->
 
-<div class="carte motsdepasse">
+<!-- =========================================
+     COPIER COLLER
+========================================= -->
 
-    <div class="icone">🔐</div>
+<div class="exercise-card">
 
-    <h3>Défi mots de passe</h3>
+<div class="exercise-icon">
+📋
+</div>
 
-    <p>
+<div class="level">
+Débutant → Intermédiaire
+</div>
 
-        Apprenez à reconnaître les bons mots de passe
-        et à éviter les erreurs les plus fréquentes.
+<h3>Copier et coller</h3>
 
-    </p>
+<p>
 
-    <ul>
+Entraînez-vous à sélectionner du texte,
+le copier avec Ctrl + C puis le coller
+avec Ctrl + V.
 
-        <li>Comprendre les risques</li>
+</p>
 
-        <li>Choisir un mot de passe solide</li>
+<a
+href="copier-coller.html"
+class="exercise-button">
 
-        <li>Reconnaître un mauvais mot de passe</li>
+Commencer l'exercice
 
-        <li>Protéger ses comptes</li>
+</a>
 
-        <li>10 questions progressives</li>
+</div>
 
-    </ul>
 
-    <a href="mot-de-passe.html" class="bouton">
 
-        🔐 Commencer le défi
+<!-- =========================================
+     COUPER DÉPLACER
+========================================= -->
 
-    </a>
+<div class="exercise-card">
+
+<div class="exercise-icon">
+✂️
+</div>
+
+<div class="level">
+Intermédiaire
+</div>
+
+<h3>Couper et déplacer</h3>
+
+<p>
+
+Apprenez à couper du texte ou un élément
+avec Ctrl + X puis à le déplacer
+à un autre endroit.
+
+</p>
+
+<a
+href="couper-deplacer.html"
+class="exercise-button">
+
+Commencer l'exercice
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     RACCOURCIS CLAVIER
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+⌨️
+</div>
+
+<div class="level">
+Progressif
+</div>
+
+<h3>Raccourcis clavier</h3>
+
+<p>
+
+Découvrez et entraînez-vous avec les raccourcis
+les plus utiles comme Ctrl + C, Ctrl + V,
+Ctrl + X et Ctrl + A.
+
+</p>
+
+<a
+href="raccourcis-clavier.html"
+class="exercise-button">
+
+Relever les défis
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     JEU SOURIS DÉBUTANT
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+🖱️
+</div>
+
+<div class="level">
+Débutant
+</div>
+
+<h3>Jeu de la souris</h3>
+
+<p>
+
+Entraînez-vous au clic, au double clic,
+au clic droit et aux déplacements
+avec plusieurs petits défis.
+
+</p>
+
+<a
+href="jeu-souris.html"
+class="exercise-button">
+
+Jouer maintenant
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     JEU SOURIS APPLIQUÉ
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+🖥️🖱️
+</div>
+
+<div class="level">
+Intermédiaire → Avancé
+</div>
+
+<h3>Jeu souris appliqué</h3>
+
+<p>
+
+Mettez vos connaissances en pratique avec
+30 défis progressifs dans un faux environnement
+informatique : clics, fenêtres, fichiers,
+déplacements et manipulation de la souris.
+
+</p>
+
+<a
+href="jeu-souris-applique.html"
+class="exercise-button">
+
+Relever les 30 défis
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     JEU CLAVIER
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+⌨️
+</div>
+
+<div class="level">
+Débutant → Avancé
+</div>
+
+<h3>Jeu du clavier</h3>
+
+<p>
+
+Apprenez à mieux connaître votre clavier,
+à retrouver les touches, utiliser les majuscules,
+les accents, la ponctuation et les touches spéciales.
+
+</p>
+
+<a
+href="jeu-clavier.html"
+class="exercise-button">
+
+Commencer le jeu
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     GESTION DOSSIERS
+========================================= -->
+
+<div class="exercise-card">
+
+<div class="exercise-icon">
+📁
+</div>
+
+<div class="level">
+Débutant → Avancé
+</div>
+
+<h3>Gestion des dossiers</h3>
+
+<p>
+
+Apprenez à créer, ouvrir, sélectionner, renommer,
+copier, déplacer et supprimer des fichiers
+dans un faux explorateur sécurisé.
+
+</p>
+
+<a
+href="gestion-dossiers.html"
+class="exercise-button">
+
+Ouvrir l'explorateur
+
+</a>
 
 </div>
 
@@ -809,37 +848,26 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     CONSEILS
-===================================================== -->
 
-<h2 class="categorie-titre">
-    💡 Conseils pour progresser
-</h2>
+<!-- =========================================
+     CONSEIL
+========================================= -->
 
+<section class="tip-box">
 
-<section class="introduction">
+<h2>Un conseil pour bien apprendre</h2>
 
-    <p>
+<p>
 
-        🌱 <strong>Allez à votre rythme.</strong>
+Il n'est pas nécessaire d'aller vite.
 
-        <br><br>
+Le plus important est de refaire plusieurs fois
+les mêmes manipulations jusqu'à ce qu'elles deviennent naturelles.
 
-        🔁 N'hésitez pas à refaire plusieurs fois
-        les exercices.
+Si vous vous trompez, ce n'est pas grave :
+on apprend aussi en faisant des erreurs.
 
-        <br><br>
-
-        💪 En informatique, la répétition est souvent
-        la meilleure façon d'apprendre.
-
-        <br><br>
-
-        😊 Et surtout : il n'y a pas de honte à se tromper.
-        Chaque erreur permet d'apprendre !
-
-    </p>
+</p>
 
 </section>
 
@@ -847,17 +875,43 @@ footer {
 </main>
 
 
-<!-- =====================================================
-     PIED DE PAGE
-===================================================== -->
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
-    <strong>Centre Multimédia – CCAS de Nîmes</strong>
+<div class="footer-container">
 
-    <br><br>
+<div>
 
-    Apprendre, pratiquer et progresser ensemble 💙
+<div class="footer-title">
+
+Centre Multimédia du CCAS
+
+</div>
+
+<p>
+
+Apprendre • Découvrir • Progresser
+
+</p>
+
+</div>
+
+
+<div>
+
+<p>
+
+© 2026 Centre Multimédia du CCAS
+
+</p>
+
+</div>
+
+</div>
 
 </footer>
 
