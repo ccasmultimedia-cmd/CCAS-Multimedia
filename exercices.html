@@ -9,6 +9,10 @@
 
     <style>
 
+        /* =========================
+           RÉGLAGES GÉNÉRAUX
+        ========================== */
+
         * {
             box-sizing: border-box;
         }
@@ -16,7 +20,7 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f7fb;
+            background: #f5f7fb;
             color: #24344d;
             line-height: 1.6;
         }
@@ -57,7 +61,7 @@
 
         .logo span {
             font-size: 15px;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
         nav {
@@ -76,7 +80,7 @@
 
         nav a:hover,
         nav a.active {
-            background-color: #3d76c5;
+            background: #3d76c5;
         }
 
 
@@ -103,8 +107,8 @@
         }
 
         .page-header p {
-            margin: auto;
             max-width: 800px;
+            margin: auto;
             font-size: 21px;
             color: #617087;
         }
@@ -162,7 +166,7 @@
         }
 
         .category-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
         }
 
@@ -233,15 +237,16 @@
         ========================== */
 
         .button {
-            display: inline-block;
+            display: block;
+            width: 100%;
 
-            padding: 13px 20px;
+            padding: 14px 20px;
             border-radius: 8px;
 
             background: #3975c6;
             color: white;
 
-            font-size: 16px;
+            font-size: 17px;
             font-weight: bold;
 
             text-align: center;
@@ -251,7 +256,8 @@
         }
 
         .button:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         .security .button {
@@ -272,7 +278,7 @@
 
 
         /* =========================
-           BOUTONS MANIPULATIONS
+           MANIPULATIONS PRATIQUES
         ========================== */
 
         .practice-buttons {
@@ -307,16 +313,14 @@
 
 
         /* =========================
-           MESSAGE
+           SECTION INFORMATION
         ========================== */
 
         .info-section {
             margin-top: 70px;
-
             padding: 40px;
 
             background: #eaf0f8;
-
             border-radius: 20px;
 
             text-align: center;
@@ -391,10 +395,6 @@
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
-            }
-
-            nav {
-                flex-wrap: wrap;
             }
 
             nav a {
@@ -478,8 +478,8 @@
     <h1>Exercices pratiques</h1>
 
     <p>
-        Entraînez-vous à votre rythme avec des exercices simples
-        pour mieux utiliser l'ordinateur, Internet et les appareils numériques.
+        Entraînez-vous à votre rythme avec des exercices interactifs
+        pour progresser dans l'utilisation du numérique.
     </p>
 
 </section>
@@ -489,15 +489,17 @@
 <main>
 
 
-    <!-- INTRODUCTION -->
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
 
     <section class="intro">
 
-        <h2>Choisissez une catégorie</h2>
+        <h2>Choisissez un exercice</h2>
 
         <p>
-            Vous pouvez recommencer les exercices autant de fois que vous le souhaitez.
-            Prenez votre temps : l'objectif est d'apprendre en pratiquant.
+            Prenez votre temps et recommencez autant de fois que nécessaire.
+            C'est en pratiquant que l'on apprend !
         </p>
 
     </section>
@@ -518,19 +520,21 @@
             <h2>Sécurité</h2>
 
             <p>
-                Apprenez à mieux protéger vos informations personnelles.
+                Apprenez à protéger vos comptes et vos informations personnelles.
             </p>
 
             <ul class="exercise-list">
 
-                <li>Mots de passe</li>
+                <li>Défi sur les mots de passe</li>
+
                 <li>Reconnaître les arnaques</li>
-                <li>Faux e-mails et phishing</li>
+
+                <li>Se protéger contre le phishing</li>
 
             </ul>
 
             <a href="mots-de-passe.html" class="button">
-                Commencer
+                Faire le défi
             </a>
 
         </div>
@@ -544,19 +548,21 @@
             <h2>Ordinateur</h2>
 
             <p>
-                Entraînez-vous aux principales manipulations sur ordinateur.
+                Découvrez les principales manipulations pour mieux utiliser un ordinateur.
             </p>
 
             <ul class="exercise-list">
 
                 <li>Utiliser la souris</li>
-                <li>Le clavier</li>
-                <li>Les fichiers et dossiers</li>
+
+                <li>Utiliser le clavier</li>
+
+                <li>Organiser ses fichiers</li>
 
             </ul>
 
-            <a href="ordinateur.html" class="button">
-                Commencer
+            <a href="#" class="button">
+                Prochainement
             </a>
 
         </div>
@@ -570,19 +576,21 @@
             <h2>Internet</h2>
 
             <p>
-                Découvrez comment naviguer et rechercher des informations.
+                Apprenez à naviguer et à rechercher des informations sur Internet.
             </p>
 
             <ul class="exercise-list">
 
                 <li>Faire une recherche</li>
+
                 <li>Reconnaître un lien</li>
+
                 <li>Naviguer sur un site</li>
 
             </ul>
 
-            <a href="internet-exercices.html" class="button">
-                Commencer
+            <a href="#" class="button">
+                Prochainement
             </a>
 
         </div>
@@ -596,19 +604,21 @@
             <h2>Smartphone</h2>
 
             <p>
-                Apprenez à mieux utiliser votre téléphone au quotidien.
+                Entraînez-vous à utiliser votre téléphone au quotidien.
             </p>
 
             <ul class="exercise-list">
 
                 <li>Les applications</li>
+
                 <li>Les réglages</li>
-                <li>Envoyer des photos</li>
+
+                <li>Envoyer et recevoir des photos</li>
 
             </ul>
 
-            <a href="smartphone-exercices.html" class="button">
-                Commencer
+            <a href="#" class="button">
+                Prochainement
             </a>
 
         </div>
@@ -628,13 +638,15 @@
             <ul class="exercise-list">
 
                 <li>Les gestes tactiles</li>
+
                 <li>Les applications</li>
+
                 <li>Naviguer sur Internet</li>
 
             </ul>
 
-            <a href="tablette-exercices.html" class="button">
-                Commencer
+            <a href="#" class="button">
+                Prochainement
             </a>
 
         </div>
@@ -650,8 +662,7 @@
             <h2>Manipulations pratiques</h2>
 
             <p>
-                Entraînez-vous directement avec des exercices pratiques.
-                Choisissez ce que vous souhaitez apprendre.
+                Entraînez-vous directement avec des exercices interactifs.
             </p>
 
 
@@ -688,7 +699,7 @@
 
 
     <!-- =========================
-         MESSAGE
+         MESSAGE FINAL
     ========================== -->
 
     <section class="info-section">
@@ -696,9 +707,9 @@
         <h2>Apprendre en pratiquant</h2>
 
         <p>
-            Les exercices sont conçus pour vous permettre de découvrir
-            le numérique progressivement. N'hésitez pas à recommencer
-            plusieurs fois : c'est en pratiquant que l'on apprend !
+            Ces exercices sont conçus pour vous aider à progresser
+            tranquillement et à votre rythme. N'hésitez pas à refaire
+            un exercice plusieurs fois.
         </p>
 
     </section>
