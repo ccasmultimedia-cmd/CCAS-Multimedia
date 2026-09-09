@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Défi Mots de passe - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #24344d;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* MENU */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3d76c5;
+}
+
+
+/* EN-TÊTE */
+
+.page-header {
+    background: linear-gradient(135deg, #fff4df, #ffffff, #e9f0fa);
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 46px;
+    color: #203858;
+}
+
+.page-header p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 20px;
+    color: #617087;
+}
+
+
+/* JEU */
+
+main {
+    max-width: 850px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+.game-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(30, 50, 80, 0.10);
+}
+
+
+/* PROGRESSION */
+
+.progress-container {
+    margin-bottom: 30px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #e5eaf0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #3975c6;
+    transition: 0.4s;
+}
+
+
+/* QUESTION */
+
+.question-number {
+    display: inline-block;
+    background: #d05f9d;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.question {
+    font-size: 25px;
+    margin: 20px 0;
+    color: #203858;
+}
+
+
+/* RÉPONSES */
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer {
+    width: 100%;
+    padding: 17px;
+    border: 2px solid #d9e1ec;
+    background: white;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer:hover {
+    border-color: #3975c6;
+    background: #f0f5fb;
+}
+
+.answer.correct {
+    background: #e6f5ef;
+    border-color: #2e8b78;
+}
+
+.answer.wrong {
+    background: #fdecec;
+    border-color: #c84b4b;
+}
+
+
+/* EXPLICATION */
+
+.explanation {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #eaf0f8;
+    font-size: 17px;
+}
+
+.next-button {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: #3975c6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* RÉSULTAT FINAL */
+
+.final {
+    display: none;
+    text-align: center;
+}
+
+.final h2 {
+    font-size: 36px;
+    color: #203858;
+}
+
+.score {
+    font-size: 70px;
+    font-weight: bold;
+    color: #d05f9d;
+}
+
+.restart-button {
+    padding: 15px 25px;
+    background: #3975c6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #1f3656;
+    color: white;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 34px;
+    }
+
+    .game-card {
+        padding: 22px;
+    }
+
+    .question {
+        font-size: 22px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+<strong>Centre Multimédia du CCAS</strong>
+<span>Apprendre • Découvrir • Progresser</span>
+</div>
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="cours.html">Mes cours</a>
+<a href="jeux.html">Jeux</a>
+<a href="exercices.html" class="active">Exercices</a>
+<a href="informations.html">Informations</a>
+</nav>
+
+</div>
+
+</header>
+
+
+
+<section class="page-header">
+
+<h1>Défi : les mots de passe</h1>
+
+<p>
+Testez vos connaissances et apprenez à mieux protéger vos comptes.
+</p>
+
+</section>
+
+
+
+<main>
+
+<div class="game-card" id="game">
+
+
+<div class="progress-container">
+
+<div class="progress-text">
+<span id="progressText">Question 1 sur 10</span>
+<span id="scoreText">Score : 0</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
+
+</div>
+
+
+<div id="questionArea">
+
+<div class="question-number" id="questionNumber">
+Question 1
+</div>
+
+<div class="question" id="question"></div>
+
+<div class="answers" id="answers"></div>
+
+<div class="explanation" id="explanation"></div>
+
+<button class="next-button" id="nextButton" onclick="nextQuestion()">
+Question suivante
+</button>
+
+</div>
+
+
+<div class="final" id="final">
+
+<h2>Défi terminé !</h2>
+
+<p>Votre score :</p>
+
+<div class="score" id="finalScore"></div>
+
+<p id="finalMessage"></p>
+
+<button class="restart-button" onclick="restartGame()">
+Recommencer le défi
+</button>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<div>
+<strong>Centre Multimédia du CCAS</strong><br>
+<span>Apprendre • Découvrir • Progresser</span>
+</div>
+
+<div>
+© 2026 Centre Multimédia du CCAS
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+
+const questions = [
+
+{
+question: "Lequel de ces mots de passe est le plus faible ?",
+
+answers: [
+"Bonjour2026",
+"7!kP#2vL",
+"X9@pL4!z",
+"M0n#Chat!2026"
+],
+
+correct: 0,
+
+explanation:
+"« Bonjour2026 » est facile à deviner car il contient un mot courant suivi d'une année."
+},
+
+
+{
+question: "Pourquoi faut-il éviter d'utiliser le même mot de passe partout ?",
+
+answers: [
+"Parce que c'est trop long à écrire",
+"Parce que si un site est piraté, plusieurs comptes peuvent être en danger",
+"Parce que les ordinateurs n'aiment pas les répétitions",
+"Parce que le mot de passe devient automatiquement public"
+],
+
+correct: 1,
+
+explanation:
+"Si un mot de passe est volé sur un site et qu'il est utilisé ailleurs, une personne malveillante peut essayer de se connecter à vos autres comptes."
+},
+
+
+{
+question: "Vous recevez un e-mail demandant votre mot de passe. Que faut-il faire ?",
+
+answers: [
+"Répondre immédiatement",
+"Envoyer son mot de passe",
+"Vérifier attentivement l'expéditeur et ne jamais communiquer son mot de passe",
+"Donner seulement les premières lettres"
+],
+
+correct: 2,
+
+explanation:
+"Un service sérieux ne vous demande normalement pas votre mot de passe par e-mail."
+},
+
+
+{
+question: "Lequel de ces mots de passe est le plus solide ?",
+
+answers: [
+"12345678",
+"motdepasse",
+"Jean1950",
+"Rivière!Lune7*Velo"
+],
+
+correct: 3,
+
+explanation:
+"Une longue phrase contenant plusieurs éléments difficiles à deviner est généralement beaucoup plus robuste."
+},
+
+
+{
+question: "Que signifie l'authentification à deux facteurs ?",
+
+answers: [
+"Utiliser deux mots de passe",
+"Ajouter une deuxième preuve pour confirmer votre identité",
+"Se connecter deux fois",
+"Changer son mot de passe deux fois par jour"
+],
+
+correct: 1,
+
+explanation:
+"Après le mot de passe, un code reçu sur une application ou un téléphone peut servir de deuxième vérification."
+},
+
+
+{
+question: "Vous utilisez un ordinateur public. Quelle précaution est importante ?",
+
+answers: [
+"Enregistrer son mot de passe dans le navigateur",
+"Rester connecté après avoir terminé",
+"Se déconnecter de ses comptes après utilisation",
+"Donner son mot de passe à la personne suivante"
+],
+
+correct: 2,
+
+explanation:
+"Sur un ordinateur partagé ou public, il est important de se déconnecter complètement de ses comptes."
+},
+
+
+{
+question: "Un ami vous demande votre mot de passe pour vous aider. Que faire ?",
+
+answers: [
+"Le donner si c'est un bon ami",
+"Ne jamais communiquer son mot de passe",
+"Le donner seulement pendant une heure",
+"L'écrire sur un papier"
+],
+
+correct: 1,
+
+explanation:
+"Un mot de passe personnel doit rester secret, même avec des proches."
+},
+
+
+{
+question: "Que faut-il faire si vous pensez que votre mot de passe a été volé ?",
+
+answers: [
+"Ne rien faire",
+"Attendre plusieurs mois",
+"Changer immédiatement le mot de passe",
+"Créer un nouveau compte"
+],
+
+correct: 2,
+
+explanation:
+"Changez rapidement le mot de passe concerné et vérifiez si d'autres comptes utilisent le même."
+},
+
+
+{
+question: "Quel comportement est le plus sûr pour vos mots de passe ?",
+
+answers: [
+"Utiliser un mot de passe différent pour chaque compte important",
+"Utiliser le même partout",
+"Utiliser uniquement sa date de naissance",
+"Écrire tous ses mots de passe sur une publication Facebook"
+],
+
+correct: 0,
+
+explanation:
+"Des mots de passe différents limitent les conséquences si l'un de vos comptes est compromis."
+},
+
+
+{
+question: "Quel est le meilleur réflexe avant de cliquer sur un lien demandant une connexion ?",
+
+answers: [
+"Cliquer rapidement",
+"Vérifier l'adresse du site et se méfier des messages urgents ou suspects",
+"Donner son mot de passe immédiatement",
+"Partager le lien avec tout le monde"
+],
+
+correct: 1,
+
+explanation:
+"Les faux sites peuvent imiter des services connus. Vérifiez toujours l'adresse du site."
+}
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+function loadQuestion() {
+
+answered = false;
+
+const q = questions[currentQuestion];
+
+document.getElementById("questionNumber").textContent =
+"Question " + (currentQuestion + 1);
+
+document.getElementById("question").textContent =
+q.question;
+
+document.getElementById("progressText").textContent =
+"Question " + (currentQuestion + 1) + " sur 10";
+
+document.getElementById("scoreText").textContent =
+"Score : " + score;
+
+document.getElementById("progress").style.width =
+((currentQuestion) / questions.length * 100) + "%";
+
+
+const answersContainer =
+document.getElementById("answers");
+
+answersContainer.innerHTML = "";
+
+
+q.answers.forEach(function(answer, index) {
+
+const button =
+document.createElement("button");
+
+button.className = "answer";
+
+button.textContent = answer;
+
+button.onclick = function() {
+checkAnswer(index, button);
+};
+
+answersContainer.appendChild(button);
+
+});
+
+
+document.getElementById("explanation").style.display = "none";
+
+document.getElementById("nextButton").style.display = "none";
+
+}
+
+
+function checkAnswer(index, button) {
+
+if (answered) return;
+
+answered = true;
+
+const q = questions[currentQuestion];
+
+const buttons =
+document.querySelectorAll(".answer");
+
+
+buttons.forEach(function(btn, i) {
+
+btn.disabled = true;
+
+if (i === q.correct) {
+
+btn.classList.add("correct");
+
+}
+
+});
+
+
+if (index === q.correct) {
+
+score++;
+
+} else {
+
+button.classList.add("wrong");
+
+}
+
+
+document.getElementById("scoreText").textContent =
+"Score : " + score;
+
+
+const explanation =
+document.getElementById("explanation");
+
+explanation.innerHTML =
+"<strong>Explication :</strong><br>" + q.explanation;
+
+explanation.style.display = "block";
+
+
+const nextButton =
+document.getElementById("nextButton");
+
+nextButton.style.display = "inline-block";
+
+
+if (currentQuestion === questions.length - 1) {
+
+nextButton.textContent = "Voir mon résultat";
+
+} else {
+
+nextButton.textContent = "Question suivante";
+
+}
+
+}
+
+
+function nextQuestion() {
+
+currentQuestion++;
+
+if (currentQuestion < questions.length) {
+
+loadQuestion();
+
+} else {
+
+showFinal();
+
+}
+
+}
+
+
+function showFinal() {
+
+document.getElementById("questionArea").style.display = "none";
+
+document.querySelector(".progress-container").style.display = "none";
+
+document.getElementById("final").style.display = "block";
+
+
+document.getElementById("finalScore").textContent =
+score + " / 10";
+
+
+let message = "";
+
+if (score === 10) {
+
+message =
+"Excellent ! Vous maîtrisez très bien les bonnes pratiques de sécurité.";
+
+}
+
+else if (score >= 8) {
+
+message =
+"Très bon résultat ! Vous avez de bons réflexes pour protéger vos comptes.";
+
+}
+
+else if (score >= 5) {
+
+message =
+"Bravo ! Vous connaissez déjà plusieurs règles importantes. Continuez à vous entraîner.";
+
+}
+
+else {
+
+message =
+"Pas de problème ! Lisez les explications et recommencez le défi pour progresser.";
+
+}
+
+
+document.getElementById("finalMessage").textContent =
+message;
+
+}
+
+
+function restartGame() {
+
+currentQuestion = 0;
+
+score = 0;
+
+document.getElementById("final").style.display = "none";
+
+document.getElementById("questionArea").style.display = "block";
+
+document.querySelector(".progress-container").style.display = "block";
+
+loadQuestion();
+
+}
+
+
+loadQuestion();
+
+
+</script>
+
+
+</body>
+
+</html>
