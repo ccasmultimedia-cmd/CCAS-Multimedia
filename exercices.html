@@ -6,41 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Exercices - Centre Multimédia du CCAS</title>
-/* =========================
-   BOUTONS MANIPULATIONS PRATIQUES
-========================= */
 
-.practice-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-
-.practice-button {
-    display: block;
-
-    background: #d05f9d;
-    color: white;
-
-    padding: 14px 18px;
-
-    border-radius: 8px;
-
-    text-align: center;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-
-.practice-button:hover {
-    background: #b94b87;
-    transform: translateY(-2px);
-}
     <style>
 
         * {
@@ -209,11 +175,12 @@
         .category-card p {
             color: #617087;
             font-size: 17px;
-            flex-grow: 1;
         }
 
 
-        /* COULEURS DES CATÉGORIES */
+        /* =========================
+           COULEURS DES CATÉGORIES
+        ========================== */
 
         .security {
             border-top: 6px solid #c84b4b;
@@ -262,7 +229,7 @@
 
 
         /* =========================
-           BOUTONS
+           BOUTONS GÉNÉRAUX
         ========================== */
 
         .button {
@@ -280,6 +247,7 @@
             text-align: center;
 
             transition: 0.3s;
+            margin-top: auto;
         }
 
         .button:hover {
@@ -302,8 +270,39 @@
             background: #e09b32;
         }
 
-        .practice .button {
+
+        /* =========================
+           BOUTONS MANIPULATIONS
+        ========================== */
+
+        .practice-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .practice-button {
+            display: block;
+
             background: #d05f9d;
+            color: white;
+
+            padding: 14px 18px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .practice-button:hover {
+            background: #b94b87;
+            transform: translateY(-2px);
         }
 
 
@@ -435,7 +434,7 @@
 
 <!-- =========================
      MENU
-========================== -->
+========================= -->
 
 <header>
 
@@ -472,7 +471,7 @@
 
 <!-- =========================
      EN-TÊTE
-========================== -->
+========================= -->
 
 <section class="page-header">
 
@@ -489,6 +488,8 @@
 
 <main>
 
+
+    <!-- INTRODUCTION -->
 
     <section class="intro">
 
@@ -640,53 +641,55 @@
 
 
 
-        <!-- PRATIQUE -->
+        <!-- =========================
+             MANIPULATIONS PRATIQUES
+        ========================== -->
 
         <div class="category-card practice">
 
-           <!-- =========================
-     MANIPULATIONS PRATIQUES
-========================= -->
+            <h2>Manipulations pratiques</h2>
 
-<div class="category-card practice">
-
-    <h2>Manipulations pratiques</h2>
-
-    <p>
-        Entraînez-vous directement avec des exercices pratiques.
-        Choisissez ce que vous souhaitez apprendre.
-    </p>
+            <p>
+                Entraînez-vous directement avec des exercices pratiques.
+                Choisissez ce que vous souhaitez apprendre.
+            </p>
 
 
-    <div class="practice-buttons">
+            <div class="practice-buttons">
 
 
-        <a href="selection-texte.html" class="practice-button">
-            Sélectionner du texte
-        </a>
+                <a href="selection-texte.html" class="practice-button">
+                    Sélectionner du texte
+                </a>
 
 
-        <a href="copier-coller.html" class="practice-button">
-            Copier et coller
-        </a>
+                <a href="copier-coller.html" class="practice-button">
+                    Copier et coller
+                </a>
 
 
-        <a href="couper-deplacer.html" class="practice-button">
-            Couper et déplacer
-        </a>
+                <a href="couper-deplacer.html" class="practice-button">
+                    Couper et déplacer
+                </a>
 
 
-        <a href="raccourcis-clavier.html" class="practice-button">
-            Raccourcis clavier
-        </a>
+                <a href="raccourcis-clavier.html" class="practice-button">
+                    Raccourcis clavier
+                </a>
 
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
 
-    <!-- MESSAGE -->
+    </section>
+
+
+
+    <!-- =========================
+         MESSAGE
+    ========================== -->
 
     <section class="info-section">
 
@@ -707,7 +710,7 @@
 
 <!-- =========================
      FOOTER
-========================== -->
+========================= -->
 
 <footer>
 
