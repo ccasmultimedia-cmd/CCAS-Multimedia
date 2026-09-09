@@ -1,129 +1,746 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CCAS Multimedia</title>
+    <title>Centre Multimédia du CCAS</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f6f8;
-            color: #333;
+
+        /* =========================
+           STYLE GÉNÉRAL
+        ========================== */
+
+        * {
+            box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #24344d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
         header {
-            background-color: #2c3e50;
+            background: #1f3656;
             color: white;
-            text-align: center;
-            padding: 40px 20px;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo strong {
+            font-size: 26px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
         }
 
         nav {
-            background-color: #34495e;
-            text-align: center;
-            padding: 15px;
+            display: flex;
+            gap: 10px;
         }
 
         nav a {
             color: white;
-            text-decoration: none;
-            margin: 15px;
-            font-size: 18px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 17px;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        nav a:hover,
+        nav a.active {
+            background-color: #3d76c5;
         }
 
-        main {
-            max-width: 900px;
+
+        /* =========================
+           ACCUEIL
+        ========================== */
+
+        .hero {
+            background:
+                linear-gradient(135deg, #e9f0fa 0%, #ffffff 55%, #e7f4f2 100%);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
             margin: auto;
-            padding: 30px 20px;
+            padding: 70px 25px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .bloc {
-            background: white;
-            padding: 25px;
+        .hero-text h1 {
+            font-size: 52px;
+            line-height: 1.15;
+            margin-top: 0;
             margin-bottom: 25px;
+            color: #203858;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            color: #4b5f78;
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3975c6, #285a9c);
+            color: white;
+            padding: 17px 30px;
             border-radius: 10px;
+            font-size: 19px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(40, 90, 156, 0.25);
         }
 
-        h2 {
-            color: #2c3e50;
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(40, 90, 156, 0.35);
         }
 
-        footer {
-            background-color: #2c3e50;
+
+        /* =========================
+           ZONE IMAGE / ILLUSTRATION
+        ========================== */
+
+        .hero-visual {
+            min-height: 350px;
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(57, 117, 198, 0.9),
+                    rgba(46, 139, 120, 0.75)
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+
+            box-shadow: 0 15px 35px rgba(31, 54, 86, 0.2);
+
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero-visual::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            top: -80px;
+            right: -60px;
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            bottom: -70px;
+            left: -50px;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+        }
+
+        .visual-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .visual-content p {
+            font-size: 19px;
+            max-width: 350px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           CATÉGORIES
+        ========================== */
+
+        .categories-section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #203858;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #617087;
+            margin-bottom: 40px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 18px;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+
+            transition: 0.3s;
+            border-top: 6px solid #3975c6;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
+        }
+
+        .card.smartphone {
+            border-top-color: #2e8b78;
+        }
+
+        .card.tablette {
+            border-top-color: #7b5fc7;
+        }
+
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 18px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 25px;
+
+            background: #e8f0fb;
+            color: #3975c6;
+
+            font-size: 38px;
+        }
+
+        .smartphone .card-icon {
+            background: #e4f5f1;
+            color: #2e8b78;
+        }
+
+        .tablette .card-icon {
+            background: #eee9fb;
+            color: #7b5fc7;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #24344d;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #617087;
+            min-height: 90px;
+        }
+
+        .card-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 22px;
+
+            background: #3975c6;
+            color: white;
+
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .card-button:hover {
+            background: #285a9c;
+        }
+
+        .smartphone .card-button {
+            background: #2e8b78;
+        }
+
+        .smartphone .card-button:hover {
+            background: #236d5e;
+        }
+
+        .tablette .card-button {
+            background: #7b5fc7;
+        }
+
+        .tablette .card-button:hover {
+            background: #6045aa;
+        }
+
+
+        /* =========================
+           SECTION VALEURS
+        ========================== */
+
+        .values-section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px 70px;
+        }
+
+        .values {
+            background: #eaf0f8;
+            border-radius: 20px;
+            padding: 35px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .value {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .value h3 {
+            color: #203858;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .value p {
+            color: #617087;
+            margin: 0;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #1f3656;
+            color: white;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           VERSION MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .values {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-container {
+                padding: 50px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-text p {
+                font-size: 19px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     MENU
+========================== -->
+
 <header>
-    <h1>Bienvenue sur CCAS Multimedia</h1>
-    <p>Apprendre l'informatique simplement et à son rythme</p>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+
+        <nav>
+            <a href="index.html" class="active">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
 </header>
 
-<nav>
-    <a href="#">Accueil</a>
-   <a href="cours.html">📚 Mes cours</a>
-    <a href="#">Jeux</a>
-    <a href="#">Informations</a>
-</nav>
 
-<main>
 
-    <div class="bloc">
-        <h2>👋 Bienvenue</h2>
+<!-- =========================
+     ACCUEIL
+========================== -->
 
-        <p>
-            Bienvenue sur notre espace dédié à l'apprentissage de l'informatique.
-        </p>
+<section class="hero">
 
-        <p>
-            Vous trouverez ici des cours, des exercices, des jeux et des informations utiles.
-        </p>
+    <div class="hero-container">
+
+        <div class="hero-text">
+
+            <h1>
+                Bienvenue sur le site du Centre Multimédia du CCAS
+            </h1>
+
+            <p>
+                Un espace convivial pour apprendre le numérique,
+                découvrir de nouveaux outils et progresser à votre rythme.
+            </p>
+
+            <a href="cours.html" class="hero-button">
+                Découvrir nos cours
+            </a>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="visual-content">
+
+                <h2>Apprendre à son rythme</h2>
+
+                <p>
+                    Informatique, smartphone et tablette :
+                    découvrez le numérique simplement et en toute confiance.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="bloc">
-        <h2>📚 Mes cours</h2>
+</section>
 
-        <p>
-            Découvrez nos cours pour apprendre à utiliser un ordinateur,
-            Internet et les outils numériques.
-        </p>
+
+
+<!-- =========================
+     CATÉGORIES
+========================== -->
+
+<section class="categories-section">
+
+    <h2 class="section-title">
+        Nos catégories de cours
+    </h2>
+
+    <p class="section-subtitle">
+        Choisissez le domaine qui vous intéresse et découvrez les cours disponibles.
+    </p>
+
+
+    <div class="categories">
+
+
+        <!-- INFORMATIQUE -->
+
+        <div class="card">
+
+            <div class="card-icon">
+                ▣
+            </div>
+
+            <h2>Informatique</h2>
+
+            <p>
+                Apprenez à utiliser votre ordinateur,
+                Internet, vos emails et les outils numériques.
+            </p>
+
+            <a href="informatique.html" class="card-button">
+                Voir les cours
+            </a>
+
+        </div>
+
+
+
+        <!-- SMARTPHONE -->
+
+        <div class="card smartphone">
+
+            <div class="card-icon">
+                ▯
+            </div>
+
+            <h2>Smartphone</h2>
+
+            <p>
+                Découvrez votre téléphone, les applications,
+                les photos et les services utiles au quotidien.
+            </p>
+
+            <a href="smartphone.html" class="card-button">
+                Voir les cours
+            </a>
+
+        </div>
+
+
+
+        <!-- TABLETTE -->
+
+        <div class="card tablette">
+
+            <div class="card-icon">
+                ▭
+            </div>
+
+            <h2>Tablette</h2>
+
+            <p>
+                Apprenez à utiliser votre tablette,
+                naviguer sur Internet et utiliser vos applications.
+            </p>
+
+            <a href="tablette.html" class="card-button">
+                Voir les cours
+            </a>
+
+        </div>
+
+
     </div>
 
-    <div class="bloc">
-        <h2>🎮 Jeux et exercices</h2>
+</section>
 
-        <p>
-            Apprendre peut aussi être amusant ! Retrouvez ici des jeux
-            et exercices pour vous entraîner.
-        </p>
+
+
+<!-- =========================
+     NOS VALEURS
+========================== -->
+
+<section class="values-section">
+
+    <div class="values">
+
+
+        <div class="value">
+
+            <h3>Un accompagnement</h3>
+
+            <p>
+                Des explications simples et adaptées à chacun.
+            </p>
+
+        </div>
+
+
+        <div class="value">
+
+            <h3>À votre rythme</h3>
+
+            <p>
+                Prenez le temps nécessaire pour apprendre.
+            </p>
+
+        </div>
+
+
+        <div class="value">
+
+            <h3>En toute confiance</h3>
+
+            <p>
+                Découvrez le numérique simplement et sereinement.
+            </p>
+
+        </div>
+
+
+        <div class="value">
+
+            <h3>Une approche conviviale</h3>
+
+            <p>
+                Parce qu'apprendre est plus agréable ensemble.
+            </p>
+
+        </div>
+
+
     </div>
 
-    <div class="bloc">
-        <h2>📢 Informations</h2>
+</section>
 
-        <p>
-            Retrouvez ici les dernières informations et actualités.
-        </p>
-    </div>
 
-</main>
+
+<!-- =========================
+     FOOTER
+========================== -->
 
 <footer>
-    <p>© 2026 CCAS Multimedia</p>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-title">
+                Centre Multimédia du CCAS
+            </div>
+
+            <div class="footer-text">
+                Apprendre • Découvrir • Progresser
+            </div>
+
+        </div>
+
+
+        <div class="footer-text">
+            © 2026 Centre Multimédia du CCAS
+        </div>
+
+    </div>
+
 </footer>
 
+
 </body>
+
 </html>
