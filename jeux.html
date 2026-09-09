@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jeux - Centre Multimédia du CCAS</title>
+    <title>Jeux et activités - Centre Multimédia du CCAS</title>
 
     <style>
 
@@ -37,7 +37,6 @@
             max-width: 1200px;
             margin: auto;
             padding: 18px 25px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,7 +97,7 @@
 
         .page-header p {
             margin: auto;
-            max-width: 750px;
+            max-width: 800px;
             font-size: 21px;
             color: #617087;
         }
@@ -115,69 +114,69 @@
         .section-title {
             font-size: 32px;
             color: #203858;
+            margin-top: 60px;
             margin-bottom: 10px;
         }
 
         .section-text {
-            font-size: 19px;
+            font-size: 18px;
             color: #617087;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
+        }
+
+
+        /* GRILLE DES JEUX */
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
 
         /* CARTES */
 
-        .games {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
         .game-card {
             background: white;
-            padding: 30px;
+            padding: 28px;
             border-radius: 18px;
 
-            border-top: 6px solid #e09b32;
-
             box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+
+            border-top: 6px solid #3975c6;
 
             transition: 0.3s;
         }
 
         .game-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
         }
 
         .game-card h2 {
             margin-top: 0;
-            font-size: 27px;
+            font-size: 24px;
             color: #24344d;
         }
 
         .game-card p {
-            font-size: 18px;
             color: #617087;
+            font-size: 17px;
         }
 
 
-        /* COULEURS DES CARTES */
+        /* COULEURS */
 
-        .memory {
+        .learning {
             border-top-color: #3975c6;
         }
 
-        .words {
-            border-top-color: #2e8b78;
-        }
-
-        .logic {
+        .thinking {
             border-top-color: #7b5fc7;
         }
 
-        .numbers {
-            border-top-color: #e09b32;
+        .classic {
+            border-top-color: #2e8b78;
         }
 
 
@@ -185,54 +184,61 @@
 
         .button {
             display: inline-block;
+
             margin-top: 15px;
-            padding: 14px 22px;
+
+            padding: 13px 20px;
 
             border-radius: 8px;
 
             background: #3975c6;
             color: white;
 
-            font-size: 17px;
+            font-size: 16px;
             font-weight: bold;
+
+            transition: 0.3s;
         }
 
-        .words .button {
-            background: #2e8b78;
+        .button:hover {
+            opacity: 0.85;
         }
 
-        .logic .button {
+        .thinking .button {
             background: #7b5fc7;
         }
 
-        .numbers .button {
-            background: #e09b32;
+        .classic .button {
+            background: #2e8b78;
         }
 
 
-        /* INFORMATION */
+        /* CONSEIL */
 
         .info-section {
-            margin-top: 60px;
-            padding: 35px;
+            margin-top: 70px;
+
+            padding: 40px;
 
             background: #fff4df;
+
             border-radius: 20px;
 
             text-align: center;
         }
 
         .info-section h2 {
+            margin-top: 0;
             color: #9a641c;
             font-size: 28px;
-            margin-top: 0;
         }
 
         .info-section p {
-            font-size: 18px;
-            color: #617087;
             max-width: 750px;
             margin: auto;
+
+            font-size: 18px;
+            color: #617087;
         }
 
 
@@ -266,15 +272,18 @@
         }
 
 
-        /* MOBILE */
+        /* TABLETTE */
 
-        @media (max-width: 800px) {
+        @media (max-width: 950px) {
 
             .games {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
         }
+
+
+        /* MOBILE */
 
         @media (max-width: 650px) {
 
@@ -303,6 +312,10 @@
                 padding: 40px 20px;
             }
 
+            .games {
+                grid-template-columns: 1fr;
+            }
+
             .footer-container {
                 flex-direction: column;
                 align-items: flex-start;
@@ -323,15 +336,24 @@
     <div class="navbar">
 
         <div class="logo">
+
             <strong>Centre Multimédia du CCAS</strong>
+
             <span>Apprendre • Découvrir • Progresser</span>
+
         </div>
 
+
         <nav>
+
             <a href="index.html">Accueil</a>
+
             <a href="cours.html">Mes cours</a>
+
             <a href="jeux.html" class="active">Jeux</a>
+
             <a href="informations.html">Informations</a>
+
         </nav>
 
     </div>
@@ -345,8 +367,8 @@
     <h1>Jeux et activités</h1>
 
     <p>
-        Une sélection de jeux pour se divertir, réfléchir et s'entraîner
-        tout en découvrant les possibilités du numérique.
+        Découvrez une sélection de jeux et d'activités pour apprendre,
+        s'entraîner et se divertir à votre rythme.
     </p>
 
 </section>
@@ -355,90 +377,277 @@
 
 <main>
 
-    <h2 class="section-title">Choisissez une activité</h2>
+
+    <!-- APPRENDRE -->
+
+    <h2 class="section-title">
+        Apprendre à utiliser l'ordinateur
+    </h2>
 
     <p class="section-text">
-        Cliquez sur une catégorie pour découvrir les jeux disponibles.
+        Des activités pour s'entraîner avec la souris et le clavier.
     </p>
 
 
     <section class="games">
 
 
-        <div class="game-card memory">
+        <div class="game-card learning">
 
-            <h2>Jeux de mémoire</h2>
+            <h2>Limbo</h2>
 
             <p>
-                Des jeux pour exercer votre mémoire et votre concentration.
+                Des exercices pour apprendre à utiliser la souris,
+                le clavier, les clics et les principales manipulations
+                sur ordinateur.
             </p>
 
-            <a href="#" class="button">
-                Découvrir les jeux
+            <a href="https://mon-annuaire-du-web.fr/limbo/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Commencer les exercices
+
             </a>
 
         </div>
 
 
-        <div class="game-card words">
+        <div class="game-card learning">
 
-            <h2>Mots et lettres</h2>
-
-            <p>
-                Mots croisés, mots mêlés et autres jeux autour des lettres.
-            </p>
-
-            <a href="#" class="button">
-                Découvrir les jeux
-            </a>
-
-        </div>
-
-
-        <div class="game-card logic">
-
-            <h2>Logique et réflexion</h2>
+            <h2>AgileFingers</h2>
 
             <p>
-                Des activités pour réfléchir, résoudre des énigmes
-                et relever de petits défis.
+                Entraînez-vous à taper au clavier avec des jeux
+                amusants et progressifs.
             </p>
 
-            <a href="#" class="button">
-                Découvrir les jeux
-            </a>
+            <a href="https://agilefingers.com/fr/jeux"
+               target="_blank"
+               rel="noopener"
+               class="button">
 
-        </div>
+                Jouer et s'entraîner
 
-
-        <div class="game-card numbers">
-
-            <h2>Chiffres et calcul</h2>
-
-            <p>
-                Des jeux simples autour des chiffres et du calcul.
-            </p>
-
-            <a href="#" class="button">
-                Découvrir les jeux
             </a>
 
         </div>
 
 
     </section>
+
+
+
+    <!-- RÉFLEXION -->
+
+    <h2 class="section-title">
+        Jeux de réflexion
+    </h2>
+
+    <p class="section-text">
+        Prenez votre temps et entraînez votre mémoire et votre réflexion.
+    </p>
+
+
+    <section class="games">
+
+
+        <div class="game-card thinking">
+
+            <h2>Sudoku</h2>
+
+            <p>
+                Complétez les grilles en utilisant votre logique.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/sudoku/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer au Sudoku
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card thinking">
+
+            <h2>Puzzle</h2>
+
+            <p>
+                Reconstituez une image pièce par pièce.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/puzzle/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Faire un puzzle
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card thinking">
+
+            <h2>Mots croisés</h2>
+
+            <p>
+                Retrouvez les mots grâce aux différentes définitions.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/mots-croises/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer aux mots croisés
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card thinking">
+
+            <h2>Mots mystères</h2>
+
+            <p>
+                Découvrez les mots cachés et relevez les défis.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/mots-mysteres/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer aux mots mystères
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card thinking">
+
+            <h2>Alphamo</h2>
+
+            <p>
+                Un jeu autour des lettres et des mots.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/alphamo/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer à Alphamo
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card thinking">
+
+            <h2>Les 7 erreurs</h2>
+
+            <p>
+                Observez attentivement les images et retrouvez
+                les différences.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/7-erreurs/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Trouver les erreurs
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- JEUX CLASSIQUES -->
+
+    <h2 class="section-title">
+        Jeux classiques
+    </h2>
+
+    <p class="section-text">
+        Retrouvez des grands classiques pour vous détendre.
+    </p>
+
+
+    <section class="games">
+
+
+        <div class="game-card classic">
+
+            <h2>Solitaire</h2>
+
+            <p>
+                Le célèbre jeu de cartes à jouer tranquillement.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/solitaire/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer au Solitaire
+
+            </a>
+
+        </div>
+
+
+        <div class="game-card classic">
+
+            <h2>FreeCell</h2>
+
+            <p>
+                Une autre version du célèbre jeu de cartes.
+            </p>
+
+            <a href="https://jeux.franceinfo.fr/freecell/"
+               target="_blank"
+               rel="noopener"
+               class="button">
+
+                Jouer à FreeCell
+
+            </a>
+
+        </div>
+
+
+    </section>
+
 
 
     <section class="info-section">
 
-        <h2>De nouveaux jeux arriveront progressivement</h2>
+        <h2>Jouez à votre rythme</h2>
 
         <p>
-            Cette page sera enrichie avec de nouvelles activités
-            sélectionnées pour être simples et agréables à utiliser.
+            Prenez votre temps et choisissez une activité qui vous plaît.
+            Ces jeux sont là pour vous divertir, vous entraîner et vous
+            familiariser avec l'utilisation de l'ordinateur.
         </p>
 
     </section>
+
 
 </main>
 
@@ -459,6 +668,7 @@
             </div>
 
         </div>
+
 
         <div class="footer-text">
             © 2026 Centre Multimédia du CCAS
