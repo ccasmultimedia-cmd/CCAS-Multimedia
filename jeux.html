@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jeux - Centre Multimédia du CCAS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #24344d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* MENU */
+
+        header {
+            background: #1f3656;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo strong {
+            font-size: 26px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 17px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #3d76c5;
+        }
+
+
+        /* EN-TÊTE */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #fff4df,
+                #ffffff,
+                #e9f0fa
+            );
+
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px;
+            font-size: 46px;
+            color: #9a641c;
+        }
+
+        .page-header p {
+            margin: auto;
+            max-width: 750px;
+            font-size: 21px;
+            color: #617087;
+        }
+
+
+        /* CONTENU */
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #203858;
+            margin-bottom: 10px;
+        }
+
+        .section-text {
+            font-size: 19px;
+            color: #617087;
+            margin-bottom: 35px;
+        }
+
+
+        /* CARTES */
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .game-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+
+            border-top: 6px solid #e09b32;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
+        }
+
+        .game-card h2 {
+            margin-top: 0;
+            font-size: 27px;
+            color: #24344d;
+        }
+
+        .game-card p {
+            font-size: 18px;
+            color: #617087;
+        }
+
+
+        /* COULEURS DES CARTES */
+
+        .memory {
+            border-top-color: #3975c6;
+        }
+
+        .words {
+            border-top-color: #2e8b78;
+        }
+
+        .logic {
+            border-top-color: #7b5fc7;
+        }
+
+        .numbers {
+            border-top-color: #e09b32;
+        }
+
+
+        /* BOUTONS */
+
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 14px 22px;
+
+            border-radius: 8px;
+
+            background: #3975c6;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .words .button {
+            background: #2e8b78;
+        }
+
+        .logic .button {
+            background: #7b5fc7;
+        }
+
+        .numbers .button {
+            background: #e09b32;
+        }
+
+
+        /* INFORMATION */
+
+        .info-section {
+            margin-top: 60px;
+            padding: 35px;
+
+            background: #fff4df;
+            border-radius: 20px;
+
+            text-align: center;
+        }
+
+        .info-section h2 {
+            color: #9a641c;
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .info-section p {
+            font-size: 18px;
+            color: #617087;
+            max-width: 750px;
+            margin: auto;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #1f3656;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .games {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            .page-header {
+                padding: 50px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            main {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html" class="active">Jeux</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<section class="page-header">
+
+    <h1>Jeux et activités</h1>
+
+    <p>
+        Une sélection de jeux pour se divertir, réfléchir et s'entraîner
+        tout en découvrant les possibilités du numérique.
+    </p>
+
+</section>
+
+
+
+<main>
+
+    <h2 class="section-title">Choisissez une activité</h2>
+
+    <p class="section-text">
+        Cliquez sur une catégorie pour découvrir les jeux disponibles.
+    </p>
+
+
+    <section class="games">
+
+
+        <div class="game-card memory">
+
+            <h2>Jeux de mémoire</h2>
+
+            <p>
+                Des jeux pour exercer votre mémoire et votre concentration.
+            </p>
+
+            <a href="#" class="button">
+                Découvrir les jeux
+            </a>
+
+        </div>
+
+
+        <div class="game-card words">
+
+            <h2>Mots et lettres</h2>
+
+            <p>
+                Mots croisés, mots mêlés et autres jeux autour des lettres.
+            </p>
+
+            <a href="#" class="button">
+                Découvrir les jeux
+            </a>
+
+        </div>
+
+
+        <div class="game-card logic">
+
+            <h2>Logique et réflexion</h2>
+
+            <p>
+                Des activités pour réfléchir, résoudre des énigmes
+                et relever de petits défis.
+            </p>
+
+            <a href="#" class="button">
+                Découvrir les jeux
+            </a>
+
+        </div>
+
+
+        <div class="game-card numbers">
+
+            <h2>Chiffres et calcul</h2>
+
+            <p>
+                Des jeux simples autour des chiffres et du calcul.
+            </p>
+
+            <a href="#" class="button">
+                Découvrir les jeux
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+    <section class="info-section">
+
+        <h2>De nouveaux jeux arriveront progressivement</h2>
+
+        <p>
+            Cette page sera enrichie avec de nouvelles activités
+            sélectionnées pour être simples et agréables à utiliser.
+        </p>
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-title">
+                Centre Multimédia du CCAS
+            </div>
+
+            <div class="footer-text">
+                Apprendre • Découvrir • Progresser
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            © 2026 Centre Multimédia du CCAS
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
