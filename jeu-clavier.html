@@ -11,7 +11,7 @@
 <style>
 
 /* =========================
-   RÉGLAGES GÉNÉRAUX
+   GÉNÉRAL
 ========================= */
 
 * {
@@ -23,7 +23,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f5f7fb;
     color: #24344d;
-    line-height: 1.6;
 }
 
 button,
@@ -46,11 +45,10 @@ header {
     max-width: 1200px;
     margin: auto;
     padding: 18px 25px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 }
 
 .logo {
@@ -59,30 +57,29 @@ header {
 }
 
 .logo strong {
-    font-size: 26px;
+    font-size: 25px;
 }
 
 .logo span {
-    font-size: 15px;
+    font-size: 14px;
     opacity: 0.85;
 }
 
 nav {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 8px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 12px 18px;
+    padding: 10px 14px;
     border-radius: 8px;
-    font-size: 17px;
 }
 
 nav a:hover {
-    background: #3d76c5;
+    background: #3975c6;
 }
 
 
@@ -92,19 +89,13 @@ nav a:hover {
 
 .page-header {
     text-align: center;
-    padding: 60px 20px;
-
-    background: linear-gradient(
-        135deg,
-        #e9f0fa,
-        #ffffff,
-        #fff4df
-    );
+    padding: 55px 20px;
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #f4edff);
 }
 
 .page-header h1 {
     margin: 0 0 15px;
-    font-size: 44px;
+    font-size: 42px;
     color: #203858;
 }
 
@@ -121,22 +112,16 @@ nav a:hover {
 ========================= */
 
 main {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
     padding: 45px 20px;
 }
-
-
-/* =========================
-   CARTE DU JEU
-========================= */
 
 .game-card {
     background: white;
     padding: 35px;
     border-radius: 20px;
-
-    box-shadow: 0 5px 25px rgba(30, 50, 80, 0.10);
+    box-shadow: 0 5px 25px rgba(30,50,80,0.12);
 }
 
 
@@ -153,12 +138,10 @@ main {
 }
 
 .progress-bar {
-    width: 100%;
-    height: 16px;
+    height: 18px;
     background: #e5eaf0;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 30px;
 }
 
 .progress {
@@ -170,17 +153,16 @@ main {
 
 
 /* =========================
-   NIVEAU ET CONSIGNE
+   CONSIGNES
 ========================= */
 
 .level {
     display: inline-block;
+    margin-top: 30px;
     background: #7b5fc7;
     color: white;
-
-    padding: 7px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
-
     font-weight: bold;
 }
 
@@ -191,8 +173,8 @@ main {
 }
 
 .help {
-    color: #617087;
     font-size: 18px;
+    color: #617087;
 }
 
 
@@ -201,69 +183,76 @@ main {
 ========================= */
 
 .game-area {
-    min-height: 330px;
-
     margin-top: 30px;
     padding: 30px;
-
+    min-height: 250px;
     background: #eef3f9;
-
     border: 3px dashed #b9c8da;
     border-radius: 15px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 25px;
+    text-align: center;
 }
 
 
 /* =========================
-   LETTRE À TROUVER
+   TOUCHE À TROUVER
 ========================= */
 
-.key-display {
-    font-size: 90px;
-    font-weight: bold;
-
-    width: 180px;
-    height: 150px;
-
-    display: flex;
+.big-key {
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    min-width: 180px;
+    min-height: 120px;
+    padding: 20px;
 
     background: #3975c6;
     color: white;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
-    box-shadow: 0 8px 0 #28599a;
+    font-size: 55px;
+    font-weight: bold;
+
+    box-shadow: 0 7px 0 #28599a;
 }
 
 
 /* =========================
-   CHAMP DE SAISIE
+   CHAMP DE TEXTE
 ========================= */
 
-.keyboard-input {
+.answer-input {
     width: 100%;
-    max-width: 650px;
-
-    padding: 20px;
+    max-width: 700px;
+    padding: 18px;
 
     font-size: 24px;
 
     border: 3px solid #b9c8da;
     border-radius: 12px;
-
-    outline: none;
 }
 
-.keyboard-input:focus {
+.answer-input:focus {
+    outline: none;
     border-color: #3975c6;
+}
+
+
+/* =========================
+   TEXTE À CORRIGER
+========================= */
+
+.correction-box {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+
+    background: white;
+    border: 3px solid #e09b32;
+    border-radius: 12px;
+
+    font-size: 28px;
+    font-weight: bold;
 }
 
 
@@ -272,42 +261,51 @@ main {
 ========================= */
 
 .keyboard {
-    width: 100%;
-    max-width: 800px;
+    margin-top: 35px;
+    padding: 20px;
+    background: #dce5f0;
+    border-radius: 15px;
 }
 
 .keyboard-row {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 7px;
+    margin-bottom: 7px;
 }
 
 .key {
-    min-width: 48px;
-    height: 48px;
+    min-width: 52px;
+    height: 52px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     background: white;
-
-    border: 2px solid #b9c8da;
+    border: 2px solid #b5c2d2;
     border-radius: 8px;
 
     font-weight: bold;
+    font-size: 17px;
 
-    box-shadow: 0 3px 0 #b9c8da;
+    box-shadow: 0 3px 0 #aab8c8;
+
+    transition: 0.2s;
+}
+
+.key.highlight {
+    background: #f4c95d;
+    transform: scale(1.08);
 }
 
 .key.special {
-    min-width: 90px;
-    font-size: 13px;
+    min-width: 95px;
+    font-size: 14px;
 }
 
 .key.space {
-    width: 280px;
+    width: 300px;
 }
 
 
@@ -317,41 +315,37 @@ main {
 
 .message {
     display: none;
-
-    width: 100%;
-    max-width: 650px;
-
     margin-top: 25px;
     padding: 18px;
-
-    border-radius: 12px;
 
     background: #e6f5ef;
     color: #236b58;
 
-    font-size: 19px;
-    font-weight: bold;
+    border-radius: 12px;
 
     text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
 }
 
 
 /* =========================
-   BOUTON SUIVANT
+   BOUTONS
 ========================= */
 
-.next-button {
-    display: none;
+.next-button,
+.restart-button {
 
     margin-top: 25px;
 
-    padding: 15px 25px;
+    padding: 15px 28px;
+
+    border: none;
+    border-radius: 9px;
 
     background: #3975c6;
     color: white;
-
-    border: none;
-    border-radius: 8px;
 
     font-size: 18px;
     font-weight: bold;
@@ -359,8 +353,13 @@ main {
     cursor: pointer;
 }
 
-.next-button:hover {
+.next-button:hover,
+.restart-button:hover {
     opacity: 0.9;
+}
+
+.next-button {
+    display: none;
 }
 
 
@@ -371,10 +370,11 @@ main {
 .final-screen {
     display: none;
     text-align: center;
+    padding: 30px;
 }
 
 .final-screen h2 {
-    font-size: 36px;
+    font-size: 38px;
     color: #203858;
 }
 
@@ -384,41 +384,23 @@ main {
     color: #7b5fc7;
 }
 
-.restart-button {
-    padding: 16px 28px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #3975c6;
-    color: white;
-
-    font-size: 18px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
+    margin-top: 60px;
     background: #1f3656;
     color: white;
-    margin-top: 60px;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: auto;
-
     padding: 35px 25px;
-
     display: flex;
     justify-content: space-between;
-    gap: 20px;
 }
 
 
@@ -426,7 +408,7 @@ footer {
    MOBILE
 ========================= */
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     .navbar {
         flex-direction: column;
@@ -434,7 +416,7 @@ footer {
     }
 
     .page-header h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .game-card {
@@ -445,26 +427,32 @@ footer {
         font-size: 23px;
     }
 
-    .keyboard-input {
-        font-size: 20px;
-    }
-
     .key {
-        min-width: 32px;
-        height: 42px;
-        font-size: 13px;
+        min-width: 30px;
+        height: 40px;
+        font-size: 12px;
     }
 
     .key.special {
         min-width: 60px;
+        font-size: 10px;
     }
 
     .key.space {
-        width: 160px;
+        width: 150px;
+    }
+
+    .keyboard {
+        padding: 8px;
+    }
+
+    .keyboard-row {
+        gap: 3px;
     }
 
     .footer-container {
         flex-direction: column;
+        gap: 15px;
     }
 
 }
@@ -477,35 +465,21 @@ footer {
 <body>
 
 
-<!-- =========================
-     MENU
-========================= -->
-
 <header>
 
 <div class="navbar">
 
 <div class="logo">
-
 <strong>Centre Multimédia du CCAS</strong>
-
 <span>Apprendre • Découvrir • Progresser</span>
-
 </div>
 
-
 <nav>
-
 <a href="index.html">Accueil</a>
-
 <a href="cours.html">Mes cours</a>
-
 <a href="jeux.html">Jeux</a>
-
 <a href="exercices.html">Exercices</a>
-
 <a href="informations.html">Informations</a>
-
 </nav>
 
 </div>
@@ -513,22 +487,16 @@ footer {
 </header>
 
 
-
-<!-- =========================
-     EN-TÊTE
-========================= -->
-
 <section class="page-header">
 
 <h1>Apprendre à utiliser le clavier</h1>
 
 <p>
-Entraînez-vous progressivement à utiliser les touches du clavier
-et à écrire des mots et des phrases.
+Un entraînement progressif pour découvrir les touches importantes
+et apprendre à écrire plus facilement.
 </p>
 
 </section>
-
 
 
 <main>
@@ -536,93 +504,127 @@ et à écrire des mots et des phrases.
 <div class="game-card">
 
 
-<!-- PROGRESSION -->
+<div id="gameScreen">
 
 <div class="progress-info">
 
-<span id="progressText">
-Défi 1 sur 18
-</span>
+<span id="progressText"></span>
 
-<span id="scoreText">
-Réussites : 0
-</span>
+<span id="scoreText"></span>
 
 </div>
 
 
 <div class="progress-bar">
-
 <div class="progress" id="progress"></div>
-
 </div>
 
 
+<div class="level" id="level"></div>
 
-<!-- ÉCRAN DU JEU -->
-
-<div id="gameScreen">
-
-
-<div class="level" id="level">
-Niveau 1
-</div>
-
-
-<h2 class="instruction" id="instruction">
-Chargement...
-</h2>
-
+<h2 class="instruction" id="instruction"></h2>
 
 <p class="help" id="help"></p>
 
 
-<div class="game-area" id="gameArea">
-
-</div>
+<div class="game-area" id="gameArea"></div>
 
 
-<div class="message" id="message">
-Bravo !
-</div>
+<div class="message" id="message"></div>
 
 
-<button
-class="next-button"
-id="nextButton"
-onclick="nextChallenge()">
-
+<button class="next-button" id="nextButton" onclick="nextChallenge()">
 Défi suivant
-
 </button>
 
 
+<!-- CLAVIER VISUEL -->
+
+<div class="keyboard">
+
+<div class="keyboard-row">
+
+<div class="key" data-key="a">A</div>
+<div class="key" data-key="z">Z</div>
+<div class="key" data-key="e">E</div>
+<div class="key" data-key="r">R</div>
+<div class="key" data-key="t">T</div>
+<div class="key" data-key="y">Y</div>
+<div class="key" data-key="u">U</div>
+<div class="key" data-key="i">I</div>
+<div class="key" data-key="o">O</div>
+<div class="key" data-key="p">P</div>
+
 </div>
 
 
+<div class="keyboard-row">
 
-<!-- ÉCRAN FINAL -->
+<div class="key" data-key="q">Q</div>
+<div class="key" data-key="s">S</div>
+<div class="key" data-key="d">D</div>
+<div class="key" data-key="f">F</div>
+<div class="key" data-key="g">G</div>
+<div class="key" data-key="h">H</div>
+<div class="key" data-key="j">J</div>
+<div class="key" data-key="k">K</div>
+<div class="key" data-key="l">L</div>
+<div class="key" data-key="m">M</div>
+
+</div>
+
+
+<div class="keyboard-row">
+
+<div class="key special" data-key="Shift">MAJ</div>
+
+<div class="key" data-key="w">W</div>
+<div class="key" data-key="x">X</div>
+<div class="key" data-key="c">C</div>
+<div class="key" data-key="v">V</div>
+<div class="key" data-key="b">B</div>
+<div class="key" data-key="n">N</div>
+
+<div class="key special" data-key="Backspace">
+EFFACER
+</div>
+
+</div>
+
+
+<div class="keyboard-row">
+
+<div class="key special" data-key="CapsLock">
+VERR. MAJ
+</div>
+
+<div class="key special space" data-key=" ">
+ESPACE
+</div>
+
+<div class="key special" data-key="Enter">
+ENTRÉE
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <div class="final-screen" id="finalScreen">
 
-<h2>Bravo ! Entraînement terminé !</h2>
+<h2>Bravo !</h2>
 
-<p>
-Vous avez terminé tous les exercices du clavier.
-</p>
+<p>Vous avez terminé l'entraînement du clavier.</p>
 
-<div class="final-score" id="finalScore">
-18 / 18
-</div>
+<div class="final-score" id="finalScore"></div>
 
 <p id="finalMessage"></p>
 
-<button
-class="restart-button"
-onclick="restartGame()">
-
-Recommencer l'entraînement
-
+<button class="restart-button" onclick="restartGame()">
+Recommencer
 </button>
 
 </div>
@@ -633,23 +635,15 @@ Recommencer l'entraînement
 </main>
 
 
-
 <footer>
 
 <div class="footer-container">
 
 <div>
-
 <strong>Centre Multimédia du CCAS</strong>
-
 <br>
-
-<span>
 Apprendre • Découvrir • Progresser
-</span>
-
 </div>
-
 
 <div>
 © 2026 Centre Multimédia du CCAS
@@ -660,430 +654,575 @@ Apprendre • Découvrir • Progresser
 </footer>
 
 
-
 <script>
 
 
-/* =========================
-   VARIABLES
-========================= */
-
 let currentChallenge = 0;
-
 let score = 0;
-
 let completed = false;
 
 
 /* =========================
-   DÉFIS
+   LISTE DES DÉFIS
 ========================= */
 
 const challenges = [
 
-    {
-        level: "Niveau 1 : Les lettres",
-        instruction: "Appuyez sur la lettre A",
-        help: "Regardez votre clavier et appuyez une fois sur la touche A.",
-        type: "key",
-        key: "a"
-    },
+/* LETTRES */
 
-    {
-        level: "Niveau 1 : Les lettres",
-        instruction: "Appuyez sur la lettre M",
-        help: "Cherchez la lettre M sur votre clavier.",
-        type: "key",
-        key: "m"
-    },
+{
+level: "Niveau 1 : Découvrir les lettres",
+instruction: "Appuyez sur la lettre A",
+help: "Cherchez la lettre A sur votre clavier.",
+type: "key",
+key: "a"
+},
 
-    {
-        level: "Niveau 1 : Les lettres",
-        instruction: "Appuyez sur la lettre E",
-        help: "Appuyez une seule fois sur la touche E.",
-        type: "key",
-        key: "e"
-    },
+{
+level: "Niveau 1 : Découvrir les lettres",
+instruction: "Appuyez sur la lettre E",
+help: "Regardez le clavier visuel si besoin.",
+type: "key",
+key: "e"
+},
 
-    {
-        level: "Niveau 1 : Les lettres",
-        instruction: "Appuyez sur la lettre S",
-        help: "Cherchez la lettre S.",
-        type: "key",
-        key: "s"
-    },
+{
+level: "Niveau 1 : Découvrir les lettres",
+instruction: "Appuyez sur la lettre S",
+help: "Prenez votre temps.",
+type: "key",
+key: "s"
+},
 
-    {
-        level: "Niveau 2 : Les chiffres",
-        instruction: "Appuyez sur le chiffre 1",
-        help: "Cherchez la touche avec le chiffre 1.",
-        type: "key",
-        key: "1"
-    },
+{
+level: "Niveau 1 : Découvrir les lettres",
+instruction: "Appuyez sur la lettre M",
+help: "Cherchez la touche M.",
+type: "key",
+key: "m"
+},
 
-    {
-        level: "Niveau 2 : Les chiffres",
-        instruction: "Appuyez sur le chiffre 5",
-        help: "Cherchez le chiffre 5 sur votre clavier.",
-        type: "key",
-        key: "5"
-    },
+{
+level: "Niveau 1 : Découvrir les lettres",
+instruction: "Appuyez sur la lettre C",
+help: "Encore un peu d'entraînement.",
+type: "key",
+key: "c"
+},
 
-    {
-        level: "Niveau 2 : Les chiffres",
-        instruction: "Appuyez sur le chiffre 0",
-        help: "Cherchez le chiffre zéro.",
-        type: "key",
-        key: "0"
-    },
 
-    {
-        level: "Niveau 3 : La barre espace",
-        instruction: "Appuyez sur la barre espace",
-        help: "La barre espace est la grande touche en bas du clavier.",
-        type: "special",
-        key: " "
-    },
+/* ESPACE */
 
-    {
-        level: "Niveau 3 : La barre espace",
-        instruction: "Appuyez encore sur la barre espace",
-        help: "Une nouvelle fois pour vous entraîner.",
-        type: "special",
-        key: " "
-    },
+{
+level: "Niveau 2 : La barre espace",
+instruction: "Appuyez sur la barre espace",
+help: "C'est la grande touche située en bas du clavier.",
+type: "key",
+key: " "
+},
 
-    {
-        level: "Niveau 4 : La touche Entrée",
-        instruction: "Appuyez sur la touche Entrée",
-        help: "Cherchez la touche Entrée sur votre clavier.",
-        type: "special",
-        key: "Enter"
-    },
+{
+level: "Niveau 2 : La barre espace",
+instruction: "Appuyez encore sur la barre espace",
+help: "On s'entraîne une deuxième fois.",
+type: "key",
+key: " "
+},
 
-    {
-        level: "Niveau 4 : Retour arrière",
-        instruction: "Appuyez sur Retour arrière",
-        help: "Cette touche sert à effacer le caractère situé à gauche.",
-        type: "special",
-        key: "Backspace"
-    },
 
-    {
-        level: "Niveau 5 : Écrire un mot",
-        instruction: "Écrivez : BONJOUR",
-        help: "Cliquez dans la zone et tapez le mot demandé.",
-        type: "word",
-        answer: "bonjour"
-    },
+/* ENTRÉE */
 
-    {
-        level: "Niveau 5 : Écrire un mot",
-        instruction: "Écrivez : SOURIS",
-        help: "Tapez le mot SOURIS.",
-        type: "word",
-        answer: "souris"
-    },
+{
+level: "Niveau 3 : La touche Entrée",
+instruction: "Appuyez sur Entrée",
+help: "Cette touche permet souvent de passer à la ligne ou de valider.",
+type: "key",
+key: "Enter"
+},
 
-    {
-        level: "Niveau 5 : Écrire un mot",
-        instruction: "Écrivez : CLAVIER",
-        help: "Tapez le mot CLAVIER.",
-        type: "word",
-        answer: "clavier"
-    },
+{
+level: "Niveau 3 : La touche Entrée",
+instruction: "Appuyez encore sur Entrée",
+help: "Encore une fois pour mémoriser son emplacement.",
+type: "key",
+key: "Enter"
+},
 
-    {
-        level: "Niveau 6 : Écrire une phrase",
-        instruction: "Écrivez : Bonjour",
-        help: "Commencez par une majuscule.",
-        type: "word",
-        answer: "bonjour"
-    },
 
-    {
-        level: "Niveau 6 : Écrire une phrase",
-        instruction: "Écrivez : Je suis prêt",
-        help: "Respectez les espaces entre les mots.",
-        type: "word",
-        answer: "je suis prêt"
-    },
+/* EFFACER */
 
-    {
-        level: "Niveau 7 : Majuscule",
-        instruction: "Écrivez : CCAS",
-        help: "Essayez d'écrire les lettres en majuscules.",
-        type: "word",
-        answer: "ccas"
-    },
+{
+level: "Niveau 4 : Effacer",
+instruction: "Appuyez sur Retour arrière",
+help: "Cette touche permet d'effacer ce qui est situé à gauche.",
+type: "key",
+key: "Backspace"
+},
 
-    {
-        level: "Niveau 8 : Grand défi final",
-        instruction: "Écrivez : J'apprends à utiliser le clavier",
-        help: "Prenez votre temps et vérifiez les espaces.",
-        type: "word",
-        answer: "j'apprends à utiliser le clavier"
-    }
+
+/* MOTS */
+
+{
+level: "Niveau 5 : Écrire",
+instruction: "Écrivez : bonjour",
+help: "Cliquez dans la zone et écrivez le mot.",
+type: "text",
+answer: "bonjour"
+},
+
+{
+level: "Niveau 5 : Écrire",
+instruction: "Écrivez : souris",
+help: "Prenez votre temps.",
+type: "text",
+answer: "souris"
+},
+
+{
+level: "Niveau 5 : Écrire",
+instruction: "Écrivez : clavier",
+help: "Regardez vos touches si nécessaire.",
+type: "text",
+answer: "clavier"
+},
+
+
+/* ESPACES */
+
+{
+level: "Niveau 6 : Les espaces",
+instruction: "Écrivez : bonjour Marie",
+help: "N'oubliez pas d'utiliser la barre espace entre les deux mots.",
+type: "text",
+answer: "bonjour Marie"
+},
+
+{
+level: "Niveau 6 : Les espaces",
+instruction: "Écrivez : je suis prêt",
+help: "Utilisez la barre espace entre chaque mot.",
+type: "text",
+answer: "je suis prêt"
+},
+
+
+/* MAJUSCULES */
+
+{
+level: "Niveau 7 : Les majuscules",
+instruction: "Écrivez : CCAS",
+help: "Essayez d'utiliser les majuscules.",
+type: "exact",
+answer: "CCAS"
+},
+
+{
+level: "Niveau 7 : Les majuscules",
+instruction: "Écrivez votre prénom avec une majuscule",
+help: "Par exemple : Marie. Vous pouvez utiliser la touche Maj.",
+type: "free"
+},
+
+
+/* CORRECTION */
+
+{
+level: "Niveau 8 : Corriger",
+instruction: "Corrigez le mot",
+help: "Le mot contient une lettre en trop. Utilisez Retour arrière pour corriger.",
+type: "correction",
+start: "BONJOURR",
+answer: "BONJOUR"
+},
+
+{
+level: "Niveau 8 : Corriger",
+instruction: "Corrigez la phrase",
+help: "Utilisez Retour arrière pour enlever la dernière lettre en trop.",
+type: "correction",
+start: "JE SUIS PRETT",
+answer: "JE SUIS PRET"
+},
+
+
+/* GRAND DÉFI */
+
+{
+level: "Niveau 9 : Grand défi",
+instruction: "Écrivez cette phrase",
+help: "J'apprends à utiliser le clavier",
+type: "exact",
+answer: "J'apprends à utiliser le clavier"
+}
 
 ];
 
 
-
 /* =========================
-   CHARGER UN DÉFI
+   CHARGEMENT DU DÉFI
 ========================= */
 
 function loadChallenge() {
 
-    completed = false;
+completed = false;
 
-    const challenge = challenges[currentChallenge];
-
-
-    document.getElementById("level").textContent =
-        challenge.level;
+const challenge = challenges[currentChallenge];
 
 
-    document.getElementById("instruction").textContent =
-        challenge.instruction;
+document.getElementById("progressText").textContent =
+"Défi " + (currentChallenge + 1) + " sur " + challenges.length;
 
 
-    document.getElementById("help").textContent =
-        challenge.help;
+document.getElementById("scoreText").textContent =
+"Réussites : " + score;
 
 
-    document.getElementById("progressText").textContent =
-        "Défi " + (currentChallenge + 1) +
-        " sur " + challenges.length;
+document.getElementById("progress").style.width =
+(currentChallenge / challenges.length * 100) + "%";
 
 
-    document.getElementById("scoreText").textContent =
-        "Réussites : " + score;
+document.getElementById("level").textContent =
+challenge.level;
 
 
-    document.getElementById("progress").style.width =
-        (currentChallenge / challenges.length * 100) + "%";
+document.getElementById("instruction").textContent =
+challenge.instruction;
 
 
-    document.getElementById("message").style.display =
-        "none";
+document.getElementById("help").textContent =
+challenge.help;
 
 
-    document.getElementById("nextButton").style.display =
-        "none";
+document.getElementById("message").style.display =
+"none";
 
 
-    const area =
-        document.getElementById("gameArea");
+document.getElementById("nextButton").style.display =
+"none";
 
 
-    area.innerHTML = "";
+clearHighlights();
 
 
-    if (challenge.type === "key") {
-
-        createKeyChallenge(area, challenge);
-
-    }
+const area =
+document.getElementById("gameArea");
 
 
-    if (challenge.type === "special") {
-
-        createSpecialChallenge(area, challenge);
-
-    }
+area.innerHTML = "";
 
 
-    if (challenge.type === "word") {
+/* TOUCHE */
 
-        createWordChallenge(area, challenge);
+if (challenge.type === "key") {
 
-    }
+createKeyChallenge(area, challenge);
 
 }
 
 
+/* TEXTE NORMAL */
+
+if (challenge.type === "text") {
+
+createTextChallenge(area, challenge, false);
+
+}
+
+
+/* TEXTE EXACT */
+
+if (challenge.type === "exact") {
+
+createTextChallenge(area, challenge, true);
+
+}
+
+
+/* TEXTE LIBRE */
+
+if (challenge.type === "free") {
+
+createFreeChallenge(area);
+
+}
+
+
+/* CORRECTION */
+
+if (challenge.type === "correction") {
+
+createCorrectionChallenge(area, challenge);
+
+}
+
+}
+
 
 /* =========================
-   DÉFI LETTRE OU CHIFFRE
+   TOUCHE À TROUVER
 ========================= */
 
 function createKeyChallenge(area, challenge) {
 
-    const display =
-        document.createElement("div");
+const keyName = challenge.key;
 
-    display.className =
-        "key-display";
+const display =
+document.createElement("div");
 
-    display.textContent =
-        challenge.key.toUpperCase();
+display.className = "big-key";
 
 
-    area.appendChild(display);
+if (keyName === " ") {
 
-
-    document.addEventListener(
-        "keydown",
-        function handler(event) {
-
-            if (completed) {
-
-                document.removeEventListener(
-                    "keydown",
-                    handler
-                );
-
-                return;
-
-            }
-
-
-            if (
-                event.key.toLowerCase() ===
-                challenge.key.toLowerCase()
-            ) {
-
-                success();
-
-            }
-
-        }
-
-    );
+display.textContent = "ESPACE";
 
 }
 
+else if (keyName === "Enter") {
+
+display.textContent = "ENTRÉE";
+
+}
+
+else if (keyName === "Backspace") {
+
+display.textContent = "EFFACER";
+
+}
+
+else {
+
+display.textContent = keyName.toUpperCase();
+
+}
+
+
+area.appendChild(display);
+
+
+highlightKey(keyName);
+
+
+function keyHandler(event) {
+
+if (completed) return;
+
+
+if (event.key === challenge.key ||
+event.key.toLowerCase() === challenge.key.toLowerCase()) {
+
+event.preventDefault();
+
+success();
+
+document.removeEventListener(
+"keydown",
+keyHandler
+);
+
+}
+
+}
+
+
+document.addEventListener(
+"keydown",
+keyHandler
+);
+
+}
 
 
 /* =========================
-   TOUCHE SPÉCIALE
+   ÉCRITURE
 ========================= */
 
-function createSpecialChallenge(area, challenge) {
+function createTextChallenge(area, challenge, exact) {
 
-    const display =
-        document.createElement("div");
+const input =
+document.createElement("input");
 
-    display.className =
-        "key-display";
+input.type = "text";
 
+input.className =
+"answer-input";
 
-    if (challenge.key === " ") {
-
-        display.textContent =
-            "ESPACE";
-
-        display.style.fontSize =
-            "35px";
-
-    }
-
-    else if (challenge.key === "Enter") {
-
-        display.textContent =
-            "ENTRÉE";
-
-        display.style.fontSize =
-            "35px";
-
-    }
-
-    else {
-
-        display.textContent =
-            "EFFACER";
-
-        display.style.fontSize =
-            "28px";
-
-    }
+input.placeholder =
+"Écrivez ici...";
 
 
-    area.appendChild(display);
+area.appendChild(input);
+
+input.focus();
 
 
-    document.addEventListener(
-        "keydown",
-        function handler(event) {
+input.addEventListener(
+"input",
+function() {
 
-            if (completed) {
-
-                document.removeEventListener(
-                    "keydown",
-                    handler
-                );
-
-                return;
-
-            }
+let value =
+input.value.trim();
 
 
-            if (event.key === challenge.key) {
+if (!exact) {
 
-                event.preventDefault();
+if (
+value.toLowerCase() ===
+challenge.answer.toLowerCase()
+) {
 
-                success();
-
-            }
-
-        }
-
-    );
+success();
 
 }
 
+}
+
+else {
+
+if (
+value === challenge.answer
+) {
+
+success();
+
+}
+
+}
+
+}
+
+);
+
+}
 
 
 /* =========================
-   ÉCRIRE UN MOT
+   TEXTE LIBRE
 ========================= */
 
-function createWordChallenge(area, challenge) {
+function createFreeChallenge(area) {
 
-    const input =
-        document.createElement("input");
+const input =
+document.createElement("input");
 
-    input.type = "text";
+input.type = "text";
 
-    input.className =
-        "keyboard-input";
+input.className =
+"answer-input";
 
-    input.placeholder =
-        "Écrivez ici...";
-
-
-    area.appendChild(input);
+input.placeholder =
+"Écrivez votre prénom...";
 
 
-    input.focus();
+area.appendChild(input);
+
+input.focus();
 
 
-    input.addEventListener(
-        "input",
-        function() {
+input.addEventListener(
+"input",
+function() {
 
-            const value =
-                input.value
-                    .trim()
-                    .toLowerCase();
+if (input.value.length >= 2) {
 
-
-            if (
-                value ===
-                challenge.answer.toLowerCase()
-            ) {
-
-                success();
-
-            }
-
-        }
-
-    );
+success();
 
 }
 
+}
+
+);
+
+}
+
+
+/* =========================
+   CORRECTION
+========================= */
+
+function createCorrectionChallenge(area, challenge) {
+
+const input =
+document.createElement("input");
+
+input.type = "text";
+
+input.className =
+"answer-input";
+
+input.value =
+challenge.start;
+
+
+area.appendChild(input);
+
+
+input.focus();
+
+
+input.setSelectionRange(
+input.value.length,
+input.value.length
+);
+
+
+input.addEventListener(
+"input",
+function() {
+
+if (
+input.value === challenge.answer
+) {
+
+success();
+
+}
+
+}
+
+);
+
+}
+
+
+/* =========================
+   METTRE UNE TOUCHE EN ÉVIDENCE
+========================= */
+
+function highlightKey(key) {
+
+clearHighlights();
+
+
+const keys =
+document.querySelectorAll(".key");
+
+
+keys.forEach(function(element) {
+
+if (
+element.dataset.key === key ||
+element.dataset.key.toLowerCase() === key.toLowerCase()
+) {
+
+element.classList.add("highlight");
+
+}
+
+});
+
+}
+
+
+function clearHighlights() {
+
+document.querySelectorAll(".key").forEach(function(key) {
+
+key.classList.remove("highlight");
+
+});
+
+}
 
 
 /* =========================
@@ -1092,125 +1231,93 @@ function createWordChallenge(area, challenge) {
 
 function success() {
 
-    if (completed) return;
+if (completed) return;
 
-    completed = true;
+completed = true;
 
-    score++;
-
-
-    document.getElementById("scoreText").textContent =
-        "Réussites : " + score;
+score++;
 
 
-    document.getElementById("message").textContent =
-        "Bravo ! Défi réussi !";
+document.getElementById("scoreText").textContent =
+"Réussites : " + score;
 
 
-    document.getElementById("message").style.display =
-        "block";
+document.getElementById("message").textContent =
+"Bravo ! Défi réussi !";
 
 
-    document.getElementById("nextButton").style.display =
-        "inline-block";
+document.getElementById("message").style.display =
+"block";
 
 
-    if (
-        currentChallenge ===
-        challenges.length - 1
-    ) {
+document.getElementById("nextButton").style.display =
+"inline-block";
 
-        document.getElementById("nextButton").textContent =
-            "Voir mon résultat";
 
-    }
+if (
+currentChallenge === challenges.length - 1
+) {
+
+document.getElementById("nextButton").textContent =
+"Voir mon résultat";
+
+}
 
 }
 
 
-
 /* =========================
-   DÉFI SUIVANT
+   SUIVANT
 ========================= */
 
 function nextChallenge() {
 
-    currentChallenge++;
+currentChallenge++;
 
 
-    if (
-        currentChallenge <
-        challenges.length
-    ) {
+if (
+currentChallenge < challenges.length
+) {
 
-        loadChallenge();
+loadChallenge();
 
-    }
+}
 
-    else {
+else {
 
-        showFinal();
+showFinal();
 
-    }
+}
 
 }
 
 
-
 /* =========================
-   ÉCRAN FINAL
+   FIN
 ========================= */
 
 function showFinal() {
 
-    document.getElementById("gameScreen").style.display =
-        "none";
+document.getElementById("gameScreen").style.display =
+"none";
 
 
-    document.getElementById("finalScreen").style.display =
-        "block";
+document.getElementById("finalScreen").style.display =
+"block";
 
 
-    document.getElementById("progress").style.width =
-        "100%";
+document.getElementById("progress").style.width =
+"100%";
 
 
-    document.getElementById("finalScore").textContent =
-        score +
-        " / " +
-        challenges.length;
+document.getElementById("finalScore").textContent =
+score + " / " + challenges.length;
 
 
-    let message = "";
-
-
-    if (score === challenges.length) {
-
-        message =
-            "Excellent ! Vous avez réussi tous les défis du clavier.";
-
-    }
-
-    else if (score >= 14) {
-
-        message =
-            "Très bon travail ! Continuez à vous entraîner.";
-
-    }
-
-    else {
-
-        message =
-            "Bravo pour vos efforts ! Vous pouvez recommencer autant de fois que vous le souhaitez.";
-
-    }
-
-
-    document.getElementById("finalMessage").textContent =
-        message;
+document.getElementById("finalMessage").textContent =
+"Excellent travail ! Vous avez découvert les principales touches du clavier et vous pouvez maintenant recommencer pour vous entraîner encore.";
 
 }
-
 
 
 /* =========================
@@ -1219,23 +1326,26 @@ function showFinal() {
 
 function restartGame() {
 
-    currentChallenge = 0;
+currentChallenge = 0;
 
-    score = 0;
-
-
-    document.getElementById("finalScreen").style.display =
-        "none";
+score = 0;
 
 
-    document.getElementById("gameScreen").style.display =
-        "block";
+document.getElementById("finalScreen").style.display =
+"none";
 
 
-    loadChallenge();
+document.getElementById("gameScreen").style.display =
+"block";
+
+
+document.getElementById("nextButton").textContent =
+"Défi suivant";
+
+
+loadChallenge();
 
 }
-
 
 
 /* =========================
