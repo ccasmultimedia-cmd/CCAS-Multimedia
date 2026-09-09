@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cours Smartphone - Centre Multimédia du CCAS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #24344d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* MENU */
+
+        header {
+            background: #1f3656;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo strong {
+            font-size: 26px;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            background-color: #3d76c5;
+        }
+
+
+        /* EN-TÊTE */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #e7f4f2,
+                #ffffff,
+                #e9f0fa
+            );
+
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px;
+            font-size: 46px;
+            color: #236d5e;
+        }
+
+        .page-header p {
+            margin: auto;
+            max-width: 700px;
+            font-size: 21px;
+            color: #617087;
+        }
+
+
+        /* CONTENU */
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .course {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 18px;
+
+            border-left: 7px solid #2e8b78;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+            transition: 0.3s;
+        }
+
+        .course:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(30, 50, 80, 0.14);
+        }
+
+        .course h2 {
+            margin-top: 0;
+            color: #236d5e;
+            font-size: 27px;
+        }
+
+        .course p {
+            font-size: 18px;
+            color: #617087;
+        }
+
+
+        /* BOUTON */
+
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 14px 22px;
+            border-radius: 8px;
+
+            background: #2e8b78;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #236d5e;
+        }
+
+
+        /* SECTION EXERCICES */
+
+        .exercise-section {
+            background: #e4f5f1;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .exercise-section h2 {
+            margin-top: 0;
+            color: #236d5e;
+            font-size: 30px;
+        }
+
+        .exercise-section p {
+            font-size: 19px;
+            color: #617087;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #1f3656;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            opacity: 0.75;
+            font-size: 15px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px 12px;
+            }
+
+            .page-header {
+                padding: 50px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            main {
+                padding: 40px 20px;
+            }
+
+            .course {
+                padding: 25px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+
+            <strong>Centre Multimédia du CCAS</strong>
+
+            <span>Apprendre • Découvrir • Progresser</span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">Accueil</a>
+
+            <a href="cours.html">Mes cours</a>
+
+            <a href="jeux.html">Jeux</a>
+
+            <a href="informations.html">Informations</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>Cours Smartphone</h1>
+
+    <p>
+        Découvrez comment utiliser votre smartphone simplement
+        et profiter des outils utiles au quotidien.
+    </p>
+
+</section>
+
+
+<main>
+
+
+    <div class="course">
+
+        <h2>Découvrir son smartphone</h2>
+
+        <p>
+            Apprendre à connaître son téléphone, utiliser l'écran,
+            les boutons et les principales fonctions.
+        </p>
+
+        <!-- Ajoutez ici le lien vers votre PDF -->
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Téléphoner et envoyer des messages</h2>
+
+        <p>
+            Apprendre à appeler, envoyer des SMS
+            et gérer ses contacts.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Prendre et organiser ses photos</h2>
+
+        <p>
+            Découvrir comment prendre des photos,
+            les retrouver et les organiser.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Utiliser les applications</h2>
+
+        <p>
+            Comprendre comment installer, utiliser
+            et supprimer des applications.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>Naviguer sur Internet</h2>
+
+        <p>
+            Rechercher des informations et utiliser Internet
+            depuis son smartphone.
+        </p>
+
+    </div>
+
+
+    <div class="course">
+
+        <h2>La sécurité sur smartphone</h2>
+
+        <p>
+            Apprendre les bons réflexes pour protéger
+            son téléphone et ses informations.
+        </p>
+
+    </div>
+
+
+    <section class="exercise-section">
+
+        <h2>Exercices et entraînement</h2>
+
+        <p>
+            Des exercices pratiques seront ajoutés progressivement
+            pour vous permettre de vous entraîner.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-title">
+                Centre Multimédia du CCAS
+            </div>
+
+            <div class="footer-text">
+                Apprendre • Découvrir • Progresser
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            © 2026 Centre Multimédia du CCAS
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
