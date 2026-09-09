@@ -8,9 +8,9 @@
 
 <style>
 
-/* =========================
+/* =========================================
    GÉNÉRAL
-========================= */
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -23,14 +23,15 @@ body {
     color: #24344d;
 }
 
-button {
+button,
+input {
     font-family: inherit;
 }
 
 
-/* =========================
+/* =========================================
    MENU
-========================= */
+========================================= */
 
 header {
     background: #1f3656;
@@ -45,7 +46,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .logo {
@@ -54,7 +55,7 @@ header {
 }
 
 .logo strong {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .logo span {
@@ -80,20 +81,14 @@ nav a:hover {
 }
 
 
-/* =========================
+/* =========================================
    EN-TÊTE
-========================= */
+========================================= */
 
 .page-header {
     text-align: center;
     padding: 55px 20px;
-
-    background: linear-gradient(
-        135deg,
-        #e9f0fa,
-        #ffffff,
-        #eef7ef
-    );
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
 }
 
 .page-header h1 {
@@ -103,16 +98,16 @@ nav a:hover {
 }
 
 .page-header p {
-    max-width: 800px;
+    max-width: 850px;
     margin: auto;
     font-size: 20px;
     color: #617087;
 }
 
 
-/* =========================
+/* =========================================
    CONTENU
-========================= */
+========================================= */
 
 main {
     max-width: 1200px;
@@ -128,15 +123,14 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    PROGRESSION
-========================= */
+========================================= */
 
 .progress-info {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -156,20 +150,17 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    CONSIGNES
-========================= */
+========================================= */
 
 .level {
     display: inline-block;
     margin-top: 30px;
-
     padding: 8px 18px;
     border-radius: 20px;
-
     background: #5b9b6b;
     color: white;
-
     font-weight: bold;
 }
 
@@ -185,9 +176,9 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    EXPLORATEUR
-========================= */
+========================================= */
 
 .explorer {
     margin-top: 30px;
@@ -197,29 +188,22 @@ main {
     background: white;
 }
 
-
-/* BARRE DU HAUT */
-
 .explorer-top {
     padding: 15px;
     background: #e9eef5;
-
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-
     border-bottom: 2px solid #ccd6e2;
 }
 
 .tool-button {
-    padding: 10px 15px;
-
+    padding: 10px 14px;
     background: white;
     border: 2px solid #b9c8da;
     border-radius: 8px;
-
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -229,30 +213,39 @@ main {
 
 .path {
     flex: 1;
-    min-width: 200px;
-
+    min-width: 180px;
     padding: 10px 15px;
-
     background: white;
     border-radius: 8px;
     border: 2px solid #b9c8da;
-
     color: #4d607a;
 }
 
 
-/* CORPS EXPLORATEUR */
+/* =========================================
+   RECHERCHE
+========================================= */
 
-.explorer-body {
-    display: flex;
-    min-height: 450px;
+.search-box {
+    padding: 10px 14px;
+    border: 2px solid #b9c8da;
+    border-radius: 8px;
+    font-size: 15px;
+    min-width: 180px;
 }
 
 
-/* MENU LATÉRAL */
+/* =========================================
+   CORPS
+========================================= */
+
+.explorer-body {
+    display: flex;
+    min-height: 460px;
+}
 
 .sidebar {
-    width: 220px;
+    width: 210px;
     background: #f4f7fa;
     border-right: 2px solid #d6dee8;
     padding: 20px 12px;
@@ -280,30 +273,23 @@ main {
     color: white;
 }
 
-
-/* FICHIERS */
-
 .files-area {
     flex: 1;
     padding: 25px;
-
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 20px;
-
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 18px;
     align-content: start;
 }
 
 .file {
     padding: 15px 10px;
-
     border: 2px solid transparent;
     border-radius: 12px;
-
     text-align: center;
     cursor: pointer;
-
     transition: 0.2s;
+    position: relative;
 }
 
 .file:hover {
@@ -317,21 +303,18 @@ main {
 }
 
 .file.dragging {
-    opacity: 0.5;
+    opacity: 0.45;
 }
 
 .file-icon {
-    font-size: 50px;
+    font-size: 48px;
     margin-bottom: 8px;
 }
 
 .file-name {
-    font-size: 16px;
+    font-size: 15px;
     word-break: break-word;
 }
-
-
-/* DOSSIER CIBLE */
 
 .drop-zone {
     border: 3px dashed #5b9b6b !important;
@@ -339,50 +322,64 @@ main {
 }
 
 
-/* =========================
+/* =========================================
+   MENU CONTEXTUEL
+========================================= */
+
+.context-menu {
+    position: fixed;
+    display: none;
+    z-index: 1000;
+    width: 190px;
+    background: white;
+    border: 2px solid #b9c8da;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(30,50,80,0.2);
+    overflow: hidden;
+}
+
+.context-item {
+    padding: 12px 15px;
+    cursor: pointer;
+}
+
+.context-item:hover {
+    background: #edf4ff;
+}
+
+
+/* =========================================
    MESSAGE
-========================= */
+========================================= */
 
 .message {
     display: none;
-
     margin-top: 25px;
     padding: 18px;
-
     border-radius: 12px;
-
     background: #e6f5ef;
     color: #236b58;
-
     text-align: center;
-
     font-size: 20px;
     font-weight: bold;
 }
 
 
-/* =========================
-   BOUTON SUIVANT
-========================= */
+/* =========================================
+   BOUTONS
+========================================= */
 
 .next-button,
 .restart-button {
-
     display: none;
-
     margin-top: 25px;
-
     padding: 15px 28px;
-
     background: #3975c6;
     color: white;
-
     border: none;
     border-radius: 9px;
-
     font-size: 18px;
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -392,9 +389,9 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    FIN
-========================= */
+========================================= */
 
 .final-screen {
     display: none;
@@ -414,9 +411,9 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
     margin-top: 60px;
@@ -428,16 +425,15 @@ footer {
     max-width: 1200px;
     margin: auto;
     padding: 35px 25px;
-
     display: flex;
     justify-content: space-between;
     gap: 20px;
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 750px) {
 
@@ -462,7 +458,6 @@ footer {
         width: 100%;
         border-right: none;
         border-bottom: 2px solid #d6dee8;
-
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
@@ -477,8 +472,12 @@ footer {
         padding: 15px;
     }
 
-    .file-icon {
-        font-size: 42px;
+    .explorer-top {
+        gap: 6px;
+    }
+
+    .search-box {
+        width: 100%;
     }
 
     .footer-container {
@@ -488,38 +487,27 @@ footer {
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================
-     MENU
-========================= -->
-
 <header>
 
 <div class="navbar">
 
 <div class="logo">
-
 <strong>Centre Multimédia du CCAS</strong>
-
 <span>Apprendre • Découvrir • Progresser</span>
-
 </div>
 
-
 <nav>
-
 <a href="index.html">Accueil</a>
 <a href="cours.html">Mes cours</a>
 <a href="jeux.html">Jeux</a>
 <a href="exercices.html">Exercices</a>
 <a href="informations.html">Informations</a>
-
 </nav>
 
 </div>
@@ -527,22 +515,16 @@ footer {
 </header>
 
 
-
-<!-- =========================
-     EN-TÊTE
-========================= -->
-
 <section class="page-header">
 
-<h1>Apprendre à gérer ses dossiers</h1>
+<h1>Apprendre à gérer ses fichiers et dossiers</h1>
 
 <p>
-Entraînez-vous à ouvrir des dossiers, sélectionner des fichiers
-et ranger vos documents dans un faux explorateur.
+Entraînez-vous dans un faux explorateur avant de manipuler
+vos vrais fichiers sur votre ordinateur.
 </p>
 
 </section>
-
 
 
 <main>
@@ -553,37 +535,23 @@ et ranger vos documents dans un faux explorateur.
 <div id="gameScreen">
 
 
-<!-- PROGRESSION -->
-
 <div class="progress-info">
 
-<span id="progressText">
-Défi 1
-</span>
+<span id="progressText"></span>
 
-<span id="scoreText">
-Réussites : 0
-</span>
+<span id="scoreText"></span>
 
 </div>
 
 
 <div class="progress-bar">
-
 <div class="progress" id="progress"></div>
-
 </div>
 
 
-<div class="level" id="level">
-Niveau 1
-</div>
+<div class="level" id="level"></div>
 
-
-<h2 class="instruction" id="instruction">
-Chargement...
-</h2>
-
+<h2 class="instruction" id="instruction"></h2>
 
 <p class="help" id="help"></p>
 
@@ -596,95 +564,61 @@ Chargement...
 
 <div class="explorer-top">
 
-<button
-class="tool-button"
-onclick="goBack()">
-
+<button class="tool-button" onclick="goBack()">
 ← Retour
-
 </button>
 
-
-<button
-class="tool-button"
-onclick="createFolder()">
-
+<button class="tool-button" onclick="createFolder()">
 Nouveau dossier
-
 </button>
 
+<button class="tool-button" onclick="pasteFile()">
+Coller
+</button>
 
 <div class="path" id="path">
-
 Ce PC
-
 </div>
 
-</div>
+<input
+type="text"
+class="search-box"
+id="searchInput"
+placeholder="Rechercher..."
+oninput="searchFiles()">
 
+</div>
 
 
 <div class="explorer-body">
 
 
-<!-- MENU LATÉRAL -->
-
 <div class="sidebar">
 
 <div class="sidebar-title">
-
 Accès rapide
-
 </div>
 
-
-<div
-class="sidebar-item"
-onclick="openLocation('documents')">
-
-Documents
-
-</div>
-
-
-<div
-class="sidebar-item"
-onclick="openLocation('images')">
-
-Images
-
-</div>
-
-
-<div
-class="sidebar-item"
-onclick="openLocation('bureau')">
-
+<div class="sidebar-item" onclick="openLocation('bureau')">
 Bureau
-
 </div>
 
+<div class="sidebar-item" onclick="openLocation('documents')">
+Documents
+</div>
 
-<div
-class="sidebar-item"
-onclick="openLocation('corbeille')">
+<div class="sidebar-item" onclick="openLocation('images')">
+Images
+</div>
 
+<div class="sidebar-item" onclick="openLocation('corbeille')">
 Corbeille
+</div>
 
 </div>
 
 
-</div>
-
-
-
-<!-- FICHIERS -->
-
-<div
-class="files-area"
-id="filesArea">
-
-</div>
+<div class="files-area" id="filesArea"></div>
 
 
 </div>
@@ -692,14 +626,35 @@ id="filesArea">
 </div>
 
 
+<!-- MENU CLIC DROIT -->
 
-<div
-class="message"
-id="message">
+<div class="context-menu" id="contextMenu">
 
-Bravo !
+<div class="context-item" onclick="renameSelected()">
+Renommer
+</div>
+
+<div class="context-item" onclick="copySelected()">
+Copier
+</div>
+
+<div class="context-item" onclick="cutSelected()">
+Couper
+</div>
+
+<div class="context-item" onclick="deleteSelected()">
+Supprimer
+</div>
+
+<div class="context-item" onclick="restoreSelected()">
+Restaurer
+</div>
 
 </div>
+
+
+
+<div class="message" id="message"></div>
 
 
 <button
@@ -716,30 +671,15 @@ Défi suivant
 
 
 
-<!-- FIN -->
-
-<div
-class="final-screen"
-id="finalScreen">
+<div class="final-screen" id="finalScreen">
 
 <h2>Bravo !</h2>
 
-<p>
-Vous avez terminé l'entraînement à la gestion des dossiers.
-</p>
+<p>Vous avez terminé l'entraînement.</p>
 
-
-<div
-class="final-score"
-id="finalScore">
-
-0 / 0
-
-</div>
-
+<div class="final-score" id="finalScore"></div>
 
 <p id="finalMessage"></p>
-
 
 <button
 class="restart-button"
@@ -750,7 +690,6 @@ Recommencer
 
 </button>
 
-
 </div>
 
 
@@ -759,26 +698,18 @@ Recommencer
 </main>
 
 
-
 <footer>
 
 <div class="footer-container">
 
 <div>
-
 <strong>Centre Multimédia du CCAS</strong>
-
 <br>
-
 Apprendre • Découvrir • Progresser
-
 </div>
 
-
 <div>
-
 © 2026 Centre Multimédia du CCAS
-
 </div>
 
 </div>
@@ -789,39 +720,44 @@ Apprendre • Découvrir • Progresser
 
 <script>
 
-
-/* =========================
+/* =========================================
    VARIABLES
-========================= */
+========================================= */
 
 let currentChallenge = 0;
-
 let score = 0;
-
 let completed = false;
 
 let selectedFile = null;
+let selectedElement = null;
+
+let clipboard = null;
+let clipboardMode = null;
 
 let currentLocation = "bureau";
 
+let searchTerm = "";
 
-/* =========================
-   STRUCTURE DES FICHIERS
-========================= */
 
-let fileSystem = {
+/* =========================================
+   SYSTÈME DE FICHIERS
+========================================= */
+
+function createInitialFileSystem() {
+
+return {
 
 bureau: [
 
 {
-name: "Mes documents",
+name: "Documents",
 type: "folder",
 icon: "📁",
 location: "documents"
 },
 
 {
-name: "Mes photos",
+name: "Images",
 type: "folder",
 icon: "📁",
 location: "images"
@@ -834,13 +770,12 @@ icon: "📄"
 },
 
 {
-name: "vacances.jpg",
-type: "image",
-icon: "🖼️"
+name: "notes.txt",
+type: "document",
+icon: "📄"
 }
 
 ],
-
 
 documents: [
 
@@ -857,19 +792,18 @@ icon: "📁"
 },
 
 {
-name: "lettre.docx",
+name: "facture.pdf",
 type: "document",
 icon: "📄"
 },
 
 {
-name: "facture.pdf",
+name: "contrat.pdf",
 type: "document",
 icon: "📄"
 }
 
 ],
-
 
 images: [
 
@@ -895,42 +829,52 @@ icon: "🖼️"
 name: "chat.jpg",
 type: "image",
 icon: "🖼️"
+},
+
+{
+name: "anniversaire.jpg",
+type: "image",
+icon: "🖼️"
 }
 
 ],
-
 
 corbeille: []
 
 };
 
+}
 
-/* =========================
+
+let fileSystem = createInitialFileSystem();
+
+
+/* =========================================
    DÉFIS
-========================= */
+========================================= */
 
 const challenges = [
 
 {
-level: "Niveau 1 : Ouvrir un dossier",
-instruction: "Ouvrez le dossier « Mes documents »",
-help: "Double-cliquez sur le dossier demandé.",
+level: "Niveau 1 : Découvrir les dossiers",
+instruction: "Ouvrez le dossier « Documents »",
+help: "Double-cliquez sur le dossier Documents.",
 action: "open",
-target: "Mes documents"
+target: "Documents"
 },
 
 {
-level: "Niveau 1 : Ouvrir un dossier",
-instruction: "Ouvrez le dossier « Mes photos »",
-help: "Revenez sur le Bureau puis ouvrez Mes photos.",
+level: "Niveau 1 : Découvrir les dossiers",
+instruction: "Ouvrez le dossier « Images »",
+help: "Revenez au Bureau puis double-cliquez sur Images.",
 action: "open",
-target: "Mes photos"
+target: "Images"
 },
 
 {
 level: "Niveau 2 : Sélectionner",
 instruction: "Sélectionnez le fichier « plage.jpg »",
-help: "Cliquez une fois sur le fichier demandé.",
+help: "Cliquez une seule fois sur le fichier.",
 action: "select",
 target: "plage.jpg"
 },
@@ -938,109 +882,183 @@ target: "plage.jpg"
 {
 level: "Niveau 2 : Sélectionner",
 instruction: "Sélectionnez le fichier « facture.pdf »",
-help: "Utilisez Documents pour retrouver le fichier.",
+help: "Utilisez Documents pour retrouver ce fichier.",
 action: "select",
 target: "facture.pdf"
 },
 
 {
-level: "Niveau 3 : Créer",
-instruction: "Créez un nouveau dossier",
-help: "Cliquez sur le bouton « Nouveau dossier ».",
-action: "create"
+level: "Niveau 3 : Créer un dossier",
+instruction: "Créez un nouveau dossier nommé « Mes cours »",
+help: "Cliquez sur Nouveau dossier et donnez-lui le bon nom.",
+action: "create",
+target: "Mes cours"
 },
 
 {
-level: "Niveau 4 : Ranger",
+level: "Niveau 3 : Créer un dossier",
+instruction: "Créez un nouveau dossier nommé « Recettes »",
+help: "Encore un entraînement pour bien retenir la manipulation.",
+action: "create",
+target: "Recettes"
+},
+
+{
+level: "Niveau 4 : Renommer",
+instruction: "Renommez « notes.txt » en « mes-notes.txt »",
+help: "Sélectionnez le fichier puis faites un clic droit.",
+action: "rename",
+target: "mes-notes.txt"
+},
+
+{
+level: "Niveau 4 : Renommer",
+instruction: "Renommez « contrat.pdf » en « contrat-maison.pdf »",
+help: "Retrouvez le fichier puis utilisez le clic droit.",
+action: "rename",
+target: "contrat-maison.pdf"
+},
+
+{
+level: "Niveau 5 : Supprimer",
+instruction: "Supprimez le fichier « lettre.docx »",
+help: "Sélectionnez-le puis utilisez le clic droit et Supprimer.",
+action: "delete",
+target: "lettre.docx"
+},
+
+{
+level: "Niveau 5 : Corbeille",
+instruction: "Ouvrez la Corbeille",
+help: "Utilisez le menu à gauche.",
+action: "location",
+target: "corbeille"
+},
+
+{
+level: "Niveau 5 : Restaurer",
+instruction: "Restaurez le fichier « lettre.docx »",
+help: "Dans la Corbeille : clic droit sur le fichier puis Restaurer.",
+action: "restore",
+target: "lettre.docx"
+},
+
+{
+level: "Niveau 6 : Copier",
+instruction: "Copiez le fichier « facture.pdf »",
+help: "Sélectionnez le fichier puis utilisez le clic droit et Copier.",
+action: "copy",
+target: "facture.pdf"
+},
+
+{
+level: "Niveau 6 : Coller",
+instruction: "Collez le fichier dans le Bureau",
+help: "Ouvrez Bureau puis cliquez sur Coller.",
+action: "paste",
+target: "bureau"
+},
+
+{
+level: "Niveau 7 : Couper",
+instruction: "Coupez le fichier « anniversaire.jpg »",
+help: "Utilisez le clic droit puis Couper.",
+action: "cut",
+target: "anniversaire.jpg"
+},
+
+{
+level: "Niveau 7 : Déplacer",
+instruction: "Collez le fichier dans Documents",
+help: "Ouvrez Documents puis cliquez sur Coller.",
+action: "move",
+target: "documents"
+},
+
+{
+level: "Niveau 8 : Rechercher",
+instruction: "Recherchez le fichier « chat.jpg »",
+help: "Utilisez la zone Rechercher en haut à droite.",
+action: "search",
+target: "chat.jpg"
+},
+
+{
+level: "Niveau 9 : Ranger",
 instruction: "Déplacez « plage.jpg » dans le dossier « Vacances »",
-help: "Faites glisser le fichier vers le dossier Vacances.",
+help: "Faites glisser la photo sur le dossier Vacances.",
 action: "drag",
 file: "plage.jpg",
 target: "Vacances"
 },
 
 {
-level: "Niveau 4 : Ranger",
+level: "Niveau 9 : Ranger",
 instruction: "Déplacez « chat.jpg » dans le dossier « Famille »",
-help: "Faites glisser le fichier vers le dossier Famille.",
+help: "Faites glisser la photo sur le dossier Famille.",
 action: "drag",
 file: "chat.jpg",
 target: "Famille"
 },
 
 {
-level: "Niveau 5 : Se repérer",
-instruction: "Ouvrez le dossier Documents",
-help: "Vous pouvez utiliser le menu à gauche.",
-action: "location",
-target: "documents"
+level: "Grand défi final",
+instruction: "Créez un dossier nommé « Photos 2026 »",
+help: "Vous devez maintenant réaliser la manipulation sans indication supplémentaire.",
+action: "create",
+target: "Photos 2026"
 },
 
 {
-level: "Niveau 5 : Se repérer",
-instruction: "Ouvrez le dossier Images",
-help: "Utilisez le menu à gauche.",
-action: "location",
-target: "images"
-},
-
-{
-level: "Niveau 6 : Défi final",
-instruction: "Sélectionnez le fichier « chat.jpg »",
-help: "Retrouvez le fichier et cliquez dessus.",
+level: "Grand défi final",
+instruction: "Sélectionnez le fichier « anniversaire.jpg »",
+help: "Retrouvez le fichier et sélectionnez-le.",
 action: "select",
-target: "chat.jpg"
+target: "anniversaire.jpg"
 }
 
 ];
 
 
-
-/* =========================
-   DÉMARRER
-========================= */
+/* =========================================
+   CHARGER UN DÉFI
+========================================= */
 
 function loadChallenge() {
 
 completed = false;
 
 selectedFile = null;
+selectedElement = null;
 
+searchTerm = "";
 
-const challenge =
-challenges[currentChallenge];
+document.getElementById("searchInput").value = "";
+
+const challenge = challenges[currentChallenge];
 
 
 document.getElementById("level").textContent =
 challenge.level;
 
-
 document.getElementById("instruction").textContent =
 challenge.instruction;
-
 
 document.getElementById("help").textContent =
 challenge.help;
 
-
 document.getElementById("progressText").textContent =
-"Défi " +
-(currentChallenge + 1) +
-" sur " +
-challenges.length;
-
+"Défi " + (currentChallenge + 1) +
+" sur " + challenges.length;
 
 document.getElementById("scoreText").textContent =
 "Réussites : " + score;
 
-
 document.getElementById("progress").style.width =
 (currentChallenge / challenges.length * 100) + "%";
 
-
 document.getElementById("message").style.display =
 "none";
-
 
 document.getElementById("nextButton").style.display =
 "none";
@@ -1048,32 +1066,42 @@ document.getElementById("nextButton").style.display =
 
 currentLocation = "bureau";
 
-
 renderFiles();
 
 }
 
 
-
-/* =========================
+/* =========================================
    AFFICHER LES FICHIERS
-========================= */
+========================================= */
 
 function renderFiles() {
 
 const area =
 document.getElementById("filesArea");
 
-
 area.innerHTML = "";
 
+updatePath();
 
-document.getElementById("path").textContent =
-getLocationName(currentLocation);
+updateSidebar();
 
 
-const files =
+let files =
 fileSystem[currentLocation] || [];
+
+
+if (searchTerm !== "") {
+
+files = files.filter(function(file) {
+
+return file.name
+.toLowerCase()
+.includes(searchTerm.toLowerCase());
+
+});
+
+}
 
 
 files.forEach(function(file) {
@@ -1081,10 +1109,7 @@ files.forEach(function(file) {
 const element =
 document.createElement("div");
 
-
-element.className =
-"file";
-
+element.className = "file";
 
 element.draggable = true;
 
@@ -1100,7 +1125,7 @@ file.name +
 '</div>';
 
 
-/* CLIC */
+/* SIMPLE CLIC */
 
 element.addEventListener(
 "click",
@@ -1119,7 +1144,10 @@ element.addEventListener(
 function() {
 
 if (
-file.type === "folder" &&
+file.type === "folder"
+) {
+
+if (
 file.location
 ) {
 
@@ -1136,35 +1164,51 @@ file.name
 }
 
 }
+
+}
 );
 
 
-/* DÉBUT GLISSER */
+/* CLIC DROIT */
 
 element.addEventListener(
-"dragstart",
-function() {
+"contextmenu",
+function(event) {
 
-selectedFile =
-file;
+event.preventDefault();
 
-element.classList.add(
-"dragging"
+selectFile(file, element);
+
+showContextMenu(
+event.clientX,
+event.clientY
 );
 
 }
 );
 
 
-/* FIN GLISSER */
+/* DRAG START */
+
+element.addEventListener(
+"dragstart",
+function() {
+
+selectedFile = file;
+
+element.classList.add("dragging");
+
+}
+);
+
+
+/* DRAG END */
 
 element.addEventListener(
 "dragend",
 function() {
 
-element.classList.remove(
-"dragging"
-);
+element.classList.remove("dragging");
 
 }
 );
@@ -1182,9 +1226,7 @@ function(event) {
 
 event.preventDefault();
 
-element.classList.add(
-"drop-zone"
-);
+element.classList.add("drop-zone");
 
 }
 );
@@ -1194,9 +1236,7 @@ element.addEventListener(
 "dragleave",
 function() {
 
-element.classList.remove(
-"drop-zone"
-);
+element.classList.remove("drop-zone");
 
 }
 );
@@ -1208,14 +1248,10 @@ function(event) {
 
 event.preventDefault();
 
-element.classList.remove(
-"drop-zone"
-);
+element.classList.remove("drop-zone");
 
 
-if (
-selectedFile
-) {
+if (selectedFile) {
 
 checkDrag(
 selectedFile.name,
@@ -1237,10 +1273,9 @@ area.appendChild(element);
 }
 
 
-
-/* =========================
+/* =========================================
    SÉLECTIONNER
-========================= */
+========================================= */
 
 function selectFile(file, element) {
 
@@ -1248,20 +1283,16 @@ document
 .querySelectorAll(".file")
 .forEach(function(item) {
 
-item.classList.remove(
-"selected"
-);
+item.classList.remove("selected");
 
 });
 
 
-element.classList.add(
-"selected"
-);
+element.classList.add("selected");
 
+selectedFile = file;
 
-selectedFile =
-file;
+selectedElement = element;
 
 
 checkAction(
@@ -1272,14 +1303,336 @@ file.name
 }
 
 
+/* =========================================
+   MENU CONTEXTUEL
+========================================= */
 
-/* =========================
-   OUVRIR UN EMPLACEMENT
-========================= */
+function showContextMenu(x, y) {
+
+const menu =
+document.getElementById("contextMenu");
+
+menu.style.display = "block";
+
+menu.style.left = x + "px";
+
+menu.style.top = y + "px";
+
+}
+
+
+document.addEventListener(
+"click",
+function(event) {
+
+if (
+!event.target.closest(".context-menu")
+) {
+
+document.getElementById("contextMenu").style.display =
+"none";
+
+}
+
+}
+);
+
+
+/* =========================================
+   RENOMMER
+========================================= */
+
+function renameSelected() {
+
+hideContextMenu();
+
+if (!selectedFile) return;
+
+
+const newName =
+prompt(
+"Quel nouveau nom voulez-vous donner à ce fichier ?",
+selectedFile.name
+);
+
+
+if (
+newName &&
+newName.trim() !== ""
+) {
+
+selectedFile.name =
+newName.trim();
+
+checkAction(
+"rename",
+selectedFile.name
+);
+
+renderFiles();
+
+}
+
+}
+
+
+/* =========================================
+   COPIER
+========================================= */
+
+function copySelected() {
+
+hideContextMenu();
+
+if (!selectedFile) return;
+
+
+clipboard =
+{
+...selectedFile
+};
+
+
+clipboardMode = "copy";
+
+
+checkAction(
+"copy",
+selectedFile.name
+);
+
+}
+
+
+/* =========================================
+   COUPER
+========================================= */
+
+function cutSelected() {
+
+hideContextMenu();
+
+if (!selectedFile) return;
+
+
+clipboard = selectedFile;
+
+clipboardMode = "cut";
+
+
+checkAction(
+"cut",
+selectedFile.name
+);
+
+}
+
+
+/* =========================================
+   COLLER
+========================================= */
+
+function pasteFile() {
+
+if (!clipboard) {
+
+alert("Aucun fichier à coller.");
+
+return;
+
+}
+
+
+if (clipboardMode === "copy") {
+
+const copy =
+{
+...clipboard
+};
+
+
+copy.name =
+"Copie de " +
+copy.name;
+
+
+fileSystem[currentLocation].push(copy);
+
+
+checkAction(
+"paste",
+currentLocation
+);
+
+}
+
+
+if (clipboardMode === "cut") {
+
+removeFileFromAllLocations(
+clipboard
+);
+
+
+fileSystem[currentLocation].push(
+clipboard
+);
+
+
+checkAction(
+"move",
+currentLocation
+);
+
+
+clipboard = null;
+
+clipboardMode = null;
+
+}
+
+
+renderFiles();
+
+}
+
+
+/* =========================================
+   SUPPRIMER
+========================================= */
+
+function deleteSelected() {
+
+hideContextMenu();
+
+if (!selectedFile) return;
+
+
+removeFileFromAllLocations(
+selectedFile
+);
+
+
+fileSystem.corbeille.push(
+selectedFile
+);
+
+
+checkAction(
+"delete",
+selectedFile.name
+);
+
+
+selectedFile = null;
+
+renderFiles();
+
+}
+
+
+/* =========================================
+   RESTAURER
+========================================= */
+
+function restoreSelected() {
+
+hideContextMenu();
+
+if (!selectedFile) return;
+
+
+const index =
+fileSystem.corbeille.indexOf(
+selectedFile
+);
+
+
+if (index !== -1) {
+
+fileSystem.corbeille.splice(
+index,
+1
+);
+
+
+fileSystem.bureau.push(
+selectedFile
+);
+
+
+checkAction(
+"restore",
+selectedFile.name
+);
+
+}
+
+
+selectedFile = null;
+
+renderFiles();
+
+}
+
+
+/* =========================================
+   CRÉER DOSSIER
+========================================= */
+
+function createFolder() {
+
+const name =
+prompt(
+"Quel nom voulez-vous donner au nouveau dossier ?"
+);
+
+
+if (
+!name ||
+name.trim() === ""
+) {
+
+return;
+
+}
+
+
+const newFolder =
+{
+name: name.trim(),
+type: "folder",
+icon: "📁"
+};
+
+
+fileSystem[currentLocation].push(
+newFolder
+);
+
+
+checkAction(
+"create",
+newFolder.name
+);
+
+
+renderFiles();
+
+}
+
+
+/* =========================================
+   OUVRIR EMPLACEMENT
+========================================= */
 
 function openLocation(location) {
 
 currentLocation = location;
+
+searchTerm = "";
+
+document.getElementById("searchInput").value = "";
 
 renderFiles();
 
@@ -1292,55 +1645,63 @@ location
 }
 
 
-
-/* =========================
+/* =========================================
    RETOUR
-========================= */
+========================================= */
 
 function goBack() {
 
 currentLocation = "bureau";
 
+searchTerm = "";
+
+document.getElementById("searchInput").value = "";
+
 renderFiles();
 
 }
 
 
+/* =========================================
+   RECHERCHE
+========================================= */
 
-/* =========================
-   CRÉER DOSSIER
-========================= */
+function searchFiles() {
 
-function createFolder() {
-
-const name =
-"Mon nouveau dossier";
-
-
-fileSystem[currentLocation].push({
-
-name: name,
-type: "folder",
-icon: "📁"
-
-});
+searchTerm =
+document.getElementById("searchInput").value;
 
 
 renderFiles();
 
 
-checkAction(
-"create",
-name
-);
+const challenge =
+challenges[currentChallenge];
+
+
+if (
+challenge.action === "search"
+) {
+
+if (
+searchTerm.toLowerCase()
+.includes(
+challenge.target.toLowerCase()
+)
+) {
+
+success();
+
+}
+
+}
 
 }
 
 
-
-/* =========================
+/* =========================================
    VÉRIFIER ACTION
-========================= */
+========================================= */
 
 function checkAction(action, target) {
 
@@ -1369,12 +1730,14 @@ success();
 }
 
 
+/* =========================================
+   GLISSER-DÉPOSER
+========================================= */
 
-/* =========================
-   VÉRIFIER GLISSER
-========================= */
-
-function checkDrag(fileName, folderName) {
+function checkDrag(
+fileName,
+folderName
+) {
 
 if (completed) return;
 
@@ -1396,15 +1759,116 @@ success();
 }
 
 
+/* =========================================
+   RETIRER UN FICHIER
+========================================= */
 
-/* =========================
+function removeFileFromAllLocations(file) {
+
+Object.keys(fileSystem)
+.forEach(function(location) {
+
+const index =
+fileSystem[location].indexOf(file);
+
+
+if (index !== -1) {
+
+fileSystem[location].splice(
+index,
+1
+);
+
+}
+
+});
+
+}
+
+
+/* =========================================
+   CHEMIN
+========================================= */
+
+function updatePath() {
+
+const path =
+document.getElementById("path");
+
+
+const names = {
+
+bureau: "Ce PC > Bureau",
+
+documents: "Ce PC > Documents",
+
+images: "Ce PC > Images",
+
+corbeille: "Ce PC > Corbeille"
+
+};
+
+
+path.textContent =
+names[currentLocation];
+
+}
+
+
+/* =========================================
+   MENU LATÉRAL
+========================================= */
+
+function updateSidebar() {
+
+document
+.querySelectorAll(".sidebar-item")
+.forEach(function(item) {
+
+item.classList.remove("active");
+
+});
+
+
+document
+.querySelectorAll(".sidebar-item")
+.forEach(function(item) {
+
+if (
+item.textContent
+.trim()
+.toLowerCase()
+.includes(currentLocation)
+) {
+
+item.classList.add("active");
+
+}
+
+});
+
+}
+
+
+/* =========================================
+   CACHER MENU
+========================================= */
+
+function hideContextMenu() {
+
+document.getElementById("contextMenu").style.display =
+"none";
+
+}
+
+
+/* =========================================
    RÉUSSITE
-========================= */
+========================================= */
 
 function success() {
 
 if (completed) return;
-
 
 completed = true;
 
@@ -1440,10 +1904,9 @@ document.getElementById("nextButton").textContent =
 }
 
 
-
-/* =========================
-   DÉFI SUIVANT
-========================= */
+/* =========================================
+   SUIVANT
+========================================= */
 
 function nextChallenge() {
 
@@ -1468,10 +1931,9 @@ showFinal();
 }
 
 
-
-/* =========================
+/* =========================================
    FIN
-========================= */
+========================================= */
 
 function showFinal() {
 
@@ -1494,7 +1956,7 @@ challenges.length;
 
 
 document.getElementById("finalMessage").textContent =
-"Excellent travail ! Vous avez appris à ouvrir, sélectionner et ranger des fichiers dans des dossiers.";
+"Excellent travail ! Vous avez appris à créer, organiser, copier, déplacer, supprimer et retrouver des fichiers.";
 
 document.getElementById("restartButton").style.display =
 "inline-block";
@@ -1502,10 +1964,9 @@ document.getElementById("restartButton").style.display =
 }
 
 
-
-/* =========================
+/* =========================================
    RECOMMENCER
-========================= */
+========================================= */
 
 function restartGame() {
 
@@ -1514,6 +1975,16 @@ currentChallenge = 0;
 score = 0;
 
 completed = false;
+
+selectedFile = null;
+
+clipboard = null;
+
+clipboardMode = null;
+
+
+fileSystem =
+createInitialFileSystem();
 
 
 document.getElementById("finalScreen").style.display =
@@ -1533,44 +2004,14 @@ loadChallenge();
 }
 
 
-
-/* =========================
-   NOM DES EMPLACEMENTS
-========================= */
-
-function getLocationName(location) {
-
-if (location === "bureau") {
-return "Ce PC > Bureau";
-}
-
-if (location === "documents") {
-return "Ce PC > Documents";
-}
-
-if (location === "images") {
-return "Ce PC > Images";
-}
-
-if (location === "corbeille") {
-return "Ce PC > Corbeille";
-}
-
-return "Ce PC";
-
-}
-
-
-
-/* =========================
-   LANCEMENT
-========================= */
+/* =========================================
+   DÉMARRAGE
+========================================= */
 
 loadChallenge();
 
 
 </script>
-
 
 </body>
 </html>
