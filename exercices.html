@@ -71,6 +71,7 @@
             padding: 12px 18px;
             border-radius: 8px;
             font-size: 17px;
+            transition: 0.3s;
         }
 
         nav a:hover,
@@ -114,164 +115,192 @@
         ========================== */
 
         main {
-            max-width: 900px;
+            max-width: 1200px;
             margin: auto;
             padding: 60px 25px;
         }
 
         .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+            max-width: 900px;
+            margin: 0 auto 50px;
+            text-align: center;
         }
 
         .intro h2 {
-            margin-top: 0;
+            font-size: 30px;
             color: #203858;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            font-size: 19px;
+            color: #617087;
         }
 
 
         /* =========================
-           QUESTIONS
+           CATÉGORIES
         ========================== */
 
-        .question {
-            background: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
-        .question-number {
+        .category-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+
+            transition: 0.3s;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
+        }
+
+        .category-card h2 {
+            margin-top: 0;
+            font-size: 26px;
+            color: #24344d;
+        }
+
+        .category-card p {
+            color: #617087;
+            font-size: 17px;
+            flex-grow: 1;
+        }
+
+
+        /* COULEURS DES CATÉGORIES */
+
+        .security {
+            border-top: 6px solid #c84b4b;
+        }
+
+        .computer {
+            border-top: 6px solid #3975c6;
+        }
+
+        .internet {
+            border-top: 6px solid #7b5fc7;
+        }
+
+        .smartphone {
+            border-top: 6px solid #2e8b78;
+        }
+
+        .tablet {
+            border-top: 6px solid #e09b32;
+        }
+
+        .practice {
+            border-top: 6px solid #d05f9d;
+        }
+
+
+        /* =========================
+           LISTES
+        ========================== */
+
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .exercise-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5eaf0;
+            color: #4f5f73;
+        }
+
+        .exercise-list li:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           BOUTONS
+        ========================== */
+
+        .button {
             display: inline-block;
+
+            padding: 13px 20px;
+            border-radius: 8px;
+
             background: #3975c6;
             color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
+
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .question h2 {
-            font-size: 24px;
-            color: #24344d;
-            margin-top: 0;
-        }
-
-
-        /* =========================
-           RÉPONSES
-        ========================== */
-
-        .answers {
-            display: grid;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .answer {
-            width: 100%;
-            text-align: left;
-
-            padding: 16px;
-
-            border: 2px solid #d9e1ec;
-            border-radius: 10px;
-
-            background: #f8fafc;
-
-            font-size: 17px;
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        .answer:hover {
-            border-color: #3975c6;
-            background: #eef4fb;
-        }
-
-        .answer.correct {
-            background: #e6f5ef;
-            border-color: #2e8b78;
-            color: #17604f;
-        }
-
-        .answer.wrong {
-            background: #fdecec;
-            border-color: #c84b4b;
-            color: #8a2525;
-        }
-
-
-        /* =========================
-           EXPLICATIONS
-        ========================== */
-
-        .result {
-            display: none;
-
-            margin-top: 20px;
-            padding: 18px;
-
-            border-radius: 10px;
-
-            font-size: 17px;
-        }
-
-        .result.correct-result {
-            background: #e6f5ef;
-            color: #17604f;
-        }
-
-        .result.wrong-result {
-            background: #fff4df;
-            color: #795214;
-        }
-
-
-        /* =========================
-           SCORE
-        ========================== */
-
-        .score-box {
-            display: none;
-
-            background: #1f3656;
-            color: white;
 
             text-align: center;
 
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            opacity: 0.85;
+        }
+
+        .security .button {
+            background: #c84b4b;
+        }
+
+        .internet .button {
+            background: #7b5fc7;
+        }
+
+        .smartphone .button {
+            background: #2e8b78;
+        }
+
+        .tablet .button {
+            background: #e09b32;
+        }
+
+        .practice .button {
+            background: #d05f9d;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        .info-section {
+            margin-top: 70px;
+
             padding: 40px;
+
+            background: #eaf0f8;
+
             border-radius: 20px;
 
-            margin-top: 40px;
+            text-align: center;
         }
 
-        .score-box h2 {
-            font-size: 32px;
+        .info-section h2 {
             margin-top: 0;
+            color: #203858;
+            font-size: 30px;
         }
 
-        .restart-button {
-            display: inline-block;
+        .info-section p {
+            max-width: 800px;
+            margin: auto;
 
-            margin-top: 15px;
-            padding: 14px 22px;
-
-            background: white;
-            color: #1f3656;
-
-            border: none;
-            border-radius: 8px;
-
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
+            font-size: 18px;
+            color: #617087;
         }
 
 
@@ -308,6 +337,19 @@
 
 
         /* =========================
+           TABLETTE
+        ========================== */
+
+        @media (max-width: 950px) {
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
            MOBILE
         ========================== */
 
@@ -316,6 +358,14 @@
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 10px 12px;
             }
 
             .page-header {
@@ -330,8 +380,8 @@
                 padding: 40px 20px;
             }
 
-            .question {
-                padding: 22px;
+            .categories {
+                grid-template-columns: 1fr;
             }
 
             .footer-container {
@@ -349,7 +399,9 @@
 <body>
 
 
-<!-- MENU -->
+<!-- =========================
+     MENU
+========================== -->
 
 <header>
 
@@ -384,15 +436,17 @@
 
 
 
-<!-- EN-TÊTE -->
+<!-- =========================
+     EN-TÊTE
+========================== -->
 
 <section class="page-header">
 
-    <h1>Exercices</h1>
+    <h1>Exercices pratiques</h1>
 
     <p>
-        Testez vos connaissances et apprenez à mieux protéger
-        vos informations sur Internet.
+        Entraînez-vous à votre rythme avec des exercices simples
+        pour mieux utiliser l'ordinateur, Internet et les appareils numériques.
     </p>
 
 </section>
@@ -402,210 +456,196 @@
 <main>
 
 
-    <div class="intro">
+    <section class="intro">
 
-        <h2>Les mots de passe</h2>
+        <h2>Choisissez une catégorie</h2>
 
         <p>
-            Répondez aux questions en cliquant sur la réponse qui vous
-            semble correcte. Vous recevrez immédiatement une explication.
+            Vous pouvez recommencer les exercices autant de fois que vous le souhaitez.
+            Prenez votre temps : l'objectif est d'apprendre en pratiquant.
         </p>
 
-    </div>
+    </section>
 
 
 
-    <!-- QUESTION 1 -->
+    <!-- =========================
+         CATÉGORIES
+    ========================== -->
 
-    <section class="question" data-question="1">
+    <section class="categories">
 
-        <div class="question-number">Question 1</div>
 
-        <h2>Quel mot de passe est le plus sécurisé ?</h2>
+        <!-- SÉCURITÉ -->
 
-        <div class="answers">
+        <div class="category-card security">
 
-            <button class="answer" data-correct="false">
-                123456
-            </button>
+            <h2>Sécurité</h2>
 
-            <button class="answer" data-correct="false">
-                marie2026
-            </button>
+            <p>
+                Apprenez à mieux protéger vos informations personnelles.
+            </p>
 
-            <button class="answer" data-correct="true">
-                Une phrase longue, personnelle et difficile à deviner
-            </button>
+            <ul class="exercise-list">
+
+                <li>Mots de passe</li>
+                <li>Reconnaître les arnaques</li>
+                <li>Faux e-mails et phishing</li>
+
+            </ul>
+
+            <a href="mots-de-passe.html" class="button">
+                Commencer
+            </a>
 
         </div>
 
-        <div class="result correct-result">
-            Bonne réponse ! Une phrase longue et difficile à deviner est généralement beaucoup plus sûre.
+
+
+        <!-- ORDINATEUR -->
+
+        <div class="category-card computer">
+
+            <h2>Ordinateur</h2>
+
+            <p>
+                Entraînez-vous aux principales manipulations sur ordinateur.
+            </p>
+
+            <ul class="exercise-list">
+
+                <li>Utiliser la souris</li>
+                <li>Le clavier</li>
+                <li>Les fichiers et dossiers</li>
+
+            </ul>
+
+            <a href="ordinateur.html" class="button">
+                Commencer
+            </a>
+
         </div>
 
-        <div class="result wrong-result">
-            Ce mot de passe est trop facile à deviner. Préférez une phrase longue et personnelle.
+
+
+        <!-- INTERNET -->
+
+        <div class="category-card internet">
+
+            <h2>Internet</h2>
+
+            <p>
+                Découvrez comment naviguer et rechercher des informations.
+            </p>
+
+            <ul class="exercise-list">
+
+                <li>Faire une recherche</li>
+                <li>Reconnaître un lien</li>
+                <li>Naviguer sur un site</li>
+
+            </ul>
+
+            <a href="internet-exercices.html" class="button">
+                Commencer
+            </a>
+
         </div>
+
+
+
+        <!-- SMARTPHONE -->
+
+        <div class="category-card smartphone">
+
+            <h2>Smartphone</h2>
+
+            <p>
+                Apprenez à mieux utiliser votre téléphone au quotidien.
+            </p>
+
+            <ul class="exercise-list">
+
+                <li>Les applications</li>
+                <li>Les réglages</li>
+                <li>Envoyer des photos</li>
+
+            </ul>
+
+            <a href="smartphone-exercices.html" class="button">
+                Commencer
+            </a>
+
+        </div>
+
+
+
+        <!-- TABLETTE -->
+
+        <div class="category-card tablet">
+
+            <h2>Tablette</h2>
+
+            <p>
+                Découvrez les gestes et les fonctions principales d'une tablette.
+            </p>
+
+            <ul class="exercise-list">
+
+                <li>Les gestes tactiles</li>
+                <li>Les applications</li>
+                <li>Naviguer sur Internet</li>
+
+            </ul>
+
+            <a href="tablette-exercices.html" class="button">
+                Commencer
+            </a>
+
+        </div>
+
+
+
+        <!-- PRATIQUE -->
+
+        <div class="category-card practice">
+
+            <h2>Manipulations pratiques</h2>
+
+            <p>
+                Entraînez-vous directement avec des exercices interactifs.
+            </p>
+
+            <ul class="exercise-list">
+
+                <li>Copier et coller</li>
+                <li>Sélectionner du texte</li>
+                <li>Utiliser les raccourcis clavier</li>
+
+            </ul>
+
+            <a href="copier-coller.html" class="button">
+                S'entraîner
+            </a>
+
+        </div>
+
 
     </section>
 
 
 
-    <!-- QUESTION 2 -->
+    <!-- MESSAGE -->
 
-    <section class="question" data-question="2">
+    <section class="info-section">
 
-        <div class="question-number">Question 2</div>
+        <h2>Apprendre en pratiquant</h2>
 
-        <h2>Peut-on utiliser le même mot de passe partout ?</h2>
-
-        <div class="answers">
-
-            <button class="answer" data-correct="false">
-                Oui, c'est plus facile à retenir
-            </button>
-
-            <button class="answer" data-correct="true">
-                Non, il vaut mieux utiliser des mots de passe différents
-            </button>
-
-            <button class="answer" data-correct="false">
-                Oui, si le mot de passe est très long
-            </button>
-
-        </div>
-
-        <div class="result correct-result">
-            Exact ! Si un mot de passe est découvert, les autres comptes restent ainsi mieux protégés.
-        </div>
-
-        <div class="result wrong-result">
-            Attention : utiliser le même mot de passe partout peut mettre plusieurs comptes en danger.
-        </div>
-
-    </section>
-
-
-
-    <!-- QUESTION 3 -->
-
-    <section class="question" data-question="3">
-
-        <div class="question-number">Question 3</div>
-
-        <h2>Faut-il communiquer son mot de passe par e-mail ?</h2>
-
-        <div class="answers">
-
-            <button class="answer" data-correct="false">
-                Oui, si la personne semble sérieuse
-            </button>
-
-            <button class="answer" data-correct="true">
-                Non, un mot de passe doit rester secret
-            </button>
-
-            <button class="answer" data-correct="false">
-                Oui, seulement à ses amis
-            </button>
-
-        </div>
-
-        <div class="result correct-result">
-            Correct ! Votre mot de passe est personnel et doit rester secret.
-        </div>
-
-        <div class="result wrong-result">
-            Non. Un mot de passe ne doit normalement jamais être envoyé par e-mail.
-        </div>
-
-    </section>
-
-
-
-    <!-- QUESTION 4 -->
-
-    <section class="question" data-question="4">
-
-        <div class="question-number">Question 4</div>
-
-        <h2>Que faire si vous pensez que votre mot de passe a été découvert ?</h2>
-
-        <div class="answers">
-
-            <button class="answer" data-correct="true">
-                Le changer rapidement
-            </button>
-
-            <button class="answer" data-correct="false">
-                Attendre quelques semaines
-            </button>
-
-            <button class="answer" data-correct="false">
-                Ne rien faire
-            </button>
-
-        </div>
-
-        <div class="result correct-result">
-            Très bien ! Il faut changer rapidement le mot de passe concerné.
-        </div>
-
-        <div class="result wrong-result">
-            En cas de doute, il est préférable de changer rapidement votre mot de passe.
-        </div>
-
-    </section>
-
-
-
-    <!-- QUESTION 5 -->
-
-    <section class="question" data-question="5">
-
-        <div class="question-number">Question 5</div>
-
-        <h2>Pourquoi l'authentification à deux facteurs est-elle utile ?</h2>
-
-        <div class="answers">
-
-            <button class="answer" data-correct="false">
-                Elle permet de supprimer son mot de passe
-            </button>
-
-            <button class="answer" data-correct="true">
-                Elle ajoute une protection supplémentaire à votre compte
-            </button>
-
-            <button class="answer" data-correct="false">
-                Elle rend Internet plus rapide
-            </button>
-
-        </div>
-
-        <div class="result correct-result">
-            Exact ! Même si quelqu'un connaît votre mot de passe, une deuxième vérification peut protéger votre compte.
-        </div>
-
-        <div class="result wrong-result">
-            L'authentification à deux facteurs ajoute une étape de sécurité supplémentaire.
-        </div>
-
-    </section>
-
-
-
-    <!-- SCORE -->
-
-    <section class="score-box" id="scoreBox">
-
-        <h2>Quiz terminé !</h2>
-
-        <p id="scoreText"></p>
-
-        <button class="restart-button" onclick="restartQuiz()">
-            Recommencer le quiz
-        </button>
+        <p>
+            Les exercices sont conçus pour vous permettre de découvrir
+            le numérique progressivement. N'hésitez pas à recommencer
+            plusieurs fois : c'est en pratiquant que l'on apprend !
+        </p>
 
     </section>
 
@@ -614,7 +654,9 @@
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================== -->
 
 <footer>
 
@@ -632,6 +674,7 @@
 
         </div>
 
+
         <div class="footer-text">
             © 2026 Centre Multimédia du CCAS
         </div>
@@ -639,162 +682,6 @@
     </div>
 
 </footer>
-
-
-
-<!-- JAVASCRIPT -->
-
-<script>
-
-    let score = 0;
-    let answeredQuestions = 0;
-
-    const questions = document.querySelectorAll(".question");
-
-
-    questions.forEach(question => {
-
-        const answers = question.querySelectorAll(".answer");
-
-        answers.forEach(answer => {
-
-            answer.addEventListener("click", function() {
-
-                if (question.classList.contains("answered")) {
-                    return;
-                }
-
-                question.classList.add("answered");
-
-                answeredQuestions++;
-
-                const isCorrect =
-                    this.getAttribute("data-correct") === "true";
-
-                if (isCorrect) {
-
-                    this.classList.add("correct");
-
-                    question.querySelector(".correct-result").style.display =
-                        "block";
-
-                    score++;
-
-                } else {
-
-                    this.classList.add("wrong");
-
-                    question.querySelector(".wrong-result").style.display =
-                        "block";
-
-                    answers.forEach(answer => {
-
-                        if (
-                            answer.getAttribute("data-correct") === "true"
-                        ) {
-                            answer.classList.add("correct");
-                        }
-
-                    });
-
-                }
-
-
-                answers.forEach(answer => {
-
-                    answer.disabled = true;
-
-                });
-
-
-                if (answeredQuestions === questions.length) {
-
-                    showScore();
-
-                }
-
-            });
-
-        });
-
-    });
-
-
-
-    function showScore() {
-
-        const scoreBox =
-            document.getElementById("scoreBox");
-
-        const scoreText =
-            document.getElementById("scoreText");
-
-        scoreText.innerHTML =
-            "Votre score : <strong>" +
-            score +
-            " / " +
-            questions.length +
-            "</strong>";
-
-        scoreBox.style.display = "block";
-
-        scoreBox.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
-
-
-
-    function restartQuiz() {
-
-        score = 0;
-
-        answeredQuestions = 0;
-
-
-        questions.forEach(question => {
-
-            question.classList.remove("answered");
-
-
-            const answers =
-                question.querySelectorAll(".answer");
-
-
-            answers.forEach(answer => {
-
-                answer.classList.remove(
-                    "correct",
-                    "wrong"
-                );
-
-                answer.disabled = false;
-
-            });
-
-
-            question.querySelector(".correct-result").style.display =
-                "none";
-
-            question.querySelector(".wrong-result").style.display =
-                "none";
-
-        });
-
-
-        document.getElementById("scoreBox").style.display =
-            "none";
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-</script>
 
 
 </body>
