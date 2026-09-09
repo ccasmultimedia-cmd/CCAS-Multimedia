@@ -1485,9 +1485,28 @@ function restartGame() {
 
 /* =========================================
    CLAVIER VIRTUEL
+   CORRECTION AZERTY
 ========================================= */
 
 document.addEventListener("keydown", function(event) {
+
+    /* 
+       On utilise event.code pour retrouver
+       la POSITION PHYSIQUE de la touche.
+
+       Les touches du clavier virtuel sont
+       elles aussi repérées avec data-code.
+    */
+
+    const touches =
+        document.querySelectorAll(".key");
+
+    touches.forEach(function(touche) {
+
+        touche.classList.remove("active");
+
+    });
+
 
     const keyElement =
         document.querySelector(
