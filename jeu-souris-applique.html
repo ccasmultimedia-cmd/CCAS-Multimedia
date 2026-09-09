@@ -8,14 +8,24 @@
 
 <style>
 
+/* =====================================================
+   GÉNÉRAL
+===================================================== */
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #0086d1;
 }
 
@@ -25,23 +35,30 @@ body {
 
 #accueil {
     min-height: 100vh;
-    padding: 30px;
+    padding: 30px 20px 60px;
     text-align: center;
     color: white;
 
     background:
         radial-gradient(circle at 80% 15%, #fff 0 35px, transparent 36px),
-        linear-gradient(#56b9f2 0%, #79c8f2 48%, #62b53b 49%, #3f8f2c 100%);
+        linear-gradient(
+            #56b9f2 0%,
+            #79c8f2 48%,
+            #62b53b 49%,
+            #3f8f2c 100%
+        );
 }
 
 #accueil h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: clamp(32px, 6vw, 42px);
+    margin: 20px 0 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
 }
 
 #accueil h2 {
     font-weight: normal;
+    font-size: clamp(18px, 3vw, 24px);
+    margin-bottom: 25px;
 }
 
 .presentation {
@@ -61,9 +78,15 @@ body {
     font-size: 26px;
 }
 
+.presentation p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
 .presentation li {
     margin: 12px 0;
     font-size: 18px;
+    line-height: 1.4;
 }
 
 .bouton {
@@ -76,6 +99,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    margin-bottom: 20px;
 }
 
 .bouton:hover {
@@ -83,11 +107,9 @@ body {
     background: #0d47a1;
 }
 
-.bouton-retour {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 10000;
+.bouton:focus {
+    outline: 4px solid #ffd54f;
+    outline-offset: 3px;
 }
 
 /* =====================================================
@@ -96,8 +118,11 @@ body {
 
 #jeu {
     display: none;
-    height: 100vh;
+    position: fixed;
+    inset: 0;
     width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* =====================================================
@@ -105,11 +130,9 @@ body {
 ===================================================== */
 
 #bureau {
-
     position: relative;
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 
     background:
@@ -123,7 +146,9 @@ body {
         );
 }
 
-/* Nuages */
+/* =====================================================
+   NUAGES
+===================================================== */
 
 .nuage {
     position: absolute;
@@ -132,6 +157,7 @@ body {
     background: white;
     border-radius: 50px;
     opacity: 0.85;
+    pointer-events: none;
 }
 
 .nuage::before,
@@ -167,13 +193,16 @@ body {
     transform: scale(0.7);
 }
 
-/* Collines */
+/* =====================================================
+   COLLINES
+===================================================== */
 
 .colline {
     position: absolute;
     bottom: 45px;
     background: #4d9f30;
     border-radius: 50% 50% 0 0;
+    pointer-events: none;
 }
 
 #colline1 {
@@ -194,9 +223,7 @@ body {
 ===================================================== */
 
 #mission {
-
     position: absolute;
-
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -204,15 +231,12 @@ body {
     width: min(850px, 90%);
 
     background: rgba(255,255,255,0.95);
-
     padding: 15px 25px;
-
     border-radius: 18px;
 
     box-shadow: 0 5px 20px rgba(0,0,0,0.25);
 
     z-index: 5000;
-
     text-align: center;
 }
 
@@ -235,23 +259,45 @@ body {
 }
 
 /* =====================================================
+   PROGRESSION
+===================================================== */
+
+#progression {
+    position: absolute;
+    bottom: 65px;
+    left: 20px;
+
+    width: 250px;
+    height: 14px;
+
+    background: rgba(255,255,255,0.5);
+    border-radius: 20px;
+
+    overflow: hidden;
+    z-index: 6000;
+}
+
+#barre-progression {
+    height: 100%;
+    width: 0%;
+    background: #1565c0;
+    transition: 0.4s;
+}
+
+/* =====================================================
    ICONES
 ===================================================== */
 
 .icone {
-
     position: absolute;
 
     width: 105px;
-
     padding: 8px;
 
     text-align: center;
-
     color: white;
 
     cursor: pointer;
-
     user-select: none;
 
     border-radius: 10px;
@@ -314,38 +360,26 @@ body {
 ===================================================== */
 
 #barre-taches {
-
     position: absolute;
-
     bottom: 0;
 
     width: 100%;
-
     height: 52px;
 
     background: rgba(245,245,245,0.92);
 
-    backdrop-filter: blur(10px);
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 18px;
 
     z-index: 9000;
 }
 
 .task-icon {
-
     font-size: 26px;
-
     cursor: pointer;
-
     padding: 7px 12px;
-
     border-radius: 8px;
 }
 
@@ -358,17 +392,13 @@ body {
 ===================================================== */
 
 .fenetre {
-
     position: absolute;
 
     width: 520px;
-
     min-width: 320px;
-
     min-height: 250px;
 
     background: white;
-
     border-radius: 12px;
 
     overflow: hidden;
@@ -376,7 +406,6 @@ body {
     box-shadow: 0 10px 35px rgba(0,0,0,0.35);
 
     display: none;
-
     resize: both;
 
     z-index: 3000;
@@ -387,23 +416,18 @@ body {
 }
 
 .barre-fenetre {
-
     height: 45px;
 
     background: #f4f4f4;
-
     border-bottom: 1px solid #ddd;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 0 12px;
 
     cursor: move;
-
     user-select: none;
 }
 
@@ -417,17 +441,13 @@ body {
 }
 
 .actions-fenetre button {
-
     border: none;
-
     background: transparent;
 
     font-size: 18px;
-
     cursor: pointer;
 
     width: 30px;
-
     height: 30px;
 
     border-radius: 5px;
@@ -440,7 +460,8 @@ body {
 .contenu-fenetre {
     padding: 20px;
     height: calc(100% - 45px);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* =====================================================
@@ -448,24 +469,17 @@ body {
 ===================================================== */
 
 .fichiers {
-
     display: grid;
-
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-
     gap: 15px;
 }
 
 .fichier {
-
     text-align: center;
-
     padding: 10px;
-
     border-radius: 8px;
 
     cursor: pointer;
-
     user-select: none;
 }
 
@@ -483,34 +497,27 @@ body {
 }
 
 /* =====================================================
-   MENU CLIC DROIT
+   MENU CONTEXTUEL
 ===================================================== */
 
 #menu-contextuel {
-
-    position: absolute;
-
+    position: fixed;
     display: none;
 
     width: 200px;
 
     background: white;
-
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 
     border-radius: 8px;
-
     padding: 8px;
 
-    z-index: 10000;
+    z-index: 15000;
 }
 
 .option-menu {
-
     padding: 12px;
-
     cursor: pointer;
-
     border-radius: 5px;
 }
 
@@ -519,19 +526,15 @@ body {
 }
 
 /* =====================================================
-   BOITES DE DIALOGUE
+   DIALOGUE
 ===================================================== */
 
 #dialogue {
-
     position: fixed;
-
     inset: 0;
 
     display: none;
-
     align-items: center;
-
     justify-content: center;
 
     background: rgba(0,0,0,0.35);
@@ -540,15 +543,12 @@ body {
 }
 
 #dialogue-box {
-
     width: min(500px, 90%);
 
     background: white;
-
     padding: 30px;
 
     border-radius: 18px;
-
     text-align: center;
 
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
@@ -559,15 +559,13 @@ body {
 }
 
 /* =====================================================
-   SCORE
+   SCORE FINAL
 ===================================================== */
 
 #score-final {
-
     display: none;
 
     position: fixed;
-
     inset: 0;
 
     background:
@@ -582,18 +580,17 @@ body {
     z-index: 50000;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .score-box {
-
     background: white;
 
     padding: 45px;
-
     border-radius: 25px;
 
     max-width: 600px;
@@ -613,50 +610,27 @@ body {
 }
 
 /* =====================================================
-   INDICATEUR DE PROGRESSION
-===================================================== */
-
-#progression {
-
-    position: absolute;
-
-    bottom: 65px;
-
-    left: 20px;
-
-    width: 250px;
-
-    height: 14px;
-
-    background: rgba(255,255,255,0.5);
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    z-index: 6000;
-}
-
-#barre-progression {
-
-    height: 100%;
-
-    width: 0%;
-
-    background: #1565c0;
-
-    transition: 0.4s;
-}
-
-/* =====================================================
-   MOBILE / TABLETTE
+   MOBILE
 ===================================================== */
 
 @media (max-width: 700px) {
 
-    .fenetre {
-        width: 90%;
-        left: 5% !important;
+    #accueil {
+        padding: 20px 15px 50px;
+    }
+
+    .presentation {
+        padding: 20px;
+    }
+
+    .presentation li,
+    .presentation p {
+        font-size: 16px;
+    }
+
+    .bouton {
+        font-size: 18px;
+        width: min(100%, 420px);
     }
 
     #mission {
@@ -664,13 +638,57 @@ body {
         padding: 10px;
     }
 
+    #niveau {
+        font-size: 15px;
+    }
+
     #objectif {
         font-size: 17px;
+    }
+
+    #message {
+        font-size: 14px;
+    }
+
+    .fenetre {
+        width: 90%;
+        min-width: 0;
+        left: 5% !important;
+        resize: none;
     }
 
     .icone {
         transform: scale(0.85);
         transform-origin: top left;
+    }
+
+    #progression {
+        width: 180px;
+        left: 10px;
+    }
+
+    #documents {
+        top: 145px;
+        left: 10px;
+    }
+
+    #photos {
+        top: 250px;
+        left: 10px;
+    }
+
+    #courrier {
+        top: 355px;
+        left: 10px;
+    }
+
+    #ordinateur,
+    #dossier-travail {
+        display: none;
+    }
+
+    #corbeille {
+        right: 5px;
     }
 
 }
@@ -737,24 +755,16 @@ body {
         <div class="colline" id="colline2"></div>
 
 
-        <!-- MISSION -->
-
         <div id="mission">
 
-            <div id="niveau">
-                Défi 1 sur 30
-            </div>
+            <div id="niveau">Défi 1 sur 30</div>
 
-            <div id="objectif">
-                Chargement...
-            </div>
+            <div id="objectif">Chargement...</div>
 
             <div id="message"></div>
 
         </div>
 
-
-        <!-- PROGRESSION -->
 
         <div id="progression">
             <div id="barre-progression"></div>
@@ -797,16 +807,18 @@ body {
         <!-- FENETRE DOCUMENTS -->
 
         <div class="fenetre" id="fenetre-documents"
-             style="top:170px; left:260px;">
+             style="top:170px; left:260px; height:520px;">
 
             <div class="barre-fenetre">
+
                 <span class="titre-fenetre">📁 Documents</span>
 
                 <div class="actions-fenetre">
-                    <button class="minimiser">—</button>
-                    <button class="maximiser">□</button>
-                    <button class="fermer">✕</button>
+                    <button class="minimiser" title="Réduire">—</button>
+                    <button class="maximiser" title="Agrandir">□</button>
+                    <button class="fermer" title="Fermer">✕</button>
                 </div>
+
             </div>
 
             <div class="contenu-fenetre">
@@ -849,12 +861,14 @@ body {
 
                 <div style="height:350px;"></div>
 
-                <h3>Documents plus anciens</h3>
+                <h3>📜 Documents plus anciens</h3>
 
                 <p>📄 Archive 2022</p>
                 <p>📄 Archive 2021</p>
                 <p>📄 Archive 2020</p>
                 <p>📄 Archive 2019</p>
+
+                <div style="height:80px;"></div>
 
             </div>
 
@@ -864,7 +878,7 @@ body {
         <!-- FENETRE PHOTOS -->
 
         <div class="fenetre" id="fenetre-photos"
-             style="top:200px; left:330px;">
+             style="top:200px; left:330px; height:380px;">
 
             <div class="barre-fenetre">
 
@@ -909,7 +923,7 @@ body {
         <!-- FENETRE COURRIER -->
 
         <div class="fenetre" id="fenetre-courrier"
-             style="top:210px; left:300px;">
+             style="top:210px; left:300px; height:400px;">
 
             <div class="barre-fenetre">
 
@@ -950,9 +964,7 @@ body {
         <div id="barre-taches">
 
             <div class="task-icon" id="task-documents">📁</div>
-
             <div class="task-icon" id="task-photos">🖼️</div>
-
             <div class="task-icon" id="task-courrier">✉️</div>
 
         </div>
@@ -1030,7 +1042,7 @@ body {
             🔄 Rejouer
         </button>
 
-        <br><br>
+        <br>
 
         <button class="bouton"
                 onclick="window.location.href='exercices.html'">
@@ -1052,16 +1064,9 @@ let defiActuel = 0;
 let score = 0;
 
 let fenetreActive = null;
-
-let elementSelectionne = null;
-
 let fichiersSelectionnes = [];
-
 let dragElement = null;
-
 let positionDepart = null;
-
-let compteurAction = 0;
 
 
 /* =====================================================
@@ -1148,7 +1153,7 @@ const defis = [
 },
 
 {
-    texte: "Déplacez la fenêtre Courrier vers la droite.",
+    texte: "Déplacez la fenêtre Courrier.",
     action: "move-window",
     cible: "fenetre-courrier"
 },
@@ -1225,7 +1230,7 @@ const defis = [
 },
 
 {
-    texte: "Déplacez la fenêtre Documents vers la gauche.",
+    texte: "Déplacez la fenêtre Documents.",
     action: "move-window",
     cible: "fenetre-documents"
 },
@@ -1258,11 +1263,13 @@ const defis = [
 function demarrerJeu() {
 
     document.getElementById("accueil").style.display = "none";
-
     document.getElementById("jeu").style.display = "block";
 
     defiActuel = 0;
     score = 0;
+
+    fichiersSelectionnes = [];
+    dragElement = null;
 
     chargerDefi();
 
@@ -1278,7 +1285,7 @@ function chargerDefi() {
     const defi = defis[defiActuel];
 
     document.getElementById("niveau").textContent =
-        "Défi " + (defiActuel + 1) + " sur 30";
+        "Défi " + (defiActuel + 1) + " sur " + defis.length;
 
     document.getElementById("objectif").textContent =
         defi.texte;
@@ -1286,7 +1293,7 @@ function chargerDefi() {
     document.getElementById("message").textContent = "";
 
     const pourcentage =
-        (defiActuel / 30) * 100;
+        (defiActuel / defis.length) * 100;
 
     document.getElementById("barre-progression").style.width =
         pourcentage + "%";
@@ -1300,6 +1307,11 @@ function chargerDefi() {
 
 function reussite(message = "✅ Bravo ! Défi réussi !") {
 
+    if (document.getElementById("message").dataset.reussi === "oui") {
+        return;
+    }
+
+    document.getElementById("message").dataset.reussi = "oui";
     document.getElementById("message").textContent = message;
 
     score++;
@@ -1308,14 +1320,12 @@ function reussite(message = "✅ Bravo ! Défi réussi !") {
 
         defiActuel++;
 
+        document.getElementById("message").dataset.reussi = "";
+
         if (defiActuel >= defis.length) {
-
             terminerJeu();
-
         } else {
-
             chargerDefi();
-
         }
 
     }, 1000);
@@ -1331,6 +1341,8 @@ function verifier(action, cible) {
 
     const defi = defis[defiActuel];
 
+    if (!defi) return;
+
     if (
         defi.action === action &&
         (
@@ -1338,45 +1350,34 @@ function verifier(action, cible) {
             defi.cible === undefined
         )
     ) {
-
         reussite();
-
     }
 
 }
 
 
 /* =====================================================
-   OUVRIR FENETRE
+   FENETRES
 ===================================================== */
 
 function ouvrirFenetre(id) {
 
-    const fenetre =
-        document.getElementById(id);
+    const fenetre = document.getElementById(id);
 
     fenetre.classList.add("active");
-
     fenetre.style.zIndex = 4000;
 
     fenetreActive = fenetre;
 
 }
 
-
-/* =====================================================
-   FERMER FENETRE
-===================================================== */
-
 function fermerFenetre(fenetre) {
-
     fenetre.classList.remove("active");
-
 }
 
 
 /* =====================================================
-   ICONES BUREAU
+   ICONES
 ===================================================== */
 
 document.querySelectorAll(".icone").forEach(icone => {
@@ -1385,9 +1386,9 @@ document.querySelectorAll(".icone").forEach(icone => {
 
         e.stopPropagation();
 
-        document
-            .querySelectorAll(".icone")
-            .forEach(i => i.classList.remove("selectionnee"));
+        document.querySelectorAll(".icone").forEach(i => {
+            i.classList.remove("selectionnee");
+        });
 
         this.classList.add("selectionnee");
 
@@ -1403,21 +1404,15 @@ document.querySelectorAll(".icone").forEach(icone => {
         const id = this.id;
 
         if (id === "documents") {
-
             ouvrirFenetre("fenetre-documents");
-
         }
 
         if (id === "photos") {
-
             ouvrirFenetre("fenetre-photos");
-
         }
 
         if (id === "courrier") {
-
             ouvrirFenetre("fenetre-courrier");
-
         }
 
         verifier("double-icon", id);
@@ -1431,7 +1426,7 @@ document.querySelectorAll(".icone").forEach(icone => {
    FICHIERS
 ===================================================== */
 
-document.querySelectorAll(".fichier").forEach(fichier => {
+document.querySelectorAll(".fichier[data-file]").forEach(fichier => {
 
     fichier.addEventListener("click", function(e) {
 
@@ -1443,17 +1438,24 @@ document.querySelectorAll(".fichier").forEach(fichier => {
 
             this.classList.toggle("selectionne");
 
-            if (!fichiersSelectionnes.includes(nom)) {
+            if (this.classList.contains("selectionne")) {
 
-                fichiersSelectionnes.push(nom);
+                if (!fichiersSelectionnes.includes(nom)) {
+                    fichiersSelectionnes.push(nom);
+                }
+
+            } else {
+
+                fichiersSelectionnes =
+                    fichiersSelectionnes.filter(f => f !== nom);
 
             }
 
         } else {
 
-            document
-                .querySelectorAll(".fichier")
-                .forEach(f => f.classList.remove("selectionne"));
+            document.querySelectorAll(".fichier").forEach(f => {
+                f.classList.remove("selectionne");
+            });
 
             fichiersSelectionnes = [nom];
 
@@ -1465,17 +1467,13 @@ document.querySelectorAll(".fichier").forEach(fichier => {
 
         const defi = defis[defiActuel];
 
-        if (defi.action === "multi-select") {
-
-            if (
-                fichiersSelectionnes.includes("lettre") &&
-                fichiersSelectionnes.includes("courses")
-            ) {
-
-                reussite("✅ Très bien ! Plusieurs fichiers sélectionnés.");
-
-            }
-
+        if (
+            defi &&
+            defi.action === "multi-select" &&
+            fichiersSelectionnes.includes("lettre") &&
+            fichiersSelectionnes.includes("courses")
+        ) {
+            reussite("✅ Très bien ! Plusieurs fichiers sélectionnés.");
         }
 
     });
@@ -1483,10 +1481,7 @@ document.querySelectorAll(".fichier").forEach(fichier => {
 
     fichier.addEventListener("dblclick", function() {
 
-        verifier(
-            "double-file",
-            this.dataset.file
-        );
+        verifier("double-file", this.dataset.file);
 
     });
 
@@ -1494,23 +1489,24 @@ document.querySelectorAll(".fichier").forEach(fichier => {
     fichier.addEventListener("contextmenu", function(e) {
 
         e.preventDefault();
+        e.stopPropagation();
 
-        ouvrirMenu(
-            e.clientX,
-            e.clientY
-        );
+        ouvrirMenu(e.clientX, e.clientY);
 
-        verifier(
-            "right-file",
-            this.dataset.file
-        );
+        verifier("right-file", this.dataset.file);
 
     });
 
 
-    fichier.addEventListener("dragstart", function() {
+    fichier.addEventListener("dragstart", function(e) {
 
         dragElement = this;
+
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData(
+            "text/plain",
+            this.dataset.file
+        );
 
     });
 
@@ -1521,44 +1517,45 @@ document.querySelectorAll(".fichier").forEach(fichier => {
    CORBEILLE
 ===================================================== */
 
-document
-    .getElementById("corbeille")
-    .addEventListener("dragover", function(e) {
+const corbeille = document.getElementById("corbeille");
 
-        e.preventDefault();
+corbeille.addEventListener("dragover", function(e) {
 
-    });
+    e.preventDefault();
+
+    if (e.dataTransfer) {
+        e.dataTransfer.dropEffect = "move";
+    }
+
+});
 
 
-document
-    .getElementById("corbeille")
-    .addEventListener("drop", function(e) {
+corbeille.addEventListener("drop", function(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        if (!dragElement) return;
+    if (!dragElement) return;
 
-        const fichier =
-            dragElement.dataset.file;
+    const fichier = dragElement.dataset.file;
+    const defi = defis[defiActuel];
 
-        const defi = defis[defiActuel];
+    if (
+        defi &&
+        defi.action === "drag-trash" &&
+        defi.cible === fichier
+    ) {
 
-        if (
-            defi.action === "drag-trash" &&
-            defi.cible === fichier
-        ) {
+        dragElement.style.display = "none";
 
-            dragElement.style.display = "none";
+        reussite(
+            "🗑️ Fichier déplacé dans la Corbeille !"
+        );
 
-            reussite(
-                "🗑️ Fichier déplacé dans la Corbeille !"
-            );
+    }
 
-        }
+    dragElement = null;
 
-        dragElement = null;
-
-    });
+});
 
 
 /* =====================================================
@@ -1567,357 +1564,318 @@ document
 
 function ouvrirMenu(x, y) {
 
-    const menu =
-        document.getElementById("menu-contextuel");
+    const menu = document.getElementById("menu-contextuel");
 
+    const largeur = 200;
+    const hauteur = 220;
+
+    let gauche = x;
+    let haut = y;
+
+    if (gauche + largeur > window.innerWidth) {
+        gauche = window.innerWidth - largeur - 10;
+    }
+
+    if (haut + hauteur > window.innerHeight) {
+        haut = window.innerHeight - hauteur - 10;
+    }
+
+    menu.style.left = Math.max(10, gauche) + "px";
+    menu.style.top = Math.max(10, haut) + "px";
     menu.style.display = "block";
-
-    menu.style.left = x + "px";
-
-    menu.style.top = y + "px";
 
 }
 
 
-document
-    .querySelectorAll(".option-menu")
-    .forEach(option => {
+document.querySelectorAll(".option-menu").forEach(option => {
 
-        option.addEventListener("click", function(e) {
+    option.addEventListener("click", function(e) {
 
-            e.stopPropagation();
+        e.stopPropagation();
 
-            const action =
-                this.dataset.action;
+        const action = this.dataset.action;
 
-            verifier("menu-action", action);
+        verifier("menu-action", action);
 
-            if (action === "proprietes") {
+        if (action === "proprietes") {
 
-                afficherDialogue(
-                    "ℹ️ Propriétés",
-                    "Voici les informations du fichier."
-                );
+            afficherDialogue(
+                "ℹ️ Propriétés",
+                "Voici les informations du fichier."
+            );
 
-            }
+        }
 
-            if (action === "renommer") {
+        if (action === "renommer") {
 
-                afficherDialogue(
-                    "✏️ Renommer",
-                    "Dans un vrai ordinateur, vous pourriez maintenant modifier le nom du fichier."
-                );
+            afficherDialogue(
+                "✏️ Renommer",
+                "Dans un vrai ordinateur, vous pourriez maintenant modifier le nom du fichier."
+            );
 
-            }
+        }
 
-            document
-                .getElementById("menu-contextuel")
-                .style.display = "none";
-
-        });
+        document.getElementById("menu-contextuel").style.display = "none";
 
     });
+
+});
 
 
 /* =====================================================
    CLIC SUR LE BUREAU
 ===================================================== */
 
-document
-    .getElementById("bureau")
-    .addEventListener("click", function() {
+document.getElementById("bureau").addEventListener("click", function() {
 
-        const menu =
-            document.getElementById("menu-contextuel");
+    const menu = document.getElementById("menu-contextuel");
 
-        if (menu.style.display === "block") {
+    if (menu.style.display === "block") {
 
-            menu.style.display = "none";
+        menu.style.display = "none";
 
-            verifier("close-menu", undefined);
+        const defi = defis[defiActuel];
 
+        if (defi && defi.action === "close-menu") {
+            reussite("✅ Menu fermé !");
         }
 
-    });
+    }
+
+});
 
 
 /* =====================================================
    BOUTONS DES FENETRES
 ===================================================== */
 
-document
-    .querySelectorAll(".fenetre")
-    .forEach(fenetre => {
+document.querySelectorAll(".fenetre").forEach(fenetre => {
 
-        const fermer =
-            fenetre.querySelector(".fermer");
-
-        const minimiser =
-            fenetre.querySelector(".minimiser");
-
-        const maximiser =
-            fenetre.querySelector(".maximiser");
+    const fermer = fenetre.querySelector(".fermer");
+    const minimiser = fenetre.querySelector(".minimiser");
+    const maximiser = fenetre.querySelector(".maximiser");
 
 
-        fermer.addEventListener("click", function(e) {
+    fermer.addEventListener("click", function(e) {
 
-            e.stopPropagation();
+        e.stopPropagation();
 
-            fermerFenetre(fenetre);
+        fermerFenetre(fenetre);
 
-            verifier(
-                "close-window",
-                fenetre.id
-            );
-
-        });
-
-
-        minimiser.addEventListener("click", function(e) {
-
-            e.stopPropagation();
-
-            fenetre.classList.remove("active");
-
-            verifier(
-                "minimize",
-                fenetre.id
-            );
-
-        });
-
-
-        maximiser.addEventListener("click", function(e) {
-
-            e.stopPropagation();
-
-            fenetre.style.top = "70px";
-            fenetre.style.left = "5%";
-            fenetre.style.width = "90%";
-            fenetre.style.height = "75%";
-
-        });
+        verifier("close-window", fenetre.id);
 
     });
+
+
+    minimiser.addEventListener("click", function(e) {
+
+        e.stopPropagation();
+
+        fenetre.classList.remove("active");
+
+        verifier("minimize", fenetre.id);
+
+    });
+
+
+    maximiser.addEventListener("click", function(e) {
+
+        e.stopPropagation();
+
+        fenetre.style.top = "70px";
+        fenetre.style.left = "5%";
+        fenetre.style.width = "90%";
+        fenetre.style.height = "75%";
+
+    });
+
+});
 
 
 /* =====================================================
    BARRE DES TACHES
 ===================================================== */
 
-document
-    .getElementById("task-documents")
-    .addEventListener("click", function() {
+document.getElementById("task-documents").addEventListener("click", function(e) {
 
-        ouvrirFenetre("fenetre-documents");
+    e.stopPropagation();
 
-        verifier(
-            "task-open",
-            "task-documents"
-        );
+    ouvrirFenetre("fenetre-documents");
 
-    });
+    verifier("task-open", "task-documents");
+
+});
 
 
-document
-    .getElementById("task-photos")
-    .addEventListener("click", function() {
+document.getElementById("task-photos").addEventListener("click", function(e) {
 
-        ouvrirFenetre("fenetre-photos");
+    e.stopPropagation();
 
-        verifier(
-            "task-open",
-            "task-photos"
-        );
+    ouvrirFenetre("fenetre-photos");
 
-    });
+    verifier("task-open", "task-photos");
+
+});
 
 
-document
-    .getElementById("task-courrier")
-    .addEventListener("click", function() {
+document.getElementById("task-courrier").addEventListener("click", function(e) {
 
-        ouvrirFenetre("fenetre-courrier");
+    e.stopPropagation();
 
-        verifier(
-            "task-open",
-            "task-courrier"
-        );
+    ouvrirFenetre("fenetre-courrier");
 
-    });
+    verifier("task-open", "task-courrier");
+
+});
 
 
 /* =====================================================
    DEPLACEMENT DES FENETRES
 ===================================================== */
 
-document
-    .querySelectorAll(".fenetre")
-    .forEach(fenetre => {
+document.querySelectorAll(".fenetre").forEach(fenetre => {
 
-        const barre =
-            fenetre.querySelector(".barre-fenetre");
+    const barre = fenetre.querySelector(".barre-fenetre");
 
-        barre.addEventListener("mousedown", function(e) {
+    barre.addEventListener("mousedown", function(e) {
 
-            if (
-                e.target.tagName === "BUTTON"
-            ) return;
+        if (e.target.tagName === "BUTTON") return;
 
-            positionDepart = {
+        e.preventDefault();
 
-                x: e.clientX,
-                y: e.clientY,
+        positionDepart = {
 
-                left: fenetre.offsetLeft,
-                top: fenetre.offsetTop
+            x: e.clientX,
+            y: e.clientY,
 
-            };
+            left: fenetre.offsetLeft,
+            top: fenetre.offsetTop
 
-            fenetre.style.zIndex = 8000;
+        };
 
-            function bouger(e) {
+        fenetre.style.zIndex = 8000;
 
-                if (!positionDepart) return;
+        function bouger(e) {
 
-                const x =
-                    positionDepart.left +
-                    e.clientX -
-                    positionDepart.x;
+            if (!positionDepart) return;
 
-                const y =
-                    positionDepart.top +
-                    e.clientY -
-                    positionDepart.y;
+            let x =
+                positionDepart.left +
+                e.clientX -
+                positionDepart.x;
 
-                fenetre.style.left =
-                    Math.max(0, x) + "px";
+            let y =
+                positionDepart.top +
+                e.clientY -
+                positionDepart.y;
 
-                fenetre.style.top =
-                    Math.max(60, y) + "px";
+            x = Math.max(0, Math.min(
+                x,
+                window.innerWidth - 150
+            ));
 
-            }
+            y = Math.max(60, Math.min(
+                y,
+                window.innerHeight - 100
+            ));
 
-            function fin() {
+            fenetre.style.left = x + "px";
+            fenetre.style.top = y + "px";
 
-                if (positionDepart) {
+        }
 
-                    const defi =
-                        defis[defiActuel];
+        function fin() {
 
-                    if (
-                        defi.action === "move-window" &&
-                        defi.cible === fenetre.id
-                    ) {
+            if (positionDepart) {
 
-                        reussite(
-                            "🪟 Très bien ! La fenêtre a été déplacée."
-                        );
-
-                    }
-
-                }
-
-                positionDepart = null;
-
-                document.removeEventListener(
-                    "mousemove",
-                    bouger
-                );
-
-                document.removeEventListener(
-                    "mouseup",
-                    fin
-                );
-
-            }
-
-            document.addEventListener(
-                "mousemove",
-                bouger
-            );
-
-            document.addEventListener(
-                "mouseup",
-                fin
-            );
-
-        });
-
-    });
-
-
-/* =====================================================
-   DETECTION REDIMENSIONNEMENT
-===================================================== */
-
-document
-    .querySelectorAll(".fenetre")
-    .forEach(fenetre => {
-
-        let largeurInitiale = fenetre.offsetWidth;
-        let hauteurInitiale = fenetre.offsetHeight;
-
-        const observer =
-            new ResizeObserver(() => {
-
-                const defi =
-                    defis[defiActuel];
+                const defi = defis[defiActuel];
 
                 if (
                     defi &&
-                    defi.action === "resize-window" &&
+                    defi.action === "move-window" &&
                     defi.cible === fenetre.id
                 ) {
 
-                    if (
-                        Math.abs(
-                            fenetre.offsetWidth -
-                            largeurInitiale
-                        ) > 40
-                        ||
-                        Math.abs(
-                            fenetre.offsetHeight -
-                            hauteurInitiale
-                        ) > 40
-                    ) {
-
-                        reussite(
-                            "↔️ Bravo ! La fenêtre a été redimensionnée."
-                        );
-
-                        largeurInitiale =
-                            fenetre.offsetWidth;
-
-                        hauteurInitiale =
-                            fenetre.offsetHeight;
-
-                    }
+                    reussite(
+                        "🪟 Très bien ! La fenêtre a été déplacée."
+                    );
 
                 }
 
-            });
+            }
 
-        observer.observe(fenetre);
+            positionDepart = null;
+
+            document.removeEventListener("mousemove", bouger);
+            document.removeEventListener("mouseup", fin);
+
+        }
+
+        document.addEventListener("mousemove", bouger);
+        document.addEventListener("mouseup", fin);
 
     });
 
+});
+
 
 /* =====================================================
-   DEFILEMENT
+   REDIMENSIONNEMENT
+===================================================== */
+
+document.querySelectorAll(".fenetre").forEach(fenetre => {
+
+    let largeurInitiale = fenetre.offsetWidth;
+    let hauteurInitiale = fenetre.offsetHeight;
+
+    const observer = new ResizeObserver(() => {
+
+        const defi = defis[defiActuel];
+
+        if (
+            defi &&
+            defi.action === "resize-window" &&
+            defi.cible === fenetre.id
+        ) {
+
+            if (
+                Math.abs(fenetre.offsetWidth - largeurInitiale) > 40 ||
+                Math.abs(fenetre.offsetHeight - hauteurInitiale) > 40
+            ) {
+
+                reussite(
+                    "↔️ Bravo ! La fenêtre a été redimensionnée."
+                );
+
+                largeurInitiale = fenetre.offsetWidth;
+                hauteurInitiale = fenetre.offsetHeight;
+
+            }
+
+        }
+
+    });
+
+    observer.observe(fenetre);
+
+});
+
+
+/* =====================================================
+   DEFILEMENT DOCUMENTS
 ===================================================== */
 
 const contenuDocuments =
-    document
-        .querySelector(
-            "#fenetre-documents .contenu-fenetre"
-        );
+    document.querySelector(
+        "#fenetre-documents .contenu-fenetre"
+    );
 
 
 contenuDocuments.addEventListener("scroll", function() {
 
-    const defi =
-        defis[defiActuel];
+    const defi = defis[defiActuel];
+
+    if (!defi) return;
 
     if (
         defi.action === "scroll" &&
@@ -1948,12 +1906,11 @@ contenuDocuments.addEventListener("scroll", function() {
    FINAL
 ===================================================== */
 
-document
-    .querySelector('[data-file="budget"]')
-    .addEventListener("click", function() {
+document.querySelector('[data-file="budget"]').addEventListener(
+    "click",
+    function() {
 
-        const defi =
-            defis[defiActuel];
+        const defi = defis[defiActuel];
 
         if (
             defi &&
@@ -1966,7 +1923,8 @@ document
 
         }
 
-    });
+    }
+);
 
 
 /* =====================================================
@@ -1975,26 +1933,18 @@ document
 
 function afficherDialogue(titre, texte) {
 
-    document
-        .getElementById("dialogue-titre")
-        .textContent = titre;
+    document.getElementById("dialogue-titre").textContent = titre;
 
-    document
-        .getElementById("dialogue-texte")
-        .textContent = texte;
+    document.getElementById("dialogue-texte").textContent = texte;
 
-    document
-        .getElementById("dialogue")
-        .style.display = "flex";
+    document.getElementById("dialogue").style.display = "flex";
 
 }
 
 
 function fermerDialogue() {
 
-    document
-        .getElementById("dialogue")
-        .style.display = "none";
+    document.getElementById("dialogue").style.display = "none";
 
 }
 
@@ -2005,13 +1955,9 @@ function fermerDialogue() {
 
 function terminerJeu() {
 
-    document
-        .getElementById("barre-progression")
-        .style.width = "100%";
+    document.getElementById("barre-progression").style.width = "100%";
 
-    document
-        .getElementById("score")
-        .textContent = score;
+    document.getElementById("score").textContent = score;
 
     let commentaire = "";
 
@@ -2032,13 +1978,10 @@ function terminerJeu() {
 
     }
 
-    document
-        .getElementById("commentaire-score")
-        .textContent = commentaire;
+    document.getElementById("commentaire-score").textContent =
+        commentaire;
 
-    document
-        .getElementById("score-final")
-        .style.display = "flex";
+    document.getElementById("score-final").style.display = "flex";
 
 }
 
@@ -2048,9 +1991,7 @@ function terminerJeu() {
 ===================================================== */
 
 function rejouer() {
-
     location.reload();
-
 }
 
 </script>
