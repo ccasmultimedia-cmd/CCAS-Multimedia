@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<title>Copier et coller sur smartphone - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f7fb;
+
+    color: #24344d;
+
+    touch-action: manipulation;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    background: #1f3656;
+
+    color: white;
+}
+
+.navbar {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.logo {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.logo strong {
+
+    font-size: 22px;
+}
+
+.logo span {
+
+    font-size: 13px;
+
+    opacity: 0.85;
+}
+
+nav {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 9px 12px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+nav a:hover,
+nav a.active {
+
+    background: #3975c6;
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+.page-header {
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9f0fa,
+            #ffffff,
+            #eef7ef
+        );
+}
+
+.page-header h1 {
+
+    margin: 0 0 12px;
+
+    font-size: 38px;
+
+    color: #203858;
+}
+
+.page-header p {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    color: #617087;
+}
+
+
+/* =========================
+   CONTENEUR
+========================= */
+
+main {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   PANNEAU DU JEU
+========================= */
+
+.game-panel {
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 5px 25px rgba(30,50,80,0.12);
+}
+
+
+/* =========================
+   INFORMATIONS
+========================= */
+
+.game-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.info-box {
+
+    background: #f1f5fb;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    text-align: center;
+}
+
+.info-box strong {
+
+    display: block;
+
+    font-size: 25px;
+
+    color: #203858;
+
+    margin-bottom: 4px;
+}
+
+.info-box span {
+
+    font-size: 14px;
+
+    color: #617087;
+}
+
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.progress-container {
+
+    margin-bottom: 25px;
+}
+
+.progress-label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+    color: #617087;
+}
+
+.progress-bar {
+
+    height: 12px;
+
+    background: #e4eaf2;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #5b9b6b;
+
+    transition: width 0.3s;
+}
+
+
+/* =========================
+   CONSIGNE
+========================= */
+
+.instruction {
+
+    background: #eaf2ff;
+
+    border-left: 6px solid #3975c6;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    margin-bottom: 25px;
+}
+
+.instruction h2 {
+
+    margin-top: 0;
+
+    color: #203858;
+
+    font-size: 24px;
+}
+
+.instruction p {
+
+    margin-bottom: 0;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   TELEPHONE
+========================= */
+
+.phone {
+
+    max-width: 430px;
+
+    margin: 25px auto;
+
+    background: #202b3d;
+
+    border-radius: 32px;
+
+    padding: 14px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.20);
+}
+
+.phone-speaker {
+
+    width: 80px;
+
+    height: 7px;
+
+    background: #101722;
+
+    border-radius: 10px;
+
+    margin: 4px auto 12px;
+}
+
+.phone-screen {
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    min-height: 420px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* =========================
+   BARRE DU TELEPHONE
+========================= */
+
+.phone-top {
+
+    background: #3975c6;
+
+    color: white;
+
+    padding: 13px 16px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.phone-top span {
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   APPLICATION
+========================= */
+
+.app-content {
+
+    padding: 25px 20px;
+}
+
+.app-title {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #203858;
+
+    margin-bottom: 20px;
+}
+
+.text-zone {
+
+    background: #f7f9fc;
+
+    border: 2px solid #d8e0eb;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    cursor: pointer;
+}
+
+.text-zone span {
+
+    padding: 2px 4px;
+
+    border-radius: 5px;
+
+    transition: 0.2s;
+}
+
+.text-zone span.selected {
+
+    background: #bcd6ff;
+
+    color: #163b6b;
+}
+
+
+/* =========================
+   ZONE DE COLLAGE
+========================= */
+
+.paste-zone {
+
+    margin-top: 20px;
+
+    min-height: 80px;
+
+    border: 3px dashed #aebdce;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    color: #617087;
+
+    font-size: 18px;
+
+    background: #fafbfd;
+
+    transition: 0.2s;
+}
+
+.paste-zone.ready {
+
+    border-color: #5b9b6b;
+
+    background: #eef7ef;
+
+    color: #2d6941;
+}
+
+
+/* =========================
+   FAUX MENU
+========================= */
+
+.context-menu {
+
+    position: absolute;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 30px rgba(30,50,80,0.25);
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 20;
+
+    min-width: 190px;
+}
+
+.context-menu button {
+
+    width: 100%;
+
+    border: none;
+
+    background: white;
+
+    padding: 15px 18px;
+
+    text-align: left;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    color: #24344d;
+}
+
+.context-menu button:hover {
+
+    background: #eef4fb;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+
+    min-height: 30px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    font-weight: bold;
+}
+
+.message.success {
+
+    color: #2d6941;
+}
+
+.message.error {
+
+    color: #b23b3b;
+}
+
+
+/* =========================
+   BOUTONS
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+    flex-wrap: wrap;
+}
+
+.game-button {
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 14px 22px;
+
+    background: #3975c6;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.game-button:hover {
+
+    background: #285d9e;
+}
+
+.game-button.secondary {
+
+    background: #687991;
+}
+
+.game-button.secondary:hover {
+
+    background: #53647a;
+}
+
+
+/* =========================
+   CONSEIL
+========================= */
+
+.tip {
+
+    margin-top: 30px;
+
+    padding: 22px;
+
+    background: #eef7ef;
+
+    border-left: 6px solid #5b9b6b;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FIN DU JEU
+========================= */
+
+.end-screen {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 30px 15px;
+}
+
+.end-screen .big-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 15px;
+}
+
+.end-screen h2 {
+
+    font-size: 30px;
+
+    color: #203858;
+}
+
+.final-score {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #3975c6;
+
+    margin: 20px 0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    margin-top: 40px;
+
+    background: #1f3656;
+
+    color: white;
+}
+
+.footer-container {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .page-header {
+
+        padding: 35px 15px;
+    }
+
+    .page-header h1 {
+
+        font-size: 30px;
+    }
+
+    .page-header p {
+
+        font-size: 17px;
+    }
+
+    main {
+
+        padding: 25px 12px;
+    }
+
+    .game-panel {
+
+        padding: 20px 15px;
+    }
+
+    .game-info {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .phone {
+
+        border-radius: 25px;
+
+        padding: 9px;
+    }
+
+    .phone-screen {
+
+        border-radius: 18px;
+    }
+
+    .text-zone {
+
+        font-size: 18px;
+    }
+
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+
+    animation: pulse 0.35s ease;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<strong>Centre Multimédia du CCAS</strong>
+
+<span>
+Apprendre • Découvrir • Progresser
+</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">
+Accueil
+</a>
+
+<a href="exercices.html">
+Exercices
+</a>
+
+<a href="jeu-smartphone-gestes.html">
+Gestes tactiles
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<section class="page-header">
+
+<h1>
+📋 Copier et coller sur smartphone
+</h1>
+
+<p>
+Apprenez à sélectionner, copier et coller du texte
+sur votre smartphone ou votre tablette grâce à
+des défis simples et progressifs.
+</p>
+
+</section>
+
+
+
+<main>
+
+
+<div class="game-panel">
+
+
+<!-- INFORMATIONS -->
+
+<div class="game-info">
+
+<div class="info-box">
+
+<strong id="challengeNumber">
+1
+</strong>
+
+<span>
+Défi
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong id="score">
+0
+</strong>
+
+<span>
+Score
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong id="errors">
+0
+</strong>
+
+<span>
+Erreurs
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+10
+</strong>
+
+<span>
+Défis
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- PROGRESSION -->
+
+<div class="progress-container">
+
+<div class="progress-label">
+
+<span>
+Progression
+</span>
+
+<span id="progressText">
+1 / 10
+</span>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- CONSIGNE -->
+
+<div class="instruction">
+
+<h2 id="instructionTitle">
+Défi 1
+</h2>
+
+<p id="instructionText">
+Touchez le mot « ordinateur » pendant quelques secondes
+pour faire apparaître le menu.
+</p>
+
+</div>
+
+
+
+<!-- TELEPHONE -->
+
+<div class="phone">
+
+<div class="phone-speaker"></div>
+
+
+<div class="phone-screen">
+
+
+<div class="phone-top">
+
+<span>
+💬 Notes
+</span>
+
+<span>
+⋮
+</span>
+
+</div>
+
+
+<div class="app-content">
+
+
+<div class="app-title">
+Mon pense-bête
+</div>
+
+
+<div
+class="text-zone"
+id="textZone"
+>
+
+<span
+data-word="Bonjour">
+Bonjour
+</span>
+
+<span
+data-word="je">
+je
+</span>
+
+<span
+data-word="vous">
+vous
+</span>
+
+<span
+data-word="écris">
+écris
+</span>
+
+<span
+data-word="depuis">
+depuis
+</span>
+
+<span
+data-word="mon">
+mon
+</span>
+
+<span
+data-word="ordinateur">
+ordinateur
+</span>
+
+<span
+data-word="portable">
+portable
+</span>
+
+<span
+data-word="aujourd'hui.">
+aujourd'hui.
+</span>
+
+</div>
+
+
+<div
+class="paste-zone"
+id="pasteZone"
+>
+
+📌
+Zone de collage
+
+<br>
+
+<span>
+Le texte copié apparaîtra ici.
+</span>
+
+</div>
+
+
+</div>
+
+
+<div
+class="context-menu"
+id="contextMenu"
+>
+
+<button
+id="copyButton">
+📋 Copier
+</button>
+
+<button
+id="cutButton">
+✂️ Couper
+</button>
+
+<button
+id="pasteButton">
+📌 Coller
+</button>
+
+<button
+id="deleteButton">
+🗑️ Supprimer
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- MESSAGE -->
+
+<div
+class="message"
+id="message">
+</div>
+
+
+
+<!-- BOUTONS -->
+
+<div class="buttons">
+
+<button
+class="game-button secondary"
+onclick="resetChallenge()">
+
+🔄 Recommencer
+
+</button>
+
+<button
+class="game-button"
+onclick="nextChallenge()">
+
+➡️ Défi suivant
+
+</button>
+
+</div>
+
+
+
+<!-- CONSEIL -->
+
+<div class="tip">
+
+<strong>💡 Astuce :</strong>
+
+Sur un smartphone, une sélection de texte
+se fait généralement avec un <strong>appui long</strong>.
+Des petits curseurs peuvent ensuite apparaître
+pour choisir exactement le texte que vous voulez sélectionner.
+
+</div>
+
+
+
+<!-- FIN -->
+
+<div
+class="end-screen"
+id="endScreen">
+
+<div class="big-icon">
+🎉
+</div>
+
+<h2>
+Bravo !
+</h2>
+
+<p>
+Vous avez terminé les 10 défis
+de copier / coller sur smartphone.
+</p>
+
+<div
+class="final-score"
+id="finalScore">
+</div>
+
+<button
+class="game-button"
+onclick="restartGame()">
+
+🔄 Refaire le jeu
+
+</button>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<strong>
+Centre Multimédia du CCAS
+</strong>
+
+<br>
+
+Apprendre à utiliser le numérique
+simplement, à son rythme et sans stress.
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+let currentChallenge = 0;
+
+let score = 0;
+
+let errors = 0;
+
+let selectedWord = null;
+
+let copiedText = "";
+
+let longPressTimer = null;
+
+let challengeCompleted = false;
+
+
+
+/* =====================================
+   LES 10 DEFIS
+===================================== */
+
+const challenges = [
+
+{
+
+title:
+"Défi 1 — Appui long",
+
+text:
+"Touchez le mot « ordinateur » pendant quelques secondes pour faire apparaître le menu.",
+
+target:
+"ordinateur",
+
+action:
+"long"
+
+},
+
+{
+
+title:
+"Défi 2 — Sélectionner",
+
+text:
+"Faites un appui long sur le mot « portable » pour le sélectionner.",
+
+target:
+"portable",
+
+action:
+"long"
+
+},
+
+{
+
+title:
+"Défi 3 — Copier",
+
+text:
+"Sélectionnez le mot « Bonjour », puis choisissez « Copier ».",
+
+target:
+"Bonjour",
+
+action:
+"copy"
+
+},
+
+{
+
+title:
+"Défi 4 — Copier un autre mot",
+
+text:
+"Sélectionnez le mot « ordinateur », puis choisissez « Copier ».",
+
+target:
+"ordinateur",
+
+action:
+"copy"
+
+},
+
+{
+
+title:
+"Défi 5 — Coller",
+
+text:
+"Cliquez sur « Coller » pour placer le texte copié dans la zone de collage.",
+
+target:
+null,
+
+action:
+"paste"
+
+},
+
+{
+
+title:
+"Défi 6 — Copier une information",
+
+text:
+"Sélectionnez le mot « aujourd'hui. », puis copiez-le.",
+
+target:
+"aujourd'hui.",
+
+action:
+"copy"
+
+},
+
+{
+
+title:
+"Défi 7 — Coller encore une fois",
+
+text:
+"Collez maintenant le texte copié dans la zone de collage.",
+
+target:
+null,
+
+action:
+"paste"
+
+},
+
+{
+
+title:
+"Défi 8 — Couper",
+
+text:
+"Sélectionnez le mot « portable », puis choisissez « Couper ».",
+
+target:
+"portable",
+
+action:
+"cut"
+
+},
+
+{
+
+title:
+"Défi 9 — Supprimer",
+
+text:
+"Sélectionnez le mot « vous », puis choisissez « Supprimer ».",
+
+target:
+"vous",
+
+action:
+"delete"
+
+},
+
+{
+
+title:
+"Défi 10 — Copier puis coller",
+
+text:
+"Sélectionnez le mot « écris », copiez-le puis collez-le dans la zone prévue.",
+
+target:
+"écris",
+
+action:
+"copyPaste"
+
+}
+
+];
+
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const instructionTitle =
+document.getElementById("instructionTitle");
+
+const instructionText =
+document.getElementById("instructionText");
+
+const challengeNumber =
+document.getElementById("challengeNumber");
+
+const progressText =
+document.getElementById("progressText");
+
+const progressFill =
+document.getElementById("progressFill");
+
+const scoreDisplay =
+document.getElementById("score");
+
+const errorsDisplay =
+document.getElementById("errors");
+
+const message =
+document.getElementById("message");
+
+const textZone =
+document.getElementById("textZone");
+
+const pasteZone =
+document.getElementById("pasteZone");
+
+const contextMenu =
+document.getElementById("contextMenu");
+
+const endScreen =
+document.getElementById("endScreen");
+
+const finalScore =
+document.getElementById("finalScore");
+
+
+
+/* =====================================
+   CHARGER UN DEFI
+===================================== */
+
+function loadChallenge() {
+
+    const challenge =
+        challenges[currentChallenge];
+
+    challengeCompleted = false;
+
+    selectedWord = null;
+
+    contextMenu.style.display = "none";
+
+    message.textContent = "";
+
+    message.className = "message";
+
+
+    challengeNumber.textContent =
+        currentChallenge + 1;
+
+
+    progressText.textContent =
+        (currentChallenge + 1)
+        + " / "
+        + challenges.length;
+
+
+    progressFill.style.width =
+        (
+            (currentChallenge + 1)
+            /
+            challenges.length
+            *
+            100
+        )
+        + "%";
+
+
+    instructionTitle.textContent =
+        challenge.title;
+
+
+    instructionText.textContent =
+        challenge.text;
+
+
+    document
+        .querySelectorAll(".text-zone span")
+        .forEach(word => {
+
+            word.classList.remove("selected");
+
+        });
+
+
+    if (
+        challenge.action === "paste"
+    ) {
+
+        pasteZone.classList.add("ready");
+
+    } else {
+
+        pasteZone.classList.remove("ready");
+
+    }
+
+}
+
+
+
+/* =====================================
+   APPUI LONG
+===================================== */
+
+document
+.querySelectorAll(".text-zone span")
+.forEach(word => {
+
+
+    word.addEventListener(
+        "pointerdown",
+        function(e) {
+
+            e.preventDefault();
+
+            const element = this;
+
+            clearTimeout(longPressTimer);
+
+
+            longPressTimer =
+                setTimeout(
+                    function() {
+
+                        selectWord(element);
+
+                    },
+                    650
+                );
+
+        }
+    );
+
+
+    word.addEventListener(
+        "pointerup",
+        function() {
+
+            clearTimeout(longPressTimer);
+
+        }
+    );
+
+
+    word.addEventListener(
+        "pointerleave",
+        function() {
+
+            clearTimeout(longPressTimer);
+
+        }
+    );
+
+
+    word.addEventListener(
+        "click",
+        function() {
+
+            if (
+                challenges[currentChallenge].action
+                === "long"
+            ) {
+
+                showError(
+                    "Essayez de maintenir votre doigt plus longtemps."
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+
+/* =====================================
+   SELECTIONNER UN MOT
+===================================== */
+
+function selectWord(element) {
+
+    selectedWord = element;
+
+    document
+        .querySelectorAll(".text-zone span")
+        .forEach(word => {
+
+            word.classList.remove("selected");
+
+        });
+
+
+    element.classList.add("selected");
+
+
+    message.textContent =
+        "✓ Texte sélectionné";
+
+    message.className =
+        "message success";
+
+
+    const action =
+        challenges[currentChallenge].action;
+
+
+    if (action === "long") {
+
+        completeChallenge();
+
+        return;
+
+    }
+
+
+    if (
+        action === "copy" ||
+        action === "cut" ||
+        action === "delete" ||
+        action === "copyPaste"
+    ) {
+
+        showContextMenu(element);
+
+    }
+
+}
+
+
+
+/* =====================================
+   MENU
+===================================== */
+
+function showContextMenu(element) {
+
+    contextMenu.style.display =
+        "block";
+
+    contextMenu.style.left =
+        "50%";
+
+    contextMenu.style.top =
+        "115px";
+
+    contextMenu.style.transform =
+        "translateX(-50%)";
+
+}
+
+
+
+/* =====================================
+   COPIER
+===================================== */
+
+document
+.getElementById("copyButton")
+.addEventListener(
+    "click",
+    function() {
+
+
+        if (!selectedWord) {
+
+            showError(
+                "Sélectionnez d'abord un mot."
+            );
+
+            return;
+
+        }
+
+
+        copiedText =
+            selectedWord.textContent;
+
+
+        contextMenu.style.display =
+            "none";
+
+
+        message.textContent =
+            "✓ « "
+            + copiedText
+            + " » a été copié.";
+
+        message.className =
+            "message success";
+
+
+        const action =
+            challenges[currentChallenge].action;
+
+
+        if (action === "copy") {
+
+            completeChallenge();
+
+        }
+
+
+        if (action === "copyPaste") {
+
+            instructionText.textContent =
+                "Très bien ! Maintenant, collez le texte dans la zone de collage.";
+
+            pasteZone.classList.add("ready");
+
+        }
+
+    }
+);
+
+
+
+/* =====================================
+   COUPER
+===================================== */
+
+document
+.getElementById("cutButton")
+.addEventListener(
+    "click",
+    function() {
+
+
+        if (!selectedWord) {
+
+            showError(
+                "Sélectionnez d'abord un mot."
+            );
+
+            return;
+
+        }
+
+
+        copiedText =
+            selectedWord.textContent;
+
+
+        selectedWord.remove();
+
+
+        selectedWord = null;
+
+
+        contextMenu.style.display =
+            "none";
+
+
+        message.textContent =
+            "✓ Texte coupé.";
+
+        message.className =
+            "message success";
+
+
+        if (
+            challenges[currentChallenge].action
+            === "cut"
+        ) {
+
+            completeChallenge();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================
+   SUPPRIMER
+===================================== */
+
+document
+.getElementById("deleteButton")
+.addEventListener(
+    "click",
+    function() {
+
+
+        if (!selectedWord) {
+
+            showError(
+                "Sélectionnez d'abord un mot."
+            );
+
+            return;
+
+        }
+
+
+        selectedWord.remove();
+
+
+        selectedWord = null;
+
+
+        contextMenu.style.display =
+            "none";
+
+
+        message.textContent =
+            "✓ Texte supprimé.";
+
+        message.className =
+            "message success";
+
+
+        if (
+            challenges[currentChallenge].action
+            === "delete"
+        ) {
+
+            completeChallenge();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================
+   COLLER
+===================================== */
+
+document
+.getElementById("pasteButton")
+.addEventListener(
+    "click",
+    function() {
+
+        pasteText();
+
+    }
+);
+
+
+
+/* =====================================
+   CLIC SUR ZONE DE COLLAGE
+===================================== */
+
+pasteZone.addEventListener(
+    "click",
+    function() {
+
+        if (!copiedText) {
+
+            showError(
+                "Commencez par copier un texte."
+            );
+
+            return;
+
+        }
+
+
+        const action =
+            challenges[currentChallenge].action;
+
+
+        if (
+            action === "paste" ||
+            action === "copyPaste"
+        ) {
+
+            pasteText();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================
+   COLLER LE TEXTE
+===================================== */
+
+function pasteText() {
+
+    if (!copiedText) {
+
+        showError(
+            "Aucun texte n'a encore été copié."
+        );
+
+        return;
+
+    }
+
+
+    pasteZone.innerHTML =
+        "📌 <strong>"
+        + copiedText
+        + "</strong>";
+
+
+    pasteZone.classList.add("ready");
+
+
+    message.textContent =
+        "✓ Texte collé avec succès !";
+
+    message.className =
+        "message success";
+
+
+    const action =
+        challenges[currentChallenge].action;
+
+
+    if (
+        action === "paste" ||
+        action === "copyPaste"
+    ) {
+
+        completeChallenge();
+
+    }
+
+}
+
+
+
+/* =====================================
+   ERREUR
+===================================== */
+
+function showError(text) {
+
+    errors++;
+
+    errorsDisplay.textContent =
+        errors;
+
+
+    message.textContent =
+        "❌ " + text;
+
+    message.className =
+        "message error";
+
+}
+
+
+
+/* =====================================
+   DEFI TERMINE
+===================================== */
+
+function completeChallenge() {
+
+    if (challengeCompleted) {
+
+        return;
+
+    }
+
+
+    challengeCompleted = true;
+
+
+    score += 100;
+
+
+    scoreDisplay.textContent =
+        score;
+
+
+    message.textContent =
+        "🎉 Bravo ! Défi réussi !";
+
+    message.className =
+        "message success";
+
+
+    textZone.classList.add("pulse");
+
+
+    setTimeout(
+        function() {
+
+            textZone.classList.remove("pulse");
+
+        },
+        400
+    );
+
+}
+
+
+
+/* =====================================
+   DEFI SUIVANT
+===================================== */
+
+function nextChallenge() {
+
+
+    if (!challengeCompleted) {
+
+        showError(
+            "Terminez d'abord le défi actuel."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        currentChallenge
+        <
+        challenges.length - 1
+    ) {
+
+        currentChallenge++;
+
+        resetVisualArea();
+
+        loadChallenge();
+
+    }
+
+    else {
+
+        finishGame();
+
+    }
+
+}
+
+
+
+/* =====================================
+   RESET VISUEL
+===================================== */
+
+function resetVisualArea() {
+
+    textZone.innerHTML = `
+
+<span data-word="Bonjour">
+Bonjour
+</span>
+
+<span data-word="je">
+je
+</span>
+
+<span data-word="vous">
+vous
+</span>
+
+<span data-word="écris">
+écris
+</span>
+
+<span data-word="depuis">
+depuis
+</span>
+
+<span data-word="mon">
+mon
+</span>
+
+<span data-word="ordinateur">
+ordinateur
+</span>
+
+<span data-word="portable">
+portable
+</span>
+
+<span data-word="aujourd'hui.">
+aujourd'hui.
+</span>
+
+`;
+
+
+    pasteZone.innerHTML = `
+
+📌
+Zone de collage
+
+<br>
+
+<span>
+Le texte copié apparaîtra ici.
+</span>
+
+`;
+
+
+    attachWordEvents();
+
+}
+
+
+
+/* =====================================
+   RECREER LES EVENEMENTS
+===================================== */
+
+function attachWordEvents() {
+
+
+    document
+    .querySelectorAll(".text-zone span")
+    .forEach(word => {
+
+
+        word.addEventListener(
+            "pointerdown",
+            function(e) {
+
+                e.preventDefault();
+
+                const element = this;
+
+                clearTimeout(
+                    longPressTimer
+                );
+
+
+                longPressTimer =
+                    setTimeout(
+                        function() {
+
+                            selectWord(
+                                element
+                            );
+
+                        },
+                        650
+                    );
+
+            }
+        );
+
+
+        word.addEventListener(
+            "pointerup",
+            function() {
+
+                clearTimeout(
+                    longPressTimer
+                );
+
+            }
+        );
+
+
+        word.addEventListener(
+            "pointerleave",
+            function() {
+
+                clearTimeout(
+                    longPressTimer
+                );
+
+            }
+        );
+
+
+        word.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    challenges[currentChallenge]
+                    .action === "long"
+                ) {
+
+                    showError(
+                        "Faites un appui long."
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+
+/* =====================================
+   RECOMMENCER LE DEFI
+===================================== */
+
+function resetChallenge() {
+
+    resetVisualArea();
+
+    copiedText = "";
+
+    selectedWord = null;
+
+    contextMenu.style.display =
+        "none";
+
+    message.textContent = "";
+
+    message.className =
+        "message";
+
+    challengeCompleted = false;
+
+    pasteZone.classList.remove(
+        "ready"
+    );
+
+    loadChallenge();
+
+}
+
+
+
+/* =====================================
+   FIN
+===================================== */
+
+function finishGame() {
+
+    document
+        .querySelector(".game-panel")
+        .querySelectorAll(
+            ".game-info, .progress-container, .instruction, .phone, .message, .buttons, .tip"
+        )
+        .forEach(element => {
+
+            element.style.display =
+                "none";
+
+        });
+
+
+    endScreen.style.display =
+        "block";
+
+
+    finalScore.textContent =
+        "Votre score : "
+        + score
+        + " points";
+
+}
+
+
+
+/* =====================================
+   REDEMARRER
+===================================== */
+
+function restartGame() {
+
+    currentChallenge = 0;
+
+    score = 0;
+
+    errors = 0;
+
+    copiedText = "";
+
+    selectedWord = null;
+
+    scoreDisplay.textContent =
+        "0";
+
+    errorsDisplay.textContent =
+        "0";
+
+
+    endScreen.style.display =
+        "none";
+
+
+    document
+        .querySelector(".game-panel")
+        .querySelectorAll(
+            ".game-info, .progress-container, .instruction, .phone, .message, .buttons, .tip"
+        )
+        .forEach(element => {
+
+            element.style.display =
+                "";
+
+        });
+
+
+    resetVisualArea();
+
+    loadChallenge();
+
+}
+
+
+
+/* =====================================
+   INITIALISATION
+===================================== */
+
+loadChallenge();
+
+</script>
+
+
+</body>
+
+</html>
