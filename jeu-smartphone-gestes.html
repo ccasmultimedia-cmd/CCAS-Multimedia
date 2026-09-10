@@ -1,0 +1,3200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<title>Jeu gestes smartphone - Centre Multimédia du CCAS</title>
+
+<style>
+
+/* =========================================
+   GÉNÉRAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        linear-gradient(
+            180deg,
+            #dff3ff 0%,
+            #f8fbff 55%,
+            #eaf6e8 100%
+        );
+
+    color: #24344d;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+body::before,
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #72bd69;
+
+    opacity: 0.35;
+
+    pointer-events: none;
+
+    animation: flotter 9s infinite ease-in-out;
+
+    z-index: 0;
+}
+
+body::before {
+
+    left: 8%;
+    top: 20%;
+}
+
+body::after {
+
+    right: 10%;
+    top: 65%;
+
+    width: 10px;
+    height: 10px;
+
+    animation-delay: 3s;
+}
+
+@keyframes flotter {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b5cab,
+            #0878d1
+        );
+
+    color: white;
+
+    padding: 18px 20px;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.logo {
+
+    font-size: 45px;
+}
+
+header h1 {
+
+    margin: 0;
+
+    font-size: 27px;
+}
+
+header p {
+
+    margin: 5px 0 0;
+
+    font-size: 15px;
+
+    opacity: 0.93;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav {
+
+    max-width: 1100px;
+
+    margin: 12px auto 0;
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.12);
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+nav a:hover,
+nav a:focus {
+
+    background: white;
+
+    color: #0b5cab;
+}
+
+
+/* =========================================
+   CONTENU
+========================================= */
+
+main {
+
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 1100px;
+
+    margin: 25px auto;
+
+    padding: 0 15px;
+}
+
+.panel {
+
+    background: rgba(255,255,255,0.96);
+
+    border: 1px solid #d7e3ed;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 28px rgba(24,50,74,0.12);
+
+    padding: 25px;
+}
+
+
+/* =========================================
+   ÉCRAN DE DÉPART
+========================================= */
+
+.start {
+
+    text-align: center;
+
+    padding: 40px 25px;
+}
+
+.start .big {
+
+    font-size: 75px;
+
+    margin-bottom: 5px;
+}
+
+.start h2 {
+
+    margin: 5px 0 12px;
+
+    font-size: 31px;
+
+    color: #203858;
+}
+
+.intro {
+
+    max-width: 750px;
+
+    margin: 0 auto 25px;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    color: #56677d;
+}
+
+
+/* =========================================
+   BOUTONS
+========================================= */
+
+button {
+
+    border: 0;
+
+    border-radius: 13px;
+
+    padding: 14px 21px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,0.15);
+
+    transition: 0.15s;
+
+    touch-action: manipulation;
+}
+
+button:hover {
+
+    transform: translateY(-1px);
+}
+
+button:focus {
+
+    outline: 4px solid #ffd166;
+
+    outline-offset: 2px;
+}
+
+.primary {
+
+    background: #2fa84f;
+
+    color: white;
+}
+
+.secondary {
+
+    background: #e8f0f7;
+
+    color: #24344d;
+}
+
+.danger {
+
+    background: #d9534f;
+
+    color: white;
+}
+
+
+/* =========================================
+   CONSEIL
+========================================= */
+
+.help {
+
+    max-width: 760px;
+
+    margin: 22px auto 0;
+
+    padding: 15px 18px;
+
+    background: #fff9e8;
+
+    border: 1px solid #f0d48b;
+
+    border-radius: 13px;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   JEU
+========================================= */
+
+.game {
+
+    display: none;
+}
+
+.topbar {
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 15px;
+}
+
+.mission {
+
+    flex: 1;
+
+    min-width: 280px;
+
+    background: #eef7ff;
+
+    border-left: 7px solid #0b5cab;
+
+    border-radius: 13px;
+
+    padding: 15px 18px;
+}
+
+.mission strong {
+
+    font-size: 21px;
+}
+
+#mission {
+
+    margin-top: 5px;
+
+    font-size: 17px;
+}
+
+.stats {
+
+    display: flex;
+
+    gap: 9px;
+
+    flex-wrap: wrap;
+}
+
+.stat {
+
+    background: white;
+
+    border: 1px solid #d8e3ee;
+
+    border-radius: 12px;
+
+    padding: 9px 13px;
+
+    text-align: center;
+
+    min-width: 90px;
+}
+
+.stat b {
+
+    display: block;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   PROGRESSION
+========================================= */
+
+.progress {
+
+    height: 14px;
+
+    background: #dce7ef;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin: 14px 0 20px;
+}
+
+.progress span {
+
+    display: block;
+
+    height: 100%;
+
+    width: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2fa84f,
+            #78c75e
+        );
+
+    transition: 0.3s;
+}
+
+
+/* =========================================
+   CONSIGNE
+========================================= */
+
+.instruction {
+
+    text-align: center;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin: 8px auto 18px;
+
+    max-width: 850px;
+
+    line-height: 1.35;
+}
+
+.feedback {
+
+    min-height: 34px;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    margin: 8px;
+}
+
+
+/* =========================================
+   ZONE DE JEU
+========================================= */
+
+.arena {
+
+    position: relative;
+
+    min-height: 460px;
+
+    border-radius: 18px;
+
+    background: #f8fbfe;
+
+    border: 2px solid #d8e3ee;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    touch-action: none;
+}
+
+.center {
+
+    text-align: center;
+}
+
+
+/* =========================================
+   GROS BOUTON TACTILE
+========================================= */
+
+.touch-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 120px auto;
+
+    min-width: 220px;
+
+    min-height: 100px;
+
+    font-size: 27px;
+
+    border-radius: 25px;
+
+    background: #2fa84f;
+
+    color: white;
+
+    touch-action: none;
+}
+
+
+/* =========================================
+   CERCLES / OBJETS
+========================================= */
+
+.touch-target {
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: none;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.18);
+
+    font-weight: bold;
+
+    color: white;
+}
+
+.green {
+
+    background: #2fa84f;
+}
+
+.blue {
+
+    background: #0b6fc4;
+}
+
+.orange {
+
+    background: #f39c12;
+}
+
+.red {
+
+    background: #d9534f;
+}
+
+.circle {
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   BALAYAGE
+========================================= */
+
+.swipe-zone {
+
+    position: absolute;
+
+    inset: 70px 25px 60px;
+
+    border: 4px dashed #8ba1b5;
+
+    border-radius: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 25px;
+
+    background: #eef7ff;
+
+    touch-action: none;
+}
+
+.swipe-arrow {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   APPUI LONG
+========================================= */
+
+.long-button {
+
+    width: min(500px, 90%);
+
+    min-height: 130px;
+
+    margin: 110px auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: #0878d1;
+
+    color: white;
+
+    border-radius: 25px;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    user-select: none;
+
+    touch-action: none;
+}
+
+.long-button.holding {
+
+    background: #2fa84f;
+
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   DRAG
+========================================= */
+
+.drag-object {
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 90px;
+
+    border-radius: 18px;
+
+    background: #0b6fc4;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    touch-action: none;
+
+    user-select: none;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.18);
+}
+
+.drop-zone {
+
+    position: absolute;
+
+    right: 8%;
+
+    top: 32%;
+
+    width: 210px;
+
+    height: 150px;
+
+    border: 4px dashed #8398aa;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    background: #f1f5f8;
+}
+
+
+/* =========================================
+   FAUX SMARTPHONE
+========================================= */
+
+.phone {
+
+    width: min(360px, 92%);
+
+    height: 500px;
+
+    margin: auto;
+
+    background: #1d2733;
+
+    border-radius: 38px;
+
+    padding: 14px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+
+    position: relative;
+}
+
+.phone-screen {
+
+    background: #eef5fa;
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 27px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    touch-action: pan-y;
+}
+
+.phone-top {
+
+    background: #0b5cab;
+
+    color: white;
+
+    padding: 18px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.phone-content {
+
+    padding: 18px;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DÉFILEMENT
+========================================= */
+
+.scroll-box {
+
+    height: 300px;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 15px;
+
+    border: 2px solid #c8d7e4;
+
+    padding: 20px;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    touch-action: pan-y;
+}
+
+.scroll-box p {
+
+    margin-top: 0;
+
+    margin-bottom: 80px;
+}
+
+
+/* =========================================
+   ZOOM
+========================================= */
+
+.zoom-area {
+
+    position: relative;
+
+    height: 400px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eef7ff;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    touch-action: none;
+}
+
+.zoom-object {
+
+    width: 120px;
+
+    height: 120px;
+
+    border-radius: 25px;
+
+    background: #2fa84f;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    transition: transform 0.1s;
+}
+
+
+/* =========================================
+   DEUX DOIGTS
+========================================= */
+
+.two-finger {
+
+    position: relative;
+
+    height: 400px;
+
+    background: #f4f8fc;
+
+    border-radius: 20px;
+
+    border: 2px solid #d0dde8;
+
+    touch-action: none;
+}
+
+.finger {
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #0b6fc4;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    font-size: 28px;
+}
+
+
+/* =========================================
+   RESULTAT
+========================================= */
+
+.result {
+
+    display: none;
+
+    text-align: center;
+}
+
+.medal {
+
+    font-size: 75px;
+}
+
+.score {
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    color: #2fa84f;
+}
+
+.result p {
+
+    font-size: 19px;
+}
+
+.result-grid {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+    margin: 22px 0;
+}
+
+.result-box {
+
+    background: #f2f7fb;
+
+    border-radius: 14px;
+
+    padding: 15px 22px;
+
+    min-width: 140px;
+}
+
+.result-box b {
+
+    font-size: 27px;
+
+    display: block;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    .logo {
+        font-size: 34px;
+    }
+
+    main {
+        margin: 12px auto;
+        padding: 0 9px;
+    }
+
+    .panel {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .start {
+        padding: 28px 15px;
+    }
+
+    .start .big {
+        font-size: 55px;
+    }
+
+    .start h2 {
+        font-size: 26px;
+    }
+
+    .intro {
+        font-size: 17px;
+    }
+
+    .instruction {
+        font-size: 20px;
+    }
+
+    .arena {
+        min-height: 500px;
+        padding: 12px;
+    }
+
+    .mission {
+        min-width: 100%;
+    }
+
+    .stats {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stat {
+        flex: 1;
+    }
+
+    .drop-zone {
+        right: 5%;
+        width: 170px;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITÉ
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+📱
+</div>
+
+<div>
+
+<h1>Jeu des gestes tactiles</h1>
+
+<p>
+Apprenez à utiliser votre smartphone ou votre tablette
+en pratiquant les gestes du quotidien.
+</p>
+
+</div>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">
+🏠 Accueil
+</a>
+
+<a href="exercices.html">
+🎮 Exercices
+</a>
+
+<a href="jeu-souris.html">
+🖱️ Jeu souris
+</a>
+
+<a href="jeu-clavier.html">
+⌨️ Jeu clavier
+</a>
+
+</nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     ÉCRAN DE DÉPART
+========================================= -->
+
+<section
+id="start"
+class="panel start">
+
+<div class="big">
+📱👆
+</div>
+
+<h2>
+Jeu des gestes tactiles
+</h2>
+
+<p class="intro">
+
+Bienvenue !
+
+Ce jeu vous apprend progressivement les gestes
+les plus utiles sur un smartphone ou une tablette.
+
+Vous allez apprendre à toucher, double-toucher,
+faire un appui long, glisser, faire défiler
+et utiliser deux doigts.
+
+<strong>
+Prenez votre temps : l'objectif est de comprendre
+le geste avant de chercher à aller vite.
+</strong>
+
+</p>
+
+<button
+class="primary"
+onclick="startGame()">
+
+▶ Commencer les défis
+
+</button>
+
+
+<div class="help">
+
+💡 <strong>Conseil :</strong>
+si vous êtes sur smartphone ou tablette,
+tenez votre appareil normalement et utilisez
+un seul doigt sauf lorsque le jeu vous demande
+d'en utiliser deux.
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     JEU
+========================================= -->
+
+<section
+id="game"
+class="panel game">
+
+
+<div class="topbar">
+
+
+<div class="mission">
+
+<div>
+Défi <strong id="level">1</strong> / 30
+</div>
+
+<div id="mission"></div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+⏱️
+<b id="timer">—</b>
+temps
+</div>
+
+<div class="stat">
+❌
+<b id="errors">0</b>
+erreurs
+</div>
+
+<div class="stat">
+🏆
+<b id="score">0</b>
+points
+</div>
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<span id="progress"></span>
+
+</div>
+
+
+<div
+id="instruction"
+class="instruction">
+</div>
+
+
+<div
+id="feedback"
+class="feedback">
+</div>
+
+
+<div
+id="arena"
+class="arena">
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     RESULTAT
+========================================= -->
+
+<section
+id="result"
+class="panel result">
+
+<div
+id="medal"
+class="medal">
+🏆
+</div>
+
+<h2>
+Bravo ! Les 30 défis sont terminés !
+</h2>
+
+
+<div
+id="finalScore"
+class="score">
+0
+</div>
+
+<p>
+points
+</p>
+
+
+<div class="result-grid">
+
+
+<div class="result-box">
+
+⏱️ Temps
+
+<b id="finalTime">
+0 s
+</b>
+
+</div>
+
+
+<div class="result-box">
+
+❌ Erreurs
+
+<b id="finalErrors">
+0
+</b>
+
+</div>
+
+
+<div class="result-box">
+
+📱 Défis
+
+<b>
+30 / 30
+</b>
+
+</div>
+
+
+</div>
+
+
+<p id="finalMessage">
+</p>
+
+
+<button
+class="primary"
+onclick="startGame()">
+
+🔄 Recommencer
+
+</button>
+
+
+<button
+class="secondary"
+onclick="location.href='exercices.html'">
+
+🎮 Retour aux exercices
+
+</button>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================
+   LISTE DES 30 DÉFIS
+========================================= */
+
+const challenges = [
+
+    {
+        type: "tap",
+        text: "Touchez le gros bouton vert.",
+        label: "TOUCHER"
+    },
+
+    {
+        type: "tap",
+        text: "Touchez le bouton bleu.",
+        label: "APPUYEZ ICI"
+    },
+
+    {
+        type: "double",
+        text: "Faites deux petits touchers rapides sur le bouton.",
+        label: "DOUBLE TOUCHER"
+    },
+
+    {
+        type: "long",
+        text: "Gardez votre doigt appuyé pendant environ 1 seconde.",
+        label: "APPUI LONG"
+    },
+
+    {
+        type: "swipe",
+        text: "Faites glisser votre doigt vers la droite.",
+        direction: "right"
+    },
+
+    {
+        type: "swipe",
+        text: "Faites glisser votre doigt vers la gauche.",
+        direction: "left"
+    },
+
+    {
+        type: "swipe",
+        text: "Faites glisser votre doigt vers le haut.",
+        direction: "up"
+    },
+
+    {
+        type: "swipe",
+        text: "Faites glisser votre doigt vers le bas.",
+        direction: "down"
+    },
+
+    {
+        type: "drag",
+        text: "Faites glisser le téléphone vers la zone verte."
+    },
+
+    {
+        type: "tapTarget",
+        text: "Touchez le cercle vert."
+    },
+
+    {
+        type: "tapTarget",
+        text: "Trouvez et touchez le cercle orange."
+    },
+
+    {
+        type: "double",
+        text: "Double-touchez rapidement le bouton « OUVRIR ».",
+        label: "OUVRIR"
+    },
+
+    {
+        type: "long",
+        text: "Faites un appui long pour afficher le menu.",
+        label: "AFFICHER LE MENU"
+    },
+
+    {
+        type: "scroll",
+        text: "Faites défiler la zone vers le bas jusqu'à trouver le mot « BRAVO »."
+    },
+
+    {
+        type: "scroll",
+        text: "Faites défiler la page pour découvrir le dernier message."
+    },
+
+    {
+        type: "tapTarget",
+        text: "Touchez la petite cible bleue.",
+        small: true
+    },
+
+    {
+        type: "drag",
+        text: "Faites glisser le fichier vers la corbeille."
+    },
+
+    {
+        type: "swipe",
+        text: "Balayez rapidement vers la droite.",
+        direction: "right",
+        fast: true
+    },
+
+    {
+        type: "swipe",
+        text: "Balayez rapidement vers la gauche.",
+        direction: "left",
+        fast: true
+    },
+
+    {
+        type: "zoom",
+        text: "Écartez deux doigts pour agrandir le carré."
+    },
+
+    {
+        type: "zoom",
+        text: "Rapprochez deux doigts pour réduire le carré."
+    },
+
+    {
+        type: "twoFinger",
+        text: "Touchez les deux cercles bleus en même temps."
+    },
+
+    {
+        type: "tapTarget",
+        text: "Touchez la cible rouge."
+    },
+
+    {
+        type: "double",
+        text: "Double-touchez la photo.",
+        label: "📷 PHOTO"
+    },
+
+    {
+        type: "long",
+        text: "Faites un appui long sur la photo.",
+        label: "📷 PHOTO"
+    },
+
+    {
+        type: "drag",
+        text: "Faites glisser la photo vers « PARTAGER »."
+    },
+
+    {
+        type: "swipe",
+        text: "Faites glisser vers la gauche pour passer à la photo suivante.",
+        direction: "left"
+    },
+
+    {
+        type: "scroll",
+        text: "Faites défiler la liste jusqu'en bas."
+    },
+
+    {
+        type: "zoom",
+        text: "Utilisez deux doigts pour agrandir l'image."
+    },
+
+    {
+        type: "tapTarget",
+        text: "Dernier défi : touchez la grande cible verte !",
+        big: true
+    }
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+
+let errors = 0;
+
+let score = 0;
+
+let startTime = 0;
+
+let challengeStart = 0;
+
+let timerInterval = null;
+
+let completed = false;
+
+let activePointers = new Map();
+
+let longPressTimer = null;
+
+let longPressStart = 0;
+
+let doubleLast = 0;
+
+let doubleCount = 0;
+
+let dragData = null;
+
+let zoomStartDistance = null;
+
+let zoomStartScale = 1;
+
+let currentScale = 1;
+
+
+/* =========================================
+   ÉLÉMENTS
+========================================= */
+
+const arena =
+    document.getElementById("arena");
+
+const instruction =
+    document.getElementById("instruction");
+
+const feedback =
+    document.getElementById("feedback");
+
+
+/* =========================================
+   DÉMARRER
+========================================= */
+
+function startGame() {
+
+    document.getElementById("start")
+        .style.display = "none";
+
+    document.getElementById("result")
+        .style.display = "none";
+
+    document.getElementById("game")
+        .style.display = "block";
+
+
+    current = 0;
+
+    errors = 0;
+
+    score = 0;
+
+    completed = false;
+
+    startTime = Date.now();
+
+
+    clearInterval(timerInterval);
+
+
+    timerInterval = setInterval(function() {
+
+        const elapsed =
+            (Date.now() - challengeStart) / 1000;
+
+        document.getElementById("timer")
+            .textContent =
+            elapsed.toFixed(1) + " s";
+
+    }, 100);
+
+
+    loadChallenge();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================
+   CHARGER UN DÉFI
+========================================= */
+
+function loadChallenge() {
+
+    arena.innerHTML = "";
+
+    feedback.textContent = "";
+
+    activePointers.clear();
+
+    clearTimeout(longPressTimer);
+
+    doubleLast = 0;
+
+    doubleCount = 0;
+
+    dragData = null;
+
+    zoomStartDistance = null;
+
+    currentScale = 1;
+
+
+    const c =
+        challenges[current];
+
+
+    document.getElementById("level")
+        .textContent =
+        current + 1;
+
+
+    document.getElementById("mission")
+        .textContent =
+        c.text;
+
+
+    instruction.textContent =
+        getInstruction(c);
+
+
+    document.getElementById("score")
+        .textContent =
+        score;
+
+
+    document.getElementById("errors")
+        .textContent =
+        errors;
+
+
+    document.getElementById("progress")
+        .style.width =
+        (current / challenges.length * 100) + "%";
+
+
+    challengeStart = Date.now();
+
+
+    if (c.type === "tap") {
+        createTap(c);
+    }
+
+    if (c.type === "double") {
+        createDouble(c);
+    }
+
+    if (c.type === "long") {
+        createLong(c);
+    }
+
+    if (c.type === "swipe") {
+        createSwipe(c);
+    }
+
+    if (c.type === "drag") {
+        createDrag(c);
+    }
+
+    if (c.type === "tapTarget") {
+        createTapTarget(c);
+    }
+
+    if (c.type === "scroll") {
+        createScroll(c);
+    }
+
+    if (c.type === "zoom") {
+        createZoom(c);
+    }
+
+    if (c.type === "twoFinger") {
+        createTwoFinger(c);
+    }
+
+}
+
+
+/* =========================================
+   CONSIGNES
+========================================= */
+
+function getInstruction(c) {
+
+    if (c.type === "tap") {
+        return "👆 Un seul toucher";
+    }
+
+    if (c.type === "double") {
+        return "👆👆 Deux touchers rapides";
+    }
+
+    if (c.type === "long") {
+        return "✋ Gardez le doigt appuyé";
+    }
+
+    if (c.type === "swipe") {
+
+        if (c.direction === "right") {
+            return "👉 Glissez vers la droite";
+        }
+
+        if (c.direction === "left") {
+            return "👈 Glissez vers la gauche";
+        }
+
+        if (c.direction === "up") {
+            return "👆 Glissez vers le haut";
+        }
+
+        if (c.direction === "down") {
+            return "👇 Glissez vers le bas";
+        }
+    }
+
+    if (c.type === "drag") {
+        return "☝️ Touchez et déplacez l'objet";
+    }
+
+    if (c.type === "scroll") {
+        return "📜 Faites défiler avec un doigt";
+    }
+
+    if (c.type === "zoom") {
+
+        if (current === 20 ||
+            current === 28) {
+
+            return "🤏 Rapprochez deux doigts";
+
+        }
+
+        return "🤏 Écartez deux doigts";
+    }
+
+    if (c.type === "twoFinger") {
+        return "✌️ Utilisez deux doigts";
+    }
+
+    return "👆 Touchez l'écran";
+
+}
+
+
+/* =========================================
+   POSITION ALÉATOIRE
+========================================= */
+
+function randomPosition(size) {
+
+    const padding = 25;
+
+    const rect =
+        arena.getBoundingClientRect();
+
+
+    const maxX =
+        Math.max(
+            padding,
+            rect.width - size - padding
+        );
+
+
+    const maxY =
+        Math.max(
+            padding,
+            rect.height - size - padding
+        );
+
+
+    return {
+
+        x:
+            padding +
+            Math.random() *
+            (maxX - padding),
+
+        y:
+            padding +
+            Math.random() *
+            (maxY - padding)
+
+    };
+
+}
+
+
+/* =========================================
+   FIN D'UN DÉFI
+========================================= */
+
+function finishAction() {
+
+    if (completed) {
+        return;
+    }
+
+
+    completed = true;
+
+
+    const elapsed =
+        (Date.now() - challengeStart) / 1000;
+
+
+    let points =
+        Math.max(
+            20,
+            Math.round(
+                1000 / (elapsed + 0.7)
+            )
+        );
+
+
+    points -= errors * 5;
+
+
+    if (points < 20) {
+        points = 20;
+    }
+
+
+    score += points;
+
+
+    feedback.textContent =
+        "✅ Bravo ! +" +
+        points +
+        " points";
+
+
+    document.getElementById("score")
+        .textContent =
+        score;
+
+
+    setTimeout(function() {
+
+        completed = false;
+
+        nextChallenge();
+
+    }, 700);
+
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+function mistake(message) {
+
+    errors++;
+
+
+    document.getElementById("errors")
+        .textContent =
+        errors;
+
+
+    feedback.textContent =
+        "❌ " + message;
+
+}
+
+
+/* =========================================
+   TAP SIMPLE
+========================================= */
+
+function createTap(c) {
+
+    const button =
+        document.createElement("button");
+
+
+    button.className =
+        "touch-button";
+
+
+    button.textContent =
+        c.label;
+
+
+    button.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+            finishAction();
+
+        }
+    );
+
+
+    arena.appendChild(button);
+
+}
+
+
+/* =========================================
+   DOUBLE TAP
+========================================= */
+
+function createDouble(c) {
+
+    const button =
+        document.createElement("div");
+
+
+    button.className =
+        "touch-button";
+
+
+    button.textContent =
+        c.label;
+
+
+    button.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const now =
+                Date.now();
+
+
+            if (
+                now - doubleLast <
+                500
+            ) {
+
+                doubleCount++;
+
+            } else {
+
+                doubleCount = 1;
+
+            }
+
+
+            doubleLast = now;
+
+
+            if (doubleCount >= 2) {
+
+                finishAction();
+
+            }
+
+        }
+    );
+
+
+    arena.appendChild(button);
+
+}
+
+
+/* =========================================
+   APPUI LONG
+========================================= */
+
+function createLong(c) {
+
+    const button =
+        document.createElement("div");
+
+
+    button.className =
+        "long-button";
+
+
+    button.textContent =
+        c.label;
+
+
+    button.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+
+            button.classList.add(
+                "holding"
+            );
+
+
+            longPressStart =
+                Date.now();
+
+
+            clearTimeout(
+                longPressTimer
+            );
+
+
+            longPressTimer =
+                setTimeout(
+                    function() {
+
+                        button.classList.remove(
+                            "holding"
+                        );
+
+                        finishAction();
+
+                    },
+                    850
+                );
+
+        }
+    );
+
+
+    button.addEventListener(
+        "pointerup",
+        function() {
+
+            clearTimeout(
+                longPressTimer
+            );
+
+
+            const duration =
+                Date.now() -
+                longPressStart;
+
+
+            button.classList.remove(
+                "holding"
+            );
+
+
+            if (duration < 700) {
+
+                mistake(
+                    "Gardez le doigt un peu plus longtemps."
+                );
+
+            }
+
+        }
+    );
+
+
+    button.addEventListener(
+        "pointercancel",
+        function() {
+
+            clearTimeout(
+                longPressTimer
+            );
+
+            button.classList.remove(
+                "holding"
+            );
+
+        }
+    );
+
+
+    arena.appendChild(button);
+
+}
+
+
+/* =========================================
+   SWIPE
+========================================= */
+
+function createSwipe(c) {
+
+    const zone =
+        document.createElement("div");
+
+
+    zone.className =
+        "swipe-zone";
+
+
+    const content =
+        document.createElement("div");
+
+
+    let arrow = "👉";
+
+    if (c.direction === "left") {
+        arrow = "👈";
+    }
+
+    if (c.direction === "up") {
+        arrow = "👆";
+    }
+
+    if (c.direction === "down") {
+        arrow = "👇";
+    }
+
+
+    content.innerHTML =
+        '<div class="swipe-arrow">' +
+        arrow +
+        '</div>' +
+        '<div>Faites glisser votre doigt ici</div>';
+
+
+    zone.appendChild(content);
+
+
+    let startX = 0;
+
+    let startY = 0;
+
+    let startTime = 0;
+
+
+    zone.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+            startX =
+                event.clientX;
+
+            startY =
+                event.clientY;
+
+            startTime =
+                Date.now();
+
+            zone.setPointerCapture(
+                event.pointerId
+            );
+
+        }
+    );
+
+
+    zone.addEventListener(
+        "pointerup",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const dx =
+                event.clientX -
+                startX;
+
+
+            const dy =
+                event.clientY -
+                startY;
+
+
+            const duration =
+                Date.now() -
+                startTime;
+
+
+            const absX =
+                Math.abs(dx);
+
+
+            const absY =
+                Math.abs(dy);
+
+
+            const distance =
+                Math.max(
+                    absX,
+                    absY
+                );
+
+
+            if (distance < 70) {
+
+                mistake(
+                    "Faites un mouvement plus long."
+                );
+
+                return;
+            }
+
+
+            let direction;
+
+
+            if (absX > absY) {
+
+                direction =
+                    dx > 0
+                    ? "right"
+                    : "left";
+
+            } else {
+
+                direction =
+                    dy > 0
+                    ? "down"
+                    : "up";
+
+            }
+
+
+            if (
+                direction ===
+                c.direction
+            ) {
+
+                if (
+                    c.fast &&
+                    duration > 700
+                ) {
+
+                    mistake(
+                        "Essayez de faire le geste un peu plus rapidement."
+                    );
+
+                    return;
+                }
+
+
+                finishAction();
+
+            } else {
+
+                mistake(
+                    "Ce n'est pas la bonne direction."
+                );
+
+            }
+
+        }
+    );
+
+
+    arena.appendChild(zone);
+
+}
+
+
+/* =========================================
+   CIBLE
+========================================= */
+
+function createTapTarget(c) {
+
+    const size =
+        c.big
+        ? 105
+        : c.small
+        ? 55
+        : 80;
+
+
+    const target =
+        document.createElement("div");
+
+
+    target.className =
+        "touch-target circle " +
+        (
+            current % 3 === 0
+            ? "green"
+            : current % 3 === 1
+            ? "orange"
+            : "red"
+        );
+
+
+    target.style.width =
+        size + "px";
+
+
+    target.style.height =
+        size + "px";
+
+
+    const pos =
+        randomPosition(size);
+
+
+    target.style.left =
+        pos.x + "px";
+
+
+    target.style.top =
+        pos.y + "px";
+
+
+    target.textContent =
+        "👆";
+
+
+    target.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+            finishAction();
+
+        }
+    );
+
+
+    arena.appendChild(target);
+
+}
+
+
+/* =========================================
+   GLISSER / DÉPLACER
+========================================= */
+
+function createDrag(c) {
+
+    const object =
+        document.createElement("div");
+
+
+    object.className =
+        "drag-object";
+
+
+    object.textContent =
+        current >= 25
+        ? "📷 PHOTO"
+        : "📄 FICHIER";
+
+
+    object.style.left =
+        "8%";
+
+
+    object.style.top =
+        "38%";
+
+
+    const zone =
+        document.createElement("div");
+
+
+    zone.className =
+        "drop-zone";
+
+
+    zone.innerHTML =
+        current >= 25
+        ? "📤<br>PARTAGER"
+        : "🗑️<br>CORBEILLE";
+
+
+    let offsetX = 0;
+
+    let offsetY = 0;
+
+    let dragging = false;
+
+
+    object.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+            dragging = true;
+
+
+            const rect =
+                object.getBoundingClientRect();
+
+
+            offsetX =
+                event.clientX -
+                rect.left;
+
+
+            offsetY =
+                event.clientY -
+                rect.top;
+
+
+            object.setPointerCapture(
+                event.pointerId
+            );
+
+        }
+    );
+
+
+    object.addEventListener(
+        "pointermove",
+        function(event) {
+
+            if (!dragging) {
+                return;
+            }
+
+
+            const arenaRect =
+                arena.getBoundingClientRect();
+
+
+            let x =
+                event.clientX -
+                arenaRect.left -
+                offsetX;
+
+
+            let y =
+                event.clientY -
+                arenaRect.top -
+                offsetY;
+
+
+            x =
+                Math.max(
+                    0,
+                    Math.min(
+                        arenaRect.width -
+                        object.offsetWidth,
+                        x
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    0,
+                    Math.min(
+                        arenaRect.height -
+                        object.offsetHeight,
+                        y
+                    )
+                );
+
+
+            object.style.left =
+                x + "px";
+
+
+            object.style.top =
+                y + "px";
+
+        }
+    );
+
+
+    object.addEventListener(
+        "pointerup",
+        function() {
+
+            if (!dragging) {
+                return;
+            }
+
+
+            dragging = false;
+
+
+            const a =
+                object.getBoundingClientRect();
+
+
+            const b =
+                zone.getBoundingClientRect();
+
+
+            const overlap =
+                a.left < b.right &&
+                a.right > b.left &&
+                a.top < b.bottom &&
+                a.bottom > b.top;
+
+
+            if (overlap) {
+
+                finishAction();
+
+            } else {
+
+                mistake(
+                    "Déplacez l'objet jusque dans la zone."
+                );
+
+            }
+
+        }
+    );
+
+
+    arena.appendChild(zone);
+
+    arena.appendChild(object);
+
+}
+
+
+/* =========================================
+   DÉFILEMENT
+========================================= */
+
+function createScroll(c) {
+
+    const box =
+        document.createElement("div");
+
+
+    box.className =
+        "scroll-box";
+
+
+    box.innerHTML = `
+
+        <p>
+        📱 Bienvenue dans cette liste.
+        </p>
+
+        <p>
+        Faites glisser votre doigt
+        vers le haut pour continuer.
+        </p>
+
+        <p>
+        Vous apprenez à faire défiler
+        une page sur votre smartphone.
+        </p>
+
+        <p>
+        Continuez encore un peu...
+        </p>
+
+        <p>
+        Voici encore quelques informations.
+        </p>
+
+        <p>
+        Encore un petit effort !
+        </p>
+
+        <p>
+        ⭐ BRAVO ⭐
+        </p>
+
+        <p>
+        Vous avez trouvé la fin de la page.
+        </p>
+
+    `;
+
+
+    let reachedBottom = false;
+
+
+    box.addEventListener(
+        "scroll",
+        function() {
+
+            const bottom =
+                box.scrollTop +
+                box.clientHeight >=
+                box.scrollHeight - 10;
+
+
+            if (bottom && !reachedBottom) {
+
+                reachedBottom = true;
+
+                finishAction();
+
+            }
+
+        }
+    );
+
+
+    arena.appendChild(box);
+
+}
+
+
+/* =========================================
+   ZOOM
+========================================= */
+
+function createZoom(c) {
+
+    const area =
+        document.createElement("div");
+
+
+    area.className =
+        "zoom-area";
+
+
+    const object =
+        document.createElement("div");
+
+
+    object.className =
+        "zoom-object";
+
+
+    object.textContent =
+        "ZOOM";
+
+
+    area.appendChild(object);
+
+
+    let pointers =
+        new Map();
+
+
+    let initialDistance =
+        null;
+
+
+    let initialScale =
+        1;
+
+
+    function distance(a, b) {
+
+        const dx =
+            a.clientX -
+            b.clientX;
+
+
+        const dy =
+            a.clientY -
+            b.clientY;
+
+
+        return Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+    }
+
+
+    area.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+
+            pointers.set(
+                event.pointerId,
+                event
+            );
+
+
+            area.setPointerCapture(
+                event.pointerId
+            );
+
+
+            if (pointers.size === 2) {
+
+                const values =
+                    Array.from(
+                        pointers.values()
+                    );
+
+
+                initialDistance =
+                    distance(
+                        values[0],
+                        values[1]
+                    );
+
+
+                initialScale =
+                    currentScale;
+
+            }
+
+        }
+    );
+
+
+    area.addEventListener(
+        "pointermove",
+        function(event) {
+
+            if (!pointers.has(
+                event.pointerId
+            )) {
+
+                return;
+
+            }
+
+
+            pointers.set(
+                event.pointerId,
+                event
+            );
+
+
+            if (pointers.size !== 2) {
+                return;
+            }
+
+
+            const values =
+                Array.from(
+                    pointers.values()
+                );
+
+
+            const currentDistance =
+                distance(
+                    values[0],
+                    values[1]
+                );
+
+
+            if (
+                !initialDistance
+            ) {
+
+                return;
+
+            }
+
+
+            let scale =
+                initialScale *
+                (
+                    currentDistance /
+                    initialDistance
+                );
+
+
+            scale =
+                Math.max(
+                    0.65,
+                    Math.min(
+                        2.4,
+                        scale
+                    )
+                );
+
+
+            currentScale =
+                scale;
+
+
+            object.style.transform =
+                "scale(" +
+                scale +
+                ")";
+
+        }
+    );
+
+
+    area.addEventListener(
+        "pointerup",
+        function(event) {
+
+            pointers.delete(
+                event.pointerId
+            );
+
+
+            if (pointers.size < 2) {
+
+                if (
+                    current === 20
+                    ||
+                    current === 28
+                ) {
+
+                    if (
+                        currentScale < 0.9
+                    ) {
+
+                        finishAction();
+
+                    }
+
+                } else {
+
+                    if (
+                        currentScale > 1.35
+                    ) {
+
+                        finishAction();
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+    area.addEventListener(
+        "pointercancel",
+        function(event) {
+
+            pointers.delete(
+                event.pointerId
+            );
+
+        }
+    );
+
+
+    arena.appendChild(area);
+
+}
+
+
+/* =========================================
+   DEUX DOIGTS
+========================================= */
+
+function createTwoFinger(c) {
+
+    const area =
+        document.createElement("div");
+
+
+    area.className =
+        "two-finger";
+
+
+    const left =
+        document.createElement("div");
+
+
+    left.className =
+        "finger";
+
+
+    left.textContent =
+        "1";
+
+
+    left.style.left =
+        "22%";
+
+
+    left.style.top =
+        "42%";
+
+
+    const right =
+        document.createElement("div");
+
+
+    right.className =
+        "finger";
+
+
+    right.textContent =
+        "2";
+
+
+    right.style.right =
+        "22%";
+
+
+    right.style.top =
+        "42%";
+
+
+    area.appendChild(left);
+
+    area.appendChild(right);
+
+
+    let pointers =
+        new Set();
+
+
+    function check() {
+
+        if (
+            pointers.size >= 2
+        ) {
+
+            finishAction();
+
+        }
+
+    }
+
+
+    area.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            event.preventDefault();
+
+            pointers.add(
+                event.pointerId
+            );
+
+
+            check();
+
+        }
+    );
+
+
+    area.addEventListener(
+        "pointerup",
+        function(event) {
+
+            pointers.delete(
+                event.pointerId
+            );
+
+        }
+    );
+
+
+    area.addEventListener(
+        "pointercancel",
+        function(event) {
+
+            pointers.delete(
+                event.pointerId
+            );
+
+        }
+    );
+
+
+    arena.appendChild(area);
+
+}
+
+
+/* =========================================
+   PASSER AU DÉFI SUIVANT
+========================================= */
+
+function nextChallenge() {
+
+    current++;
+
+
+    if (
+        current >=
+        challenges.length
+    ) {
+
+        endGame();
+
+        return;
+
+    }
+
+
+    loadChallenge();
+
+}
+
+
+/* =========================================
+   FIN DU JEU
+========================================= */
+
+function endGame() {
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    const total =
+        (
+            (Date.now() - startTime) /
+            1000
+        ).toFixed(1);
+
+
+    document.getElementById("game")
+        .style.display =
+        "none";
+
+
+    document.getElementById("result")
+        .style.display =
+        "block";
+
+
+    document.getElementById("finalScore")
+        .textContent =
+        score;
+
+
+    document.getElementById("finalTime")
+        .textContent =
+        total + " s";
+
+
+    document.getElementById("finalErrors")
+        .textContent =
+        errors;
+
+
+    const medal =
+        document.getElementById("medal");
+
+
+    const message =
+        document.getElementById("finalMessage");
+
+
+    if (errors <= 3) {
+
+        medal.textContent =
+            "🏆";
+
+        message.textContent =
+            "Excellent ! Vous maîtrisez très bien les gestes tactiles.";
+
+    }
+
+    else if (errors <= 8) {
+
+        medal.textContent =
+            "🥇";
+
+        message.textContent =
+            "Très bon travail ! Vous êtes de plus en plus à l'aise.";
+
+    }
+
+    else if (errors <= 15) {
+
+        medal.textContent =
+            "🥈";
+
+        message.textContent =
+            "Bravo ! Continuez à pratiquer les gestes qui vous semblent difficiles.";
+
+    }
+
+    else {
+
+        medal.textContent =
+            "🥉";
+
+        message.textContent =
+            "Bravo pour les 30 défis ! L'important est d'avoir pratiqué.";
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
