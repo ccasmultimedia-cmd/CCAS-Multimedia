@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeu Photos - Smartphone</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #203858;
+    }
+
+    header {
+        background: #1f3656;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        font-size: 17px;
+        opacity: 0.95;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 20px 50px;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .intro h2 {
+        font-size: 32px;
+        margin: 0 0 10px;
+    }
+
+    .intro p {
+        font-size: 19px;
+        color: #617087;
+        line-height: 1.6;
+    }
+
+    .game-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    /* =========================
+       SMARTPHONE
+    ========================= */
+
+    .phone {
+        background: #111;
+        border-radius: 38px;
+        padding: 14px;
+        width: 330px;
+        max-width: 100%;
+        margin: auto;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .phone-screen {
+        background: #f2f4f7;
+        border-radius: 28px;
+        overflow: hidden;
+        min-height: 650px;
+        position: relative;
+    }
+
+    .phone-top {
+        height: 35px;
+        background: #111;
+        position: relative;
+    }
+
+    .speaker {
+        position: absolute;
+        width: 70px;
+        height: 8px;
+        background: #333;
+        border-radius: 10px;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .camera-app {
+        display: flex;
+        flex-direction: column;
+        height: 615px;
+        background: #111;
+        color: white;
+    }
+
+    .camera-top {
+        height: 58px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 14px;
+        background: #171717;
+    }
+
+    .camera-top button {
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 27px;
+        cursor: pointer;
+        padding: 5px 8px;
+    }
+
+    .camera-top button:active {
+        transform: scale(0.9);
+    }
+
+    .camera-view {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        background:
+            linear-gradient(
+                rgba(255,255,255,0.06),
+                rgba(0,0,0,0.25)
+            ),
+            linear-gradient(
+                135deg,
+                #5d7c92,
+                #93aab7 45%,
+                #31485a
+            );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+    }
+
+    .camera-view.zoomed {
+        transform: scale(1.2);
+    }
+
+    .camera-view.zoomed-more {
+        transform: scale(1.45);
+    }
+
+    .camera-scene {
+        width: 85%;
+        height: 80%;
+        position: relative;
+    }
+
+    .window {
+        position: absolute;
+        width: 110px;
+        height: 150px;
+        background: #b9d8ed;
+        border: 8px solid #ddd;
+        top: 25px;
+        left: 15px;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
+    }
+
+    .window::before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 100%;
+        background: #ddd;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .window::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 6px;
+        background: #ddd;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .plant {
+        position: absolute;
+        right: 25px;
+        bottom: 30px;
+        width: 55px;
+        height: 70px;
+    }
+
+    .plant-pot {
+        position: absolute;
+        bottom: 0;
+        left: 8px;
+        width: 40px;
+        height: 32px;
+        background: #b56b45;
+        border-radius: 4px 4px 12px 12px;
+    }
+
+    .leaf {
+        position: absolute;
+        width: 32px;
+        height: 18px;
+        background: #4c8d5a;
+        border-radius: 50%;
+    }
+
+    .leaf1 {
+        left: 0;
+        top: 10px;
+        transform: rotate(-25deg);
+    }
+
+    .leaf2 {
+        right: 0;
+        top: 5px;
+        transform: rotate(25deg);
+    }
+
+    .leaf3 {
+        left: 15px;
+        top: -2px;
+    }
+
+    .table {
+        position: absolute;
+        left: 10%;
+        right: 5%;
+        bottom: 0;
+        height: 45px;
+        background: #775943;
+        border-radius: 8px;
+    }
+
+    .focus-box {
+        position: absolute;
+        width: 85px;
+        height: 85px;
+        border: 2px solid #ffe600;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.9;
+    }
+
+    .flash-effect {
+        position: absolute;
+        inset: 0;
+        background: white;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .flash-effect.active {
+        animation: flash 0.35s ease;
+    }
+
+    @keyframes flash {
+        0% { opacity: 0; }
+        35% { opacity: 0.95; }
+        100% { opacity: 0; }
+    }
+
+    .camera-bottom {
+        height: 115px;
+        background: #171717;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .gallery-button {
+        width: 58px;
+        height: 58px;
+        border-radius: 12px;
+        border: 3px solid white;
+        background: linear-gradient(135deg, #6b91ad, #d6b77d);
+        cursor: pointer;
+        position: relative;
+    }
+
+    .gallery-button::after {
+        content: "🖼️";
+        position: absolute;
+        font-size: 28px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .shutter {
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        border: 7px solid #ddd;
+        background: white;
+        cursor: pointer;
+    }
+
+    .shutter:active {
+        transform: scale(0.92);
+    }
+
+    .switch-camera {
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 34px;
+        cursor: pointer;
+    }
+
+    .camera-label {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.55);
+        padding: 7px 14px;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+
+    /* =========================
+       PANNEAU JEU
+    ========================= */
+
+    .game-panel {
+        background: white;
+        border-radius: 22px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(31,54,86,0.08);
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .stat {
+        background: #f4f7fb;
+        border-radius: 15px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .stat-label {
+        display: block;
+        font-size: 14px;
+        color: #617087;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        font-size: 25px;
+        font-weight: bold;
+        color: #1f3656;
+    }
+
+    .progress-container {
+        margin-bottom: 28px;
+    }
+
+    .progress-text {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .progress-bar {
+        height: 14px;
+        background: #e4e9f0;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: #3975c6;
+        transition: width 0.3s;
+    }
+
+    .challenge {
+        background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-left: 6px solid #3975c6;
+    }
+
+    .challenge-number {
+        font-size: 15px;
+        color: #3975c6;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .challenge h2 {
+        margin: 0 0 12px;
+        font-size: 28px;
+    }
+
+    .challenge p {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.6;
+        color: #4e6078;
+    }
+
+    .help {
+        margin-top: 15px;
+        padding: 15px;
+        background: #fff8df;
+        border-radius: 12px;
+        color: #705f2e;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .feedback {
+        min-height: 65px;
+        border-radius: 15px;
+        padding: 18px;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        background: #f4f6f9;
+        color: #526174;
+    }
+
+    .feedback.success {
+        background: #e8f6ea;
+        color: #27623a;
+    }
+
+    .feedback.error {
+        background: #fff0f0;
+        color: #a43d3d;
+    }
+
+    .next-button,
+    .reset-button {
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        padding: 17px;
+        font-size: 19px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .next-button {
+        background: #3975c6;
+        color: white;
+        margin-bottom: 12px;
+    }
+
+    .next-button:hover {
+        background: #285d9e;
+    }
+
+    .next-button:disabled {
+        background: #aeb9c8;
+        cursor: not-allowed;
+    }
+
+    .reset-button {
+        background: #edf1f6;
+        color: #42536b;
+    }
+
+    .reset-button:hover {
+        background: #dfe5ed;
+    }
+
+    .tip {
+        margin-top: 30px;
+        padding: 22px;
+        background: #eef7ef;
+        border-radius: 16px;
+        color: #2d6941;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .gallery {
+        position: absolute;
+        inset: 0;
+        background: #f5f5f5;
+        color: #222;
+        z-index: 20;
+        display: none;
+        flex-direction: column;
+    }
+
+    .gallery.active {
+        display: flex;
+    }
+
+    .gallery-header {
+        background: #1c1c1c;
+        color: white;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .gallery-header button {
+        border: none;
+        background: #444;
+        color: white;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .gallery-content {
+        flex: 1;
+        padding: 18px;
+        overflow-y: auto;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .photo {
+        height: 130px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        background:
+            linear-gradient(
+                135deg,
+                #5d7c92,
+                #93aab7 45%,
+                #31485a
+            );
+        cursor: pointer;
+        border: 3px solid transparent;
+    }
+
+    .photo.selected {
+        border-color: #3975c6;
+    }
+
+    .photo .mini-window {
+        position: absolute;
+        width: 45px;
+        height: 62px;
+        background: #b9d8ed;
+        border: 4px solid #ddd;
+        top: 15px;
+        left: 10px;
+    }
+
+    .photo .mini-plant {
+        position: absolute;
+        right: 15px;
+        bottom: 18px;
+        width: 25px;
+        height: 35px;
+        background: #4c8d5a;
+        border-radius: 50%;
+    }
+
+    .photo-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.55);
+        color: white;
+        padding: 5px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .photo-viewer {
+        position: absolute;
+        inset: 0;
+        background: #111;
+        color: white;
+        z-index: 30;
+        display: none;
+        flex-direction: column;
+    }
+
+    .photo-viewer.active {
+        display: flex;
+    }
+
+    .viewer-top {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .viewer-top button {
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 9px 14px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .viewer-image {
+        flex: 1;
+        margin: 15px;
+        border-radius: 12px;
+        background:
+            linear-gradient(
+                135deg,
+                #5d7c92,
+                #93aab7 45%,
+                #31485a
+            );
+        position: relative;
+        overflow: hidden;
+    }
+
+    .viewer-image .big-window {
+        position: absolute;
+        width: 150px;
+        height: 205px;
+        background: #b9d8ed;
+        border: 10px solid #ddd;
+        top: 30px;
+        left: 30px;
+    }
+
+    .viewer-image .big-plant {
+        position: absolute;
+        right: 45px;
+        bottom: 45px;
+        width: 70px;
+        height: 100px;
+        background: #4c8d5a;
+        border-radius: 50%;
+    }
+
+    .viewer-actions {
+        padding: 20px;
+        display: flex;
+        gap: 12px;
+    }
+
+    .viewer-actions button {
+        flex: 1;
+        border: none;
+        border-radius: 12px;
+        padding: 15px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .delete-photo {
+        background: #d94b4b;
+        color: white;
+    }
+
+    .close-viewer {
+        background: #444;
+        color: white;
+    }
+
+    .camera-message {
+        position: absolute;
+        top: 75px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.65);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 20px;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+
+    .camera-message.show {
+        opacity: 1;
+    }
+
+    .front-camera {
+        background:
+            linear-gradient(
+                135deg,
+                #7b6b83,
+                #b8a5b0 45%,
+                #4e3d51
+            );
+    }
+
+    .portrait {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: #d9a77a;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        border: 7px solid rgba(255,255,255,0.5);
+    }
+
+    .portrait::before,
+    .portrait::after {
+        content: "";
+        position: absolute;
+        top: 48px;
+        width: 14px;
+        height: 14px;
+        background: #333;
+        border-radius: 50%;
+    }
+
+    .portrait::before {
+        left: 30px;
+    }
+
+    .portrait::after {
+        right: 30px;
+    }
+
+    .portrait-mouth {
+        position: absolute;
+        width: 40px;
+        height: 18px;
+        border-bottom: 4px solid #633d36;
+        border-radius: 50%;
+        left: 50%;
+        bottom: 27px;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 850px) {
+        .game-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .phone {
+            width: 330px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        header h1 {
+            font-size: 25px;
+        }
+
+        .container {
+            padding: 20px 12px 40px;
+        }
+
+        .intro h2 {
+            font-size: 27px;
+        }
+
+        .game-panel {
+            padding: 20px;
+        }
+
+        .stats {
+            gap: 8px;
+        }
+
+        .stat {
+            padding: 12px 5px;
+        }
+
+        .stat-value {
+            font-size: 21px;
+        }
+
+        .challenge {
+            padding: 20px;
+        }
+
+        .challenge h2 {
+            font-size: 24px;
+        }
+
+        .challenge p {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📷 Jeu des photos</h1>
+    <p>Apprenez à utiliser l'appareil photo de votre smartphone</p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>📱 Entraînez-vous avec l'appareil photo</h2>
+        <p>
+            Les exercices sont réalisés sur un faux smartphone.
+            Vous pouvez utiliser votre souris sur ordinateur ou votre doigt sur tablette et smartphone.
+        </p>
+    </div>
+
+    <div class="game-layout">
+
+        <!-- =========================
+             SMARTPHONE
+        ========================= -->
+
+        <div class="phone">
+
+            <div class="phone-screen">
+
+                <div class="phone-top">
+                    <div class="speaker"></div>
+                </div>
+
+                <div class="camera-app">
+
+                    <div class="camera-top">
+
+                        <button id="flashButton" title="Flash">
+                            ⚡
+                        </button>
+
+                        <strong id="cameraMode">
+                            📷 PHOTO
+                        </strong>
+
+                        <button id="zoomButton" title="Zoom">
+                            1×
+                        </button>
+
+                    </div>
+
+                    <div class="camera-view" id="cameraView">
+
+                        <div class="camera-scene" id="cameraScene">
+
+                            <div class="window"></div>
+
+                            <div class="plant">
+                                <div class="leaf leaf1"></div>
+                                <div class="leaf leaf2"></div>
+                                <div class="leaf leaf3"></div>
+                                <div class="plant-pot"></div>
+                            </div>
+
+                            <div class="table"></div>
+
+                        </div>
+
+                        <div class="focus-box"></div>
+
+                        <div class="camera-label" id="cameraLabel">
+                            Caméra arrière
+                        </div>
+
+                        <div class="flash-effect" id="flashEffect"></div>
+
+                        <div class="camera-message" id="cameraMessage">
+                            Photo prise !
+                        </div>
+
+                    </div>
+
+                    <div class="camera-bottom">
+
+                        <button class="gallery-button"
+                                id="galleryButton"
+                                title="Galerie">
+                        </button>
+
+                        <button class="shutter"
+                                id="shutterButton"
+                                title="Prendre une photo">
+                        </button>
+
+                        <button class="switch-camera"
+                                id="switchCamera"
+                                title="Changer de caméra">
+                            🔄
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- GALERIE -->
+
+                <div class="gallery" id="gallery">
+
+                    <div class="gallery-header">
+                        <strong>🖼️ Galerie</strong>
+
+                        <button id="closeGallery">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="gallery-content">
+
+                        <h3>Mes photos</h3>
+
+                        <div class="photo-grid" id="photoGrid">
+
+                            <div class="photo" data-photo="1">
+                                <div class="mini-window"></div>
+                                <div class="mini-plant"></div>
+                                <div class="photo-label">
+                                    Photo 1
+                                </div>
+                            </div>
+
+                            <div class="photo" data-photo="2">
+                                <div class="mini-window"></div>
+                                <div class="mini-plant"></div>
+                                <div class="photo-label">
+                                    Photo 2
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VISUALISATION PHOTO -->
+
+                <div class="photo-viewer" id="photoViewer">
+
+                    <div class="viewer-top">
+                        <strong>Photo</strong>
+
+                        <button id="closeViewer">
+                            ✕
+                        </button>
+                    </div>
+
+                    <div class="viewer-image">
+
+                        <div class="big-window"></div>
+                        <div class="big-plant"></div>
+
+                    </div>
+
+                    <div class="viewer-actions">
+
+                        <button class="delete-photo"
+                                id="deletePhoto">
+                            🗑️ Supprimer
+                        </button>
+
+                        <button class="close-viewer"
+                                id="viewerBack">
+                            ↩️ Retour
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             JEU
+        ========================= -->
+
+        <div class="game-panel">
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">Erreurs</span>
+                    <span class="stat-value" id="errors">0</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">Défi</span>
+                    <span class="stat-value">
+                        <span id="currentChallenge">1</span>/30
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="progress-container">
+
+                <div class="progress-text">
+                    <span>Progression</span>
+                    <span id="progressText">0 %</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"
+                         id="progressFill">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="challenge">
+
+                <div class="challenge-number"
+                     id="challengeNumber">
+                    DÉFI 1
+                </div>
+
+                <h2 id="challengeTitle">
+                    Prenez une photo
+                </h2>
+
+                <p id="challengeText">
+                    Touchez le gros bouton blanc rond situé en bas de l'appareil photo.
+                </p>
+
+                <div class="help" id="challengeHelp">
+                    💡 Le gros bouton blanc sert à prendre la photo.
+                </div>
+
+            </div>
+
+            <div class="feedback"
+                 id="feedback">
+                👆 Réalisez l'action demandée sur le smartphone.
+            </div>
+
+            <button class="next-button"
+                    id="nextButton"
+                    disabled>
+                ➡️ Défi suivant
+            </button>
+
+            <button class="reset-button"
+                    id="resetButton">
+                🔄 Recommencer le jeu
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="tip">
+        <strong>💡 Conseil :</strong>
+        prenez votre temps. Dans la vraie vie, il n'est pas nécessaire d'être rapide pour réussir une photo.
+        L'objectif est surtout de savoir où trouver les différentes fonctions.
+    </div>
+
+</div>
+
+<script>
+
+/* =========================================
+   DONNÉES DES 30 DÉFIS
+========================================= */
+
+const challenges = [
+
+    {
+        title: "Prenez une photo",
+        text: "Touchez le gros bouton blanc rond situé en bas de l'appareil photo.",
+        help: "💡 Le bouton blanc est le déclencheur de l'appareil photo.",
+        action: "photo"
+    },
+
+    {
+        title: "Prenez une deuxième photo",
+        text: "Prenez une nouvelle photo avec le bouton blanc.",
+        help: "💡 Appuyez simplement une nouvelle fois sur le bouton blanc.",
+        action: "photo"
+    },
+
+    {
+        title: "Ouvrez la galerie",
+        text: "Touchez le petit carré situé en bas à gauche de l'appareil photo.",
+        help: "💡 Ce bouton permet de regarder les photos déjà prises.",
+        action: "gallery"
+    },
+
+    {
+        title: "Fermez la galerie",
+        text: "Fermez la galerie et revenez à l'appareil photo.",
+        help: "💡 Touchez la croix ✕ en haut à droite.",
+        action: "closeGallery"
+    },
+
+    {
+        title: "Changez de caméra",
+        text: "Touchez le bouton 🔄 pour passer de la caméra arrière à la caméra avant.",
+        help: "💡 Le bouton 🔄 permet de changer de caméra.",
+        action: "switch"
+    },
+
+    {
+        title: "Revenez à la caméra arrière",
+        text: "Touchez à nouveau 🔄 pour revenir à la caméra arrière.",
+        help: "💡 Vous pouvez changer de caméra autant de fois que nécessaire.",
+        action: "switch"
+    },
+
+    {
+        title: "Activez le flash",
+        text: "Touchez le bouton ⚡ en haut à gauche.",
+        help: "💡 Le flash peut être utile lorsque la lumière est faible.",
+        action: "flashOn"
+    },
+
+    {
+        title: "Désactivez le flash",
+        text: "Touchez à nouveau ⚡ pour désactiver le flash.",
+        help: "💡 Le bouton change d'apparence lorsque le flash est activé.",
+        action: "flashOff"
+    },
+
+    {
+        title: "Zoomez",
+        text: "Touchez le bouton 1× en haut à droite pour zoomer.",
+        help: "💡 Le zoom permet de rapprocher visuellement un sujet.",
+        action: "zoom"
+    },
+
+    {
+        title: "Dézoomez",
+        text: "Touchez le bouton de zoom pour revenir à 1×.",
+        help: "💡 Touchez plusieurs fois le bouton de zoom pour changer le niveau.",
+        action: "zoomReset"
+    },
+
+    {
+        title: "Faites la mise au point",
+        text: "Touchez au centre de l'image, dans le carré jaune.",
+        help: "💡 Sur un vrai smartphone, toucher l'écran permet souvent de faire la mise au point.",
+        action: "focus"
+    },
+
+    {
+        title: "Prenez une photo avec le flash",
+        text: "Activez le flash puis prenez une photo.",
+        help: "💡 Activez d'abord ⚡ puis appuyez sur le bouton blanc.",
+        action: "photoFlash"
+    },
+
+    {
+        title: "Ouvrez la galerie",
+        text: "Ouvrez la galerie pour regarder vos photos.",
+        help: "💡 Le bouton 🖼️ se trouve en bas à gauche.",
+        action: "gallery"
+    },
+
+    {
+        title: "Sélectionnez une photo",
+        text: "Dans la galerie, touchez une des photos.",
+        help: "💡 Touchez directement l'image que vous souhaitez regarder.",
+        action: "selectPhoto"
+    },
+
+    {
+        title: "Fermez la photo",
+        text: "Fermez la photo affichée et revenez à la galerie.",
+        help: "💡 Utilisez la croix ✕ en haut à droite.",
+        action: "closeViewer"
+    },
+
+    {
+        title: "Supprimez une photo",
+        text: "Ouvrez une photo puis utilisez le bouton 🗑️ Supprimer.",
+        help: "💡 Dans la vraie vie, faites attention avant de supprimer une photo.",
+        action: "deletePhoto"
+    },
+
+    {
+        title: "Revenez à l'appareil photo",
+        text: "Fermez la galerie pour revenir à l'appareil photo.",
+        help: "💡 Utilisez la croix ✕.",
+        action: "closeGallery"
+    },
+
+    {
+        title: "Passez en caméra avant",
+        text: "Utilisez 🔄 pour passer à la caméra avant.",
+        help: "💡 La caméra avant sert notamment à prendre un selfie.",
+        action: "switchFront"
+    },
+
+    {
+        title: "Prenez un selfie",
+        text: "Avec la caméra avant, prenez une photo.",
+        help: "💡 Appuyez sur le bouton blanc.",
+        action: "selfie"
+    },
+
+    {
+        title: "Revenez à la caméra arrière",
+        text: "Utilisez 🔄 pour revenir à la caméra arrière.",
+        help: "💡 Vous pouvez vérifier le texte « Caméra arrière » à l'écran.",
+        action: "switchBack"
+    },
+
+    {
+        title: "Zoomez au maximum",
+        text: "Touchez le bouton de zoom jusqu'à obtenir 2×.",
+        help: "💡 Appuyez plusieurs fois sur le bouton 1×.",
+        action: "zoomMax"
+    },
+
+    {
+        title: "Revenez à 1×",
+        text: "Réglez le zoom sur 1×.",
+        help: "💡 Touchez le bouton de zoom jusqu'à revenir à 1×.",
+        action: "zoomReset"
+    },
+
+    {
+        title: "Prenez une photo nette",
+        text: "Touchez d'abord le centre de l'image pour faire la mise au point, puis prenez une photo.",
+        help: "💡 Mise au point puis déclencheur.",
+        action: "focusPhoto"
+    },
+
+    {
+        title: "Activez le flash",
+        text: "Activez le flash.",
+        help: "💡 Touchez ⚡.",
+        action: "flashOn"
+    },
+
+    {
+        title: "Prenez une photo avec le flash",
+        text: "Une fois le flash activé, prenez une photo.",
+        help: "💡 Appuyez sur le bouton blanc.",
+        action: "photoFlash"
+    },
+
+    {
+        title: "Regardez votre galerie",
+        text: "Ouvrez la galerie.",
+        help: "💡 Retrouvez vos photos avec 🖼️.",
+        action: "gallery"
+    },
+
+    {
+        title: "Regardez une photo",
+        text: "Touchez une photo dans la galerie pour l'ouvrir.",
+        help: "💡 Vous pouvez toucher n'importe quelle vignette.",
+        action: "selectPhoto"
+    },
+
+    {
+        title: "Fermez la photo",
+        text: "Fermez la photo et revenez à la galerie.",
+        help: "💡 Utilisez ✕.",
+        action: "closeViewer"
+    },
+
+    {
+        title: "Revenez à l'appareil photo",
+        text: "Fermez la galerie.",
+        help: "💡 Utilisez ✕.",
+        action: "closeGallery"
+    },
+
+    {
+        title: "Défi final : prenez une photo",
+        text: "Faites une mise au point puis prenez une dernière photo.",
+        help: "💡 Touchez le centre de l'image puis le bouton blanc.",
+        action: "finalPhoto"
+    }
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+let score = 0;
+let errors = 0;
+let completed = false;
+
+let flashEnabled = false;
+let zoomLevel = 1;
+let frontCamera = false;
+
+let focusDone = false;
+let photoTaken = false;
+let selectedPhoto = false;
+let deletedPhoto = false;
+
+
+/* =========================================
+   ÉLÉMENTS
+========================================= */
+
+const scoreElement =
+    document.getElementById("score");
+
+const errorsElement =
+    document.getElementById("errors");
+
+const currentChallengeElement =
+    document.getElementById("currentChallenge");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const challengeNumber =
+    document.getElementById("challengeNumber");
+
+const challengeTitle =
+    document.getElementById("challengeTitle");
+
+const challengeText =
+    document.getElementById("challengeText");
+
+const challengeHelp =
+    document.getElementById("challengeHelp");
+
+const feedback =
+    document.getElementById("feedback");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const cameraView =
+    document.getElementById("cameraView");
+
+const cameraMode =
+    document.getElementById("cameraMode");
+
+const cameraLabel =
+    document.getElementById("cameraLabel");
+
+const flashButton =
+    document.getElementById("flashButton");
+
+const zoomButton =
+    document.getElementById("zoomButton");
+
+const shutterButton =
+    document.getElementById("shutterButton");
+
+const galleryButton =
+    document.getElementById("galleryButton");
+
+const switchCamera =
+    document.getElementById("switchCamera");
+
+const flashEffect =
+    document.getElementById("flashEffect");
+
+const cameraMessage =
+    document.getElementById("cameraMessage");
+
+const gallery =
+    document.getElementById("gallery");
+
+const closeGallery =
+    document.getElementById("closeGallery");
+
+const photoViewer =
+    document.getElementById("photoViewer");
+
+const closeViewer =
+    document.getElementById("closeViewer");
+
+const viewerBack =
+    document.getElementById("viewerBack");
+
+const deletePhoto =
+    document.getElementById("deletePhoto");
+
+const photoGrid =
+    document.getElementById("photoGrid");
+
+
+/* =========================================
+   AFFICHAGE DU DÉFI
+========================================= */
+
+function loadChallenge() {
+
+    const challenge = challenges[current];
+
+    challengeNumber.textContent =
+        "DÉFI " + (current + 1);
+
+    challengeTitle.textContent =
+        challenge.title;
+
+    challengeText.textContent =
+        challenge.text;
+
+    challengeHelp.textContent =
+        challenge.help;
+
+    currentChallengeElement.textContent =
+        current + 1;
+
+    const progress =
+        Math.round((current / challenges.length) * 100);
+
+    progressText.textContent =
+        progress + " %";
+
+    progressFill.style.width =
+        progress + "%";
+
+    feedback.className =
+        "feedback";
+
+    feedback.textContent =
+        "👆 Réalisez l'action demandée sur le smartphone.";
+
+    nextButton.disabled = true;
+
+    photoTaken = false;
+    focusDone = false;
+    selectedPhoto = false;
+    deletedPhoto = false;
+
+    if (challenge.action === "zoomReset") {
+        zoomLevel = 1;
+        updateZoom();
+    }
+
+    if (challenge.action === "switchBack") {
+        frontCamera = true;
+        updateCamera();
+    }
+
+    if (challenge.action === "switchFront") {
+        frontCamera = false;
+        updateCamera();
+    }
+}
+
+
+/* =========================================
+   RÉUSSITE
+========================================= */
+
+function success(message) {
+
+    score += 10;
+
+    scoreElement.textContent =
+        score;
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "✅ " + message;
+
+    nextButton.disabled = false;
+
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+function error(message) {
+
+    errors++;
+
+    errorsElement.textContent =
+        errors;
+
+    feedback.className =
+        "feedback error";
+
+    feedback.textContent =
+        "❌ " + message;
+
+}
+
+
+/* =========================================
+   PHOTO
+========================================= */
+
+function takePhoto() {
+
+    photoTaken = true;
+
+    flashEffect.classList.remove("active");
+
+    void flashEffect.offsetWidth;
+
+    flashEffect.classList.add("active");
+
+    cameraMessage.textContent =
+        "📸 Photo prise !";
+
+    cameraMessage.classList.add("show");
+
+    setTimeout(() => {
+        cameraMessage.classList.remove("show");
+    }, 1200);
+
+    addPhoto();
+
+    checkAction("photo");
+
+}
+
+
+/* =========================================
+   AJOUTER PHOTO GALERIE
+========================================= */
+
+function addPhoto() {
+
+    const count =
+        photoGrid.querySelectorAll(".photo").length + 1;
+
+    const photo =
+        document.createElement("div");
+
+    photo.className = "photo";
+
+    photo.dataset.photo = count;
+
+    photo.innerHTML = `
+        <div class="mini-window"></div>
+        <div class="mini-plant"></div>
+        <div class="photo-label">
+            Photo ${count}
+        </div>
+    `;
+
+    photo.addEventListener("click", () => {
+
+        selectedPhoto = true;
+
+        openViewer();
+
+        if (
+            challenges[current].action ===
+            "selectPhoto"
+        ) {
+            success("Très bien ! Vous avez ouvert une photo.");
+        }
+
+    });
+
+    photoGrid.appendChild(photo);
+}
+
+
+/* =========================================
+   GALERIE
+========================================= */
+
+function openGallery() {
+
+    gallery.classList.add("active");
+
+    checkAction("gallery");
+}
+
+
+closeGallery.addEventListener("click", () => {
+
+    gallery.classList.remove("active");
+
+    checkAction("closeGallery");
+
+});
+
+
+galleryButton.addEventListener("click", () => {
+
+    openGallery();
+
+});
+
+
+/* =========================================
+   VISUALISATION PHOTO
+========================================= */
+
+function openViewer() {
+
+    photoViewer.classList.add("active");
+
+}
+
+
+closeViewer.addEventListener("click", () => {
+
+    photoViewer.classList.remove("active");
+
+    checkAction("closeViewer");
+
+});
+
+
+viewerBack.addEventListener("click", () => {
+
+    photoViewer.classList.remove("active");
+
+    checkAction("closeViewer");
+
+});
+
+
+/* =========================================
+   SUPPRESSION
+========================================= */
+
+deletePhoto.addEventListener("click", () => {
+
+    deletedPhoto = true;
+
+    photoViewer.classList.remove("active");
+
+    const photos =
+        photoGrid.querySelectorAll(".photo");
+
+    if (photos.length > 0) {
+        photos[photos.length - 1].remove();
+    }
+
+    checkAction("deletePhoto");
+
+});
+
+
+/* =========================================
+   FLASH
+========================================= */
+
+flashButton.addEventListener("click", () => {
+
+    flashEnabled =
+        !flashEnabled;
+
+    flashButton.style.opacity =
+        flashEnabled ? "1" : "0.5";
+
+    if (flashEnabled) {
+
+        checkAction("flashOn");
+
+    } else {
+
+        checkAction("flashOff");
+
+    }
+
+});
+
+
+/* =========================================
+   ZOOM
+========================================= */
+
+zoomButton.addEventListener("click", () => {
+
+    if (zoomLevel === 1) {
+
+        zoomLevel = 1.5;
+
+    } else if (zoomLevel === 1.5) {
+
+        zoomLevel = 2;
+
+    } else {
+
+        zoomLevel = 1;
+
+    }
+
+    updateZoom();
+
+    checkAction("zoom");
+
+});
+
+
+function updateZoom() {
+
+    cameraView.classList.remove(
+        "zoomed",
+        "zoomed-more"
+    );
+
+    if (zoomLevel === 1.5) {
+
+        cameraView.classList.add("zoomed");
+
+    }
+
+    if (zoomLevel === 2) {
+
+        cameraView.classList.add("zoomed-more");
+
+    }
+
+    zoomButton.textContent =
+        zoomLevel + "×";
+
+}
+
+
+/* =========================================
+   CHANGEMENT CAMÉRA
+========================================= */
+
+switchCamera.addEventListener("click", () => {
+
+    frontCamera =
+        !frontCamera;
+
+    updateCamera();
+
+    checkAction("switch");
+
+});
+
+
+function updateCamera() {
+
+    if (frontCamera) {
+
+        cameraView.classList.add("front-camera");
+
+        cameraMode.textContent =
+            "🤳 SELFIE";
+
+        cameraLabel.textContent =
+            "Caméra avant";
+
+        const scene =
+            document.getElementById("cameraScene");
+
+        scene.innerHTML = `
+            <div class="portrait">
+                <div class="portrait-mouth"></div>
+            </div>
+        `;
+
+    } else {
+
+        cameraView.classList.remove("front-camera");
+
+        cameraMode.textContent =
+            "📷 PHOTO";
+
+        cameraLabel.textContent =
+            "Caméra arrière";
+
+        const scene =
+            document.getElementById("cameraScene");
+
+        scene.innerHTML = `
+            <div class="window"></div>
+
+            <div class="plant">
+                <div class="leaf leaf1"></div>
+                <div class="leaf leaf2"></div>
+                <div class="leaf leaf3"></div>
+                <div class="plant-pot"></div>
+            </div>
+
+            <div class="table"></div>
+        `;
+
+    }
+
+}
+
+
+/* =========================================
+   MISE AU POINT
+========================================= */
+
+cameraView.addEventListener("click", (event) => {
+
+    const target =
+        event.target;
+
+    if (
+        target === shutterButton ||
+        target === flashButton ||
+        target === zoomButton
+    ) {
+        return;
+    }
+
+    focusDone = true;
+
+    cameraMessage.textContent =
+        "🎯 Mise au point effectuée";
+
+    cameraMessage.classList.add("show");
+
+    setTimeout(() => {
+        cameraMessage.classList.remove("show");
+    }, 1000);
+
+    checkAction("focus");
+
+});
+
+
+/* =========================================
+   DÉCLENCHEUR
+========================================= */
+
+shutterButton.addEventListener("click", () => {
+
+    takePhoto();
+
+});
+
+
+/* =========================================
+   VÉRIFICATION
+========================================= */
+
+function checkAction(action) {
+
+    const expected =
+        challenges[current].action;
+
+    if (expected === action) {
+
+        if (action === "photo") {
+
+            success(
+                "Bravo ! Vous venez de prendre une photo."
+            );
+
+        }
+
+        else if (action === "photoFlash") {
+
+            if (flashEnabled) {
+
+                success(
+                    "Bravo ! Photo prise avec le flash."
+                );
+
+            } else {
+
+                error(
+                    "Activez d'abord le flash ⚡."
+                );
+
+            }
+
+        }
+
+        else if (action === "gallery") {
+
+            success(
+                "Très bien ! Vous avez ouvert la galerie."
+            );
+
+        }
+
+        else if (action === "closeGallery") {
+
+            success(
+                "Parfait ! Vous êtes revenu à l'appareil photo."
+            );
+
+        }
+
+        else if (action === "switch") {
+
+            success(
+                "Bravo ! Vous avez changé de caméra."
+            );
+
+        }
+
+        else if (action === "switchFront") {
+
+            if (frontCamera) {
+
+                success(
+                    "Bravo ! Vous êtes passé à la caméra avant."
+                );
+
+            }
+
+        }
+
+        else if (action === "switchBack") {
+
+            if (!frontCamera) {
+
+                success(
+                    "Très bien ! Vous êtes revenu à la caméra arrière."
+                );
+
+            }
+
+        }
+
+        else if (action === "flashOn") {
+
+            if (flashEnabled) {
+
+                success(
+                    "Très bien ! Le flash est activé."
+                );
+
+            }
+
+        }
+
+        else if (action === "flashOff") {
+
+            if (!flashEnabled) {
+
+                success(
+                    "Très bien ! Le flash est désactivé."
+                );
+
+            }
+
+        }
+
+        else if (action === "zoom") {
+
+            if (zoomLevel > 1) {
+
+                success(
+                    "Bravo ! Vous avez utilisé le zoom."
+                );
+
+            }
+
+        }
+
+        else if (action === "zoomReset") {
+
+            if (zoomLevel === 1) {
+
+                success(
+                    "Parfait ! Le zoom est revenu à 1×."
+                );
+
+            }
+
+        }
+
+        else if (action === "focus") {
+
+            success(
+                "Bravo ! Vous avez fait la mise au point."
+            );
+
+        }
+
+        else if (action === "focusPhoto") {
+
+            if (focusDone && photoTaken) {
+
+                success(
+                    "Excellent ! Mise au point puis photo."
+                );
+
+            }
+
+        }
+
+        else if (action === "selfie") {
+
+            if (frontCamera && photoTaken) {
+
+                success(
+                    "Bravo ! Vous avez pris un selfie."
+                );
+
+            }
+
+        }
+
+        else if (action === "selectPhoto") {
+
+            if (selectedPhoto) {
+
+                success(
+                    "Très bien ! Vous savez maintenant ouvrir une photo."
+                );
+
+            }
+
+        }
+
+        else if (action === "closeViewer") {
+
+            success(
+                "Parfait ! Vous avez fermé la photo."
+            );
+
+        }
+
+        else if (action === "deletePhoto") {
+
+            if (deletedPhoto) {
+
+                success(
+                    "Très bien ! Vous avez trouvé la fonction supprimer."
+                );
+
+            }
+
+        }
+
+        else if (action === "zoomMax") {
+
+            if (zoomLevel === 2) {
+
+                success(
+                    "Bravo ! Le zoom est à 2×."
+                );
+
+            }
+
+        }
+
+        else if (action === "finalPhoto") {
+
+            if (focusDone && photoTaken) {
+
+                success(
+                    "🎉 Bravo ! Vous avez terminé les 30 défis !"
+                );
+
+                completed = true;
+
+            }
+
+        }
+
+    }
+
+    /* Cas particuliers */
+
+    if (
+        expected === "photoFlash" &&
+        action === "photo"
+    ) {
+
+        if (!flashEnabled) {
+
+            error(
+                "La photo est prise, mais le défi demande d'utiliser le flash."
+            );
+
+        }
+
+    }
+
+    if (
+        expected === "selfie" &&
+        action === "photo"
+    ) {
+
+        if (frontCamera) {
+
+            success(
+                "🤳 Bravo ! Vous avez pris votre selfie."
+            );
+
+        } else {
+
+            error(
+                "Passez d'abord à la caméra avant avec 🔄."
+            );
+
+        }
+
+    }
+
+    if (
+        expected === "focusPhoto" &&
+        action === "photo"
+    ) {
+
+        if (focusDone) {
+
+            success(
+                "Excellent ! Vous avez fait la mise au point puis pris la photo."
+            );
+
+        } else {
+
+            error(
+                "Faites d'abord la mise au point en touchant l'image."
+            );
+
+        }
+
+    }
+
+    if (
+        expected === "finalPhoto" &&
+        action === "photo"
+    ) {
+
+        if (focusDone) {
+
+            success(
+                "🎉 Excellent ! Défi final réussi."
+            );
+
+            completed = true;
+
+        } else {
+
+            error(
+                "Touchez d'abord l'image pour faire la mise au point."
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   DÉFI SUIVANT
+========================================= */
+
+nextButton.addEventListener("click", () => {
+
+    if (current < challenges.length - 1) {
+
+        current++;
+
+        loadChallenge();
+
+    } else {
+
+        finishGame();
+
+    }
+
+});
+
+
+/* =========================================
+   FIN DU JEU
+========================================= */
+
+function finishGame() {
+
+    const finalProgress =
+        Math.round(
+            (score / (challenges.length * 10)) * 100
+        );
+
+    progressFill.style.width =
+        "100%";
+
+    progressText.textContent =
+        "100 %";
+
+    challengeNumber.textContent =
+        "🎉 TERMINÉ";
+
+    challengeTitle.textContent =
+        "Félicitations !";
+
+    challengeText.textContent =
+        "Vous avez terminé les 30 défis consacrés aux photos sur smartphone.";
+
+    challengeHelp.textContent =
+        "👏 Vous savez maintenant prendre des photos, utiliser la caméra avant, le zoom, le flash et consulter la galerie.";
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "🏆 Score final : " +
+        score +
+        " points sur " +
+        (challenges.length * 10) +
+        " — Progression : " +
+        finalProgress +
+        "%.";
+
+    nextButton.disabled =
+        true;
+
+}
+
+
+/* =========================================
+   RECOMMENCER
+========================================= */
+
+resetButton.addEventListener("click", () => {
+
+    current = 0;
+    score = 0;
+    errors = 0;
+
+    completed = false;
+
+    flashEnabled = false;
+    zoomLevel = 1;
+    frontCamera = false;
+
+    focusDone = false;
+    photoTaken = false;
+    selectedPhoto = false;
+    deletedPhoto = false;
+
+    scoreElement.textContent =
+        "0";
+
+    errorsElement.textContent =
+        "0";
+
+    flashButton.style.opacity =
+        "0.5";
+
+    updateZoom();
+
+    updateCamera();
+
+    gallery.classList.remove("active");
+
+    photoViewer.classList.remove("active");
+
+    loadChallenge();
+
+});
+
+
+/* =========================================
+   PHOTOS DE DÉPART
+========================================= */
+
+document
+    .querySelectorAll(".photo")
+    .forEach(photo => {
+
+        photo.addEventListener("click", () => {
+
+            selectedPhoto = true;
+
+            openViewer();
+
+            if (
+                challenges[current].action ===
+                "selectPhoto"
+            ) {
+
+                success(
+                    "Très bien ! Vous avez ouvert une photo."
+                );
+
+            }
+
+        });
+
+    });
+
+
+/* =========================================
+   INITIALISATION
+========================================= */
+
+flashButton.style.opacity =
+    "0.5";
+
+loadChallenge();
+
+</script>
+
+</body>
+</html>
