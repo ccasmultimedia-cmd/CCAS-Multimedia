@@ -506,7 +506,13 @@ main {
 
     -webkit-user-select: none;
 
+    -webkit-touch-callout: none;
+
     touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+
+    outline: none;
 }
 
 .key:active {
@@ -1072,55 +1078,16 @@ AZERTY
 
 <div class="keyboard-row">
 
-<button class="key"
-data-key="a">
-A
-</button>
-
-<button class="key"
-data-key="z">
-Z
-</button>
-
-<button class="key"
-data-key="e">
-E
-</button>
-
-<button class="key"
-data-key="r">
-R
-</button>
-
-<button class="key"
-data-key="t">
-T
-</button>
-
-<button class="key"
-data-key="y">
-Y
-</button>
-
-<button class="key"
-data-key="u">
-U
-</button>
-
-<button class="key"
-data-key="i">
-I
-</button>
-
-<button class="key"
-data-key="o">
-O
-</button>
-
-<button class="key"
-data-key="p">
-P
-</button>
+<button type="button" class="key" data-key="a">A</button>
+<button type="button" class="key" data-key="z">Z</button>
+<button type="button" class="key" data-key="e">E</button>
+<button type="button" class="key" data-key="r">R</button>
+<button type="button" class="key" data-key="t">T</button>
+<button type="button" class="key" data-key="y">Y</button>
+<button type="button" class="key" data-key="u">U</button>
+<button type="button" class="key" data-key="i">I</button>
+<button type="button" class="key" data-key="o">O</button>
+<button type="button" class="key" data-key="p">P</button>
 
 </div>
 
@@ -1130,55 +1097,16 @@ P
 
 <div class="keyboard-row">
 
-<button class="key"
-data-key="q">
-Q
-</button>
-
-<button class="key"
-data-key="s">
-S
-</button>
-
-<button class="key"
-data-key="d">
-D
-</button>
-
-<button class="key"
-data-key="f">
-F
-</button>
-
-<button class="key"
-data-key="g">
-G
-</button>
-
-<button class="key"
-data-key="h">
-H
-</button>
-
-<button class="key"
-data-key="j">
-J
-</button>
-
-<button class="key"
-data-key="k">
-K
-</button>
-
-<button class="key"
-data-key="l">
-L
-</button>
-
-<button class="key"
-data-key="m">
-M
-</button>
+<button type="button" class="key" data-key="q">Q</button>
+<button type="button" class="key" data-key="s">S</button>
+<button type="button" class="key" data-key="d">D</button>
+<button type="button" class="key" data-key="f">F</button>
+<button type="button" class="key" data-key="g">G</button>
+<button type="button" class="key" data-key="h">H</button>
+<button type="button" class="key" data-key="j">J</button>
+<button type="button" class="key" data-key="k">K</button>
+<button type="button" class="key" data-key="l">L</button>
+<button type="button" class="key" data-key="m">M</button>
 
 </div>
 
@@ -1188,40 +1116,13 @@ M
 
 <div class="keyboard-row">
 
-<button class="key"
-data-key="w">
-W
-</button>
-
-<button class="key"
-data-key="x">
-X
-</button>
-
-<button class="key"
-data-key="c">
-C
-</button>
-
-<button class="key"
-data-key="v">
-V
-</button>
-
-<button class="key"
-data-key="b">
-B
-</button>
-
-<button class="key"
-data-key="n">
-N
-</button>
-
-<button class="key"
-data-key="ç">
-Ç
-</button>
+<button type="button" class="key" data-key="w">W</button>
+<button type="button" class="key" data-key="x">X</button>
+<button type="button" class="key" data-key="c">C</button>
+<button type="button" class="key" data-key="v">V</button>
+<button type="button" class="key" data-key="b">B</button>
+<button type="button" class="key" data-key="n">N</button>
+<button type="button" class="key" data-key="ç">Ç</button>
 
 </div>
 
@@ -1232,22 +1133,27 @@ data-key="ç">
 <div class="keyboard-row">
 
 <button
+type="button"
 class="key special"
 id="shiftKey">
 
 ⇧
+
 </button>
 
 
 <button
+type="button"
 class="key special"
 id="numberKey">
 
 123
+
 </button>
 
 
 <button
+type="button"
 class="key space"
 data-key=" ">
 
@@ -1257,6 +1163,7 @@ espace
 
 
 <button
+type="button"
 class="key backspace"
 id="backspaceKey">
 
@@ -1266,6 +1173,7 @@ id="backspaceKey">
 
 
 <button
+type="button"
 class="key enter"
 id="enterKey">
 
@@ -1300,6 +1208,7 @@ id="message">
 <div class="buttons">
 
 <button
+type="button"
 class="game-button secondary"
 onclick="resetChallenge()">
 
@@ -1309,6 +1218,7 @@ onclick="resetChallenge()">
 
 
 <button
+type="button"
 class="game-button"
 onclick="nextChallenge()">
 
@@ -1329,6 +1239,7 @@ onclick="nextChallenge()">
 Sur un smartphone, les touches du clavier sont
 petites. Prenez votre temps et regardez bien
 la lettre avant de toucher.
+
 <br><br>
 
 <strong>☝️ Petit conseil :</strong>
@@ -1368,6 +1279,7 @@ id="finalScore">
 </div>
 
 <button
+type="button"
 class="game-button"
 onclick="restartGame()">
 
@@ -1665,10 +1577,9 @@ function loadChallenge() {
         challenge.text;
 
 
-    setLettersMode();
+    restoreLetters();
 
 }
-
 
 
 /* ==========================================
@@ -1679,8 +1590,15 @@ function setLettersMode() {
 
     numberMode = false;
 
-    keyboardMode.textContent =
-        "AZERTY";
+    const mode =
+        document.getElementById("keyboardMode");
+
+    if (mode) {
+
+        mode.textContent = "AZERTY";
+
+    }
+
 
     document
     .querySelectorAll(".key[data-key]")
@@ -1688,32 +1606,31 @@ function setLettersMode() {
 
         key.style.display = "";
 
-        let value =
+        const value =
             key.dataset.key;
 
         if (value === " ") {
 
-            key.textContent =
-                "espace";
+            key.textContent = "espace";
 
             return;
 
         }
 
         key.textContent =
-            uppercase
-            ?
-            value.toUpperCase()
-            :
             value.toUpperCase();
 
     });
 
 
-    document
-    .getElementById("numberKey")
-    .textContent =
-        "123";
+    const numberKey =
+        document.getElementById("numberKey");
+
+    if (numberKey) {
+
+        numberKey.textContent = "123";
+
+    }
 
 }
 
@@ -1726,90 +1643,127 @@ function setNumberMode() {
 
     numberMode = true;
 
-    keyboardMode.textContent =
-        "CHIFFRES";
+    const mode =
+        document.getElementById("keyboardMode");
+
+    if (mode) {
+
+        mode.textContent = "CHIFFRES";
+
+    }
 
 
-    const keys =
+    const rows =
         document.querySelectorAll(
-            ".key[data-key]"
+            ".keyboard-row"
         );
 
 
-    keys.forEach(key => {
+    if (rows.length < 4) {
 
-        key.style.display = "none";
+        return;
 
-    });
-
-
-    const row =
-        document.querySelectorAll(
-            ".keyboard-row"
-        )[0];
+    }
 
 
-    row.innerHTML = `
+    rows[0].innerHTML = `
 
-<button class="key" data-key="1">1</button>
-<button class="key" data-key="2">2</button>
-<button class="key" data-key="3">3</button>
-<button class="key" data-key="4">4</button>
-<button class="key" data-key="5">5</button>
-<button class="key" data-key="6">6</button>
-<button class="key" data-key="7">7</button>
-<button class="key" data-key="8">8</button>
-<button class="key" data-key="9">9</button>
-<button class="key" data-key="0">0</button>
-
-`;
-
-    const row2 =
-        document.querySelectorAll(
-            ".keyboard-row"
-        )[1];
-
-    row2.innerHTML = `
-
-<button class="key" data-key="+">+</button>
-<button class="key" data-key="-">-</button>
-<button class="key" data-key="(">(</button>
-<button class="key" data-key=")">)</button>
-<button class="key" data-key="/">/</button>
-<button class="key" data-key=":">:</button>
+<button type="button" class="key" data-key="1">1</button>
+<button type="button" class="key" data-key="2">2</button>
+<button type="button" class="key" data-key="3">3</button>
+<button type="button" class="key" data-key="4">4</button>
+<button type="button" class="key" data-key="5">5</button>
+<button type="button" class="key" data-key="6">6</button>
+<button type="button" class="key" data-key="7">7</button>
+<button type="button" class="key" data-key="8">8</button>
+<button type="button" class="key" data-key="9">9</button>
+<button type="button" class="key" data-key="0">0</button>
 
 `;
 
 
-    const row3 =
-        document.querySelectorAll(
-            ".keyboard-row"
-        )[2];
+    rows[1].innerHTML = `
 
-    row3.innerHTML = `
+<button type="button" class="key" data-key="+">+</button>
+<button type="button" class="key" data-key="-">-</button>
+<button type="button" class="key" data-key="(">(</button>
+<button type="button" class="key" data-key=")">)</button>
+<button type="button" class="key" data-key="/">/</button>
+<button type="button" class="key" data-key=":">:</button>
 
-<button class="key" data-key=",">,</button>
-<button class="key" data-key=".">.</button>
-<button class="key" data-key="?">?</button>
-<button class="key" data-key="!">!</button>
-<button class="key" data-key="@">@</button>
+`;
+
+
+    rows[2].innerHTML = `
+
+<button type="button" class="key" data-key=",">,</button>
+<button type="button" class="key" data-key=".">.</button>
+<button type="button" class="key" data-key="?">?</button>
+<button type="button" class="key" data-key="!">!</button>
+<button type="button" class="key" data-key="@">@</button>
+
+`;
+
+
+    const specialRow =
+        rows[3];
+
+    specialRow.innerHTML = `
+
+<button
+type="button"
+class="key special"
+id="lettersKey">
+
+ABC
+
+</button>
+
+<button
+type="button"
+class="key space"
+data-key=" ">
+
+espace
+
+</button>
+
+<button
+type="button"
+class="key backspace"
+id="backspaceKey">
+
+⌫
+
+</button>
+
+<button
+type="button"
+class="key enter"
+id="enterKey">
+
+↵
+
+</button>
 
 `;
 
 
     attachKeyEvents();
 
+
 }
 
 
 /* ==========================================
-   RETOUR LETTRES
+   RETOUR AU CLAVIER LETTRES
 ========================================== */
 
 function restoreLetters() {
 
     const keyboard =
         document.querySelector(".keyboard");
+
 
     keyboard.innerHTML = `
 
@@ -1821,71 +1775,97 @@ AZERTY
 
 <div class="keyboard-row">
 
-<button class="key" data-key="a">A</button>
-<button class="key" data-key="z">Z</button>
-<button class="key" data-key="e">E</button>
-<button class="key" data-key="r">R</button>
-<button class="key" data-key="t">T</button>
-<button class="key" data-key="y">Y</button>
-<button class="key" data-key="u">U</button>
-<button class="key" data-key="i">I</button>
-<button class="key" data-key="o">O</button>
-<button class="key" data-key="p">P</button>
+<button type="button" class="key" data-key="a">A</button>
+<button type="button" class="key" data-key="z">Z</button>
+<button type="button" class="key" data-key="e">E</button>
+<button type="button" class="key" data-key="r">R</button>
+<button type="button" class="key" data-key="t">T</button>
+<button type="button" class="key" data-key="y">Y</button>
+<button type="button" class="key" data-key="u">U</button>
+<button type="button" class="key" data-key="i">I</button>
+<button type="button" class="key" data-key="o">O</button>
+<button type="button" class="key" data-key="p">P</button>
 
 </div>
 
 <div class="keyboard-row">
 
-<button class="key" data-key="q">Q</button>
-<button class="key" data-key="s">S</button>
-<button class="key" data-key="d">D</button>
-<button class="key" data-key="f">F</button>
-<button class="key" data-key="g">G</button>
-<button class="key" data-key="h">H</button>
-<button class="key" data-key="j">J</button>
-<button class="key" data-key="k">K</button>
-<button class="key" data-key="l">L</button>
-<button class="key" data-key="m">M</button>
+<button type="button" class="key" data-key="q">Q</button>
+<button type="button" class="key" data-key="s">S</button>
+<button type="button" class="key" data-key="d">D</button>
+<button type="button" class="key" data-key="f">F</button>
+<button type="button" class="key" data-key="g">G</button>
+<button type="button" class="key" data-key="h">H</button>
+<button type="button" class="key" data-key="j">J</button>
+<button type="button" class="key" data-key="k">K</button>
+<button type="button" class="key" data-key="l">L</button>
+<button type="button" class="key" data-key="m">M</button>
 
 </div>
 
 <div class="keyboard-row">
 
-<button class="key" data-key="w">W</button>
-<button class="key" data-key="x">X</button>
-<button class="key" data-key="c">C</button>
-<button class="key" data-key="v">V</button>
-<button class="key" data-key="b">B</button>
-<button class="key" data-key="n">N</button>
-<button class="key" data-key="ç">Ç</button>
+<button type="button" class="key" data-key="w">W</button>
+<button type="button" class="key" data-key="x">X</button>
+<button type="button" class="key" data-key="c">C</button>
+<button type="button" class="key" data-key="v">V</button>
+<button type="button" class="key" data-key="b">B</button>
+<button type="button" class="key" data-key="n">N</button>
+<button type="button" class="key" data-key="ç">Ç</button>
 
 </div>
 
 <div class="keyboard-row">
 
-<button class="key special" id="shiftKey">
+<button
+type="button"
+class="key special"
+id="shiftKey">
+
 ⇧
+
 </button>
 
-<button class="key special" id="numberKey">
+<button
+type="button"
+class="key special"
+id="numberKey">
+
 123
+
 </button>
 
-<button class="key space" data-key=" ">
+<button
+type="button"
+class="key space"
+data-key=" ">
+
 espace
+
 </button>
 
-<button class="key backspace" id="backspaceKey">
+<button
+type="button"
+class="key backspace"
+id="backspaceKey">
+
 ⌫
+
 </button>
 
-<button class="key enter" id="enterKey">
+<button
+type="button"
+class="key enter"
+id="enterKey">
+
 ↵
+
 </button>
 
 </div>
 
 `;
+
 
     attachKeyEvents();
 
@@ -1893,18 +1873,34 @@ espace
 
 
 /* ==========================================
-   ATTACHER LES EVENEMENTS
+   GESTION TACTILE DES TOUCHES
 ========================================== */
 
+/*
+   IMPORTANT :
+
+   On utilise pointerdown au lieu de click.
+
+   Cela permet au jeu de fonctionner correctement
+   sur les écrans tactiles des smartphones et tablettes.
+
+   Le même événement fonctionne aussi avec la souris
+   sur ordinateur.
+*/
+
 function attachKeyEvents() {
+
 
     document
     .querySelectorAll(".key[data-key]")
     .forEach(key => {
 
+
         key.addEventListener(
-            "click",
-            function() {
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
 
                 pressKey(
                     this.dataset.key
@@ -1913,25 +1909,53 @@ function attachKeyEvents() {
             }
         );
 
+
+        /*
+           Sécurité supplémentaire pour les anciens
+           navigateurs tactiles.
+        */
+
+        key.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
+            }
+        );
+
     });
 
+
+    /* =========================
+       MAJUSCULE
+    ========================= */
 
     const shift =
         document.getElementById("shiftKey");
 
     if (shift) {
 
+
         shift.addEventListener(
-            "click",
-            function() {
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
+
 
                 uppercase =
                     !uppercase;
+
 
                 this.style.background =
                     uppercase
                     ? "#3975c6"
                     : "#c8d0da";
+
 
                 this.style.color =
                     uppercase
@@ -1941,17 +1965,37 @@ function attachKeyEvents() {
             }
         );
 
+
+        shift.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
+            }
+        );
+
     }
 
+
+    /* =========================
+       CHIFFRES
+    ========================= */
 
     const number =
         document.getElementById("numberKey");
 
     if (number) {
 
+
         number.addEventListener(
-            "click",
-            function() {
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
 
                 setNumberMode();
 
@@ -1960,8 +2004,64 @@ function attachKeyEvents() {
             }
         );
 
+
+        number.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
+            }
+        );
+
     }
 
+
+    /* =========================
+       RETOUR AUX LETTRES
+    ========================= */
+
+    const letters =
+        document.getElementById("lettersKey");
+
+    if (letters) {
+
+
+        letters.addEventListener(
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
+
+                restoreLetters();
+
+                checkChallenge();
+
+            }
+        );
+
+
+        letters.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
+            }
+        );
+
+    }
+
+
+    /* =========================
+       RETOUR ARRIERE
+    ========================= */
 
     const backspace =
         document.getElementById(
@@ -1970,17 +2070,24 @@ function attachKeyEvents() {
 
     if (backspace) {
 
-        backspace.addEventListener(
-            "click",
-            function() {
 
-                if (typedText.length > 0) {
+        backspace.addEventListener(
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
+
+
+                if (
+                    typedText.length > 0
+                ) {
 
                     typedText =
                         typedText.slice(
                             0,
                             -1
                         );
+
 
                     updateText();
 
@@ -1991,8 +2098,25 @@ function attachKeyEvents() {
             }
         );
 
+
+        backspace.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
+            }
+        );
+
     }
 
+
+    /* =========================
+       ENTREE
+    ========================= */
 
     const enter =
         document.getElementById(
@@ -2001,12 +2125,17 @@ function attachKeyEvents() {
 
     if (enter) {
 
+
         enter.addEventListener(
-            "click",
-            function() {
+            "pointerdown",
+            function(event) {
+
+                event.preventDefault();
+
 
                 const challenge =
                     challenges[currentChallenge];
+
 
                 if (
                     challenge.type ===
@@ -2025,6 +2154,19 @@ function attachKeyEvents() {
 
                 }
 
+            }
+        );
+
+
+        enter.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+            },
+            {
+                passive: false
             }
         );
 
@@ -2049,6 +2191,30 @@ function pressKey(value) {
 
         char =
             value.toUpperCase();
+
+        /*
+           Après avoir écrit une majuscule,
+           on revient automatiquement en minuscule,
+           comme sur un vrai clavier de smartphone.
+        */
+
+        uppercase = false;
+
+
+        const shift =
+            document.getElementById(
+                "shiftKey"
+            );
+
+        if (shift) {
+
+            shift.style.background =
+                "#c8d0da";
+
+            shift.style.color =
+                "#1e2c40";
+
+        }
 
     }
 
@@ -2107,7 +2273,9 @@ function checkChallenge() {
         challenges[currentChallenge];
 
 
-    /* Défi simple : lettre */
+    /* =========================
+       LETTRE
+    ========================= */
 
     if (
         challenge.type === "key"
@@ -2128,7 +2296,9 @@ function checkChallenge() {
     }
 
 
-    /* Mot ou phrase */
+    /* =========================
+       MOT / PHRASE
+    ========================= */
 
     if (
         challenge.type === "word"
@@ -2161,7 +2331,9 @@ function checkChallenge() {
     }
 
 
-    /* Espace */
+    /* =========================
+       ESPACE
+    ========================= */
 
     if (
         challenge.type === "space"
@@ -2182,7 +2354,9 @@ function checkChallenge() {
     }
 
 
-    /* Effacement */
+    /* =========================
+       EFFACEMENT
+    ========================= */
 
     if (
         challenge.type === "backspace"
@@ -2203,7 +2377,9 @@ function checkChallenge() {
     }
 
 
-    /* Majuscule */
+    /* =========================
+       MAJUSCULE
+    ========================= */
 
     if (
         challenge.type === "uppercase"
@@ -2219,10 +2395,14 @@ function checkChallenge() {
 
         }
 
+        return;
+
     }
 
 
-    /* Chiffre */
+    /* =========================
+       CHIFFRE
+    ========================= */
 
     if (
         challenge.type === "digit"
@@ -2238,10 +2418,14 @@ function checkChallenge() {
 
         }
 
+        return;
+
     }
 
 
-    /* Lettres */
+    /* =========================
+       LETTRES
+    ========================= */
 
     if (
         challenge.type === "letters"
@@ -2252,6 +2436,19 @@ function checkChallenge() {
             completeChallenge();
 
         }
+
+    }
+
+
+    /* =========================
+       ENTREE
+    ========================= */
+
+    if (
+        challenge.type === "enter"
+    ) {
+
+        return;
 
     }
 
@@ -2279,6 +2476,7 @@ function showError(text) {
 
     message.textContent =
         "❌ " + text;
+
 
     message.className =
         "message error";
@@ -2311,6 +2509,7 @@ function completeChallenge() {
 
     message.textContent =
         "🎉 Bravo ! Défi réussi !";
+
 
     message.className =
         "message success";
@@ -2372,14 +2571,18 @@ function resetChallenge() {
 
     challengeCompleted = false;
 
+
     typedTextDisplay.textContent =
         "";
+
 
     message.textContent =
         "";
 
+
     message.className =
         "message";
+
 
     restoreLetters();
 
@@ -2445,6 +2648,7 @@ function restartGame() {
     scoreDisplay.textContent =
         "0";
 
+
     errorsDisplay.textContent =
         "0";
 
@@ -2486,9 +2690,7 @@ document.addEventListener(
 
 
         /*
-         * On accepte le clavier physique
-         * uniquement pour les exercices
-         * d'écriture.
+         * Clavier physique sur ordinateur.
          */
 
         if (
@@ -2498,6 +2700,7 @@ document.addEventListener(
             challenge.type === "uppercase" ||
             challenge.type === "digit"
         ) {
+
 
             if (
                 event.key === "Backspace"
@@ -2512,6 +2715,7 @@ document.addEventListener(
                             0,
                             -1
                         );
+
 
                     updateText();
 
@@ -2540,7 +2744,9 @@ document.addEventListener(
                 typedText +=
                     event.key;
 
+
                 updateText();
+
 
                 checkChallenge();
 
