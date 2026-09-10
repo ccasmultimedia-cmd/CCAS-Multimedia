@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Défi vitesse - Centre Multimédia du CCAS</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --blue:#0b5cab;
+  --blue2:#0878d1;
+  --green:#2fa84f;
+  --orange:#f39c12;
+  --red:#d9534f;
+  --dark:#18324a;
+  --light:#f4f8fc;
+  --border:#d8e3ee;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--dark);
+  background:
+    linear-gradient(
+      180deg,
+      #dff3ff 0%,
+      #f7fbff 52%,
+      #e9f4e4 100%
+    );
+  min-height:100vh;
+}
+
+/* Petites animations */
+body:before,
+body:after{
+  content:"";
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+  width:14px;
+  height:14px;
+  background:#77c66e;
+  opacity:.45;
+  animation:float 9s infinite ease-in-out;
+}
+
+body:before{
+  left:8%;
+  top:18%;
+}
+
+body:after{
+  right:12%;
+  top:55%;
+  width:10px;
+  height:10px;
+  animation-delay:3s;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-30px);
+  }
+}
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+header{
+  position:relative;
+  z-index:2;
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue2)
+    );
+  color:white;
+  padding:16px 22px;
+  box-shadow:0 3px 12px #0002;
+}
+
+.header-inner{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.logo{
+  font-size:42px;
+}
+
+header h1{
+  margin:0;
+  font-size:27px;
+}
+
+header p{
+  margin:4px 0 0;
+  font-size:15px;
+  opacity:.92;
+}
+
+/* MENU */
+
+nav{
+  max-width:1180px;
+  margin:10px auto 0;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  background:#ffffff20;
+  border:1px solid #ffffff30;
+  padding:9px 13px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+nav a:hover,
+nav a:focus{
+  background:#fff;
+  color:var(--blue);
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+main{
+  position:relative;
+  z-index:1;
+  max-width:1180px;
+  margin:24px auto;
+  padding:0 18px;
+}
+
+.panel{
+  background:#ffffffee;
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:0 8px 28px #18324a18;
+  padding:24px;
+}
+
+/* Écran de départ */
+
+.start{
+  text-align:center;
+  padding:35px 24px;
+}
+
+.start .big{
+  font-size:72px;
+}
+
+h2{
+  font-size:30px;
+  margin:8px 0 10px;
+}
+
+h3{
+  font-size:22px;
+  margin:8px 0;
+}
+
+.intro{
+  font-size:18px;
+  line-height:1.55;
+  max-width:760px;
+  margin:0 auto 22px;
+}
+
+/* Boutons */
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:13px 20px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.15s;
+  box-shadow:0 3px 7px #0002;
+}
+
+button:hover{
+  transform:translateY(-1px);
+}
+
+button:focus{
+  outline:4px solid #ffd166;
+  outline-offset:2px;
+}
+
+.primary{
+  background:var(--green);
+  color:white;
+}
+
+.secondary{
+  background:#e8f0f7;
+  color:var(--dark);
+}
+
+.danger{
+  background:var(--red);
+  color:white;
+}
+
+/* =========================
+   JEU
+========================= */
+
+.game{
+  display:none;
+}
+
+.topbar{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+
+.mission{
+  flex:1;
+  min-width:280px;
+  background:#eef7ff;
+  border-left:7px solid var(--blue);
+  border-radius:13px;
+  padding:15px 18px;
+}
+
+.mission strong{
+  font-size:21px;
+}
+
+.stats{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 14px;
+  text-align:center;
+  min-width:95px;
+}
+
+.stat b{
+  display:block;
+  font-size:22px;
+}
+
+/* Barre de progression */
+
+.progress{
+  height:14px;
+  background:#dce7ef;
+  border-radius:20px;
+  overflow:hidden;
+  margin:14px 0 22px;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      #79c95b
+    );
+  transition:.3s;
+}
+
+/* Zone de jeu */
+
+.arena{
+  min-height:430px;
+  border-radius:18px;
+  background:#f8fbfe;
+  border:2px solid var(--border);
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.center{
+  text-align:center;
+}
+
+.instruction{
+  font-size:24px;
+  font-weight:bold;
+  margin:8px auto 20px;
+  max-width:900px;
+}
+
+.feedback{
+  min-height:34px;
+  text-align:center;
+  font-size:19px;
+  font-weight:bold;
+  margin:8px;
+}
+
+/* Cibles */
+
+.target{
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  user-select:none;
+  box-shadow:0 5px 10px #0002;
+}
+
+.target.circle{
+  border-radius:50%;
+}
+
+.target.green{
+  background:var(--green);
+}
+
+.target.orange{
+  background:var(--orange);
+}
+
+.target.red{
+  background:var(--red);
+}
+
+/* Choix */
+
+.choice-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(130px,1fr)
+    );
+  gap:14px;
+  max-width:760px;
+  margin:30px auto;
+}
+
+.choice{
+  min-height:80px;
+  background:white;
+  border:3px solid #b8cad9;
+  border-radius:15px;
+  font-size:21px;
+  box-shadow:none;
+}
+
+.choice:hover{
+  background:#eef7ff;
+}
+
+/* Zone de texte */
+
+.textbox{
+  font-size:24px;
+  padding:15px;
+  border:3px solid #b8cad9;
+  border-radius:12px;
+  width:min(700px,100%);
+  display:block;
+  margin:20px auto;
+}
+
+/* Séquence clavier */
+
+.sequence{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+
+.key{
+  background:#fff;
+  border:2px solid #aebfd0;
+  border-bottom:5px solid #8498aa;
+  border-radius:10px;
+  padding:13px 17px;
+  font-weight:bold;
+  font-size:22px;
+  min-width:55px;
+}
+
+.key.done{
+  background:#dff4df;
+  border-color:var(--green);
+}
+
+.key.current{
+  outline:4px solid #ffd166;
+}
+
+/* =========================
+   RESULTAT
+========================= */
+
+.result{
+  display:none;
+  text-align:center;
+}
+
+.score{
+  font-size:58px;
+  font-weight:bold;
+  color:var(--green);
+}
+
+.medal{
+  font-size:70px;
+}
+
+.result p{
+  font-size:19px;
+}
+
+.result-grid{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:22px 0;
+}
+
+.result-box{
+  background:#f2f7fb;
+  border-radius:14px;
+  padding:15px 22px;
+  min-width:140px;
+}
+
+.result-box b{
+  font-size:27px;
+  display:block;
+}
+
+/* Conseils */
+
+.help{
+  margin-top:18px;
+  background:#fff9e8;
+  border:1px solid #f1d48b;
+  border-radius:13px;
+  padding:14px 16px;
+  font-size:16px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  header h1{
+    font-size:21px;
+  }
+
+  .logo{
+    font-size:32px;
+  }
+
+  main{
+    margin:12px auto;
+    padding:0 10px;
+  }
+
+  .panel{
+    padding:15px;
+    border-radius:15px;
+  }
+
+  h2{
+    font-size:25px;
+  }
+
+  .instruction{
+    font-size:20px;
+  }
+
+  .arena{
+    min-height:480px;
+    padding:14px;
+  }
+
+  .start .big{
+    font-size:55px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="header-inner">
+
+    <div class="logo">⚡</div>
+
+    <div>
+      <h1>Défi vitesse — Ordinateur</h1>
+
+      <p>
+        Entraînez-vous à faire les gestes du quotidien
+        avec rapidité et précision.
+      </p>
+    </div>
+
+  </div>
+
+  <nav>
+
+    <a href="index.html">
+      🏠 Accueil
+    </a>
+
+    <a href="exercices.html">
+      🎮 Exercices
+    </a>
+
+    <a href="jeu-souris.html">
+      🖱️ Jeu souris
+    </a>
+
+    <a href="jeu-clavier.html">
+      ⌨️ Jeu clavier
+    </a>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+<!-- =========================
+     ECRAN DE DEPART
+========================= -->
+
+<section id="start" class="panel start">
+
+  <div class="big">
+    ⚡🖱️⌨️
+  </div>
+
+  <h2>
+    Le défi vitesse
+  </h2>
+
+  <p class="intro">
+
+    30 petits défis pour apprendre à être
+    plus rapide sur ordinateur.
+
+    Pas besoin d'être un champion :
+
+    <strong>
+      le but est surtout de battre son propre temps !
+    </strong>
+
+  </p>
+
+  <button
+    class="primary"
+    onclick="startGame()"
+  >
+    ▶ Commencer les défis
+  </button>
+
+  <div class="help">
+
+    💡 Prenez votre temps au début.
+    La vitesse viendra naturellement avec la pratique.
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     JEU
+========================= -->
+
+<section id="game" class="panel game">
+
+  <div class="topbar">
+
+    <div class="mission">
+
+      <div>
+        Défi
+        <strong id="level">1</strong>
+        / 30
+      </div>
+
+      <div id="mission"></div>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+
+        ⏱️
+
+        <b id="timer">
+          —
+        </b>
+
+        temps
+
+      </div>
+
+
+      <div class="stat">
+
+        ❌
+
+        <b id="errors">
+          0
+        </b>
+
+        erreurs
+
+      </div>
+
+
+      <div class="stat">
+
+        🏆
+
+        <b id="score">
+          0
+        </b>
+
+        points
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="progress">
+
+    <span id="progress"></span>
+
+  </div>
+
+
+  <div
+    id="instruction"
+    class="instruction"
+  ></div>
+
+
+  <div
+    id="feedback"
+    class="feedback"
+  ></div>
+
+
+  <div
+    id="arena"
+    class="arena"
+  ></div>
+
+</section>
+
+
+<!-- =========================
+     RESULTAT
+========================= -->
+
+<section
+  id="result"
+  class="panel result"
+>
+
+  <div
+    class="medal"
+    id="medal"
+  >
+    🏆
+  </div>
+
+  <h2>
+    Défis terminés !
+  </h2>
+
+  <div
+    class="score"
+    id="finalScore"
+  >
+    0
+  </div>
+
+  <p>
+    points
+  </p>
+
+
+  <div class="result-grid">
+
+    <div class="result-box">
+
+      ⏱️ Temps
+
+      <b id="finalTime">
+        0 s
+      </b>
+
+    </div>
+
+
+    <div class="result-box">
+
+      ❌ Erreurs
+
+      <b id="finalErrors">
+        0
+      </b>
+
+    </div>
+
+
+    <div class="result-box">
+
+      🎯 Défis
+
+      <b>
+        30 / 30
+      </b>
+
+    </div>
+
+  </div>
+
+
+  <p id="finalMessage"></p>
+
+
+  <button
+    class="primary"
+    onclick="startGame()"
+  >
+    🔄 Recommencer
+  </button>
+
+
+  <button
+    class="secondary"
+    onclick="location.href='exercices.html'"
+  >
+    🎮 Retour aux exercices
+  </button>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* ==========================================
+   LES 30 DEFIS
+========================================== */
+
+const challenges = [
+
+  {
+    type:"target",
+    text:"Cliquez sur le cercle vert.",
+    color:"green",
+    shape:"circle"
+  },
+
+  {
+    type:"target",
+    text:"Cliquez sur le carré orange.",
+    color:"orange"
+  },
+
+  {
+    type:"double",
+    text:"Double-cliquez sur le bouton « OUVRIR »."
+  },
+
+  {
+    type:"right",
+    text:"Faites un clic droit sur le bouton « MENU »."
+  },
+
+  {
+    type:"choice",
+    text:"Cliquez le plus vite possible sur « OUI ».",
+    choices:[
+      "NON",
+      "OUI",
+      "PEUT-ÊTRE",
+      "ANNULER"
+    ],
+    answer:"OUI"
+  },
+
+  {
+    type:"target",
+    text:"Cliquez sur le petit carré rouge.",
+    color:"red",
+    size:65
+  },
+
+  {
+    type:"choice",
+    text:"Trouvez le mot « SOURIS ».",
+    choices:[
+      "CLAVIER",
+      "DOSSIER",
+      "SOURIS",
+      "ÉCRAN",
+      "FICHIER"
+    ],
+    answer:"SOURIS"
+  },
+
+  {
+    type:"drag",
+    text:"Faites glisser le fichier vers la corbeille."
+  },
+
+  {
+    type:"choice",
+    text:"Quel bouton sert généralement à fermer une fenêtre ?",
+    choices:[
+      "✕",
+      "□",
+      "—",
+      "⚙️"
+    ],
+    answer:"✕"
+  },
+
+  {
+    type:"target",
+    text:"Trouvez et cliquez sur la cible bleue.",
+    color:"blue",
+    size:55
+  },
+
+  {
+    type:"text",
+    text:"Tapez rapidement le mot : ORDINATEUR",
+    value:"ORDINATEUR"
+  },
+
+  {
+    type:"choice",
+    text:"Cliquez sur « COPIER ».",
+    choices:[
+      "COLLER",
+      "COUPER",
+      "COPIER",
+      "ANNULER"
+    ],
+    answer:"COPIER"
+  },
+
+  {
+    type:"target",
+    text:"Cliquez sur le cercle vert.",
+    color:"green",
+    shape:"circle",
+    size:45
+  },
+
+  {
+    type:"double",
+    text:"Double-cliquez sur « DOCUMENT ».",
+    label:"DOCUMENT"
+  },
+
+  {
+    type:"right",
+    text:"Clic droit sur « BUREAU ».",
+    label:"BUREAU"
+  },
+
+  {
+    type:"sequence",
+    text:"Appuyez dans l'ordre sur les touches indiquées.",
+    keys:[
+      "A",
+      "Z",
+      "E",
+      "R"
+    ]
+  },
+
+  {
+    type:"choice",
+    text:"Trouvez rapidement « PHOTOS ».",
+    choices:[
+      "MUSIQUE",
+      "PHOTOS",
+      "COURRIER",
+      "VIDÉOS",
+      "TRAVAIL"
+    ],
+    answer:"PHOTOS"
+  },
+
+  {
+    type:"drag",
+    text:"Faites glisser le dossier vers la zone « TRAVAIL »."
+  },
+
+  {
+    type:"text",
+    text:"Tapez rapidement : CCAS",
+    value:"CCAS"
+  },
+
+  {
+    type:"choice",
+    text:"Quel raccourci permet de copier ?",
+    choices:[
+      "Ctrl + V",
+      "Ctrl + C",
+      "Ctrl + X",
+      "Ctrl + Z"
+    ],
+    answer:"Ctrl + C"
+  },
+
+  {
+    type:"target",
+    text:"Cliquez sur la cible verte qui apparaît.",
+    color:"green",
+    shape:"circle",
+    size:52
+  },
+
+  {
+    type:"choice",
+    text:"Cliquez sur « ANNULER ».",
+    choices:[
+      "VALIDER",
+      "ANNULER",
+      "ENREGISTRER",
+      "RETOUR"
+    ],
+    answer:"ANNULER"
+  },
+
+  {
+    type:"double",
+    text:"Double-cliquez sur « PHOTOS ».",
+    label:"PHOTOS"
+  },
+
+  {
+    type:"sequence",
+    text:"Appuyez dans l'ordre.",
+    keys:[
+      "C",
+      "O",
+      "P",
+      "I",
+      "E"
+    ]
+  },
+
+  {
+    type:"choice",
+    text:"Quel raccourci permet de coller ?",
+    choices:[
+      "Ctrl + A",
+      "Ctrl + C",
+      "Ctrl + V",
+      "Ctrl + S"
+    ],
+    answer:"Ctrl + V"
+  },
+
+  {
+    type:"drag",
+    text:"Faites glisser l'élément vers la corbeille."
+  },
+
+  {
+    type:"text",
+    text:"Tapez exactement : JE SUIS RAPIDE",
+    value:"JE SUIS RAPIDE"
+  },
+
+  {
+    type:"sequence",
+    text:"Dernière série : appuyez sur les touches dans l'ordre.",
+    keys:[
+      "A",
+      "Z",
+      "E",
+      "R",
+      "T",
+      "Y"
+    ]
+  },
+
+  {
+    type:"target",
+    text:"Défi 30 : cliquez sur la cible le plus vite possible !",
+    color:"orange",
+    shape:"circle",
+    size:50
+  }
+
+];
+
+
+/* ==========================================
+   VARIABLES
+========================================== */
+
+let current = 0;
+let errors = 0;
+let score = 0;
+
+let startTime = 0;
+let challengeStart = 0;
+
+let timerInterval = null;
+
+let completed = false;
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const arena =
+  document.getElementById("arena");
+
+const instruction =
+  document.getElementById("instruction");
+
+const feedback =
+  document.getElementById("feedback");
+
+
+/* ==========================================
+   DEMARRAGE
+========================================== */
+
+function startGame(){
+
+  document.getElementById("start").style.display="none";
+
+  document.getElementById("result").style.display="none";
+
+  document.getElementById("game").style.display="block";
+
+  current=0;
+
+  errors=0;
+
+  score=0;
+
+  completed=false;
+
+  startTime=Date.now();
+
+  clearInterval(timerInterval);
+
+  timerInterval=setInterval(()=>{
+
+    document.getElementById("timer").textContent =
+      ((Date.now()-challengeStart)/1000).toFixed(1)
+      +" s";
+
+  },100);
+
+  loadChallenge();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* ==========================================
+   CHARGEMENT D'UN DEFI
+========================================== */
+
+function loadChallenge(){
+
+  /* Nettoyage d'un éventuel écouteur clavier */
+
+  if(arena._handler){
+
+    document.removeEventListener(
+      "keydown",
+      arena._handler
+    );
+
+    arena._handler=null;
+  }
+
+
+  arena.innerHTML="";
+
+  feedback.textContent="";
+
+
+  const c =
+    challenges[current];
+
+
+  document.getElementById("level").textContent =
+    current+1;
+
+
+  document.getElementById("mission").textContent =
+    c.text;
+
+
+  document.getElementById("score").textContent =
+    score;
+
+
+  document.getElementById("errors").textContent =
+    errors;
+
+
+  document.getElementById("progress").style.width =
+    (current/challenges.length*100)+"%";
+
+
+  challengeStart=Date.now();
+
+
+  if(c.type==="target")
+    makeTarget(c);
+
+  if(c.type==="choice")
+    makeChoices(c);
+
+  if(c.type==="double")
+    makeDouble(c);
+
+  if(c.type==="right")
+    makeRight(c);
+
+  if(c.type==="drag")
+    makeDrag(c);
+
+  if(c.type==="text")
+    makeText(c);
+
+  if(c.type==="sequence")
+    makeSequence(c);
+}
+
+
+/* ==========================================
+   POSITION ALEATOIRE
+========================================== */
+
+function randomPos(size=70){
+
+  const pad=18;
+
+  const rect =
+    arena.getBoundingClientRect();
+
+  const w =
+    Math.max(
+      150,
+      rect.width-size-pad*2
+    );
+
+  const h =
+    Math.max(
+      160,
+      rect.height-size-pad*2
+    );
+
+  return {
+
+    x:pad+Math.random()*w,
+
+    y:pad+Math.random()*h
+
+  };
+}
+
+
+/* ==========================================
+   DEFI REUSSI
+========================================== */
+
+function finishAction(){
+
+  const elapsed =
+    (Date.now()-challengeStart)/1000;
+
+
+  let points =
+    Math.max(
+      20,
+      Math.round(
+        1000/(elapsed+0.5)
+      ) - errors*10
+    );
+
+
+  score += points;
+
+
+  feedback.textContent =
+    "✅ Bravo ! +"+points+" points";
+
+
+  document.getElementById("score").textContent =
+    score;
+
+
+  setTimeout(
+    nextChallenge,
+    550
+  );
+}
+
+
+/* ==========================================
+   ERREUR
+========================================== */
+
+function mistake(
+  msg="Essayez encore !"
+){
+
+  errors++;
+
+
+  document.getElementById("errors").textContent =
+    errors;
+
+
+  feedback.textContent =
+    "❌ "+msg;
+}
+
+
+/* ==========================================
+   CIBLE
+========================================== */
+
+function makeTarget(c){
+
+  const t =
+    document.createElement("div");
+
+
+  t.className =
+    "target "
+    +(c.color||"blue")
+    +" "
+    +(c.shape||"");
+
+
+  const s =
+    c.size||75;
+
+
+  t.style.width =
+    s+"px";
+
+
+  t.style.height =
+    s+"px";
+
+
+  t.textContent="●";
+
+
+  const p =
+    randomPos(s);
+
+
+  t.style.left =
+    p.x+"px";
+
+
+  t.style.top =
+    p.y+"px";
+
+
+  t.onclick =
+    finishAction;
+
+
+  arena.appendChild(t);
+
+
+  /*
+    Certains défis ajoutent
+    plusieurs fausses cibles.
+  */
+
+  if(
+    current===9 ||
+    current===20 ||
+    current===29
+  ){
+
+    for(
+      let i=0;
+      i<4;
+      i++
+    ){
+
+      const fake =
+        document.createElement("div");
+
+
+      fake.className =
+        "target "
+        +[
+          "green",
+          "orange",
+          "red",
+          "blue"
+        ][i];
+
+
+      fake.style.width="45px";
+
+      fake.style.height="45px";
+
+
+      const fp =
+        randomPos(45);
+
+
+      fake.style.left =
+        fp.x+"px";
+
+
+      fake.style.top =
+        fp.y+"px";
+
+
+      fake.textContent="×";
+
+
+      fake.onclick=() =>
+        mistake(
+          "Ce n'est pas la bonne cible."
+        );
+
+
+      arena.appendChild(fake);
+    }
+
+
+    t.style.zIndex=3;
+  }
+}
+
+
+/* ==========================================
+   CHOIX
+========================================== */
+
+function makeChoices(c){
+
+  const box =
+    document.createElement("div");
+
+
+  box.className =
+    "choice-grid";
+
+
+  c.choices.forEach(ch=>{
+
+    const b =
+      document.createElement("button");
+
+
+    b.className =
+      "choice";
+
+
+    b.textContent =
+      ch;
+
+
+    b.onclick=() => {
+
+      if(ch===c.answer)
+
+        finishAction();
+
+      else
+
+        mistake(
+          "Ce n'est pas le bon choix."
+        );
+    };
+
+
+    box.appendChild(b);
+
+  });
+
+
+  arena.appendChild(box);
+}
+
+
+/* ==========================================
+   DOUBLE CLIC
+========================================== */
+
+function makeDouble(c){
+
+  const b =
+    document.createElement("button");
+
+
+  b.className =
+    "primary";
+
+
+  b.textContent =
+    c.label||"OUVRIR";
+
+
+  b.style.display="block";
+
+  b.style.margin="130px auto";
+
+  b.style.fontSize="28px";
+
+
+  let clicks=0;
+
+  let last=0;
+
+
+  b.onclick=()=>{
+
+    const now =
+      Date.now();
+
+
+    if(now-last<550){
+
+      clicks++;
+
+    }else{
+
+      clicks=1;
+
+    }
+
+
+    last=now;
+
+
+    if(clicks>=2)
+
+      finishAction();
+
+  };
+
+
+  arena.appendChild(b);
+}
+
+
+/* ==========================================
+   CLIC DROIT
+========================================== */
+
+function makeRight(c){
+
+  const b =
+    document.createElement("button");
+
+
+  b.className =
+    "secondary";
+
+
+  b.textContent =
+    c.label||"MENU";
+
+
+  b.style.display="block";
+
+  b.style.margin="130px auto";
+
+  b.style.fontSize="28px";
+
+
+  b.oncontextmenu=e=>{
+
+    e.preventDefault();
+
+    finishAction();
+
+    return false;
+
+  };
+
+
+  b.onclick=() =>
+    mistake(
+      "Ici, il faut faire un clic droit."
+    );
+
+
+  arena.appendChild(b);
+}
+
+
+/* ==========================================
+   GLISSER-DEPOSER
+========================================== */
+
+function makeDrag(c){
+
+  const file =
+    document.createElement("div");
+
+
+  file.className =
+    "target blue";
+
+
+  file.textContent =
+    "📄 Fichier";
+
+
+  file.draggable=true;
+
+
+  file.style.width="145px";
+
+  file.style.height="75px";
+
+  file.style.left="12%";
+
+  file.style.top="40%";
+
+
+  const zone =
+    document.createElement("div");
+
+
+  zone.style.position="absolute";
+
+  zone.style.right="10%";
+
+  zone.style.top="35%";
+
+  zone.style.width="190px";
+
+  zone.style.height="130px";
+
+  zone.style.border="4px dashed #8095a8";
+
+  zone.style.borderRadius="18px";
+
+  zone.style.display="flex";
+
+  zone.style.alignItems="center";
+
+  zone.style.justifyContent="center";
+
+  zone.style.fontSize="22px";
+
+  zone.style.fontWeight="bold";
+
+
+  zone.textContent =
+    current===17
+      ? "📁 TRAVAIL"
+      : "🗑️ CORBEILLE";
+
+
+  file.ondragstart=e=>{
+
+    e.dataTransfer.setData(
+      "text/plain",
+      "file"
+    );
+
+  };
+
+
+  zone.ondragover=e =>
+    e.preventDefault();
+
+
+  zone.ondrop=e=>{
+
+    e.preventDefault();
+
+    finishAction();
+
+  };
+
+
+  arena.append(
+    file,
+    zone
+  );
+}
+
+
+/* ==========================================
+   SAISIE CLAVIER
+========================================== */
+
+function makeText(c){
+
+  const input =
+    document.createElement("input");
+
+
+  input.className =
+    "textbox";
+
+
+  input.type="text";
+
+
+  input.placeholder =
+    "Tapez ici…";
+
+
+  input.autocomplete="off";
+
+
+  const btn =
+    document.createElement("button");
+
+
+  btn.className =
+    "primary";
+
+
+  btn.textContent =
+    "Valider";
+
+
+  btn.onclick=()=>{
+
+    if(
+      input.value.toUpperCase()
+      ===
+      c.value
+    ){
+
+      finishAction();
+
+    }else{
+
+      mistake(
+        "Vérifiez votre saisie."
+      );
+
+    }
+
+  };
+
+
+  arena.append(
+    input,
+    btn
+  );
+
+
+  input.focus();
+
+
+  input.onkeydown=e=>{
+
+    if(e.key==="Enter")
+
+      btn.click();
+
+  };
+}
+
+
+/* ==========================================
+   SEQUENCE DE TOUCHES
+========================================== */
+
+function makeSequence(c){
+
+  const wrap =
+    document.createElement("div");
+
+
+  wrap.className =
+    "sequence";
+
+
+  let pos=0;
+
+
+  c.keys.forEach(
+    (key,i)=>{
+
+      const k =
+        document.createElement("div");
+
+
+      k.className =
+        "key"
+        +(i===0
+          ? " current"
+          : "");
+
+
+      k.textContent =
+        key;
+
+
+      wrap.appendChild(k);
+
+    }
+  );
+
+
+  arena.appendChild(wrap);
+
+
+  const handler=e=>{
+
+    if(
+      e.key.toUpperCase()
+      ===
+      c.keys[pos]
+    ){
+
+      wrap.children[pos]
+        .classList
+        .add("done");
+
+
+      pos++;
+
+
+      if(
+        pos<c.keys.length
+      ){
+
+        wrap.children[pos]
+          .classList
+          .add("current");
+
+      }else{
+
+        document.removeEventListener(
+          "keydown",
+          handler
+        );
+
+
+        finishAction();
+
+      }
+
+    }else{
+
+      mistake(
+        "Ce n'est pas la touche attendue."
+      );
+
+    }
+
+  };
+
+
+  document.addEventListener(
+    "keydown",
+    handler
+  );
+
+
+  arena._handler =
+    handler;
+}
+
+
+/* ==========================================
+   DEFI SUIVANT
+========================================== */
+
+function nextChallenge(){
+
+  if(arena._handler){
+
+    document.removeEventListener(
+      "keydown",
+      arena._handler
+    );
+
+    arena._handler=null;
+  }
+
+
+  current++;
+
+
+  if(
+    current>=challenges.length
+  ){
+
+    endGame();
+
+    return;
+
+  }
+
+
+  loadChallenge();
+}
+
+
+/* ==========================================
+   FIN DU JEU
+========================================== */
+
+function endGame(){
+
+  clearInterval(
+    timerInterval
+  );
+
+
+  const total =
+    (
+      (Date.now()-startTime)
+      /1000
+    ).toFixed(1);
+
+
+  document.getElementById("game")
+    .style.display="none";
+
+
+  document.getElementById("result")
+    .style.display="block";
+
+
+  document.getElementById("finalScore")
+    .textContent=score;
+
+
+  document.getElementById("finalTime")
+    .textContent=
+      total+" s";
+
+
+  document.getElementById("finalErrors")
+    .textContent=errors;
+
+
+  const medal =
+    document.getElementById("medal");
+
+
+  const msg =
+    document.getElementById("finalMessage");
+
+
+  if(errors<=3){
+
+    medal.textContent="🏆";
+
+    msg.textContent =
+      "Excellent ! Vous êtes rapide et précis. Bravo !";
+
+  }
+
+  else if(errors<=8){
+
+    medal.textContent="🥇";
+
+    msg.textContent =
+      "Très bon travail ! Encore quelques essais et vous gagnerez en vitesse.";
+
+  }
+
+  else if(errors<=15){
+
+    medal.textContent="🥈";
+
+    msg.textContent =
+      "Bravo pour les 30 défis ! La pratique va vous rendre de plus en plus à l'aise.";
+
+  }
+
+  else{
+
+    medal.textContent="🥉";
+
+    msg.textContent =
+      "Défi terminé ! L'important est de pratiquer, puis d'essayer de battre votre propre score.";
+
+  }
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
