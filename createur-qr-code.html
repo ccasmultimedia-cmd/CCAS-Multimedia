@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Créateur de QR Code - Centre Multimédia du CCAS</title>
+
+<!-- Bibliothèque QR Code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+nav a.active {
+    background: #3975c6;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 42px;
+    color: #1f3656;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 20px;
+    color: #52657a;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(31,54,86,0.10);
+}
+
+/* =========================
+   ZONE DE SAISIE
+========================= */
+
+label {
+    display: block;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1f3656;
+}
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 16px;
+    border: 2px solid #d6dfeb;
+    border-radius: 14px;
+    resize: vertical;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #26364a;
+    outline: none;
+    transition: 0.2s;
+}
+
+textarea:focus {
+    border-color: #3975c6;
+    box-shadow: 0 0 0 4px rgba(57,117,198,0.10);
+}
+
+/* =========================
+   EXEMPLES
+========================= */
+
+.examples {
+    margin-top: 12px;
+    color: #66788c;
+    font-size: 15px;
+}
+
+.example-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.example-btn {
+    background: #edf3fb;
+    border: 1px solid #d7e2f0;
+    color: #315d91;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.example-btn:hover {
+    background: #dfeafa;
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+    padding: 18px;
+    background: #f5f8fc;
+    border-radius: 14px;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option-group span {
+    font-weight: bold;
+    color: #334b65;
+}
+
+select {
+    padding: 10px 14px;
+    border: 2px solid #d6dfeb;
+    border-radius: 10px;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 13px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary {
+    background: #3975c6;
+    color: white;
+}
+
+.primary:hover {
+    background: #285d9e;
+    transform: translateY(-1px);
+}
+
+.secondary {
+    background: #eaf2ff;
+    color: #315d91;
+}
+
+.secondary:hover {
+    background: #dce9fa;
+}
+
+.danger {
+    background: #f8e8e8;
+    color: #a34444;
+}
+
+.danger:hover {
+    background: #f4dada;
+}
+
+/* =========================
+   QR CODE
+========================= */
+
+.qr-section {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 2px solid #edf1f6;
+    text-align: center;
+}
+
+.qr-section h2 {
+    margin-top: 0;
+    color: #1f3656;
+}
+
+.qr-description {
+    color: #66788c;
+    margin-bottom: 25px;
+}
+
+#qrcode {
+    width: fit-content;
+    margin: 25px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e0e6ee;
+    min-height: 20px;
+}
+
+#qrcode img,
+#qrcode canvas {
+    display: block;
+    margin: auto;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    display: none;
+    font-weight: bold;
+}
+
+.message.success {
+    display: block;
+    background: #e9f7ed;
+    color: #267342;
+}
+
+.message.error {
+    display: block;
+    background: #fdecec;
+    color: #a23b3b;
+}
+
+/* =========================
+   CONSEIL
+========================= */
+
+.tip {
+    margin-top: 30px;
+    background: #eaf7ed;
+    border-left: 5px solid #4da96b;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.tip h3 {
+    margin-top: 0;
+    color: #276a3e;
+}
+
+.tip p {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* =========================
+   EXPLICATION
+========================= */
+
+.info-box {
+    margin-top: 25px;
+    background: #f4f7fb;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: #1f3656;
+}
+
+.info-box ol {
+    margin-bottom: 0;
+    padding-left: 25px;
+}
+
+.info-box li {
+    margin-bottom: 9px;
+    line-height: 1.5;
+}
+
+/* =========================
+   PIED DE PAGE
+========================= */
+
+footer {
+    margin-top: 50px;
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .page-header {
+        padding: 35px 15px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .tool-card {
+        padding: 22px;
+    }
+
+    .options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .example-buttons {
+        flex-direction: column;
+    }
+
+    .example-btn {
+        width: 100%;
+    }
+
+    #qrcode {
+        padding: 15px;
+        max-width: 100%;
+        overflow: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            🖥️ Centre Multimédia du CCAS
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html">Exercices</a>
+            <a href="outils.html" class="active">🛠️ Outils</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="page-header">
+    <h1>📱 Créateur de QR Code</h1>
+    <p>Transformez facilement un texte ou une adresse Internet en QR Code</p>
+</section>
+
+<main>
+
+    <div class="tool-card">
+
+        <label for="texte">
+            ✏️ Que voulez-vous mettre dans le QR Code ?
+        </label>
+
+        <textarea
+            id="texte"
+            placeholder="Exemple : https://www.google.fr"
+            aria-label="Texte à transformer en QR Code"
+        ></textarea>
+
+        <div class="examples">
+            💡 Vous pouvez mettre une adresse Internet, un texte, un numéro de téléphone, une adresse e-mail...
+        </div>
+
+        <div class="example-buttons">
+
+            <button
+                class="example-btn"
+                onclick="mettreExemple('https://www.google.fr')">
+                🌐 Site Internet
+            </button>
+
+            <button
+                class="example-btn"
+                onclick="mettreExemple('Bonjour et bienvenue au Centre Multimédia du CCAS !')">
+                💬 Petit message
+            </button>
+
+            <button
+                class="example-btn"
+                onclick="mettreExemple('Centre Multimédia du CCAS')">
+                🏢 Nom du centre
+            </button>
+
+            <button
+                class="example-btn"
+                onclick="mettreExemple('mailto:contact@example.fr')">
+                ✉️ E-mail
+            </button>
+
+        </div>
+
+        <div class="options">
+
+            <div class="option-group">
+                <span>📐 Taille :</span>
+
+                <select id="taille">
+                    <option value="180">Petite</option>
+                    <option value="240" selected>Moyenne</option>
+                    <option value="300">Grande</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="primary"
+                onclick="genererQR()">
+                📱 Générer le QR Code
+            </button>
+
+            <button
+                class="secondary"
+                onclick="telechargerQR()">
+                💾 Télécharger le QR Code
+            </button>
+
+            <button
+                class="danger"
+                onclick="effacer()">
+                🗑️ Effacer
+            </button>
+
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="qr-section">
+
+            <h2>📱 Votre QR Code</h2>
+
+            <p class="qr-description">
+                Le QR Code apparaîtra ici après avoir cliqué sur
+                <strong>« Générer le QR Code »</strong>.
+            </p>
+
+            <div id="qrcode"></div>
+
+        </div>
+
+        <div class="tip">
+
+            <h3>💡 Petit conseil</h3>
+
+            <p>
+                Après avoir créé votre QR Code, vous pouvez le télécharger
+                en image puis l'imprimer. Une personne pourra ensuite
+                simplement utiliser l'appareil photo de son smartphone
+                pour le scanner.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📖 Comment utiliser un QR Code ?</h3>
+
+            <ol>
+                <li>Ouvrez l'appareil photo de votre smartphone.</li>
+                <li>Dirigez l'appareil photo vers le QR Code.</li>
+                <li>Attendez quelques secondes.</li>
+                <li>Une notification ou un lien apparaît généralement à l'écran.</li>
+                <li>Appuyez dessus pour ouvrir le contenu.</li>
+            </ol>
+
+        </div>
+
+        <div class="tip">
+
+            <h3>🛡️ Attention à la sécurité</h3>
+
+            <p>
+                Un QR Code peut contenir une adresse Internet.
+                Avant d'ouvrir le lien, prenez toujours le temps de
+                vérifier l'adresse affichée sur votre téléphone,
+                surtout si le QR Code vient d'une affiche ou d'un message
+                que vous ne connaissez pas.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <p><strong>Centre Multimédia du CCAS</strong></p>
+
+    <p>
+        Apprendre, pratiquer et découvrir le numérique simplement.
+    </p>
+
+</footer>
+
+<script>
+
+/* =========================
+   VARIABLES
+========================= */
+
+let dernierQR = null;
+
+
+/* =========================
+   EXEMPLE
+========================= */
+
+function mettreExemple(texte) {
+
+    document.getElementById("texte").value = texte;
+
+    genererQR();
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function afficherMessage(texte, type) {
+
+    const message = document.getElementById("message");
+
+    message.textContent = texte;
+
+    message.className = "message " + type;
+
+}
+
+
+/* =========================
+   GÉNÉRER QR CODE
+========================= */
+
+function genererQR() {
+
+    const texte = document.getElementById("texte").value.trim();
+
+    const taille = parseInt(
+        document.getElementById("taille").value,
+        10
+    );
+
+    const zoneQR = document.getElementById("qrcode");
+
+    zoneQR.innerHTML = "";
+
+    if (!texte) {
+
+        afficherMessage(
+            "⚠️ Écrivez d'abord un texte ou une adresse Internet.",
+            "error"
+        );
+
+        dernierQR = null;
+
+        return;
+    }
+
+    try {
+
+        dernierQR = new QRCode(zoneQR, {
+
+            text: texte,
+
+            width: taille,
+
+            height: taille,
+
+            colorDark: "#000000",
+
+            colorLight: "#ffffff",
+
+            correctLevel: QRCode.CorrectLevel.H
+
+        });
+
+        afficherMessage(
+            "✅ QR Code créé avec succès !",
+            "success"
+        );
+
+    } catch (erreur) {
+
+        afficherMessage(
+            "❌ Impossible de créer le QR Code.",
+            "error"
+        );
+
+        dernierQR = null;
+    }
+}
+
+
+/* =========================
+   TÉLÉCHARGER
+========================= */
+
+function telechargerQR() {
+
+    const zoneQR = document.getElementById("qrcode");
+
+    const canvas = zoneQR.querySelector("canvas");
+
+    const image = zoneQR.querySelector("img");
+
+    if (!canvas && !image) {
+
+        afficherMessage(
+            "⚠️ Générez d'abord un QR Code.",
+            "error"
+        );
+
+        return;
+    }
+
+    let lien = document.createElement("a");
+
+    lien.download = "mon-qr-code.png";
+
+    if (canvas) {
+
+        lien.href = canvas.toDataURL("image/png");
+
+        lien.click();
+
+        afficherMessage(
+            "💾 QR Code téléchargé !",
+            "success"
+        );
+
+        return;
+    }
+
+    if (image) {
+
+        /*
+         * Certaines versions de QRCode.js utilisent
+         * une image au lieu d'un canvas.
+         */
+
+        const imageCanvas = document.createElement("canvas");
+
+        imageCanvas.width = image.naturalWidth || image.width;
+
+        imageCanvas.height = image.naturalHeight || image.height;
+
+        const contexte = imageCanvas.getContext("2d");
+
+        contexte.drawImage(
+            image,
+            0,
+            0,
+            imageCanvas.width,
+            imageCanvas.height
+        );
+
+        lien.href = imageCanvas.toDataURL("image/png");
+
+        lien.click();
+
+        afficherMessage(
+            "💾 QR Code téléchargé !",
+            "success"
+        );
+    }
+}
+
+
+/* =========================
+   EFFACER
+========================= */
+
+function effacer() {
+
+    document.getElementById("texte").value = "";
+
+    document.getElementById("qrcode").innerHTML = "";
+
+    document.getElementById("message").className = "message";
+
+    dernierQR = null;
+
+}
+
+
+/* =========================
+   CHANGEMENT DE TAILLE
+========================= */
+
+document.getElementById("taille").addEventListener(
+    "change",
+    function() {
+
+        const texte = document.getElementById("texte").value.trim();
+
+        if (texte) {
+
+            genererQR();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   RACCOURCI CTRL + ENTRÉE
+========================= */
+
+document.getElementById("texte").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.ctrlKey && event.key === "Enter") {
+
+            genererQR();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
