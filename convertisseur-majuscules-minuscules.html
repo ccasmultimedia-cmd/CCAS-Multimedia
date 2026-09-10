@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Convertisseur de texte - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+nav a:hover,
+nav a.active {
+    background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(
+        135deg,
+        #e9f0fa,
+        #ffffff,
+        #eef7ef
+    );
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+
+    font-size: 42px;
+
+    color: #1f3656;
+}
+
+.page-header p {
+    margin: 0;
+
+    font-size: 20px;
+
+    color: #536579;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    padding: 0 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.tool-card {
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 8px 25px rgba(31,54,86,0.10);
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+
+    background: #eaf2ff;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+
+    margin: 0 auto 20px;
+}
+
+.tool-card h2 {
+    text-align: center;
+
+    color: #1f3656;
+
+    margin: 0 0 10px;
+}
+
+.intro {
+    text-align: center;
+
+    color: #607086;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    max-width: 800px;
+
+    margin: 0 auto 30px;
+}
+
+/* =========================
+   ZONE TEXTE
+========================= */
+
+.editor-zone {
+    background: #f5f7fb;
+
+    border-radius: 18px;
+
+    padding: 22px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 300px;
+
+    resize: vertical;
+
+    border: 2px solid #d9e0ea;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #26364a;
+
+    background: white;
+}
+
+textarea:focus {
+    outline: none;
+
+    border-color: #3975c6;
+
+    box-shadow:
+        0 0 0 3px rgba(57,117,198,0.12);
+}
+
+textarea::placeholder {
+    color: #8996a8;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.button-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px 18px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.uppercase-button {
+    background: #3975c6;
+
+    color: white;
+}
+
+.uppercase-button:hover {
+    background: #285d9e;
+}
+
+.lowercase-button {
+    background: #eaf2ff;
+
+    color: #285d9e;
+}
+
+.lowercase-button:hover {
+    background: #dbe9ff;
+}
+
+.capitalize-button {
+    background: #eef7ef;
+
+    color: #28643f;
+}
+
+.capitalize-button:hover {
+    background: #dcefe1;
+}
+
+.clean-button {
+    background: #fff8e7;
+
+    color: #765600;
+}
+
+.clean-button:hover {
+    background: #f8edcc;
+}
+
+.copy-button {
+    background: #3c9a62;
+
+    color: white;
+}
+
+.copy-button:hover {
+    background: #2f7d4d;
+}
+
+.clear-button {
+    background: #fdecec;
+
+    color: #b83d39;
+}
+
+.clear-button:hover {
+    background: #f9dcdc;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    min-height: 26px;
+
+    margin-top: 14px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    color: #2f7d4d;
+}
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+.statistics {
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 16px;
+}
+
+.stat-card {
+    background: #f7f9fc;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border: 1px solid #edf0f5;
+}
+
+.stat-icon {
+    font-size: 30px;
+
+    margin-bottom: 7px;
+}
+
+.stat-number {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #1f3656;
+}
+
+.stat-label {
+    margin-top: 5px;
+
+    color: #607086;
+
+    font-size: 15px;
+}
+
+/* =========================
+   EXPLICATIONS
+========================= */
+
+.info-box {
+    margin-top: 30px;
+
+    background: #eef7ef;
+
+    border-left: 5px solid #3c9a62;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    line-height: 1.7;
+}
+
+.info-box strong {
+    color: #28643f;
+}
+
+/* =========================
+   ASTUCE
+========================= */
+
+.tip-box {
+    margin-top: 25px;
+
+    background: #fff8e7;
+
+    border-left: 5px solid #e0a62b;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    line-height: 1.7;
+}
+
+.tip-box strong {
+    color: #765600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 60px;
+
+    background: #1f3656;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    .tool-card {
+        padding: 22px;
+    }
+
+    textarea {
+        min-height: 280px;
+
+        font-size: 17px;
+    }
+
+    .button-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-grid button {
+        width: 100%;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🖥️ Centre Multimédia du CCAS
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="cours.html">
+                Mes cours
+            </a>
+
+            <a href="jeux.html">
+                Jeux
+            </a>
+
+            <a href="exercices.html">
+                Exercices
+            </a>
+
+            <a href="outils.html" class="active">
+                🛠️ Outils
+            </a>
+
+            <a href="informations.html">
+                Informations
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<section class="page-header">
+
+    <h1>
+        🔠 Convertisseur de texte
+    </h1>
+
+    <p>
+        Transformez facilement votre texte en MAJUSCULES ou en minuscules.
+    </p>
+
+</section>
+
+
+
+<main>
+
+
+    <div class="tool-card">
+
+
+        <div class="tool-icon">
+            🔠
+        </div>
+
+
+        <h2>
+            Transformez votre texte
+        </h2>
+
+
+        <p class="intro">
+
+            Écrivez ou collez votre texte ci-dessous,
+            puis choisissez la transformation souhaitée.
+
+            Vous pouvez toujours revenir en arrière avec
+            <strong>Ctrl + Z</strong> sur ordinateur.
+
+        </p>
+
+
+
+        <!-- =========================
+             TEXTE
+        ========================== -->
+
+        <div class="editor-zone">
+
+
+            <textarea
+                id="textInput"
+                placeholder="Écrivez ou collez votre texte ici...
+
+Par exemple :
+
+bonjour, je m'appelle paul.
+je suis heureux de vous retrouver."
+                aria-label="Zone de texte"
+            ></textarea>
+
+
+
+            <!-- =========================
+                 BOUTONS
+            ========================== -->
+
+            <div class="button-grid">
+
+
+                <button
+                    class="uppercase-button"
+                    id="uppercaseButton"
+                >
+                    🔠 TOUT EN MAJUSCULES
+                </button>
+
+
+                <button
+                    class="lowercase-button"
+                    id="lowercaseButton"
+                >
+                    🔡 tout en minuscules
+                </button>
+
+
+                <button
+                    class="capitalize-button"
+                    id="capitalizeButton"
+                >
+                    ✨ Première lettre en majuscule
+                </button>
+
+
+                <button
+                    class="clean-button"
+                    id="sentenceButton"
+                >
+                    📝 Une majuscule par phrase
+                </button>
+
+
+                <button
+                    class="copy-button"
+                    id="copyButton"
+                >
+                    📋 Copier le texte
+                </button>
+
+
+                <button
+                    class="clear-button"
+                    id="clearButton"
+                >
+                    🗑️ Effacer
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="message"
+                id="message"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             STATISTIQUES
+        ========================== -->
+
+        <div class="statistics">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔤
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="wordCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Mots
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔢
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="characterCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Caractères
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔠
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="uppercaseCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Majuscules
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔡
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="lowercaseCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Minuscules
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             EXPLICATION
+        ========================== -->
+
+        <div class="info-box">
+
+            💡
+
+            <strong>
+                Quelle est la différence ?
+            </strong>
+
+            <br><br>
+
+            <strong>MAJUSCULES :</strong>
+            les lettres sont affichées en grand.
+
+            <br>
+
+            Exemple :
+            <strong>BONJOUR TOUT LE MONDE</strong>
+
+            <br><br>
+
+            <strong>minuscules :</strong>
+            les lettres sont affichées en petit.
+
+            <br>
+
+            Exemple :
+            <strong>bonjour tout le monde</strong>
+
+            <br><br>
+
+            <strong>Première lettre en majuscule :</strong>
+            le début de chaque mot commence par une majuscule.
+
+            <br>
+
+            Exemple :
+            <strong>Bonjour Tout Le Monde</strong>
+
+            <br><br>
+
+            <strong>Une majuscule par phrase :</strong>
+            le début de chaque phrase est remis en majuscule,
+            tout en conservant le reste du texte en minuscules.
+
+        </div>
+
+
+
+        <!-- =========================
+             ASTUCE
+        ========================== -->
+
+        <div class="tip-box">
+
+            ✨
+
+            <strong>
+                Petite astuce :
+            </strong>
+
+            si vous avez reçu un texte écrit entièrement en MAJUSCULES,
+            vous pouvez le transformer rapidement en minuscules.
+
+            <br><br>
+
+            C'est particulièrement pratique lorsqu'un texte a été
+            mal saisi ou lorsqu'on récupère du texte depuis Internet.
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    Centre Multimédia du CCAS —
+    Apprendre, pratiquer et devenir plus autonome avec le numérique.
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const textInput =
+    document.getElementById("textInput");
+
+const uppercaseButton =
+    document.getElementById("uppercaseButton");
+
+const lowercaseButton =
+    document.getElementById("lowercaseButton");
+
+const capitalizeButton =
+    document.getElementById("capitalizeButton");
+
+const sentenceButton =
+    document.getElementById("sentenceButton");
+
+const copyButton =
+    document.getElementById("copyButton");
+
+const clearButton =
+    document.getElementById("clearButton");
+
+const message =
+    document.getElementById("message");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+const characterCount =
+    document.getElementById("characterCount");
+
+const uppercaseCount =
+    document.getElementById("uppercaseCount");
+
+const lowercaseCount =
+    document.getElementById("lowercaseCount");
+
+
+/* =========================
+   AFFICHAGE MESSAGE
+========================= */
+
+function showMessage(text) {
+
+    message.textContent = text;
+
+    setTimeout(
+        function() {
+
+            message.textContent = "";
+
+        },
+        2500
+    );
+
+}
+
+
+/* =========================
+   TOUT EN MAJUSCULES
+========================= */
+
+uppercaseButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            showMessage(
+                "⚠️ Écrivez d'abord un texte."
+            );
+
+            return;
+
+        }
+
+
+        textInput.value =
+            textInput.value.toLocaleUpperCase(
+                "fr-FR"
+            );
+
+
+        updateStatistics();
+
+
+        textInput.focus();
+
+
+        showMessage(
+            "✅ Le texte est maintenant en MAJUSCULES."
+        );
+
+    }
+);
+
+
+/* =========================
+   TOUT EN MINUSCULES
+========================= */
+
+lowercaseButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            showMessage(
+                "⚠️ Écrivez d'abord un texte."
+            );
+
+            return;
+
+        }
+
+
+        textInput.value =
+            textInput.value.toLocaleLowerCase(
+                "fr-FR"
+            );
+
+
+        updateStatistics();
+
+
+        textInput.focus();
+
+
+        showMessage(
+            "✅ Le texte est maintenant en minuscules."
+        );
+
+    }
+);
+
+
+/* =========================
+   PREMIERE LETTRE DE CHAQUE MOT
+========================= */
+
+function capitalizeWords(text) {
+
+    /*
+       On met d'abord tout en minuscules.
+    */
+
+    text =
+        text.toLocaleLowerCase(
+            "fr-FR"
+        );
+
+
+    /*
+       Puis on met en majuscule la première
+       lettre de chaque mot.
+
+       Le \p{L} permet de reconnaître les
+       lettres Unicode, notamment les lettres
+       accentuées françaises.
+    */
+
+    return text.replace(
+        /(^|[\s"'«(\[\-])(\p{L})/gu,
+        function(match, separator, letter) {
+
+            return separator +
+                letter.toLocaleUpperCase(
+                    "fr-FR"
+                );
+
+        }
+    );
+
+}
+
+
+capitalizeButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            showMessage(
+                "⚠️ Écrivez d'abord un texte."
+            );
+
+            return;
+
+        }
+
+
+        textInput.value =
+            capitalizeWords(
+                textInput.value
+            );
+
+
+        updateStatistics();
+
+
+        textInput.focus();
+
+
+        showMessage(
+            "✅ Première lettre de chaque mot mise en majuscule."
+        );
+
+    }
+);
+
+
+/* =========================
+   UNE MAJUSCULE PAR PHRASE
+========================= */
+
+function capitalizeSentences(text) {
+
+    /*
+       On commence par mettre tout en minuscules.
+    */
+
+    text =
+        text.toLocaleLowerCase(
+            "fr-FR"
+        );
+
+
+    /*
+       On recherche la première lettre après
+       le début du texte ou après . ! ?
+    */
+
+    return text.replace(
+        /(^|[.!?]\s+)(\p{L})/gu,
+        function(match, beginning, letter) {
+
+            return beginning +
+                letter.toLocaleUpperCase(
+                    "fr-FR"
+                );
+
+        }
+    );
+
+}
+
+
+sentenceButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            showMessage(
+                "⚠️ Écrivez d'abord un texte."
+            );
+
+            return;
+
+        }
+
+
+        textInput.value =
+            capitalizeSentences(
+                textInput.value
+            );
+
+
+        updateStatistics();
+
+
+        textInput.focus();
+
+
+        showMessage(
+            "✅ Les débuts de phrases ont été corrigés."
+        );
+
+    }
+);
+
+
+/* =========================
+   COMPTER LES MOTS
+========================= */
+
+function countWords(text) {
+
+    if (!text.trim()) {
+
+        return 0;
+
+    }
+
+
+    if ("Segmenter" in Intl) {
+
+        const segmenter =
+            new Intl.Segmenter(
+                "fr",
+                {
+                    granularity: "word"
+                }
+            );
+
+
+        return Array.from(
+            segmenter.segment(text)
+        ).filter(
+            segment => segment.isWordLike
+        ).length;
+
+    }
+
+
+    return text
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .length;
+
+}
+
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+function updateStatistics() {
+
+    const text =
+        textInput.value;
+
+
+    /* Mots */
+
+    wordCount.textContent =
+        countWords(text);
+
+
+    /* Caractères */
+
+    characterCount.textContent =
+        text.length;
+
+
+    /*
+       Majuscules
+    */
+
+    const uppercaseMatches =
+        text.match(
+            /\p{Lu}/gu
+        );
+
+
+    uppercaseCount.textContent =
+        uppercaseMatches
+            ? uppercaseMatches.length
+            : 0;
+
+
+    /*
+       Minuscules
+    */
+
+    const lowercaseMatches =
+        text.match(
+            /\p{Ll}/gu
+        );
+
+
+    lowercaseCount.textContent =
+        lowercaseMatches
+            ? lowercaseMatches.length
+            : 0;
+
+}
+
+
+/* =========================
+   COPIER
+========================= */
+
+copyButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!textInput.value) {
+
+            showMessage(
+                "⚠️ Il n'y a aucun texte à copier."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                textInput.value
+            );
+
+
+            showMessage(
+                "✅ Texte copié !"
+            );
+
+        }
+
+        catch (error) {
+
+            textInput.focus();
+
+            textInput.select();
+
+            document.execCommand("copy");
+
+
+            showMessage(
+                "✅ Texte copié !"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   EFFACER
+========================= */
+
+clearButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            return;
+
+        }
+
+
+        const confirmation =
+            confirm(
+                "Voulez-vous vraiment effacer tout le texte ?"
+            );
+
+
+        if (confirmation) {
+
+            textInput.value = "";
+
+            updateStatistics();
+
+            textInput.focus();
+
+            showMessage(
+                "🗑️ Texte effacé."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MISE A JOUR EN DIRECT
+========================= */
+
+textInput.addEventListener(
+    "input",
+    updateStatistics
+);
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+updateStatistics();
+
+</script>
+
+
+</body>
+</html>
