@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compteur de texte - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+}
+
+nav a:hover,
+nav a.active {
+    background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(
+        135deg,
+        #e9f0fa,
+        #ffffff,
+        #eef7ef
+    );
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+
+    font-size: 42px;
+
+    color: #1f3656;
+}
+
+.page-header p {
+    margin: 0;
+
+    font-size: 20px;
+
+    color: #536579;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    padding: 0 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.tool-card {
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 8px 25px rgba(31,54,86,0.10);
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+
+    background: #eaf2ff;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+
+    margin: 0 auto 20px;
+}
+
+.tool-card h2 {
+    text-align: center;
+
+    color: #1f3656;
+
+    margin: 0 0 10px;
+}
+
+.intro {
+    text-align: center;
+
+    color: #607086;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    max-width: 800px;
+
+    margin: 0 auto 30px;
+}
+
+/* =========================
+   ZONE TEXTE
+========================= */
+
+.editor-zone {
+    background: #f5f7fb;
+
+    border-radius: 18px;
+
+    padding: 22px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 320px;
+
+    resize: vertical;
+
+    border: 2px solid #d9e0ea;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #26364a;
+
+    background: white;
+}
+
+textarea:focus {
+    outline: none;
+
+    border-color: #3975c6;
+
+    box-shadow:
+        0 0 0 3px rgba(57,117,198,0.12);
+}
+
+textarea::placeholder {
+    color: #8996a8;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.button-row {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+}
+
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.primary-button {
+    background: #3975c6;
+
+    color: white;
+}
+
+.primary-button:hover {
+    background: #285d9e;
+
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: #eaf2ff;
+
+    color: #285d9e;
+}
+
+.secondary-button:hover {
+    background: #dbe9ff;
+}
+
+.danger-button {
+    background: #fdecec;
+
+    color: #b83d39;
+}
+
+.danger-button:hover {
+    background: #f9dcdc;
+}
+
+.copy-message {
+    min-height: 24px;
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: #2f7d4d;
+
+    font-weight: bold;
+}
+
+/* =========================
+   STATISTIQUES
+========================= */
+
+.statistics {
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 16px;
+}
+
+.stat-card {
+    background: #f7f9fc;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    border: 1px solid #edf0f5;
+}
+
+.stat-icon {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #1f3656;
+}
+
+.stat-label {
+    margin-top: 5px;
+
+    color: #607086;
+
+    font-size: 15px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info-box {
+    margin-top: 30px;
+
+    background: #eef7ef;
+
+    border-left: 5px solid #3c9a62;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: #28643f;
+}
+
+/* =========================
+   ASTUCE
+========================= */
+
+.tip-box {
+    margin-top: 25px;
+
+    background: #fff8e7;
+
+    border-left: 5px solid #e0a62b;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    line-height: 1.6;
+}
+
+.tip-box strong {
+    color: #765600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 60px;
+
+    background: #1f3656;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    .tool-card {
+        padding: 22px;
+    }
+
+    textarea {
+        min-height: 280px;
+
+        font-size: 17px;
+    }
+
+    .button-row button {
+        width: 100%;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🖥️ Centre Multimédia du CCAS
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="cours.html">
+                Mes cours
+            </a>
+
+            <a href="jeux.html">
+                Jeux
+            </a>
+
+            <a href="exercices.html">
+                Exercices
+            </a>
+
+            <a href="outils.html" class="active">
+                🛠️ Outils
+            </a>
+
+            <a href="informations.html">
+                Informations
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<section class="page-header">
+
+    <h1>
+        📝 Compteur de texte
+    </h1>
+
+    <p>
+        Comptez facilement les mots, les caractères et les phrases de votre texte.
+    </p>
+
+</section>
+
+
+
+<main>
+
+
+    <div class="tool-card">
+
+
+        <div class="tool-icon">
+            📝
+        </div>
+
+
+        <h2>
+            Écrivez ou collez votre texte
+        </h2>
+
+
+        <p class="intro">
+
+            Tapez directement votre texte dans la zone ci-dessous,
+            ou copiez-collez un texte depuis un document, un e-mail
+            ou une page Internet.
+
+            Les statistiques se mettent automatiquement à jour.
+
+        </p>
+
+
+
+        <!-- =========================
+             EDITEUR
+        ========================== -->
+
+        <div class="editor-zone">
+
+
+            <textarea
+                id="textInput"
+                placeholder="Commencez à écrire ici...
+
+Par exemple :
+
+Bonjour,
+
+Je vous écris pour vous donner quelques nouvelles.
+
+À bientôt !"
+                aria-label="Zone de texte"
+            ></textarea>
+
+
+
+            <div class="button-row">
+
+
+                <button
+                    class="primary-button"
+                    id="copyButton"
+                >
+                    📋 Copier le texte
+                </button>
+
+
+                <button
+                    class="secondary-button"
+                    id="selectButton"
+                >
+                    🔵 Sélectionner tout
+                </button>
+
+
+                <button
+                    class="danger-button"
+                    id="clearButton"
+                >
+                    🗑️ Effacer
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="copy-message"
+                id="copyMessage"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             STATISTIQUES
+        ========================== -->
+
+        <div class="statistics">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔤
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="wordCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Mots
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔢
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="characterCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Caractères
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ␠
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="characterNoSpaceCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Caractères sans espaces
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📄
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="sentenceCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Phrases
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ↕️
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="lineCount"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Lignes
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏱️
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="readingTime"
+                >
+                    0 min
+                </div>
+
+                <div class="stat-label">
+                    Temps de lecture
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             EXPLICATION
+        ========================== -->
+
+        <div class="info-box">
+
+            💡
+
+            <strong>
+                À quoi servent ces chiffres ?
+            </strong>
+
+            <br><br>
+
+            <strong>Mots :</strong>
+            nombre de mots présents dans votre texte.
+
+            <br>
+
+            <strong>Caractères :</strong>
+            lettres, chiffres, espaces, ponctuation et autres caractères.
+
+            <br>
+
+            <strong>Caractères sans espaces :</strong>
+            même calcul, mais sans compter les espaces et les retours à la ligne.
+
+            <br>
+
+            <strong>Phrases :</strong>
+            nombre de phrases terminées par un point, un point d'interrogation
+            ou un point d'exclamation.
+
+            <br>
+
+            <strong>Lignes :</strong>
+            nombre de lignes écrites dans la zone de texte.
+
+        </div>
+
+
+
+        <!-- =========================
+             ASTUCE
+        ========================== -->
+
+        <div class="tip-box">
+
+            ✨
+
+            <strong>
+                Petite astuce :
+            </strong>
+
+            cet outil peut être pratique lorsque l'on vous demande
+            d'écrire un texte avec une longueur précise.
+
+            <br><br>
+
+            Par exemple :
+
+            <br>
+
+            « Votre message doit contenir au maximum 500 caractères. »
+
+            <br><br>
+
+            Il vous suffit de copier votre texte ici pour vérifier
+            rapidement sa longueur.
+
+        </div>
+
+
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    Centre Multimédia du CCAS —
+    Apprendre, pratiquer et devenir plus autonome avec le numérique.
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const textInput =
+    document.getElementById("textInput");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+const characterCount =
+    document.getElementById("characterCount");
+
+const characterNoSpaceCount =
+    document.getElementById(
+        "characterNoSpaceCount"
+    );
+
+const sentenceCount =
+    document.getElementById("sentenceCount");
+
+const lineCount =
+    document.getElementById("lineCount");
+
+const readingTime =
+    document.getElementById("readingTime");
+
+const copyButton =
+    document.getElementById("copyButton");
+
+const selectButton =
+    document.getElementById("selectButton");
+
+const clearButton =
+    document.getElementById("clearButton");
+
+const copyMessage =
+    document.getElementById("copyMessage");
+
+
+/* =========================
+   COMPTER LES MOTS
+========================= */
+
+function countWords(text) {
+
+    if (!text.trim()) {
+        return 0;
+    }
+
+
+    /*
+       Intl.Segmenter permet de découper
+       le texte en tenant compte de la langue.
+
+       Il est disponible sur les navigateurs
+       modernes.
+    */
+
+    if ("Segmenter" in Intl) {
+
+        const segmenter =
+            new Intl.Segmenter("fr", {
+                granularity: "word"
+            });
+
+        return Array.from(
+            segmenter.segment(text)
+        ).filter(
+            segment => segment.isWordLike
+        ).length;
+
+    }
+
+
+    /*
+       Solution de secours pour les anciens
+       navigateurs.
+    */
+
+    return text
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .length;
+
+}
+
+
+/* =========================
+   COMPTER LES PHRASES
+========================= */
+
+function countSentences(text) {
+
+    if (!text.trim()) {
+        return 0;
+    }
+
+
+    /*
+       On considère comme fin de phrase :
+       . ! ?
+       ainsi que leurs variantes.
+    */
+
+    const matches =
+        text.match(
+            /[^.!?…]+[.!?…]+/g
+        );
+
+
+    if (matches) {
+
+        return matches.length;
+
+    }
+
+
+    /*
+       Si le texte contient des mots
+       mais aucune ponctuation finale,
+       on considère qu'il s'agit d'une phrase.
+    */
+
+    return text.trim() ? 1 : 0;
+
+}
+
+
+/* =========================
+   TEMPS DE LECTURE
+========================= */
+
+function calculateReadingTime(words) {
+
+    if (words === 0) {
+
+        return "0 min";
+
+    }
+
+
+    /*
+       Vitesse moyenne approximative :
+       200 mots par minute.
+
+       L'objectif est uniquement de donner
+       un ordre de grandeur.
+    */
+
+    const minutes =
+        words / 200;
+
+
+    if (minutes < 1) {
+
+        return "< 1 min";
+
+    }
+
+
+    if (minutes < 2) {
+
+        return "1 min";
+
+    }
+
+
+    return Math.ceil(minutes) + " min";
+
+}
+
+
+/* =========================
+   MISE A JOUR
+========================= */
+
+function updateStatistics() {
+
+    const text =
+        textInput.value;
+
+
+    /* caractères */
+
+    const characters =
+        text.length;
+
+
+    characterCount.textContent =
+        characters;
+
+
+    /* caractères sans espaces */
+
+    const withoutSpaces =
+        text.replace(/\s/g, "").length;
+
+
+    characterNoSpaceCount.textContent =
+        withoutSpaces;
+
+
+    /* mots */
+
+    const words =
+        countWords(text);
+
+
+    wordCount.textContent =
+        words;
+
+
+    /* phrases */
+
+    const sentences =
+        countSentences(text);
+
+
+    sentenceCount.textContent =
+        sentences;
+
+
+    /* lignes */
+
+    let lines = 0;
+
+
+    if (text.length > 0) {
+
+        lines =
+            text.split(/\r\n|\r|\n/).length;
+
+    }
+
+
+    lineCount.textContent =
+        lines;
+
+
+    /* temps de lecture */
+
+    readingTime.textContent =
+        calculateReadingTime(words);
+
+}
+
+
+/* =========================
+   SAISIE
+========================= */
+
+textInput.addEventListener(
+    "input",
+    updateStatistics
+);
+
+
+/* =========================
+   COPIER
+========================= */
+
+copyButton.addEventListener(
+    "click",
+    async function() {
+
+        const text =
+            textInput.value;
+
+
+        if (!text) {
+
+            copyMessage.textContent =
+                "⚠️ Il n'y a aucun texte à copier.";
+
+            return;
+
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                text
+            );
+
+            copyMessage.textContent =
+                "✅ Texte copié !";
+
+        }
+
+        catch (error) {
+
+            /*
+               Solution de secours.
+            */
+
+            textInput.select();
+
+            document.execCommand("copy");
+
+            copyMessage.textContent =
+                "✅ Texte copié !";
+
+        }
+
+
+        setTimeout(
+            function() {
+
+                copyMessage.textContent =
+                    "";
+
+            },
+            2500
+        );
+
+    }
+);
+
+
+/* =========================
+   SELECTIONNER TOUT
+========================= */
+
+selectButton.addEventListener(
+    "click",
+    function() {
+
+        textInput.focus();
+
+        textInput.select();
+
+        copyMessage.textContent =
+            "🔵 Tout le texte est sélectionné.";
+
+    }
+);
+
+
+/* =========================
+   EFFACER
+========================= */
+
+clearButton.addEventListener(
+    "click",
+    function() {
+
+        if (!textInput.value) {
+
+            return;
+
+        }
+
+
+        const confirmation =
+            confirm(
+                "Voulez-vous vraiment effacer tout le texte ?"
+            );
+
+
+        if (confirmation) {
+
+            textInput.value = "";
+
+            updateStatistics();
+
+            textInput.focus();
+
+            copyMessage.textContent =
+                "🗑️ Texte effacé.";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+updateStatistics();
+
+</script>
+
+
+</body>
+</html>
