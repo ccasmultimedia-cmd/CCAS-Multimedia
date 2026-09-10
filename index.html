@@ -175,50 +175,207 @@ nav a.active {
     object-fit: contain;
 
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 
 /* =========================================
-   ÉLÉMENTS DÉCORATIFS
+   DÉCORATIONS
 ========================================= */
 
 .decor {
     position: absolute;
 
-    font-size: 35px;
-
-    opacity: .8;
-
     z-index: 1;
 
+    opacity: .78;
+
     animation: float 4s ease-in-out infinite;
+
+    user-select: none;
+
+    pointer-events: none;
 }
 
+
+/* Gros éléments */
+
 .decor.laptop {
-    top: 35px;
-    left: 35px;
+    top: 20px;
+    left: 15px;
+
+    font-size: 32px;
+
+    animation-delay: .3s;
 }
 
 .decor.mouse {
-    bottom: 70px;
-    left: 10px;
+    bottom: 65px;
+    left: 5px;
+
+    font-size: 34px;
+
+    animation-delay: 1s;
 }
 
 .decor.phone {
-    right: 25px;
-    bottom: 55px;
+    right: 10px;
+    bottom: 45px;
+
+    font-size: 34px;
+
+    animation-delay: 1.7s;
 }
 
 .decor.keyboard {
-    right: 0;
-    top: 100px;
+    right: 5px;
+    top: 75px;
+
+    font-size: 31px;
+
+    animation-delay: .6s;
 }
 
 .decor.globe {
-    bottom: 15px;
-    right: 120px;
+    bottom: 5px;
+    right: 105px;
+
+    font-size: 32px;
+
+    animation-delay: 2s;
 }
+
+
+/* Nouveaux petits éléments */
+
+.decor.mail {
+    top: 155px;
+    left: 65px;
+
+    font-size: 25px;
+
+    opacity: .55;
+
+    animation-delay: 1.2s;
+}
+
+.decor.lock {
+    top: 245px;
+    left: 20px;
+
+    font-size: 25px;
+
+    opacity: .55;
+
+    animation-delay: 2.3s;
+}
+
+.decor.folder {
+    right: 75px;
+    top: 180px;
+
+    font-size: 27px;
+
+    opacity: .55;
+
+    animation-delay: 1.5s;
+}
+
+.decor.photo {
+    right: 50px;
+    bottom: 135px;
+
+    font-size: 26px;
+
+    opacity: .55;
+
+    animation-delay: 2.7s;
+}
+
+.decor.star {
+    left: 125px;
+    bottom: 25px;
+
+    font-size: 23px;
+
+    opacity: .55;
+
+    animation-delay: .8s;
+}
+
+
+/* Petits traits */
+
+.spark {
+    position: absolute;
+
+    width: 12px;
+    height: 4px;
+
+    border-radius: 5px;
+
+    z-index: 1;
+
+    opacity: .65;
+
+    animation: float 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+.spark.blue {
+    background: #70b8e8;
+}
+
+.spark.green {
+    background: #5abb88;
+}
+
+.spark.one {
+    top: 40px;
+    right: 155px;
+
+    transform: rotate(35deg);
+
+    animation-delay: .4s;
+}
+
+.spark.two {
+    top: 125px;
+    left: 125px;
+
+    transform: rotate(-30deg);
+
+    animation-delay: 1.2s;
+}
+
+.spark.three {
+    bottom: 100px;
+    right: 155px;
+
+    transform: rotate(45deg);
+
+    animation-delay: 1.8s;
+}
+
+.spark.four {
+    bottom: 45px;
+    left: 105px;
+
+    transform: rotate(-45deg);
+
+    animation-delay: 2.4s;
+}
+
+.spark.five {
+    top: 215px;
+    right: 20px;
+
+    transform: rotate(20deg);
+
+    animation-delay: 1s;
+}
+
 
 @keyframes float {
 
@@ -397,6 +554,7 @@ nav a.active {
 
 .card a:hover {
     transform: translateY(-2px);
+
     opacity: .9;
 }
 
@@ -559,7 +717,20 @@ footer {
     }
 
     .decor {
-        font-size: 28px;
+        font-size: 25px;
+    }
+
+    .decor.mail,
+    .decor.lock,
+    .decor.folder,
+    .decor.photo,
+    .decor.star {
+        font-size: 20px;
+    }
+
+    .spark {
+        width: 9px;
+        height: 3px;
     }
 
     .start-section {
@@ -686,6 +857,8 @@ ou simplement curieux.
 <div class="hero-illustration">
 
 
+<!-- DÉCORATIONS PRINCIPALES -->
+
 <div class="decor laptop">
 💻
 </div>
@@ -706,6 +879,44 @@ ou simplement curieux.
 🌐
 </div>
 
+
+<!-- PETITS ÉLÉMENTS -->
+
+<div class="decor mail">
+📧
+</div>
+
+<div class="decor lock">
+🔒
+</div>
+
+<div class="decor folder">
+📁
+</div>
+
+<div class="decor photo">
+🖼️
+</div>
+
+<div class="decor star">
+✨
+</div>
+
+
+<!-- PETITS TRAITS -->
+
+<div class="spark blue one"></div>
+
+<div class="spark green two"></div>
+
+<div class="spark blue three"></div>
+
+<div class="spark green four"></div>
+
+<div class="spark blue five"></div>
+
+
+<!-- ILLUSTRATION -->
 
 <img
 src="illustration-accueil.png"
