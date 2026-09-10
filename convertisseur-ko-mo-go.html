@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Convertisseur Ko Mo Go - Centre Multimédia du CCAS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+nav a.active {
+    background: #3975c6;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 42px;
+    color: #1f3656;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 20px;
+    color: #52657a;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+main {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(31,54,86,0.10);
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    background: #eaf2ff;
+    border-radius: 14px;
+    padding: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.intro strong {
+    color: #285d9e;
+}
+
+/* =========================
+   CONVERTISSEUR
+========================= */
+
+.converter {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 18px;
+    align-items: end;
+}
+
+.field label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 9px;
+    color: #1f3656;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    height: 52px;
+    border: 2px solid #d6dfeb;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 19px;
+    color: #26364a;
+    background: white;
+    outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #3975c6;
+    box-shadow: 0 0 0 4px rgba(57,117,198,0.10);
+}
+
+.equal {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3975c6;
+    text-align: center;
+    padding-bottom: 9px;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 13px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary {
+    background: #3975c6;
+    color: white;
+}
+
+.primary:hover {
+    background: #285d9e;
+}
+
+.secondary {
+    background: #eaf2ff;
+    color: #315d91;
+}
+
+.secondary:hover {
+    background: #dce9fa;
+}
+
+.danger {
+    background: #f8e8e8;
+    color: #a34444;
+}
+
+.danger:hover {
+    background: #f4dada;
+}
+
+/* =========================
+   RÉSULTATS
+========================= */
+
+.results {
+    margin-top: 35px;
+}
+
+.results h2 {
+    color: #1f3656;
+    margin-bottom: 18px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.result {
+    background: #f5f8fc;
+    border-radius: 14px;
+    padding: 18px 12px;
+    text-align: center;
+    border: 1px solid #e0e7ef;
+}
+
+.result .unit {
+    font-weight: bold;
+    color: #52657a;
+    margin-bottom: 8px;
+}
+
+.result .value {
+    font-size: 19px;
+    font-weight: bold;
+    color: #1f3656;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.message.success {
+    display: block;
+    background: #e9f7ed;
+    color: #287443;
+}
+
+.message.info {
+    display: block;
+    background: #eaf2ff;
+    color: #315d91;
+}
+
+/* =========================
+   EXEMPLES
+========================= */
+
+.examples {
+    margin-top: 35px;
+}
+
+.examples h2 {
+    color: #1f3656;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.example-card {
+    background: #f5f8fc;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    border: 1px solid #e1e7ef;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.example-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(31,54,86,0.08);
+    border-color: #3975c6;
+}
+
+.example-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.example-title {
+    font-weight: bold;
+    color: #1f3656;
+}
+
+.example-size {
+    margin-top: 5px;
+    color: #66788c;
+    font-size: 14px;
+}
+
+/* =========================
+   TABLEAU
+========================= */
+
+.table-section {
+    margin-top: 35px;
+}
+
+.table-section h2 {
+    color: #1f3656;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+th,
+td {
+    padding: 13px;
+    text-align: left;
+    border-bottom: 1px solid #e1e7ef;
+}
+
+th {
+    background: #eaf2ff;
+    color: #1f3656;
+}
+
+td {
+    background: #f9fbfd;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================
+   CONSEIL
+========================= */
+
+.tip {
+    margin-top: 30px;
+    background: #eaf7ed;
+    border-left: 5px solid #4da96b;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.tip h3 {
+    margin-top: 0;
+    color: #276a3e;
+}
+
+.tip p {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* =========================
+   PIED DE PAGE
+========================= */
+
+footer {
+    margin-top: 50px;
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .page-header {
+        padding: 35px 15px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .tool-card {
+        padding: 22px;
+    }
+
+    .converter {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .equal {
+        padding: 0;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .example-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .example-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🖥️ Centre Multimédia du CCAS
+        </div>
+
+        <nav>
+
+            <a href="index.html">Accueil</a>
+
+            <a href="cours.html">Mes cours</a>
+
+            <a href="jeux.html">Jeux</a>
+
+            <a href="exercices.html">Exercices</a>
+
+            <a href="outils.html" class="active">🛠️ Outils</a>
+
+            <a href="informations.html">Informations</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>💾 Convertisseur Ko / Mo / Go</h1>
+
+    <p>
+        Comprenez facilement la taille de vos fichiers
+    </p>
+
+</section>
+
+
+<main>
+
+    <div class="tool-card">
+
+        <div class="intro">
+
+            <strong>💡 À quoi servent Ko, Mo et Go ?</strong><br>
+
+            Lorsque vous utilisez un ordinateur ou un smartphone,
+            vous rencontrez souvent des tailles exprimées en
+            <strong>Ko</strong>, <strong>Mo</strong> ou <strong>Go</strong>.
+            Cet outil permet de comprendre à quoi correspondent ces unités.
+
+        </div>
+
+
+        <!-- =========================
+             CONVERTISSEUR
+        ========================== -->
+
+        <div class="converter">
+
+            <div class="field">
+
+                <label for="valeur">
+                    🔢 Valeur
+                </label>
+
+                <input
+                    type="number"
+                    id="valeur"
+                    min="0"
+                    step="any"
+                    placeholder="Exemple : 5"
+                    oninput="convertir()">
+
+            </div>
+
+
+            <div class="equal">
+                =
+            </div>
+
+
+            <div class="field">
+
+                <label for="unite">
+                    📏 Unité
+                </label>
+
+                <select
+                    id="unite"
+                    onchange="convertir()">
+
+                    <option value="octet">
+                        Octets (o)
+                    </option>
+
+                    <option value="ko" selected>
+                        Kilooctets (Ko)
+                    </option>
+
+                    <option value="mo">
+                        Mégaoctets (Mo)
+                    </option>
+
+                    <option value="go">
+                        Gigaoctets (Go)
+                    </option>
+
+                    <option value="to">
+                        Téraoctets (To)
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ACTIONS
+        ========================== -->
+
+        <div class="actions">
+
+            <button
+                class="primary"
+                onclick="convertir()">
+                🔄 Convertir
+            </button>
+
+            <button
+                class="secondary"
+                onclick="exempleRapide(5, 'mo')">
+                💡 Exemple : 5 Mo
+            </button>
+
+            <button
+                class="danger"
+                onclick="effacer()">
+                🗑️ Effacer
+            </button>
+
+        </div>
+
+
+        <div id="message" class="message"></div>
+
+
+        <!-- =========================
+             RÉSULTATS
+        ========================== -->
+
+        <div class="results">
+
+            <h2>📊 Résultats</h2>
+
+            <div class="result-grid">
+
+                <div class="result">
+
+                    <div class="unit">
+                        Octets
+                    </div>
+
+                    <div
+                        class="value"
+                        id="resultOctet">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="unit">
+                        Ko
+                    </div>
+
+                    <div
+                        class="value"
+                        id="resultKo">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="unit">
+                        Mo
+                    </div>
+
+                    <div
+                        class="value"
+                        id="resultMo">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="unit">
+                        Go
+                    </div>
+
+                    <div
+                        class="value"
+                        id="resultGo">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="unit">
+                        To
+                    </div>
+
+                    <div
+                        class="value"
+                        id="resultTo">
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             EXEMPLES
+        ========================== -->
+
+        <div class="examples">
+
+            <h2>📱 Quelques exemples</h2>
+
+            <div class="example-grid">
+
+                <div
+                    class="example-card"
+                    onclick="exempleRapide(500, 'ko')">
+
+                    <div class="example-icon">
+                        📄
+                    </div>
+
+                    <div class="example-title">
+                        Petit document
+                    </div>
+
+                    <div class="example-size">
+                        Environ 500 Ko
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="example-card"
+                    onclick="exempleRapide(5, 'mo')">
+
+                    <div class="example-icon">
+                        📸
+                    </div>
+
+                    <div class="example-title">
+                        Photo
+                    </div>
+
+                    <div class="example-size">
+                        Environ 5 Mo
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="example-card"
+                    onclick="exempleRapide(2, 'go')">
+
+                    <div class="example-icon">
+                        🎬
+                    </div>
+
+                    <div class="example-title">
+                        Vidéo
+                    </div>
+
+                    <div class="example-size">
+                        Environ 2 Go
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="example-card"
+                    onclick="exempleRapide(64, 'go')">
+
+                    <div class="example-icon">
+                        💾
+                    </div>
+
+                    <div class="example-title">
+                        Clé USB
+                    </div>
+
+                    <div class="example-size">
+                        Exemple : 64 Go
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             TABLEAU
+        ========================== -->
+
+        <div class="table-section">
+
+            <h2>🧠 Les unités à retenir</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Unité
+                        </th>
+
+                        <th>
+                            Signification
+                        </th>
+
+                        <th>
+                            Équivalence
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>Ko</strong>
+                        </td>
+
+                        <td>
+                            Kilooctet
+                        </td>
+
+                        <td>
+                            1 024 octets
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Mo</strong>
+                        </td>
+
+                        <td>
+                            Mégaoctet
+                        </td>
+
+                        <td>
+                            1 024 Ko
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Go</strong>
+                        </td>
+
+                        <td>
+                            Gigaoctet
+                        </td>
+
+                        <td>
+                            1 024 Mo
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>To</strong>
+                        </td>
+
+                        <td>
+                            Téraoctet
+                        </td>
+
+                        <td>
+                            1 024 Go
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================
+             CONSEIL
+        ========================== -->
+
+        <div class="tip">
+
+            <h3>💡 Une astuce pour s'en souvenir</h3>
+
+            <p>
+
+                Plus on monte de niveau, plus la capacité augmente :
+                <strong>Ko → Mo → Go → To</strong>.
+
+                Une photo occupe généralement quelques Mo,
+                une vidéo peut occuper plusieurs Go,
+                et un disque dur peut contenir des centaines de Go
+                ou plusieurs To.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        <strong>Centre Multimédia du CCAS</strong>
+    </p>
+
+    <p>
+        Apprendre, pratiquer et découvrir le numérique simplement.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   CONVERSION
+========================= */
+
+/*
+ * Pour cet outil pédagogique,
+ * on utilise la conversion informatique :
+ *
+ * 1 Ko = 1 024 octets
+ * 1 Mo = 1 024 Ko
+ * 1 Go = 1 024 Mo
+ * 1 To = 1 024 Go
+ */
+
+const facteurs = {
+
+    octet: 1,
+
+    ko: 1024,
+
+    mo: 1024 * 1024,
+
+    go: 1024 * 1024 * 1024,
+
+    to: 1024 * 1024 * 1024 * 1024
+
+};
+
+
+/* =========================
+   FORMATAGE
+========================= */
+
+function formater(nombre) {
+
+    if (!Number.isFinite(nombre)) {
+
+        return "—";
+
+    }
+
+    if (nombre === 0) {
+
+        return "0";
+
+    }
+
+    /*
+     * On évite d'afficher des nombres
+     * avec une quantité énorme de décimales.
+     */
+
+    const valeurAbsolue = Math.abs(nombre);
+
+    if (valeurAbsolue >= 1) {
+
+        return new Intl.NumberFormat(
+            "fr-FR",
+            {
+                maximumFractionDigits: 4
+            }
+        ).format(nombre);
+
+    }
+
+    return new Intl.NumberFormat(
+        "fr-FR",
+        {
+            maximumSignificantDigits: 6
+        }
+    ).format(nombre);
+
+}
+
+
+/* =========================
+   CONVERTIR
+========================= */
+
+function convertir() {
+
+    const valeur = parseFloat(
+        document.getElementById("valeur").value
+    );
+
+    const unite = document.getElementById("unite").value;
+
+    if (
+        Number.isNaN(valeur) ||
+        valeur < 0
+    ) {
+
+        afficherMessage(
+            "ℹ️ Saisissez une valeur positive pour commencer.",
+            "info"
+        );
+
+        remettreResultats();
+
+        return;
+
+    }
+
+    /*
+     * Première étape :
+     * on transforme la valeur en octets.
+     */
+
+    const octets = valeur * facteurs[unite];
+
+
+    /*
+     * Deuxième étape :
+     * on transforme les octets dans chaque unité.
+     */
+
+    const octet = octets / facteurs.octet;
+
+    const ko = octets / facteurs.ko;
+
+    const mo = octets / facteurs.mo;
+
+    const go = octets / facteurs.go;
+
+    const to = octets / facteurs.to;
+
+
+    /*
+     * Affichage.
+     */
+
+    document.getElementById(
+        "resultOctet"
+    ).textContent = formater(octet) + " o";
+
+
+    document.getElementById(
+        "resultKo"
+    ).textContent = formater(ko) + " Ko";
+
+
+    document.getElementById(
+        "resultMo"
+    ).textContent = formater(mo) + " Mo";
+
+
+    document.getElementById(
+        "resultGo"
+    ).textContent = formater(go) + " Go";
+
+
+    document.getElementById(
+        "resultTo"
+    ).textContent = formater(to) + " To";
+
+
+    afficherMessage(
+        "✅ Conversion effectuée !",
+        "success"
+    );
+
+}
+
+
+/* =========================
+   EXEMPLE RAPIDE
+========================= */
+
+function exempleRapide(valeur, unite) {
+
+    document.getElementById(
+        "valeur"
+    ).value = valeur;
+
+    document.getElementById(
+        "unite"
+    ).value = unite;
+
+    convertir();
+
+}
+
+
+/* =========================
+   EFFACER
+========================= */
+
+function effacer() {
+
+    document.getElementById(
+        "valeur"
+    ).value = "";
+
+    document.getElementById(
+        "unite"
+    ).value = "ko";
+
+    remettreResultats();
+
+    document.getElementById(
+        "message"
+    ).className = "message";
+
+}
+
+
+/* =========================
+   REMETTRE LES RÉSULTATS À ZÉRO
+========================= */
+
+function remettreResultats() {
+
+    document.getElementById(
+        "resultOctet"
+    ).textContent = "—";
+
+    document.getElementById(
+        "resultKo"
+    ).textContent = "—";
+
+    document.getElementById(
+        "resultMo"
+    ).textContent = "—";
+
+    document.getElementById(
+        "resultGo"
+    ).textContent = "—";
+
+    document.getElementById(
+        "resultTo"
+    ).textContent = "—";
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function afficherMessage(texte, type) {
+
+    const message = document.getElementById(
+        "message"
+    );
+
+    message.textContent = texte;
+
+    message.className =
+        "message " + type;
+
+    clearTimeout(
+        window.messageTimer
+    );
+
+    window.messageTimer = setTimeout(
+        function() {
+
+            message.className = "message";
+
+        },
+        3000
+    );
+
+}
+
+
+/* =========================
+   CLAVIER
+========================= */
+
+document.getElementById(
+    "valeur"
+).addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            convertir();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
