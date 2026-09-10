@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeu des messages - Smartphone</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #203858;
+    }
+
+    header {
+        background: #1f3656;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        font-size: 17px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 20px 50px;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .intro h2 {
+        margin: 0 0 10px;
+        font-size: 32px;
+    }
+
+    .intro p {
+        margin: 0;
+        color: #617087;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .game-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    /* =========================================
+       SMARTPHONE
+    ========================================= */
+
+    .phone {
+        width: 330px;
+        max-width: 100%;
+        margin: auto;
+        padding: 14px;
+        background: #111;
+        border-radius: 38px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .phone-screen {
+        height: 650px;
+        border-radius: 28px;
+        overflow: hidden;
+        background: #f4f5f7;
+        position: relative;
+    }
+
+    .phone-top {
+        height: 35px;
+        background: #111;
+        position: relative;
+    }
+
+    .speaker {
+        position: absolute;
+        width: 70px;
+        height: 8px;
+        background: #333;
+        border-radius: 10px;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* =========================================
+       APPLICATION MESSAGES
+    ========================================= */
+
+    .messages-app {
+        height: 615px;
+        display: flex;
+        flex-direction: column;
+        background: #f1f4f8;
+    }
+
+    .app-header {
+        height: 65px;
+        background: #3975c6;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .back-button {
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 4px;
+    }
+
+    .contact-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #d9a77a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .contact-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .contact-name {
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    .contact-status {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-top: 2px;
+    }
+
+    .header-phone {
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* =========================================
+       CONVERSATION
+    ========================================= */
+
+    .conversation {
+        flex: 1;
+        padding: 15px 12px;
+        overflow-y: auto;
+        background:
+            linear-gradient(
+                rgba(255,255,255,0.75),
+                rgba(255,255,255,0.75)
+            ),
+            repeating-linear-gradient(
+                45deg,
+                #e8edf3,
+                #e8edf3 10px,
+                #edf1f5 10px,
+                #edf1f5 20px
+            );
+    }
+
+    .message {
+        max-width: 78%;
+        padding: 10px 13px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 1.4;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+    .message.received {
+        background: white;
+        margin-right: auto;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .message.sent {
+        background: #d9f3d9;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+    }
+
+    .message-time {
+        font-size: 10px;
+        color: #718096;
+        text-align: right;
+        margin-top: 4px;
+    }
+
+    .message.photo-message {
+        padding: 6px;
+    }
+
+    .fake-photo {
+        width: 150px;
+        height: 100px;
+        border-radius: 9px;
+        background:
+            linear-gradient(
+                135deg,
+                #6f91a8,
+                #b7cfdd 50%,
+                #526c7b
+            );
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fake-photo::before {
+        content: "";
+        position: absolute;
+        width: 55px;
+        height: 70px;
+        background: #b9d8ed;
+        border: 5px solid #eee;
+        left: 10px;
+        top: 10px;
+    }
+
+    .fake-photo::after {
+        content: "🌳";
+        position: absolute;
+        right: 12px;
+        bottom: 7px;
+        font-size: 32px;
+    }
+
+    /* =========================================
+       BARRE DE SAISIE
+    ========================================= */
+
+    .input-area {
+        background: white;
+        padding: 10px;
+        border-top: 1px solid #d9dfe7;
+        display: flex;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .input-action {
+        width: 39px;
+        height: 39px;
+        border: none;
+        border-radius: 50%;
+        background: #edf1f6;
+        font-size: 21px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .input-action:active {
+        transform: scale(0.92);
+    }
+
+    .message-input {
+        flex: 1;
+        min-width: 0;
+        border: 1px solid #cdd5df;
+        border-radius: 22px;
+        padding: 10px 13px;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .message-input:focus {
+        border-color: #3975c6;
+    }
+
+    .send-button {
+        width: 43px;
+        height: 43px;
+        border: none;
+        border-radius: 50%;
+        background: #3975c6;
+        color: white;
+        font-size: 21px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .send-button:active {
+        transform: scale(0.92);
+    }
+
+    /* =========================================
+       CONTACTS
+    ========================================= */
+
+    .contacts-screen {
+        position: absolute;
+        inset: 35px 0 0 0;
+        background: #f7f8fa;
+        z-index: 20;
+        display: none;
+        flex-direction: column;
+    }
+
+    .contacts-screen.active {
+        display: flex;
+    }
+
+    .contacts-header {
+        height: 60px;
+        background: #3975c6;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .contacts-list {
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 10px;
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 9px;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .contact-item:hover {
+        background: #f0f5fc;
+    }
+
+    .contact-item .contact-avatar {
+        width: 48px;
+        height: 48px;
+    }
+
+    .contact-item strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .contact-item small {
+        color: #718096;
+    }
+
+    /* =========================================
+       EMOJIS
+    ========================================= */
+
+    .emoji-panel {
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        bottom: 68px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+        padding: 12px;
+        display: none;
+        z-index: 15;
+    }
+
+    .emoji-panel.active {
+        display: block;
+    }
+
+    .emoji-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+    }
+
+    .emoji {
+        border: none;
+        background: #f4f6f9;
+        border-radius: 9px;
+        padding: 8px 3px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .emoji:active {
+        transform: scale(0.9);
+    }
+
+    /* =========================================
+       MENU PHOTO
+    ========================================= */
+
+    .attachment-menu {
+        position: absolute;
+        bottom: 70px;
+        left: 10px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+        padding: 10px;
+        display: none;
+        z-index: 15;
+        width: 210px;
+    }
+
+    .attachment-menu.active {
+        display: block;
+    }
+
+    .attachment-option {
+        width: 100%;
+        border: none;
+        background: white;
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        border-radius: 9px;
+        cursor: pointer;
+    }
+
+    .attachment-option:hover {
+        background: #f0f4f9;
+    }
+
+    /* =========================================
+       MENU CONTEXTUEL
+    ========================================= */
+
+    .context-menu {
+        position: absolute;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        padding: 7px;
+        z-index: 40;
+        display: none;
+        width: 170px;
+    }
+
+    .context-menu.active {
+        display: block;
+    }
+
+    .context-menu button {
+        width: 100%;
+        border: none;
+        background: white;
+        padding: 12px;
+        text-align: left;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .context-menu button:hover {
+        background: #f0f4f9;
+    }
+
+    /* =========================================
+       MESSAGE VOCAL
+    ========================================= */
+
+    .voice-recording {
+        position: absolute;
+        inset: 35px 0 0 0;
+        background: rgba(31,54,86,0.96);
+        z-index: 50;
+        color: white;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .voice-recording.active {
+        display: flex;
+    }
+
+    .mic-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #3975c6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 45px;
+        margin-bottom: 20px;
+        animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.08);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .voice-recording p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .stop-recording {
+        margin-top: 20px;
+        border: none;
+        background: white;
+        color: #203858;
+        border-radius: 14px;
+        padding: 14px 22px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* =========================================
+       PANNEAU JEU
+    ========================================= */
+
+    .game-panel {
+        background: white;
+        border-radius: 22px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(31,54,86,0.08);
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .stat {
+        background: #f4f7fb;
+        border-radius: 15px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .stat-label {
+        display: block;
+        color: #617087;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .progress-container {
+        margin-bottom: 28px;
+    }
+
+    .progress-text {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .progress-bar {
+        height: 14px;
+        background: #e4e9f0;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: #3975c6;
+        transition: width 0.3s;
+    }
+
+    .challenge {
+        background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+        border-left: 6px solid #3975c6;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .challenge-number {
+        color: #3975c6;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .challenge h2 {
+        margin: 0 0 12px;
+        font-size: 28px;
+    }
+
+    .challenge p {
+        margin: 0;
+        color: #4e6078;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .help {
+        margin-top: 15px;
+        padding: 15px;
+        background: #fff8df;
+        border-radius: 12px;
+        color: #705f2e;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .feedback {
+        min-height: 65px;
+        padding: 18px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        background: #f4f6f9;
+        color: #526174;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .feedback.success {
+        background: #e8f6ea;
+        color: #27623a;
+    }
+
+    .feedback.error {
+        background: #fff0f0;
+        color: #a43d3d;
+    }
+
+    .next-button,
+    .reset-button {
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        padding: 17px;
+        font-size: 19px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .next-button {
+        background: #3975c6;
+        color: white;
+        margin-bottom: 12px;
+    }
+
+    .next-button:hover {
+        background: #285d9e;
+    }
+
+    .next-button:disabled {
+        background: #aeb9c8;
+        cursor: not-allowed;
+    }
+
+    .reset-button {
+        background: #edf1f6;
+        color: #42536b;
+    }
+
+    .reset-button:hover {
+        background: #dfe5ed;
+    }
+
+    .tip {
+        margin-top: 30px;
+        padding: 22px;
+        background: #eef7ef;
+        border-radius: 16px;
+        color: #2d6941;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    /* =========================================
+       MESSAGE SYSTÈME
+    ========================================= */
+
+    .toast {
+        position: absolute;
+        top: 75px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.72);
+        color: white;
+        padding: 9px 15px;
+        border-radius: 20px;
+        z-index: 70;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    .toast.show {
+        opacity: 1;
+    }
+
+    @media (max-width: 850px) {
+
+        .game-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .phone {
+            width: 330px;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        .container {
+            padding: 20px 12px 40px;
+        }
+
+        .intro h2 {
+            font-size: 27px;
+        }
+
+        .game-panel {
+            padding: 20px;
+        }
+
+        .stats {
+            gap: 8px;
+        }
+
+        .stat {
+            padding: 12px 5px;
+        }
+
+        .stat-value {
+            font-size: 21px;
+        }
+
+        .challenge {
+            padding: 20px;
+        }
+
+        .challenge h2 {
+            font-size: 24px;
+        }
+
+        .challenge p {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💬 Jeu des messages</h1>
+    <p>Apprenez à envoyer et recevoir des messages sur smartphone</p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>📱 Entraînez-vous à envoyer des messages</h2>
+        <p>
+            Découvrez progressivement les principales fonctions d'une application de messages.
+            Tout est simulé : aucun vrai message ne sera envoyé.
+        </p>
+    </div>
+
+    <div class="game-layout">
+
+        <!-- =====================================
+             SMARTPHONE
+        ====================================== -->
+
+        <div class="phone">
+
+            <div class="phone-screen">
+
+                <div class="phone-top">
+                    <div class="speaker"></div>
+                </div>
+
+                <div class="messages-app">
+
+                    <!-- EN-TÊTE -->
+
+                    <div class="app-header">
+
+                        <button class="back-button"
+                                id="backButton">
+                            ‹
+                        </button>
+
+                        <div class="contact-avatar">
+                            👩
+                        </div>
+
+                        <div class="contact-info">
+                            <div class="contact-name"
+                                 id="contactName">
+                                Marie
+                            </div>
+
+                            <div class="contact-status">
+                                En ligne
+                            </div>
+                        </div>
+
+                        <button class="header-phone"
+                                id="phoneButton">
+                            📞
+                        </button>
+
+                    </div>
+
+                    <!-- CONVERSATION -->
+
+                    <div class="conversation"
+                         id="conversation">
+
+                        <div class="message received">
+                            Bonjour ! Comment allez-vous ?
+                            <div class="message-time">
+                                10:15
+                            </div>
+                        </div>
+
+                        <div class="message received">
+                            Il fait très beau aujourd'hui.
+                            <div class="message-time">
+                                10:16
+                            </div>
+                        </div>
+
+                        <div class="message sent"
+                             id="initialSentMessage">
+                            Bonjour Marie !
+                            <div class="message-time">
+                                10:17 ✓✓
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- BARRE DE SAISIE -->
+
+                    <div class="input-area">
+
+                        <button class="input-action"
+                                id="emojiButton"
+                                title="Emojis">
+                            😊
+                        </button>
+
+                        <button class="input-action"
+                                id="attachmentButton"
+                                title="Pièce jointe">
+                            +
+                        </button>
+
+                        <input
+                            type="text"
+                            class="message-input"
+                            id="messageInput"
+                            placeholder="Écrire un message..."
+                            autocomplete="off"
+                        >
+
+                        <button class="send-button"
+                                id="sendButton"
+                                title="Envoyer">
+                            ➤
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- =================================
+                     CONTACTS
+                ================================== -->
+
+                <div class="contacts-screen"
+                     id="contactsScreen">
+
+                    <div class="contacts-header">
+
+                        <button class="back-button"
+                                id="closeContacts">
+                            ‹
+                        </button>
+
+                        <span>Choisir un contact</span>
+
+                    </div>
+
+                    <div class="contacts-list">
+
+                        <div class="contact-item"
+                             data-name="Marie">
+
+                            <div class="contact-avatar">
+                                👩
+                            </div>
+
+                            <div>
+                                <strong>Marie</strong>
+                                <small>Famille</small>
+                            </div>
+
+                        </div>
+
+                        <div class="contact-item"
+                             data-name="Jean">
+
+                            <div class="contact-avatar"
+                                 style="background:#9bb9d0;">
+                                👨
+                            </div>
+
+                            <div>
+                                <strong>Jean</strong>
+                                <small>Famille</small>
+                            </div>
+
+                        </div>
+
+                        <div class="contact-item"
+                             data-name="Sophie">
+
+                            <div class="contact-avatar"
+                                 style="background:#c8a6c8;">
+                                👩‍🦱
+                            </div>
+
+                            <div>
+                                <strong>Sophie</strong>
+                                <small>Amie</small>
+                            </div>
+
+                        </div>
+
+                        <div class="contact-item"
+                             data-name="Centre Multimédia">
+
+                            <div class="contact-avatar"
+                                 style="background:#a8c9a8;">
+                                🖥️
+                            </div>
+
+                            <div>
+                                <strong>Centre Multimédia</strong>
+                                <small>CCAS</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- =================================
+                     EMOJIS
+                ================================== -->
+
+                <div class="emoji-panel"
+                     id="emojiPanel">
+
+                    <div class="emoji-grid">
+
+                        <button class="emoji">😀</button>
+                        <button class="emoji">😊</button>
+                        <button class="emoji">😂</button>
+                        <button class="emoji">😍</button>
+                        <button class="emoji">👍</button>
+                        <button class="emoji">❤️</button>
+                        <button class="emoji">👏</button>
+                        <button class="emoji">🙏</button>
+                        <button class="emoji">🎉</button>
+                        <button class="emoji">🌞</button>
+                        <button class="emoji">🌷</button>
+                        <button class="emoji">☕</button>
+
+                    </div>
+
+                </div>
+
+                <!-- =================================
+                     PIÈCES JOINTES
+                ================================== -->
+
+                <div class="attachment-menu"
+                     id="attachmentMenu">
+
+                    <button class="attachment-option"
+                            id="photoOption">
+                        📷 Envoyer une photo
+                    </button>
+
+                    <button class="attachment-option"
+                            id="documentOption">
+                        📄 Envoyer un document
+                    </button>
+
+                    <button class="attachment-option"
+                            id="locationOption">
+                        📍 Envoyer ma position
+                    </button>
+
+                </div>
+
+                <!-- =================================
+                     MESSAGE VOCAL
+                ================================== -->
+
+                <div class="voice-recording"
+                     id="voiceRecording">
+
+                    <div class="mic-circle">
+                        🎙️
+                    </div>
+
+                    <h2>Message vocal</h2>
+
+                    <p>
+                        Le message vocal est en cours d'enregistrement.
+                        <br>
+                        Dans ce jeu, rien n'est réellement enregistré.
+                    </p>
+
+                    <button class="stop-recording"
+                            id="stopRecording">
+                        ⏹️ Arrêter
+                    </button>
+
+                </div>
+
+                <!-- =================================
+                     MENU CONTEXTUEL
+                ================================== -->
+
+                <div class="context-menu"
+                     id="contextMenu">
+
+                    <button id="contextReply">
+                        ↩️ Répondre
+                    </button>
+
+                    <button id="contextCopy">
+                        📋 Copier
+                    </button>
+
+                    <button id="contextDelete">
+                        🗑️ Supprimer
+                    </button>
+
+                </div>
+
+                <div class="toast"
+                     id="toast">
+                    Action effectuée
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================
+             PANNEAU JEU
+        ====================================== -->
+
+        <div class="game-panel">
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span class="stat-label">
+                        Score
+                    </span>
+
+                    <span class="stat-value"
+                          id="score">
+                        0
+                    </span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">
+                        Erreurs
+                    </span>
+
+                    <span class="stat-value"
+                          id="errors">
+                        0
+                    </span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-label">
+                        Défi
+                    </span>
+
+                    <span class="stat-value">
+                        <span id="currentChallenge">
+                            1
+                        </span>/30
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="progress-container">
+
+                <div class="progress-text">
+                    <span>Progression</span>
+                    <span id="progressText">
+                        0 %
+                    </span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"
+                         id="progressFill">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="challenge">
+
+                <div class="challenge-number"
+                     id="challengeNumber">
+                    DÉFI 1
+                </div>
+
+                <h2 id="challengeTitle">
+                    Écrivez un message
+                </h2>
+
+                <p id="challengeText">
+                    Touchez la zone « Écrire un message... » et écrivez « Bonjour ».
+                </p>
+
+                <div class="help"
+                     id="challengeHelp">
+                    💡 Le clavier apparaît normalement lorsque vous touchez la zone de texte.
+                </div>
+
+            </div>
+
+            <div class="feedback"
+                 id="feedback">
+                👆 Réalisez l'action demandée sur le smartphone.
+            </div>
+
+            <button class="next-button"
+                    id="nextButton"
+                    disabled>
+                ➡️ Défi suivant
+            </button>
+
+            <button class="reset-button"
+                    id="resetButton">
+                🔄 Recommencer le jeu
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="tip">
+        <strong>💡 Conseil :</strong>
+        dans la vraie vie, avant d'envoyer un message, prenez toujours quelques secondes
+        pour vérifier le destinataire et le contenu du message.
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   LES 30 DÉFIS
+========================================= */
+
+const challenges = [
+
+    {
+        title: "Écrivez un message",
+        text: "Touchez la zone « Écrire un message... » et écrivez « Bonjour ».",
+        help: "💡 Commencez par toucher la zone de texte en bas de l'écran.",
+        action: "typeBonjour"
+    },
+
+    {
+        title: "Envoyez le message",
+        text: "Envoyez le message « Bonjour » avec le bouton ➤.",
+        help: "💡 Le bouton bleu ➤ permet d'envoyer le message.",
+        action: "sendBonjour"
+    },
+
+    {
+        title: "Écrivez une phrase",
+        text: "Écrivez « Comment allez-vous ? ».",
+        help: "💡 Vous pouvez utiliser le clavier de votre smartphone.",
+        action: "typePhrase"
+    },
+
+    {
+        title: "Envoyez votre phrase",
+        text: "Envoyez le message que vous venez d'écrire.",
+        help: "💡 Vérifiez le texte puis appuyez sur ➤.",
+        action: "sendPhrase"
+    },
+
+    {
+        title: "Choisissez un autre contact",
+        text: "Ouvrez la liste des contacts en utilisant le bouton ‹.",
+        help: "💡 Le bouton ‹ permet de revenir à la liste des contacts.",
+        action: "openContacts"
+    },
+
+    {
+        title: "Choisissez Jean",
+        text: "Dans la liste, choisissez le contact Jean.",
+        help: "💡 Touchez simplement la ligne « Jean ».",
+        action: "chooseJean"
+    },
+
+    {
+        title: "Écrivez à Jean",
+        text: "Écrivez « Bonjour Jean ».",
+        help: "💡 Vérifiez bien le nom du destinataire avant d'envoyer.",
+        action: "typeJean"
+    },
+
+    {
+        title: "Envoyez le message à Jean",
+        text: "Envoyez « Bonjour Jean ».",
+        help: "💡 Touchez ➤.",
+        action: "sendJean"
+    },
+
+    {
+        title: "Utilisez un emoji",
+        text: "Ouvrez le panneau des emojis en touchant 😊.",
+        help: "💡 Les emojis permettent d'ajouter une petite image à votre message.",
+        action: "openEmoji"
+    },
+
+    {
+        title: "Choisissez 👍",
+        text: "Dans les emojis, choisissez le pouce 👍.",
+        help: "💡 Touchez le symbole 👍.",
+        action: "chooseThumb"
+    },
+
+    {
+        title: "Envoyez l'emoji",
+        text: "Envoyez le message contenant 👍.",
+        help: "💡 Appuyez sur ➤.",
+        action: "sendEmoji"
+    },
+
+    {
+        title: "Fermez le panneau emoji",
+        text: "Ouvrez puis fermez le panneau des emojis.",
+        help: "💡 Touchez 😊 pour l'afficher, puis à nouveau 😊 pour le fermer.",
+        action: "closeEmoji"
+    },
+
+    {
+        title: "Ouvrez les pièces jointes",
+        text: "Touchez le bouton + situé à gauche de la zone de texte.",
+        help: "💡 Le + permet d'accéder à des fonctions supplémentaires.",
+        action: "openAttachment"
+    },
+
+    {
+        title: "Trouvez l'envoi de photo",
+        text: "Dans le menu, touchez « 📷 Envoyer une photo ».",
+        help: "💡 Une photo peut être envoyée directement dans une conversation.",
+        action: "photoAttachment"
+    },
+
+    {
+        title: "Fermez le menu",
+        text: "Fermez le menu des pièces jointes.",
+        help: "💡 Touchez à nouveau le bouton +.",
+        action: "closeAttachment"
+    },
+
+    {
+        title: "Écrivez « Merci »",
+        text: "Écrivez le mot « Merci ».",
+        help: "💡 Touchez la zone de texte puis écrivez le mot.",
+        action: "typeMerci"
+    },
+
+    {
+        title: "Envoyez « Merci »",
+        text: "Envoyez le message « Merci ».",
+        help: "💡 Vérifiez le message puis utilisez ➤.",
+        action: "sendMerci"
+    },
+
+    {
+        title: "Ouvrez les contacts",
+        text: "Utilisez ‹ pour revenir à la liste des contacts.",
+        help: "💡 Vous pouvez changer de conversation à tout moment.",
+        action: "openContacts2"
+    },
+
+    {
+        title: "Choisissez Sophie",
+        text: "Sélectionnez le contact Sophie.",
+        help: "💡 Touchez Sophie dans la liste.",
+        action: "chooseSophie"
+    },
+
+    {
+        title: "Écrivez un message amical",
+        text: "Écrivez « Bonjour Sophie 😊 ».",
+        help: "💡 Vous pouvez écrire le texte et ajouter l'emoji avec le panneau 😊.",
+        action: "typeSophie"
+    },
+
+    {
+        title: "Envoyez le message à Sophie",
+        text: "Envoyez votre message.",
+        help: "💡 Appuyez sur le bouton ➤.",
+        action: "sendSophie"
+    },
+
+    {
+        title: "Simulez un message vocal",
+        text: "Touchez longuement le bouton 🎙️ pour ouvrir l'enregistrement vocal.",
+        help: "💡 Dans une vraie application, maintenir le bouton permet souvent d'enregistrer un message vocal.",
+        action: "voice"
+    },
+
+    {
+        title: "Arrêtez l'enregistrement",
+        text: "Arrêtez le faux enregistrement avec « ⏹️ Arrêter ».",
+        help: "💡 Ici, aucun son réel n'est enregistré.",
+        action: "stopVoice"
+    },
+
+    {
+        title: "Sélectionnez un message",
+        text: "Faites un clic droit ou une pression longue sur un message envoyé.",
+        help: "💡 Un menu peut apparaître pour proposer différentes actions.",
+        action: "context"
+    },
+
+    {
+        title: "Copiez un message",
+        text: "Dans le menu, choisissez « 📋 Copier ».",
+        help: "💡 Copier permet de réutiliser le texte ailleurs.",
+        action: "copyMessage"
+    },
+
+    {
+        title: "Supprimez un message",
+        text: "Ouvrez le menu d'un message puis choisissez « 🗑️ Supprimer ».",
+        help: "💡 Attention : dans une vraie application, la suppression peut être définitive.",
+        action: "deleteMessage"
+    },
+
+    {
+        title: "Ouvrez la conversation du CCAS",
+        text: "Utilisez ‹ puis choisissez « Centre Multimédia ».",
+        help: "💡 Regardez bien le nom du contact avant de le sélectionner.",
+        action: "chooseCCAS"
+    },
+
+    {
+        title: "Écrivez « Bonjour Centre Multimédia »",
+        text: "Écrivez exactement « Bonjour Centre Multimédia ».",
+        help: "💡 Prenez votre temps pour écrire le nom correctement.",
+        action: "typeCCAS"
+    },
+
+    {
+        title: "Envoyez le message",
+        text: "Envoyez votre message au Centre Multimédia.",
+        help: "💡 Vérifiez le destinataire puis appuyez sur ➤.",
+        action: "sendCCAS"
+    },
+
+    {
+        title: "🎉 Défi final",
+        text: "Écrivez « À bientôt ! » puis envoyez le message.",
+        help: "💡 Dernier défi : écrivez le message puis utilisez le bouton d'envoi.",
+        action: "finalMessage"
+    }
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+let score = 0;
+let errors = 0;
+
+let selectedContact = "Marie";
+let lastTypedText = "";
+let lastSentText = "";
+
+let emojiOpened = false;
+let attachmentOpened = false;
+let emojiChosen = false;
+let photoChosen = false;
+let voiceOpened = false;
+let contextOpened = false;
+let copied = false;
+let deleted = false;
+
+let longPressTimer = null;
+
+
+/* =========================================
+   ÉLÉMENTS
+========================================= */
+
+const scoreElement =
+    document.getElementById("score");
+
+const errorsElement =
+    document.getElementById("errors");
+
+const currentChallengeElement =
+    document.getElementById("currentChallenge");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const challengeNumber =
+    document.getElementById("challengeNumber");
+
+const challengeTitle =
+    document.getElementById("challengeTitle");
+
+const challengeText =
+    document.getElementById("challengeText");
+
+const challengeHelp =
+    document.getElementById("challengeHelp");
+
+const feedback =
+    document.getElementById("feedback");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const conversation =
+    document.getElementById("conversation");
+
+const messageInput =
+    document.getElementById("messageInput");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+const backButton =
+    document.getElementById("backButton");
+
+const contactsScreen =
+    document.getElementById("contactsScreen");
+
+const closeContacts =
+    document.getElementById("closeContacts");
+
+const emojiButton =
+    document.getElementById("emojiButton");
+
+const emojiPanel =
+    document.getElementById("emojiPanel");
+
+const attachmentButton =
+    document.getElementById("attachmentButton");
+
+const attachmentMenu =
+    document.getElementById("attachmentMenu");
+
+const photoOption =
+    document.getElementById("photoOption");
+
+const voiceRecording =
+    document.getElementById("voiceRecording");
+
+const stopRecording =
+    document.getElementById("stopRecording");
+
+const contextMenu =
+    document.getElementById("contextMenu");
+
+const contextReply =
+    document.getElementById("contextReply");
+
+const contextCopy =
+    document.getElementById("contextCopy");
+
+const contextDelete =
+    document.getElementById("contextDelete");
+
+const toast =
+    document.getElementById("toast");
+
+const contactName =
+    document.getElementById("contactName");
+
+
+/* =========================================
+   CHARGER LE DÉFI
+========================================= */
+
+function loadChallenge() {
+
+    const challenge =
+        challenges[current];
+
+    challengeNumber.textContent =
+        "DÉFI " + (current + 1);
+
+    challengeTitle.textContent =
+        challenge.title;
+
+    challengeText.textContent =
+        challenge.text;
+
+    challengeHelp.textContent =
+        challenge.help;
+
+    currentChallengeElement.textContent =
+        current + 1;
+
+    const progress =
+        Math.round(
+            (current / challenges.length) * 100
+        );
+
+    progressText.textContent =
+        progress + " %";
+
+    progressFill.style.width =
+        progress + "%";
+
+    feedback.className =
+        "feedback";
+
+    feedback.textContent =
+        "👆 Réalisez l'action demandée sur le smartphone.";
+
+    nextButton.disabled = true;
+
+    lastTypedText = "";
+    emojiChosen = false;
+    photoChosen = false;
+    voiceOpened = false;
+    contextOpened = false;
+    copied = false;
+    deleted = false;
+
+    closeAllMenus();
+
+}
+
+
+/* =========================================
+   RÉUSSITE
+========================================= */
+
+function success(message) {
+
+    score += 10;
+
+    scoreElement.textContent =
+        score;
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "✅ " + message;
+
+    nextButton.disabled =
+        false;
+
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+function error(message) {
+
+    errors++;
+
+    errorsElement.textContent =
+        errors;
+
+    feedback.className =
+        "feedback error";
+
+    feedback.textContent =
+        "❌ " + message;
+
+}
+
+
+/* =========================================
+   OUVRIR CONTACTS
+========================================= */
+
+backButton.addEventListener("click", () => {
+
+    contactsScreen.classList.add("active");
+
+    checkAction("openContacts");
+
+});
+
+
+closeContacts.addEventListener("click", () => {
+
+    contactsScreen.classList.remove("active");
+
+});
+
+
+/* =========================================
+   CHOIX CONTACT
+========================================= */
+
+document
+    .querySelectorAll(".contact-item")
+    .forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            selectedContact =
+                item.dataset.name;
+
+            contactName.textContent =
+                selectedContact;
+
+            contactsScreen.classList.remove(
+                "active"
+            );
+
+            showToast(
+                "Conversation avec " +
+                selectedContact
+            );
+
+            checkContactAction();
+
+        });
+
+    });
+
+
+function checkContactAction() {
+
+    const action =
+        challenges[current].action;
+
+    if (
+        action === "chooseJean" &&
+        selectedContact === "Jean"
+    ) {
+
+        success(
+            "Bravo ! Vous avez choisi Jean."
+        );
+
+    }
+
+    else if (
+        action === "chooseSophie" &&
+        selectedContact === "Sophie"
+    ) {
+
+        success(
+            "Très bien ! Vous avez choisi Sophie."
+        );
+
+    }
+
+    else if (
+        action === "chooseCCAS" &&
+        selectedContact === "Centre Multimédia"
+    ) {
+
+        success(
+            "Bravo ! Vous avez choisi le Centre Multimédia."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   SAISIE DU MESSAGE
+========================================= */
+
+messageInput.addEventListener("input", () => {
+
+    lastTypedText =
+        messageInput.value;
+
+    checkTyping();
+
+});
+
+
+function checkTyping() {
+
+    const action =
+        challenges[current].action;
+
+    const text =
+        messageInput.value.trim();
+
+    if (
+        action === "typeBonjour" &&
+        text === "Bonjour"
+    ) {
+
+        success(
+            "Très bien ! Vous avez écrit « Bonjour »."
+        );
+
+    }
+
+    else if (
+        action === "typePhrase" &&
+        text === "Comment allez-vous ?"
+    ) {
+
+        success(
+            "Parfait ! La phrase est correcte."
+        );
+
+    }
+
+    else if (
+        action === "typeJean" &&
+        text === "Bonjour Jean"
+    ) {
+
+        if (selectedContact === "Jean") {
+
+            success(
+                "Très bien ! Le message est prêt pour Jean."
+            );
+
+        } else {
+
+            error(
+                "Le destinataire doit être Jean."
+            );
+
+        }
+
+    }
+
+    else if (
+        action === "typeMerci" &&
+        text === "Merci"
+    ) {
+
+        success(
+            "Très bien ! Vous avez écrit « Merci »."
+        );
+
+    }
+
+    else if (
+        action === "typeSophie" &&
+        text === "Bonjour Sophie 😊"
+    ) {
+
+        if (selectedContact === "Sophie") {
+
+            success(
+                "Bravo ! Le message est prêt pour Sophie."
+            );
+
+        }
+
+    }
+
+    else if (
+        action === "typeCCAS" &&
+        text === "Bonjour Centre Multimédia"
+    ) {
+
+        if (selectedContact === "Centre Multimédia") {
+
+            success(
+                "Excellent ! Le message est correctement écrit."
+            );
+
+        }
+
+    }
+
+    else if (
+        action === "finalMessage" &&
+        text === "À bientôt !"
+    ) {
+
+        success(
+            "Très bien ! Le message final est prêt."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ENVOI MESSAGE
+========================================= */
+
+sendButton.addEventListener("click", () => {
+
+    const text =
+        messageInput.value.trim();
+
+    if (!text) {
+
+        error(
+            "Écrivez d'abord un message."
+        );
+
+        return;
+
+    }
+
+    lastSentText =
+        text;
+
+    addSentMessage(text);
+
+    messageInput.value = "";
+
+    emojiPanel.classList.remove("active");
+
+    checkSendAction(text);
+
+});
+
+
+function addSentMessage(text) {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message sent";
+
+    message.innerHTML = `
+        ${escapeHtml(text)}
+        <div class="message-time">
+            10:20 ✓✓
+        </div>
+    `;
+
+    addMessageInteractions(message);
+
+    conversation.appendChild(message);
+
+    conversation.scrollTop =
+        conversation.scrollHeight;
+
+}
+
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   VÉRIFIER ENVOI
+========================================= */
+
+function checkSendAction(text) {
+
+    const action =
+        challenges[current].action;
+
+    if (
+        action === "sendBonjour" &&
+        text === "Bonjour"
+    ) {
+
+        success(
+            "Bravo ! Votre message a été envoyé."
+        );
+
+    }
+
+    else if (
+        action === "sendPhrase" &&
+        text === "Comment allez-vous ?"
+    ) {
+
+        success(
+            "Très bien ! La phrase a été envoyée."
+        );
+
+    }
+
+    else if (
+        action === "sendJean" &&
+        text === "Bonjour Jean" &&
+        selectedContact === "Jean"
+    ) {
+
+        success(
+            "Bravo ! Le message a été envoyé à Jean."
+        );
+
+    }
+
+    else if (
+        action === "sendEmoji" &&
+        text.includes("👍")
+    ) {
+
+        success(
+            "👍 Très bien ! L'emoji a été envoyé."
+        );
+
+    }
+
+    else if (
+        action === "sendMerci" &&
+        text === "Merci"
+    ) {
+
+        success(
+            "Bravo ! « Merci » a été envoyé."
+        );
+
+    }
+
+    else if (
+        action === "sendSophie" &&
+        text === "Bonjour Sophie 😊" &&
+        selectedContact === "Sophie"
+    ) {
+
+        success(
+            "Très bien ! Le message a été envoyé à Sophie."
+        );
+
+    }
+
+    else if (
+        action === "sendCCAS" &&
+        text === "Bonjour Centre Multimédia" &&
+        selectedContact === "Centre Multimédia"
+    ) {
+
+        success(
+            "Bravo ! Le message a été envoyé au Centre Multimédia."
+        );
+
+    }
+
+    else if (
+        action === "finalMessage" &&
+        text === "À bientôt !"
+    ) {
+
+        success(
+            "🎉 Félicitations ! Vous avez réussi le dernier défi."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   EMOJIS
+========================================= */
+
+emojiButton.addEventListener("click", () => {
+
+    emojiOpened =
+        !emojiOpened;
+
+    emojiPanel.classList.toggle(
+        "active",
+        emojiOpened
+    );
+
+    attachmentMenu.classList.remove(
+        "active"
+    );
+
+    if (
+        challenges[current].action ===
+        "openEmoji" &&
+        emojiOpened
+    ) {
+
+        success(
+            "Très bien ! Le panneau des emojis est ouvert."
+        );
+
+    }
+
+    if (
+        challenges[current].action ===
+        "closeEmoji" &&
+        !emojiOpened
+    ) {
+
+        success(
+            "Parfait ! Le panneau des emojis est fermé."
+        );
+
+    }
+
+});
+
+
+document
+    .querySelectorAll(".emoji")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const emoji =
+                button.textContent;
+
+            messageInput.value +=
+                emoji;
+
+            messageInput.focus();
+
+            emojiChosen = true;
+
+            if (
+                challenges[current].action ===
+                "chooseThumb" &&
+                emoji === "👍"
+            ) {
+
+                success(
+                    "👍 Bravo ! Vous avez choisi le bon emoji."
+                );
+
+            }
+
+        });
+
+    });
+
+
+/* =========================================
+   PIÈCES JOINTES
+========================================= */
+
+attachmentButton.addEventListener("click", () => {
+
+    attachmentOpened =
+        !attachmentOpened;
+
+    attachmentMenu.classList.toggle(
+        "active",
+        attachmentOpened
+    );
+
+    emojiPanel.classList.remove(
+        "active"
+    );
+
+    if (
+        challenges[current].action ===
+        "openAttachment" &&
+        attachmentOpened
+    ) {
+
+        success(
+            "Très bien ! Le menu des pièces jointes est ouvert."
+        );
+
+    }
+
+    if (
+        challenges[current].action ===
+        "closeAttachment" &&
+        !attachmentOpened
+    ) {
+
+        success(
+            "Parfait ! Le menu est fermé."
+        );
+
+    }
+
+});
+
+
+photoOption.addEventListener("click", () => {
+
+    photoChosen = true;
+
+    showToast(
+        "📷 Photo sélectionnée"
+    );
+
+    attachmentMenu.classList.remove(
+        "active"
+    );
+
+    attachmentOpened =
+        false;
+
+    if (
+        challenges[current].action ===
+        "photoAttachment"
+    ) {
+
+        success(
+            "Bravo ! Vous avez trouvé l'envoi d'une photo."
+        );
+
+    }
+
+});
+
+
+document
+    .getElementById("documentOption")
+    .addEventListener("click", () => {
+
+        showToast(
+            "📄 Document sélectionné"
+        );
+
+    });
+
+
+document
+    .getElementById("locationOption")
+    .addEventListener("click", () => {
+
+        showToast(
+            "📍 Position sélectionnée"
+        );
+
+    });
+
+
+/* =========================================
+   MESSAGE VOCAL
+========================================= */
+
+function openVoice() {
+
+    voiceOpened =
+        true;
+
+    voiceRecording.classList.add(
+        "active"
+    );
+
+    if (
+        challenges[current].action ===
+        "voice"
+    ) {
+
+        success(
+            "🎙️ Très bien ! L'enregistrement vocal est ouvert."
+        );
+
+    }
+
+}
+
+
+emojiButton.addEventListener("contextmenu", e => {
+
+    e.preventDefault();
+
+});
+
+
+let voicePressTimer;
+
+sendButton.addEventListener("pointerdown", () => {
+
+    voicePressTimer =
+        setTimeout(() => {
+
+            openVoice();
+
+        }, 700);
+
+});
+
+
+sendButton.addEventListener("pointerup", () => {
+
+    clearTimeout(
+        voicePressTimer
+    );
+
+});
+
+
+sendButton.addEventListener("pointerleave", () => {
+
+    clearTimeout(
+        voicePressTimer
+    );
+
+});
+
+
+stopRecording.addEventListener("click", () => {
+
+    voiceRecording.classList.remove(
+        "active"
+    );
+
+    voiceOpened =
+        false;
+
+    if (
+        challenges[current].action ===
+        "stopVoice"
+    ) {
+
+        success(
+            "Très bien ! L'enregistrement a été arrêté."
+        );
+
+    }
+
+});
+
+
+/* =========================================
+   MENU CONTEXTUEL
+========================================= */
+
+function addMessageInteractions(message) {
+
+    message.addEventListener(
+        "contextmenu",
+        event => {
+
+            event.preventDefault();
+
+            openContextMenu(
+                event,
+                message
+            );
+
+        }
+    );
+
+    message.addEventListener(
+        "pointerdown",
+        event => {
+
+            longPressTimer =
+                setTimeout(() => {
+
+                    openContextMenu(
+                        event,
+                        message
+                    );
+
+                }, 700);
+
+        }
+    );
+
+    message.addEventListener(
+        "pointerup",
+        () => {
+
+            clearTimeout(
+                longPressTimer
+            );
+
+        }
+    );
+
+    message.addEventListener(
+        "pointerleave",
+        () => {
+
+            clearTimeout(
+                longPressTimer
+            );
+
+        }
+    );
+
+}
+
+
+let selectedMessage =
+    null;
+
+
+function openContextMenu(event, message) {
+
+    selectedMessage =
+        message;
+
+    contextMenu.classList.add(
+        "active"
+    );
+
+    const phoneScreen =
+        document.querySelector(
+            ".phone-screen"
+        );
+
+    const rect =
+        phoneScreen.getBoundingClientRect();
+
+    let x =
+        event.clientX -
+        rect.left;
+
+    let y =
+        event.clientY -
+        rect.top;
+
+    x =
+        Math.max(
+            10,
+            Math.min(
+                x,
+                rect.width - 180
+            )
+        );
+
+    y =
+        Math.max(
+            50,
+            Math.min(
+                y,
+                rect.height - 190
+            )
+        );
+
+    contextMenu.style.left =
+        x + "px";
+
+    contextMenu.style.top =
+        y + "px";
+
+    contextOpened =
+        true;
+
+    if (
+        challenges[current].action ===
+        "context"
+    ) {
+
+        success(
+            "Très bien ! Vous avez ouvert le menu du message."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   COPIER
+========================================= */
+
+contextCopy.addEventListener("click", () => {
+
+    copied =
+        true;
+
+    contextMenu.classList.remove(
+        "active"
+    );
+
+    showToast(
+        "📋 Message copié"
+    );
+
+    if (
+        challenges[current].action ===
+        "copyMessage"
+    ) {
+
+        success(
+            "Bravo ! Vous avez copié le message."
+        );
+
+    }
+
+});
+
+
+/* =========================================
+   SUPPRIMER
+========================================= */
+
+contextDelete.addEventListener("click", () => {
+
+    deleted =
+        true;
+
+    if (selectedMessage) {
+
+        selectedMessage.remove();
+
+    }
+
+    contextMenu.classList.remove(
+        "active"
+    );
+
+    if (
+        challenges[current].action ===
+        "deleteMessage"
+    ) {
+
+        success(
+            "Très bien ! Vous avez supprimé le message."
+        );
+
+    }
+
+});
+
+
+/* =========================================
+   RÉPONDRE
+========================================= */
+
+contextReply.addEventListener("click", () => {
+
+    contextMenu.classList.remove(
+        "active"
+    );
+
+    messageInput.value =
+        "En réponse à votre message : ";
+
+    messageInput.focus();
+
+    showToast(
+        "↩️ Réponse préparée"
+    );
+
+});
+
+
+/* =========================================
+   FERMER MENUS
+========================================= */
+
+function closeAllMenus() {
+
+    emojiPanel.classList.remove(
+        "active"
+    );
+
+    attachmentMenu.classList.remove(
+        "active"
+    );
+
+    contextMenu.classList.remove(
+        "active"
+    );
+
+    emojiOpened =
+        false;
+
+    attachmentOpened =
+        false;
+
+}
+
+
+/* =========================================
+   PETIT MESSAGE
+========================================= */
+
+function showToast(message) {
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+    setTimeout(() => {
+
+        toast.classList.remove(
+            "show"
+        );
+
+    }, 1300);
+
+}
+
+
+/* =========================================
+   VÉRIFICATION GÉNÉRALE
+========================================= */
+
+function checkAction(action) {
+
+    const expected =
+        challenges[current].action;
+
+    if (
+        expected === "openContacts" &&
+        action === "openContacts"
+    ) {
+
+        success(
+            "Très bien ! Vous avez ouvert la liste des contacts."
+        );
+
+    }
+
+    else if (
+        expected === "openContacts2" &&
+        action === "openContacts"
+    ) {
+
+        success(
+            "Très bien ! La liste des contacts est ouverte."
+        );
+
+    }
+
+    else if (
+        expected === "openContacts2" &&
+        action === "openContacts2"
+    ) {
+
+        success(
+            "Très bien ! La liste des contacts est ouverte."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   CONTACTS - DÉFI 18
+========================================= */
+
+backButton.addEventListener("click", () => {
+
+    const action =
+        challenges[current].action;
+
+    if (
+        action === "openContacts2"
+    ) {
+
+        success(
+            "Très bien ! Vous pouvez maintenant choisir un autre contact."
+        );
+
+    }
+
+});
+
+
+/* =========================================
+   INITIALISER LES MESSAGES EXISTANTS
+========================================= */
+
+document
+    .querySelectorAll(".message")
+    .forEach(message => {
+
+        addMessageInteractions(message);
+
+    });
+
+
+/* =========================================
+   BOUTON SUIVANT
+========================================= */
+
+nextButton.addEventListener("click", () => {
+
+    if (
+        current <
+        challenges.length - 1
+    ) {
+
+        current++;
+
+        loadChallenge();
+
+    } else {
+
+        finishGame();
+
+    }
+
+});
+
+
+/* =========================================
+   FIN
+========================================= */
+
+function finishGame() {
+
+    progressFill.style.width =
+        "100%";
+
+    progressText.textContent =
+        "100 %";
+
+    challengeNumber.textContent =
+        "🎉 TERMINÉ";
+
+    challengeTitle.textContent =
+        "Félicitations !";
+
+    challengeText.textContent =
+        "Vous avez terminé les 30 défis consacrés aux messages sur smartphone.";
+
+    challengeHelp.textContent =
+        "👏 Vous avez appris à écrire, envoyer, répondre, utiliser les emojis, les pièces jointes et plusieurs fonctions utiles.";
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "🏆 Score final : " +
+        score +
+        " points sur " +
+        (challenges.length * 10) +
+        ".";
+
+    nextButton.disabled =
+        true;
+
+}
+
+
+/* =========================================
+   RECOMMENCER
+========================================= */
+
+resetButton.addEventListener("click", () => {
+
+    current = 0;
+    score = 0;
+    errors = 0;
+
+    selectedContact =
+        "Marie";
+
+    contactName.textContent =
+        "Marie";
+
+    messageInput.value =
+        "";
+
+    scoreElement.textContent =
+        "0";
+
+    errorsElement.textContent =
+        "0";
+
+    errorsElement.textContent =
+        "0";
+
+    contactsScreen.classList.remove(
+        "active"
+    );
+
+    voiceRecording.classList.remove(
+        "active"
+    );
+
+    closeAllMenus();
+
+    loadChallenge();
+
+});
+
+
+/* =========================================
+   INITIALISATION
+========================================= */
+
+loadChallenge();
+
+</script>
+
+</body>
+</html>
