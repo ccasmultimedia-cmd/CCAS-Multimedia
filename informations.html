@@ -121,7 +121,7 @@
 
 
         /* =========================
-           ACTUALITÉS
+           TITRES DE SECTION
         ========================== */
 
         .section-title {
@@ -129,6 +129,11 @@
             color: #203858;
             margin-bottom: 30px;
         }
+
+
+        /* =========================
+           ACTUALITÉS
+        ========================== */
 
         .announcement {
             background: white;
@@ -180,6 +185,117 @@
 
             font-weight: bold;
             font-size: 15px;
+        }
+
+
+        /* =========================
+           HORAIRES DES COURS
+        ========================== */
+
+        .courses-section {
+            margin-top: 60px;
+        }
+
+        .trimester {
+            background: white;
+            border-radius: 18px;
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+
+            border-left: 7px solid #3975c6;
+        }
+
+        .trimester:nth-child(3) {
+            border-left-color: #2e8b78;
+        }
+
+        .trimester:nth-child(4) {
+            border-left-color: #e09b32;
+        }
+
+        .trimester h3 {
+            margin-top: 0;
+            margin-bottom: 25px;
+
+            font-size: 27px;
+
+            color: #203858;
+        }
+
+        .trimester-subtitle {
+            margin-top: -15px;
+            margin-bottom: 25px;
+
+            font-size: 17px;
+
+            color: #718096;
+        }
+
+        .schedule {
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        .schedule-day {
+            display: grid;
+
+            grid-template-columns: 130px 1fr;
+
+            gap: 20px;
+
+            padding: 18px;
+
+            background: #f5f7fb;
+
+            border-radius: 12px;
+        }
+
+        .day-name {
+            font-size: 19px;
+
+            font-weight: bold;
+
+            color: #3975c6;
+        }
+
+        .day-courses {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .course {
+            font-size: 17px;
+
+            color: #42556d;
+        }
+
+        .course strong {
+            color: #203858;
+        }
+
+        .registration-note {
+            margin-top: 25px;
+
+            padding: 20px 25px;
+
+            background: #e7f5ed;
+
+            border-radius: 12px;
+
+            border-left: 5px solid #55a777;
+
+            color: #315b43;
+
+            font-size: 17px;
         }
 
 
@@ -317,6 +433,16 @@
                 padding: 40px 20px;
             }
 
+            .schedule-day {
+                grid-template-columns: 1fr;
+
+                gap: 8px;
+            }
+
+            .day-name {
+                font-size: 20px;
+            }
+
             .practical-grid {
                 grid-template-columns: 1fr;
             }
@@ -359,24 +485,19 @@
 
         <nav>
 
-         <nav>
+            <a href="index.html">Accueil</a>
 
-   <nav>
+            <a href="cours.html">Mes cours</a>
 
-    <a href="index.html">Accueil</a>
+            <a href="jeux.html">Jeux</a>
 
-    <a href="cours.html">Mes cours</a>
+            <a href="exercices.html">Exercices</a>
 
-    <a href="jeux.html">Jeux</a>
+            <a href="outils.html">🛠️ Outils</a>
 
-    <a href="exercices.html">Exercices</a>
-
-    <a href="outils.html">🛠️ Outils</a>
-
-    <a href="informations.html" class="active">Informations</a>
-
-
-</nav>
+            <a href="informations.html" class="active">
+                Informations
+            </a>
 
         </nav>
 
@@ -410,56 +531,386 @@
          ACTUALITÉS
     ========================== -->
 
-    <h2 class="section-title">Actualités</h2>
+    <h2 class="section-title">
+        Actualités
+    </h2>
 
 
     <div class="announcement new">
 
         <div class="date">
-            Nouveau
+            📢 À retenir
         </div>
 
-        <h2>Bienvenue sur notre nouveau site</h2>
+        <h2>
+            Reprise des cours
+        </h2>
 
         <p>
-            Le Centre Multimédia du CCAS dispose désormais d'un site
-            permettant de retrouver les cours, les activités et les
-            différentes informations utiles.
+            Les cours reprennent <strong>la semaine du 14 septembre</strong>.
+            Pensez à vous inscrire si vous souhaitez participer !
         </p>
 
     </div>
 
 
-    <div class="announcement">
 
-        <div class="date">
-            Centre Multimédia
+    <!-- =========================
+         HORAIRES DES COURS
+    ========================== -->
+
+    <section class="courses-section">
+
+        <h2 class="section-title">
+            🕐 Horaires des cours
+        </h2>
+
+
+        <!-- =========================
+             1ER TRIMESTRE
+        ========================== -->
+
+        <div class="trimester">
+
+            <h3>
+                📅 1er trimestre
+            </h3>
+
+            <div class="trimester-subtitle">
+                Septembre → Décembre
+            </div>
+
+
+            <div class="schedule">
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Lundi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique débutant
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone débutant
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Mardi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique intermédiaire
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Tablette
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Jeudi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique avancé
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone avancé
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Vendredi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 11h00</strong> :
+                            Informatique – chantiers d'insertion
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
         </div>
 
-        <h2>Les cours sont disponibles en ligne</h2>
-
-        <p>
-            Vous pouvez retrouver progressivement les différents supports
-            de cours directement sur le site et les consulter à votre rythme.
-        </p>
-
-    </div>
 
 
-    <div class="announcement important">
+        <!-- =========================
+             2E TRIMESTRE
+        ========================== -->
 
-        <div class="date">
-            À venir
+        <div class="trimester">
+
+            <h3>
+                📅 2e trimestre
+            </h3>
+
+            <div class="trimester-subtitle">
+                Janvier → Mars
+            </div>
+
+
+            <div class="schedule">
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Lundi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique avancé
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone avancé
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Mardi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique débutant
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Tablette
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Jeudi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique intermédiaire
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone débutant
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Vendredi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 11h00</strong> :
+                            Informatique – chantiers d'insertion
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
         </div>
 
-        <h2>De nouvelles activités prochainement</h2>
 
-        <p>
-            De nouveaux cours, exercices et activités seront ajoutés
-            régulièrement sur le site.
-        </p>
 
-    </div>
+        <!-- =========================
+             3E TRIMESTRE
+        ========================== -->
+
+        <div class="trimester">
+
+            <h3>
+                📅 3e trimestre
+            </h3>
+
+            <div class="trimester-subtitle">
+                Avril → Juin
+            </div>
+
+
+            <div class="schedule">
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Lundi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique intermédiaire
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone débutant
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Mardi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique avancé
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Tablette
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Jeudi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 12h00</strong> :
+                            Informatique débutant
+                        </div>
+
+                        <div class="course">
+                            <strong>14h00 – 16h00</strong> :
+                            Smartphone avancé
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="schedule-day">
+
+                    <div class="day-name">
+                        Vendredi
+                    </div>
+
+                    <div class="day-courses">
+
+                        <div class="course">
+                            <strong>9h00 – 11h00</strong> :
+                            Informatique – chantiers d'insertion
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- INSCRIPTION -->
+
+        <div class="registration-note">
+
+            <strong>📌 À savoir :</strong><br>
+
+            Les cours sont accessibles sur inscription.
+            N'hésitez pas à nous contacter pour connaître les places disponibles.
+
+        </div>
+
+
+    </section>
 
 
 
@@ -555,7 +1006,9 @@
 
     <section class="contact-section">
 
-        <h2>Une question ?</h2>
+        <h2>
+            Une question ?
+        </h2>
 
         <p>
             Vous pouvez nous contacter par téléphone ou par e-mail.
