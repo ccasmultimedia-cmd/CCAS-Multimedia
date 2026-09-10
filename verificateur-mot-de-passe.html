@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vérificateur de mot de passe - Centre Multimédia du CCAS</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#263238;
+    line-height:1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:#1f3656;
+    color:white;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo strong{
+    font-size:26px;
+}
+
+.logo span{
+    font-size:15px;
+    opacity:.8;
+}
+
+nav{
+    display:flex;
+    gap:10px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:8px;
+    font-size:17px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    background-color:#3d76c5;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header{
+    background:linear-gradient(135deg,#e9f0fa,#ffffff,#eef7ef);
+    text-align:center;
+    padding:55px 20px;
+}
+
+.page-header h1{
+    color:#1f3656;
+    font-size:44px;
+    margin-bottom:12px;
+}
+
+.page-header p{
+    font-size:20px;
+    color:#536271;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.card h2{
+    color:#1f3656;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+.intro{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+/* =========================
+   CHAMP MOT DE PASSE
+========================= */
+
+.password-box{
+    position:relative;
+    margin-bottom:20px;
+}
+
+.password-box input{
+    width:100%;
+    padding:17px 55px 17px 18px;
+    border:2px solid #cbd5e1;
+    border-radius:10px;
+    font-size:20px;
+    outline:none;
+    transition:.2s;
+}
+
+.password-box input:focus{
+    border-color:#3d76c5;
+    box-shadow:0 0 0 3px rgba(61,118,197,.12);
+}
+
+.toggle{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-size:24px;
+}
+
+/* =========================
+   BARRE DE FORCE
+========================= */
+
+.strength-container{
+    margin:25px 0;
+}
+
+.strength-label{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.strength-bar{
+    width:100%;
+    height:18px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.strength-progress{
+    height:100%;
+    width:0%;
+    background:#cbd5e1;
+    transition:.4s;
+    border-radius:20px;
+}
+
+.strength-message{
+    margin-top:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* =========================
+   CRITÈRES
+========================= */
+
+.criteria{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:25px;
+}
+
+.criterion{
+    padding:14px 16px;
+    border-radius:10px;
+    background:#f1f5f9;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.criterion.good{
+    background:#e9f7ef;
+    color:#176b3a;
+}
+
+.criterion.bad{
+    background:#fff1f2;
+    color:#9f1239;
+}
+
+.icon{
+    font-size:20px;
+    width:24px;
+    text-align:center;
+}
+
+/* =========================
+   CONSEIL
+========================= */
+
+.advice{
+    margin-top:25px;
+    background:#eef5ff;
+    border-left:5px solid #3d76c5;
+    padding:18px 20px;
+    border-radius:8px;
+    font-size:17px;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+button.action{
+    border:none;
+    background:#3d76c5;
+    color:white;
+    padding:14px 20px;
+    border-radius:9px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button.action:hover{
+    background:#2d5f9e;
+    transform:translateY(-1px);
+}
+
+button.secondary{
+    background:#64748b;
+}
+
+button.secondary:hover{
+    background:#475569;
+}
+
+button.green{
+    background:#3c8d5a;
+}
+
+button.green:hover{
+    background:#2f7047;
+}
+
+/* =========================
+   GÉNÉRATEUR
+========================= */
+
+.generated{
+    margin-top:30px;
+    padding:20px;
+    background:#f8fafc;
+    border:2px dashed #cbd5e1;
+    border-radius:12px;
+}
+
+.generated h3{
+    color:#1f3656;
+    margin-bottom:12px;
+}
+
+.generated-password{
+    font-family:monospace;
+    font-size:20px;
+    word-break:break-all;
+    background:white;
+    padding:15px;
+    border-radius:8px;
+    border:1px solid #dbe2ea;
+}
+
+/* =========================
+   INFORMATION
+========================= */
+
+.info{
+    background:#fffbea;
+    border-left:5px solid #eab308;
+    padding:18px 20px;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.info strong{
+    color:#854d0e;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#1f3656;
+    color:white;
+    text-align:center;
+    padding:25px 20px;
+    margin-top:50px;
+}
+
+footer p{
+    margin:5px 0;
+}
+
+footer small{
+    opacity:.75;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:900px){
+
+    .page-header h1{
+        font-size:38px;
+    }
+
+}
+
+@media (max-width:750px){
+
+    .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:15px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    nav a{
+        font-size:15px;
+        padding:10px 12px;
+    }
+
+    .page-header{
+        padding:40px 15px;
+    }
+
+    .page-header h1{
+        font-size:32px;
+    }
+
+    .page-header p{
+        font-size:18px;
+    }
+
+    .container{
+        padding:0 12px;
+        margin:25px auto;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .card h2{
+        font-size:24px;
+    }
+
+    .criteria{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    button.action{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html">Exercices</a>
+            <a href="outils.html" class="active">🛠️ Outils</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>🔐 Vérificateur de mot de passe</h1>
+
+    <p>
+        Testez la solidité d'un mot de passe et découvrez comment l'améliorer.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <div class="card">
+
+        <h2>🧐 Testez votre mot de passe</h2>
+
+        <p class="intro">
+            Entrez un mot de passe ci-dessous. L'outil vous indique
+            immédiatement s'il est plutôt faible, moyen ou solide.
+        </p>
+
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Écrivez votre mot de passe ici..."
+                autocomplete="off"
+            >
+
+            <button
+                class="toggle"
+                id="togglePassword"
+                type="button"
+                title="Afficher ou masquer le mot de passe"
+            >
+                👁️
+            </button>
+
+        </div>
+
+
+        <div class="strength-container">
+
+            <div class="strength-label">
+                Niveau de sécurité :
+                <span id="scoreText">—</span>
+            </div>
+
+            <div class="strength-bar">
+                <div
+                    class="strength-progress"
+                    id="strengthProgress"
+                ></div>
+            </div>
+
+            <div
+                class="strength-message"
+                id="strengthMessage"
+            >
+                Commencez à écrire votre mot de passe.
+            </div>
+
+        </div>
+
+
+        <h2>📋 Les critères</h2>
+
+        <div class="criteria">
+
+            <div class="criterion" id="criterionLength">
+                <span class="icon">❌</span>
+                <span>Au moins 12 caractères</span>
+            </div>
+
+            <div class="criterion" id="criterionLong">
+                <span class="icon">❌</span>
+                <span>15 caractères ou plus recommandé</span>
+            </div>
+
+            <div class="criterion" id="criterionLower">
+                <span class="icon">❌</span>
+                <span>Une lettre minuscule</span>
+            </div>
+
+            <div class="criterion" id="criterionUpper">
+                <span class="icon">❌</span>
+                <span>Une lettre majuscule</span>
+            </div>
+
+            <div class="criterion" id="criterionNumber">
+                <span class="icon">❌</span>
+                <span>Un chiffre</span>
+            </div>
+
+            <div class="criterion" id="criterionSpecial">
+                <span class="icon">❌</span>
+                <span>Un caractère spécial</span>
+            </div>
+
+            <div class="criterion" id="criterionRepeat">
+                <span class="icon">❌</span>
+                <span>Pas de répétitions excessives</span>
+            </div>
+
+            <div class="criterion" id="criterionSequence">
+                <span class="icon">❌</span>
+                <span>Pas de suite évidente</span>
+            </div>
+
+            <div class="criterion" id="criterionCommon">
+                <span class="icon">❌</span>
+                <span>Pas un mot de passe courant</span>
+            </div>
+
+        </div>
+
+
+        <div class="advice" id="advice">
+
+            💡 <strong>Conseil :</strong>
+            un bon mot de passe est long, unique et difficile à deviner.
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="action secondary"
+                type="button"
+                id="clearButton"
+            >
+                🗑️ Effacer
+            </button>
+
+            <button
+                class="action green"
+                type="button"
+                id="generateButton"
+            >
+                🎲 Générer un mot de passe solide
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card" id="generatedCard" style="display:none;">
+
+        <h2>🎲 Mot de passe généré</h2>
+
+        <p class="intro">
+            Voici un mot de passe aléatoire généré directement dans votre navigateur.
+        </p>
+
+        <div class="generated">
+
+            <h3>Votre mot de passe :</h3>
+
+            <div
+                class="generated-password"
+                id="generatedPassword"
+            ></div>
+
+            <div class="buttons">
+
+                <button
+                    class="action"
+                    type="button"
+                    id="copyButton"
+                >
+                    📋 Copier
+                </button>
+
+                <button
+                    class="action secondary"
+                    type="button"
+                    id="hideGeneratedButton"
+                >
+                    Masquer
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🔒 Vos données restent sur votre ordinateur</h2>
+
+        <div class="info">
+
+            <strong>À savoir :</strong>
+
+            ce vérificateur fonctionne directement dans votre navigateur.
+            Le mot de passe que vous saisissez n'est pas envoyé à un serveur
+            par cette page.
+
+            <br><br>
+
+            ⚠️ Pour un vrai compte en ligne, évitez de réutiliser le même
+            mot de passe sur plusieurs sites.
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        Centre Multimédia du CCAS
+    </p>
+
+    <small>
+        Apprendre • Découvrir • Progresser
+    </small>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   ÉLÉMENTS
+========================= */
+
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
+const strengthProgress = document.getElementById("strengthProgress");
+const scoreText = document.getElementById("scoreText");
+const strengthMessage = document.getElementById("strengthMessage");
+const advice = document.getElementById("advice");
+
+const clearButton = document.getElementById("clearButton");
+const generateButton = document.getElementById("generateButton");
+
+const generatedCard = document.getElementById("generatedCard");
+const generatedPassword = document.getElementById("generatedPassword");
+const copyButton = document.getElementById("copyButton");
+const hideGeneratedButton = document.getElementById("hideGeneratedButton");
+
+
+/* =========================
+   MOTS DE PASSE COURANTS
+========================= */
+
+const commonPasswords = [
+
+    "123456",
+    "123456789",
+    "12345678",
+    "password",
+    "motdepasse",
+    "azerty",
+    "qwerty",
+    "admin",
+    "bonjour",
+    "welcome",
+    "letmein",
+    "000000",
+    "111111",
+    "abc123",
+    "password123"
+
+];
+
+
+/* =========================
+   AFFICHAGE DES CRITÈRES
+========================= */
+
+function updateCriterion(id, good){
+
+    const element = document.getElementById(id);
+    const icon = element.querySelector(".icon");
+
+    if(good){
+
+        element.classList.add("good");
+        element.classList.remove("bad");
+        icon.textContent = "✅";
+
+    }else{
+
+        element.classList.add("bad");
+        element.classList.remove("good");
+        icon.textContent = "❌";
+
+    }
+
+}
+
+
+/* =========================
+   VÉRIFICATION
+========================= */
+
+function checkPassword(){
+
+    const password = passwordInput.value;
+
+    if(password.length === 0){
+
+        strengthProgress.style.width = "0%";
+        scoreText.textContent = "—";
+        strengthMessage.textContent =
+            "Commencez à écrire votre mot de passe.";
+        advice.innerHTML =
+            "💡 <strong>Conseil :</strong> un bon mot de passe est long, unique et difficile à deviner.";
+
+        const criteria = document.querySelectorAll(".criterion");
+
+        criteria.forEach(element => {
+
+            element.classList.remove("good","bad");
+            element.querySelector(".icon").textContent = "❌";
+
+        });
+
+        return;
+    }
+
+
+    /* Critères */
+
+    const lengthOK = password.length >= 12;
+    const longOK = password.length >= 15;
+    const lowerOK = /[a-zà-ÿ]/.test(password);
+    const upperOK = /[A-ZÀ-Ÿ]/.test(password);
+    const numberOK = /[0-9]/.test(password);
+
+    const specialOK =
+        /[^A-Za-zÀ-ÿ0-9]/.test(password);
+
+
+    /* Répétitions */
+
+    const repeatOK =
+        !/(.)\1\1/.test(password);
+
+
+    /* Suites évidentes */
+
+    const lowerPassword = password.toLowerCase();
+
+    const sequences = [
+
+        "1234",
+        "2345",
+        "3456",
+        "4567",
+        "5678",
+        "6789",
+        "abcd",
+        "bcde",
+        "cdef",
+        "defg",
+        "efgh",
+        "fghi",
+        "ghij",
+        "qwerty",
+        "azerty"
+
+    ];
+
+    let sequenceOK = true;
+
+    for(const sequence of sequences){
+
+        if(lowerPassword.includes(sequence)){
+
+            sequenceOK = false;
+            break;
+
+        }
+
+    }
+
+
+    /* Mot de passe courant */
+
+    const commonOK =
+        !commonPasswords.includes(lowerPassword);
+
+
+    /* Mise à jour affichage */
+
+    updateCriterion("criterionLength", lengthOK);
+    updateCriterion("criterionLong", longOK);
+    updateCriterion("criterionLower", lowerOK);
+    updateCriterion("criterionUpper", upperOK);
+    updateCriterion("criterionNumber", numberOK);
+    updateCriterion("criterionSpecial", specialOK);
+    updateCriterion("criterionRepeat", repeatOK);
+    updateCriterion("criterionSequence", sequenceOK);
+    updateCriterion("criterionCommon", commonOK);
+
+
+    /* =========================
+       CALCUL DU SCORE
+    ========================= */
+
+    let score = 0;
+
+
+    /* Longueur */
+
+    if(password.length >= 8){
+        score += 10;
+    }
+
+    if(password.length >= 12){
+        score += 20;
+    }
+
+    if(password.length >= 15){
+        score += 15;
+    }
+
+    if(password.length >= 20){
+        score += 10;
+    }
+
+
+    /* Diversité */
+
+    if(lowerOK){
+        score += 10;
+    }
+
+    if(upperOK){
+        score += 10;
+    }
+
+    if(numberOK){
+        score += 10;
+    }
+
+    if(specialOK){
+        score += 10;
+    }
+
+
+    /* Bonus / malus */
+
+    if(repeatOK){
+        score += 5;
+    }else{
+        score -= 10;
+    }
+
+    if(sequenceOK){
+        score += 5;
+    }else{
+        score -= 10;
+    }
+
+    if(!commonOK){
+        score = Math.min(score,25);
+    }
+
+
+    score = Math.max(0,Math.min(100,score));
+
+
+    /* =========================
+       AFFICHAGE SCORE
+    ========================= */
+
+    strengthProgress.style.width = score + "%";
+
+
+    if(score < 30){
+
+        scoreText.textContent = "Faible";
+        strengthMessage.textContent =
+            "⚠️ Votre mot de passe est trop facile à deviner.";
+        advice.innerHTML =
+            "💡 <strong>Conseil :</strong> augmentez fortement la longueur et ajoutez des caractères différents.";
+
+    }else if(score < 60){
+
+        scoreText.textContent = "Moyen";
+        strengthMessage.textContent =
+            "🟠 Votre mot de passe peut encore être amélioré.";
+        advice.innerHTML =
+            "💡 <strong>Conseil :</strong> essayez d'atteindre au moins 12 à 15 caractères et utilisez plusieurs types de caractères.";
+
+    }else if(score < 80){
+
+        scoreText.textContent = "Bon";
+        strengthMessage.textContent =
+            "🟢 Votre mot de passe est plutôt solide.";
+        advice.innerHTML =
+            "💡 <strong>Conseil :</strong> rendez-le encore plus long et surtout unique pour chaque compte.";
+
+    }else{
+
+        scoreText.textContent = "Très solide";
+        strengthMessage.textContent =
+            "🛡️ Excellent ! Votre mot de passe est très solide.";
+        advice.innerHTML =
+            "💡 <strong>Conseil :</strong> utilisez ce mot de passe uniquement pour un seul compte et conservez-le dans un gestionnaire de mots de passe.";
+
+    }
+
+}
+
+
+/* =========================
+   AFFICHER / MASQUER
+========================= */
+
+togglePassword.addEventListener("click",function(){
+
+    if(passwordInput.type === "password"){
+
+        passwordInput.type = "text";
+        togglePassword.textContent = "🙈";
+
+    }else{
+
+        passwordInput.type = "password";
+        togglePassword.textContent = "👁️";
+
+    }
+
+});
+
+
+/* =========================
+   SAISIE
+========================= */
+
+passwordInput.addEventListener("input",checkPassword);
+
+
+/* =========================
+   EFFACER
+========================= */
+
+clearButton.addEventListener("click",function(){
+
+    passwordInput.value = "";
+    generatedCard.style.display = "none";
+
+    checkPassword();
+
+    passwordInput.focus();
+
+});
+
+
+/* =========================
+   GÉNÉRATEUR SÉCURISÉ
+========================= */
+
+function randomInt(max){
+
+    const array = new Uint32Array(1);
+
+    crypto.getRandomValues(array);
+
+    return array[0] % max;
+
+}
+
+
+function shuffle(array){
+
+    for(let i = array.length - 1; i > 0; i--){
+
+        const j = randomInt(i + 1);
+
+        [array[i],array[j]] = [array[j],array[i]];
+
+    }
+
+    return array;
+
+}
+
+
+function generateSecurePassword(length = 18){
+
+    const lowercase = "abcdefghijklmnopqrstuvwxyz";
+    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbers = "0123456789";
+    const special = "!@#$%^&*()-_=+[]{};:,.?";
+
+    const all =
+        lowercase +
+        uppercase +
+        numbers +
+        special;
+
+    const result = [
+
+        lowercase[randomInt(lowercase.length)],
+        uppercase[randomInt(uppercase.length)],
+        numbers[randomInt(numbers.length)],
+        special[randomInt(special.length)]
+
+    ];
+
+
+    while(result.length < length){
+
+        result.push(
+            all[randomInt(all.length)]
+        );
+
+    }
+
+
+    return shuffle(result).join("");
+
+}
+
+
+/* =========================
+   BOUTON GÉNÉRER
+========================= */
+
+generateButton.addEventListener("click",function(){
+
+    const password = generateSecurePassword(18);
+
+    generatedPassword.textContent = password;
+
+    generatedCard.style.display = "block";
+
+    generatedCard.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+});
+
+
+/* =========================
+   COPIER
+========================= */
+
+copyButton.addEventListener("click",async function(){
+
+    const text = generatedPassword.textContent;
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        copyButton.textContent = "✅ Copié !";
+
+        setTimeout(function(){
+
+            copyButton.textContent = "📋 Copier";
+
+        },2000);
+
+    }catch(error){
+
+        alert(
+            "La copie automatique n'est pas disponible. Sélectionnez le mot de passe et copiez-le manuellement."
+        );
+
+    }
+
+});
+
+
+/* =========================
+   MASQUER GÉNÉRÉ
+========================= */
+
+hideGeneratedButton.addEventListener("click",function(){
+
+    generatedCard.style.display = "none";
+
+});
+
+
+</script>
+
+</body>
+</html>
