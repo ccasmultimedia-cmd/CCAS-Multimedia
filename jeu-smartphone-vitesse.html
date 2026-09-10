@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Défi vitesse smartphone & tablette</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #24344d;
+    }
+
+    header {
+        background: #1f3656;
+        color: white;
+        padding: 22px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0 0 8px;
+        font-size: 32px;
+    }
+
+    header p {
+        margin: 0;
+        font-size: 18px;
+        opacity: 0.95;
+    }
+
+    main {
+        max-width: 1150px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .game-layout {
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    /* ---------------- TELEPHONE ---------------- */
+
+    .phone-zone {
+        display: flex;
+        justify-content: center;
+    }
+
+    .phone {
+        width: 360px;
+        max-width: 100%;
+        background: #111;
+        border-radius: 38px;
+        padding: 12px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .phone-screen {
+        background: #eef2f7;
+        border-radius: 28px;
+        min-height: 680px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .phone-top {
+        height: 32px;
+        background: #e7ebf1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #596579;
+    }
+
+    .phone-status {
+        position: absolute;
+        top: 7px;
+        left: 18px;
+        font-size: 12px;
+        color: #39465b;
+    }
+
+    .phone-battery {
+        position: absolute;
+        top: 7px;
+        right: 18px;
+        font-size: 12px;
+        color: #39465b;
+    }
+
+    .phone-content {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .phone-home {
+        height: 100%;
+        padding: 25px 18px;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8), transparent 25%),
+            linear-gradient(145deg, #dbe9fb, #edf7ef);
+    }
+
+    .home-clock {
+        text-align: center;
+        font-size: 38px;
+        font-weight: bold;
+        margin: 15px 0 30px;
+        color: #294363;
+    }
+
+    .apps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .app {
+        border: 0;
+        background: rgba(255,255,255,0.85);
+        border-radius: 18px;
+        padding: 12px 6px;
+        cursor: pointer;
+        font-size: 13px;
+        color: #273d5b;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .app:hover {
+        transform: translateY(-2px);
+    }
+
+    .app-icon {
+        font-size: 34px;
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    .app-target {
+        outline: 4px solid #6aa7e8;
+        animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+        0%,100% { box-shadow: 0 0 0 0 rgba(64,126,198,0.3); }
+        50% { box-shadow: 0 0 0 8px rgba(64,126,198,0.08); }
+    }
+
+    .app-page {
+        display: none;
+        height: 100%;
+        background: white;
+        flex-direction: column;
+    }
+
+    .app-page.active {
+        display: flex;
+    }
+
+    .app-header {
+        padding: 15px;
+        background: #edf3fa;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #d8e0eb;
+    }
+
+    .back-btn {
+        border: 0;
+        background: white;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .app-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .app-body {
+        flex: 1;
+        padding: 18px;
+        overflow: auto;
+    }
+
+    /* Browser */
+
+    .search-box {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #cbd5e1;
+        border-radius: 15px;
+        font-size: 17px;
+        outline: none;
+        margin-bottom: 15px;
+    }
+
+    .search-box:focus {
+        border-color: #3975c6;
+    }
+
+    .search-button {
+        width: 100%;
+        border: 0;
+        border-radius: 14px;
+        padding: 14px;
+        background: #3975c6;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .search-result {
+        padding: 15px;
+        background: #f3f6fa;
+        border-radius: 14px;
+        margin-top: 12px;
+        cursor: pointer;
+    }
+
+    /* Messages */
+
+    .message {
+        padding: 12px 15px;
+        border-radius: 18px;
+        margin: 10px 0;
+        max-width: 85%;
+        font-size: 16px;
+    }
+
+    .message.received {
+        background: #edf1f6;
+    }
+
+    .message.sent {
+        background: #d8ebff;
+        margin-left: auto;
+    }
+
+    .message-input-area {
+        display: flex;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .message-input {
+        flex: 1;
+        padding: 13px;
+        border: 2px solid #ccd5e2;
+        border-radius: 14px;
+        font-size: 16px;
+    }
+
+    .send-btn {
+        border: 0;
+        background: #3975c6;
+        color: white;
+        border-radius: 14px;
+        padding: 0 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Notes */
+
+    .note {
+        background: #fffdf0;
+        border: 1px solid #eadfa7;
+        padding: 18px;
+        border-radius: 14px;
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    .copy-area {
+        margin-top: 18px;
+        padding: 18px;
+        border: 2px dashed #b9c7d9;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .copy-btn {
+        margin-top: 10px;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 12px;
+        background: #3975c6;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* Réglages */
+
+    .setting {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 17px;
+        border-bottom: 1px solid #e1e6ee;
+        font-size: 17px;
+    }
+
+    .switch {
+        width: 54px;
+        height: 30px;
+        border-radius: 20px;
+        border: 0;
+        background: #b8c1ce;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .switch::after {
+        content: "";
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: white;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        transition: 0.2s;
+    }
+
+    .switch.on {
+        background: #4c9b65;
+    }
+
+    .switch.on::after {
+        left: 27px;
+    }
+
+    /* Zone tactile */
+
+    .touch-zone {
+        height: 250px;
+        border: 3px dashed #9bb1c9;
+        border-radius: 20px;
+        background: #f5f8fc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 21px;
+        color: #52647b;
+        user-select: none;
+        touch-action: none;
+    }
+
+    .moving-target {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #3975c6;
+        color: white;
+        border: 0;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Clavier */
+
+    .keyboard-input {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #cbd5e1;
+        border-radius: 14px;
+        font-size: 19px;
+        margin-bottom: 15px;
+    }
+
+    .keyboard {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 5px;
+    }
+
+    .key {
+        border: 0;
+        background: #edf1f5;
+        border-radius: 8px;
+        padding: 9px 2px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .key.space {
+        grid-column: span 5;
+    }
+
+    /* Scroll */
+
+    .scroll-area {
+        height: 430px;
+        overflow-y: auto;
+        border: 2px solid #d7e0eb;
+        border-radius: 15px;
+        padding: 15px;
+        background: #fafcff;
+    }
+
+    .scroll-block {
+        height: 850px;
+        line-height: 2;
+        font-size: 17px;
+    }
+
+    .important-line {
+        background: #fff1bd;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .phone-bottom {
+        height: 42px;
+        background: #e7ebf1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-bar {
+        width: 115px;
+        height: 5px;
+        border-radius: 10px;
+        background: #69778a;
+    }
+
+    /* ---------------- PANNEAU JEU ---------------- */
+
+    .panel {
+        background: white;
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 7px 25px rgba(27,49,80,0.10);
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .stat {
+        background: #f1f5fa;
+        border-radius: 15px;
+        padding: 14px 8px;
+        text-align: center;
+    }
+
+    .stat strong {
+        display: block;
+        font-size: 26px;
+        color: #2e5f9d;
+        margin-bottom: 4px;
+    }
+
+    .stat span {
+        font-size: 13px;
+        color: #65748a;
+    }
+
+    .challenge-number {
+        font-size: 16px;
+        color: #3975c6;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .challenge-title {
+        font-size: 29px;
+        margin: 0 0 12px;
+        color: #203858;
+    }
+
+    .instruction {
+        font-size: 19px;
+        line-height: 1.6;
+        background: #eef7ef;
+        border-left: 5px solid #4d9864;
+        padding: 18px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .timer {
+        background: #1f3656;
+        color: white;
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        font-size: 27px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .timer.warning {
+        background: #b57b27;
+    }
+
+    .progress-container {
+        height: 13px;
+        background: #e2e7ef;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #4d9864;
+        transition: width 0.3s;
+    }
+
+    .feedback {
+        min-height: 58px;
+        padding: 16px;
+        border-radius: 13px;
+        margin-bottom: 18px;
+        font-size: 17px;
+        line-height: 1.5;
+        display: none;
+    }
+
+    .feedback.success {
+        display: block;
+        background: #e8f6ec;
+        color: #28613a;
+        border: 1px solid #b9dec3;
+    }
+
+    .feedback.error {
+        display: block;
+        background: #fff0ef;
+        color: #8b3732;
+        border: 1px solid #efc1bd;
+    }
+
+    .feedback.info {
+        display: block;
+        background: #eef4fb;
+        color: #31587f;
+        border: 1px solid #c8d9ed;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .main-btn {
+        border: 0;
+        background: #3975c6;
+        color: white;
+        padding: 14px 20px;
+        border-radius: 13px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .main-btn:hover {
+        background: #285d9e;
+    }
+
+    .secondary-btn {
+        border: 0;
+        background: #e9eef5;
+        color: #30435c;
+        padding: 14px 20px;
+        border-radius: 13px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .result-screen {
+        display: none;
+        text-align: center;
+        padding: 20px 5px;
+    }
+
+    .result-screen h2 {
+        font-size: 34px;
+        color: #203858;
+    }
+
+    .final-score {
+        font-size: 50px;
+        font-weight: bold;
+        color: #3975c6;
+        margin: 20px;
+    }
+
+    .result-message {
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .tip {
+        margin-top: 25px;
+        background: #eef7ef;
+        border-radius: 15px;
+        padding: 18px;
+        color: #43614d;
+        line-height: 1.6;
+    }
+
+    /* ---------------- CIBLE ---------------- */
+
+    .target-screen {
+        position: relative;
+        height: 450px;
+        background: #f2f6fb;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .target-button {
+        position: absolute;
+        border: 0;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: #3975c6;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    /* ---------------- GLISSER ---------------- */
+
+    .drag-zone {
+        height: 300px;
+        position: relative;
+        background: #f4f7fb;
+        border-radius: 15px;
+        border: 2px dashed #b4c3d5;
+    }
+
+    .drag-item {
+        position: absolute;
+        left: 20px;
+        top: 105px;
+        width: 90px;
+        height: 90px;
+        border-radius: 15px;
+        background: #3975c6;
+        color: white;
+        border: 0;
+        font-size: 16px;
+        cursor: grab;
+        touch-action: none;
+    }
+
+    .drop-zone {
+        position: absolute;
+        right: 20px;
+        top: 80px;
+        width: 125px;
+        height: 140px;
+        border: 3px dashed #5d9b6e;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #52705a;
+    }
+
+    @media (max-width: 900px) {
+        .game-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .phone-zone {
+            order: 1;
+        }
+
+        .panel {
+            order: 2;
+        }
+    }
+
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 26px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        main {
+            padding: 0 10px;
+        }
+
+        .panel {
+            padding: 20px;
+        }
+
+        .stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .challenge-title {
+            font-size: 25px;
+        }
+
+        .instruction {
+            font-size: 17px;
+        }
+
+        .phone {
+            width: 340px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ Défi vitesse smartphone & tablette</h1>
+    <p>Apprenez à utiliser votre appareil avec plus d'aisance et de rapidité</p>
+</header>
+
+<main>
+
+<div class="game-layout">
+
+    <!-- ================= TELEPHONE ================= -->
+
+    <div class="phone-zone">
+
+        <div class="phone">
+
+            <div class="phone-screen">
+
+                <div class="phone-top">
+                    <span class="phone-status">10:24</span>
+                    <span class="phone-battery">📶 🔋 87%</span>
+                </div>
+
+                <div class="phone-content">
+
+                    <!-- ACCUEIL -->
+
+                    <div id="homeScreen" class="phone-home">
+
+                        <div class="home-clock">10:24</div>
+
+                        <div class="apps">
+
+                            <button class="app" id="appMessages">
+                                <span class="app-icon">💬</span>
+                                Messages
+                            </button>
+
+                            <button class="app" id="appBrowser">
+                                <span class="app-icon">🌐</span>
+                                Internet
+                            </button>
+
+                            <button class="app" id="appNotes">
+                                <span class="app-icon">📝</span>
+                                Notes
+                            </button>
+
+                            <button class="app" id="appSettings">
+                                <span class="app-icon">⚙️</span>
+                                Réglages
+                            </button>
+
+                            <button class="app" id="appCamera">
+                                <span class="app-icon">📷</span>
+                                Photos
+                            </button>
+
+                            <button class="app" id="appContacts">
+                                <span class="app-icon">👥</span>
+                                Contacts
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MESSAGES -->
+
+                    <div id="messagesPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">💬 Messages</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <div class="message received">
+                                Bonjour ! Comment allez-vous ?
+                            </div>
+
+                            <div class="message sent">
+                                Très bien, merci !
+                            </div>
+
+                            <div class="message received">
+                                À bientôt 😊
+                            </div>
+
+                            <div class="message-input-area">
+
+                                <input
+                                    id="messageInput"
+                                    class="message-input"
+                                    placeholder="Écrire un message..."
+                                >
+
+                                <button id="sendMessage" class="send-btn">
+                                    ➤
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- INTERNET -->
+
+                    <div id="browserPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">🌐 Internet</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <input
+                                id="searchInput"
+                                class="search-box"
+                                placeholder="Rechercher sur Internet"
+                            >
+
+                            <button id="searchButton" class="search-button">
+                                🔎 Rechercher
+                            </button>
+
+                            <div id="searchResults"></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- NOTES -->
+
+                    <div id="notesPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">📝 Notes</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <div class="note">
+                                Bonjour !<br>
+                                Aujourd'hui nous faisons un exercice
+                                pour apprendre à utiliser le smartphone.
+                            </div>
+
+                            <div class="copy-area">
+
+                                <div id="copyText">
+                                    Texte à copier
+                                </div>
+
+                                <button id="copyButton" class="copy-btn">
+                                    📋 Copier
+                                </button>
+
+                                <button id="pasteButton" class="copy-btn">
+                                    📥 Coller
+                                </button>
+
+                                <div
+                                    id="pasteResult"
+                                    style="margin-top:15px;font-weight:bold;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- REGLAGES -->
+
+                    <div id="settingsPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">⚙️ Réglages</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <div class="setting">
+                                Wi-Fi
+                                <button class="switch" id="wifiSwitch"></button>
+                            </div>
+
+                            <div class="setting">
+                                Bluetooth
+                                <button class="switch" id="bluetoothSwitch"></button>
+                            </div>
+
+                            <div class="setting">
+                                Mode silencieux
+                                <button class="switch" id="silentSwitch"></button>
+                            </div>
+
+                            <div class="setting">
+                                Luminosité
+                                <button class="switch" id="lightSwitch"></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PHOTOS -->
+
+                    <div id="cameraPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">📷 Photos</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <div
+                                id="cameraTarget"
+                                class="touch-zone"
+                            >
+                                📷<br>
+                                Appareil photo
+                            </div>
+
+                            <button
+                                id="takePhoto"
+                                class="main-btn"
+                                style="width:100%;margin-top:15px;"
+                            >
+                                📸 Prendre une photo
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTACTS -->
+
+                    <div id="contactsPage" class="app-page">
+
+                        <div class="app-header">
+                            <button class="back-btn" data-back>‹</button>
+                            <div class="app-title">👥 Contacts</div>
+                        </div>
+
+                        <div class="app-body">
+
+                            <div class="search-result">
+                                👩 Marie
+                            </div>
+
+                            <div class="search-result">
+                                👨 Jean
+                            </div>
+
+                            <div class="search-result">
+                                👩 Sophie
+                            </div>
+
+                            <div class="search-result">
+                                🏢 Centre Multimédia
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="phone-bottom">
+                    <div class="home-bar"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PANNEAU JEU ================= -->
+
+    <div class="panel">
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="score">0</strong>
+                <span>Points</span>
+            </div>
+
+            <div class="stat">
+                <strong id="errors">0</strong>
+                <span>Erreurs</span>
+            </div>
+
+            <div class="stat">
+                <strong id="bestTime">--</strong>
+                <span>Meilleur temps</span>
+            </div>
+
+            <div class="stat">
+                <strong id="averageTime">--</strong>
+                <span>Moyenne</span>
+            </div>
+
+        </div>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div id="gameArea">
+
+            <div id="challengeNumber" class="challenge-number">
+                Défi 1 sur 30
+            </div>
+
+            <h2 id="challengeTitle" class="challenge-title">
+                Prêt ?
+            </h2>
+
+            <div id="instruction" class="instruction">
+                Cliquez sur « Commencer » pour lancer le défi.
+            </div>
+
+            <div id="timer" class="timer">
+                0,00 s
+            </div>
+
+            <div id="challengeContent"></div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <div class="buttons">
+
+                <button id="startButton" class="main-btn">
+                    ▶️ Commencer
+                </button>
+
+                <button id="nextButton" class="main-btn" style="display:none;">
+                    ➡️ Défi suivant
+                </button>
+
+                <button id="resetButton" class="secondary-btn">
+                    🔄 Recommencer
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTAT FINAL -->
+
+        <div id="resultScreen" class="result-screen">
+
+            <div style="font-size:70px;">🏆</div>
+
+            <h2>Bravo ! Défi terminé !</h2>
+
+            <div id="finalScore" class="final-score">
+                0 points
+            </div>
+
+            <div id="finalMessage" class="result-message"></div>
+
+            <div class="tip">
+                💡 <strong>Conseil :</strong><br>
+                La rapidité vient naturellement avec la pratique.
+                L'objectif n'est pas d'aller très vite dès le début,
+                mais de devenir progressivement plus à l'aise.
+            </div>
+
+            <br>
+
+            <button id="restartFinal" class="main-btn">
+                🔄 Refaire le défi
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const totalChallenges = 30;
+
+let currentChallenge = 0;
+let score = 0;
+let errors = 0;
+let running = false;
+let startTime = 0;
+let timerInterval = null;
+let challengeTimes = [];
+
+const scoreEl = document.getElementById("score");
+const errorsEl = document.getElementById("errors");
+const bestTimeEl = document.getElementById("bestTime");
+const averageTimeEl = document.getElementById("averageTime");
+const progressBar = document.getElementById("progressBar");
+
+const challengeNumber = document.getElementById("challengeNumber");
+const challengeTitle = document.getElementById("challengeTitle");
+const instruction = document.getElementById("instruction");
+const timerEl = document.getElementById("timer");
+const challengeContent = document.getElementById("challengeContent");
+const feedback = document.getElementById("feedback");
+
+const startButton = document.getElementById("startButton");
+const nextButton = document.getElementById("nextButton");
+const resetButton = document.getElementById("resetButton");
+
+const gameArea = document.getElementById("gameArea");
+const resultScreen = document.getElementById("resultScreen");
+
+
+/* ================= UTILITAIRES ================= */
+
+function formatTime(seconds) {
+    return seconds.toFixed(2).replace(".", ",") + " s";
+}
+
+function updateStats() {
+
+    scoreEl.textContent = score;
+    errorsEl.textContent = errors;
+
+    if (challengeTimes.length > 0) {
+
+        const best = Math.min(...challengeTimes);
+        const average =
+            challengeTimes.reduce((a,b) => a+b, 0) /
+            challengeTimes.length;
+
+        bestTimeEl.textContent = formatTime(best);
+        averageTimeEl.textContent = formatTime(average);
+
+    } else {
+
+        bestTimeEl.textContent = "--";
+        averageTimeEl.textContent = "--";
+    }
+}
+
+function updateProgress() {
+
+    const percent =
+        ((currentChallenge) / totalChallenges) * 100;
+
+    progressBar.style.width = percent + "%";
+}
+
+function showFeedback(type, message) {
+
+    feedback.className = "feedback " + type;
+    feedback.textContent = message;
+}
+
+function clearFeedback() {
+
+    feedback.className = "feedback";
+    feedback.textContent = "";
+}
+
+function startTimer() {
+
+    startTime = performance.now();
+
+    timerInterval = setInterval(() => {
+
+        const elapsed =
+            (performance.now() - startTime) / 1000;
+
+        timerEl.textContent = formatTime(elapsed);
+
+        if (elapsed > 8) {
+            timerEl.classList.add("warning");
+        }
+
+    }, 50);
+}
+
+function stopTimer() {
+
+    clearInterval(timerInterval);
+
+    const elapsed =
+        (performance.now() - startTime) / 1000;
+
+    timerEl.textContent = formatTime(elapsed);
+    timerEl.classList.remove("warning");
+
+    return elapsed;
+}
+
+function failAction(message = "Ce n'est pas encore la bonne action.") {
+
+    if (!running) return;
+
+    errors++;
+
+    updateStats();
+
+    showFeedback(
+        "error",
+        "❌ " + message
+    );
+}
+
+function successAction(points = 100) {
+
+    if (!running) return;
+
+    running = false;
+
+    const time = stopTimer();
+
+    challengeTimes.push(time);
+
+    let bonus = 0;
+
+    if (time < 2) {
+        bonus = 50;
+    } else if (time < 4) {
+        bonus = 25;
+    }
+
+    const gained = points + bonus;
+
+    score += gained;
+
+    updateStats();
+
+    showFeedback(
+        "success",
+        "✅ Bravo ! " +
+        "Défi réussi en " +
+        formatTime(time) +
+        " — +" +
+        gained +
+        " points."
+    );
+
+    nextButton.style.display = "inline-block";
+    startButton.style.display = "none";
+}
+
+
+/* ================= TELEPHONE ================= */
+
+const pages = document.querySelectorAll(".app-page");
+const homeScreen = document.getElementById("homeScreen");
+
+function openPage(id) {
+
+    homeScreen.style.display = "none";
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+
+function goHome() {
+
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    homeScreen.style.display = "block";
+}
+
+document.querySelectorAll("[data-back]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        goHome();
+
+        if (
+            currentChallenge >= 0 &&
+            running &&
+            challenges[currentChallenge].action === "back"
+        ) {
+            successAction();
+        }
+
+    });
+
+});
+
+
+/* ================= APPLICATIONS ================= */
+
+document.getElementById("appMessages")
+.addEventListener("click", () => {
+
+    openPage("messagesPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "messages"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("appBrowser")
+.addEventListener("click", () => {
+
+    openPage("browserPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "browser"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("appNotes")
+.addEventListener("click", () => {
+
+    openPage("notesPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "notes"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("appSettings")
+.addEventListener("click", () => {
+
+    openPage("settingsPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "settings"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("appCamera")
+.addEventListener("click", () => {
+
+    openPage("cameraPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "camera"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("appContacts")
+.addEventListener("click", () => {
+
+    openPage("contactsPage");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "contacts"
+    ) {
+        successAction();
+    }
+
+});
+
+
+/* ================= MESSAGES ================= */
+
+document.getElementById("sendMessage")
+.addEventListener("click", () => {
+
+    const input = document.getElementById("messageInput");
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "sendMessage"
+    ) {
+
+        if (input.value.trim().toLowerCase() === "bonjour") {
+
+            successAction();
+
+        } else {
+
+            failAction(
+                "Écrivez exactement « Bonjour » avant d'envoyer."
+            );
+        }
+
+    } else if (input.value.trim() !== "") {
+
+        const message = document.createElement("div");
+
+        message.className = "message sent";
+
+        message.textContent = input.value;
+
+        input.parentElement.parentElement.prepend(message);
+
+        input.value = "";
+    }
+
+});
+
+
+/* ================= INTERNET ================= */
+
+document.getElementById("searchButton")
+.addEventListener("click", () => {
+
+    const input = document.getElementById("searchInput");
+    const query = input.value.trim().toLowerCase();
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "search"
+    ) {
+
+        if (
+            query === "météo" ||
+            query === "meteo"
+        ) {
+
+            successAction();
+
+            showSearchResults();
+
+        } else {
+
+            failAction(
+                "Recherchez « météo »."
+            );
+        }
+
+    } else {
+
+        showSearchResults();
+    }
+
+});
+
+function showSearchResults() {
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = `
+        <div class="search-result">
+            🌤️ <strong>Météo aujourd'hui</strong><br>
+            Prévisions et température
+        </div>
+
+        <div class="search-result">
+            📰 Actualités du jour
+        </div>
+
+        <div class="search-result">
+            🍲 Recettes faciles
+        </div>
+    `;
+}
+
+
+/* ================= NOTES ================= */
+
+let copied = false;
+
+document.getElementById("copyButton")
+.addEventListener("click", () => {
+
+    copied = true;
+
+    document.getElementById("pasteResult").textContent =
+        "📋 Texte copié !";
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "copy"
+    ) {
+        successAction();
+    }
+
+});
+
+document.getElementById("pasteButton")
+.addEventListener("click", () => {
+
+    if (!copied) {
+
+        if (running) {
+            failAction(
+                "Commencez par copier le texte."
+            );
+        }
+
+        return;
+    }
+
+    document.getElementById("pasteResult").textContent =
+        "📥 Texte collé : Texte à copier";
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "paste"
+    ) {
+        successAction();
+    }
+
+});
+
+
+/* ================= REGLAGES ================= */
+
+document.querySelectorAll(".switch").forEach(sw => {
+
+    sw.addEventListener("click", () => {
+
+        sw.classList.toggle("on");
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "switch"
+        ) {
+            successAction();
+        }
+
+    });
+
+});
+
+
+/* ================= PHOTOS ================= */
+
+document.getElementById("takePhoto")
+.addEventListener("click", () => {
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "photo"
+    ) {
+
+        successAction();
+
+    } else {
+
+        alert("📸 Photo simulée !");
+    }
+
+});
+
+
+/* ================= CIBLES RAPIDES ================= */
+
+function createTargetChallenge() {
+
+    challengeContent.innerHTML = `
+        <div class="target-screen">
+            <button id="speedTarget" class="target-button">
+                TOUCHEZ
+            </button>
+        </div>
+    `;
+
+    const target = document.getElementById("speedTarget");
+
+    const maxX = 350;
+    const maxY = 375;
+
+    target.style.left =
+        Math.floor(Math.random() * maxX) + "px";
+
+    target.style.top =
+        Math.floor(Math.random() * maxY) + "px";
+
+    target.addEventListener("click", () => {
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "target"
+        ) {
+            successAction(100);
+        }
+
+    });
+
+}
+
+
+/* ================= DOUBLE TAP ================= */
+
+function createDoubleTap() {
+
+    challengeContent.innerHTML = `
+        <div
+            id="doubleZone"
+            class="touch-zone"
+        >
+            👆<br>
+            Double-touchez ici
+        </div>
+    `;
+
+    const zone =
+        document.getElementById("doubleZone");
+
+    let lastTap = 0;
+
+    zone.addEventListener("pointerdown", () => {
+
+        const now = Date.now();
+
+        if (now - lastTap < 500) {
+
+            if (
+                running &&
+                challenges[currentChallenge].action === "double"
+            ) {
+                successAction();
+            }
+
+        }
+
+        lastTap = now;
+
+    });
+
+}
+
+
+/* ================= APPUI LONG ================= */
+
+function createLongPress() {
+
+    challengeContent.innerHTML = `
+        <div
+            id="longZone"
+            class="touch-zone"
+        >
+            ✋<br>
+            Faites un appui long
+        </div>
+    `;
+
+    const zone =
+        document.getElementById("longZone");
+
+    let timer;
+
+    zone.addEventListener("pointerdown", () => {
+
+        timer = setTimeout(() => {
+
+            if (
+                running &&
+                challenges[currentChallenge].action === "longpress"
+            ) {
+                successAction();
+            }
+
+        }, 700);
+
+    });
+
+    zone.addEventListener("pointerup", () => {
+        clearTimeout(timer);
+    });
+
+    zone.addEventListener("pointerleave", () => {
+        clearTimeout(timer);
+    });
+
+}
+
+
+/* ================= GLISSER ================= */
+
+function createDragChallenge() {
+
+    challengeContent.innerHTML = `
+        <div class="drag-zone">
+
+            <button
+                id="dragItem"
+                class="drag-item"
+            >
+                GLISSEZ
+            </button>
+
+            <div id="dropZone" class="drop-zone">
+                Déposez ici
+            </div>
+
+        </div>
+    `;
+
+    const item =
+        document.getElementById("dragItem");
+
+    const drop =
+        document.getElementById("dropZone");
+
+    let dragging = false;
+
+    item.addEventListener("pointerdown", e => {
+
+        dragging = true;
+
+        item.setPointerCapture(e.pointerId);
+
+    });
+
+    item.addEventListener("pointermove", e => {
+
+        if (!dragging) return;
+
+        const rect =
+            item.parentElement.getBoundingClientRect();
+
+        let x = e.clientX - rect.left - 45;
+        let y = e.clientY - rect.top - 45;
+
+        x = Math.max(0, Math.min(x, rect.width - 90));
+        y = Math.max(0, Math.min(y, rect.height - 90));
+
+        item.style.left = x + "px";
+        item.style.top = y + "px";
+
+    });
+
+    item.addEventListener("pointerup", () => {
+
+        dragging = false;
+
+        const a = item.getBoundingClientRect();
+        const b = drop.getBoundingClientRect();
+
+        const overlap =
+            !(a.right < b.left ||
+              a.left > b.right ||
+              a.bottom < b.top ||
+              a.top > b.bottom);
+
+        if (
+            overlap &&
+            running &&
+            challenges[currentChallenge].action === "drag"
+        ) {
+            successAction();
+        }
+
+    });
+
+}
+
+
+/* ================= SCROLL ================= */
+
+function createScrollChallenge() {
+
+    challengeContent.innerHTML = `
+        <div id="scrollArea" class="scroll-area">
+
+            <div class="scroll-block">
+
+                <h3>📱 Conseils pour utiliser son smartphone</h3>
+
+                <p>
+                    Prenez votre temps pour découvrir
+                    les différentes fonctions.
+                </p>
+
+                <p>
+                    Vous pouvez agrandir le texte,
+                    régler la luminosité et utiliser
+                    le Wi-Fi.
+                </p>
+
+                <p>
+                    Faire défiler une page permet
+                    d'accéder aux informations situées
+                    plus bas.
+                </p>
+
+                <p>
+                    Continuez à faire défiler...
+                </p>
+
+                <p>
+                    Continuez encore...
+                </p>
+
+                <p class="important-line">
+                    ⭐ INFORMATION IMPORTANTE :
+                    Pensez à vérifier vos réglages
+                    de sécurité.
+                </p>
+
+                <p>
+                    Vous êtes arrivé vers le bas
+                    de la page.
+                </p>
+
+            </div>
+
+        </div>
+    `;
+
+    const area =
+        document.getElementById("scrollArea");
+
+    area.addEventListener("scroll", () => {
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "scroll" &&
+            area.scrollTop > 80
+        ) {
+            successAction();
+        }
+
+    });
+
+}
+
+
+/* ================= CLAVIER ================= */
+
+function createKeyboardChallenge() {
+
+    challengeContent.innerHTML = `
+        <input
+            id="speedKeyboardInput"
+            class="keyboard-input"
+            placeholder="Écrivez ici..."
+        >
+
+        <div class="keyboard">
+
+            ${[
+                "a","z","e","r","t","y","u","i","o","p",
+                "q","s","d","f","g","h","j","k","l","m",
+                "w","x","c","v","b","n"
+            ].map(letter => `
+                <button
+                    class="key"
+                    data-key="${letter}"
+                >
+                    ${letter.toUpperCase()}
+                </button>
+            `).join("")}
+
+            <button
+                class="key space"
+                data-key=" "
+            >
+                ESPACE
+            </button>
+
+        </div>
+    `;
+
+    const input =
+        document.getElementById("speedKeyboardInput");
+
+    document.querySelectorAll(".key")
+    .forEach(key => {
+
+        key.addEventListener("click", () => {
+
+            input.value += key.dataset.key;
+
+            checkKeyboardAnswer();
+
+        });
+
+    });
+
+    input.addEventListener("input", checkKeyboardAnswer);
+
+    function checkKeyboardAnswer() {
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "type"
+        ) {
+
+            if (
+                input.value.toLowerCase() ===
+                "bonjour"
+            ) {
+                successAction();
+            }
+
+        }
+
+    }
+
+}
+
+
+/* ================= TAP ================= */
+
+function createTapChallenge() {
+
+    challengeContent.innerHTML = `
+        <div
+            id="tapZone"
+            class="touch-zone"
+        >
+            👆<br>
+            Touchez rapidement ici
+        </div>
+    `;
+
+    document.getElementById("tapZone")
+    .addEventListener("click", () => {
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "tap"
+        ) {
+            successAction();
+        }
+
+    });
+
+}
+
+
+/* ================= CONTACTS ================= */
+
+function createContactsChallenge() {
+
+    challengeContent.innerHTML = `
+        <div class="touch-zone">
+            👥<br>
+            Ouvrez l'application Contacts
+        </div>
+    `;
+
+}
+
+
+/* ================= RETOUR ================= */
+
+function createBackChallenge() {
+
+    challengeContent.innerHTML = `
+        <div class="touch-zone">
+            🔙<br>
+            Ouvrez une application puis<br>
+            utilisez le bouton Retour.
+        </div>
+    `;
+
+}
+
+
+/* ================= DEFIS ================= */
+
+const challenges = [
+
+    {
+        title: "Touchez rapidement",
+        instruction:
+            "Touchez le bouton dès qu'il apparaît.",
+        action: "target",
+        create: createTargetChallenge
+    },
+
+    {
+        title: "Encore plus vite !",
+        instruction:
+            "Touchez rapidement le bouton « TOUCHEZ ».",
+        action: "target",
+        create: createTargetChallenge
+    },
+
+    {
+        title: "Double-touchez",
+        instruction:
+            "Faites deux touches rapides au même endroit.",
+        action: "double",
+        create: createDoubleTap
+    },
+
+    {
+        title: "Appui long",
+        instruction:
+            "Gardez votre doigt appuyé environ une seconde.",
+        action: "longpress",
+        create: createLongPress
+    },
+
+    {
+        title: "Glisser-déposer",
+        instruction:
+            "Glissez le bouton bleu jusqu'à la zone verte.",
+        action: "drag",
+        create: createDragChallenge
+    },
+
+    {
+        title: "Faites défiler",
+        instruction:
+            "Faites défiler la page vers le bas.",
+        action: "scroll",
+        create: createScrollChallenge
+    },
+
+    {
+        title: "Ouvrir Messages",
+        instruction:
+            "Depuis l'écran d'accueil, ouvrez l'application 💬 Messages.",
+        action: "messages",
+        create: () => {
+            challengeContent.innerHTML =
+                `<div class="touch-zone">💬<br>Ouvrez Messages</div>`;
+        }
+    },
+
+    {
+        title: "Ouvrir Internet",
+        instruction:
+            "Retournez à l'accueil puis ouvrez 🌐 Internet.",
+        action: "browser",
+        create: () => {
+            challengeContent.innerHTML =
+                `<div class="touch-zone">🌐<br>Ouvrez Internet</div>`;
+        }
+    },
+
+    {
+        title: "Faire une recherche",
+        instruction:
+            "Dans Internet, recherchez rapidement « météo ».",
+        action: "search",
+        create: () => {
+            openPage("browserPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">🔎<br>Recherchez « météo »</div>`;
+        }
+    },
+
+    {
+        title: "Ouvrir Notes",
+        instruction:
+            "Retournez à l'accueil et ouvrez 📝 Notes.",
+        action: "notes",
+        create: () => {
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📝<br>Ouvrez Notes</div>`;
+        }
+    },
+
+    {
+        title: "Copier",
+        instruction:
+            "Dans Notes, appuyez sur « Copier ».",
+        action: "copy",
+        create: () => {
+            openPage("notesPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📋<br>Cliquez sur Copier</div>`;
+        }
+    },
+
+    {
+        title: "Coller",
+        instruction:
+            "Maintenant, utilisez « Coller ».",
+        action: "paste",
+        create: () => {
+            openPage("notesPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📥<br>Cliquez sur Coller</div>`;
+        }
+    },
+
+    {
+        title: "Ouvrir les Réglages",
+        instruction:
+            "Retournez à l'accueil et ouvrez ⚙️ Réglages.",
+        action: "settings",
+        create: () => {
+            challengeContent.innerHTML =
+                `<div class="touch-zone">⚙️<br>Ouvrez Réglages</div>`;
+        }
+    },
+
+    {
+        title: "Activer un réglage",
+        instruction:
+            "Touchez rapidement un bouton de réglage.",
+        action: "switch",
+        create: () => {
+            openPage("settingsPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">⚙️<br>Activez un réglage</div>`;
+        }
+    },
+
+    {
+        title: "Ouvrir Photos",
+        instruction:
+            "Retournez à l'accueil et ouvrez 📷 Photos.",
+        action: "camera",
+        create: () => {
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📷<br>Ouvrez Photos</div>`;
+        }
+    },
+
+    {
+        title: "Prendre une photo",
+        instruction:
+            "Dans Photos, touchez « Prendre une photo ».",
+        action: "photo",
+        create: () => {
+            openPage("cameraPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📸<br>Prenez une photo</div>`;
+        }
+    },
+
+    {
+        title: "Ouvrir Contacts",
+        instruction:
+            "Retournez à l'accueil puis ouvrez 👥 Contacts.",
+        action: "contacts",
+        create: createContactsChallenge
+    },
+
+    {
+        title: "Retour à l'accueil",
+        instruction:
+            "Utilisez le bouton « ‹ » pour revenir à l'accueil.",
+        action: "back",
+        create: () => {
+            openPage("contactsPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">🔙<br>Utilisez Retour</div>`;
+        }
+    },
+
+    {
+        title: "Écrire rapidement",
+        instruction:
+            "Dans Messages, écrivez « Bonjour ».",
+        action: "type",
+        create: () => {
+
+            openPage("messagesPage");
+
+            challengeContent.innerHTML =
+                `<div class="touch-zone">
+                    ⌨️<br>
+                    Écrivez « Bonjour »
+                </div>`;
+
+            const input =
+                document.getElementById("messageInput");
+
+            input.focus();
+
+            input.addEventListener("input", function check() {
+
+                if (
+                    running &&
+                    challenges[currentChallenge].action === "type"
+                ) {
+
+                    if (
+                        input.value.trim().toLowerCase() ===
+                        "bonjour"
+                    ) {
+                        successAction();
+                        input.removeEventListener("input", check);
+                    }
+
+                }
+
+            });
+
+        }
+    },
+
+    {
+        title: "Envoyer le message",
+        instruction:
+            "Touchez le bouton ➤ pour envoyer votre message.",
+        action: "sendMessage",
+        create: () => {
+            openPage("messagesPage");
+            document.getElementById("messageInput").value =
+                "Bonjour";
+            challengeContent.innerHTML =
+                `<div class="touch-zone">➤<br>Envoyez le message</div>`;
+        }
+    },
+
+    {
+        title: "Encore une cible !",
+        instruction:
+            "Touchez rapidement la cible.",
+        action: "target",
+        create: createTargetChallenge
+    },
+
+    {
+        title: "Double-tap express",
+        instruction:
+            "Double-touchez rapidement la zone.",
+        action: "double",
+        create: createDoubleTap
+    },
+
+    {
+        title: "Appui long express",
+        instruction:
+            "Faites un appui long.",
+        action: "longpress",
+        create: createLongPress
+    },
+
+    {
+        title: "Glisser rapidement",
+        instruction:
+            "Glissez le bouton bleu vers la zone verte.",
+        action: "drag",
+        create: createDragChallenge
+    },
+
+    {
+        title: "Défilement express",
+        instruction:
+            "Faites défiler rapidement vers le bas.",
+        action: "scroll",
+        create: createScrollChallenge
+    },
+
+    {
+        title: "Recherche express",
+        instruction:
+            "Ouvrez Internet et recherchez « météo ».",
+        action: "search",
+        create: () => {
+            openPage("browserPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">🔎<br>Recherche : météo</div>`;
+        }
+    },
+
+    {
+        title: "Réglage express",
+        instruction:
+            "Ouvrez Réglages et activez un bouton.",
+        action: "switch",
+        create: () => {
+            openPage("settingsPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">⚙️<br>Activez un réglage</div>`;
+        }
+    },
+
+    {
+        title: "Photo express",
+        instruction:
+            "Ouvrez Photos et prenez une photo.",
+        action: "photo",
+        create: () => {
+            openPage("cameraPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">📸<br>Prenez la photo</div>`;
+        }
+    },
+
+    {
+        title: "Défi multitâche",
+        instruction:
+            "Ouvrez Messages puis revenez à l'accueil.",
+        action: "back",
+        create: () => {
+            openPage("messagesPage");
+            challengeContent.innerHTML =
+                `<div class="touch-zone">
+                    🔀<br>
+                    Ouvrez Messages puis utilisez Retour
+                </div>`;
+        }
+    },
+
+    {
+        title: "⚡ GRAND DÉFI FINAL",
+        instruction:
+            "Dernier défi ! Ouvrez Internet, recherchez « météo », puis revenez à l'accueil.",
+        action: "final",
+        create: () => {
+
+            goHome();
+
+            challengeContent.innerHTML = `
+                <div class="touch-zone">
+                    🏆<br>
+                    Parcours final :<br>
+                    Internet → météo → Retour
+                </div>
+            `;
+
+            window.finalStep = 0;
+
+        }
+    }
+
+];
+
+
+/* ================= FINAL ================= */
+
+document.getElementById("appBrowser")
+.addEventListener("click", () => {
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "final" &&
+        window.finalStep === 0
+    ) {
+
+        window.finalStep = 1;
+
+        openPage("browserPage");
+
+        showFeedback(
+            "info",
+            "🌐 Très bien ! Maintenant recherchez « météo »."
+        );
+
+    }
+
+});
+
+document.getElementById("searchButton")
+.addEventListener("click", () => {
+
+    if (
+        running &&
+        challenges[currentChallenge].action === "final" &&
+        window.finalStep === 1
+    ) {
+
+        const input =
+            document.getElementById("searchInput");
+
+        if (
+            input.value.trim().toLowerCase() === "météo" ||
+            input.value.trim().toLowerCase() === "meteo"
+        ) {
+
+            window.finalStep = 2;
+
+            showSearchResults();
+
+            showFeedback(
+                "info",
+                "🌤️ Parfait ! Maintenant utilisez Retour."
+            );
+
+        } else {
+
+            failAction(
+                "Recherchez « météo »."
+            );
+
+        }
+
+    }
+
+});
+
+document.querySelectorAll("[data-back]")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        if (
+            running &&
+            challenges[currentChallenge].action === "final" &&
+            window.finalStep === 2
+        ) {
+
+            window.finalStep = 3;
+
+            successAction(200);
+
+        }
+
+    });
+
+});
+
+
+/* ================= CHARGEMENT ================= */
+
+function loadChallenge() {
+
+    if (currentChallenge >= totalChallenges) {
+
+        finishGame();
+
+        return;
+    }
+
+    running = false;
+
+    clearInterval(timerInterval);
+
+    timerEl.textContent = "0,00 s";
+
+    timerEl.classList.remove("warning");
+
+    challengeNumber.textContent =
+        "Défi " +
+        (currentChallenge + 1) +
+        " sur " +
+        totalChallenges;
+
+    const challenge =
+        challenges[currentChallenge];
+
+    challengeTitle.textContent =
+        challenge.title;
+
+    instruction.textContent =
+        challenge.instruction;
+
+    challengeContent.innerHTML = "";
+
+    clearFeedback();
+
+    startButton.style.display = "inline-block";
+    nextButton.style.display = "none";
+
+    updateProgress();
+
+    goHome();
+
+}
+
+function startChallenge() {
+
+    running = true;
+
+    clearFeedback();
+
+    startButton.style.display = "none";
+
+    nextButton.style.display = "none";
+
+    const challenge =
+        challenges[currentChallenge];
+
+    challengeContent.innerHTML = "";
+
+    challenge.create();
+
+    startTimer();
+
+}
+
+function nextChallenge() {
+
+    currentChallenge++;
+
+    loadChallenge();
+
+}
+
+function resetGame() {
+
+    currentChallenge = 0;
+    score = 0;
+    errors = 0;
+    challengeTimes = [];
+
+    clearInterval(timerInterval);
+
+    running = false;
+
+    updateStats();
+
+    progressBar.style.width = "0%";
+
+    gameArea.style.display = "block";
+    resultScreen.style.display = "none";
+
+    loadChallenge();
+
+}
+
+function finishGame() {
+
+    running = false;
+
+    clearInterval(timerInterval);
+
+    gameArea.style.display = "none";
+    resultScreen.style.display = "block";
+
+    progressBar.style.width = "100%";
+
+    document.getElementById("finalScore").textContent =
+        score + " points";
+
+    let message = "";
+
+    if (score >= 3500) {
+
+        message =
+            "🌟 Exceptionnel ! Vous êtes très à l'aise avec les gestes du smartphone. Votre rapidité est excellente !";
+
+    } else if (score >= 2500) {
+
+        message =
+            "👏 Très bon travail ! Vous maîtrisez de nombreuses manipulations et vous gagnez en rapidité.";
+
+    } else if (score >= 1500) {
+
+        message =
+            "😊 Bravo ! Vous avez fait beaucoup de progrès. Continuez à pratiquer tranquillement.";
+
+    } else {
+
+        message =
+            "👍 Bravo d'avoir terminé ! La vitesse viendra avec la pratique. Refaites le jeu pour améliorer votre score.";
+
+    }
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+
+}
+
+
+/* ================= BOUTONS ================= */
+
+startButton.addEventListener(
+    "click",
+    startChallenge
+);
+
+nextButton.addEventListener(
+    "click",
+    nextChallenge
+);
+
+resetButton.addEventListener(
+    "click",
+    resetGame
+);
+
+document.getElementById("restartFinal")
+.addEventListener(
+    "click",
+    resetGame
+);
+
+
+/* ================= INITIALISATION ================= */
+
+updateStats();
+loadChallenge();
+
+</script>
+
+</body>
+</html>
