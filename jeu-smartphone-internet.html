@@ -1,0 +1,3080 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeu Internet - Smartphone & Tablette</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #203858;
+    }
+
+    header {
+        background: #1f3656;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        font-size: 17px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 20px 50px;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .intro h2 {
+        margin: 0 0 10px;
+        font-size: 32px;
+    }
+
+    .intro p {
+        margin: 0;
+        color: #617087;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .game-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    /* =========================================
+       SMARTPHONE
+    ========================================= */
+
+    .phone {
+        width: 330px;
+        max-width: 100%;
+        margin: auto;
+        padding: 14px;
+        background: #111;
+        border-radius: 38px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .phone-screen {
+        height: 650px;
+        border-radius: 28px;
+        overflow: hidden;
+        background: white;
+        position: relative;
+    }
+
+    .phone-top {
+        height: 35px;
+        background: #111;
+        position: relative;
+    }
+
+    .speaker {
+        position: absolute;
+        width: 70px;
+        height: 8px;
+        background: #333;
+        border-radius: 10px;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* =========================================
+       NAVIGATEUR
+    ========================================= */
+
+    .browser {
+        height: 615px;
+        display: flex;
+        flex-direction: column;
+        background: #f8fafc;
+    }
+
+    .browser-top {
+        background: #eef1f5;
+        padding: 8px;
+        border-bottom: 1px solid #d8dee7;
+    }
+
+    .browser-controls {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 7px;
+    }
+
+    .browser-button {
+        width: 34px;
+        height: 34px;
+        border: none;
+        border-radius: 50%;
+        background: white;
+        color: #43536a;
+        font-size: 18px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .browser-button:hover {
+        background: #e5ebf2;
+    }
+
+    .address-bar {
+        flex: 1;
+        min-width: 0;
+        height: 34px;
+        border: 1px solid #ccd4df;
+        border-radius: 18px;
+        background: white;
+        padding: 7px 12px;
+        font-size: 13px;
+        outline: none;
+    }
+
+    .address-bar:focus {
+        border-color: #3975c6;
+    }
+
+    .browser-content {
+        flex: 1;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    /* =========================================
+       PAGE D'ACCUEIL
+    ========================================= */
+
+    .home-page {
+        padding: 22px 15px;
+    }
+
+    .browser-logo {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #3975c6;
+        margin: 15px 0 20px;
+    }
+
+    .search-box {
+        display: flex;
+        gap: 6px;
+        background: white;
+        border: 1px solid #cdd5df;
+        border-radius: 24px;
+        padding: 5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .search-input {
+        flex: 1;
+        min-width: 0;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 15px;
+        background: transparent;
+    }
+
+    .search-button {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 50%;
+        background: #3975c6;
+        color: white;
+        font-size: 19px;
+        cursor: pointer;
+    }
+
+    .quick-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .quick-link {
+        background: white;
+        border: 1px solid #e0e5ec;
+        border-radius: 12px;
+        padding: 14px 8px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .quick-link:hover {
+        background: #edf4fc;
+    }
+
+    .quick-link-icon {
+        display: block;
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+
+    /* =========================================
+       RÉSULTATS
+    ========================================= */
+
+    .results-page {
+        display: none;
+        padding: 14px;
+    }
+
+    .results-page.active {
+        display: block;
+    }
+
+    .search-summary {
+        font-size: 13px;
+        color: #68768a;
+        margin-bottom: 15px;
+    }
+
+    .result-card {
+        background: white;
+        border-radius: 12px;
+        padding: 13px;
+        margin-bottom: 11px;
+        border: 1px solid #e2e7ed;
+        cursor: pointer;
+    }
+
+    .result-card:hover {
+        background: #f5f9ff;
+    }
+
+    .result-site {
+        color: #5b6d83;
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+
+    .result-title {
+        color: #2564aa;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .result-description {
+        color: #5e6c7f;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .sponsored {
+        border-left: 5px solid #d4a329;
+    }
+
+    .sponsored-label {
+        display: inline-block;
+        background: #fff3c9;
+        color: #725d1f;
+        border-radius: 5px;
+        padding: 3px 6px;
+        font-size: 10px;
+        margin-bottom: 6px;
+    }
+
+    /* =========================================
+       PAGES
+    ========================================= */
+
+    .web-page {
+        display: none;
+        padding: 15px;
+    }
+
+    .web-page.active {
+        display: block;
+    }
+
+    .web-page h2 {
+        margin: 5px 0 12px;
+        font-size: 22px;
+        color: #203858;
+    }
+
+    .web-page h3 {
+        font-size: 18px;
+        margin: 20px 0 8px;
+    }
+
+    .web-page p {
+        color: #53647a;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .article-box {
+        background: white;
+        border-radius: 14px;
+        padding: 16px;
+        border: 1px solid #e0e5eb;
+        margin-bottom: 14px;
+    }
+
+    .info-line {
+        background: #eef7ef;
+        color: #316444;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 12px 0;
+        font-size: 14px;
+    }
+
+    .fake-link {
+        color: #2468ad;
+        text-decoration: underline;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .fake-button {
+        display: inline-block;
+        background: #3975c6;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        padding: 10px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+
+    .fake-button:hover {
+        background: #285d9e;
+    }
+
+    /* =========================================
+       FAVORIS
+    ========================================= */
+
+    .favorites-page {
+        display: none;
+        padding: 18px 15px;
+    }
+
+    .favorites-page.active {
+        display: block;
+    }
+
+    .favorite {
+        background: white;
+        border: 1px solid #e0e5eb;
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .favorite strong {
+        display: block;
+        color: #2564aa;
+        margin-bottom: 5px;
+    }
+
+    .favorite small {
+        color: #68768a;
+    }
+
+    /* =========================================
+       MENU
+    ========================================= */
+
+    .browser-menu {
+        position: absolute;
+        top: 78px;
+        right: 8px;
+        width: 190px;
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        padding: 8px;
+        z-index: 50;
+        display: none;
+    }
+
+    .browser-menu.active {
+        display: block;
+    }
+
+    .menu-item {
+        width: 100%;
+        border: none;
+        background: white;
+        padding: 12px;
+        text-align: left;
+        border-radius: 9px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .menu-item:hover {
+        background: #f0f4f9;
+    }
+
+    /* =========================================
+       COOKIE / PUBLICITÉ
+    ========================================= */
+
+    .cookie-box {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background: white;
+        border-radius: 14px;
+        padding: 13px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        z-index: 45;
+        display: none;
+    }
+
+    .cookie-box.active {
+        display: block;
+    }
+
+    .cookie-box p {
+        font-size: 12px;
+        color: #59687a;
+        line-height: 1.4;
+        margin: 0 0 10px;
+    }
+
+    .cookie-buttons {
+        display: flex;
+        gap: 7px;
+    }
+
+    .cookie-buttons button {
+        flex: 1;
+        border: none;
+        border-radius: 8px;
+        padding: 9px 5px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .cookie-accept {
+        background: #3975c6;
+        color: white;
+    }
+
+    .cookie-refuse {
+        background: #edf1f5;
+        color: #43536a;
+    }
+
+    /* =========================================
+       PANNEAU DE JEU
+    ========================================= */
+
+    .game-panel {
+        background: white;
+        border-radius: 22px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(31,54,86,0.08);
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .stat {
+        background: #f4f7fb;
+        border-radius: 15px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .stat-label {
+        display: block;
+        color: #617087;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .progress-container {
+        margin-bottom: 28px;
+    }
+
+    .progress-text {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .progress-bar {
+        height: 14px;
+        background: #e4e9f0;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: #3975c6;
+        transition: width 0.3s;
+    }
+
+    .challenge {
+        background: linear-gradient(135deg, #eaf2ff, #f8fbff);
+        border-left: 6px solid #3975c6;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .challenge-number {
+        color: #3975c6;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .challenge h2 {
+        margin: 0 0 12px;
+        font-size: 28px;
+    }
+
+    .challenge p {
+        margin: 0;
+        color: #4e6078;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .help {
+        margin-top: 15px;
+        padding: 15px;
+        background: #fff8df;
+        border-radius: 12px;
+        color: #705f2e;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .feedback {
+        min-height: 65px;
+        padding: 18px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        background: #f4f6f9;
+        color: #526174;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .feedback.success {
+        background: #e8f6ea;
+        color: #27623a;
+    }
+
+    .feedback.error {
+        background: #fff0f0;
+        color: #a43d3d;
+    }
+
+    .next-button,
+    .reset-button {
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        padding: 17px;
+        font-size: 19px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .next-button {
+        background: #3975c6;
+        color: white;
+        margin-bottom: 12px;
+    }
+
+    .next-button:hover {
+        background: #285d9e;
+    }
+
+    .next-button:disabled {
+        background: #aeb9c8;
+        cursor: not-allowed;
+    }
+
+    .reset-button {
+        background: #edf1f6;
+        color: #42536b;
+    }
+
+    .reset-button:hover {
+        background: #dfe5ed;
+    }
+
+    .tip {
+        margin-top: 30px;
+        padding: 22px;
+        background: #eef7ef;
+        border-radius: 16px;
+        color: #2d6941;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    /* =========================================
+       TOAST
+    ========================================= */
+
+    .toast {
+        position: absolute;
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.75);
+        color: white;
+        padding: 9px 15px;
+        border-radius: 20px;
+        z-index: 80;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .toast.show {
+        opacity: 1;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 850px) {
+
+        .game-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .phone {
+            width: 330px;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        .container {
+            padding: 20px 12px 40px;
+        }
+
+        .intro h2 {
+            font-size: 27px;
+        }
+
+        .game-panel {
+            padding: 20px;
+        }
+
+        .stats {
+            gap: 8px;
+        }
+
+        .stat {
+            padding: 12px 5px;
+        }
+
+        .stat-value {
+            font-size: 21px;
+        }
+
+        .challenge {
+            padding: 20px;
+        }
+
+        .challenge h2 {
+            font-size: 24px;
+        }
+
+        .challenge p {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌐 Jeu Internet</h1>
+    <p>Apprenez à utiliser Internet sur smartphone et tablette</p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>📱 Entraînez-vous à utiliser Internet</h2>
+
+        <p>
+            Apprenez à faire une recherche, ouvrir un résultat, revenir en arrière,
+            utiliser un favori et reconnaître les éléments importants d'une page Internet.
+            Tout est simulé : aucune recherche réelle n'est effectuée.
+        </p>
+    </div>
+
+    <div class="game-layout">
+
+        <!-- =====================================
+             SMARTPHONE
+        ====================================== -->
+
+        <div class="phone">
+
+            <div class="phone-screen">
+
+                <div class="phone-top">
+                    <div class="speaker"></div>
+                </div>
+
+                <div class="browser">
+
+                    <!-- BARRE NAVIGATEUR -->
+
+                    <div class="browser-top">
+
+                        <div class="browser-controls">
+
+                            <button
+                                class="browser-button"
+                                id="browserBack"
+                                title="Retour">
+                                ‹
+                            </button>
+
+                            <button
+                                class="browser-button"
+                                id="browserForward"
+                                title="Suivant">
+                                ›
+                            </button>
+
+                            <button
+                                class="browser-button"
+                                id="browserRefresh"
+                                title="Actualiser">
+                                ↻
+                            </button>
+
+                            <input
+                                type="text"
+                                class="address-bar"
+                                id="addressBar"
+                                value="https://www.internet.fr"
+                                autocomplete="off"
+                            >
+
+                            <button
+                                class="browser-button"
+                                id="browserMenu"
+                                title="Menu">
+                                ⋮
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTENU -->
+
+                    <div class="browser-content"
+                         id="browserContent">
+
+                        <!-- PAGE ACCUEIL -->
+
+                        <div class="home-page"
+                             id="homePage">
+
+                            <div class="browser-logo">
+                                🔎 Recherche
+                            </div>
+
+                            <div class="search-box">
+
+                                <input
+                                    type="text"
+                                    class="search-input"
+                                    id="searchInput"
+                                    placeholder="Rechercher sur Internet..."
+                                    autocomplete="off"
+                                >
+
+                                <button
+                                    class="search-button"
+                                    id="searchButton">
+                                    🔍
+                                </button>
+
+                            </div>
+
+                            <div class="quick-links">
+
+                                <div class="quick-link"
+                                     data-search="météo">
+                                    <span class="quick-link-icon">
+                                        🌤️
+                                    </span>
+                                    Météo
+                                </div>
+
+                                <div class="quick-link"
+                                     data-search="actualités">
+                                    <span class="quick-link-icon">
+                                        📰
+                                    </span>
+                                    Actualités
+                                </div>
+
+                                <div class="quick-link"
+                                     data-search="recette">
+                                    <span class="quick-link-icon">
+                                        🍲
+                                    </span>
+                                    Recettes
+                                </div>
+
+                                <div class="quick-link"
+                                     data-search="voyage">
+                                    <span class="quick-link-icon">
+                                        ✈️
+                                    </span>
+                                    Voyage
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- RÉSULTATS -->
+
+                        <div class="results-page"
+                             id="resultsPage">
+
+                            <div class="search-summary"
+                                 id="searchSummary">
+                                Résultats de recherche
+                            </div>
+
+                            <div id="resultsList"></div>
+
+                        </div>
+
+
+                        <!-- PAGE MÉTÉO -->
+
+                        <div class="web-page"
+                             id="weatherPage">
+
+                            <div class="article-box">
+
+                                <h2>🌤️ Météo aujourd'hui</h2>
+
+                                <p>
+                                    Voici les prévisions météo de la journée.
+                                </p>
+
+                                <div class="info-line">
+                                    ☀️ Température : 22 °C
+                                </div>
+
+                                <p>
+                                    Matin : soleil avec quelques nuages.
+                                </p>
+
+                                <p>
+                                    Après-midi : temps agréable.
+                                </p>
+
+                                <p>
+                                    Soirée : ciel dégagé.
+                                </p>
+
+                                <button class="fake-button"
+                                        id="weatherMore">
+                                    Voir les prévisions
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAGE ACTUALITÉS -->
+
+                        <div class="web-page"
+                             id="newsPage">
+
+                            <div class="article-box">
+
+                                <h2>📰 Actualités</h2>
+
+                                <h3>
+                                    Les nouvelles du jour
+                                </h3>
+
+                                <p>
+                                    Voici quelques informations importantes
+                                    présentées sous forme de résumé.
+                                </p>
+
+                                <p>
+                                    <span class="fake-link"
+                                          id="newsLink">
+                                        Lire l'article complet
+                                    </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAGE RECETTE -->
+
+                        <div class="web-page"
+                             id="recipePage">
+
+                            <div class="article-box">
+
+                                <h2>🍲 Recette facile</h2>
+
+                                <h3>
+                                    Tarte aux pommes
+                                </h3>
+
+                                <p>
+                                    Une recette simple à réaliser à la maison.
+                                </p>
+
+                                <div class="info-line">
+                                    🥧 Temps de préparation : 20 minutes
+                                </div>
+
+                                <p>
+                                    Ingrédients : pommes, farine, beurre,
+                                    sucre et œufs.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAGE VOYAGE -->
+
+                        <div class="web-page"
+                             id="travelPage">
+
+                            <div class="article-box">
+
+                                <h2>✈️ Préparer un voyage</h2>
+
+                                <p>
+                                    Découvrez des conseils pour préparer
+                                    votre prochain voyage.
+                                </p>
+
+                                <p>
+                                    <span class="fake-link"
+                                          id="travelLink">
+                                        Voir les conseils
+                                    </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAGE FAVORIS -->
+
+                        <div class="favorites-page"
+                             id="favoritesPage">
+
+                            <h2>
+                                ⭐ Mes favoris
+                            </h2>
+
+                            <div class="favorite"
+                                 id="favoriteWeather">
+
+                                <strong>
+                                    🌤️ Météo
+                                </strong>
+
+                                <small>
+                                    Prévisions météo
+                                </small>
+
+                            </div>
+
+                            <div class="favorite"
+                                 id="favoriteNews">
+
+                                <strong>
+                                    📰 Actualités
+                                </strong>
+
+                                <small>
+                                    Les nouvelles du jour
+                                </small>
+
+                            </div>
+
+                            <div class="favorite"
+                                 id="favoriteRecipe">
+
+                                <strong>
+                                    🍲 Recettes
+                                </strong>
+
+                                <small>
+                                    Idées de recettes
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     MENU NAVIGATEUR
+                ================================== -->
+
+                <div class="browser-menu"
+                     id="browserMenuPanel">
+
+                    <button class="menu-item"
+                            id="menuFavorites">
+                        ⭐ Mes favoris
+                    </button>
+
+                    <button class="menu-item"
+                            id="menuHome">
+                        🏠 Accueil
+                    </button>
+
+                    <button class="menu-item"
+                            id="menuClose">
+                        ✖ Fermer le menu
+                    </button>
+
+                </div>
+
+
+                <!-- =================================
+                     COOKIE
+                ================================== -->
+
+                <div class="cookie-box"
+                     id="cookieBox">
+
+                    <p>
+                        🍪 Ce site utilise des cookies pour améliorer
+                        votre expérience de navigation.
+                    </p>
+
+                    <div class="cookie-buttons">
+
+                        <button
+                            class="cookie-accept"
+                            id="cookieAccept">
+                            Accepter
+                        </button>
+
+                        <button
+                            class="cookie-refuse"
+                            id="cookieRefuse">
+                            Refuser
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="toast"
+                     id="toast">
+                    Action effectuée
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             PANNEAU JEU
+        ====================================== -->
+
+        <div class="game-panel">
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        Score
+                    </span>
+
+                    <span class="stat-value"
+                          id="score">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        Erreurs
+                    </span>
+
+                    <span class="stat-value"
+                          id="errors">
+                        0
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        Défi
+                    </span>
+
+                    <span class="stat-value">
+                        <span id="currentChallenge">
+                            1
+                        </span>/30
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-text">
+
+                    <span>
+                        Progression
+                    </span>
+
+                    <span id="progressText">
+                        0 %
+                    </span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"
+                         id="progressFill">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="challenge">
+
+                <div class="challenge-number"
+                     id="challengeNumber">
+                    DÉFI 1
+                </div>
+
+                <h2 id="challengeTitle">
+                    Ouvrez la barre de recherche
+                </h2>
+
+                <p id="challengeText">
+                    Touchez la zone « Rechercher sur Internet... ».
+                </p>
+
+                <div class="help"
+                     id="challengeHelp">
+                    💡 La barre de recherche permet d'écrire ce que vous
+                    souhaitez chercher sur Internet.
+                </div>
+
+            </div>
+
+
+            <div class="feedback"
+                 id="feedback">
+
+                👆 Réalisez l'action demandée sur le smartphone.
+
+            </div>
+
+
+            <button class="next-button"
+                    id="nextButton"
+                    disabled>
+                ➡️ Défi suivant
+            </button>
+
+
+            <button class="reset-button"
+                    id="resetButton">
+                🔄 Recommencer le jeu
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="tip">
+
+        <strong>💡 Conseil Internet :</strong>
+
+        lorsque vous faites une recherche, regardez plusieurs résultats
+        et vérifiez si le site semble fiable avant de lui communiquer
+        des informations personnelles.
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   LES 30 DÉFIS
+========================================= */
+
+const challenges = [
+
+    {
+        title: "Ouvrez la barre de recherche",
+        text: "Touchez la zone « Rechercher sur Internet... ».",
+        help: "💡 C'est ici que vous écrivez ce que vous voulez chercher.",
+        action: "focusSearch"
+    },
+
+    {
+        title: "Recherchez la météo",
+        text: "Écrivez « météo » puis lancez la recherche.",
+        help: "💡 Écrivez le mot dans la barre puis appuyez sur 🔍.",
+        action: "searchWeather"
+    },
+
+    {
+        title: "Ouvrez le résultat météo",
+        text: "Dans les résultats, ouvrez le résultat « Météo du jour ».",
+        help: "💡 Touchez le titre du résultat.",
+        action: "openWeather"
+    },
+
+    {
+        title: "Revenez en arrière",
+        text: "Utilisez le bouton ‹ du navigateur pour revenir aux résultats.",
+        help: "💡 Le bouton ‹ permet de revenir à la page précédente.",
+        action: "backResults"
+    },
+
+    {
+        title: "Recherchez une recette",
+        text: "Utilisez la barre de recherche pour rechercher « recette ».",
+        help: "💡 Touchez la barre, écrivez recette puis lancez la recherche.",
+        action: "searchRecipe"
+    },
+
+    {
+        title: "Ouvrez une recette",
+        text: "Ouvrez le résultat « Recette facile ».",
+        help: "💡 Touchez le résultat correspondant à votre recherche.",
+        action: "openRecipe"
+    },
+
+    {
+        title: "Faites défiler la page",
+        text: "Faites glisser la page vers le haut pour découvrir la suite.",
+        help: "💡 Posez le doigt sur la page puis faites-le glisser vers le haut.",
+        action: "scrollPage"
+    },
+
+    {
+        title: "Revenez à l'accueil",
+        text: "Utilisez le bouton ‹ jusqu'à revenir à la page d'accueil.",
+        help: "💡 Plusieurs appuis peuvent être nécessaires.",
+        action: "backHome"
+    },
+
+    {
+        title: "Utilisez un raccourci",
+        text: "Touchez le raccourci 🌤️ Météo sur la page d'accueil.",
+        help: "💡 Les raccourcis permettent d'accéder rapidement à certaines pages.",
+        action: "quickWeather"
+    },
+
+    {
+        title: "Lisez une information",
+        text: "Sur la page météo, trouvez la température affichée.",
+        help: "💡 Cherchez l'information « Température : 22 °C ».",
+        action: "findTemperature"
+    },
+
+    {
+        title: "Revenez à l'accueil",
+        text: "Utilisez le bouton ‹ du navigateur.",
+        help: "💡 Le bouton retour se trouve en haut du navigateur.",
+        action: "backHome2"
+    },
+
+    {
+        title: "Ouvrez le menu",
+        text: "Touchez les trois petits points ⋮ du navigateur.",
+        help: "💡 Ce bouton ouvre généralement des fonctions supplémentaires.",
+        action: "openMenu"
+    },
+
+    {
+        title: "Ouvrez les favoris",
+        text: "Dans le menu, choisissez ⭐ Mes favoris.",
+        help: "💡 Les favoris permettent de retrouver facilement des sites.",
+        action: "openFavorites"
+    },
+
+    {
+        title: "Choisissez le favori météo",
+        text: "Touchez le favori « 🌤️ Météo ».",
+        help: "💡 Un favori est un raccourci vers une page enregistrée.",
+        action: "favoriteWeather"
+    },
+
+    {
+        title: "Revenez à l'accueil",
+        text: "Revenez à la page d'accueil.",
+        help: "💡 Vous pouvez utiliser le bouton ‹.",
+        action: "homeAfterFavorite"
+    },
+
+    {
+        title: "Faites une recherche d'actualités",
+        text: "Recherchez « actualités ».",
+        help: "💡 Utilisez la barre de recherche.",
+        action: "searchNews"
+    },
+
+    {
+        title: "Repérez une publicité",
+        text: "Dans les résultats, trouvez le résultat marqué « Publicité ».",
+        help: "💡 Une publicité peut apparaître parmi les résultats.",
+        action: "findAd"
+    },
+
+    {
+        title: "N'ouvrez pas la publicité",
+        text: "Touchez le résultat normal « Actualités du jour ».",
+        help: "💡 Comparez les résultats et choisissez celui qui n'est pas marqué publicité.",
+        action: "openNews"
+    },
+
+    {
+        title: "Trouvez un lien",
+        text: "Sur la page d'actualités, trouvez le lien « Lire l'article complet ».",
+        help: "💡 Un lien est souvent reconnaissable à son texte souligné.",
+        action: "findLink"
+    },
+
+    {
+        title: "Ouvrez le lien",
+        text: "Touchez « Lire l'article complet ».",
+        help: "💡 Un lien permet d'ouvrir une autre page.",
+        action: "openLink"
+    },
+
+    {
+        title: "Revenez en arrière",
+        text: "Utilisez le bouton ‹.",
+        help: "💡 Retournez à la page précédente.",
+        action: "backAfterLink"
+    },
+
+    {
+        title: "Recherchez un voyage",
+        text: "Recherchez « voyage ».",
+        help: "💡 Écrivez voyage dans la barre de recherche.",
+        action: "searchTravel"
+    },
+
+    {
+        title: "Ouvrez le résultat voyage",
+        text: "Ouvrez « Préparer un voyage ».",
+        help: "💡 Touchez le résultat correspondant.",
+        action: "openTravel"
+    },
+
+    {
+        title: "Trouvez un lien",
+        text: "Sur la page voyage, trouvez « Voir les conseils ».",
+        help: "💡 Regardez le texte bleu souligné.",
+        action: "findTravelLink"
+    },
+
+    {
+        title: "Ouvrez le lien",
+        text: "Touchez « Voir les conseils ».",
+        help: "💡 Les liens permettent de naviguer vers d'autres contenus.",
+        action: "openTravelLink"
+    },
+
+    {
+        title: "Revenez à l'accueil",
+        text: "Revenez à la page d'accueil.",
+        help: "💡 Utilisez le bouton retour.",
+        action: "finalHome"
+    },
+
+    {
+        title: "Ouvrez le menu",
+        text: "Ouvrez le menu ⋮ du navigateur.",
+        help: "💡 Cherchez les trois petits points.",
+        action: "finalMenu"
+    },
+
+    {
+        title: "Fermez le menu",
+        text: "Fermez le menu du navigateur.",
+        help: "💡 Vous pouvez utiliser « ✖ Fermer le menu ».",
+        action: "closeMenu"
+    },
+
+    {
+        title: "Comprenez les cookies",
+        text: "Si une fenêtre de cookies apparaît, choisissez « Refuser ».",
+        help: "💡 Dans ce jeu, les deux choix fonctionnent, mais apprenez à reconnaître cette fenêtre.",
+        action: "cookies"
+    },
+
+    {
+        title: "🎉 Défi final",
+        text: "Recherchez « météo » puis ouvrez le résultat « Météo du jour ».",
+        help: "💡 Utilisez tout ce que vous avez appris : recherche puis sélection du bon résultat.",
+        action: "finalChallenge"
+    }
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+let score = 0;
+let errors = 0;
+
+let currentPage = "home";
+let lastSearch = "";
+let menuOpened = false;
+let cookieHandled = false;
+let scrollDone = false;
+let linkOpened = false;
+
+
+/* =========================================
+   ÉLÉMENTS
+========================================= */
+
+const scoreElement =
+    document.getElementById("score");
+
+const errorsElement =
+    document.getElementById("errors");
+
+const currentChallengeElement =
+    document.getElementById("currentChallenge");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const challengeNumber =
+    document.getElementById("challengeNumber");
+
+const challengeTitle =
+    document.getElementById("challengeTitle");
+
+const challengeText =
+    document.getElementById("challengeText");
+
+const challengeHelp =
+    document.getElementById("challengeHelp");
+
+const feedback =
+    document.getElementById("feedback");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const addressBar =
+    document.getElementById("addressBar");
+
+const browserContent =
+    document.getElementById("browserContent");
+
+const homePage =
+    document.getElementById("homePage");
+
+const resultsPage =
+    document.getElementById("resultsPage");
+
+const resultsList =
+    document.getElementById("resultsList");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const searchButton =
+    document.getElementById("searchButton");
+
+const browserBack =
+    document.getElementById("browserBack");
+
+const browserForward =
+    document.getElementById("browserForward");
+
+const browserRefresh =
+    document.getElementById("browserRefresh");
+
+const browserMenu =
+    document.getElementById("browserMenu");
+
+const browserMenuPanel =
+    document.getElementById("browserMenuPanel");
+
+const weatherPage =
+    document.getElementById("weatherPage");
+
+const newsPage =
+    document.getElementById("newsPage");
+
+const recipePage =
+    document.getElementById("recipePage");
+
+const travelPage =
+    document.getElementById("travelPage");
+
+const favoritesPage =
+    document.getElementById("favoritesPage");
+
+const cookieBox =
+    document.getElementById("cookieBox");
+
+const toast =
+    document.getElementById("toast");
+
+
+/* =========================================
+   CHARGEMENT D'UN DÉFI
+========================================= */
+
+function loadChallenge() {
+
+    const challenge =
+        challenges[current];
+
+    challengeNumber.textContent =
+        "DÉFI " + (current + 1);
+
+    challengeTitle.textContent =
+        challenge.title;
+
+    challengeText.textContent =
+        challenge.text;
+
+    challengeHelp.textContent =
+        challenge.help;
+
+    currentChallengeElement.textContent =
+        current + 1;
+
+    const progress =
+        Math.round(
+            (current / challenges.length) * 100
+        );
+
+    progressText.textContent =
+        progress + " %";
+
+    progressFill.style.width =
+        progress + "%";
+
+    feedback.className =
+        "feedback";
+
+    feedback.textContent =
+        "👆 Réalisez l'action demandée sur le smartphone.";
+
+    nextButton.disabled =
+        true;
+
+    scrollDone =
+        false;
+
+    linkOpened =
+        false;
+
+}
+
+
+/* =========================================
+   SUCCÈS
+========================================= */
+
+function success(message) {
+
+    if (!nextButton.disabled) {
+        return;
+    }
+
+    score += 10;
+
+    scoreElement.textContent =
+        score;
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "✅ " + message;
+
+    nextButton.disabled =
+        false;
+
+}
+
+
+/* =========================================
+   ERREUR
+========================================= */
+
+function error(message) {
+
+    errors++;
+
+    errorsElement.textContent =
+        errors;
+
+    feedback.className =
+        "feedback error";
+
+    feedback.textContent =
+        "❌ " + message;
+
+}
+
+
+/* =========================================
+   AFFICHER UNE PAGE
+========================================= */
+
+function hideAllPages() {
+
+    homePage.style.display =
+        "none";
+
+    resultsPage.classList.remove(
+        "active"
+    );
+
+    weatherPage.classList.remove(
+        "active"
+    );
+
+    newsPage.classList.remove(
+        "active"
+    );
+
+    recipePage.classList.remove(
+        "active"
+    );
+
+    travelPage.classList.remove(
+        "active"
+    );
+
+    favoritesPage.classList.remove(
+        "active"
+    );
+
+}
+
+
+function showHome() {
+
+    hideAllPages();
+
+    homePage.style.display =
+        "block";
+
+    currentPage =
+        "home";
+
+    addressBar.value =
+        "https://www.internet.fr";
+
+    browserContent.scrollTop =
+        0;
+
+}
+
+
+function showResults(search) {
+
+    hideAllPages();
+
+    resultsPage.classList.add(
+        "active"
+    );
+
+    currentPage =
+        "results";
+
+    lastSearch =
+        search;
+
+    addressBar.value =
+        "https://www.recherche.fr/?q=" +
+        encodeURIComponent(search);
+
+    createResults(search);
+
+    browserContent.scrollTop =
+        0;
+
+}
+
+
+function showPage(page) {
+
+    hideAllPages();
+
+    page.classList.add(
+        "active"
+    );
+
+    currentPage =
+        page.id;
+
+    browserContent.scrollTop =
+        0;
+
+}
+
+
+/* =========================================
+   RECHERCHE
+========================================= */
+
+searchButton.addEventListener("click", () => {
+
+    performSearch();
+
+});
+
+
+searchInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Enter") {
+
+            performSearch();
+
+        }
+
+    }
+);
+
+
+function performSearch() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    if (!search) {
+
+        error(
+            "Écrivez quelque chose à rechercher."
+        );
+
+        return;
+
+    }
+
+    showResults(search);
+
+    checkSearchAction(search);
+
+}
+
+
+function checkSearchAction(search) {
+
+    const action =
+        challenges[current].action;
+
+    if (
+        action === "searchWeather" &&
+        search === "météo"
+    ) {
+
+        success(
+            "🌤️ Très bien ! Vous avez lancé la recherche météo."
+        );
+
+    }
+
+    else if (
+        action === "searchRecipe" &&
+        search === "recette"
+    ) {
+
+        success(
+            "🍲 Bravo ! Vous avez recherché une recette."
+        );
+
+    }
+
+    else if (
+        action === "searchNews" &&
+        search === "actualités"
+    ) {
+
+        success(
+            "📰 Très bien ! Vous avez recherché les actualités."
+        );
+
+    }
+
+    else if (
+        action === "searchTravel" &&
+        search === "voyage"
+    ) {
+
+        success(
+            "✈️ Bravo ! Vous avez recherché un voyage."
+        );
+
+    }
+
+    else if (
+        action === "finalChallenge" &&
+        search === "météo"
+    ) {
+
+        success(
+            "🔎 Parfait ! Vous avez lancé la bonne recherche."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   CRÉER LES RÉSULTATS
+========================================= */
+
+function createResults(search) {
+
+    const normalized =
+        search.toLowerCase();
+
+    resultsList.innerHTML =
+        "";
+
+    document.getElementById(
+        "searchSummary"
+    ).textContent =
+        'Résultats pour « ' +
+        search +
+        ' »';
+
+
+    if (
+        normalized.includes("météo")
+    ) {
+
+        addResult(
+            "Météo du jour",
+            "www.meteo-exemple.fr",
+            "Consultez les prévisions météo du jour.",
+            "weather"
+        );
+
+        addResult(
+            "Prévisions météo fiables",
+            "www.exemple-publicite.fr",
+            "Découvrez une offre spéciale et nos prévisions.",
+            "advertisement",
+            true
+        );
+
+        addResult(
+            "Météo demain",
+            "www.previsions.fr",
+            "Les prévisions pour demain.",
+            "weather2"
+        );
+
+    }
+
+    else if (
+        normalized.includes("recette")
+    ) {
+
+        addResult(
+            "Recette facile",
+            "www.recettes-exemple.fr",
+            "Découvrez une recette simple à réaliser.",
+            "recipe"
+        );
+
+        addResult(
+            "Recettes de cuisine",
+            "www.cuisine-exemple.fr",
+            "Des centaines de recettes.",
+            "recipe2"
+        );
+
+        addResult(
+            "Robot de cuisine - Offre spéciale",
+            "www.publicite-exemple.fr",
+            "Découvrez notre promotion.",
+            "advertisement",
+            true
+        );
+
+    }
+
+    else if (
+        normalized.includes("actualités")
+    ) {
+
+        addResult(
+            "Actualités du jour",
+            "www.actualites-exemple.fr",
+            "Les principales nouvelles du jour.",
+            "news"
+        );
+
+        addResult(
+            "Actualités - Offre spéciale",
+            "www.publicite-exemple.fr",
+            "Profitez d'une offre exceptionnelle.",
+            "advertisement",
+            true
+        );
+
+        addResult(
+            "Les informations du jour",
+            "www.informations.fr",
+            "Retrouvez les nouvelles importantes.",
+            "news2"
+        );
+
+    }
+
+    else if (
+        normalized.includes("voyage")
+    ) {
+
+        addResult(
+            "Préparer un voyage",
+            "www.voyage-exemple.fr",
+            "Tous nos conseils pour préparer votre voyage.",
+            "travel"
+        );
+
+        addResult(
+            "Destinations de rêve",
+            "www.voyage.fr",
+            "Découvrez de nombreuses destinations.",
+            "travel2"
+        );
+
+        addResult(
+            "Voyage pas cher - Promotion",
+            "www.publicite-exemple.fr",
+            "Profitez de notre offre spéciale.",
+            "advertisement",
+            true
+        );
+
+    }
+
+    else {
+
+        addResult(
+            "Résultat général",
+            "www.exemple.fr",
+            "Voici une information correspondant à votre recherche.",
+            "general"
+        );
+
+        addResult(
+            "Autre résultat",
+            "www.autre-exemple.fr",
+            "Informations complémentaires.",
+            "general2"
+        );
+
+    }
+
+}
+
+
+function addResult(
+    title,
+    site,
+    description,
+    type,
+    sponsored = false
+) {
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "result-card" +
+        (
+            sponsored
+                ? " sponsored"
+                : ""
+        );
+
+    card.dataset.type =
+        type;
+
+    let label = "";
+
+    if (sponsored) {
+
+        label =
+            `<div class="sponsored-label">
+                Publicité
+            </div>`;
+
+    }
+
+    card.innerHTML = `
+        ${label}
+
+        <div class="result-site">
+            ${site}
+        </div>
+
+        <div class="result-title">
+            ${title}
+        </div>
+
+        <div class="result-description">
+            ${description}
+        </div>
+    `;
+
+    card.addEventListener(
+        "click",
+        () => {
+
+            openResult(type);
+
+        }
+    );
+
+    resultsList.appendChild(
+        card
+    );
+
+}
+
+
+/* =========================================
+   OUVRIR UN RÉSULTAT
+========================================= */
+
+function openResult(type) {
+
+    const action =
+        challenges[current].action;
+
+
+    if (
+        action === "findAd"
+    ) {
+
+        if (type === "advertisement") {
+
+            success(
+                "📢 Bravo ! Vous avez repéré la publicité."
+            );
+
+        } else {
+
+            error(
+                "Cherchez le résultat marqué « Publicité »."
+            );
+
+        }
+
+        return;
+    }
+
+
+    if (
+        type === "weather"
+    ) {
+
+        showPage(weatherPage);
+
+        if (
+            action === "openWeather"
+        ) {
+
+            success(
+                "🌤️ Très bien ! Vous avez ouvert la bonne page."
+            );
+
+        }
+
+        if (
+            action === "finalChallenge"
+        ) {
+
+            success(
+                "🎉 Bravo ! Vous avez trouvé et ouvert le bon résultat."
+            );
+
+        }
+
+        return;
+    }
+
+
+    if (
+        type === "recipe"
+    ) {
+
+        showPage(recipePage);
+
+        if (
+            action === "openRecipe"
+        ) {
+
+            success(
+                "🍲 Très bien ! Vous avez ouvert la recette."
+            );
+
+        }
+
+        return;
+    }
+
+
+    if (
+        type === "news"
+    ) {
+
+        showPage(newsPage);
+
+        if (
+            action === "openNews"
+        ) {
+
+            success(
+                "📰 Bravo ! Vous avez choisi le résultat normal."
+            );
+
+        }
+
+        return;
+    }
+
+
+    if (
+        type === "travel"
+    ) {
+
+        showPage(travelPage);
+
+        if (
+            action === "openTravel"
+        ) {
+
+            success(
+                "✈️ Très bien ! Vous avez ouvert la bonne page."
+            );
+
+        }
+
+        return;
+    }
+
+}
+
+
+/* =========================================
+   BOUTONS RAPIDES
+========================================= */
+
+document
+    .querySelectorAll(".quick-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                const search =
+                    link.dataset.search;
+
+                searchInput.value =
+                    search;
+
+                performSearch();
+
+                const action =
+                    challenges[current].action;
+
+                if (
+                    action === "quickWeather" &&
+                    search === "météo"
+                ) {
+
+                    success(
+                        "🌤️ Bravo ! Vous avez utilisé le raccourci météo."
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================
+   BOUTON RETOUR
+========================================= */
+
+browserBack.addEventListener("click", () => {
+
+    const action =
+        challenges[current].action;
+
+
+    if (
+        action === "backResults" &&
+        currentPage !== "results"
+    ) {
+
+        showResults(lastSearch);
+
+        success(
+            "↩️ Très bien ! Vous êtes revenu aux résultats."
+        );
+
+        return;
+    }
+
+
+    if (
+        action === "backHome" ||
+        action === "backHome2" ||
+        action === "homeAfterFavorite" ||
+        action === "backAfterLink" ||
+        action === "finalHome"
+    ) {
+
+        showHome();
+
+        success(
+            "🏠 Bravo ! Vous êtes revenu à l'accueil."
+        );
+
+        return;
+    }
+
+
+    if (
+        currentPage !== "home"
+    ) {
+
+        showHome();
+
+    }
+
+});
+
+
+/* =========================================
+   BOUTON AVANT
+========================================= */
+
+browserForward.addEventListener(
+    "click",
+    () => {
+
+        showToast(
+            "➡️ Navigation suivante"
+        );
+
+    }
+);
+
+
+/* =========================================
+   ACTUALISER
+========================================= */
+
+browserRefresh.addEventListener(
+    "click",
+    () => {
+
+        showToast(
+            "↻ Page actualisée"
+        );
+
+        browserContent.scrollTop =
+            0;
+
+    }
+);
+
+
+/* =========================================
+   BARRE D'ADRESSE
+========================================= */
+
+addressBar.addEventListener(
+    "focus",
+    () => {
+
+        addressBar.select();
+
+        if (
+            challenges[current].action ===
+            "focusSearch"
+        ) {
+
+            success(
+                "Très bien ! Vous avez sélectionné la barre du navigateur."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MENU
+========================================= */
+
+browserMenu.addEventListener(
+    "click",
+    () => {
+
+        menuOpened =
+            !menuOpened;
+
+        browserMenuPanel.classList.toggle(
+            "active",
+            menuOpened
+        );
+
+        if (
+            challenges[current].action ===
+            "openMenu" ||
+            challenges[current].action ===
+            "finalMenu"
+        ) {
+
+            if (menuOpened) {
+
+                success(
+                    "⋮ Très bien ! Vous avez ouvert le menu."
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   FAVORIS
+========================================= */
+
+document
+    .getElementById("menuFavorites")
+    .addEventListener(
+        "click",
+        () => {
+
+            browserMenuPanel.classList.remove(
+                "active"
+            );
+
+            menuOpened =
+                false;
+
+            showPage(
+                favoritesPage
+            );
+
+            if (
+                challenges[current].action ===
+                "openFavorites"
+            ) {
+
+                success(
+                    "⭐ Bravo ! Vous avez ouvert les favoris."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   MENU ACCUEIL
+========================================= */
+
+document
+    .getElementById("menuHome")
+    .addEventListener(
+        "click",
+        () => {
+
+            browserMenuPanel.classList.remove(
+                "active"
+            );
+
+            menuOpened =
+                false;
+
+            showHome();
+
+        }
+    );
+
+
+/* =========================================
+   FERMER MENU
+========================================= */
+
+document
+    .getElementById("menuClose")
+    .addEventListener(
+        "click",
+        () => {
+
+            browserMenuPanel.classList.remove(
+                "active"
+            );
+
+            menuOpened =
+                false;
+
+            if (
+                challenges[current].action ===
+                "closeMenu"
+            ) {
+
+                success(
+                    "✖ Très bien ! Le menu est fermé."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   FAVORIS
+========================================= */
+
+document
+    .getElementById("favoriteWeather")
+    .addEventListener(
+        "click",
+        () => {
+
+            showPage(
+                weatherPage
+            );
+
+            if (
+                challenges[current].action ===
+                "favoriteWeather"
+            ) {
+
+                success(
+                    "🌤️ Bravo ! Vous avez ouvert le favori météo."
+                );
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("favoriteNews")
+    .addEventListener(
+        "click",
+        () => {
+
+            showPage(
+                newsPage
+            );
+
+        }
+    );
+
+
+document
+    .getElementById("favoriteRecipe")
+    .addEventListener(
+        "click",
+        () => {
+
+            showPage(
+                recipePage
+            );
+
+        }
+    );
+
+
+/* =========================================
+   TEMPÉRATURE
+========================================= */
+
+document
+    .getElementById("weatherMore")
+    .addEventListener(
+        "click",
+        () => {
+
+            if (
+                challenges[current].action ===
+                "findTemperature"
+            ) {
+
+                success(
+                    "🌡️ Très bien ! Vous avez trouvé l'information météo."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   LIEN ACTUALITÉS
+========================================= */
+
+document
+    .getElementById("newsLink")
+    .addEventListener(
+        "click",
+        () => {
+
+            linkOpened =
+                true;
+
+            showToast(
+                "🔗 Lien ouvert"
+            );
+
+            if (
+                challenges[current].action ===
+                "findLink"
+            ) {
+
+                success(
+                    "🔗 Bravo ! Vous avez trouvé le lien."
+                );
+
+            }
+
+            if (
+                challenges[current].action ===
+                "openLink"
+            ) {
+
+                success(
+                    "🔗 Très bien ! Vous avez ouvert le lien."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   LIEN VOYAGE
+========================================= */
+
+document
+    .getElementById("travelLink")
+    .addEventListener(
+        "click",
+        () => {
+
+            linkOpened =
+                true;
+
+            showToast(
+                "🔗 Lien ouvert"
+            );
+
+            if (
+                challenges[current].action ===
+                "findTravelLink"
+            ) {
+
+                success(
+                    "🔗 Bravo ! Vous avez trouvé le lien."
+                );
+
+            }
+
+            if (
+                challenges[current].action ===
+                "openTravelLink"
+            ) {
+
+                success(
+                    "🔗 Très bien ! Vous avez ouvert le lien."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   DÉFILEMENT
+========================================= */
+
+let startScroll = 0;
+
+browserContent.addEventListener(
+    "touchstart",
+    event => {
+
+        if (
+            event.touches.length === 1
+        ) {
+
+            startScroll =
+                event.touches[0].clientY;
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+browserContent.addEventListener(
+    "touchmove",
+    event => {
+
+        if (
+            challenges[current].action !==
+            "scrollPage"
+        ) {
+
+            return;
+
+        }
+
+        const currentY =
+            event.touches[0].clientY;
+
+        if (
+            startScroll - currentY > 50
+        ) {
+
+            scrollDone =
+                true;
+
+            success(
+                "📜 Très bien ! Vous avez fait défiler la page."
+            );
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================
+   SOURIS / MOLETTE
+========================================= */
+
+browserContent.addEventListener(
+    "wheel",
+    () => {
+
+        if (
+            challenges[current].action ===
+            "scrollPage"
+        ) {
+
+            scrollDone =
+                true;
+
+            success(
+                "📜 Très bien ! Vous avez fait défiler la page."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   COOKIES
+========================================= */
+
+document
+    .getElementById("cookieAccept")
+    .addEventListener(
+        "click",
+        () => {
+
+            cookieHandled =
+                true;
+
+            cookieBox.classList.remove(
+                "active"
+            );
+
+            if (
+                challenges[current].action ===
+                "cookies"
+            ) {
+
+                success(
+                    "🍪 Très bien ! Vous avez reconnu la fenêtre de cookies."
+                );
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("cookieRefuse")
+    .addEventListener(
+        "click",
+        () => {
+
+            cookieHandled =
+                true;
+
+            cookieBox.classList.remove(
+                "active"
+            );
+
+            if (
+                challenges[current].action ===
+                "cookies"
+            ) {
+
+                success(
+                    "🍪 Très bien ! Vous avez choisi « Refuser »."
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   DÉTECTION CLICS SUR LA PAGE
+========================================= */
+
+browserContent.addEventListener(
+    "click",
+    event => {
+
+        const action =
+            challenges[current].action;
+
+        if (
+            action === "focusSearch" &&
+            event.target === searchInput
+        ) {
+
+            success(
+                "🔎 Très bien ! Vous avez trouvé la barre de recherche."
+            );
+
+        }
+
+        if (
+            action === "findTemperature" &&
+            event.target.closest(".info-line")
+        ) {
+
+            success(
+                "🌡️ Bravo ! Vous avez trouvé l'information recherchée."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   GESTION COOKIES AUTOMATIQUE
+========================================= */
+
+setTimeout(() => {
+
+    if (
+        !cookieHandled
+    ) {
+
+        cookieBox.classList.add(
+            "active"
+        );
+
+    }
+
+}, 1800);
+
+
+/* =========================================
+   BOUTON SUIVANT
+========================================= */
+
+nextButton.addEventListener(
+    "click",
+    () => {
+
+        if (
+            current <
+            challenges.length - 1
+        ) {
+
+            current++;
+
+            loadChallenge();
+
+        } else {
+
+            finishGame();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   FIN DU JEU
+========================================= */
+
+function finishGame() {
+
+    progressFill.style.width =
+        "100%";
+
+    progressText.textContent =
+        "100 %";
+
+    challengeNumber.textContent =
+        "🎉 TERMINÉ";
+
+    challengeTitle.textContent =
+        "Félicitations !";
+
+    challengeText.textContent =
+        "Vous avez terminé les 30 défis consacrés à Internet sur smartphone et tablette.";
+
+    challengeHelp.textContent =
+        "👏 Vous savez maintenant rechercher une information, ouvrir un résultat, revenir en arrière, utiliser les favoris et reconnaître certains éléments d'une page Internet.";
+
+    feedback.className =
+        "feedback success";
+
+    feedback.textContent =
+        "🏆 Score final : " +
+        score +
+        " points sur " +
+        (challenges.length * 10) +
+        ".";
+
+    nextButton.disabled =
+        true;
+
+}
+
+
+/* =========================================
+   RECOMMENCER
+========================================= */
+
+resetButton.addEventListener(
+    "click",
+    () => {
+
+        current =
+            0;
+
+        score =
+            0;
+
+        errors =
+            0;
+
+        currentPage =
+            "home";
+
+        lastSearch =
+            "";
+
+        menuOpened =
+            false;
+
+        cookieHandled =
+            false;
+
+        scoreElement.textContent =
+            "0";
+
+        errorsElement.textContent =
+            "0";
+
+        searchInput.value =
+            "";
+
+        browserMenuPanel.classList.remove(
+            "active"
+        );
+
+        cookieBox.classList.remove(
+            "active"
+        );
+
+        showHome();
+
+        loadChallenge();
+
+        setTimeout(() => {
+
+            cookieBox.classList.add(
+                "active"
+            );
+
+        }, 1800);
+
+    }
+);
+
+
+/* =========================================
+   INITIALISATION
+========================================= */
+
+showHome();
+
+loadChallenge();
+
+</script>
+
+</body>
+</html>
