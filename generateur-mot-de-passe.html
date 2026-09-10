@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur de mot de passe - Centre Multimédia du CCAS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+nav a:hover,
+nav a.active {
+    background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    padding: 45px 20px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 42px;
+    color: #1f3656;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 20px;
+    color: #536579;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* =========================
+   CARD PRINCIPALE
+========================= */
+
+.tool-card {
+    background: white;
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(31,54,86,0.10);
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    background: #eaf2ff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    margin: 0 auto 20px;
+}
+
+.tool-card h2 {
+    text-align: center;
+    color: #1f3656;
+    margin: 0 0 10px;
+}
+
+.intro {
+    text-align: center;
+    color: #607086;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 750px;
+    margin: 0 auto 30px;
+}
+
+/* =========================
+   MOT DE PASSE
+========================= */
+
+.password-box {
+    background: #f5f7fb;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.password-display {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.password-display input {
+    flex: 1;
+    min-width: 0;
+    padding: 17px;
+    border: 2px solid #d9e0ea;
+    border-radius: 12px;
+    font-size: 22px;
+    font-family: monospace;
+    color: #1f3656;
+    background: white;
+}
+
+.password-display input:focus {
+    outline: none;
+    border-color: #3975c6;
+}
+
+.icon-button {
+    border: none;
+    background: #eaf2ff;
+    color: #1f3656;
+    border-radius: 12px;
+    min-width: 55px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #dbe9ff;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-button {
+    background: #3975c6;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #285d9e;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: #eaf2ff;
+    color: #285d9e;
+}
+
+.secondary-button:hover {
+    background: #dbe9ff;
+}
+
+.green-button {
+    background: #3c9a62;
+    color: white;
+}
+
+.green-button:hover {
+    background: #2f7d4d;
+}
+
+/* =========================
+   SOLIDITE
+========================= */
+
+.strength-container {
+    margin-top: 25px;
+}
+
+.strength-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.strength-label {
+    color: #536579;
+}
+
+.strength-bar {
+    height: 16px;
+    background: #dfe5ed;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    background: #d9534f;
+    border-radius: 20px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.score {
+    text-align: right;
+    margin-top: 7px;
+    color: #607086;
+    font-size: 14px;
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+    margin-top: 30px;
+}
+
+.options h3 {
+    color: #1f3656;
+    margin-bottom: 18px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f7f9fc;
+}
+
+.option input[type="checkbox"] {
+    width: 23px;
+    height: 23px;
+    accent-color: #3975c6;
+    cursor: pointer;
+}
+
+.option label {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.length-control {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f7f9fc;
+    border-radius: 14px;
+}
+
+.length-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.length-value {
+    background: #3975c6;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: #3975c6;
+}
+
+/* =========================
+   CONSEILS
+========================= */
+
+.advice {
+    margin-top: 30px;
+    background: #eef7ef;
+    border-left: 5px solid #3c9a62;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.advice h3 {
+    margin-top: 0;
+    color: #28643f;
+}
+
+.advice ul {
+    margin-bottom: 0;
+    padding-left: 25px;
+    line-height: 1.7;
+}
+
+/* =========================
+   INFORMATION
+========================= */
+
+.info-box {
+    margin-top: 25px;
+    background: #fff8e7;
+    border-left: 5px solid #e0a62b;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: #765600;
+}
+
+/* =========================
+   COPIE
+========================= */
+
+.copy-message {
+    text-align: center;
+    color: #2f7d4d;
+    font-weight: bold;
+    min-height: 24px;
+    margin-top: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 60px;
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    .tool-card {
+        padding: 22px;
+    }
+
+    .password-display {
+        flex-direction: column;
+    }
+
+    .password-display input {
+        font-size: 18px;
+    }
+
+    .icon-button {
+        width: 100%;
+        height: 50px;
+    }
+
+    .button-row button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            🖥️ Centre Multimédia du CCAS
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html">Exercices</a>
+            <a href="outils.html" class="active">🛠️ Outils</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<section class="page-header">
+
+    <h1>🔑 Générateur de mot de passe</h1>
+
+    <p>
+        Créez facilement un mot de passe robuste et difficile à deviner.
+    </p>
+
+</section>
+
+
+<main>
+
+    <div class="tool-card">
+
+        <div class="tool-icon">
+            🔑
+        </div>
+
+        <h2>Créer un mot de passe sécurisé</h2>
+
+        <p class="intro">
+            Choisissez les caractères que vous souhaitez utiliser,
+            indiquez la longueur du mot de passe, puis cliquez sur
+            <strong>Générer un mot de passe</strong>.
+        </p>
+
+
+        <!-- MOT DE PASSE -->
+
+        <div class="password-box">
+
+            <div class="password-display">
+
+                <input
+                    type="password"
+                    id="password"
+                    readonly
+                    aria-label="Mot de passe généré"
+                    placeholder="Votre mot de passe apparaîtra ici"
+                >
+
+                <button
+                    class="icon-button"
+                    id="togglePassword"
+                    title="Afficher ou masquer le mot de passe"
+                    aria-label="Afficher ou masquer le mot de passe"
+                >
+                    👁️
+                </button>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="primary-button"
+                    id="generateButton"
+                >
+                    🔄 Générer un mot de passe
+                </button>
+
+                <button
+                    class="green-button"
+                    id="copyButton"
+                >
+                    📋 Copier
+                </button>
+
+            </div>
+
+            <div
+                class="copy-message"
+                id="copyMessage"
+            ></div>
+
+
+            <!-- SOLIDITE -->
+
+            <div class="strength-container">
+
+                <div class="strength-title">
+
+                    <span>
+                        Solidité
+                    </span>
+
+                    <span
+                        class="strength-label"
+                        id="strengthLabel"
+                    >
+                        Aucun mot de passe
+                    </span>
+
+                </div>
+
+                <div class="strength-bar">
+
+                    <div
+                        class="strength-fill"
+                        id="strengthFill"
+                    ></div>
+
+                </div>
+
+                <div
+                    class="score"
+                    id="score"
+                >
+                    0 / 100
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- OPTIONS -->
+
+        <div class="options">
+
+            <h3>⚙️ Choisissez les caractères à utiliser</h3>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="lowercase"
+                    checked
+                >
+
+                <label for="lowercase">
+                    🔤 Lettres minuscules — abcdefgh...
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="uppercase"
+                    checked
+                >
+
+                <label for="uppercase">
+                    🔠 Lettres majuscules — ABCDEFGH...
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="numbers"
+                    checked
+                >
+
+                <label for="numbers">
+                    🔢 Chiffres — 0123456789
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="special"
+                    checked
+                >
+
+                <label for="special">
+                    🔣 Caractères spéciaux — ! @ # $ % &...
+                </label>
+
+            </div>
+
+
+            <div class="length-control">
+
+                <div class="length-top">
+
+                    <span>
+                        📏 Longueur du mot de passe
+                    </span>
+
+                    <span
+                        class="length-value"
+                        id="lengthValue"
+                    >
+                        18 caractères
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="length"
+                    min="12"
+                    max="32"
+                    value="18"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- CONSEILS -->
+
+        <div class="advice">
+
+            <h3>💡 Pour un bon mot de passe</h3>
+
+            <ul>
+
+                <li>
+                    Préférez un mot de passe <strong>long</strong>.
+                </li>
+
+                <li>
+                    Utilisez un mot de passe <strong>différent pour chaque compte important</strong>.
+                </li>
+
+                <li>
+                    Évitez votre prénom, votre date de naissance ou des informations faciles à deviner.
+                </li>
+
+                <li>
+                    Évitez les suites évidentes comme <strong>123456</strong> ou <strong>azerty</strong>.
+                </li>
+
+                <li>
+                    Pour plusieurs comptes, un <strong>gestionnaire de mots de passe</strong> peut vous aider.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- SECURITE -->
+
+        <div class="info-box">
+
+            🔒 <strong>Votre sécurité :</strong>
+
+            ce générateur fonctionne directement dans votre navigateur.
+            Le mot de passe créé n'est envoyé à aucun serveur par cette page.
+
+            <br><br>
+
+            <strong>Important :</strong>
+            ne partagez jamais votre mot de passe avec quelqu'un,
+            même avec une personne qui prétend travailler pour une banque,
+            une administration ou un service informatique.
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    Centre Multimédia du CCAS — Apprendre, pratiquer et devenir plus autonome avec le numérique.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const passwordInput = document.getElementById("password");
+
+const generateButton = document.getElementById("generateButton");
+
+const copyButton = document.getElementById("copyButton");
+
+const togglePassword = document.getElementById("togglePassword");
+
+const copyMessage = document.getElementById("copyMessage");
+
+const strengthFill = document.getElementById("strengthFill");
+
+const strengthLabel = document.getElementById("strengthLabel");
+
+const scoreElement = document.getElementById("score");
+
+const lengthSlider = document.getElementById("length");
+
+const lengthValue = document.getElementById("lengthValue");
+
+const lowercaseCheckbox = document.getElementById("lowercase");
+
+const uppercaseCheckbox = document.getElementById("uppercase");
+
+const numbersCheckbox = document.getElementById("numbers");
+
+const specialCheckbox = document.getElementById("special");
+
+
+/* =========================
+   CARACTERES
+========================= */
+
+const characterSets = {
+
+    lowercase:
+        "abcdefghijklmnopqrstuvwxyz",
+
+    uppercase:
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+
+    numbers:
+        "0123456789",
+
+    special:
+        "!@#$%^&*()-_=+[]{};:,.?/"
+
+};
+
+
+/* =========================
+   GENERATEUR ALEATOIRE
+========================= */
+
+function secureRandom(max) {
+
+    const array = new Uint32Array(1);
+
+    crypto.getRandomValues(array);
+
+    return array[0] % max;
+
+}
+
+
+function randomCharacter(characters) {
+
+    return characters[
+        secureRandom(characters.length)
+    ];
+
+}
+
+
+/* =========================
+   MELANGE SECURISE
+========================= */
+
+function shuffleSecure(array) {
+
+    for (let i = array.length - 1; i > 0; i--) {
+
+        const j = secureRandom(i + 1);
+
+        const temporary = array[i];
+
+        array[i] = array[j];
+
+        array[j] = temporary;
+
+    }
+
+    return array;
+
+}
+
+
+/* =========================
+   GENERATION
+========================= */
+
+function generatePassword() {
+
+    const length =
+        parseInt(lengthSlider.value);
+
+    let availableCharacters = "";
+
+    const selectedSets = [];
+
+
+    if (lowercaseCheckbox.checked) {
+
+        availableCharacters +=
+            characterSets.lowercase;
+
+        selectedSets.push(
+            characterSets.lowercase
+        );
+
+    }
+
+
+    if (uppercaseCheckbox.checked) {
+
+        availableCharacters +=
+            characterSets.uppercase;
+
+        selectedSets.push(
+            characterSets.uppercase
+        );
+
+    }
+
+
+    if (numbersCheckbox.checked) {
+
+        availableCharacters +=
+            characterSets.numbers;
+
+        selectedSets.push(
+            characterSets.numbers
+        );
+
+    }
+
+
+    if (specialCheckbox.checked) {
+
+        availableCharacters +=
+            characterSets.special;
+
+        selectedSets.push(
+            characterSets.special
+        );
+
+    }
+
+
+    if (selectedSets.length === 0) {
+
+        alert(
+            "Sélectionnez au moins un type de caractère."
+        );
+
+        return;
+
+    }
+
+
+    const passwordCharacters = [];
+
+
+    /*
+       On place d'abord au moins un caractère
+       de chaque catégorie sélectionnée.
+    */
+
+    selectedSets.forEach(set => {
+
+        passwordCharacters.push(
+            randomCharacter(set)
+        );
+
+    });
+
+
+    /*
+       Puis on complète le mot de passe.
+    */
+
+    while (
+        passwordCharacters.length < length
+    ) {
+
+        passwordCharacters.push(
+            randomCharacter(
+                availableCharacters
+            )
+        );
+
+    }
+
+
+    /*
+       Mélange sécurisé pour éviter que
+       les premiers caractères soient toujours
+       ceux des catégories sélectionnées.
+    */
+
+    shuffleSecure(passwordCharacters);
+
+
+    const password =
+        passwordCharacters.join("");
+
+
+    passwordInput.value = password;
+
+    passwordInput.type = "password";
+
+    togglePassword.textContent = "👁️";
+
+    copyMessage.textContent = "";
+
+    evaluatePassword(password);
+
+}
+
+
+/* =========================
+   EVALUATION
+========================= */
+
+function evaluatePassword(password) {
+
+    if (!password) {
+
+        strengthFill.style.width = "0%";
+
+        strengthLabel.textContent =
+            "Aucun mot de passe";
+
+        scoreElement.textContent =
+            "0 / 100";
+
+        return;
+
+    }
+
+
+    let score = 0;
+
+
+    /*
+       Longueur
+    */
+
+    if (password.length >= 12) {
+
+        score += 25;
+
+    }
+
+    if (password.length >= 15) {
+
+        score += 15;
+
+    }
+
+    if (password.length >= 20) {
+
+        score += 10;
+
+    }
+
+
+    /*
+       Diversité
+    */
+
+    if (/[a-z]/.test(password)) {
+
+        score += 10;
+
+    }
+
+    if (/[A-Z]/.test(password)) {
+
+        score += 10;
+
+    }
+
+    if (/[0-9]/.test(password)) {
+
+        score += 10;
+
+    }
+
+    if (/[^A-Za-z0-9]/.test(password)) {
+
+        score += 10;
+
+    }
+
+
+    /*
+       Répétitions excessives
+    */
+
+    if (
+        !/(.)\1\1/.test(password)
+    ) {
+
+        score += 5;
+
+    }
+
+
+    /*
+       Suites évidentes
+    */
+
+    const obviousSequences = [
+
+        "123456",
+        "234567",
+        "345678",
+        "456789",
+        "abcdef",
+        "bcdefg",
+        "qwerty",
+        "azerty",
+        "azertyuiop"
+
+    ];
+
+
+    const lowerPassword =
+        password.toLowerCase();
+
+
+    const hasSequence =
+        obviousSequences.some(sequence =>
+            lowerPassword.includes(sequence)
+        );
+
+
+    if (!hasSequence) {
+
+        score += 5;
+
+    }
+
+
+    score =
+        Math.min(100, score);
+
+
+    strengthFill.style.width =
+        score + "%";
+
+
+    scoreElement.textContent =
+        score + " / 100";
+
+
+    /*
+       Niveau
+    */
+
+    if (score < 35) {
+
+        strengthLabel.textContent =
+            "🔴 Faible";
+
+        strengthFill.style.background =
+            "#d9534f";
+
+    }
+
+    else if (score < 60) {
+
+        strengthLabel.textContent =
+            "🟠 Moyen";
+
+        strengthFill.style.background =
+            "#e0a62b";
+
+    }
+
+    else if (score < 80) {
+
+        strengthLabel.textContent =
+            "🟢 Bon";
+
+        strengthFill.style.background =
+            "#4b9b68";
+
+    }
+
+    else {
+
+        strengthLabel.textContent =
+            "🟢 Très bon";
+
+        strengthFill.style.background =
+            "#2f7d4d";
+
+    }
+
+}
+
+
+/* =========================
+   LONGUEUR
+========================= */
+
+lengthSlider.addEventListener(
+    "input",
+    function() {
+
+        const length =
+            parseInt(this.value);
+
+        lengthValue.textContent =
+            length +
+            (length > 1
+                ? " caractères"
+                : " caractère");
+
+    }
+);
+
+
+/* =========================
+   GENERATION
+========================= */
+
+generateButton.addEventListener(
+    "click",
+    generatePassword
+);
+
+
+/* =========================
+   AFFICHER / MASQUER
+========================= */
+
+togglePassword.addEventListener(
+    "click",
+    function() {
+
+        if (!passwordInput.value) {
+
+            return;
+
+        }
+
+
+        if (
+            passwordInput.type === "password"
+        ) {
+
+            passwordInput.type = "text";
+
+            togglePassword.textContent =
+                "🙈";
+
+        }
+
+        else {
+
+            passwordInput.type = "password";
+
+            togglePassword.textContent =
+                "👁️";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COPIER
+========================= */
+
+copyButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!passwordInput.value) {
+
+            copyMessage.textContent =
+                "⚠️ Générez d'abord un mot de passe.";
+
+            return;
+
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                passwordInput.value
+            );
+
+            copyMessage.textContent =
+                "✅ Mot de passe copié !";
+
+        }
+
+        catch (error) {
+
+            /*
+               Solution de secours pour certains
+               navigateurs ou contextes locaux.
+            */
+
+            passwordInput.type = "text";
+
+            passwordInput.select();
+
+            document.execCommand("copy");
+
+            passwordInput.type = "password";
+
+            copyMessage.textContent =
+                "✅ Mot de passe copié !";
+
+        }
+
+
+        setTimeout(
+            function() {
+
+                copyMessage.textContent = "";
+
+            },
+            2500
+        );
+
+    }
+);
+
+
+/* =========================
+   VERIFICATION DES OPTIONS
+========================= */
+
+[
+    lowercaseCheckbox,
+    uppercaseCheckbox,
+    numbersCheckbox,
+    specialCheckbox
+].forEach(checkbox => {
+
+    checkbox.addEventListener(
+        "change",
+        function() {
+
+            /*
+               On régénère automatiquement afin
+               que le nouveau choix soit visible.
+            */
+
+            generatePassword();
+
+        }
+    );
+
+});
+
+
+/* =========================
+   PREMIER MOT DE PASSE
+========================= */
+
+generatePassword();
+
+</script>
+
+</body>
+</html>
