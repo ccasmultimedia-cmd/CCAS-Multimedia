@@ -1,403 +1,423 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nos cours - Centre Multimédia du CCAS</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f7fb;
-            color: #24344d;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-
-        /* =========================
-           MENU
-        ========================== */
-
-        header {
-            background: #1f3656;
-            color: white;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo strong {
-            font-size: 26px;
-        }
-
-        .logo span {
-            font-size: 15px;
-            opacity: 0.8;
-        }
-
-        nav {
-            display: flex;
-            gap: 10px;
-        }
-
-        nav a {
-            color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            font-size: 17px;
-            transition: 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background-color: #3d76c5;
-        }
-
-
-        /* =========================
-           EN-TÊTE DE PAGE
-        ========================== */
-
-        .page-header {
-            background: linear-gradient(
-                135deg,
-                #e9f0fa 0%,
-                #ffffff 55%,
-                #e7f4f2 100%
-            );
-
-            text-align: center;
-            padding: 70px 20px;
-        }
-
-        .page-header h1 {
-            margin: 0 0 15px 0;
-            font-size: 46px;
-            color: #203858;
-        }
-
-        .page-header p {
-            margin: auto;
-            max-width: 700px;
-            font-size: 21px;
-            color: #617087;
-        }
-
-
-        /* =========================
-           CATÉGORIES
-        ========================== */
-
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 70px 25px;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            padding: 35px 30px;
-            border-radius: 18px;
-
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-
-            transition: 0.3s;
-
-            border-top: 6px solid #3975c6;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(30, 50, 80, 0.15);
-        }
-
-
-        .smartphone {
-            border-top-color: #2e8b78;
-        }
-
-        .tablette {
-            border-top-color: #7b5fc7;
-        }
-
-
-        /* =========================
-           ICÔNES
-        ========================== */
-
-        .icon {
-            width: 80px;
-            height: 80px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            border-radius: 18px;
-
-            font-size: 40px;
-
-            background: #e8f0fb;
-            color: #3975c6;
-
-            margin-bottom: 25px;
-        }
-
-        .smartphone .icon {
-            background: #e4f5f1;
-            color: #2e8b78;
-        }
-
-        .tablette .icon {
-            background: #eee9fb;
-            color: #7b5fc7;
-        }
-
-
-        /* =========================
-           TEXTE DES CARTES
-        ========================== */
-
-        .card h2 {
-            font-size: 30px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #24344d;
-        }
-
-        .card p {
-            font-size: 18px;
-            color: #617087;
-            min-height: 120px;
-        }
-
-
-        /* =========================
-           BOUTONS
-        ========================== */
-
-        .button {
-            display: inline-block;
-
-            padding: 14px 22px;
-
-            border-radius: 8px;
-
-            color: white;
-            background: #3975c6;
-
-            font-size: 17px;
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background: #285a9c;
-        }
-
-        .smartphone .button {
-            background: #2e8b78;
-        }
-
-        .smartphone .button:hover {
-            background: #236d5e;
-        }
-
-        .tablette .button {
-            background: #7b5fc7;
-        }
-
-        .tablette .button:hover {
-            background: #6045aa;
-        }
-
-
-        /* =========================
-           SECTION EXPLICATION
-        ========================== */
-
-        .info-section {
-            margin-top: 70px;
-
-            background: #eaf0f8;
-
-            border-radius: 20px;
-
-            padding: 40px;
-
-            text-align: center;
-        }
-
-        .info-section h2 {
-            margin-top: 0;
-            color: #203858;
-            font-size: 30px;
-        }
-
-        .info-section p {
-            font-size: 19px;
-            color: #617087;
-            max-width: 750px;
-            margin: 15px auto;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            background: #1f3656;
-            color: white;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 35px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-title {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .footer-text {
-            opacity: 0.75;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           VERSION MOBILE
-        ========================== */
-
-        @media (max-width: 900px) {
-
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header h1 {
-                font-size: 38px;
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                padding: 10px 12px;
-            }
-
-            .page-header {
-                padding: 50px 20px;
-            }
-
-            .page-header h1 {
-                font-size: 34px;
-            }
-
-            .page-header p {
-                font-size: 18px;
-            }
-
-            main {
-                padding: 50px 20px;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cours informatique - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #243447;
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #3d76c5;
+}
+
+/* =========================
+   EN-TÊTE DE PAGE
+========================= */
+
+.page-header {
+    background:
+        linear-gradient(
+            135deg,
+            #e9f0fa 0%,
+            #ffffff 55%,
+            #eef7ef 100%
+        );
+    padding: 55px 25px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 38px;
+    color: #1f3656;
+}
+
+.page-header p {
+    max-width: 760px;
+    margin: auto;
+    font-size: 19px;
+    color: #526274;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 25px 70px;
+}
+
+.intro {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 45px;
+}
+
+.intro h2 {
+    color: #1f3656;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.intro p {
+    font-size: 18px;
+    color: #5d6b7a;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.course-section {
+    margin-bottom: 55px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 27px;
+    color: #1f3656;
+}
+
+.section-title::after {
+    content: "";
+    height: 2px;
+    background: #dce5ef;
+    flex: 1;
+}
+
+/* =========================
+   GRILLE DES COURS
+========================= */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* =========================
+   CARTE COURS
+========================= */
+
+.course-card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(31, 54, 86, 0.08);
+    border: 1px solid #e4eaf1;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(31, 54, 86, 0.13);
+}
+
+.course-number {
+    display: inline-block;
+    background: #3975c6;
+    color: white;
+    border-radius: 20px;
+    padding: 4px 11px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.course-card h3 {
+    margin: 0 0 10px;
+    color: #1f3656;
+    font-size: 21px;
+}
+
+.course-card > p {
+    margin: 0 0 20px;
+    color: #5d6b7a;
+    font-size: 16px;
+}
+
+/* =========================
+   BLOCS PDF / QUESTIONS / PLUS
+========================= */
+
+.course-options {
+    display: grid;
+    gap: 10px;
+}
+
+.course-option {
+    border-radius: 9px;
+    padding: 12px 15px;
+    border: 1px solid #dfe6ee;
+    background: #f8fafc;
+}
+
+.course-option strong {
+    display: block;
+    color: #1f3656;
+    margin-bottom: 3px;
+}
+
+.course-option span {
+    font-size: 14px;
+    color: #697786;
+}
+
+/* PDF */
+
+.pdf-link {
+    display: inline-block;
+    text-decoration: none;
+    background: #3975c6;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin-top: 6px;
+    transition: 0.2s;
+}
+
+.pdf-link:hover {
+    background: #2e5f9f;
+}
+
+.pdf-unavailable {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #7b8794;
+    font-style: italic;
+}
+
+/* Questions */
+
+.questions {
+    background: #f5f8fc;
+}
+
+/* Pour aller plus loin */
+
+.further {
+    background: #eef7ef;
+    border-color: #d7eadb;
+}
+
+.further strong {
+    color: #28734f;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info-box {
+    background: white;
+    border-left: 5px solid #3975c6;
+    border-radius: 12px;
+    padding: 28px 30px;
+    box-shadow: 0 4px 15px rgba(31, 54, 86, 0.07);
+    margin-top: 20px;
+}
+
+.info-box h2 {
+    margin-top: 0;
+    color: #1f3656;
+}
+
+.info-box p {
+    margin-bottom: 0;
+    color: #5d6b7a;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 10px 12px;
+    }
+
+    .page-header {
+        padding: 40px 20px;
+    }
+
+    .page-header h1 {
+        font-size: 31px;
+    }
+
+    .page-header p {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 35px 18px 55px;
+    }
+
+    .intro h2 {
+        font-size: 26px;
+    }
+
+    .section-title h2 {
+        font-size: 23px;
+    }
+
+    .section-title::after {
+        display: none;
+    }
+
+    .course-card {
+        padding: 21px;
+    }
+
+}
+
+</style>
 </head>
-
 
 <body>
 
-
 <!-- =========================
      MENU
-========================== -->
+========================= -->
 
 <header>
 
     <div class="navbar">
 
         <div class="logo">
-
             <strong>Centre Multimédia du CCAS</strong>
-
             <span>Apprendre • Découvrir • Progresser</span>
-
         </div>
-
 
         <nav>
 
             <a href="index.html">Accueil</a>
 
-            <a href="cours.html" class="active">Mes cours</a>
+            <a href="cours.html" class="active">
+                Mes cours
+            </a>
 
-            <a href="jeux.html">Jeux</a>
+            <a href="jeux.html">
+                Jeux
+            </a>
 
-            <a href="exercices.html">Exercices</a>
+            <a href="exercices.html">
+                Exercices
+            </a>
 
-            <a href="outils.html">🛠️ Outils</a>
+            <a href="outils.html">
+                🛠️ Outils
+            </a>
 
-            <a href="informations.html">Informations</a>
+            <a href="informations.html">
+                Informations
+            </a>
 
         </nav>
 
@@ -406,153 +426,1247 @@
 </header>
 
 
-
 <!-- =========================
      EN-TÊTE
-========================== -->
+========================= -->
 
 <section class="page-header">
 
-    <h1>Nos cours</h1>
+    <h1>Cours informatique</h1>
 
     <p>
-        Choisissez une catégorie et découvrez les différents cours
-        disponibles au Centre Multimédia du CCAS.
+        Retrouvez ici les différents thèmes abordés lors des ateliers
+        informatiques du Centre Multimédia du CCAS.
     </p>
 
 </section>
 
 
-
 <!-- =========================
-     CATÉGORIES
-========================== -->
+     CONTENU
+========================= -->
 
-<main>
+<main class="container">
 
-    <section class="categories">
+    <div class="intro">
 
+        <h2>Les cours disponibles</h2>
 
-        <!-- INFORMATIQUE -->
+        <p>
+            Les cours peuvent être adaptés au rythme et aux besoins
+            de chacun. Les supports PDF seront ajoutés progressivement.
+        </p>
 
-        <div class="card">
-
-            <div class="icon">▣</div>
-
-            <h2>Informatique</h2>
-
-            <p>
-                Découvrez l'ordinateur, Internet, les emails,
-                la sécurité et les outils numériques du quotidien.
-            </p>
-
-            <a href="informatique.html" class="button">
-                Découvrir les cours
-            </a>
-
-        </div>
-
-
-
-        <!-- SMARTPHONE -->
-
-        <div class="card smartphone">
-
-            <div class="icon">▯</div>
-
-            <h2>Smartphone</h2>
-
-            <p>
-                Apprenez à utiliser votre téléphone,
-                vos applications, vos photos et Internet.
-            </p>
-
-            <a href="smartphone.html" class="button">
-                Découvrir les cours
-            </a>
-
-        </div>
-
-
-
-        <!-- TABLETTE -->
-
-        <div class="card tablette">
-
-            <div class="icon">▭</div>
-
-            <h2>Tablette</h2>
-
-            <p>
-                Découvrez votre tablette, les applications,
-                Internet et les outils utiles au quotidien.
-            </p>
-
-            <a href="tablette.html" class="button">
-                Découvrir les cours
-            </a>
-
-        </div>
-
-
-    </section>
-
+    </div>
 
 
     <!-- =========================
-         SECTION INFORMATION
-    ========================== -->
+         LES BASES DE L'ORDINATEUR
+    ========================= -->
 
-    <section class="info-section">
+    <section class="course-section">
 
-        <h2>Apprendre à votre rythme</h2>
+        <div class="section-title">
+            <h2>Les bases de l'ordinateur</h2>
+        </div>
 
-        <p>
-            Chaque cours est conçu pour vous accompagner pas à pas,
-            avec des explications simples et des exemples pratiques.
-        </p>
+        <div class="course-grid">
 
-        <p>
-            Vous pouvez consulter les cours autant de fois que vous le souhaitez.
-        </p>
+
+            <!-- 1 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 1</span>
+
+                <h3>Introduction à l'ordinateur</h3>
+
+                <p>
+                    Découvrir les principaux éléments d'un ordinateur
+                    et comprendre leur rôle.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les réponses aux questions posées pendant
+                            les ateliers pourront être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Des ressources complémentaires pourront
+                            être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 2 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 2</span>
+
+                <h3>Les touches du clavier</h3>
+
+                <p>
+                    Découvrir les principales touches du clavier
+                    et apprendre à les utiliser.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <a class="pdf-link" href="jeu-clavier.html">
+                            S'entraîner avec le jeu du clavier
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 3 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 3</span>
+
+                <h3>Les périphériques de stockage</h3>
+
+                <p>
+                    Comprendre les différents moyens de stocker
+                    et conserver ses fichiers.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Cet espace pourra être complété
+                            au fil des questions.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 4 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 4</span>
+
+                <h3>Paramètres de l'ordinateur</h3>
+
+                <p>
+                    Découvrir les réglages principaux de son ordinateur
+                    et apprendre à les modifier.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions et réponses pourront être ajoutées.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 5 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 5</span>
+
+                <h3>Les extensions de fichiers</h3>
+
+                <p>
+                    Comprendre ce que signifient les extensions
+                    des différents fichiers.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 6 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 6</span>
+
+                <h3>Organiser les fichiers de son ordinateur</h3>
+
+                <p>
+                    Apprendre à créer des dossiers et à organiser
+                    ses documents efficacement.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <a class="pdf-link" href="gestion-dossiers.html">
+                            S'entraîner avec le jeu de gestion des dossiers
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 7 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 7</span>
+
+                <h3>La sélection multiple</h3>
+
+                <p>
+                    Apprendre à sélectionner plusieurs fichiers
+                    ou éléments en même temps.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 8 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 8</span>
+
+                <h3>Les raccourcis clavier</h3>
+
+                <p>
+                    Découvrir les raccourcis clavier les plus utiles
+                    au quotidien.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Exercices pratiques à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 9 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 9</span>
+
+                <h3>Télécharger une application sur l'ordinateur et la désinstaller</h3>
+
+                <p>
+                    Comprendre comment installer puis supprimer
+                    correctement une application.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 10</span>
+
+                <h3>Les mises à jour</h3>
+
+                <p>
+                    Comprendre pourquoi les mises à jour sont importantes
+                    et comment les effectuer.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
 
     </section>
 
+
+    <!-- =========================
+         INTERNET ET NAVIGATEUR
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Internet et navigateur</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 11 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 11</span>
+
+                <h3>La navigation sur Internet</h3>
+
+                <p>
+                    Découvrir comment naviguer sur Internet
+                    et trouver les informations recherchées.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources et sites utiles à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 12 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 12</span>
+
+                <h3>Le menu du navigateur</h3>
+
+                <p>
+                    Découvrir les principales fonctions proposées
+                    par le menu de son navigateur.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 13 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 13</span>
+
+                <h3>La navigation privée</h3>
+
+                <p>
+                    Comprendre à quoi sert la navigation privée
+                    et dans quelles situations elle peut être utilisée.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 14 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 14</span>
+
+                <h3>La suppression de l'historique</h3>
+
+                <p>
+                    Comprendre ce qu'est l'historique de navigation
+                    et comment le supprimer.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 15 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 15</span>
+
+                <h3>Les extensions du navigateur</h3>
+
+                <p>
+                    Découvrir ce que sont les extensions
+                    et comment elles peuvent compléter un navigateur.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 16 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 16</span>
+
+                <h3>Télécharger sur Internet</h3>
+
+                <p>
+                    Apprendre à télécharger un fichier depuis Internet
+                    et à retrouver ce fichier sur son ordinateur.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 17 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 17</span>
+
+                <h3>Remplir un formulaire en ligne</h3>
+
+                <p>
+                    Apprendre à compléter correctement
+                    un formulaire sur Internet.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Exercices et ressources à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 18 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 18</span>
+
+                <h3>Le site internet de la mairie de Nîmes</h3>
+
+                <p>
+                    Découvrir le site de la mairie de Nîmes
+                    et apprendre à y trouver les informations utiles.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Les ressources utiles pourront être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CLOUD
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Le Cloud</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 19 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 19</span>
+
+                <h3>Le Cloud</h3>
+
+                <p>
+                    Comprendre ce qu'est le Cloud et découvrir
+                    les possibilités qu'il offre.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions posées pendant les ateliers
+                            pourront être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMMUNICATION
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Communication</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 20 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 20</span>
+
+                <h3>Gestion de la boîte mail</h3>
+
+                <p>
+                    Apprendre à utiliser sa boîte mail
+                    et à gérer ses messages.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions et réponses pourront être ajoutées.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SÉCURITÉ ET DÉMARCHES
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Sécurité et démarches en ligne</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 21 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 21</span>
+
+                <h3>Les mots de passe</h3>
+
+                <p>
+                    Comprendre comment choisir, utiliser
+                    et protéger ses mots de passe.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <a class="pdf-link" href="verificateur-mot-de-passe.html">
+                            Vérifier un mot de passe
+                        </a>
+
+                        <br>
+
+                        <a class="pdf-link" href="generateur-mot-de-passe.html">
+                            Générer un mot de passe
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- 22 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 22</span>
+
+                <h3>Le paiement en ligne</h3>
+
+                <p>
+                    Comprendre les principales étapes d'un paiement
+                    sur Internet et adopter les bons réflexes.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions des participants pourront
+                            être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NOUVELLES TECHNOLOGIES
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Nouvelles technologies</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 23 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 23</span>
+
+                <h3>Introduction à l'IA</h3>
+
+                <p>
+                    Découvrir simplement ce qu'est l'intelligence
+                    artificielle et à quoi elle peut servir.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions des participants pourront
+                            être ajoutées progressivement.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Des ressources et outils pourront être ajoutés.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TÉLÉPHONE ET ORDINATEUR
+    ========================= -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+            <h2>Téléphone et ordinateur</h2>
+        </div>
+
+        <div class="course-grid">
+
+
+            <!-- 24 -->
+
+            <article class="course-card">
+
+                <span class="course-number">Cours 24</span>
+
+                <h3>Transférer des photos de son téléphone à son ordinateur</h3>
+
+                <p>
+                    Découvrir différentes méthodes pour transférer
+                    facilement ses photos vers son ordinateur.
+                </p>
+
+                <div class="course-options">
+
+                    <div class="course-option">
+
+                        <strong>Support du cours</strong>
+
+                        <span class="pdf-unavailable">
+                            Le PDF sera bientôt disponible.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option questions">
+
+                        <strong>Questions fréquentes</strong>
+
+                        <span>
+                            Les questions rencontrées pendant les ateliers
+                            pourront être ajoutées ici.
+                        </span>
+
+                    </div>
+
+                    <div class="course-option further">
+
+                        <strong>Pour aller plus loin</strong>
+
+                        <span>
+                            Ressources complémentaires à venir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INFORMATION
+    ========================= -->
+
+    <div class="info-box">
+
+        <h2>Un cours peut évoluer</h2>
+
+        <p>
+            Cette page pourra être enrichie progressivement.
+            Les supports PDF seront ajoutés lorsqu'ils seront disponibles
+            et les questions fréquemment posées pendant les ateliers
+            pourront également être regroupées ici.
+        </p>
+
+    </div>
 
 </main>
 
 
-
 <!-- =========================
      FOOTER
-========================== -->
+========================= -->
 
 <footer>
 
-    <div class="footer-container">
+    <p>
+        Centre Multimédia du CCAS
+    </p>
 
-        <div>
-
-            <div class="footer-title">
-                Centre Multimédia du CCAS
-            </div>
-
-            <div class="footer-text">
-                Apprendre • Découvrir • Progresser
-            </div>
-
-        </div>
-
-
-        <div class="footer-text">
-            © 2026 Centre Multimédia du CCAS
-        </div>
-
-    </div>
+    <p>
+        Apprendre • Découvrir • Progresser
+    </p>
 
 </footer>
 
-
 </body>
-
 </html>
