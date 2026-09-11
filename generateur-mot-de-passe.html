@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
 <title>Générateur de mot de passe - Centre Multimédia du CCAS</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -132,6 +138,83 @@ main {
 }
 
 /* =========================
+   CHOIX DU MODE
+========================= */
+
+.mode-choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.mode-button {
+    border: 3px solid #d9e4f2;
+    background: #f7f9fc;
+    color: #26364a;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.mode-button:hover {
+    transform: translateY(-2px);
+    border-color: #3975c6;
+    background: #f1f6fd;
+}
+
+.mode-button.active {
+    border-color: #3975c6;
+    background: #eaf2ff;
+    box-shadow: 0 5px 15px rgba(57,117,198,0.12);
+}
+
+.mode-button .mode-icon {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.mode-button strong {
+    display: block;
+    color: #1f3656;
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+.mode-button span {
+    color: #607086;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* =========================
+   SECTIONS DES MODES
+========================= */
+
+.mode-section {
+    display: none;
+}
+
+.mode-section.active {
+    display: block;
+}
+
+.mode-intro {
+    background: #eef7ef;
+    border-left: 5px solid #3c9a62;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.mode-intro strong {
+    color: #28643f;
+}
+
+/* =========================
    MOT DE PASSE
 ========================= */
 
@@ -177,6 +260,52 @@ main {
 
 .icon-button:hover {
     background: #dbe9ff;
+}
+
+/* =========================
+   CHAMPS PERSONNALISES
+========================= */
+
+.personal-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.field-box {
+    background: #f7f9fc;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.field-box label {
+    display: block;
+    font-weight: bold;
+    color: #1f3656;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.field-box input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d9e0ea;
+    border-radius: 10px;
+    font-size: 17px;
+    background: white;
+    color: #26364a;
+}
+
+.field-box input:focus {
+    outline: none;
+    border-color: #3975c6;
+}
+
+.field-help {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #68788c;
 }
 
 /* =========================
@@ -385,6 +514,34 @@ input[type="range"] {
 }
 
 /* =========================
+   EXPLICATION PERSONNALISEE
+========================= */
+
+.example-box {
+    background: #eaf2ff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.example-box strong {
+    color: #285d9e;
+}
+
+.example-password {
+    display: inline-block;
+    background: white;
+    border: 2px solid #cbdcf2;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-weight: bold;
+    color: #1f3656;
+    margin-top: 8px;
+}
+
+/* =========================
    FOOTER
 ========================= */
 
@@ -424,6 +581,14 @@ footer {
         padding: 22px;
     }
 
+    .mode-choice {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-fields {
+        grid-template-columns: 1fr;
+    }
+
     .password-display {
         flex-direction: column;
     }
@@ -441,12 +606,17 @@ footer {
         width: 100%;
     }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <div class="navbar">
 
         <div class="logo">
@@ -454,24 +624,46 @@ footer {
         </div>
 
         <nav>
-            <a href="index.html">Accueil</a>
-            <a href="cours.html">Mes cours</a>
-            <a href="jeux.html">Jeux</a>
-            <a href="exercices.html">Exercices</a>
-            <a href="outils.html" class="active">🛠️ Outils</a>
-            <a href="informations.html">Informations</a>
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="cours.html">
+                Mes cours
+            </a>
+
+            <a href="jeux.html">
+                Jeux
+            </a>
+
+            <a href="exercices.html">
+                Exercices
+            </a>
+
+            <a href="outils.html" class="active">
+                🛠️ Outils
+            </a>
+
+            <a href="informations.html">
+                Informations
+            </a>
+
         </nav>
 
     </div>
+
 </header>
 
 
 <section class="page-header">
 
-    <h1>🔑 Générateur de mot de passe</h1>
+    <h1>
+        🔑 Générateur de mot de passe
+    </h1>
 
     <p>
-        Créez facilement un mot de passe robuste et difficile à deviner.
+        Créez un mot de passe sécurisé et facile à retenir.
     </p>
 
 </section>
@@ -481,211 +673,510 @@ footer {
 
     <div class="tool-card">
 
+
         <div class="tool-icon">
             🔑
         </div>
 
-        <h2>Créer un mot de passe sécurisé</h2>
+
+        <h2>
+            Créer un mot de passe sécurisé
+        </h2>
+
 
         <p class="intro">
-            Choisissez les caractères que vous souhaitez utiliser,
-            indiquez la longueur du mot de passe, puis cliquez sur
-            <strong>Générer un mot de passe</strong>.
+
+            Choisissez la méthode qui vous convient le mieux.
+            Vous pouvez créer un mot de passe <strong>facile à retenir</strong>
+            ou utiliser un mot de passe <strong>plus complexe et aléatoire</strong>.
+
         </p>
 
 
-        <!-- MOT DE PASSE -->
+        <!-- =========================
+             CHOIX DU MODE
+        ========================== -->
 
-        <div class="password-box">
+        <div class="mode-choice">
 
-            <div class="password-display">
 
-                <input
-                    type="password"
-                    id="password"
-                    readonly
-                    aria-label="Mot de passe généré"
-                    placeholder="Votre mot de passe apparaîtra ici"
-                >
+            <button
+                type="button"
+                class="mode-button active"
+                id="easyModeButton"
+            >
 
-                <button
-                    class="icon-button"
-                    id="togglePassword"
-                    title="Afficher ou masquer le mot de passe"
-                    aria-label="Afficher ou masquer le mot de passe"
-                >
-                    👁️
-                </button>
+                <div class="mode-icon">
+                    🧓
+                </div>
+
+                <strong>
+                    Facile à retenir
+                </strong>
+
+                <span>
+                    Utilisez deux choses que vous aimez
+                    pour créer un mot de passe personnalisé.
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="mode-button"
+                id="strongModeButton"
+            >
+
+                <div class="mode-icon">
+                    🛡️
+                </div>
+
+                <strong>
+                    Mot de passe renforcé
+                </strong>
+
+                <span>
+                    Créez un mot de passe aléatoire
+                    plus difficile à deviner.
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             MODE FACILE
+        ================================================== -->
+
+        <div
+            class="mode-section active"
+            id="easyMode"
+        >
+
+
+            <div class="mode-intro">
+
+                🧠 <strong>Une astuce pour mieux retenir son mot de passe :</strong>
+
+                choisissez deux choses que vous aimez,
+                par exemple un plat préféré et un loisir.
+
+                Le générateur ajoutera automatiquement
+                un caractère spécial et des chiffres.
 
             </div>
 
 
-            <div class="button-row">
+            <!-- CHAMPS -->
 
-                <button
-                    class="primary-button"
-                    id="generateButton"
-                >
-                    🔄 Générer un mot de passe
-                </button>
-
-                <button
-                    class="green-button"
-                    id="copyButton"
-                >
-                    📋 Copier
-                </button>
-
-            </div>
-
-            <div
-                class="copy-message"
-                id="copyMessage"
-            ></div>
+            <div class="personal-fields">
 
 
-            <!-- SOLIDITE -->
+                <div class="field-box">
 
-            <div class="strength-container">
+                    <label for="favoriteFood">
+                        🍲 Votre plat ou aliment préféré
+                    </label>
 
-                <div class="strength-title">
-
-                    <span>
-                        Solidité
-                    </span>
-
-                    <span
-                        class="strength-label"
-                        id="strengthLabel"
+                    <input
+                        type="text"
+                        id="favoriteFood"
+                        placeholder="Exemple : couscous"
+                        maxlength="30"
+                        autocomplete="off"
                     >
-                        Aucun mot de passe
-                    </span>
+
+                    <div class="field-help">
+                        Choisissez quelque chose que vous aimez.
+                    </div>
 
                 </div>
 
-                <div class="strength-bar">
 
-                    <div
-                        class="strength-fill"
-                        id="strengthFill"
-                    ></div>
+                <div class="field-box">
+
+                    <label for="favoriteHobby">
+                        🌳 Votre loisir ou activité préférée
+                    </label>
+
+                    <input
+                        type="text"
+                        id="favoriteHobby"
+                        placeholder="Exemple : jardin"
+                        maxlength="30"
+                        autocomplete="off"
+                    >
+
+                    <div class="field-help">
+                        Cela peut être un loisir, un animal ou une activité.
+                    </div>
 
                 </div>
+
+
+            </div>
+
+
+            <!-- MOT DE PASSE -->
+
+            <div class="password-box">
+
+
+                <div class="password-display">
+
+                    <input
+                        type="password"
+                        id="easyPassword"
+                        readonly
+                        aria-label="Mot de passe personnalisé"
+                        placeholder="Votre mot de passe apparaîtra ici"
+                    >
+
+
+                    <button
+                        class="icon-button"
+                        id="toggleEasyPassword"
+                        title="Afficher ou masquer le mot de passe"
+                        aria-label="Afficher ou masquer le mot de passe"
+                        type="button"
+                    >
+                        👁️
+                    </button>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        class="primary-button"
+                        id="generateEasyButton"
+                        type="button"
+                    >
+                        🔄 Créer mon mot de passe
+                    </button>
+
+
+                    <button
+                        class="green-button"
+                        id="copyEasyButton"
+                        type="button"
+                    >
+                        📋 Copier
+                    </button>
+
+                </div>
+
 
                 <div
-                    class="score"
-                    id="score"
-                >
-                    0 / 100
-                </div>
-
-            </div>
-
-        </div>
+                    class="copy-message"
+                    id="easyCopyMessage"
+                ></div>
 
 
-        <!-- OPTIONS -->
+                <!-- SOLIDITE -->
 
-        <div class="options">
+                <div class="strength-container">
 
-            <h3>⚙️ Choisissez les caractères à utiliser</h3>
+                    <div class="strength-title">
 
+                        <span>
+                            Solidité
+                        </span>
 
-            <div class="option">
+                        <span
+                            class="strength-label"
+                            id="easyStrengthLabel"
+                        >
+                            Aucun mot de passe
+                        </span>
 
-                <input
-                    type="checkbox"
-                    id="lowercase"
-                    checked
-                >
-
-                <label for="lowercase">
-                    🔤 Lettres minuscules — abcdefgh...
-                </label>
-
-            </div>
+                    </div>
 
 
-            <div class="option">
+                    <div class="strength-bar">
 
-                <input
-                    type="checkbox"
-                    id="uppercase"
-                    checked
-                >
+                        <div
+                            class="strength-fill"
+                            id="easyStrengthFill"
+                        ></div>
 
-                <label for="uppercase">
-                    🔠 Lettres majuscules — ABCDEFGH...
-                </label>
-
-            </div>
+                    </div>
 
 
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    id="numbers"
-                    checked
-                >
-
-                <label for="numbers">
-                    🔢 Chiffres — 0123456789
-                </label>
-
-            </div>
-
-
-            <div class="option">
-
-                <input
-                    type="checkbox"
-                    id="special"
-                    checked
-                >
-
-                <label for="special">
-                    🔣 Caractères spéciaux — ! @ # $ % &...
-                </label>
-
-            </div>
-
-
-            <div class="length-control">
-
-                <div class="length-top">
-
-                    <span>
-                        📏 Longueur du mot de passe
-                    </span>
-
-                    <span
-                        class="length-value"
-                        id="lengthValue"
+                    <div
+                        class="score"
+                        id="easyScore"
                     >
-                        18 caractères
-                    </span>
+                        0 / 100
+                    </div>
 
                 </div>
 
-                <input
-                    type="range"
-                    id="length"
-                    min="12"
-                    max="32"
-                    value="18"
-                >
 
             </div>
+
+
+            <div class="example-box">
+
+                💡 <strong>Exemple :</strong>
+
+                si vous aimez le couscous et le jardinage,
+                le générateur peut créer :
+
+                <br>
+
+                <span class="example-password">
+                    Couscous-Jardin!47
+                </span>
+
+                <br><br>
+
+                Le mot de passe est ainsi plus facile à lire,
+                à retenir et à recopier dans votre carnet.
+
+            </div>
+
 
         </div>
 
 
-        <!-- CONSEILS -->
+        <!-- ==================================================
+             MODE RENFORCE
+        ================================================== -->
+
+        <div
+            class="mode-section"
+            id="strongMode"
+        >
+
+
+            <div class="mode-intro">
+
+                🛡️ <strong>Pour les comptes importants :</strong>
+
+                ce mode crée un mot de passe aléatoire
+                qui ne dépend pas de vos informations personnelles.
+
+            </div>
+
+
+            <!-- MOT DE PASSE -->
+
+            <div class="password-box">
+
+
+                <div class="password-display">
+
+                    <input
+                        type="password"
+                        id="password"
+                        readonly
+                        aria-label="Mot de passe renforcé"
+                        placeholder="Votre mot de passe apparaîtra ici"
+                    >
+
+
+                    <button
+                        class="icon-button"
+                        id="togglePassword"
+                        title="Afficher ou masquer le mot de passe"
+                        aria-label="Afficher ou masquer le mot de passe"
+                        type="button"
+                    >
+                        👁️
+                    </button>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        class="primary-button"
+                        id="generateButton"
+                        type="button"
+                    >
+                        🔄 Générer un mot de passe
+                    </button>
+
+
+                    <button
+                        class="green-button"
+                        id="copyButton"
+                        type="button"
+                    >
+                        📋 Copier
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="copy-message"
+                    id="copyMessage"
+                ></div>
+
+
+                <!-- SOLIDITE -->
+
+                <div class="strength-container">
+
+                    <div class="strength-title">
+
+                        <span>
+                            Solidité
+                        </span>
+
+                        <span
+                            class="strength-label"
+                            id="strengthLabel"
+                        >
+                            Aucun mot de passe
+                        </span>
+
+                    </div>
+
+
+                    <div class="strength-bar">
+
+                        <div
+                            class="strength-fill"
+                            id="strengthFill"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+                        class="score"
+                        id="score"
+                    >
+                        0 / 100
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div class="options">
+
+                <h3>
+                    ⚙️ Choisissez les caractères à utiliser
+                </h3>
+
+
+                <div class="option">
+
+                    <input
+                        type="checkbox"
+                        id="lowercase"
+                        checked
+                    >
+
+                    <label for="lowercase">
+                        🔤 Lettres minuscules — abcdefgh...
+                    </label>
+
+                </div>
+
+
+                <div class="option">
+
+                    <input
+                        type="checkbox"
+                        id="uppercase"
+                        checked
+                    >
+
+                    <label for="uppercase">
+                        🔠 Lettres majuscules — ABCDEFGH...
+                    </label>
+
+                </div>
+
+
+                <div class="option">
+
+                    <input
+                        type="checkbox"
+                        id="numbers"
+                        checked
+                    >
+
+                    <label for="numbers">
+                        🔢 Chiffres — 0123456789
+                    </label>
+
+                </div>
+
+
+                <div class="option">
+
+                    <input
+                        type="checkbox"
+                        id="special"
+                        checked
+                    >
+
+                    <label for="special">
+                        🔣 Caractères spéciaux — ! @ # $ % &...
+                    </label>
+
+                </div>
+
+
+                <div class="length-control">
+
+                    <div class="length-top">
+
+                        <span>
+                            📏 Longueur du mot de passe
+                        </span>
+
+                        <span
+                            class="length-value"
+                            id="lengthValue"
+                        >
+                            18 caractères
+                        </span>
+
+                    </div>
+
+
+                    <input
+                        type="range"
+                        id="length"
+                        min="12"
+                        max="32"
+                        value="18"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             CONSEILS
+        ================================================== -->
 
         <div class="advice">
 
-            <h3>💡 Pour un bon mot de passe</h3>
+            <h3>
+                💡 Pour un bon mot de passe
+            </h3>
 
             <ul>
 
@@ -694,19 +1185,29 @@ footer {
                 </li>
 
                 <li>
-                    Utilisez un mot de passe <strong>différent pour chaque compte important</strong>.
+                    Utilisez un mot de passe
+                    <strong>différent pour chaque compte important</strong>.
                 </li>
 
                 <li>
-                    Évitez votre prénom, votre date de naissance ou des informations faciles à deviner.
+                    Pour le mode facile, évitez votre prénom,
+                    votre date de naissance ou des informations
+                    que tout le monde connaît sur vous.
                 </li>
 
                 <li>
-                    Évitez les suites évidentes comme <strong>123456</strong> ou <strong>azerty</strong>.
+                    Évitez les suites évidentes comme
+                    <strong>123456</strong> ou <strong>azerty</strong>.
                 </li>
 
                 <li>
-                    Pour plusieurs comptes, un <strong>gestionnaire de mots de passe</strong> peut vous aider.
+                    Si vous utilisez un carnet pour noter vos mots de passe,
+                    gardez-le dans un endroit sûr et ne le laissez pas visible.
+                </li>
+
+                <li>
+                    Pour les comptes très importants,
+                    le <strong>mode renforcé</strong> est préférable.
                 </li>
 
             </ul>
@@ -714,23 +1215,28 @@ footer {
         </div>
 
 
-        <!-- SECURITE -->
+        <!-- ==================================================
+             SECURITE
+        ================================================== -->
 
         <div class="info-box">
 
             🔒 <strong>Votre sécurité :</strong>
 
             ce générateur fonctionne directement dans votre navigateur.
-            Le mot de passe créé n'est envoyé à aucun serveur par cette page.
+            Les informations saisies et les mots de passe créés
+            ne sont envoyés à aucun serveur par cette page.
 
             <br><br>
 
             <strong>Important :</strong>
+
             ne partagez jamais votre mot de passe avec quelqu'un,
             même avec une personne qui prétend travailler pour une banque,
             une administration ou un service informatique.
 
         </div>
+
 
     </div>
 
@@ -739,49 +1245,618 @@ footer {
 
 <footer>
 
-    Centre Multimédia du CCAS — Apprendre, pratiquer et devenir plus autonome avec le numérique.
+    Centre Multimédia du CCAS —
+    Apprendre, pratiquer et devenir plus autonome avec le numérique.
 
 </footer>
 
 
 <script>
 
-/* =========================
-   ELEMENTS
-========================= */
+/* =========================================================
+   MODE DE GENERATION
+========================================================= */
 
-const passwordInput = document.getElementById("password");
+const easyModeButton =
+    document.getElementById("easyModeButton");
 
-const generateButton = document.getElementById("generateButton");
+const strongModeButton =
+    document.getElementById("strongModeButton");
 
-const copyButton = document.getElementById("copyButton");
+const easyMode =
+    document.getElementById("easyMode");
 
-const togglePassword = document.getElementById("togglePassword");
-
-const copyMessage = document.getElementById("copyMessage");
-
-const strengthFill = document.getElementById("strengthFill");
-
-const strengthLabel = document.getElementById("strengthLabel");
-
-const scoreElement = document.getElementById("score");
-
-const lengthSlider = document.getElementById("length");
-
-const lengthValue = document.getElementById("lengthValue");
-
-const lowercaseCheckbox = document.getElementById("lowercase");
-
-const uppercaseCheckbox = document.getElementById("uppercase");
-
-const numbersCheckbox = document.getElementById("numbers");
-
-const specialCheckbox = document.getElementById("special");
+const strongMode =
+    document.getElementById("strongMode");
 
 
-/* =========================
+easyModeButton.addEventListener(
+    "click",
+    function() {
+
+        easyModeButton.classList.add("active");
+        strongModeButton.classList.remove("active");
+
+        easyMode.classList.add("active");
+        strongMode.classList.remove("active");
+
+    }
+);
+
+
+strongModeButton.addEventListener(
+    "click",
+    function() {
+
+        strongModeButton.classList.add("active");
+        easyModeButton.classList.remove("active");
+
+        strongMode.classList.add("active");
+        easyMode.classList.remove("active");
+
+    }
+);
+
+
+/* =========================================================
+   MODE FACILE A RETENIR
+========================================================= */
+
+const favoriteFood =
+    document.getElementById("favoriteFood");
+
+const favoriteHobby =
+    document.getElementById("favoriteHobby");
+
+const easyPassword =
+    document.getElementById("easyPassword");
+
+const generateEasyButton =
+    document.getElementById("generateEasyButton");
+
+const copyEasyButton =
+    document.getElementById("copyEasyButton");
+
+const toggleEasyPassword =
+    document.getElementById("toggleEasyPassword");
+
+const easyCopyMessage =
+    document.getElementById("easyCopyMessage");
+
+const easyStrengthFill =
+    document.getElementById("easyStrengthFill");
+
+const easyStrengthLabel =
+    document.getElementById("easyStrengthLabel");
+
+const easyScore =
+    document.getElementById("easyScore");
+
+
+/* =========================================================
+   ALEATOIRE SECURISE
+========================================================= */
+
+function secureRandom(max) {
+
+    const array =
+        new Uint32Array(1);
+
+    crypto.getRandomValues(array);
+
+    return array[0] % max;
+
+}
+
+
+/* =========================================================
+   NETTOYAGE DES MOTS
+========================================================= */
+
+function cleanWord(word) {
+
+    return word
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9]/g, "")
+        .trim();
+
+}
+
+
+/* =========================================================
+   PREMIERE LETTRE EN MAJUSCULE
+========================================================= */
+
+function capitalizeWord(word) {
+
+    if (!word) {
+        return "";
+    }
+
+    return word.charAt(0).toUpperCase()
+        + word.slice(1).toLowerCase();
+
+}
+
+
+/* =========================================================
+   GENERATION DU MOT DE PASSE PERSONNALISE
+========================================================= */
+
+function generateEasyPassword() {
+
+    const food =
+        cleanWord(favoriteFood.value);
+
+    const hobby =
+        cleanWord(favoriteHobby.value);
+
+
+    if (!food || !hobby) {
+
+        easyCopyMessage.textContent =
+            "⚠️ Indiquez votre plat préféré et votre loisir.";
+
+        return;
+
+    }
+
+
+    /*
+       On choisit aléatoirement l'ordre des deux mots.
+       Cela évite d'avoir toujours exactement
+       le même modèle.
+    */
+
+    let firstWord;
+    let secondWord;
+
+
+    if (secureRandom(2) === 0) {
+
+        firstWord = food;
+        secondWord = hobby;
+
+    }
+    else {
+
+        firstWord = hobby;
+        secondWord = food;
+
+    }
+
+
+    /*
+       Quelques caractères spéciaux faciles
+       à retrouver sur un clavier.
+    */
+
+    const specialCharacters =
+        "!@#";
+
+
+    const special =
+        specialCharacters[
+            secureRandom(
+                specialCharacters.length
+            )
+        ];
+
+
+    /*
+       Nombre aléatoire sur deux chiffres.
+    */
+
+    const number =
+        String(
+            10 + secureRandom(90)
+        );
+
+
+    /*
+       Exemple :
+       Couscous-Jardin!47
+    */
+
+    const generatedPassword =
+        capitalizeWord(firstWord)
+        + "-"
+        + capitalizeWord(secondWord)
+        + special
+        + number;
+
+
+    easyPassword.value =
+        generatedPassword;
+
+    easyPassword.type =
+        "password";
+
+    toggleEasyPassword.textContent =
+        "👁️";
+
+    easyCopyMessage.textContent =
+        "";
+
+    evaluateEasyPassword(
+        generatedPassword
+    );
+
+}
+
+
+/* =========================================================
+   EVALUATION DU MOT DE PASSE PERSONNALISE
+========================================================= */
+
+function evaluateEasyPassword(password) {
+
+    if (!password) {
+
+        easyStrengthFill.style.width =
+            "0%";
+
+        easyStrengthLabel.textContent =
+            "Aucun mot de passe";
+
+        easyScore.textContent =
+            "0 / 100";
+
+        return;
+
+    }
+
+
+    let score = 0;
+
+
+    /*
+       Longueur
+    */
+
+    if (password.length >= 12) {
+        score += 30;
+    }
+
+    if (password.length >= 15) {
+        score += 10;
+    }
+
+
+    /*
+       Majuscule
+    */
+
+    if (/[A-Z]/.test(password)) {
+        score += 10;
+    }
+
+
+    /*
+       Minuscules
+    */
+
+    if (/[a-z]/.test(password)) {
+        score += 10;
+    }
+
+
+    /*
+       Chiffres
+    */
+
+    if (/[0-9]/.test(password)) {
+        score += 15;
+    }
+
+
+    /*
+       Caractère spécial
+    */
+
+    if (/[^A-Za-z0-9]/.test(password)) {
+        score += 15;
+    }
+
+
+    /*
+       Pas de répétition excessive
+    */
+
+    if (!/(.)\1\1/.test(password)) {
+        score += 5;
+    }
+
+
+    /*
+       Pas de suite évidente
+    */
+
+    const lowerPassword =
+        password.toLowerCase();
+
+
+    const obviousSequences = [
+
+        "123456",
+        "234567",
+        "abcdef",
+        "qwerty",
+        "azerty"
+
+    ];
+
+
+    const hasSequence =
+        obviousSequences.some(
+            sequence =>
+                lowerPassword.includes(sequence)
+        );
+
+
+    if (!hasSequence) {
+        score += 5;
+    }
+
+
+    score =
+        Math.min(100, score);
+
+
+    easyStrengthFill.style.width =
+        score + "%";
+
+
+    easyScore.textContent =
+        score + " / 100";
+
+
+    if (score < 35) {
+
+        easyStrengthLabel.textContent =
+            "🔴 Faible";
+
+        easyStrengthFill.style.background =
+            "#d9534f";
+
+    }
+
+    else if (score < 60) {
+
+        easyStrengthLabel.textContent =
+            "🟠 Moyen";
+
+        easyStrengthFill.style.background =
+            "#e0a62b";
+
+    }
+
+    else if (score < 80) {
+
+        easyStrengthLabel.textContent =
+            "🟢 Bon";
+
+        easyStrengthFill.style.background =
+            "#4b9b68";
+
+    }
+
+    else {
+
+        easyStrengthLabel.textContent =
+            "🟢 Très bon";
+
+        easyStrengthFill.style.background =
+            "#2f7d4d";
+
+    }
+
+}
+
+
+/* =========================================================
+   GENERATION AUTOMATIQUE QUAND ON MODIFIE LES CHAMPS
+========================================================= */
+
+favoriteFood.addEventListener(
+    "input",
+    function() {
+
+        if (
+            favoriteFood.value.trim()
+            &&
+            favoriteHobby.value.trim()
+        ) {
+
+            easyCopyMessage.textContent =
+                "";
+
+        }
+
+    }
+);
+
+
+favoriteHobby.addEventListener(
+    "input",
+    function() {
+
+        if (
+            favoriteFood.value.trim()
+            &&
+            favoriteHobby.value.trim()
+        ) {
+
+            easyCopyMessage.textContent =
+                "";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BOUTON GENERER MODE FACILE
+========================================================= */
+
+generateEasyButton.addEventListener(
+    "click",
+    generateEasyPassword
+);
+
+
+/* =========================================================
+   AFFICHER / MASQUER MODE FACILE
+========================================================= */
+
+toggleEasyPassword.addEventListener(
+    "click",
+    function() {
+
+        if (!easyPassword.value) {
+            return;
+        }
+
+
+        if (
+            easyPassword.type === "password"
+        ) {
+
+            easyPassword.type =
+                "text";
+
+            toggleEasyPassword.textContent =
+                "🙈";
+
+        }
+
+        else {
+
+            easyPassword.type =
+                "password";
+
+            toggleEasyPassword.textContent =
+                "👁️";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   COPIER MODE FACILE
+========================================================= */
+
+copyEasyButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!easyPassword.value) {
+
+            easyCopyMessage.textContent =
+                "⚠️ Créez d'abord un mot de passe.";
+
+            return;
+
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                easyPassword.value
+            );
+
+            easyCopyMessage.textContent =
+                "✅ Mot de passe copié !";
+
+        }
+
+        catch (error) {
+
+            easyPassword.type =
+                "text";
+
+            easyPassword.select();
+
+            document.execCommand("copy");
+
+            easyPassword.type =
+                "password";
+
+            easyCopyMessage.textContent =
+                "✅ Mot de passe copié !";
+
+        }
+
+
+        setTimeout(
+            function() {
+
+                easyCopyMessage.textContent =
+                    "";
+
+            },
+            2500
+        );
+
+    }
+);
+
+
+/* =========================================================
+   MODE RENFORCE
+========================================================= */
+
+const passwordInput =
+    document.getElementById("password");
+
+const generateButton =
+    document.getElementById("generateButton");
+
+const copyButton =
+    document.getElementById("copyButton");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const copyMessage =
+    document.getElementById("copyMessage");
+
+const strengthFill =
+    document.getElementById("strengthFill");
+
+const strengthLabel =
+    document.getElementById("strengthLabel");
+
+const scoreElement =
+    document.getElementById("score");
+
+const lengthSlider =
+    document.getElementById("length");
+
+const lengthValue =
+    document.getElementById("lengthValue");
+
+const lowercaseCheckbox =
+    document.getElementById("lowercase");
+
+const uppercaseCheckbox =
+    document.getElementById("uppercase");
+
+const numbersCheckbox =
+    document.getElementById("numbers");
+
+const specialCheckbox =
+    document.getElementById("special");
+
+
+/* =========================================================
    CARACTERES
-========================= */
+========================================================= */
 
 const characterSets = {
 
@@ -800,20 +1875,9 @@ const characterSets = {
 };
 
 
-/* =========================
-   GENERATEUR ALEATOIRE
-========================= */
-
-function secureRandom(max) {
-
-    const array = new Uint32Array(1);
-
-    crypto.getRandomValues(array);
-
-    return array[0] % max;
-
-}
-
+/* =========================================================
+   GENERATEUR ALEATOIRE RENFORCE
+========================================================= */
 
 function randomCharacter(characters) {
 
@@ -824,21 +1888,29 @@ function randomCharacter(characters) {
 }
 
 
-/* =========================
+/* =========================================================
    MELANGE SECURISE
-========================= */
+========================================================= */
 
 function shuffleSecure(array) {
 
-    for (let i = array.length - 1; i > 0; i--) {
+    for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ) {
 
-        const j = secureRandom(i + 1);
+        const j =
+            secureRandom(i + 1);
 
-        const temporary = array[i];
+        const temporary =
+            array[i];
 
-        array[i] = array[j];
+        array[i] =
+            array[j];
 
-        array[j] = temporary;
+        array[j] =
+            temporary;
 
     }
 
@@ -847,18 +1919,22 @@ function shuffleSecure(array) {
 }
 
 
-/* =========================
-   GENERATION
-========================= */
+/* =========================================================
+   GENERATION RENFORCEE
+========================================================= */
 
 function generatePassword() {
 
     const length =
         parseInt(lengthSlider.value);
 
-    let availableCharacters = "";
 
-    const selectedSets = [];
+    let availableCharacters =
+        "";
+
+
+    const selectedSets =
+        [];
 
 
     if (lowercaseCheckbox.checked) {
@@ -920,7 +1996,19 @@ function generatePassword() {
     }
 
 
-    const passwordCharacters = [];
+    if (length < selectedSets.length) {
+
+        alert(
+            "La longueur choisie est trop courte pour utiliser tous les types de caractères sélectionnés."
+        );
+
+        return;
+
+    }
+
+
+    const passwordCharacters =
+        [];
 
 
     /*
@@ -928,17 +2016,19 @@ function generatePassword() {
        de chaque catégorie sélectionnée.
     */
 
-    selectedSets.forEach(set => {
+    selectedSets.forEach(
+        set => {
 
-        passwordCharacters.push(
-            randomCharacter(set)
-        );
+            passwordCharacters.push(
+                randomCharacter(set)
+            );
 
-    });
+        }
+    );
 
 
     /*
-       Puis on complète le mot de passe.
+       Puis on complète.
     */
 
     while (
@@ -955,40 +2045,45 @@ function generatePassword() {
 
 
     /*
-       Mélange sécurisé pour éviter que
-       les premiers caractères soient toujours
-       ceux des catégories sélectionnées.
+       Mélange sécurisé.
     */
 
-    shuffleSecure(passwordCharacters);
+    shuffleSecure(
+        passwordCharacters
+    );
 
 
     const password =
         passwordCharacters.join("");
 
 
-    passwordInput.value = password;
+    passwordInput.value =
+        password;
 
-    passwordInput.type = "password";
+    passwordInput.type =
+        "password";
 
-    togglePassword.textContent = "👁️";
+    togglePassword.textContent =
+        "👁️";
 
-    copyMessage.textContent = "";
+    copyMessage.textContent =
+        "";
 
     evaluatePassword(password);
 
 }
 
 
-/* =========================
-   EVALUATION
-========================= */
+/* =========================================================
+   EVALUATION RENFORCEE
+========================================================= */
 
 function evaluatePassword(password) {
 
     if (!password) {
 
-        strengthFill.style.width = "0%";
+        strengthFill.style.width =
+            "0%";
 
         strengthLabel.textContent =
             "Aucun mot de passe";
@@ -1009,21 +2104,15 @@ function evaluatePassword(password) {
     */
 
     if (password.length >= 12) {
-
         score += 25;
-
     }
 
     if (password.length >= 15) {
-
         score += 15;
-
     }
 
     if (password.length >= 20) {
-
         score += 10;
-
     }
 
 
@@ -1032,27 +2121,19 @@ function evaluatePassword(password) {
     */
 
     if (/[a-z]/.test(password)) {
-
         score += 10;
-
     }
 
     if (/[A-Z]/.test(password)) {
-
         score += 10;
-
     }
 
     if (/[0-9]/.test(password)) {
-
         score += 10;
-
     }
 
     if (/[^A-Za-z0-9]/.test(password)) {
-
         score += 10;
-
     }
 
 
@@ -1060,12 +2141,8 @@ function evaluatePassword(password) {
        Répétitions excessives
     */
 
-    if (
-        !/(.)\1\1/.test(password)
-    ) {
-
+    if (!/(.)\1\1/.test(password)) {
         score += 5;
-
     }
 
 
@@ -1093,15 +2170,14 @@ function evaluatePassword(password) {
 
 
     const hasSequence =
-        obviousSequences.some(sequence =>
-            lowerPassword.includes(sequence)
+        obviousSequences.some(
+            sequence =>
+                lowerPassword.includes(sequence)
         );
 
 
     if (!hasSequence) {
-
         score += 5;
-
     }
 
 
@@ -1116,10 +2192,6 @@ function evaluatePassword(password) {
     scoreElement.textContent =
         score + " / 100";
 
-
-    /*
-       Niveau
-    */
 
     if (score < 35) {
 
@@ -1164,9 +2236,9 @@ function evaluatePassword(password) {
 }
 
 
-/* =========================
+/* =========================================================
    LONGUEUR
-========================= */
+========================================================= */
 
 lengthSlider.addEventListener(
     "input",
@@ -1175,19 +2247,22 @@ lengthSlider.addEventListener(
         const length =
             parseInt(this.value);
 
+
         lengthValue.textContent =
             length +
-            (length > 1
-                ? " caractères"
-                : " caractère");
+            (
+                length > 1
+                    ? " caractères"
+                    : " caractère"
+            );
 
     }
 );
 
 
-/* =========================
-   GENERATION
-========================= */
+/* =========================================================
+   GENERATION RENFORCEE
+========================================================= */
 
 generateButton.addEventListener(
     "click",
@@ -1195,18 +2270,16 @@ generateButton.addEventListener(
 );
 
 
-/* =========================
-   AFFICHER / MASQUER
-========================= */
+/* =========================================================
+   AFFICHER / MASQUER RENFORCE
+========================================================= */
 
 togglePassword.addEventListener(
     "click",
     function() {
 
         if (!passwordInput.value) {
-
             return;
-
         }
 
 
@@ -1214,7 +2287,8 @@ togglePassword.addEventListener(
             passwordInput.type === "password"
         ) {
 
-            passwordInput.type = "text";
+            passwordInput.type =
+                "text";
 
             togglePassword.textContent =
                 "🙈";
@@ -1223,7 +2297,8 @@ togglePassword.addEventListener(
 
         else {
 
-            passwordInput.type = "password";
+            passwordInput.type =
+                "password";
 
             togglePassword.textContent =
                 "👁️";
@@ -1234,9 +2309,9 @@ togglePassword.addEventListener(
 );
 
 
-/* =========================
-   COPIER
-========================= */
+/* =========================================================
+   COPIER RENFORCE
+========================================================= */
 
 copyButton.addEventListener(
     "click",
@@ -1265,18 +2340,15 @@ copyButton.addEventListener(
 
         catch (error) {
 
-            /*
-               Solution de secours pour certains
-               navigateurs ou contextes locaux.
-            */
-
-            passwordInput.type = "text";
+            passwordInput.type =
+                "text";
 
             passwordInput.select();
 
             document.execCommand("copy");
 
-            passwordInput.type = "password";
+            passwordInput.type =
+                "password";
 
             copyMessage.textContent =
                 "✅ Mot de passe copié !";
@@ -1287,7 +2359,8 @@ copyButton.addEventListener(
         setTimeout(
             function() {
 
-                copyMessage.textContent = "";
+                copyMessage.textContent =
+                    "";
 
             },
             2500
@@ -1297,41 +2370,46 @@ copyButton.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    VERIFICATION DES OPTIONS
-========================= */
+========================================================= */
 
 [
     lowercaseCheckbox,
     uppercaseCheckbox,
     numbersCheckbox,
     specialCheckbox
-].forEach(checkbox => {
 
-    checkbox.addEventListener(
-        "change",
-        function() {
+].forEach(
+    checkbox => {
 
-            /*
-               On régénère automatiquement afin
-               que le nouveau choix soit visible.
-            */
+        checkbox.addEventListener(
+            "change",
+            function() {
 
-            generatePassword();
+                generatePassword();
 
-        }
-    );
+            }
+        );
 
-});
+    }
+);
 
 
-/* =========================
-   PREMIER MOT DE PASSE
-========================= */
+/* =========================================================
+   EXEMPLES DE DEMARRAGE
+========================================================= */
+
+/*
+   On ne génère pas automatiquement le mode facile :
+   la personne doit d'abord renseigner ses deux choix.
+*/
 
 generatePassword();
 
 </script>
 
+
 </body>
+
 </html>
