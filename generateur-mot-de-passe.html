@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Générateur de mot de passe - Centre Multimédia du CCAS</title>
 
@@ -39,32 +38,40 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: .8;
 }
 
 nav {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 15px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 17px;
+    transition: .3s;
 }
 
 nav a:hover,
 nav a.active {
-    background: rgba(255,255,255,0.15);
+    background-color: #3d76c5;
 }
 
 /* =========================
@@ -562,11 +569,18 @@ footer {
 
     .navbar {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        padding: 15px;
     }
 
     nav {
-        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 15px;
+        padding: 10px 12px;
     }
 
     .page-header h1 {
@@ -620,8 +634,17 @@ footer {
     <div class="navbar">
 
         <div class="logo">
-            🖥️ Centre Multimédia du CCAS
+
+            <strong>
+                Centre Multimédia du CCAS
+            </strong>
+
+            <span>
+                Apprendre • Découvrir • Progresser
+            </span>
+
         </div>
+
 
         <nav>
 
@@ -707,7 +730,7 @@ footer {
             >
 
                 <div class="mode-icon">
-                    🧓
+                    💡
                 </div>
 
                 <strong>
@@ -1405,8 +1428,6 @@ function generateEasyPassword() {
 
     /*
        On choisit aléatoirement l'ordre des deux mots.
-       Cela évite d'avoir toujours exactement
-       le même modèle.
     */
 
     let firstWord;
@@ -1428,8 +1449,7 @@ function generateEasyPassword() {
 
 
     /*
-       Quelques caractères spéciaux faciles
-       à retrouver sur un clavier.
+       Caractère spécial simple.
     */
 
     const specialCharacters =
@@ -1656,7 +1676,7 @@ function evaluateEasyPassword(password) {
 
 
 /* =========================================================
-   GENERATION AUTOMATIQUE QUAND ON MODIFIE LES CHAMPS
+   CHAMPS PERSONNALISES
 ========================================================= */
 
 favoriteFood.addEventListener(
@@ -1876,7 +1896,7 @@ const characterSets = {
 
 
 /* =========================================================
-   GENERATEUR ALEATOIRE RENFORCE
+   GENERATION ALEATOIRE
 ========================================================= */
 
 function randomCharacter(characters) {
@@ -2012,8 +2032,8 @@ function generatePassword() {
 
 
     /*
-       On place d'abord au moins un caractère
-       de chaque catégorie sélectionnée.
+       Au moins un caractère
+       de chaque catégorie.
     */
 
     selectedSets.forEach(
@@ -2397,13 +2417,8 @@ copyButton.addEventListener(
 
 
 /* =========================================================
-   EXEMPLES DE DEMARRAGE
+   PREMIER MOT DE PASSE RENFORCE
 ========================================================= */
-
-/*
-   On ne génère pas automatiquement le mode facile :
-   la personne doit d'abord renseigner ses deux choix.
-*/
 
 generatePassword();
 
