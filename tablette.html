@@ -2,10 +2,13 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cours tablette - Centre Multimédia du CCAS</title>
+
 
     <style>
 
@@ -13,17 +16,24 @@
             box-sizing: border-box;
         }
 
+
         body {
             margin: 0;
+
             font-family: Arial, Helvetica, sans-serif;
+
             background: #f5f7fb;
+
             color: #243447;
+
             line-height: 1.6;
         }
+
 
         a {
             text-decoration: none;
         }
+
 
 
         /* =========================================
@@ -32,47 +42,68 @@
 
         header {
             background: #1f3656;
+
             color: white;
         }
 
+
         .navbar {
             max-width: 1200px;
+
             margin: auto;
+
             padding: 18px 25px;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             gap: 30px;
         }
 
+
         .logo {
             display: flex;
+
             flex-direction: column;
         }
+
 
         .logo strong {
             font-size: 26px;
         }
 
+
         .logo span {
             font-size: 15px;
+
             opacity: .8;
         }
 
+
         nav {
             display: flex;
+
             gap: 10px;
         }
 
+
         nav a {
             color: white;
+
             text-decoration: none;
+
             padding: 12px 18px;
+
             border-radius: 8px;
+
             font-size: 17px;
+
             transition: .3s;
         }
+
 
         nav a:hover,
         nav a.active {
@@ -80,11 +111,13 @@
         }
 
 
+
         /* =========================================
            EN-TÊTE
         ========================================= */
 
         .page-header {
+
             background:
                 linear-gradient(
                     135deg,
@@ -98,7 +131,9 @@
             text-align: center;
         }
 
+
         .page-header h1 {
+
             margin: 0 0 12px;
 
             font-size: 38px;
@@ -106,7 +141,9 @@
             color: #1f3656;
         }
 
+
         .page-header p {
+
             max-width: 760px;
 
             margin: auto;
@@ -117,11 +154,13 @@
         }
 
 
+
         /* =========================================
            CONTENU
         ========================================= */
 
         .container {
+
             max-width: 1200px;
 
             margin: auto;
@@ -129,7 +168,9 @@
             padding: 45px 25px 70px;
         }
 
+
         .intro {
+
             text-align: center;
 
             max-width: 850px;
@@ -137,7 +178,9 @@
             margin: 0 auto 45px;
         }
 
+
         .intro h2 {
+
             color: #1f3656;
 
             font-size: 30px;
@@ -145,22 +188,28 @@
             margin-bottom: 12px;
         }
 
+
         .intro p {
+
             font-size: 18px;
 
             color: #5d6b7a;
         }
 
 
+
         /* =========================================
-           SECTIONS DE COURS
+           SECTIONS
         ========================================= */
 
         .course-section {
+
             margin-bottom: 55px;
         }
 
+
         .section-title {
+
             display: flex;
 
             align-items: center;
@@ -170,7 +219,9 @@
             margin-bottom: 25px;
         }
 
+
         .section-title h2 {
+
             margin: 0;
 
             font-size: 27px;
@@ -178,7 +229,9 @@
             color: #1f3656;
         }
 
+
         .section-title::after {
+
             content: "";
 
             height: 2px;
@@ -189,11 +242,13 @@
         }
 
 
+
         /* =========================================
            GRILLE
         ========================================= */
 
         .course-grid {
+
             display: grid;
 
             grid-template-columns: repeat(2, 1fr);
@@ -202,11 +257,13 @@
         }
 
 
+
         /* =========================================
            CARTE COURS
         ========================================= */
 
         .course-card {
+
             background: #ffffff;
 
             border-radius: 14px;
@@ -223,14 +280,18 @@
                 box-shadow .25s;
         }
 
+
         .course-card:hover {
+
             transform: translateY(-3px);
 
             box-shadow:
                 0 8px 24px rgba(31, 54, 86, .13);
         }
 
+
         .course-card h3 {
+
             margin: 0 0 10px;
 
             color: #1f3656;
@@ -238,7 +299,9 @@
             font-size: 21px;
         }
 
+
         .course-card > p {
+
             margin: 0 0 20px;
 
             color: #5d6b7a;
@@ -247,67 +310,88 @@
         }
 
 
-        /* =========================================
-           OPTIONS / RESSOURCES
-        ========================================= */
-
-        .course-options {
-            display: grid;
-
-            gap: 10px;
-        }
-
-        .course-option {
-            border-radius: 9px;
-
-            padding: 12px 15px;
-
-            border: 1px solid #dfe6ee;
-
-            background: #f8fafc;
-        }
-
-        .course-option strong {
-            display: block;
-
-            color: #1f3656;
-
-            margin-bottom: 3px;
-        }
-
-        .course-option span {
-            font-size: 14px;
-
-            color: #697786;
-        }
-
 
         /* =========================================
            POUR ALLER PLUS LOIN
         ========================================= */
 
         .further {
+
+            margin-top: 18px;
+
+            padding: 14px 16px;
+
             background: #eef7ef;
 
-            border-color: #d7eadb;
+            border: 1px solid #d7eadb;
+
+            border-radius: 9px;
         }
+
 
         .further strong {
+
+            display: block;
+
             color: #28734f;
+
+            margin-bottom: 8px;
         }
+
 
         .further a {
+
+            display: inline-block;
+
             color: #28734f;
 
+            background: #ffffff;
+
+            border: 1px solid #b9d8c4;
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
             font-weight: bold;
+
+            font-size: 15px;
+
+            margin: 3px 4px 3px 0;
+
+            transition: .2s;
         }
+
+
+        .further a:hover {
+
+            background: #28734f;
+
+            color: white;
+        }
+
 
 
         /* =========================================
-           BOUTON PDF
+           PDF
         ========================================= */
 
+        .pdf-unavailable {
+
+            display: inline-block;
+
+            margin-top: 6px;
+
+            font-size: 14px;
+
+            color: #7b8794;
+
+            font-style: italic;
+        }
+
+
         .pdf-link {
+
             display: inline-block;
 
             text-decoration: none;
@@ -327,22 +411,12 @@
             transition: .2s;
         }
 
+
         .pdf-link:hover {
+
             background: #6048a5;
         }
 
-
-        .pdf-unavailable {
-            display: inline-block;
-
-            margin-top: 6px;
-
-            font-size: 14px;
-
-            color: #7b8794;
-
-            font-style: italic;
-        }
 
 
         /* =========================================
@@ -350,6 +424,7 @@
         ========================================= */
 
         .info-box {
+
             background: #ffffff;
 
             border-left: 5px solid #7b5fc7;
@@ -364,17 +439,22 @@
             margin-top: 20px;
         }
 
+
         .info-box h2 {
+
             margin-top: 0;
 
             color: #1f3656;
         }
 
+
         .info-box p {
+
             margin-bottom: 0;
 
             color: #5d6b7a;
         }
+
 
 
         /* =========================================
@@ -382,6 +462,7 @@
         ========================================= */
 
         footer {
+
             background: #1f3656;
 
             color: #ffffff;
@@ -393,9 +474,12 @@
             font-size: 14px;
         }
 
+
         footer p {
+
             margin: 4px 0;
         }
+
 
 
         /* =========================================
@@ -405,6 +489,7 @@
         @media (max-width: 850px) {
 
             .course-grid {
+
                 grid-template-columns: 1fr;
             }
 
@@ -414,48 +499,69 @@
         @media (max-width: 650px) {
 
             .navbar {
+
                 flex-direction: column;
 
                 align-items: flex-start;
             }
 
+
             nav {
+
                 flex-wrap: wrap;
             }
 
+
             nav a {
+
                 padding: 10px 12px;
             }
 
+
             .page-header {
+
                 padding: 40px 20px;
             }
 
+
             .page-header h1 {
+
                 font-size: 31px;
             }
 
+
             .page-header p {
+
                 font-size: 17px;
             }
 
+
             .container {
+
                 padding: 35px 18px 55px;
             }
 
+
             .intro h2 {
+
                 font-size: 26px;
             }
 
+
             .section-title h2 {
+
                 font-size: 23px;
             }
 
+
             .section-title::after {
+
                 display: none;
             }
 
+
             .course-card {
+
                 padding: 21px;
             }
 
@@ -566,7 +672,7 @@
 
 
     <!-- =====================================
-         LES BASES DE LA TABLETTE
+         LES BASES
     ====================================== -->
 
     <section class="course-section">
@@ -583,7 +689,7 @@
         <div class="course-grid">
 
 
-            <!-- Livret d'introduction -->
+            <!-- LIVRET DÉBUTANT -->
 
             <article class="course-card">
 
@@ -601,11 +707,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-gestes.html">
+                        Jeu : les gestes tactiles
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Paramètres -->
+            <!-- PARAMÈTRES -->
 
             <article class="course-card">
 
@@ -626,7 +745,7 @@
 
 
 
-            <!-- Codes -->
+            <!-- CODES -->
 
             <article class="course-card">
 
@@ -647,7 +766,7 @@
 
 
 
-            <!-- Notifications -->
+            <!-- NOTIFICATIONS -->
 
             <article class="course-card">
 
@@ -691,7 +810,7 @@
         <div class="course-grid">
 
 
-            <!-- Communication -->
+            <!-- COMMUNIQUER -->
 
             <article class="course-card">
 
@@ -700,20 +819,33 @@
                 </h3>
 
                 <p>
-                    Découvrez les différentes façons de communiquer avec vos
-                    proches depuis une tablette : messagerie, appels vidéo
-                    et applications de communication.
+                    Découvrez les différentes façons de communiquer avec
+                    vos proches depuis une tablette : messagerie,
+                    appels vidéo et applications de communication.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-messages.html">
+                        Jeu : les messages
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- WhatsApp -->
+            <!-- WHATSAPP -->
 
             <article class="course-card">
 
@@ -757,7 +889,7 @@
         <div class="course-grid">
 
 
-            <!-- Prendre des photos -->
+            <!-- PRENDRE DES PHOTOS -->
 
             <article class="course-card">
 
@@ -774,11 +906,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Organiser photos -->
+            <!-- ORGANISER -->
 
             <article class="course-card">
 
@@ -795,11 +940,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Partager photos -->
+            <!-- PARTAGER -->
 
             <article class="course-card">
 
@@ -816,11 +974,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Scanner document -->
+            <!-- SCANNER DOCUMENT -->
 
             <article class="course-card">
 
@@ -841,7 +1012,7 @@
 
 
 
-            <!-- Transfert photos -->
+            <!-- TRANSFERT PHOTOS -->
 
             <article class="course-card">
 
@@ -863,7 +1034,7 @@
 
 
 
-            <!-- QR Code -->
+            <!-- QR CODE -->
 
             <article class="course-card">
 
@@ -908,7 +1079,7 @@
         <div class="course-grid">
 
 
-            <!-- Internet -->
+            <!-- INTERNET -->
 
             <article class="course-card">
 
@@ -917,19 +1088,32 @@
                 </h3>
 
                 <p>
-                    Apprenez à rechercher des informations, consulter des sites
-                    Internet et utiliser votre navigateur sur tablette.
+                    Apprenez à rechercher des informations, consulter des
+                    sites Internet et utiliser votre navigateur sur tablette.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-internet.html">
+                        Jeu : Internet
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Sans publicité -->
+            <!-- INTERNET SANS PUBLICITÉ -->
 
             <article class="course-card">
 
@@ -946,11 +1130,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-internet.html">
+                        Jeu : Internet
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Wi-Fi -->
+            <!-- WI-FI -->
 
             <article class="course-card">
 
@@ -1015,8 +1212,6 @@
         <div class="course-grid">
 
 
-            <!-- Applications -->
-
             <article class="course-card">
 
                 <h3>
@@ -1060,7 +1255,7 @@
         <div class="course-grid">
 
 
-            <!-- Organiser fichiers -->
+            <!-- FICHIERS -->
 
             <article class="course-card">
 
@@ -1077,11 +1272,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="gestion-dossiers.html">
+                        Jeu : organiser des fichiers
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Traitement de texte -->
+            <!-- TRAITEMENT DE TEXTE -->
 
             <article class="course-card">
 
@@ -1098,6 +1306,19 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-copier-coller.html">
+                        Jeu : copier-coller
+                    </a>
+
+                </div>
+
             </article>
 
 
@@ -1108,7 +1329,62 @@
 
 
     <!-- =====================================
-         MISES À JOUR
+         CLAVIER ET SAISIE
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Écrire et saisir du texte
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <article class="course-card">
+
+                <h3>
+                    Le clavier de la tablette
+                </h3>
+
+                <p>
+                    Apprenez à utiliser le clavier tactile de votre tablette,
+                    saisir du texte et retrouver les différentes touches.
+                </p>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-clavier.html">
+                        Jeu : le clavier
+                    </a>
+
+                    <a href="jeu-smartphone-copier-coller.html">
+                        Jeu : copier-coller
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         ENTRETIEN
     ====================================== -->
 
     <section class="course-section">
@@ -1125,7 +1401,7 @@
         <div class="course-grid">
 
 
-            <!-- Mises à jour -->
+            <!-- MISES À JOUR -->
 
             <article class="course-card">
 
@@ -1146,7 +1422,7 @@
 
 
 
-            <!-- Batterie -->
+            <!-- BATTERIE -->
 
             <article class="course-card">
 
@@ -1162,6 +1438,19 @@
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-vitesse.html">
+                        Jeu : rapidité et manipulation
+                    </a>
+
+                </div>
 
             </article>
 
@@ -1190,7 +1479,7 @@
         <div class="course-grid">
 
 
-            <!-- Sécurité -->
+            <!-- SÉCURITÉ -->
 
             <article class="course-card">
 
@@ -1212,7 +1501,7 @@
 
 
 
-            <!-- Sauvegarde -->
+            <!-- SAUVEGARDE -->
 
             <article class="course-card">
 
