@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cours Smartphone - Centre Multimédia du CCAS</title>
+    <title>Cours smartphone - Centre Multimédia du CCAS</title>
 
     <style>
 
@@ -16,8 +16,8 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f7fb;
-            color: #24344d;
+            background: #f5f7fb;
+            color: #243447;
             line-height: 1.6;
         }
 
@@ -26,7 +26,9 @@
         }
 
 
-        /* MENU */
+        /* =========================================
+           MENU
+        ========================================= */
 
         header {
             background: #1f3656;
@@ -37,6 +39,7 @@
             max-width: 1200px;
             margin: auto;
             padding: 18px 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,7 +57,7 @@
 
         .logo span {
             font-size: 15px;
-            opacity: 0.8;
+            opacity: .8;
         }
 
         nav {
@@ -64,159 +67,355 @@
 
         nav a {
             color: white;
+            text-decoration: none;
             padding: 12px 18px;
             border-radius: 8px;
             font-size: 17px;
+            transition: .3s;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             background-color: #3d76c5;
         }
 
 
-        /* EN-TÊTE */
+        /* =========================================
+           EN-TÊTE
+        ========================================= */
 
         .page-header {
-            background: linear-gradient(
-                135deg,
-                #e7f4f2,
-                #ffffff,
-                #e9f0fa
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #e9f0fa 0%,
+                    #ffffff 55%,
+                    #eef7ef 100%
+                );
+
+            padding: 55px 25px;
 
             text-align: center;
-            padding: 70px 20px;
         }
 
         .page-header h1 {
-            margin: 0 0 15px;
-            font-size: 46px;
-            color: #236d5e;
+            margin: 0 0 12px;
+
+            font-size: 38px;
+
+            color: #1f3656;
         }
 
         .page-header p {
+            max-width: 760px;
+
             margin: auto;
-            max-width: 700px;
-            font-size: 21px;
-            color: #617087;
-        }
 
-
-        /* CONTENU */
-
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 60px 25px;
-        }
-
-        .course {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 18px;
-
-            border-left: 7px solid #2e8b78;
-
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-            transition: 0.3s;
-        }
-
-        .course:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(30, 50, 80, 0.14);
-        }
-
-        .course h2 {
-            margin-top: 0;
-            color: #236d5e;
-            font-size: 27px;
-        }
-
-        .course p {
-            font-size: 18px;
-            color: #617087;
-        }
-
-
-        /* BOUTON */
-
-        .button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 14px 22px;
-            border-radius: 8px;
-
-            background: #2e8b78;
-            color: white;
-
-            font-size: 17px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background: #236d5e;
-        }
-
-
-        /* SECTION EXERCICES */
-
-        .exercise-section {
-            background: #e4f5f1;
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .exercise-section h2 {
-            margin-top: 0;
-            color: #236d5e;
-            font-size: 30px;
-        }
-
-        .exercise-section p {
             font-size: 19px;
-            color: #617087;
+
+            color: #526274;
         }
 
 
-        /* FOOTER */
+        /* =========================================
+           CONTENU
+        ========================================= */
+
+        .container {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 45px 25px 70px;
+        }
+
+        .intro {
+            text-align: center;
+
+            max-width: 850px;
+
+            margin: 0 auto 45px;
+        }
+
+        .intro h2 {
+            color: #1f3656;
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            font-size: 18px;
+
+            color: #5d6b7a;
+        }
+
+
+        /* =========================================
+           SECTIONS DE COURS
+        ========================================= */
+
+        .course-section {
+            margin-bottom: 55px;
+        }
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+
+            font-size: 27px;
+
+            color: #1f3656;
+        }
+
+        .section-title::after {
+            content: "";
+
+            height: 2px;
+
+            background: #dce5ef;
+
+            flex: 1;
+        }
+
+
+        /* =========================================
+           GRILLE
+        ========================================= */
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================================
+           CARTE COURS
+        ========================================= */
+
+        .course-card {
+            background: #ffffff;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 18px rgba(31, 54, 86, .08);
+
+            border: 1px solid #e4eaf1;
+
+            transition:
+                transform .25s,
+                box-shadow .25s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 24px rgba(31, 54, 86, .13);
+        }
+
+        .course-card h3 {
+            margin: 0 0 10px;
+
+            color: #1f3656;
+
+            font-size: 21px;
+        }
+
+        .course-card > p {
+            margin: 0 0 20px;
+
+            color: #5d6b7a;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           OPTIONS / RESSOURCES
+        ========================================= */
+
+        .course-options {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .course-option {
+            border-radius: 9px;
+
+            padding: 12px 15px;
+
+            border: 1px solid #dfe6ee;
+
+            background: #f8fafc;
+        }
+
+        .course-option strong {
+            display: block;
+
+            color: #1f3656;
+
+            margin-bottom: 3px;
+        }
+
+        .course-option span {
+            font-size: 14px;
+
+            color: #697786;
+        }
+
+
+        /* =========================================
+           POUR ALLER PLUS LOIN
+        ========================================= */
+
+        .further {
+            background: #eef7ef;
+
+            border-color: #d7eadb;
+        }
+
+        .further strong {
+            color: #28734f;
+        }
+
+        .further a {
+            color: #28734f;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           BOUTON PDF
+        ========================================= */
+
+        .pdf-link {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #3975c6;
+
+            color: #ffffff;
+
+            padding: 9px 14px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            margin-top: 6px;
+
+            transition: .2s;
+        }
+
+        .pdf-link:hover {
+            background: #2e5f9f;
+        }
+
+
+        .pdf-unavailable {
+            display: inline-block;
+
+            margin-top: 6px;
+
+            font-size: 14px;
+
+            color: #7b8794;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================
+           INFORMATION
+        ========================================= */
+
+        .info-box {
+            background: #ffffff;
+
+            border-left: 5px solid #2e8b78;
+
+            border-radius: 12px;
+
+            padding: 28px 30px;
+
+            box-shadow:
+                0 4px 15px rgba(31, 54, 86, .07);
+
+            margin-top: 20px;
+        }
+
+        .info-box h2 {
+            margin-top: 0;
+
+            color: #1f3656;
+        }
+
+        .info-box p {
+            margin-bottom: 0;
+
+            color: #5d6b7a;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
             background: #1f3656;
-            color: white;
-            margin-top: 60px;
+
+            color: #ffffff;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            font-size: 14px;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 35px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-title {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .footer-text {
-            opacity: 0.75;
-            font-size: 15px;
+        footer p {
+            margin: 4px 0;
         }
 
 
-        /* MOBILE */
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
 
         @media (max-width: 650px) {
 
             .navbar {
                 flex-direction: column;
+
                 align-items: flex-start;
             }
 
@@ -229,25 +428,35 @@
             }
 
             .page-header {
-                padding: 50px 20px;
-            }
-
-            .page-header h1 {
-                font-size: 34px;
-            }
-
-            main {
                 padding: 40px 20px;
             }
 
-            .course {
-                padding: 25px;
+            .page-header h1 {
+                font-size: 31px;
             }
 
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+            .page-header p {
+                font-size: 17px;
+            }
+
+            .container {
+                padding: 35px 18px 55px;
+            }
+
+            .intro h2 {
+                font-size: 26px;
+            }
+
+            .section-title h2 {
+                font-size: 23px;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+
+            .course-card {
+                padding: 21px;
             }
 
         }
@@ -260,34 +469,52 @@
 <body>
 
 
+<!-- =========================================
+     MENU
+========================================= -->
+
 <header>
 
     <div class="navbar">
 
         <div class="logo">
 
-            <strong>Centre Multimédia du CCAS</strong>
+            <strong>
+                Centre Multimédia du CCAS
+            </strong>
 
-            <span>Apprendre • Découvrir • Progresser</span>
+            <span>
+                Apprendre • Découvrir • Progresser
+            </span>
 
         </div>
 
 
         <nav>
 
-          <nav>
+            <a href="index.html">
+                Accueil
+            </a>
 
-    <a href="index.html">Accueil</a>
+            <a href="cours.html" class="active">
+                Mes cours
+            </a>
 
-    <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">
+                Jeux
+            </a>
 
-    <a href="jeux.html">Jeux</a>
+            <a href="exercices.html">
+                Exercices
+            </a>
 
-    <a href="exercices.html">Exercices</a>
+            <a href="outils.html">
+                🛠️ Outils
+            </a>
 
-    <a href="informations.html">Informations</a>
-
-</nav>
+            <a href="informations.html">
+                Informations
+            </a>
 
         </nav>
 
@@ -296,131 +523,823 @@
 </header>
 
 
+
+<!-- =========================================
+     EN-TÊTE
+========================================= -->
+
 <section class="page-header">
 
-    <h1>Cours Smartphone</h1>
+    <h1>
+        Cours smartphone
+    </h1>
 
     <p>
-        Découvrez comment utiliser votre smartphone simplement
-        et profiter des outils utiles au quotidien.
+        Découvrez nos cours pour apprendre à utiliser votre smartphone
+        et profiter pleinement de ses nombreuses fonctionnalités.
     </p>
 
 </section>
 
 
-<main>
+
+<!-- =========================================
+     CONTENU
+========================================= -->
+
+<main class="container">
 
 
-    <div class="course">
+    <div class="intro">
 
-        <h2>Découvrir son smartphone</h2>
-
-        <p>
-            Apprendre à connaître son téléphone, utiliser l'écran,
-            les boutons et les principales fonctions.
-        </p>
-
-        <!-- Ajoutez ici le lien vers votre PDF -->
-
-    </div>
-
-
-    <div class="course">
-
-        <h2>Téléphoner et envoyer des messages</h2>
+        <h2>
+            Les cours disponibles
+        </h2>
 
         <p>
-            Apprendre à appeler, envoyer des SMS
-            et gérer ses contacts.
+            Les cours peuvent être adaptés au rythme et aux besoins
+            de chacun. Les supports PDF seront ajoutés progressivement.
         </p>
 
     </div>
 
 
-    <div class="course">
 
-        <h2>Prendre et organiser ses photos</h2>
+    <!-- =====================================
+         LES BASES DU SMARTPHONE
+    ====================================== -->
 
-        <p>
-            Découvrir comment prendre des photos,
-            les retrouver et les organiser.
-        </p>
+    <section class="course-section">
 
-    </div>
+        <div class="section-title">
 
+            <h2>
+                Les bases du smartphone
+            </h2>
 
-    <div class="course">
-
-        <h2>Utiliser les applications</h2>
-
-        <p>
-            Comprendre comment installer, utiliser
-            et supprimer des applications.
-        </p>
-
-    </div>
+        </div>
 
 
-    <div class="course">
-
-        <h2>Naviguer sur Internet</h2>
-
-        <p>
-            Rechercher des informations et utiliser Internet
-            depuis son smartphone.
-        </p>
-
-    </div>
+        <div class="course-grid">
 
 
-    <div class="course">
+            <!-- Livret d'introduction -->
 
-        <h2>La sécurité sur smartphone</h2>
+            <article class="course-card">
 
-        <p>
-            Apprendre les bons réflexes pour protéger
-            son téléphone et ses informations.
-        </p>
+                <h3>
+                    Livret d'introduction au smartphone :
+                    les fonctionnalités de base
+                </h3>
 
-    </div>
+                <p>
+                    Découvrez les principales fonctionnalités d'un smartphone
+                    et apprenez à prendre en main votre appareil.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
 
 
-    <section class="exercise-section">
 
-        <h2>Exercices et entraînement</h2>
+            <!-- Paramètres -->
 
-        <p>
-            Des exercices pratiques seront ajoutés progressivement
-            pour vous permettre de vous entraîner.
-        </p>
+            <article class="course-card">
+
+                <h3>
+                    Les paramètres du smartphone
+                </h3>
+
+                <p>
+                    Découvrez les principaux réglages de votre smartphone
+                    et apprenez à personnaliser votre appareil.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Codes -->
+
+            <article class="course-card">
+
+                <h3>
+                    Fiche : les codes à connaître
+                </h3>
+
+                <p>
+                    Retrouvez les principaux codes et informations utiles
+                    à connaître pour utiliser et sécuriser votre smartphone.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Notifications -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les notifications
+                </h3>
+
+                <p>
+                    Comprenez les notifications, apprenez à les consulter
+                    et découvrez comment les gérer.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
 
     </section>
+
+
+
+    <!-- =====================================
+         APPELS ET MESSAGES
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Appels et messages
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Appels et contacts -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les appels et les contacts
+                </h3>
+
+                <p>
+                    Apprenez à passer un appel, enregistrer un contact,
+                    retrouver un numéro et gérer votre carnet d'adresses.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- SMS MMS -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les SMS et MMS
+                </h3>
+
+                <p>
+                    Apprenez à envoyer et recevoir des messages et à partager
+                    facilement une photo ou un autre contenu.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- WhatsApp -->
+
+            <article class="course-card">
+
+                <h3>
+                    WhatsApp
+                </h3>
+
+                <p>
+                    Découvrez comment communiquer avec vos proches,
+                    envoyer des messages, des photos et utiliser les fonctions
+                    principales de WhatsApp.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PHOTOS ET DOCUMENTS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Photos et documents
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Prendre des photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les prendre
+                </h3>
+
+                <p>
+                    Apprenez à utiliser l'appareil photo de votre smartphone,
+                    prendre des photos et retrouver vos clichés.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Organiser photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les organiser
+                </h3>
+
+                <p>
+                    Apprenez à retrouver, trier, classer et supprimer
+                    vos photos facilement.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Partager photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les partager
+                </h3>
+
+                <p>
+                    Découvrez différentes façons de partager une photo
+                    avec vos proches.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Scanner document -->
+
+            <article class="course-card">
+
+                <h3>
+                    Scanner un document avec son téléphone
+                </h3>
+
+                <p>
+                    Apprenez à utiliser votre smartphone pour numériser
+                    un document papier et le conserver sous forme numérique.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Transfert photos ordinateur -->
+
+            <article class="course-card">
+
+                <h3>
+                    Transférer des photos de son téléphone à son ordinateur
+                </h3>
+
+                <p>
+                    Apprenez à transférer les photos de votre téléphone
+                    vers votre ordinateur afin de pouvoir les conserver,
+                    les retrouver et les organiser facilement.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- QR Code -->
+
+            <article class="course-card">
+
+                <h3>
+                    Scanner un QR code
+                </h3>
+
+                <p>
+                    Apprenez à utiliser l'appareil photo de votre smartphone
+                    pour scanner un QR code et accéder rapidement à une information
+                    ou à un site Internet.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         INTERNET
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Internet sur smartphone
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Internet -->
+
+            <article class="course-card">
+
+                <h3>
+                    Utiliser Internet sur son téléphone
+                </h3>
+
+                <p>
+                    Apprenez à rechercher des informations, consulter des sites
+                    Internet et utiliser votre navigateur sur smartphone.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Sans publicité -->
+
+            <article class="course-card">
+
+                <h3>
+                    Utiliser Internet sans publicité
+                </h3>
+
+                <p>
+                    Découvrez les différentes solutions permettant de naviguer
+                    plus confortablement et de limiter les publicités.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- WiFi -->
+
+            <article class="course-card">
+
+                <h3>
+                    Le Wi-Fi et les données mobiles
+                </h3>
+
+                <p>
+                    Comprenez la différence entre le Wi-Fi et les données mobiles
+                    et apprenez à vous connecter à un réseau Wi-Fi.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- GPS -->
+
+            <article class="course-card">
+
+                <h3>
+                    La localisation et le GPS
+                </h3>
+
+                <p>
+                    Découvrez comment utiliser une application de cartes,
+                    rechercher une adresse et préparer un itinéraire.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         APPLICATIONS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Applications
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Applications -->
+
+            <article class="course-card">
+
+                <h3>
+                    Applications : les télécharger,
+                    les gérer et les supprimer
+                </h3>
+
+                <p>
+                    Apprenez à télécharger une application, vérifier son origine,
+                    la gérer et la supprimer lorsqu'elle n'est plus utile.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FICHIERS ET DOCUMENTS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Fichiers et documents
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Organiser fichiers -->
+
+            <article class="course-card">
+
+                <h3>
+                    Organiser les fichiers sur son téléphone
+                </h3>
+
+                <p>
+                    Apprenez à retrouver, déplacer, classer et supprimer
+                    les fichiers présents sur votre smartphone.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Traitement de texte -->
+
+            <article class="course-card">
+
+                <h3>
+                    Le traitement de texte sur le téléphone
+                </h3>
+
+                <p>
+                    Découvrez comment créer, modifier et enregistrer
+                    un document texte directement depuis votre smartphone.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FORFAIT ET CONNEXION
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Forfait et connexion
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Forfait -->
+
+            <article class="course-card">
+
+                <h3>
+                    Comprendre et choisir son forfait
+                </h3>
+
+                <p>
+                    Apprenez à comprendre les éléments d'un forfait mobile
+                    et à choisir une offre adaptée à vos besoins.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         MISES À JOUR
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Entretien du smartphone
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Mises à jour -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les mises à jour du smartphone
+                </h3>
+
+                <p>
+                    Comprenez pourquoi les mises à jour sont importantes
+                    et apprenez à maintenir votre téléphone à jour.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Batterie -->
+
+            <article class="course-card">
+
+                <h3>
+                    La batterie
+                </h3>
+
+                <p>
+                    Découvrez ce qui consomme la batterie et quelques bonnes
+                    pratiques pour prolonger son autonomie.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         SÉCURITÉ
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Sécurité du smartphone
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Sécurité -->
+
+            <article class="course-card">
+
+                <h3>
+                    La sécurité du smartphone
+                </h3>
+
+                <p>
+                    Apprenez à protéger votre téléphone avec un code,
+                    une empreinte ou une reconnaissance faciale et découvrez
+                    les bons réflexes en cas de perte ou de vol.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+            <!-- Sauvegarde -->
+
+            <article class="course-card">
+
+                <h3>
+                    Sauvegarder ses données
+                </h3>
+
+                <p>
+                    Comprenez comment sauvegarder vos photos et vos données
+                    afin de pouvoir les retrouver en cas de problème
+                    avec votre téléphone.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         POUR ALLER PLUS LOIN
+    ====================================== -->
+
+    <div class="info-box">
+
+        <h2>
+            Pour aller plus loin
+        </h2>
+
+        <p>
+            Cette rubrique pourra progressivement accueillir des ressources
+            complémentaires, des fiches pratiques, des exercices, des jeux,
+            des outils et des liens utiles pour continuer à pratiquer après
+            les cours.
+        </p>
+
+    </div>
 
 
 </main>
 
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
 
-    <div class="footer-container">
+    <p>
+        Centre Multimédia du CCAS
+    </p>
 
-        <div>
-
-            <div class="footer-title">
-                Centre Multimédia du CCAS
-            </div>
-
-            <div class="footer-text">
-                Apprendre • Découvrir • Progresser
-            </div>
-
-        </div>
-
-        <div class="footer-text">
-            © 2026 Centre Multimédia du CCAS
-        </div>
-
-    </div>
+    <p>
+        Apprendre • Découvrir • Progresser
+    </p>
 
 </footer>
 
