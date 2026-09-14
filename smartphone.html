@@ -2,10 +2,13 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cours smartphone - Centre Multimédia du CCAS</title>
+
 
     <style>
 
@@ -13,17 +16,24 @@
             box-sizing: border-box;
         }
 
+
         body {
             margin: 0;
+
             font-family: Arial, Helvetica, sans-serif;
+
             background: #f5f7fb;
+
             color: #243447;
+
             line-height: 1.6;
         }
+
 
         a {
             text-decoration: none;
         }
+
 
 
         /* =========================================
@@ -32,47 +42,68 @@
 
         header {
             background: #1f3656;
+
             color: white;
         }
 
+
         .navbar {
             max-width: 1200px;
+
             margin: auto;
+
             padding: 18px 25px;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             gap: 30px;
         }
 
+
         .logo {
             display: flex;
+
             flex-direction: column;
         }
+
 
         .logo strong {
             font-size: 26px;
         }
 
+
         .logo span {
             font-size: 15px;
+
             opacity: .8;
         }
 
+
         nav {
             display: flex;
+
             gap: 10px;
         }
 
+
         nav a {
             color: white;
+
             text-decoration: none;
+
             padding: 12px 18px;
+
             border-radius: 8px;
+
             font-size: 17px;
+
             transition: .3s;
         }
+
 
         nav a:hover,
         nav a.active {
@@ -80,11 +111,13 @@
         }
 
 
+
         /* =========================================
            EN-TÊTE
         ========================================= */
 
         .page-header {
+
             background:
                 linear-gradient(
                     135deg,
@@ -98,7 +131,9 @@
             text-align: center;
         }
 
+
         .page-header h1 {
+
             margin: 0 0 12px;
 
             font-size: 38px;
@@ -106,7 +141,9 @@
             color: #1f3656;
         }
 
+
         .page-header p {
+
             max-width: 760px;
 
             margin: auto;
@@ -117,11 +154,13 @@
         }
 
 
+
         /* =========================================
            CONTENU
         ========================================= */
 
         .container {
+
             max-width: 1200px;
 
             margin: auto;
@@ -129,7 +168,9 @@
             padding: 45px 25px 70px;
         }
 
+
         .intro {
+
             text-align: center;
 
             max-width: 850px;
@@ -137,7 +178,9 @@
             margin: 0 auto 45px;
         }
 
+
         .intro h2 {
+
             color: #1f3656;
 
             font-size: 30px;
@@ -145,22 +188,28 @@
             margin-bottom: 12px;
         }
 
+
         .intro p {
+
             font-size: 18px;
 
             color: #5d6b7a;
         }
 
 
+
         /* =========================================
-           SECTIONS DE COURS
+           SECTIONS
         ========================================= */
 
         .course-section {
+
             margin-bottom: 55px;
         }
 
+
         .section-title {
+
             display: flex;
 
             align-items: center;
@@ -170,7 +219,9 @@
             margin-bottom: 25px;
         }
 
+
         .section-title h2 {
+
             margin: 0;
 
             font-size: 27px;
@@ -178,7 +229,9 @@
             color: #1f3656;
         }
 
+
         .section-title::after {
+
             content: "";
 
             height: 2px;
@@ -189,11 +242,13 @@
         }
 
 
+
         /* =========================================
            GRILLE
         ========================================= */
 
         .course-grid {
+
             display: grid;
 
             grid-template-columns: repeat(2, 1fr);
@@ -202,11 +257,13 @@
         }
 
 
+
         /* =========================================
-           CARTE COURS
+           CARTES
         ========================================= */
 
         .course-card {
+
             background: #ffffff;
 
             border-radius: 14px;
@@ -223,14 +280,18 @@
                 box-shadow .25s;
         }
 
+
         .course-card:hover {
+
             transform: translateY(-3px);
 
             box-shadow:
                 0 8px 24px rgba(31, 54, 86, .13);
         }
 
+
         .course-card h3 {
+
             margin: 0 0 10px;
 
             color: #1f3656;
@@ -238,7 +299,9 @@
             font-size: 21px;
         }
 
+
         .course-card > p {
+
             margin: 0 0 20px;
 
             color: #5d6b7a;
@@ -247,72 +310,93 @@
         }
 
 
-        /* =========================================
-           OPTIONS / RESSOURCES
-        ========================================= */
-
-        .course-options {
-            display: grid;
-
-            gap: 10px;
-        }
-
-        .course-option {
-            border-radius: 9px;
-
-            padding: 12px 15px;
-
-            border: 1px solid #dfe6ee;
-
-            background: #f8fafc;
-        }
-
-        .course-option strong {
-            display: block;
-
-            color: #1f3656;
-
-            margin-bottom: 3px;
-        }
-
-        .course-option span {
-            font-size: 14px;
-
-            color: #697786;
-        }
-
 
         /* =========================================
            POUR ALLER PLUS LOIN
         ========================================= */
 
         .further {
+
+            margin-top: 18px;
+
+            padding: 14px 16px;
+
             background: #eef7ef;
 
-            border-color: #d7eadb;
+            border: 1px solid #d7eadb;
+
+            border-radius: 9px;
         }
+
 
         .further strong {
+
+            display: block;
+
             color: #28734f;
+
+            margin-bottom: 8px;
         }
+
 
         .further a {
+
+            display: inline-block;
+
             color: #28734f;
 
+            background: #ffffff;
+
+            border: 1px solid #b9d8c4;
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
             font-weight: bold;
+
+            font-size: 15px;
+
+            margin: 3px 4px 3px 0;
+
+            transition: .2s;
         }
+
+
+        .further a:hover {
+
+            background: #28734f;
+
+            color: white;
+        }
+
 
 
         /* =========================================
-           BOUTON PDF
+           PDF
         ========================================= */
 
+        .pdf-unavailable {
+
+            display: inline-block;
+
+            margin-top: 6px;
+
+            font-size: 14px;
+
+            color: #7b8794;
+
+            font-style: italic;
+        }
+
+
         .pdf-link {
+
             display: inline-block;
 
             text-decoration: none;
 
-            background: #3975c6;
+            background: #2e8b78;
 
             color: #ffffff;
 
@@ -327,22 +411,12 @@
             transition: .2s;
         }
 
+
         .pdf-link:hover {
-            background: #2e5f9f;
+
+            background: #226a5b;
         }
 
-
-        .pdf-unavailable {
-            display: inline-block;
-
-            margin-top: 6px;
-
-            font-size: 14px;
-
-            color: #7b8794;
-
-            font-style: italic;
-        }
 
 
         /* =========================================
@@ -350,6 +424,7 @@
         ========================================= */
 
         .info-box {
+
             background: #ffffff;
 
             border-left: 5px solid #2e8b78;
@@ -364,17 +439,22 @@
             margin-top: 20px;
         }
 
+
         .info-box h2 {
+
             margin-top: 0;
 
             color: #1f3656;
         }
 
+
         .info-box p {
+
             margin-bottom: 0;
 
             color: #5d6b7a;
         }
+
 
 
         /* =========================================
@@ -382,6 +462,7 @@
         ========================================= */
 
         footer {
+
             background: #1f3656;
 
             color: #ffffff;
@@ -393,9 +474,12 @@
             font-size: 14px;
         }
 
+
         footer p {
+
             margin: 4px 0;
         }
+
 
 
         /* =========================================
@@ -405,6 +489,7 @@
         @media (max-width: 850px) {
 
             .course-grid {
+
                 grid-template-columns: 1fr;
             }
 
@@ -414,48 +499,69 @@
         @media (max-width: 650px) {
 
             .navbar {
+
                 flex-direction: column;
 
                 align-items: flex-start;
             }
 
+
             nav {
+
                 flex-wrap: wrap;
             }
 
+
             nav a {
+
                 padding: 10px 12px;
             }
 
+
             .page-header {
+
                 padding: 40px 20px;
             }
 
+
             .page-header h1 {
+
                 font-size: 31px;
             }
 
+
             .page-header p {
+
                 font-size: 17px;
             }
 
+
             .container {
+
                 padding: 35px 18px 55px;
             }
 
+
             .intro h2 {
+
                 font-size: 26px;
             }
 
+
             .section-title h2 {
+
                 font-size: 23px;
             }
 
+
             .section-title::after {
+
                 display: none;
             }
 
+
             .course-card {
+
                 padding: 21px;
             }
 
@@ -583,7 +689,7 @@
         <div class="course-grid">
 
 
-            <!-- Livret d'introduction -->
+            <!-- LIVRET DÉBUTANT -->
 
             <article class="course-card">
 
@@ -601,11 +707,28 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-gestes.html">
+                        Jeu : les gestes tactiles
+                    </a>
+
+                    <a href="jeu-smartphone-vitesse.html">
+                        Jeu : rapidité et manipulation
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Paramètres -->
+            <!-- PARAMÈTRES -->
 
             <article class="course-card">
 
@@ -626,7 +749,7 @@
 
 
 
-            <!-- Codes -->
+            <!-- CODES -->
 
             <article class="course-card">
 
@@ -647,7 +770,7 @@
 
 
 
-            <!-- Notifications -->
+            <!-- NOTIFICATIONS -->
 
             <article class="course-card">
 
@@ -691,7 +814,7 @@
         <div class="course-grid">
 
 
-            <!-- Appels et contacts -->
+            <!-- APPELS ET CONTACTS -->
 
             <article class="course-card">
 
@@ -700,8 +823,9 @@
                 </h3>
 
                 <p>
-                    Apprenez à passer un appel, enregistrer un contact,
-                    retrouver un numéro et gérer votre carnet d'adresses.
+                    Apprenez à passer et recevoir un appel, enregistrer
+                    un contact et retrouver facilement les personnes
+                    de votre carnet d'adresses.
                 </p>
 
                 <span class="pdf-unavailable">
@@ -712,7 +836,7 @@
 
 
 
-            <!-- SMS MMS -->
+            <!-- SMS ET MMS -->
 
             <article class="course-card">
 
@@ -721,19 +845,32 @@
                 </h3>
 
                 <p>
-                    Apprenez à envoyer et recevoir des messages et à partager
-                    facilement une photo ou un autre contenu.
+                    Apprenez à envoyer, recevoir et consulter des messages
+                    ainsi qu'à partager des photos et autres contenus.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-messages.html">
+                        Jeu : les messages
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- WhatsApp -->
+            <!-- WHATSAPP -->
 
             <article class="course-card">
 
@@ -742,14 +879,27 @@
                 </h3>
 
                 <p>
-                    Découvrez comment communiquer avec vos proches,
-                    envoyer des messages, des photos et utiliser les fonctions
-                    principales de WhatsApp.
+                    Découvrez comment utiliser WhatsApp pour communiquer
+                    avec vos proches, envoyer des messages, des photos
+                    et effectuer des appels.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-messages.html">
+                        Jeu : les messages
+                    </a>
+
+                </div>
 
             </article>
 
@@ -778,7 +928,7 @@
         <div class="course-grid">
 
 
-            <!-- Prendre des photos -->
+            <!-- PHOTOS PRENDRE -->
 
             <article class="course-card">
 
@@ -795,11 +945,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Organiser photos -->
+            <!-- PHOTOS ORGANISER -->
 
             <article class="course-card">
 
@@ -816,11 +979,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Partager photos -->
+            <!-- PHOTOS PARTAGER -->
 
             <article class="course-card">
 
@@ -830,18 +1006,31 @@
 
                 <p>
                     Découvrez différentes façons de partager une photo
-                    avec vos proches.
+                    avec vos proches depuis votre smartphone.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-photos.html">
+                        Jeu : l'appareil photo
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Scanner document -->
+            <!-- SCANNER DOCUMENT -->
 
             <article class="course-card">
 
@@ -862,16 +1051,17 @@
 
 
 
-            <!-- Transfert photos ordinateur -->
+            <!-- TRANSFERT PHOTOS -->
 
             <article class="course-card">
 
                 <h3>
-                    Transférer des photos de son téléphone à son ordinateur
+                    Transférer des photos de son téléphone
+                    à son ordinateur
                 </h3>
 
                 <p>
-                    Apprenez à transférer les photos de votre téléphone
+                    Apprenez à transférer les photos de votre smartphone
                     vers votre ordinateur afin de pouvoir les conserver,
                     les retrouver et les organiser facilement.
                 </p>
@@ -884,7 +1074,7 @@
 
 
 
-            <!-- QR Code -->
+            <!-- QR CODE -->
 
             <article class="course-card">
 
@@ -894,8 +1084,8 @@
 
                 <p>
                     Apprenez à utiliser l'appareil photo de votre smartphone
-                    pour scanner un QR code et accéder rapidement à une information
-                    ou à un site Internet.
+                    pour scanner un QR code et accéder rapidement à une
+                    information ou à un site Internet.
                 </p>
 
                 <span class="pdf-unavailable">
@@ -929,7 +1119,7 @@
         <div class="course-grid">
 
 
-            <!-- Internet -->
+            <!-- INTERNET -->
 
             <article class="course-card">
 
@@ -938,19 +1128,33 @@
                 </h3>
 
                 <p>
-                    Apprenez à rechercher des informations, consulter des sites
-                    Internet et utiliser votre navigateur sur smartphone.
+                    Apprenez à rechercher des informations, consulter
+                    des sites Internet et utiliser votre navigateur
+                    sur smartphone.
                 </p>
 
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-internet.html">
+                        Jeu : Internet
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Sans publicité -->
+            <!-- INTERNET SANS PUBLICITÉ -->
 
             <article class="course-card">
 
@@ -967,11 +1171,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-internet.html">
+                        Jeu : Internet
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- WiFi -->
+            <!-- WI-FI -->
 
             <article class="course-card">
 
@@ -980,8 +1197,8 @@
                 </h3>
 
                 <p>
-                    Comprenez la différence entre le Wi-Fi et les données mobiles
-                    et apprenez à vous connecter à un réseau Wi-Fi.
+                    Comprenez la différence entre le Wi-Fi et les données
+                    mobiles et apprenez à contrôler votre connexion Internet.
                 </p>
 
                 <span class="pdf-unavailable">
@@ -1036,8 +1253,6 @@
         <div class="course-grid">
 
 
-            <!-- Applications -->
-
             <article class="course-card">
 
                 <h3>
@@ -1081,7 +1296,7 @@
         <div class="course-grid">
 
 
-            <!-- Organiser fichiers -->
+            <!-- ORGANISER FICHIERS -->
 
             <article class="course-card">
 
@@ -1098,11 +1313,24 @@
                     Le PDF sera bientôt disponible.
                 </span>
 
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="gestion-dossiers.html">
+                        Jeu : organiser des fichiers
+                    </a>
+
+                </div>
+
             </article>
 
 
 
-            <!-- Traitement de texte -->
+            <!-- TRAITEMENT DE TEXTE -->
 
             <article class="course-card">
 
@@ -1118,6 +1346,78 @@
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-clavier.html">
+                        Jeu : le clavier
+                    </a>
+
+                    <a href="jeu-smartphone-copier-coller.html">
+                        Jeu : copier-coller
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CLAVIER ET SAISIE
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Écrire et saisir du texte
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <article class="course-card">
+
+                <h3>
+                    Le clavier du smartphone
+                </h3>
+
+                <p>
+                    Apprenez à utiliser le clavier tactile de votre smartphone,
+                    saisir du texte et retrouver les différentes touches.
+                </p>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-clavier.html">
+                        Jeu : le clavier
+                    </a>
+
+                    <a href="jeu-smartphone-copier-coller.html">
+                        Jeu : copier-coller
+                    </a>
+
+                </div>
 
             </article>
 
@@ -1146,8 +1446,6 @@
         <div class="course-grid">
 
 
-            <!-- Forfait -->
-
             <article class="course-card">
 
                 <h3>
@@ -1155,8 +1453,8 @@
                 </h3>
 
                 <p>
-                    Apprenez à comprendre les éléments d'un forfait mobile
-                    et à choisir une offre adaptée à vos besoins.
+                    Découvrez les éléments importants d'un forfait mobile :
+                    appels, SMS, données mobiles et consommation Internet.
                 </p>
 
                 <span class="pdf-unavailable">
@@ -1173,7 +1471,7 @@
 
 
     <!-- =====================================
-         MISES À JOUR
+         ENTRETIEN
     ====================================== -->
 
     <section class="course-section">
@@ -1190,7 +1488,7 @@
         <div class="course-grid">
 
 
-            <!-- Mises à jour -->
+            <!-- MISES À JOUR -->
 
             <article class="course-card">
 
@@ -1200,7 +1498,7 @@
 
                 <p>
                     Comprenez pourquoi les mises à jour sont importantes
-                    et apprenez à maintenir votre téléphone à jour.
+                    et apprenez à maintenir votre smartphone à jour.
                 </p>
 
                 <span class="pdf-unavailable">
@@ -1211,7 +1509,7 @@
 
 
 
-            <!-- Batterie -->
+            <!-- BATTERIE -->
 
             <article class="course-card">
 
@@ -1227,6 +1525,19 @@
                 <span class="pdf-unavailable">
                     Le PDF sera bientôt disponible.
                 </span>
+
+
+                <div class="further">
+
+                    <strong>
+                        Pour aller plus loin
+                    </strong>
+
+                    <a href="jeu-smartphone-vitesse.html">
+                        Jeu : rapidité et manipulation
+                    </a>
+
+                </div>
 
             </article>
 
@@ -1255,7 +1566,7 @@
         <div class="course-grid">
 
 
-            <!-- Sécurité -->
+            <!-- SÉCURITÉ -->
 
             <article class="course-card">
 
@@ -1264,7 +1575,7 @@
                 </h3>
 
                 <p>
-                    Apprenez à protéger votre téléphone avec un code,
+                    Apprenez à protéger votre smartphone avec un code,
                     une empreinte ou une reconnaissance faciale et découvrez
                     les bons réflexes en cas de perte ou de vol.
                 </p>
@@ -1276,7 +1587,8 @@
             </article>
 
 
-            <!-- Sauvegarde -->
+
+            <!-- SAUVEGARDE -->
 
             <article class="course-card">
 
@@ -1287,7 +1599,7 @@
                 <p>
                     Comprenez comment sauvegarder vos photos et vos données
                     afin de pouvoir les retrouver en cas de problème
-                    avec votre téléphone.
+                    avec votre smartphone.
                 </p>
 
                 <span class="pdf-unavailable">
