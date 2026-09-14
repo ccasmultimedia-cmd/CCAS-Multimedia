@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cours Tablette - Centre Multimédia du CCAS</title>
+    <title>Cours tablette - Centre Multimédia du CCAS</title>
 
     <style>
 
@@ -16,8 +16,8 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f7fb;
-            color: #24344d;
+            background: #f5f7fb;
+            color: #243447;
             line-height: 1.6;
         }
 
@@ -25,7 +25,10 @@
             text-decoration: none;
         }
 
-        /* MENU */
+
+        /* =========================================
+           MENU
+        ========================================= */
 
         header {
             background: #1f3656;
@@ -36,6 +39,7 @@
             max-width: 1200px;
             margin: auto;
             padding: 18px 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,7 +57,7 @@
 
         .logo span {
             font-size: 15px;
-            opacity: 0.8;
+            opacity: .8;
         }
 
         nav {
@@ -63,153 +67,355 @@
 
         nav a {
             color: white;
+            text-decoration: none;
             padding: 12px 18px;
             border-radius: 8px;
             font-size: 17px;
+            transition: .3s;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             background-color: #3d76c5;
         }
 
-        /* EN-TÊTE */
+
+        /* =========================================
+           EN-TÊTE
+        ========================================= */
 
         .page-header {
-            background: linear-gradient(
-                135deg,
-                #eee9fb,
-                #ffffff,
-                #e9f0fa
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #e9f0fa 0%,
+                    #ffffff 55%,
+                    #f0ebfa 100%
+                );
+
+            padding: 55px 25px;
 
             text-align: center;
-            padding: 70px 20px;
         }
 
         .page-header h1 {
-            margin: 0 0 15px;
-            font-size: 46px;
-            color: #6045aa;
+            margin: 0 0 12px;
+
+            font-size: 38px;
+
+            color: #1f3656;
         }
 
         .page-header p {
+            max-width: 760px;
+
             margin: auto;
-            max-width: 700px;
-            font-size: 21px;
-            color: #617087;
+
+            font-size: 19px;
+
+            color: #526274;
         }
 
-        /* CONTENU */
 
-        main {
-            max-width: 1000px;
+        /* =========================================
+           CONTENU
+        ========================================= */
+
+        .container {
+            max-width: 1200px;
+
             margin: auto;
-            padding: 60px 25px;
+
+            padding: 45px 25px 70px;
         }
 
-        .course {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 18px;
+        .intro {
+            text-align: center;
 
-            border-left: 7px solid #7b5fc7;
+            max-width: 850px;
 
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-            transition: 0.3s;
+            margin: 0 auto 45px;
         }
 
-        .course:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(30, 50, 80, 0.14);
+        .intro h2 {
+            color: #1f3656;
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
         }
 
-        .course h2 {
-            margin-top: 0;
-            color: #6045aa;
-            font-size: 27px;
-        }
-
-        .course p {
+        .intro p {
             font-size: 18px;
-            color: #617087;
+
+            color: #5d6b7a;
         }
 
-        /* BOUTON */
 
-        .button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 14px 22px;
-            border-radius: 8px;
+        /* =========================================
+           SECTIONS DE COURS
+        ========================================= */
 
-            background: #7b5fc7;
-            color: white;
+        .course-section {
+            margin-bottom: 55px;
+        }
 
-            font-size: 17px;
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+
+            font-size: 27px;
+
+            color: #1f3656;
+        }
+
+        .section-title::after {
+            content: "";
+
+            height: 2px;
+
+            background: #dce5ef;
+
+            flex: 1;
+        }
+
+
+        /* =========================================
+           GRILLE
+        ========================================= */
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================================
+           CARTE COURS
+        ========================================= */
+
+        .course-card {
+            background: #ffffff;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 18px rgba(31, 54, 86, .08);
+
+            border: 1px solid #e4eaf1;
+
+            transition:
+                transform .25s,
+                box-shadow .25s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 24px rgba(31, 54, 86, .13);
+        }
+
+        .course-card h3 {
+            margin: 0 0 10px;
+
+            color: #1f3656;
+
+            font-size: 21px;
+        }
+
+        .course-card > p {
+            margin: 0 0 20px;
+
+            color: #5d6b7a;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           OPTIONS / RESSOURCES
+        ========================================= */
+
+        .course-options {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .course-option {
+            border-radius: 9px;
+
+            padding: 12px 15px;
+
+            border: 1px solid #dfe6ee;
+
+            background: #f8fafc;
+        }
+
+        .course-option strong {
+            display: block;
+
+            color: #1f3656;
+
+            margin-bottom: 3px;
+        }
+
+        .course-option span {
+            font-size: 14px;
+
+            color: #697786;
+        }
+
+
+        /* =========================================
+           POUR ALLER PLUS LOIN
+        ========================================= */
+
+        .further {
+            background: #eef7ef;
+
+            border-color: #d7eadb;
+        }
+
+        .further strong {
+            color: #28734f;
+        }
+
+        .further a {
+            color: #28734f;
+
             font-weight: bold;
         }
 
-        .button:hover {
-            background: #6045aa;
+
+        /* =========================================
+           BOUTON PDF
+        ========================================= */
+
+        .pdf-link {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #7b5fc7;
+
+            color: #ffffff;
+
+            padding: 9px 14px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            margin-top: 6px;
+
+            transition: .2s;
         }
 
-        /* EXERCICES */
-
-        .exercise-section {
-            background: #eee9fb;
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 50px;
-            text-align: center;
+        .pdf-link:hover {
+            background: #6048a5;
         }
 
-        .exercise-section h2 {
+
+        .pdf-unavailable {
+            display: inline-block;
+
+            margin-top: 6px;
+
+            font-size: 14px;
+
+            color: #7b8794;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================
+           INFORMATION
+        ========================================= */
+
+        .info-box {
+            background: #ffffff;
+
+            border-left: 5px solid #7b5fc7;
+
+            border-radius: 12px;
+
+            padding: 28px 30px;
+
+            box-shadow:
+                0 4px 15px rgba(31, 54, 86, .07);
+
+            margin-top: 20px;
+        }
+
+        .info-box h2 {
             margin-top: 0;
-            color: #6045aa;
-            font-size: 30px;
+
+            color: #1f3656;
         }
 
-        .exercise-section p {
-            font-size: 19px;
-            color: #617087;
+        .info-box p {
+            margin-bottom: 0;
+
+            color: #5d6b7a;
         }
 
-        /* FOOTER */
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
             background: #1f3656;
-            color: white;
-            margin-top: 60px;
+
+            color: #ffffff;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            font-size: 14px;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 35px 25px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+        footer p {
+            margin: 4px 0;
         }
 
-        .footer-title {
-            font-size: 22px;
-            font-weight: bold;
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
         }
 
-        .footer-text {
-            opacity: 0.75;
-            font-size: 15px;
-        }
-
-        /* MOBILE */
 
         @media (max-width: 650px) {
 
             .navbar {
                 flex-direction: column;
+
                 align-items: flex-start;
             }
 
@@ -222,24 +428,35 @@
             }
 
             .page-header {
-                padding: 50px 20px;
-            }
-
-            .page-header h1 {
-                font-size: 34px;
-            }
-
-            main {
                 padding: 40px 20px;
             }
 
-            .course {
-                padding: 25px;
+            .page-header h1 {
+                font-size: 31px;
             }
 
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
+            .page-header p {
+                font-size: 17px;
+            }
+
+            .container {
+                padding: 35px 18px 55px;
+            }
+
+            .intro h2 {
+                font-size: 26px;
+            }
+
+            .section-title h2 {
+                font-size: 23px;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+
+            .course-card {
+                padding: 21px;
             }
 
         }
@@ -251,29 +468,54 @@
 
 <body>
 
+
+<!-- =========================================
+     MENU
+========================================= -->
+
 <header>
 
     <div class="navbar">
 
         <div class="logo">
-            <strong>Centre Multimédia du CCAS</strong>
-            <span>Apprendre • Découvrir • Progresser</span>
+
+            <strong>
+                Centre Multimédia du CCAS
+            </strong>
+
+            <span>
+                Apprendre • Découvrir • Progresser
+            </span>
+
         </div>
 
+
         <nav>
-           <nav>
 
-    <a href="index.html">Accueil</a>
+            <a href="index.html">
+                Accueil
+            </a>
 
-    <a href="cours.html">Mes cours</a>
+            <a href="cours.html" class="active">
+                Mes cours
+            </a>
 
-    <a href="jeux.html">Jeux</a>
+            <a href="jeux.html">
+                Jeux
+            </a>
 
-    <a href="exercices.html">Exercices</a>
+            <a href="exercices.html">
+                Exercices
+            </a>
 
-    <a href="informations.html">Informations</a>
+            <a href="outils.html">
+                🛠️ Outils
+            </a>
 
-</nav>
+            <a href="informations.html">
+                Informations
+            </a>
+
         </nav>
 
     </div>
@@ -281,128 +523,762 @@
 </header>
 
 
+
+<!-- =========================================
+     EN-TÊTE
+========================================= -->
+
 <section class="page-header">
 
-    <h1>Cours Tablette</h1>
+    <h1>
+        Cours tablette
+    </h1>
 
     <p>
-        Découvrez votre tablette et apprenez à utiliser simplement
-        les outils numériques du quotidien.
+        Découvrez nos cours pour apprendre à utiliser votre tablette
+        et profiter pleinement de ses nombreuses fonctionnalités.
     </p>
 
 </section>
 
 
-<main>
 
-    <div class="course">
+<!-- =========================================
+     CONTENU
+========================================= -->
 
-        <h2>Découvrir sa tablette</h2>
+<main class="container">
+
+
+    <div class="intro">
+
+        <h2>
+            Les cours disponibles
+        </h2>
 
         <p>
-            Apprendre à connaître sa tablette, utiliser l'écran,
-            les principaux boutons et les fonctions essentielles.
+            Les cours peuvent être adaptés au rythme et aux besoins
+            de chacun. Les supports PDF seront ajoutés progressivement.
         </p>
 
     </div>
 
 
-    <div class="course">
 
-        <h2>Utiliser Internet</h2>
+    <!-- =====================================
+         LES BASES DE LA TABLETTE
+    ====================================== -->
 
-        <p>
-            Naviguer sur Internet, rechercher des informations
-            et consulter différents sites.
-        </p>
+    <section class="course-section">
 
-    </div>
+        <div class="section-title">
 
+            <h2>
+                Les bases de la tablette
+            </h2>
 
-    <div class="course">
-
-        <h2>Utiliser les applications</h2>
-
-        <p>
-            Découvrir, installer et utiliser les applications
-            utiles au quotidien.
-        </p>
-
-    </div>
+        </div>
 
 
-    <div class="course">
-
-        <h2>Photos et vidéos</h2>
-
-        <p>
-            Prendre des photos, retrouver ses images
-            et organiser ses souvenirs.
-        </p>
-
-    </div>
+        <div class="course-grid">
 
 
-    <div class="course">
+            <!-- Livret d'introduction -->
 
-        <h2>Utiliser sa messagerie</h2>
+            <article class="course-card">
 
-        <p>
-            Envoyer et recevoir des emails depuis sa tablette.
-        </p>
+                <h3>
+                    Livret d'introduction à la tablette :
+                    les fonctionnalités de base
+                </h3>
 
-    </div>
+                <p>
+                    Découvrez les principales fonctionnalités d'une tablette
+                    et apprenez à prendre en main votre appareil.
+                </p>
 
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
 
-    <div class="course">
-
-        <h2>La sécurité</h2>
-
-        <p>
-            Adopter les bons réflexes pour protéger ses informations
-            et utiliser Internet en toute confiance.
-        </p>
-
-    </div>
+            </article>
 
 
-    <section class="exercise-section">
 
-        <h2>Exercices et entraînement</h2>
+            <!-- Paramètres -->
 
-        <p>
-            Des exercices pratiques seront ajoutés progressivement
-            pour vous permettre de vous entraîner.
-        </p>
+            <article class="course-card">
+
+                <h3>
+                    Les paramètres de la tablette
+                </h3>
+
+                <p>
+                    Découvrez les principaux réglages de votre tablette
+                    et apprenez à personnaliser votre appareil.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Codes -->
+
+            <article class="course-card">
+
+                <h3>
+                    Fiche : les codes à connaître
+                </h3>
+
+                <p>
+                    Retrouvez les principaux codes et informations utiles
+                    à connaître pour utiliser et sécuriser votre tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Notifications -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les notifications
+                </h3>
+
+                <p>
+                    Comprenez les notifications, apprenez à les consulter
+                    et découvrez comment les gérer.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
 
     </section>
+
+
+
+    <!-- =====================================
+         COMMUNICATION
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Communication
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Communication -->
+
+            <article class="course-card">
+
+                <h3>
+                    Communiquer avec sa tablette
+                </h3>
+
+                <p>
+                    Découvrez les différentes façons de communiquer avec vos
+                    proches depuis une tablette : messagerie, appels vidéo
+                    et applications de communication.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- WhatsApp -->
+
+            <article class="course-card">
+
+                <h3>
+                    WhatsApp sur tablette
+                </h3>
+
+                <p>
+                    Découvrez comment utiliser WhatsApp sur une tablette
+                    lorsqu'il est disponible sur votre appareil.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PHOTOS ET DOCUMENTS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Photos et documents
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Prendre des photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les prendre
+                </h3>
+
+                <p>
+                    Apprenez à utiliser l'appareil photo de votre tablette,
+                    prendre des photos et retrouver vos clichés.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Organiser photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les organiser
+                </h3>
+
+                <p>
+                    Apprenez à retrouver, trier, classer et supprimer
+                    vos photos facilement.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Partager photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Photos : les partager
+                </h3>
+
+                <p>
+                    Découvrez différentes façons de partager une photo
+                    avec vos proches depuis votre tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Scanner document -->
+
+            <article class="course-card">
+
+                <h3>
+                    Scanner un document avec sa tablette
+                </h3>
+
+                <p>
+                    Apprenez à utiliser votre tablette pour numériser
+                    un document papier et le conserver sous forme numérique.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Transfert photos -->
+
+            <article class="course-card">
+
+                <h3>
+                    Transférer des photos de sa tablette à son ordinateur
+                </h3>
+
+                <p>
+                    Apprenez à transférer les photos de votre tablette
+                    vers votre ordinateur afin de pouvoir les conserver,
+                    les retrouver et les organiser facilement.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- QR Code -->
+
+            <article class="course-card">
+
+                <h3>
+                    Scanner un QR code
+                </h3>
+
+                <p>
+                    Apprenez à utiliser l'appareil photo de votre tablette
+                    pour scanner un QR code et accéder rapidement à une
+                    information ou à un site Internet.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         INTERNET
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Internet sur tablette
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Internet -->
+
+            <article class="course-card">
+
+                <h3>
+                    Utiliser Internet sur sa tablette
+                </h3>
+
+                <p>
+                    Apprenez à rechercher des informations, consulter des sites
+                    Internet et utiliser votre navigateur sur tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Sans publicité -->
+
+            <article class="course-card">
+
+                <h3>
+                    Utiliser Internet sans publicité
+                </h3>
+
+                <p>
+                    Découvrez les différentes solutions permettant de naviguer
+                    plus confortablement et de limiter les publicités.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Wi-Fi -->
+
+            <article class="course-card">
+
+                <h3>
+                    Le Wi-Fi
+                </h3>
+
+                <p>
+                    Comprenez le fonctionnement du Wi-Fi et apprenez
+                    à connecter votre tablette à un réseau sans fil.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- GPS -->
+
+            <article class="course-card">
+
+                <h3>
+                    La localisation et le GPS
+                </h3>
+
+                <p>
+                    Découvrez comment utiliser une application de cartes,
+                    rechercher une adresse et préparer un itinéraire.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         APPLICATIONS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Applications
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Applications -->
+
+            <article class="course-card">
+
+                <h3>
+                    Applications : les télécharger,
+                    les gérer et les supprimer
+                </h3>
+
+                <p>
+                    Apprenez à télécharger une application, vérifier son origine,
+                    la gérer et la supprimer lorsqu'elle n'est plus utile.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FICHIERS ET DOCUMENTS
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Fichiers et documents
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Organiser fichiers -->
+
+            <article class="course-card">
+
+                <h3>
+                    Organiser les fichiers sur sa tablette
+                </h3>
+
+                <p>
+                    Apprenez à retrouver, déplacer, classer et supprimer
+                    les fichiers présents sur votre tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Traitement de texte -->
+
+            <article class="course-card">
+
+                <h3>
+                    Le traitement de texte sur la tablette
+                </h3>
+
+                <p>
+                    Découvrez comment créer, modifier et enregistrer
+                    un document texte directement depuis votre tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         MISES À JOUR
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Entretien de la tablette
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Mises à jour -->
+
+            <article class="course-card">
+
+                <h3>
+                    Les mises à jour de la tablette
+                </h3>
+
+                <p>
+                    Comprenez pourquoi les mises à jour sont importantes
+                    et apprenez à maintenir votre tablette à jour.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Batterie -->
+
+            <article class="course-card">
+
+                <h3>
+                    La batterie
+                </h3>
+
+                <p>
+                    Découvrez ce qui consomme la batterie et quelques bonnes
+                    pratiques pour prolonger son autonomie.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         SÉCURITÉ
+    ====================================== -->
+
+    <section class="course-section">
+
+        <div class="section-title">
+
+            <h2>
+                Sécurité de la tablette
+            </h2>
+
+        </div>
+
+
+        <div class="course-grid">
+
+
+            <!-- Sécurité -->
+
+            <article class="course-card">
+
+                <h3>
+                    La sécurité de la tablette
+                </h3>
+
+                <p>
+                    Apprenez à protéger votre tablette avec un code,
+                    une empreinte ou une reconnaissance faciale et découvrez
+                    les bons réflexes en cas de perte ou de vol.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+
+            <!-- Sauvegarde -->
+
+            <article class="course-card">
+
+                <h3>
+                    Sauvegarder ses données
+                </h3>
+
+                <p>
+                    Comprenez comment sauvegarder vos photos et vos données
+                    afin de pouvoir les retrouver en cas de problème
+                    avec votre tablette.
+                </p>
+
+                <span class="pdf-unavailable">
+                    Le PDF sera bientôt disponible.
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         POUR ALLER PLUS LOIN
+    ====================================== -->
+
+    <div class="info-box">
+
+        <h2>
+            Pour aller plus loin
+        </h2>
+
+        <p>
+            Cette rubrique pourra progressivement accueillir des ressources
+            complémentaires, des fiches pratiques, des exercices, des jeux,
+            des outils et des liens utiles pour continuer à pratiquer après
+            les cours.
+        </p>
+
+    </div>
+
 
 </main>
 
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
 
-    <div class="footer-container">
+    <p>
+        Centre Multimédia du CCAS
+    </p>
 
-        <div>
-
-            <div class="footer-title">
-                Centre Multimédia du CCAS
-            </div>
-
-            <div class="footer-text">
-                Apprendre • Découvrir • Progresser
-            </div>
-
-        </div>
-
-        <div class="footer-text">
-            © 2026 Centre Multimédia du CCAS
-        </div>
-
-    </div>
+    <p>
+        Apprendre • Découvrir • Progresser
+    </p>
 
 </footer>
+
 
 </body>
 
