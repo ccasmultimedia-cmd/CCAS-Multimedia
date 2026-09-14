@@ -7,6 +7,7 @@
     <title>Mes cours - Centre Multimédia du CCAS</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -19,9 +20,10 @@
             line-height: 1.6;
         }
 
-        /* =========================
+
+        /* =========================================
            MENU
-        ========================= */
+        ========================================= */
 
         header {
             background: #1f3656;
@@ -71,17 +73,19 @@
             background-color: #3d76c5;
         }
 
-        /* =========================
+
+        /* =========================================
            EN-TÊTE
-        ========================= */
+        ========================================= */
 
         .page-header {
-            background: linear-gradient(
-                135deg,
-                #e9f0fa 0%,
-                #ffffff 55%,
-                #eef7ef 100%
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #e9f0fa 0%,
+                    #ffffff 55%,
+                    #eef7ef 100%
+                );
 
             padding: 55px 25px;
             text-align: center;
@@ -100,9 +104,10 @@
             color: #526274;
         }
 
-        /* =========================
+
+        /* =========================================
            CONTENU
-        ========================= */
+        ========================================= */
 
         .container {
             max-width: 1200px;
@@ -127,9 +132,10 @@
             color: #5d6b7a;
         }
 
-        /* =========================
-           CARTES DES COURS
-        ========================= */
+
+        /* =========================================
+           CARTES DES TROIS COURS
+        ========================================= */
 
         .courses-grid {
             display: grid;
@@ -138,16 +144,24 @@
         }
 
         .course-card {
-            background: white;
+            display: block;
+
+            background: #ffffff;
+
             border-radius: 16px;
+
             padding: 32px 28px;
+
             text-align: center;
+
             text-decoration: none;
+
             color: inherit;
 
             border: 1px solid #e2e8f0;
 
-            box-shadow: 0 5px 18px rgba(31, 54, 86, .08);
+            box-shadow:
+                0 5px 18px rgba(31, 54, 86, .08);
 
             transition:
                 transform .25s,
@@ -156,8 +170,15 @@
 
         .course-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 28px rgba(31, 54, 86, .14);
+
+            box-shadow:
+                0 10px 28px rgba(31, 54, 86, .14);
         }
+
+
+        /* =========================================
+           ICÔNES
+        ========================================= */
 
         .course-icon {
             width: 90px;
@@ -174,17 +195,31 @@
             font-size: 42px;
         }
 
+
+        /* =========================================
+           TITRES
+        ========================================= */
+
         .course-card h2 {
             margin: 0 0 12px;
+
             font-size: 25px;
+
             color: #1f3656;
         }
 
         .course-card p {
-            margin: 0 0 22px;
+            margin: 0 0 25px;
+
             font-size: 17px;
+
             color: #5d6b7a;
         }
+
+
+        /* =========================================
+           BOUTONS
+        ========================================= */
 
         .course-button {
             display: inline-block;
@@ -196,10 +231,14 @@
             color: white;
 
             font-size: 16px;
+
             font-weight: bold;
         }
 
-        /* Informatique */
+
+        /* =========================================
+           INFORMATIQUE
+        ========================================= */
 
         .computer .course-icon {
             background: #e8f0fb;
@@ -213,7 +252,10 @@
             background: #2e5f9f;
         }
 
-        /* Smartphone */
+
+        /* =========================================
+           SMARTPHONE
+        ========================================= */
 
         .smartphone .course-icon {
             background: #e8f6f2;
@@ -227,7 +269,10 @@
             background: #236b5c;
         }
 
-        /* Tablette */
+
+        /* =========================================
+           TABLETTE
+        ========================================= */
 
         .tablet .course-icon {
             background: #f0ebfa;
@@ -241,12 +286,13 @@
             background: #6048a5;
         }
 
-        /* =========================
+
+        /* =========================================
            INFORMATION
-        ========================= */
+        ========================================= */
 
         .info-box {
-            background: white;
+            background: #ffffff;
 
             border-left: 5px solid #3975c6;
 
@@ -254,31 +300,40 @@
 
             padding: 28px 30px;
 
-            box-shadow: 0 4px 15px rgba(31, 54, 86, .07);
+            box-shadow:
+                0 4px 15px rgba(31, 54, 86, .07);
 
             margin-top: 45px;
         }
 
         .info-box h2 {
             margin-top: 0;
+
             color: #1f3656;
         }
 
         .info-box p {
             margin-bottom: 0;
+
             color: #5d6b7a;
+
             font-size: 17px;
         }
 
-        /* =========================
+
+        /* =========================================
            PIED DE PAGE
-        ========================= */
+        ========================================= */
 
         footer {
             background: #1f3656;
+
             color: white;
+
             text-align: center;
+
             padding: 25px 20px;
+
             font-size: 14px;
         }
 
@@ -286,18 +341,22 @@
             margin: 4px 0;
         }
 
-        /* =========================
+
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 900px) {
 
             .courses-grid {
                 grid-template-columns: 1fr;
+
                 max-width: 600px;
+
                 margin: auto;
             }
         }
+
 
         @media (max-width: 650px) {
 
@@ -338,23 +397,35 @@
                 padding: 28px 22px;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- =========================
+
+    <!-- =========================================
          MENU
-    ========================= -->
+    ========================================= -->
 
     <header>
 
         <div class="navbar">
 
             <div class="logo">
-                <strong>Centre Multimédia du CCAS</strong>
-                <span>Apprendre • Découvrir • Progresser</span>
+
+                <strong>
+                    Centre Multimédia du CCAS
+                </strong>
+
+                <span>
+                    Apprendre • Découvrir • Progresser
+                </span>
+
             </div>
+
 
             <nav>
 
@@ -389,9 +460,9 @@
     </header>
 
 
-    <!-- =========================
+    <!-- =========================================
          EN-TÊTE
-    ========================= -->
+    ========================================= -->
 
     <section class="page-header">
 
@@ -406,11 +477,12 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =========================================
          CONTENU
-    ========================= -->
+    ========================================= -->
 
     <main class="container">
+
 
         <div class="intro">
 
@@ -426,14 +498,16 @@
         </div>
 
 
-        <!-- =========================
-             TROIS CATÉGORIES
-        ========================= -->
+        <!-- =========================================
+             TROIS GRANDES PARTIES
+        ========================================= -->
 
         <div class="courses-grid">
 
 
-            <!-- INFORMATIQUE -->
+            <!-- =====================================
+                 COURS INFORMATIQUE
+            ====================================== -->
 
             <a
                 href="informatique.html"
@@ -461,7 +535,9 @@
             </a>
 
 
-            <!-- SMARTPHONE -->
+            <!-- =====================================
+                 COURS SMARTPHONE
+            ====================================== -->
 
             <a
                 href="smartphone.html"
@@ -489,7 +565,9 @@
             </a>
 
 
-            <!-- TABLETTE -->
+            <!-- =====================================
+                 COURS TABLETTE
+            ====================================== -->
 
             <a
                 href="tablette.html"
@@ -516,12 +594,13 @@
 
             </a>
 
+
         </div>
 
 
-        <!-- =========================
+        <!-- =========================================
              INFORMATION
-        ========================= -->
+        ========================================= -->
 
         <div class="info-box">
 
@@ -537,12 +616,13 @@
 
         </div>
 
+
     </main>
 
 
-    <!-- =========================
-         PIED DE PAGE
-    ========================= -->
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
 
     <footer>
 
@@ -551,10 +631,11 @@
         </p>
 
         <p>
-            Un espace pour apprendre, pratiquer et progresser dans le numérique.
+            Apprendre • Découvrir • Progresser
         </p>
 
     </footer>
+
 
 </body>
 </html>
