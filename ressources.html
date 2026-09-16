@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ressources - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #243447;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo strong {
+    font-size: 26px;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: .8;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 17px;
+    transition: .3s;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #3d76c5;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    padding: 55px 25px 45px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 38px;
+    color: #1f3656;
+}
+
+.page-header p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #526273;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+.container {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    margin: 0 0 10px;
+    color: #1f3656;
+    font-size: 29px;
+}
+
+.section-title p {
+    margin: 0;
+    color: #617080;
+    font-size: 17px;
+}
+
+/* =========================
+   CATÉGORIES
+========================= */
+
+.category {
+    margin-bottom: 45px;
+}
+
+.category h2 {
+    color: #1f3656;
+    font-size: 27px;
+    margin-bottom: 20px;
+    padding-left: 14px;
+    border-left: 6px solid #3d76c5;
+}
+
+.category-intro {
+    margin: 0 0 20px;
+    color: #5c6b7a;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* =========================
+   CARTES
+========================= */
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.resource-card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(31, 54, 86, 0.08);
+    border: 1px solid #e1e7ef;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(31, 54, 86, 0.13);
+}
+
+.resource-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.resource-card h3 {
+    margin: 0 0 10px;
+    color: #1f3656;
+    font-size: 22px;
+}
+
+.resource-card p {
+    margin: 0 0 15px;
+    color: #596979;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.resource-useful {
+    background: #f3f7fc;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    color: #445568;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.resource-useful strong {
+    color: #1f3656;
+}
+
+.resource-link {
+    display: inline-block;
+    background: #3d76c5;
+    color: white;
+    text-decoration: none;
+    padding: 11px 17px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.resource-link:hover {
+    background: #2f5f9e;
+}
+
+/* =========================
+   PETIT ENCART
+========================= */
+
+.info-box {
+    background: #eef7ef;
+    border-left: 6px solid #3d9b72;
+    padding: 22px 25px;
+    border-radius: 10px;
+    margin-top: 45px;
+}
+
+.info-box h2 {
+    margin-top: 0;
+    color: #286c50;
+    font-size: 24px;
+}
+
+.info-box p {
+    margin-bottom: 0;
+    color: #4f665b;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: .85;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 10px 12px;
+    }
+
+    .page-header {
+        padding: 40px 20px 35px;
+    }
+
+    .page-header h1 {
+        font-size: 31px;
+    }
+
+    .page-header p {
+        font-size: 17px;
+    }
+
+    .container {
+        margin: 35px auto;
+        padding: 0 18px;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category h2 {
+        font-size: 24px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html">Exercices</a>
+            <a href="outils.html">🛠️ Outils</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <h1>Ressources numériques</h1>
+
+        <p>
+            Une sélection de sites et d'outils utiles pour apprendre,
+            découvrir Internet et faciliter certaines démarches du quotidien.
+        </p>
+
+    </section>
+
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Des ressources à découvrir</h2>
+
+            <p>
+                Retrouvez ici des sites pratiques que vous pourrez utiliser
+                pendant les cours ou chez vous.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             OUTILS PRATIQUES
+        ========================== -->
+
+        <section class="category">
+
+            <h2>Outils pratiques</h2>
+
+            <p class="category-intro">
+                Des outils simples qui peuvent rendre certaines tâches
+                numériques plus faciles.
+            </p>
+
+
+            <div class="resources-grid">
+
+                <article class="resource-card">
+
+                    <div class="resource-icon">🔒</div>
+
+                    <h3>FiligraneFacile</h3>
+
+                    <p>
+                        Un service permettant d'ajouter facilement un
+                        filigrane sur un document afin d'indiquer par exemple
+                        à qui il est destiné.
+                    </p>
+
+                    <div class="resource-useful">
+                        <strong>Pourquoi c'est utile ?</strong><br>
+                        Pour protéger une copie de document avant de l'envoyer
+                        à un organisme ou à une personne.
+                    </div>
+
+                    <a
+                        class="resource-link"
+                        href="https://filigrane.beta.gouv.fr/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Découvrir FiligraneFacile
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SITES UTILES
+        ========================== -->
+
+        <section class="category">
+
+            <h2>Sites utiles</h2>
+
+            <p class="category-intro">
+                Cette rubrique accueillera progressivement des sites qui
+                peuvent être utiles dans la vie quotidienne.
+            </p>
+
+            <!--
+                De nouvelles ressources pourront être ajoutées ici
+                progressivement.
+            -->
+
+        </section>
+
+
+        <!-- =========================
+             SITES INSOLITES
+        ========================== -->
+
+        <section class="category">
+
+            <h2>Sites internet insolites</h2>
+
+            <p class="category-intro">
+                Internet ne sert pas uniquement à faire des démarches ou
+                rechercher des informations. Il existe aussi de nombreux
+                sites étonnants, amusants ou simplement curieux à découvrir.
+            </p>
+
+            <!--
+                Les sites insolites seront ajoutés progressivement.
+            -->
+
+        </section>
+
+
+        <!-- =========================
+             SÉCURITÉ
+        ========================== -->
+
+        <section class="category">
+
+            <h2>Sécurité et protection</h2>
+
+            <p class="category-intro">
+                Des ressources pour apprendre à mieux protéger ses données,
+                ses comptes et son identité sur Internet.
+            </p>
+
+            <!--
+                De nouvelles ressources pourront être ajoutées ici.
+            -->
+
+        </section>
+
+
+        <!-- =========================
+             INFO
+        ========================== -->
+
+        <div class="info-box">
+
+            <h2>Une ressource vous semble intéressante ?</h2>
+
+            <p>
+                Cette page sera enrichie progressivement avec les ressources
+                que nous découvrons ensemble pendant les cours.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>Centre Multimédia du CCAS</p>
+    <p>Apprendre • Découvrir • Progresser</p>
+
+</footer>
+
+</body>
+</html>
