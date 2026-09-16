@@ -43,16 +43,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .logo strong {
             font-size: 26px;
+            white-space: nowrap;
         }
 
         .logo span {
@@ -62,15 +64,19 @@
 
         nav {
             display: flex;
-            gap: 10px;
+            gap: 6px;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            flex-shrink: 1;
         }
 
         nav a {
             color: white;
-            padding: 12px 18px;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 17px;
+            font-size: 16px;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         nav a:hover,
@@ -415,10 +421,12 @@
 
             nav {
                 flex-wrap: wrap;
+                gap: 6px;
             }
 
             nav a {
                 padding: 10px 12px;
+                font-size: 16px;
             }
 
             .page-header {
@@ -493,7 +501,9 @@
 
             <a href="exercices.html">Exercices</a>
 
-            <a href="outils.html">🛠️ Outils</a>
+            <a href="outils.html">Outils</a>
+
+            <a href="ressources.html">Ressources</a>
 
             <a href="informations.html" class="active">
                 Informations
