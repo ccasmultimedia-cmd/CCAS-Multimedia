@@ -40,16 +40,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .logo strong {
             font-size: 26px;
+            white-space: nowrap;
         }
 
         .logo span {
@@ -59,14 +61,18 @@
 
         nav {
             display: flex;
-            gap: 10px;
+            gap: 6px;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            flex-shrink: 1;
         }
 
         nav a {
             color: white;
-            padding: 12px 18px;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 17px;
+            font-size: 16px;
+            white-space: nowrap;
         }
 
         nav a:hover,
@@ -294,10 +300,12 @@
 
             nav {
                 flex-wrap: wrap;
+                gap: 6px;
             }
 
             nav a {
                 padding: 10px 12px;
+                font-size: 16px;
             }
 
             .page-header {
@@ -346,23 +354,20 @@
 
         <nav>
 
-           <nav>
+            <a href="index.html">Accueil</a>
 
-   <nav>
+            <a href="cours.html">Mes cours</a>
 
-    <a href="index.html">Accueil</a>
+            <a href="jeux.html" class="active">Jeux</a>
 
-    <a href="cours.html">Mes cours</a>
+            <a href="exercices.html">Exercices</a>
 
-    <a href="jeux.html" class="active">Jeux</a>
+            <a href="outils.html">Outils</a>
 
-    <a href="exercices.html">Exercices</a>
+            <a href="ressources.html">Ressources</a>
 
-    <a href="outils.html">🛠️ Outils</a>
+            <a href="informations.html">Informations</a>
 
-    <a href="informations.html">Informations</a>
-
-</nav>
         </nav>
 
     </div>
