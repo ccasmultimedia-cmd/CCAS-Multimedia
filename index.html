@@ -54,10 +54,12 @@ header {
 .logo {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .logo strong {
     font-size: 26px;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -81,6 +83,8 @@ nav a {
     font-size: 17px;
 
     transition: .3s;
+
+    white-space: nowrap;
 }
 
 nav a:hover,
@@ -101,11 +105,6 @@ nav a.active {
             #ffffff 55%,
             #eef7ef 100%
         );
-
-    /*
-       Bandeau légèrement agrandi pour être
-       plus équilibré avec les autres pages.
-    */
 
     padding: 70px 25px 60px;
 
