@@ -34,16 +34,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .logo {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .logo strong {
     font-size: 26px;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -53,16 +55,20 @@ header {
 
 nav {
     display: flex;
-    gap: 10px;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 1;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 12px 18px;
+    padding: 10px 14px;
     border-radius: 8px;
-    font-size: 17px;
+    font-size: 16px;
     transition: .3s;
+    white-space: nowrap;
 }
 
 nav a:hover,
@@ -271,10 +277,12 @@ footer p {
 
     nav {
         flex-wrap: wrap;
+        gap: 6px;
     }
 
     nav a {
         padding: 10px 12px;
+        font-size: 16px;
     }
 
     .page-header {
@@ -322,7 +330,8 @@ footer p {
             <a href="cours.html">Mes cours</a>
             <a href="jeux.html">Jeux</a>
             <a href="exercices.html">Exercices</a>
-            <a href="outils.html">🛠️ Outils</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html" class="active">Ressources</a>
             <a href="informations.html">Informations</a>
         </nav>
 
@@ -439,14 +448,93 @@ footer p {
             <h2>Sites internet insolites</h2>
 
             <p class="category-intro">
-                Internet ne sert pas uniquement à faire des démarches ou
-                rechercher des informations. Il existe aussi de nombreux
-                sites étonnants, amusants ou simplement curieux à découvrir.
+                Des sites étonnants, amusants ou simplement curieux
+                à découvrir sur Internet.
             </p>
 
-            <!--
-                Les sites insolites seront ajoutés progressivement.
-            -->
+
+            <div class="resources-grid">
+
+                <article class="resource-card">
+
+                    <h3>Tif.hair</h3>
+
+                    <p>
+                        Les noms de coiffeurs les plus drôles de France.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://tif.hair/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Découvrir le site
+                    </a>
+
+                </article>
+
+
+                <article class="resource-card">
+
+                    <h3>CityQuiz – France</h3>
+
+                    <p>
+                        Testez vos connaissances sur la France avec des quiz.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://cityquiz.io/quizzes/france"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Découvrir le site
+                    </a>
+
+                </article>
+
+
+                <article class="resource-card">
+
+                    <h3>Grotte Chauvet – Visite virtuelle</h3>
+
+                    <p>
+                        Explorez la célèbre grotte préhistorique depuis chez vous.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://archeologie.culture.gouv.fr/chauvet/fr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Découvrir le site
+                    </a>
+
+                </article>
+
+
+                <article class="resource-card">
+
+                    <h3>Webcams du monde</h3>
+
+                    <p>
+                        Voyagez dans le monde grâce à des webcams en direct.
+                    </p>
+
+                    <a
+                        class="resource-link"
+                        href="https://fr.worldcam.eu/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Découvrir le site
+                    </a>
+
+                </article>
+
+            </div>
 
         </section>
 
