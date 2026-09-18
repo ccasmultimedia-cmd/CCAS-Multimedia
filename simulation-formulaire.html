@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simulation : Remplir un formulaire - Centre Multimédia du CCAS</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #243447;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        header {
+            background: #1f3656;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .logo strong {
+            font-size: 26px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            flex-shrink: 1;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #3d76c5;
+        }
+
+        /* =========================
+           EN-TÊTE DE PAGE
+        ========================= */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #e9f0fa,
+                #ffffff,
+                #eef7ef
+            );
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin: 0 0 12px;
+            font-size: 36px;
+            color: #1f3656;
+        }
+
+        .page-header p {
+            margin: 0 auto;
+            max-width: 750px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           CONTENU
+        ========================= */
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .mission {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #3d76c5;
+        }
+
+        .mission h2 {
+            margin-top: 0;
+            color: #1f3656;
+            font-size: 24px;
+        }
+
+        .mission p {
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .mission strong {
+            color: #1f3656;
+        }
+
+        /* =========================
+           FAUX SITE INTERNET
+        ========================= */
+
+        .fake-site {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .fake-site-header {
+            background: #315f91;
+            color: white;
+            padding: 20px 25px;
+        }
+
+        .fake-site-header h2 {
+            margin: 0 0 5px;
+            font-size: 24px;
+        }
+
+        .fake-site-header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .fake-site-content {
+            padding: 30px;
+        }
+
+        .fake-site-content h3 {
+            margin-top: 0;
+            color: #1f3656;
+            font-size: 25px;
+        }
+
+        .fake-site-content > p {
+            line-height: 1.6;
+        }
+
+        /* =========================
+           FORMULAIRE
+        ========================= */
+
+        form {
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #243447;
+            font-size: 16px;
+        }
+
+        .required {
+            color: #b3261e;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #b8c2cc;
+            border-radius: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            background: white;
+            color: #243447;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 3px solid rgba(61, 118, 197, 0.2);
+            border-color: #3d76c5;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: normal;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .checkbox-option input {
+            width: auto;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .help-text {
+            font-size: 14px;
+            color: #5d6873;
+            margin-top: 6px;
+        }
+
+        .submit-area {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .submit-button {
+            background: #3d76c5;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #2f5f9f;
+        }
+
+        /* =========================
+           MESSAGE DE RÉSULTAT
+        ========================= */
+
+        .message {
+            display: none;
+            margin-top: 25px;
+            padding: 18px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        .message.success {
+            background: #eaf7ed;
+            border: 1px solid #9bd0a6;
+            color: #205b2b;
+        }
+
+        .message.error {
+            background: #fff1f0;
+            border: 1px solid #e0a5a0;
+            color: #7a211c;
+        }
+
+        /* =========================
+           CONSEIL
+        ========================= */
+
+        .conseil {
+            background: #fff;
+            border-radius: 14px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #6b9e72;
+        }
+
+        .conseil h2 {
+            margin-top: 0;
+            color: #315f39;
+        }
+
+        .conseil ul {
+            line-height: 1.8;
+            padding-left: 22px;
+        }
+
+        /* =========================
+           PIED DE PAGE
+        ========================= */
+
+        footer {
+            margin-top: 60px;
+            background: #1f3656;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            nav a {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+
+            .page-header {
+                padding: 35px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            .page-header p {
+                font-size: 17px;
+            }
+
+            main {
+                margin-top: 30px;
+            }
+
+            .fake-site-content {
+                padding: 22px;
+            }
+
+            .mission,
+            .conseil {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre le numérique simplement</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html" class="active">Exercices</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<section class="page-header">
+
+    <h1>Simulation : remplir un formulaire</h1>
+
+    <p>
+        Entraînez-vous à remplir un formulaire sur Internet dans un environnement
+        sans risque.
+    </p>
+
+</section>
+
+<main>
+
+    <section class="mission">
+
+        <h2>Votre mission</h2>
+
+        <p>
+            Vous allez remplir un faux formulaire de demande de renseignements.
+        </p>
+
+        <p>
+            Le but est de vous entraîner à :
+        </p>
+
+        <ul>
+            <li>lire les différentes questions ;</li>
+            <li>écrire des informations dans les cases ;</li>
+            <li>choisir une réponse dans une liste ;</li>
+            <li>cocher une case ;</li>
+            <li>envoyer un formulaire.</li>
+        </ul>
+
+        <p>
+            <strong>Important :</strong>
+            ce formulaire est entièrement fictif. Aucune donnée n'est envoyée
+            sur Internet.
+        </p>
+
+    </section>
+
+
+    <section class="fake-site">
+
+        <div class="fake-site-header">
+
+            <h2>Maison des Services</h2>
+
+            <p>Demande de renseignements</p>
+
+        </div>
+
+
+        <div class="fake-site-content">
+
+            <h3>Contactez-nous</h3>
+
+            <p>
+                Vous souhaitez obtenir des renseignements ?
+                Remplissez le formulaire ci-dessous.
+            </p>
+
+
+            <form id="formulaire">
+
+
+                <div class="form-group">
+
+                    <label for="prenom">
+                        Prénom <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="prenom"
+                        name="prenom"
+                        placeholder="Exemple : Marie"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="nom">
+                        Nom <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nom"
+                        name="nom"
+                        placeholder="Exemple : Dupont"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Adresse e-mail <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Exemple : marie@example.fr"
+                    >
+
+                    <div class="help-text">
+                        Exemple : marie@example.fr
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="telephone">
+                        Numéro de téléphone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telephone"
+                        name="telephone"
+                        placeholder="Exemple : 06 12 34 56 78"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="sujet">
+                        Sujet de votre demande <span class="required">*</span>
+                    </label>
+
+                    <select id="sujet" name="sujet">
+
+                        <option value="">
+                            -- Choisissez une réponse --
+                        </option>
+
+                        <option value="information">
+                            Demande d'information
+                        </option>
+
+                        <option value="rendez-vous">
+                            Demande de rendez-vous
+                        </option>
+
+                        <option value="inscription">
+                            Inscription à une activité
+                        </option>
+
+                        <option value="autre">
+                            Autre demande
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Comment souhaitez-vous être contacté ?
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-option">
+                            <input
+                                type="radio"
+                                name="contact"
+                                value="email"
+                            >
+                            Par e-mail
+                        </label>
+
+                        <label class="radio-option">
+                            <input
+                                type="radio"
+                                name="contact"
+                                value="telephone"
+                            >
+                            Par téléphone
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Votre message <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Écrivez votre demande ici..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="checkbox-option">
+
+                        <input
+                            type="checkbox"
+                            id="conditions"
+                            name="conditions"
+                        >
+
+                        <span>
+                            J'ai vérifié les informations que j'ai saisies.
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Envoyer le formulaire
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="messageSucces"
+                    class="message success"
+                >
+                    <strong>Bravo !</strong>
+                    Votre formulaire a été correctement rempli.
+                    Dans cette simulation, votre demande est simplement
+                    enregistrée comme réussie.
+                </div>
+
+
+                <div
+                    id="messageErreur"
+                    class="message error"
+                >
+                    Il manque encore certaines informations.
+                    Vérifiez les champs indiqués puis réessayez.
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <section class="conseil">
+
+        <h2>Quelques conseils</h2>
+
+        <ul>
+
+            <li>
+                Prenez le temps de lire chaque question avant de répondre.
+            </li>
+
+            <li>
+                Les champs avec une étoile sont généralement obligatoires.
+            </li>
+
+            <li>
+                Une liste déroulante permet de choisir une réponse proposée.
+            </li>
+
+            <li>
+                Une case à cocher permet généralement de confirmer quelque chose.
+            </li>
+
+            <li>
+                Avant de valider un formulaire, prenez toujours quelques secondes
+                pour vérifier vos informations.
+            </li>
+
+        </ul>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        Centre Multimédia du CCAS
+    </p>
+
+    <p>
+        Apprendre le numérique simplement
+    </p>
+
+</footer>
+
+
+<script>
+
+    const formulaire = document.getElementById("formulaire");
+
+    const messageSucces = document.getElementById("messageSucces");
+
+    const messageErreur = document.getElementById("messageErreur");
+
+
+    formulaire.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        messageSucces.style.display = "none";
+        messageErreur.style.display = "none";
+
+
+        const prenom =
+            document.getElementById("prenom").value.trim();
+
+        const nom =
+            document.getElementById("nom").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const sujet =
+            document.getElementById("sujet").value;
+
+        const message =
+            document.getElementById("message").value.trim();
+
+        const conditions =
+            document.getElementById("conditions").checked;
+
+
+        if (
+            prenom === "" ||
+            nom === "" ||
+            email === "" ||
+            sujet === "" ||
+            message === "" ||
+            !conditions
+        ) {
+
+            messageErreur.style.display = "block";
+
+            messageErreur.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+
+        }
+
+
+        messageSucces.style.display = "block";
+
+        messageSucces.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
