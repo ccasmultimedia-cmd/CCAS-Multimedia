@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Créer un compte - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   MENU
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo strong {
+    font-size: 26px;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 1;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3d76c5;
+}
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 15px;
+    font-size: 36px;
+    color: #1f3656;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.intro-box {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    border-left: 5px solid #3d76c5;
+}
+
+.intro-box h2 {
+    margin-top: 0;
+    color: #1f3656;
+}
+
+.intro-box p {
+    line-height: 1.6;
+}
+
+/* =========================
+   EXERCICE
+========================= */
+
+.exercise {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.exercise-header {
+    border-bottom: 1px solid #e1e6ed;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.exercise-header h2 {
+    margin: 0 0 8px;
+    color: #1f3656;
+}
+
+.exercise-header p {
+    margin: 0;
+    color: #64748b;
+}
+
+/* =========================
+   MISSION
+========================= */
+
+.mission {
+    display: none;
+}
+
+.mission.active {
+    display: block;
+}
+
+.mission-number {
+    display: inline-block;
+    background: #e9f0fa;
+    color: #2f5f95;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.mission h3 {
+    margin-top: 0;
+    color: #1f3656;
+    font-size: 25px;
+}
+
+.mission p {
+    line-height: 1.6;
+}
+
+/* =========================
+   CHOIX
+========================= */
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.choice {
+    background: #f8fafc;
+    border: 2px solid #d8e0ea;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 17px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.25s;
+}
+
+.choice:hover {
+    border-color: #3d76c5;
+    background: #f1f6fd;
+}
+
+.choice.correct {
+    border-color: #4b9b62;
+    background: #eaf7ed;
+}
+
+.choice.wrong {
+    border-color: #d26a6a;
+    background: #fff0f0;
+}
+
+/* =========================
+   FORMULAIRE
+========================= */
+
+.form-group {
+    margin: 22px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    max-width: 600px;
+    padding: 13px 14px;
+    border: 1px solid #bdc8d5;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3d76c5;
+    box-shadow: 0 0 0 3px rgba(61,118,197,0.12);
+}
+
+.help {
+    margin-top: 7px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.check-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 25px 0;
+    line-height: 1.5;
+}
+
+.check-line input {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.button-area {
+    margin-top: 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.main-button {
+    border: none;
+    background: #3d76c5;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #2f5f95;
+}
+
+.secondary-button {
+    border: 1px solid #bdc8d5;
+    background: white;
+    color: #26364a;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.feedback {
+    margin-top: 25px;
+    padding: 16px;
+    border-radius: 10px;
+    display: none;
+    line-height: 1.5;
+}
+
+.feedback.success {
+    background: #eaf7ed;
+    border: 1px solid #b9dfc2;
+    color: #245b32;
+}
+
+.feedback.error {
+    background: #fff0f0;
+    border: 1px solid #e4b5b5;
+    color: #7a2929;
+}
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.progress-area {
+    margin-bottom: 30px;
+}
+
+.progress-text {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #e5eaf0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #3d76c5;
+    transition: 0.3s;
+}
+
+/* =========================
+   FIN
+========================= */
+
+.final-result {
+    display: none;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.final-result h2 {
+    color: #1f3656;
+}
+
+.score {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3d76c5;
+    margin: 20px 0;
+}
+
+.final-result p {
+    line-height: 1.6;
+}
+
+/* =========================
+   CONSEIL
+========================= */
+
+.tip-box {
+    margin-top: 30px;
+    background: #fff8e8;
+    border-left: 5px solid #e5a72f;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.tip-box h3 {
+    margin-top: 0;
+    color: #72520e;
+}
+
+.tip-box p {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 5px;
+    opacity: 0.85;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    nav a {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .page-header {
+        padding: 40px 20px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .page-header p {
+        font-size: 17px;
+    }
+
+    .container {
+        margin: 25px auto;
+    }
+
+    .exercise {
+        padding: 22px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre, pratiquer, progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html" class="active">Exercices</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>Créer un compte</h1>
+
+    <p>
+        Apprenez les différentes étapes nécessaires pour créer un compte sur Internet.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <div class="intro-box">
+
+        <h2>Votre mission</h2>
+
+        <p>
+            Créer un compte sur Internet peut sembler compliqué au début.
+            Cet exercice vous accompagne étape par étape.
+        </p>
+
+        <p>
+            <strong>Attention :</strong> utilisez uniquement les informations fictives
+            proposées dans l'exercice. Ne saisissez jamais vos vrais mots de passe.
+        </p>
+
+    </div>
+
+
+    <section class="exercise">
+
+        <div class="exercise-header">
+
+            <h2>Exercice pratique</h2>
+
+            <p>
+                Répondez aux différentes missions pour apprendre à créer un compte.
+            </p>
+
+        </div>
+
+
+        <div class="progress-area">
+
+            <div class="progress-text" id="progressText">
+                Mission 1 sur 5
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MISSION 1
+        ========================= -->
+
+        <div
+            class="mission active"
+            id="mission1"
+        >
+
+            <span class="mission-number">
+                Mission 1
+            </span>
+
+            <h3>Que faut-il généralement pour créer un compte ?</h3>
+
+            <p>
+                Un site Internet peut demander plusieurs informations.
+                Laquelle de ces propositions correspond le mieux à une création de compte ?
+            </p>
+
+            <div class="choices">
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Une adresse e-mail et un mot de passe
+                    seulement si le site le demande
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="correct"
+                >
+                    Une adresse e-mail, un identifiant et un mot de passe
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Votre numéro de carte bancaire obligatoirement
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Votre code PIN de téléphone
+                </button>
+
+            </div>
+
+            <div
+                class="feedback"
+                id="feedback1"
+            ></div>
+
+        </div>
+
+
+        <!-- =========================
+             MISSION 2
+        ========================= -->
+
+        <div
+            class="mission"
+            id="mission2"
+        >
+
+            <span class="mission-number">
+                Mission 2
+            </span>
+
+            <h3>Choisissez un identifiant</h3>
+
+            <p>
+                Un identifiant permet généralement de vous reconnaître lorsque vous
+                vous connectez à un compte.
+            </p>
+
+            <p>
+                Lequel choisiriez-vous pour cet exercice ?
+            </p>
+
+            <div class="choices">
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    motdepasse123
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="correct"
+                >
+                    marie.dupont
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    123456
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    azerty
+                </button>
+
+            </div>
+
+            <div
+                class="feedback"
+                id="feedback2"
+            ></div>
+
+        </div>
+
+
+        <!-- =========================
+             MISSION 3
+        ========================= -->
+
+        <div
+            class="mission"
+            id="mission3"
+        >
+
+            <span class="mission-number">
+                Mission 3
+            </span>
+
+            <h3>Créez un mot de passe fictif</h3>
+
+            <p>
+                Pour cet exercice, créez un mot de passe fictif d'au moins
+                <strong>8 caractères</strong>.
+            </p>
+
+            <p class="help">
+                Conseil : mélangez des lettres, des chiffres et des caractères spéciaux.
+            </p>
+
+            <div class="form-group">
+
+                <label for="passwordExercise">
+                    Votre mot de passe fictif
+                </label>
+
+                <input
+                    type="password"
+                    id="passwordExercise"
+                    placeholder="Mot de passe fictif"
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <div class="button-area">
+
+                <button
+                    type="button"
+                    class="main-button"
+                    id="validatePassword"
+                >
+                    Vérifier
+                </button>
+
+            </div>
+
+            <div
+                class="feedback"
+                id="feedback3"
+            ></div>
+
+        </div>
+
+
+        <!-- =========================
+             MISSION 4
+        ========================= -->
+
+        <div
+            class="mission"
+            id="mission4"
+        >
+
+            <span class="mission-number">
+                Mission 4
+            </span>
+
+            <h3>Les conditions générales</h3>
+
+            <p>
+                Lors de la création d'un compte, un site peut vous demander
+                d'accepter ses conditions générales.
+            </p>
+
+            <p>
+                Pour continuer, que devez-vous faire ?
+            </p>
+
+            <div class="choices">
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Fermer la page
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="correct"
+                >
+                    Lire si possible les informations et cocher la case d'acceptation
+                    si je suis d'accord
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Donner mon mot de passe à quelqu'un
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Cliquer sur toutes les cases disponibles
+                </button>
+
+            </div>
+
+            <div
+                class="feedback"
+                id="feedback4"
+            ></div>
+
+        </div>
+
+
+        <!-- =========================
+             MISSION 5
+        ========================= -->
+
+        <div
+            class="mission"
+            id="mission5"
+        >
+
+            <span class="mission-number">
+                Mission 5
+            </span>
+
+            <h3>Dernière étape</h3>
+
+            <p>
+                Avant de cliquer sur « Créer mon compte » sur un vrai site,
+                quelle vérification est particulièrement importante ?
+            </p>
+
+            <div class="choices">
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Vérifier uniquement la couleur du bouton
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="correct"
+                >
+                    Vérifier que je suis bien sur le bon site et que les informations
+                    demandées sont normales
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Donner mon mot de passe par téléphone
+                </button>
+
+                <button
+                    class="choice"
+                    data-answer="wrong"
+                >
+                    Utiliser mon mot de passe habituel partout
+                </button>
+
+            </div>
+
+            <div
+                class="feedback"
+                id="feedback5"
+            ></div>
+
+        </div>
+
+
+        <!-- =========================
+             RESULTAT
+        ========================= -->
+
+        <div
+            class="final-result"
+            id="finalResult"
+        >
+
+            <h2>Exercice terminé !</h2>
+
+            <div
+                class="score"
+                id="score"
+            >
+                0 / 5
+            </div>
+
+            <p id="resultText"></p>
+
+            <div class="button-area" style="justify-content:center;">
+
+                <button
+                    type="button"
+                    class="main-button"
+                    id="restart"
+                >
+                    Recommencer l'exercice
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="tip-box">
+
+            <h3>À retenir</h3>
+
+            <p>
+                Lorsque vous créez un compte, prenez votre temps.
+                Vérifiez le site, utilisez un mot de passe différent de vos autres comptes
+                et ne communiquez jamais votre mot de passe.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        Centre Multimédia du CCAS
+    </p>
+
+    <p>
+        Apprendre à utiliser le numérique simplement et en toute confiance.
+    </p>
+
+</footer>
+
+
+<script>
+
+let currentMission = 1;
+let score = 0;
+
+const totalMissions = 5;
+
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+const finalResult = document.getElementById("finalResult");
+const scoreElement = document.getElementById("score");
+const resultText = document.getElementById("resultText");
+
+
+function updateProgress() {
+
+    if (currentMission <= totalMissions) {
+
+        progressText.textContent =
+            "Mission " + currentMission + " sur " + totalMissions;
+
+        const percentage =
+            ((currentMission - 1) / totalMissions) * 100;
+
+        progressFill.style.width = percentage + "%";
+
+    }
+
+}
+
+
+function showMission(number) {
+
+    document.querySelectorAll(".mission").forEach(function(mission) {
+
+        mission.classList.remove("active");
+
+    });
+
+    const mission = document.getElementById("mission" + number);
+
+    if (mission) {
+        mission.classList.add("active");
+    }
+
+    currentMission = number;
+
+    updateProgress();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+function validateChoice(button, missionNumber) {
+
+    const mission = document.getElementById("mission" + missionNumber);
+    const feedback = document.getElementById("feedback" + missionNumber);
+
+    const choices = mission.querySelectorAll(".choice");
+
+    choices.forEach(function(choice) {
+        choice.disabled = true;
+    });
+
+    if (button.dataset.answer === "correct") {
+
+        button.classList.add("correct");
+
+        feedback.className = "feedback success";
+
+        feedback.innerHTML =
+            "<strong>Bravo !</strong><br>" +
+            "Bonne réponse.";
+
+        score++;
+
+    } else {
+
+        button.classList.add("wrong");
+
+        feedback.className = "feedback error";
+
+        feedback.innerHTML =
+            "<strong>Ce n'est pas la bonne réponse.</strong><br>" +
+            "Prenez le temps de relire les propositions.";
+
+        choices.forEach(function(choice) {
+
+            if (choice.dataset.answer === "correct") {
+                choice.classList.add("correct");
+            }
+
+        });
+
+    }
+
+    feedback.style.display = "block";
+
+    setTimeout(function() {
+
+        if (missionNumber < totalMissions) {
+
+            showMission(missionNumber + 1);
+
+        } else {
+
+            finishExercise();
+
+        }
+
+    }, 1300);
+
+}
+
+
+document.querySelectorAll(".choice").forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const mission =
+            button.closest(".mission");
+
+        const missionNumber =
+            Number(mission.id.replace("mission", ""));
+
+        validateChoice(button, missionNumber);
+
+    });
+
+});
+
+
+document.getElementById("validatePassword")
+.addEventListener("click", function() {
+
+    const password =
+        document.getElementById("passwordExercise").value;
+
+    const feedback =
+        document.getElementById("feedback3");
+
+    if (password.length < 8) {
+
+        feedback.className = "feedback error";
+
+        feedback.innerHTML =
+            "<strong>Mot de passe trop court.</strong><br>" +
+            "Pour cet exercice, utilisez au moins 8 caractères.";
+
+        feedback.style.display = "block";
+
+        return;
+
+    }
+
+    score++;
+
+    feedback.className = "feedback success";
+
+    feedback.innerHTML =
+        "<strong>Bravo !</strong><br>" +
+        "Votre mot de passe fictif contient suffisamment de caractères pour réussir cette mission.";
+
+    feedback.style.display = "block";
+
+    this.disabled = true;
+
+    setTimeout(function() {
+
+        showMission(4);
+
+    }, 1300);
+
+});
+
+
+function finishExercise() {
+
+    document.querySelectorAll(".mission").forEach(function(mission) {
+
+        mission.classList.remove("active");
+
+    });
+
+    finalResult.style.display = "block";
+
+    progressText.textContent = "Exercice terminé";
+
+    progressFill.style.width = "100%";
+
+    scoreElement.textContent =
+        score + " / " + totalMissions;
+
+    if (score === totalMissions) {
+
+        resultText.textContent =
+            "Excellent ! Vous maîtrisez les principales étapes de la création d'un compte.";
+
+    } else if (score >= 3) {
+
+        resultText.textContent =
+            "Très bien ! Vous avez compris l'essentiel. Quelques points peuvent encore être revus.";
+
+    } else {
+
+        resultText.textContent =
+            "Bravo d'avoir essayé ! N'hésitez pas à refaire l'exercice pour vous entraîner.";
+
+    }
+
+}
+
+
+document.getElementById("restart")
+.addEventListener("click", function() {
+
+    location.reload();
+
+});
+
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
