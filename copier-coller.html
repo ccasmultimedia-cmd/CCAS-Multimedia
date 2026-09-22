@@ -21,14 +21,19 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: #f5f7fb;
     color: #24344d;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
 }
 
 
 /* =========================
-   HEADER
+   MENU
 ========================= */
 
 header {
@@ -59,8 +64,7 @@ header {
 
 .logo span {
     font-size: 15px;
-    opacity: .8;
-    margin-top: 3px;
+    opacity: 0.8;
 }
 
 nav {
@@ -73,22 +77,21 @@ nav {
 
 nav a {
     color: white;
-    text-decoration: none;
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 16px;
-    transition: .3s;
     white-space: nowrap;
+    transition: .3s;
 }
 
 nav a:hover,
 nav a.active {
-    background: #3d76c5;
+    background-color: #3d76c5;
 }
 
 
 /* =========================
-   TITRE
+   EN-TÊTE
 ========================= */
 
 .page-header {
@@ -100,20 +103,20 @@ nav a.active {
     );
 
     text-align: center;
-
-    padding: 45px 20px 40px;
+    padding: 55px 20px;
 }
 
 .page-header h1 {
     margin: 0 0 12px;
+    font-size: 40px;
     color: #8a3b68;
-    font-size: 34px;
 }
 
 .page-header p {
-    margin: 0;
-    font-size: 18px;
-    color: #4d5c70;
+    margin: auto;
+    max-width: 800px;
+    font-size: 19px;
+    color: #617087;
 }
 
 
@@ -124,21 +127,20 @@ nav a.active {
 main {
     max-width: 950px;
     margin: auto;
-    padding: 35px 20px 60px;
+    padding: 45px 25px 60px;
 }
 
 .intro {
     background: white;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.06);
-    margin-bottom: 25px;
-    line-height: 1.6;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
 }
 
 .intro h2 {
     margin-top: 0;
-    color: #285b96;
+    color: #203858;
 }
 
 .intro strong {
@@ -154,38 +156,32 @@ main {
     background: #edf4ff;
     border-left: 6px solid #3d76c5;
     border-radius: 12px;
-    padding: 22px;
+    padding: 24px;
     margin-bottom: 30px;
 }
 
 .method-box h2 {
     margin-top: 0;
     color: #285b96;
-    font-size: 22px;
-}
-
-.method-box p {
-    line-height: 1.6;
 }
 
 .method-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 18px;
+    gap: 18px;
+    margin-top: 20px;
 }
 
 .method {
     background: white;
     border-radius: 10px;
-    padding: 17px;
+    padding: 18px;
     border: 1px solid #d6e1f0;
-    line-height: 1.6;
 }
 
 .method strong {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #285b96;
 }
 
@@ -205,31 +201,22 @@ kbd {
 .shortcuts {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 18px;
+    margin-bottom: 35px;
 }
 
 .shortcut {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
+    background: #eaf0f8;
+    padding: 22px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,.05);
-}
-
-.shortcut kbd {
-    display: inline-block;
-    background: #26384f;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 7px;
-    font-size: 18px;
-    margin-bottom: 8px;
 }
 
 .shortcut strong {
     display: block;
-    color: #8a3b68;
+    font-size: 25px;
+    color: #3975c6;
+    margin-bottom: 8px;
 }
 
 
@@ -239,16 +226,16 @@ kbd {
 
 .progress-box {
     background: white;
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(30, 50, 80, 0.06);
 }
 
 .progress-top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    gap: 15px;
     margin-bottom: 10px;
 }
 
@@ -257,9 +244,8 @@ kbd {
 }
 
 .progress-bar {
-    width: 100%;
     height: 14px;
-    background: #e4e9f0;
+    background: #e3e8ef;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -269,8 +255,8 @@ kbd {
     height: 100%;
     background: linear-gradient(
         90deg,
-        #8a3b68,
-        #3d76c5
+        #d05f9d,
+        #3975c6
     );
     transition: width .4s;
 }
@@ -282,16 +268,15 @@ kbd {
 
 .section-title {
     color: #285b96;
-    font-size: 27px;
-    margin: 45px 0 20px;
+    font-size: 28px;
+    margin: 45px 0 15px;
 }
 
 .section-intro {
     background: #f1f6fc;
     border-radius: 10px;
-    padding: 17px 20px;
-    line-height: 1.6;
-    margin-bottom: 22px;
+    padding: 18px 20px;
+    margin-bottom: 25px;
 }
 
 
@@ -301,76 +286,113 @@ kbd {
 
 .exercise {
     background: white;
-    border-radius: 14px;
-    padding: 25px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+    padding: 28px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+}
+
+.exercise-number {
+    display: inline-block;
+    background: #d05f9d;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .exercise h3 {
     margin-top: 0;
-    color: #8a3b68;
-    font-size: 21px;
+    color: #24344d;
 }
 
-.exercise-instruction {
-    line-height: 1.6;
-}
-
-.source-text {
-    background: #f1f4f8;
-    border: 1px solid #d9e0e8;
-    border-radius: 8px;
-    padding: 15px;
-    line-height: 1.6;
-    margin: 15px 0;
+.text-to-copy {
+    background: #fff4df;
+    border: 2px dashed #e09b32;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 20px 0;
     user-select: text;
 }
 
-.exercise textarea {
+textarea {
     width: 100%;
-    min-height: 95px;
+    min-height: 100px;
+    padding: 15px;
+    font-size: 17px;
+    border: 2px solid #d9e1ec;
+    border-radius: 10px;
     resize: vertical;
-    border: 2px solid #d5dce6;
-    border-radius: 9px;
-    padding: 13px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #24344d;
-    outline: none;
 }
 
-.exercise textarea:focus {
-    border-color: #3d76c5;
+textarea:focus {
+    outline: none;
+    border-color: #3975c6;
 }
+
+
+/* =========================
+   BOUTONS
+========================= */
 
 .check-button {
-    margin-top: 12px;
-    border: none;
-    background: #3d76c5;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #d05f9d;
     color: white;
-    padding: 11px 18px;
+    border: none;
     border-radius: 8px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
 }
 
 .check-button:hover {
-    background: #285b96;
+    opacity: .85;
 }
 
+
+/* =========================
+   RESULTATS
+========================= */
+
 .result {
-    margin-top: 12px;
-    font-weight: bold;
-    min-height: 24px;
+    display: none;
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 .success {
-    color: #287a4a;
+    display: block;
+    background: #e6f5ef;
+    color: #17604f;
 }
 
 .error {
-    color: #b23a48;
+    display: block;
+    background: #fdecec;
+    color: #8a2525;
+}
+
+
+/* =========================
+   CONSEILS
+========================= */
+
+.tip {
+    background: #eaf0f8;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.tip h2 {
+    margin-top: 0;
+    color: #203858;
 }
 
 
@@ -380,29 +402,24 @@ kbd {
 
 .file-mission {
     background: white;
-    border-radius: 14px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+    padding: 28px;
+    border-radius: 18px;
+    margin-bottom: 28px;
+    box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
 }
 
 .file-mission h3 {
-    color: #8a3b68;
     margin-top: 0;
-    font-size: 22px;
-}
-
-.file-mission p {
-    line-height: 1.6;
+    color: #8a3b68;
+    font-size: 21px;
 }
 
 .file-tip {
     background: #f5f8fc;
     border-left: 5px solid #3d76c5;
-    border-radius: 8px;
     padding: 15px;
+    border-radius: 8px;
     margin: 18px 0;
-    line-height: 1.6;
 }
 
 .file-tip strong {
@@ -455,10 +472,8 @@ kbd {
     padding: 9px 10px;
     border-radius: 6px;
     margin-bottom: 4px;
-    cursor: pointer;
 }
 
-.folder:hover,
 .folder.active {
     background: #dce9fa;
 }
@@ -495,7 +510,7 @@ kbd {
 }
 
 .file-icon {
-    font-size: 23px;
+    font-size: 22px;
     width: 30px;
     text-align: center;
 }
@@ -512,10 +527,8 @@ kbd {
     padding: 18px;
     background: #f7faff;
     cursor: pointer;
-    transition: .2s;
 }
 
-.destination-zone:hover,
 .destination-zone.active {
     background: #edf5ff;
     border-color: #3d76c5;
@@ -538,7 +551,7 @@ kbd {
 
 
 /* =========================
-   MISSION 7
+   EXPLORATEUR SIMPLE
 ========================= */
 
 .simple-explorer {
@@ -573,7 +586,6 @@ kbd {
     padding: 13px;
     border-radius: 8px;
     border: 1px solid #d9e0e8;
-    background: white;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -617,13 +629,9 @@ kbd {
     font-size: 14px;
 }
 
-.clipboard-status strong {
-    color: #34445a;
-}
-
 
 /* =========================
-   SÉLECTION MULTIPLE
+   SELECTION MULTIPLE
 ========================= */
 
 .selection-help {
@@ -631,7 +639,6 @@ kbd {
     border-left: 5px solid #d49b24;
     padding: 16px;
     border-radius: 8px;
-    line-height: 1.7;
     margin-bottom: 20px;
 }
 
@@ -647,7 +654,6 @@ kbd {
     border: 1px solid #d5dfeb;
     border-radius: 10px;
     padding: 16px;
-    line-height: 1.5;
 }
 
 .selection-method strong {
@@ -656,22 +662,18 @@ kbd {
     margin-bottom: 8px;
 }
 
-
-/* =========================
-   GRILLE FICHIERS
-========================= */
-
 .selection-files {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
-.selection-file {
+.selection-file,
+.all-file {
     background: white;
     border: 1px solid #d3dbe5;
     border-radius: 9px;
-    padding: 15px;
+    padding: 14px;
     cursor: pointer;
     display: flex;
     gap: 10px;
@@ -679,34 +681,16 @@ kbd {
     user-select: none;
 }
 
-.selection-file:hover {
+.selection-file:hover,
+.all-file:hover {
     background: #f3f7fc;
 }
 
-.selection-file.selected {
+.selection-file.selected,
+.all-file.selected {
     background: #dceafe;
     border-color: #76a7df;
 }
-
-
-/* =========================
-   ZONE SÉLECTION
-========================= */
-
-.selection-zone {
-    margin-top: 20px;
-    border: 2px dashed #9cb4d1;
-    border-radius: 10px;
-    padding: 18px;
-    min-height: 90px;
-    background: #f8fbff;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   MISSION CTRL A
-========================= */
 
 .all-selection-area {
     background: #f7f9fc;
@@ -719,27 +703,6 @@ kbd {
     display: flex;
     flex-direction: column;
     gap: 7px;
-}
-
-.all-file {
-    background: white;
-    border: 1px solid #d3dbe5;
-    border-radius: 8px;
-    padding: 11px 13px;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    user-select: none;
-}
-
-.all-file:hover {
-    background: #eef4fb;
-}
-
-.all-file.selected {
-    background: #dceafe;
-    border-color: #76a7df;
 }
 
 
@@ -786,43 +749,38 @@ kbd {
 
 
 /* =========================
-   CONSEIL FINAL
-========================= */
-
-.final-tip {
-    background: #edf7ef;
-    border-left: 6px solid #4b9b63;
-    padding: 22px;
-    border-radius: 10px;
-    margin-top: 40px;
-    line-height: 1.7;
-}
-
-.final-tip h2 {
-    margin-top: 0;
-    color: #327344;
-}
-
-
-/* =========================
    FOOTER
 ========================= */
 
 footer {
     background: #1f3656;
     color: white;
-    text-align: center;
-    padding: 25px 20px;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
-footer p {
-    margin: 5px;
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.footer-text {
+    opacity: .75;
+    font-size: 15px;
 }
 
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media (max-width: 750px) {
@@ -834,16 +792,14 @@ footer p {
 
     nav {
         flex-wrap: wrap;
-        gap: 6px;
     }
 
     nav a {
         padding: 10px 12px;
-        font-size: 16px;
     }
 
     .page-header h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .method-grid,
@@ -861,6 +817,11 @@ footer p {
     .explorer-sidebar {
         border-right: none;
         border-bottom: 1px solid #d8dee8;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
 }
@@ -881,7 +842,7 @@ footer p {
 
 <strong>Centre Multimédia du CCAS</strong>
 
-<span>Apprendre, pratiquer, progresser</span>
+<span>Apprendre • Découvrir • Progresser</span>
 
 </div>
 
@@ -925,45 +886,45 @@ Entraînez-vous à copier, coller et sélectionner plusieurs éléments.
 <main>
 
 
-<!-- =========================
-     INTRO
-========================= -->
+<!-- =====================================================
+     INTRODUCTION
+===================================================== -->
 
-<div class="intro">
+<section class="intro">
 
-<h2>À quoi sert cet exercice ?</h2>
+<h2>Comment utiliser cet exercice ?</h2>
 
 <p>
-Le copier-coller est une fonction très pratique de l'ordinateur.
-Il permet de dupliquer rapidement du texte ou des fichiers.
+Cet exercice vous permet de vous entraîner progressivement
+à utiliser le <strong>copier-coller</strong> et la
+<strong>sélection multiple</strong>.
 </p>
 
 <p>
-Dans la dernière partie, nous apprendrons également à
-<strong>sélectionner plusieurs fichiers</strong>.
+Vous apprendrez d'abord à copier du texte, puis des fichiers.
+Ensuite, vous apprendrez différentes façons de sélectionner plusieurs fichiers.
 </p>
 
 <p>
-Les exercices sont volontairement progressifs.
-Vous pouvez prendre votre temps et refaire une mission plusieurs fois.
+Vous pouvez utiliser le clavier ou la souris.
+N'hésitez pas à refaire une mission plusieurs fois pour vous entraîner.
 </p>
 
-</div>
+</section>
 
 
 
-<!-- =========================
+<!-- =====================================================
      MÉTHODES
-========================= -->
+===================================================== -->
 
-<div class="method-box">
+<section class="method-box">
 
-<h2>Deux façons de faire</h2>
+<h2>Deux façons de copier et coller</h2>
 
 <p>
 Pendant les exercices, vous pouvez choisir la méthode qui vous convient.
-Vous pouvez également profiter des différentes missions pour vous entraîner
-avec les deux méthodes.
+Vous pouvez également profiter des missions pour vous entraîner aux deux.
 </p>
 
 
@@ -998,7 +959,7 @@ pour coller.
 
 <strong>Avec la souris</strong>
 
-Sélectionnez l'élément puis :
+Sélectionnez l'élément puis faites :
 
 <br><br>
 
@@ -1017,60 +978,45 @@ Puis dans la destination :
 
 </div>
 
+</section>
+
+
+
+<section class="shortcuts">
+
+<div class="shortcut">
+
+<strong>Ctrl + C</strong>
+
+Copier
+
 </div>
-
-
-
-<!-- =========================
-     RACCOURCIS
-========================= -->
-
-<div class="shortcuts">
 
 
 <div class="shortcut">
 
-<kbd>Ctrl + C</kbd>
+<strong>Ctrl + V</strong>
 
-<strong>Copier</strong>
-
-<div>
-Copier l'élément sélectionné.
-</div>
+Coller
 
 </div>
 
-
-
-<div class="shortcut">
-
-<kbd>Ctrl + V</kbd>
-
-<strong>Coller</strong>
-
-<div>
-Coller la copie à l'endroit choisi.
-</div>
-
-</div>
-
-
-</div>
+</section>
 
 
 
-<!-- =========================
+<!-- =====================================================
      PROGRESSION
-========================= -->
+===================================================== -->
 
-<div class="progress-box">
+<section class="progress-box">
 
 <div class="progress-top">
 
 <strong>Progression</strong>
 
 <span id="progressText">
-0 / 12 missions réussies
+0 / 16 missions réussies
 </span>
 
 </div>
@@ -1085,7 +1031,7 @@ id="progressFill">
 
 </div>
 
-</div>
+</section>
 
 
 
@@ -1100,11 +1046,10 @@ Partie 1 — Copier-coller du texte
 </h2>
 
 
-
 <div class="section-intro">
 
 Commencez par vous entraîner avec du texte.
-Vous pouvez utiliser le clavier ou le clic droit.
+Sélectionnez, copiez puis collez les éléments demandés.
 
 </div>
 
@@ -1112,212 +1057,198 @@ Vous pouvez utiliser le clavier ou le clic droit.
 
 <!-- EXERCICE 1 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 1 — Copier une phrase</h3>
+<div class="exercise-number">
+Exercice 1
+</div>
 
-<p class="exercise-instruction">
+<h3>Copiez cette phrase</h3>
 
-Sélectionnez toute la phrase ci-dessous,
-copiez-la puis collez-la dans la zone prévue.
-
+<p>
+Sélectionnez toute la phrase, copiez-la puis collez-la dans la zone de réponse.
 </p>
 
-
-<div class="source-text">
+<div class="text-to-copy" id="text1">
 
 Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS.
 
 </div>
 
-
 <textarea
-id="text1"
-placeholder="Collez la phrase ici..."
+id="answer1"
+placeholder="Collez votre texte ici..."
 ></textarea>
-
 
 <button
 class="check-button"
-onclick="checkTextExercise(1)"
+onclick="checkAnswer('text1','answer1','result1',1)"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result1"
 class="result"
-></div>
-
+id="result1">
 </div>
+
+</section>
 
 
 
 <!-- EXERCICE 2 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 2 — Copier une partie du texte</h3>
+<div class="exercise-number">
+Exercice 2
+</div>
 
-<p class="exercise-instruction">
+<h3>Copiez cette information</h3>
 
-Copiez uniquement les mots :
-
-<strong>prendre mon temps</strong>
-
+<p>
+Cette fois, entraînez-vous avec une phrase plus longue.
 </p>
 
+<div class="text-to-copy" id="text2">
 
-<div class="source-text">
-
-Pour apprendre l'informatique, je peux prendre mon temps et pratiquer régulièrement.
+Je peux apprendre à utiliser un ordinateur en prenant mon temps et en pratiquant régulièrement.
 
 </div>
 
-
 <textarea
-id="text2"
-placeholder="Collez uniquement les mots demandés..."
+id="answer2"
+placeholder="Collez votre texte ici..."
 ></textarea>
-
 
 <button
 class="check-button"
-onclick="checkTextExercise(2)"
+onclick="checkAnswer('text2','answer2','result2',2)"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result2"
 class="result"
-></div>
-
+id="result2">
 </div>
+
+</section>
 
 
 
 <!-- EXERCICE 3 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 3 — Copier deux fois</h3>
+<div class="exercise-number">
+Exercice 3
+</div>
 
-<p class="exercise-instruction">
+<h3>Copiez cette phrase deux fois</h3>
 
-Copiez cette phrase et collez-la dans chacune des deux zones.
-
+<p>
+Copiez cette phrase puis collez-la dans les deux zones.
 </p>
 
-
-<div class="source-text">
+<div class="text-to-copy" id="text3">
 
 Je peux utiliser le copier-coller pour gagner du temps.
 
 </div>
 
-
 <textarea
-id="text3a"
+id="answer3a"
 placeholder="Première zone..."
 ></textarea>
 
-
 <br><br>
 
-
 <textarea
-id="text3b"
+id="answer3b"
 placeholder="Deuxième zone..."
 ></textarea>
 
-
 <button
 class="check-button"
-onclick="checkTextExercise(3)"
+onclick="checkAnswer3()"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result3"
 class="result"
-></div>
-
+id="result3">
 </div>
+
+</section>
 
 
 
 <!-- EXERCICE 4 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 4 — Copier un seul mot</h3>
+<div class="exercise-number">
+Exercice 4
+</div>
 
-<p class="exercise-instruction">
+<h3>Copiez uniquement un mot</h3>
 
-Copiez uniquement le mot :
-
-<strong>ordinateur</strong>
-
+<p>
+Copiez uniquement le mot <strong>ordinateur</strong>.
 </p>
 
-
-<div class="source-text">
+<div class="text-to-copy" id="text4">
 
 J'apprends à utiliser mon ordinateur tranquillement.
 
 </div>
 
-
 <textarea
-id="text4"
+id="answer4"
 placeholder="Copiez le mot demandé..."
 ></textarea>
 
-
 <button
 class="check-button"
-onclick="checkTextExercise(4)"
+onclick="checkAnswer4()"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result4"
 class="result"
-></div>
-
+id="result4">
 </div>
+
+</section>
 
 
 
 <!-- EXERCICE 5 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 5 — Assembler une phrase</h3>
+<div class="exercise-number">
+Exercice 5
+</div>
 
-<p class="exercise-instruction">
+<h3>Assemblez une phrase</h3>
 
+<p>
 Copiez les trois morceaux et assemblez-les dans le bon ordre.
-
 </p>
 
-
-<div class="source-text">
+<div class="text-to-copy">
 
 <strong>Morceau 1 :</strong>
 Je progresse
@@ -1334,85 +1265,77 @@ régulièrement.
 
 </div>
 
-
 <textarea
-id="text5"
+id="answer5"
 placeholder="Assemblez la phrase ici..."
 ></textarea>
 
-
 <button
 class="check-button"
-onclick="checkTextExercise(5)"
+onclick="checkAnswer5()"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result5"
 class="result"
-></div>
-
+id="result5">
 </div>
+
+</section>
 
 
 
 <!-- EXERCICE 6 -->
 
-<div class="exercise">
+<section class="exercise">
 
-<h3>Exercice 6 — Défi texte</h3>
+<div class="exercise-number">
+Exercice 6
+</div>
 
-<p class="exercise-instruction">
+<h3>Défi texte</h3>
 
+<p>
 Copiez la phrase dans les deux zones.
-Si vous le souhaitez, essayez une méthode différente
-de celle utilisée précédemment.
-
+Si vous le souhaitez, essayez une méthode différente de celle utilisée précédemment.
 </p>
 
-
-<div class="source-text">
+<div class="text-to-copy">
 
 Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.
 
 </div>
 
-
 <textarea
-id="text6a"
+id="answer6a"
 placeholder="Première copie..."
 ></textarea>
 
-
 <br><br>
 
-
 <textarea
-id="text6b"
+id="answer6b"
 placeholder="Deuxième copie..."
 ></textarea>
 
-
 <button
 class="check-button"
-onclick="checkTextExercise(6)"
+onclick="checkAnswer6()"
 >
 
-Vérifier
+Vérifier ma réponse
 
 </button>
 
-
 <div
-id="result6"
 class="result"
-></div>
-
+id="result6">
 </div>
+
+</section>
 
 
 
@@ -1427,11 +1350,10 @@ Partie 2 — Copier-coller des fichiers
 </h2>
 
 
-
 <div class="section-intro">
 
-Maintenant, nous allons appliquer le copier-coller à de vrais cas
-d'utilisation de l'explorateur de fichiers.
+Maintenant, nous allons appliquer le copier-coller à des fichiers,
+comme vous pourriez le faire dans l'explorateur de votre ordinateur.
 
 </div>
 
@@ -1439,27 +1361,22 @@ d'utilisation de l'explorateur de fichiers.
 
 <!-- MISSION 7 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 7 — Copier une photo dans Images
 </h3>
 
-
 <p>
-
 Une photo se trouve dans le dossier
 <strong>Téléchargements</strong>.
-
 Copiez-la dans le dossier
 <strong>Images</strong>.
-
 </p>
-
 
 <div class="file-tip">
 
-<strong>Vous pouvez utiliser :</strong>
+<strong>Vous pouvez utiliser les deux méthodes :</strong>
 
 <br>
 
@@ -1476,7 +1393,6 @@ clic droit → Copier puis clic droit → Coller.
 </div>
 
 
-
 <div class="simple-explorer">
 
 
@@ -1486,26 +1402,18 @@ clic droit → Copier puis clic droit → Coller.
 Téléchargements
 </div>
 
-
 <div class="simple-folder-body">
-
 
 <div
 class="simple-file"
 data-mission="7"
-data-file="Photo vacances.jpg"
->
+data-file="Photo vacances.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
-<span>
 Photo vacances.jpg
-</span>
 
 </div>
-
 
 </div>
 
@@ -1519,12 +1427,10 @@ Photo vacances.jpg
 Images
 </div>
 
-
 <div
 class="simple-folder-body simple-destination"
-id="mission7-destination"
 data-mission="7"
->
+id="mission7-destination">
 
 <strong>
 Dossier Images
@@ -1544,8 +1450,7 @@ Cliquez ici pour sélectionner la destination.
 
 <div
 class="clipboard-status"
-id="clipboard7"
->
+id="clipboard7">
 
 <strong>Presse-papiers :</strong>
 vide
@@ -1554,64 +1459,41 @@ vide
 
 
 <div
-id="fileResult7"
 class="result"
-></div>
-
+id="fileResult7">
 </div>
+
+</section>
 
 
 
 <!-- MISSION 8 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 8 — Trouver le bon fichier
 </h3>
 
-
 <p>
-
-Plusieurs fichiers sont présents dans
-<strong>Téléchargements</strong>.
-
-Trouvez le fichier :
-
+Plusieurs fichiers sont présents dans Téléchargements.
+Trouvez le fichier
 <strong>Document administratif.pdf</strong>
-
-et copiez-le dans
-<strong>Documents</strong>.
-
+et copiez-le dans Documents.
 </p>
 
 
-<div class="file-tip">
-
-<strong>Attention :</strong>
-
-plusieurs fichiers sont présents.
-Un seul est le bon.
-
-</div>
-
-
-
 <div class="explorer">
-
 
 <div class="explorer-titlebar">
 Explorateur de fichiers
 </div>
 
-
 <div class="explorer-toolbar">
 Accueil &gt; Téléchargements
 </div>
 
-
 <div class="explorer-body">
-
 
 <div class="explorer-sidebar">
 
@@ -1630,22 +1512,16 @@ Images
 </div>
 
 
-
 <div class="explorer-content">
 
-
 <div class="file-list">
-
 
 <div
 class="file-item"
 data-mission="8"
-data-file="Document administratif.pdf"
->
+data-file="Document administratif.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 <span class="file-name">
 Document administratif.pdf
@@ -1654,16 +1530,12 @@ Document administratif.pdf
 </div>
 
 
-
 <div
 class="file-item"
 data-mission="8"
-data-file="Photo.jpg"
->
+data-file="Photo.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 <span class="file-name">
 Photo.jpg
@@ -1672,16 +1544,12 @@ Photo.jpg
 </div>
 
 
-
 <div
 class="file-item"
 data-mission="8"
-data-file="Recette.txt"
->
+data-file="Recette.txt">
 
-<span class="file-icon">
-📝
-</span>
+<span class="file-icon">📝</span>
 
 <span class="file-name">
 Recette.txt
@@ -1689,16 +1557,13 @@ Recette.txt
 
 </div>
 
-
 </div>
-
 
 
 <div
 class="destination-zone"
 data-mission="8"
-id="mission8-destination"
->
+id="mission8-destination">
 
 <strong>
 Documents
@@ -1710,7 +1575,6 @@ Cliquez ici pour sélectionner la destination.
 
 </div>
 
-
 </div>
 
 </div>
@@ -1720,8 +1584,7 @@ Cliquez ici pour sélectionner la destination.
 
 <div
 class="clipboard-status"
-id="clipboard8"
->
+id="clipboard8">
 
 <strong>Presse-papiers :</strong>
 vide
@@ -1730,63 +1593,48 @@ vide
 
 
 <div
-id="fileResult8"
 class="result"
-></div>
-
+id="fileResult8">
 </div>
+
+</section>
 
 
 
 <!-- MISSION 9 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 9 — Copier une facture
 </h3>
 
-
 <p>
-
 Le fichier
 <strong>Facture.pdf</strong>
-se trouve dans le dossier
-<strong>Documents</strong>.
-
-Copiez-le dans
-<strong>Sauvegarde</strong>.
-
+se trouve dans Documents.
+Copiez-le dans Sauvegarde.
 </p>
-
 
 <div class="file-tip">
 
-<strong>Défi :</strong>
-
-il n'y a volontairement aucun bouton « Copier » ou « Coller ».
-
+Il n'y a volontairement aucun bouton « Copier » ou « Coller ».
 Utilisez le clavier ou le clic droit.
 
 </div>
 
 
-
 <div class="explorer">
-
 
 <div class="explorer-titlebar">
 Explorateur de fichiers
 </div>
 
-
 <div class="explorer-toolbar">
 Ce PC &gt; Documents
 </div>
 
-
 <div class="explorer-body">
-
 
 <div class="explorer-sidebar">
 
@@ -1805,22 +1653,16 @@ Sauvegarde
 </div>
 
 
-
 <div class="explorer-content">
 
-
 <div class="file-list">
-
 
 <div
 class="file-item"
 data-mission="9"
-data-file="Facture.pdf"
->
+data-file="Facture.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 <span class="file-name">
 Facture.pdf
@@ -1828,15 +1670,13 @@ Facture.pdf
 
 </div>
 
-
 </div>
 
 
 <div
 class="destination-zone"
-id="mission9-destination"
 data-mission="9"
->
+id="mission9-destination">
 
 <strong>
 Sauvegarde
@@ -1848,7 +1688,6 @@ Cliquez ici pour sélectionner la destination.
 
 </div>
 
-
 </div>
 
 </div>
@@ -1858,8 +1697,7 @@ Cliquez ici pour sélectionner la destination.
 
 <div
 class="clipboard-status"
-id="clipboard9"
->
+id="clipboard9">
 
 <strong>Presse-papiers :</strong>
 vide
@@ -1868,11 +1706,11 @@ vide
 
 
 <div
-id="fileResult9"
 class="result"
-></div>
-
+id="fileResult9">
 </div>
+
+</section>
 
 
 
@@ -1887,17 +1725,13 @@ Partie 3 — Sélection multiple
 </h2>
 
 
-
 <div class="section-intro">
 
 Cette partie est consacrée uniquement à la sélection de plusieurs éléments.
-Prenez votre temps : chaque méthode correspond à une situation différente.
+Prenez votre temps pour bien comprendre les trois méthodes.
 
 </div>
 
-
-
-<!-- EXPLICATION -->
 
 <div class="selection-help">
 
@@ -1916,24 +1750,21 @@ je sélectionne tout un bloc entre deux éléments.
 <br><br>
 
 <strong>Ctrl + A</strong> :
-je sélectionne tous les éléments.
+je sélectionne tous les éléments de la liste.
 
 </div>
 
 
-
 <div class="selection-methods">
-
 
 <div class="selection-method">
 
 <strong>Ctrl + clic</strong>
 
 Sélection précise de plusieurs fichiers,
-même s'ils sont séparés dans la liste.
+même lorsqu'ils sont séparés.
 
 </div>
-
 
 
 <div class="selection-method">
@@ -1946,16 +1777,14 @@ entre deux fichiers.
 </div>
 
 
-
 <div class="selection-method">
 
 <strong>Ctrl + A</strong>
 
 Sélection de tous les fichiers
-du dossier.
+de la liste.
 
 </div>
-
 
 </div>
 
@@ -1963,184 +1792,127 @@ du dossier.
 
 <!-- MISSION 10 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 10 — Sélection précise avec Ctrl + clic
 </h3>
 
-
 <p>
-
 Sélectionnez uniquement :
-
 <strong>Photo 1.jpg</strong>,
 <strong>Photo 3.jpg</strong>
 et
 <strong>Photo 6.jpg</strong>.
-
 </p>
-
 
 <div class="selection-help">
 
 Maintenez la touche
 <strong>Ctrl</strong>
-enfoncée pendant que vous cliquez sur les fichiers.
+pendant que vous cliquez sur les fichiers.
 
-Vous pouvez cliquer à nouveau avec Ctrl
-sur un fichier déjà sélectionné pour le retirer de la sélection.
+Vous pouvez refaire Ctrl + clic sur un fichier sélectionné
+pour le retirer de la sélection.
 
 </div>
 
 
-
 <div class="explorer">
-
 
 <div class="explorer-titlebar">
 Images
 </div>
 
-
 <div class="explorer-toolbar">
 Sélection précise
 </div>
 
-
-<div class="explorer-body">
-
-
-<div class="explorer-sidebar">
-
-<div class="folder active">
-Images
-</div>
-
-<div class="folder">
-Documents
-</div>
-
-</div>
-
-
-
 <div class="explorer-content">
 
-
 <div class="selection-files">
-
 
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 1.jpg"
->
+data-file="Photo 1.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 1.jpg
 
 </div>
 
 
-
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 2.jpg"
->
+data-file="Photo 2.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 2.jpg
 
 </div>
 
 
-
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 3.jpg"
->
+data-file="Photo 3.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 3.jpg
 
 </div>
 
 
-
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 4.jpg"
->
+data-file="Photo 4.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 4.jpg
 
 </div>
 
 
-
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 5.jpg"
->
+data-file="Photo 5.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 5.jpg
 
 </div>
 
 
-
 <div
 class="selection-file"
 data-selection-mission="10"
-data-file="Photo 6.jpg"
->
+data-file="Photo 6.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 6.jpg
 
 </div>
 
-
-</div>
-
-
 </div>
 
 </div>
 
 </div>
-
 
 
 <div
 class="clipboard-status"
-id="selectionStatus10"
->
+id="selectionStatus10">
 
 <strong>Sélection :</strong>
 aucun fichier
@@ -2150,8 +1922,7 @@ aucun fichier
 
 <button
 class="check-button"
-onclick="checkSelection10()"
->
+onclick="checkSelection10()">
 
 Vérifier la sélection
 
@@ -2159,168 +1930,131 @@ Vérifier la sélection
 
 
 <div
-id="selectionResult10"
 class="result"
-></div>
-
+id="selectionResult10">
 </div>
+
+</section>
 
 
 
 <!-- MISSION 11 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 11 — Sélectionner un bloc avec Shift + clic
 </h3>
 
-
 <p>
-
-Cette fois, sélectionnez tous les fichiers
-<strong>de Photo 2.jpg à Photo 5.jpg</strong>.
-
+Sélectionnez tous les fichiers de
+<strong>Photo 2.jpg à Photo 5.jpg</strong>.
 </p>
-
 
 <div class="selection-help">
 
-Cliquez d'abord sur
-<strong>Photo 2.jpg</strong>.
+Cliquez d'abord sur Photo 2.jpg.
 
 Puis maintenez
 <strong>Shift</strong>
-et cliquez sur
-<strong>Photo 5.jpg</strong>.
+et cliquez sur Photo 5.jpg.
 
 Tous les fichiers entre les deux doivent être sélectionnés.
 
 </div>
 
 
-
 <div class="explorer">
-
 
 <div class="explorer-titlebar">
 Photos
 </div>
 
-
 <div class="explorer-toolbar">
 Sélection d'un bloc
 </div>
 
-
 <div class="explorer-content">
 
-
 <div class="all-selection-files">
-
 
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 1.jpg"
->
+data-file="Photo 1.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 1.jpg
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 2.jpg"
->
+data-file="Photo 2.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 2.jpg
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 3.jpg"
->
+data-file="Photo 3.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 3.jpg
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 4.jpg"
->
+data-file="Photo 4.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 4.jpg
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 5.jpg"
->
+data-file="Photo 5.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 5.jpg
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="11"
-data-file="Photo 6.jpg"
->
+data-file="Photo 6.jpg">
 
-<span class="file-icon">
-🖼️
-</span>
+<span class="file-icon">🖼️</span>
 
 Photo 6.jpg
 
 </div>
-
 
 </div>
 
 
 <div
 class="clipboard-status"
-id="selectionStatus11"
->
+id="selectionStatus11">
 
 <strong>Sélection :</strong>
 aucun fichier
@@ -2330,8 +2064,7 @@ aucun fichier
 
 <button
 class="check-button"
-onclick="checkSelection11()"
->
+onclick="checkSelection11()">
 
 Vérifier la sélection
 
@@ -2339,43 +2072,34 @@ Vérifier la sélection
 
 
 <div
-id="selectionResult11"
 class="result"
-></div>
-
-
+id="selectionResult11">
 </div>
 
 </div>
 
 </div>
+
+</section>
 
 
 
 <!-- MISSION 12 -->
 
-<div class="file-mission">
+<section class="file-mission">
 
 <h3>
 Mission 12 — Tout sélectionner avec Ctrl + A
 </h3>
 
-
 <p>
-
-Vous êtes dans un dossier contenant plusieurs documents.
-
-Sélectionnez <strong>tous les fichiers</strong> du dossier
-avec le raccourci :
-
+Sélectionnez tous les fichiers du dossier avec
 <strong>Ctrl + A</strong>.
-
 </p>
-
 
 <div class="selection-help">
 
-Cliquez dans la zone contenant les fichiers,
+Cliquez d'abord dans la zone contenant les fichiers,
 puis utilisez :
 
 <br><br>
@@ -2389,83 +2113,63 @@ Tous les fichiers doivent apparaître sélectionnés.
 </div>
 
 
-
 <div class="all-selection-area">
 
-
 <div class="all-selection-files">
-
 
 <div
 class="all-file"
 data-selection-mission="12"
-data-file="Document 1.pdf"
->
+data-file="Document 1.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 Document 1.pdf
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="12"
-data-file="Document 2.pdf"
->
+data-file="Document 2.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 Document 2.pdf
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="12"
-data-file="Document 3.pdf"
->
+data-file="Document 3.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 Document 3.pdf
 
 </div>
 
 
-
 <div
 class="all-file"
 data-selection-mission="12"
-data-file="Document 4.pdf"
->
+data-file="Document 4.pdf">
 
-<span class="file-icon">
-📄
-</span>
+<span class="file-icon">📄</span>
 
 Document 4.pdf
 
 </div>
-
 
 </div>
 
 
 <div
 class="clipboard-status"
-id="selectionStatus12"
->
+id="selectionStatus12">
 
 <strong>Sélection :</strong>
 aucun fichier
@@ -2475,8 +2179,7 @@ aucun fichier
 
 <button
 class="check-button"
-onclick="checkSelection12()"
->
+onclick="checkSelection12()">
 
 Vérifier la sélection
 
@@ -2484,57 +2187,755 @@ Vérifier la sélection
 
 
 <div
-id="selectionResult12"
 class="result"
-></div>
+id="selectionResult12">
+</div>
 
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PARTIE 4
+===================================================== -->
+
+<h2 class="section-title">
+
+Partie 4 — Sélectionner puis copier plusieurs fichiers
+
+</h2>
+
+
+<div class="section-intro">
+
+Maintenant que vous connaissez les différentes méthodes de sélection,
+nous allons les utiliser avec le copier-coller.
+
+L'objectif est de sélectionner plusieurs fichiers,
+de les copier, puis de les coller dans un autre dossier.
 
 </div>
 
 
 
-<!-- =========================
-     CONSEIL FINAL
-========================= -->
+<!-- MISSION 13 -->
 
-<div class="final-tip">
+<section class="file-mission">
+
+<h3>
+Mission 13 — Ctrl + clic puis copier
+</h3>
+
+<p>
+Sélectionnez uniquement les trois fichiers suivants :
+<strong>Photo 1.jpg</strong>,
+<strong>Photo 3.jpg</strong>
+et
+<strong>Photo 5.jpg</strong>.
+</p>
+
+<p>
+Copiez-les puis collez-les dans le dossier
+<strong>Photos à sauvegarder</strong>.
+</p>
+
+<div class="file-tip">
+
+<strong>À vous de choisir :</strong>
+
+<br>
+
+Ctrl + clic → Ctrl + C → Ctrl + V
+
+<br>
+
+ou
+
+<br>
+
+Ctrl + clic → clic droit → Copier → clic droit → Coller.
+
+</div>
+
+
+<div class="explorer">
+
+<div class="explorer-titlebar">
+Explorateur de fichiers
+</div>
+
+<div class="explorer-toolbar">
+Images &gt; Photos
+</div>
+
+<div class="explorer-body">
+
+<div class="explorer-sidebar">
+
+<div class="folder active">
+Photos
+</div>
+
+<div class="folder">
+Documents
+</div>
+
+<div class="folder">
+Photos à sauvegarder
+</div>
+
+</div>
+
+
+<div class="explorer-content">
+
+<div class="selection-files">
+
+<div
+class="selection-file"
+data-copy-selection="13"
+data-file="Photo 1.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo 1.jpg
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="13"
+data-file="Photo 2.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo 2.jpg
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="13"
+data-file="Photo 3.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo 3.jpg
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="13"
+data-file="Photo 4.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo 4.jpg
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="13"
+data-file="Photo 5.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo 5.jpg
+
+</div>
+
+</div>
+
+
+<div
+class="destination-zone"
+data-copy-destination="13"
+id="destination13">
+
+<strong>
+Photos à sauvegarder
+</strong>
+
+Cliquez ici pour choisir la destination.
+
+<div id="pasted13"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard13">
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+class="result"
+id="copyResult13">
+</div>
+
+</section>
+
+
+
+<!-- MISSION 14 -->
+
+<section class="file-mission">
+
+<h3>
+Mission 14 — Shift + clic puis copier
+</h3>
+
+<p>
+Sélectionnez le bloc allant de
+<strong>Document 2.pdf</strong>
+à
+<strong>Document 5.pdf</strong>.
+</p>
+
+<p>
+Copiez ensuite les quatre documents
+et collez-les dans
+<strong>Documents sauvegardés</strong>.
+</p>
+
+<div class="file-tip">
+
+Cliquez sur Document 2.pdf.
+
+Puis maintenez
+<strong>Shift</strong>
+et cliquez sur Document 5.pdf.
+
+</div>
+
+
+<div class="explorer">
+
+<div class="explorer-titlebar">
+Documents
+</div>
+
+<div class="explorer-toolbar">
+Ce PC &gt; Documents
+</div>
+
+<div class="explorer-body">
+
+<div class="explorer-sidebar">
+
+<div class="folder active">
+Documents
+</div>
+
+<div class="folder">
+Images
+</div>
+
+<div class="folder">
+Documents sauvegardés
+</div>
+
+</div>
+
+
+<div class="explorer-content">
+
+<div class="all-selection-files">
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 1.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 1.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 2.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 2.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 3.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 3.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 4.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 4.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 5.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 5.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="14"
+data-file="Document 6.pdf">
+
+<span class="file-icon">📄</span>
+
+Document 6.pdf
+
+</div>
+
+</div>
+
+
+<div
+class="destination-zone"
+data-copy-destination="14"
+id="destination14">
+
+<strong>
+Documents sauvegardés
+</strong>
+
+Cliquez ici pour choisir la destination.
+
+<div id="pasted14"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard14">
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+class="result"
+id="copyResult14">
+</div>
+
+</section>
+
+
+
+<!-- MISSION 15 -->
+
+<section class="file-mission">
+
+<h3>
+Mission 15 — Ctrl + A puis copier
+</h3>
+
+<p>
+Sélectionnez tous les fichiers du dossier avec
+<strong>Ctrl + A</strong>.
+</p>
+
+<p>
+Copiez-les puis collez-les dans le dossier
+<strong>Sauvegarde complète</strong>.
+</p>
+
+<div class="file-tip">
+
+Cette fois, vous devez utiliser
+<strong>Ctrl + A</strong>
+pour sélectionner tous les fichiers.
+
+Ensuite, vous pouvez utiliser le clavier
+ou le clic droit pour copier et coller.
+
+</div>
+
+
+<div class="explorer">
+
+<div class="explorer-titlebar">
+Sauvegarde de documents
+</div>
+
+<div class="explorer-toolbar">
+Ce PC &gt; Documents à sauvegarder
+</div>
+
+<div class="explorer-content">
+
+<div
+class="all-selection-area"
+id="mission15-list">
+
+<div class="all-selection-files">
+
+<div
+class="all-file"
+data-copy-selection="15"
+data-file="Courrier.pdf">
+
+<span class="file-icon">📄</span>
+
+Courrier.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="15"
+data-file="Facture.pdf">
+
+<span class="file-icon">📄</span>
+
+Facture.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="15"
+data-file="Contrat.pdf">
+
+<span class="file-icon">📄</span>
+
+Contrat.pdf
+
+</div>
+
+
+<div
+class="all-file"
+data-copy-selection="15"
+data-file="Justificatif.pdf">
+
+<span class="file-icon">📄</span>
+
+Justificatif.pdf
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="destination-zone"
+data-copy-destination="15"
+id="destination15">
+
+<strong>
+Sauvegarde complète
+</strong>
+
+Cliquez ici pour choisir la destination.
+
+<div id="pasted15"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard15">
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+class="result"
+id="copyResult15">
+</div>
+
+</section>
+
+
+
+<!-- MISSION 16 -->
+
+<section class="file-mission">
+
+<h3>
+Mission 16 — Grand défi
+</h3>
+
+<p>
+Vous devez maintenant réaliser toute la manipulation vous-même.
+</p>
+
+<p>
+Sélectionnez les fichiers demandés,
+copiez-les puis collez-les dans le bon dossier.
+</p>
+
+<div class="file-tip">
+
+<strong>Défi :</strong>
+
+Vous pouvez choisir entre le clavier et la souris.
+
+Essayez même, si vous le souhaitez,
+de refaire la mission avec l'autre méthode.
+
+</div>
+
+
+<div class="explorer">
+
+<div class="explorer-titlebar">
+Explorateur de fichiers
+</div>
+
+<div class="explorer-toolbar">
+Ce PC &gt; Mes documents
+</div>
+
+<div class="explorer-body">
+
+<div class="explorer-sidebar">
+
+<div class="folder active">
+Mes documents
+</div>
+
+<div class="folder">
+Archives
+</div>
+
+<div class="folder">
+Sauvegarde finale
+</div>
+
+</div>
+
+
+<div class="explorer-content">
+
+<p>
+Sélectionnez uniquement :
+<strong>Rapport.pdf</strong>,
+<strong>Photo famille.jpg</strong>
+et
+<strong>Courrier.txt</strong>.
+</p>
+
+
+<div class="selection-files">
+
+<div
+class="selection-file"
+data-copy-selection="16"
+data-file="Rapport.pdf">
+
+<span class="file-icon">📄</span>
+
+Rapport.pdf
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="16"
+data-file="Photo famille.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo famille.jpg
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="16"
+data-file="Courrier.txt">
+
+<span class="file-icon">📝</span>
+
+Courrier.txt
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="16"
+data-file="Ancienne facture.pdf">
+
+<span class="file-icon">📄</span>
+
+Ancienne facture.pdf
+
+</div>
+
+
+<div
+class="selection-file"
+data-copy-selection="16"
+data-file="Photo vacances.jpg">
+
+<span class="file-icon">🖼️</span>
+
+Photo vacances.jpg
+
+</div>
+
+</div>
+
+
+<div
+class="destination-zone"
+data-copy-destination="16"
+id="destination16">
+
+<strong>
+Sauvegarde finale
+</strong>
+
+Cliquez ici pour choisir la destination.
+
+<div id="pasted16"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard16">
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+class="result"
+id="copyResult16">
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONSEIL FINAL
+===================================================== -->
+
+<section class="tip">
 
 <h2>Bravo !</h2>
 
 <p>
-
-Vous avez maintenant travaillé sur deux notions importantes :
+Vous avez maintenant travaillé sur deux notions très importantes :
 <strong>le copier-coller</strong> et
 <strong>la sélection multiple</strong>.
-
 </p>
 
 <p>
-
 Retenez surtout :
+</p>
 
+<p>
 <strong>Ctrl + clic</strong>
-pour choisir précisément,
+pour choisir précisément plusieurs éléments.
+</p>
 
+<p>
 <strong>Shift + clic</strong>
-pour sélectionner un bloc,
+pour sélectionner un bloc.
+</p>
 
-et
-
+<p>
 <strong>Ctrl + A</strong>
 pour tout sélectionner.
-
 </p>
 
 <p>
-
-Vous pouvez refaire les exercices avec le clavier
-ou avec le clic droit afin de vous familiariser
-avec les différentes façons de faire.
-
+Puis utilisez
+<strong>Ctrl + C / Ctrl + V</strong>
+ou
+<strong>clic droit → Copier / Coller</strong>
+pour déplacer vos copies.
 </p>
 
-</div>
+<p>
+Vous pouvez refaire les missions en changeant de méthode
+afin de vous entraîner aux deux façons de faire.
+</p>
+
+</section>
 
 
 </main>
@@ -2543,13 +2944,26 @@ avec les différentes façons de faire.
 
 <footer>
 
-<p>
-Centre Multimédia du CCAS
-</p>
+<div class="footer-container">
 
-<p>
-Un espace pour apprendre, pratiquer et progresser.
-</p>
+<div>
+
+<div class="footer-title">
+Centre Multimédia du CCAS
+</div>
+
+<div class="footer-text">
+Apprendre • Découvrir • Progresser
+</div>
+
+</div>
+
+
+<div class="footer-text">
+© 2026 Centre Multimédia du CCAS
+</div>
+
+</div>
 
 </footer>
 
@@ -2560,8 +2974,8 @@ Un espace pour apprendre, pratiquer et progresser.
 <div
 id="contextMenu"
 class="context-menu"
-hidden
-></div>
+hidden>
+</div>
 
 
 
@@ -2581,18 +2995,24 @@ function completeMission(number) {
 
     completedMissions.add(number);
 
-    const total = completedMissions.size;
+    const total =
+        completedMissions.size;
 
-    document.getElementById("progressText").textContent =
-        total + " / 12 missions réussies";
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        total + " / 16 missions réussies";
 
-    document.getElementById("progressFill").style.width =
-        (total / 12 * 100) + "%";
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        (total / 16 * 100) + "%";
+
 }
 
 
 /* =====================================================
-   TEXTE
+   OUTILS TEXTE
 ===================================================== */
 
 function normalizeText(text) {
@@ -2605,168 +3025,245 @@ function normalizeText(text) {
 }
 
 
-function checkTextExercise(number) {
-
-    let correct = false;
+function showTextResult(
+    id,
+    success,
+    successMessage,
+    errorMessage
+) {
 
     const result =
-        document.getElementById("result" + number);
+        document.getElementById(id);
+
+    result.style.display = "block";
+
+    result.className =
+        success
+            ? "result success"
+            : "result error";
+
+    result.innerHTML =
+        success
+            ? "<strong>Bravo !</strong> " + successMessage
+            : "<strong>Pas encore.</strong> " + errorMessage;
+
+}
 
 
-    if (number === 1) {
+/* =====================================================
+   EXERCICES TEXTE
+===================================================== */
 
-        correct =
-            normalizeText(
-                document.getElementById("text1").value
-            ) ===
-            normalizeText(
-                "Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS."
-            );
+function checkAnswer(
+    textId,
+    answerId,
+    resultId,
+    mission
+) {
 
-    }
+    const original =
+        normalizeText(
+            document.getElementById(textId).innerText
+        );
 
+    const answer =
+        normalizeText(
+            document.getElementById(answerId).value
+        );
 
-    if (number === 2) {
-
-        correct =
-            normalizeText(
-                document.getElementById("text2").value
-            ) ===
-            "prendre mon temps";
-
-    }
-
-
-    if (number === 3) {
-
-        const expected =
-            normalizeText(
-                "Je peux utiliser le copier-coller pour gagner du temps."
-            );
-
-        correct =
-            normalizeText(
-                document.getElementById("text3a").value
-            ) === expected
-            &&
-            normalizeText(
-                document.getElementById("text3b").value
-            ) === expected;
-
-    }
+    const correct =
+        original === answer;
 
 
-    if (number === 4) {
-
-        correct =
-            normalizeText(
-                document.getElementById("text4").value
-            ) === "ordinateur";
-
-    }
-
-
-    if (number === 5) {
-
-        correct =
-            normalizeText(
-                document.getElementById("text5").value
-            ) ===
-            "je progresse en pratiquant régulièrement.";
-
-    }
-
-
-    if (number === 6) {
-
-        const expected =
-            normalizeText(
-                "Apprendre l'informatique devient plus facile lorsque je pratique régulièrement."
-            );
-
-        correct =
-            normalizeText(
-                document.getElementById("text6a").value
-            ) === expected
-            &&
-            normalizeText(
-                document.getElementById("text6b").value
-            ) === expected;
-
-    }
-
-
-    result.className = "result";
+    showTextResult(
+        resultId,
+        correct,
+        "Le texte a été correctement copié et collé.",
+        "Vérifiez que vous avez bien sélectionné tout le texte."
+    );
 
 
     if (correct) {
+        completeMission(mission);
+    }
 
-        result.textContent =
-            "Bravo ! Exercice réussi.";
+}
 
-        result.classList.add("success");
 
-        completeMission(number);
+function checkAnswer3() {
 
-    } else {
+    const expected =
+        normalizeText(
+            "Je peux utiliser le copier-coller pour gagner du temps."
+        );
 
-        result.textContent =
-            "Ce n'est pas encore correct. Vérifiez votre copier-coller.";
+    const a =
+        normalizeText(
+            document.getElementById("answer3a").value
+        );
 
-        result.classList.add("error");
+    const b =
+        normalizeText(
+            document.getElementById("answer3b").value
+        );
 
+    const correct =
+        a === expected &&
+        b === expected;
+
+
+    showTextResult(
+        "result3",
+        correct,
+        "La phrase a bien été copiée deux fois.",
+        "Vérifiez les deux zones."
+    );
+
+
+    if (correct) {
+        completeMission(3);
+    }
+
+}
+
+
+function checkAnswer4() {
+
+    const answer =
+        normalizeText(
+            document.getElementById("answer4").value
+        );
+
+    const correct =
+        answer === "ordinateur";
+
+
+    showTextResult(
+        "result4",
+        correct,
+        "Vous avez bien sélectionné uniquement le mot demandé.",
+        "Vous devez copier uniquement le mot « ordinateur »."
+    );
+
+
+    if (correct) {
+        completeMission(4);
+    }
+
+}
+
+
+function checkAnswer5() {
+
+    const answer =
+        normalizeText(
+            document.getElementById("answer5").value
+        );
+
+    const expected =
+        normalizeText(
+            "Je progresse en pratiquant régulièrement."
+        );
+
+    const correct =
+        answer === expected;
+
+
+    showTextResult(
+        "result5",
+        correct,
+        "La phrase a bien été assemblée.",
+        "Vérifiez l'ordre des trois morceaux."
+    );
+
+
+    if (correct) {
+        completeMission(5);
+    }
+
+}
+
+
+function checkAnswer6() {
+
+    const expected =
+        normalizeText(
+            "Apprendre l'informatique devient plus facile lorsque je pratique régulièrement."
+        );
+
+    const a =
+        normalizeText(
+            document.getElementById("answer6a").value
+        );
+
+    const b =
+        normalizeText(
+            document.getElementById("answer6b").value
+        );
+
+    const correct =
+        a === expected &&
+        b === expected;
+
+
+    showTextResult(
+        "result6",
+        correct,
+        "Les deux copies sont correctes.",
+        "Vérifiez les deux zones."
+    );
+
+
+    if (correct) {
+        completeMission(6);
     }
 
 }
 
 
 /* =====================================================
-   ÉTAT DES MISSIONS FICHIERS
+   MISSIONS FICHIERS 7 À 9
 ===================================================== */
 
-const missionStates = {
+const fileMissions = {
 
     7: {
         selected: [],
         clipboard: [],
-        destinationActive: false
+        destination: false
     },
 
     8: {
         selected: [],
         clipboard: [],
-        destinationActive: false
+        destination: false
     },
 
     9: {
         selected: [],
         clipboard: [],
-        destinationActive: false
+        destination: false
     }
 
 };
 
-let activeMission = null;
+
+let activeFileMission = null;
 
 
-/* =====================================================
-   AFFICHAGE PRESSE-PAPIERS
-===================================================== */
-
-function updateClipboardDisplay(mission, method) {
+function updateClipboard(
+    mission,
+    elementId
+) {
 
     const state =
-        missionStates[mission];
+        fileMissions[mission];
 
     const element =
-        document.getElementById("clipboard" + mission);
-
-    if (!element) {
-        return;
-    }
+        document.getElementById(elementId);
 
 
-    if (state.clipboard.length === 0) {
+    if (!state.clipboard.length) {
 
         element.innerHTML =
             "<strong>Presse-papiers :</strong> vide";
@@ -2779,47 +3276,40 @@ function updateClipboardDisplay(mission, method) {
     element.innerHTML =
         "<strong>Presse-papiers :</strong> "
         +
-        state.clipboard.join(", ")
-        +
-        (
-            method
-                ? " — " + method
-                : ""
-        );
+        state.clipboard.join(", ");
 
 }
 
 
-/* =====================================================
-   RESULTAT FICHIER
-===================================================== */
+function fileResult(
+    id,
+    success,
+    message
+) {
 
-function setFileResult(mission, message, success) {
+    const result =
+        document.getElementById(id);
 
-    const element =
-        document.getElementById("fileResult" + mission);
+    result.style.display = "block";
 
-    if (!element) {
-        return;
-    }
-
-    element.textContent = message;
-
-    element.className =
+    result.className =
         success
             ? "result success"
             : "result error";
 
+    result.innerHTML =
+        success
+            ? "<strong>Bravo !</strong> " + message
+            : "<strong>Attention.</strong> " + message;
+
 }
 
 
-/* =====================================================
-   SELECTION FICHIER SIMPLE
-===================================================== */
+/* Sélection fichier */
 
 document
 .querySelectorAll(
-    '[data-mission][data-file]'
+    "[data-mission][data-file]"
 )
 .forEach(file => {
 
@@ -2828,12 +3318,17 @@ document
         function() {
 
             const mission =
-                Number(this.dataset.mission);
+                Number(
+                    this.dataset.mission
+                );
 
-            activeMission = mission;
+            activeFileMission =
+                mission;
+
 
             const state =
-                missionStates[mission];
+                fileMissions[mission];
+
 
             state.selected = [
                 this.dataset.file
@@ -2848,12 +3343,16 @@ document
             )
             .forEach(item => {
 
-                item.classList.remove("selected");
+                item.classList.remove(
+                    "selected"
+                );
 
             });
 
 
-            this.classList.add("selected");
+            this.classList.add(
+                "selected"
+            );
 
         }
     );
@@ -2861,13 +3360,11 @@ document
 });
 
 
-/* =====================================================
-   DESTINATION
-===================================================== */
+/* Destination */
 
 document
 .querySelectorAll(
-    ".destination-zone, .simple-destination"
+    "[data-mission].destination-zone, [data-mission].simple-destination"
 )
 .forEach(destination => {
 
@@ -2876,14 +3373,19 @@ document
         function() {
 
             const mission =
-                Number(this.dataset.mission);
+                Number(
+                    this.dataset.mission
+                );
 
-            activeMission = mission;
+            activeFileMission =
+                mission;
 
-            missionStates[mission]
-                .destinationActive = true;
+            fileMissions[mission]
+                .destination = true;
 
-            this.classList.add("active");
+            this.classList.add(
+                "active"
+            );
 
         }
     );
@@ -2891,21 +3393,23 @@ document
 });
 
 
-/* =====================================================
-   COPIER
-===================================================== */
+/* Copier */
 
-function copyMission(mission, method) {
+function copyFileMission(
+    mission,
+    method
+) {
 
     const state =
-        missionStates[mission];
+        fileMissions[mission];
+
 
     if (!state.selected.length) {
 
-        setFileResult(
-            mission,
-            "Sélectionnez d'abord un fichier.",
-            false
+        fileResult(
+            "fileResult" + mission,
+            false,
+            "Sélectionnez d'abord un fichier."
         );
 
         return;
@@ -2917,37 +3421,37 @@ function copyMission(mission, method) {
         [...state.selected];
 
 
-    updateClipboardDisplay(
+    updateClipboard(
         mission,
-        method
+        "clipboard" + mission
     );
 
 
-    setFileResult(
-        mission,
-        "Copie effectuée. Sélectionnez maintenant la destination.",
-        true
+    fileResult(
+        "fileResult" + mission,
+        true,
+        "Copie effectuée. Sélectionnez maintenant la destination."
     );
 
 }
 
 
-/* =====================================================
-   COLLER
-===================================================== */
+/* Coller */
 
-function pasteMission(mission, method) {
+function pasteFileMission(
+    mission
+) {
 
     const state =
-        missionStates[mission];
+        fileMissions[mission];
 
 
     if (!state.clipboard.length) {
 
-        setFileResult(
-            mission,
-            "Le presse-papiers est vide.",
-            false
+        fileResult(
+            "fileResult" + mission,
+            false,
+            "Le presse-papiers est vide."
         );
 
         return;
@@ -2955,12 +3459,12 @@ function pasteMission(mission, method) {
     }
 
 
-    if (!state.destinationActive) {
+    if (!state.destination) {
 
-        setFileResult(
-            mission,
-            "Sélectionnez d'abord le dossier de destination.",
-            false
+        fileResult(
+            "fileResult" + mission,
+            false,
+            "Sélectionnez d'abord la destination."
         );
 
         return;
@@ -2968,172 +3472,57 @@ function pasteMission(mission, method) {
     }
 
 
-    if (mission === 7) {
+    const expected = {
 
-        if (
-            state.clipboard.length === 1
-            &&
-            state.clipboard[0] === "Photo vacances.jpg"
-        ) {
+        7: ["Photo vacances.jpg"],
 
-            document.getElementById(
-                "mission7-pasted"
-            ).innerHTML =
-                '<div class="pasted-file">🖼️ Photo vacances.jpg</div>';
+        8: ["Document administratif.pdf"],
 
-            setFileResult(
-                7,
-                "Bravo ! La photo a été copiée dans Images.",
-                true
-            );
+        9: ["Facture.pdf"]
 
-            completeMission(7);
-
-        } else {
-
-            setFileResult(
-                7,
-                "Ce n'est pas le bon fichier.",
-                false
-            );
-
-        }
-
-    }
+    };
 
 
-    if (mission === 8) {
+    const correct =
+        JSON.stringify(
+            state.clipboard
+        ) ===
+        JSON.stringify(
+            expected[mission]
+        );
 
-        if (
-            state.clipboard.length === 1
-            &&
-            state.clipboard[0] ===
-            "Document administratif.pdf"
-        ) {
 
-            document.getElementById(
-                "mission8-pasted"
-            ).innerHTML =
-                '<div class="pasted-file">📄 Document administratif.pdf</div>';
+    if (!correct) {
 
-            setFileResult(
-                8,
-                "Bravo ! Vous avez trouvé le bon fichier.",
-                true
-            );
+        fileResult(
+            "fileResult" + mission,
+            false,
+            "Ce n'est pas le bon fichier pour cette mission."
+        );
 
-            completeMission(8);
-
-        } else {
-
-            setFileResult(
-                8,
-                "Ce n'est pas le bon fichier.",
-                false
-            );
-
-        }
+        return;
 
     }
 
 
-    if (mission === 9) {
-
-        if (
-            state.clipboard.length === 1
-            &&
-            state.clipboard[0] === "Facture.pdf"
-        ) {
-
-            document.getElementById(
-                "mission9-pasted"
-            ).innerHTML =
-                '<div class="pasted-file">📄 Facture.pdf</div>';
-
-            setFileResult(
-                9,
-                "Bravo ! Vous avez réussi la mission.",
-                true
-            );
-
-            completeMission(9);
-
-        } else {
-
-            setFileResult(
-                9,
-                "Ce n'est pas le bon fichier.",
-                false
-            );
-
-        }
-
-    }
+    document.getElementById(
+        "mission" + mission + "-pasted"
+    ).innerHTML =
+        '<div class="pasted-file">' +
+        state.clipboard.join(", ") +
+        "</div>";
 
 
-    updateClipboardDisplay(
-        mission,
-        method
+    fileResult(
+        "fileResult" + mission,
+        true,
+        "Le fichier a correctement été copié dans le dossier de destination."
     );
 
+
+    completeMission(mission);
+
 }
-
-
-/* =====================================================
-   RACCOURCIS CLAVIER
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (!activeMission) {
-            return;
-        }
-
-
-        const state =
-            missionStates[activeMission];
-
-
-        if (!state) {
-            return;
-        }
-
-
-        if (
-            event.ctrlKey
-            &&
-            event.key.toLowerCase() === "c"
-        ) {
-
-            event.preventDefault();
-
-            copyMission(
-                activeMission,
-                "Ctrl + C"
-            );
-
-        }
-
-
-        if (
-            event.ctrlKey
-            &&
-            event.key.toLowerCase() === "v"
-        ) {
-
-            event.preventDefault();
-
-            pasteMission(
-                activeMission,
-                "Ctrl + V"
-            );
-
-        }
-
-    }
-);
 
 
 /* =====================================================
@@ -3141,7 +3530,9 @@ document.addEventListener(
 ===================================================== */
 
 const contextMenu =
-    document.getElementById("contextMenu");
+    document.getElementById(
+        "contextMenu"
+    );
 
 
 function hideContextMenu() {
@@ -3158,11 +3549,15 @@ function addContextButton(
 ) {
 
     const button =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
 
-    button.textContent = label;
+    button.textContent =
+        label;
 
-    button.disabled = disabled;
+    button.disabled =
+        disabled;
 
 
     button.addEventListener(
@@ -3181,20 +3576,26 @@ function addContextButton(
     );
 
 
-    contextMenu.appendChild(button);
+    contextMenu.appendChild(
+        button
+    );
 
 }
 
 
-function addSeparator() {
+function separator() {
 
-    const separator =
-        document.createElement("div");
+    const line =
+        document.createElement(
+            "div"
+        );
 
-    separator.className =
+    line.className =
         "context-separator";
 
-    contextMenu.appendChild(separator);
+    contextMenu.appendChild(
+        line
+    );
 
 }
 
@@ -3210,10 +3611,12 @@ function showContextMenu(
 
     event.stopPropagation();
 
-    activeMission = mission;
+    activeFileMission =
+        mission;
+
 
     const state =
-        missionStates[mission];
+        fileMissions[mission];
 
 
     contextMenu.innerHTML = "";
@@ -3221,15 +3624,13 @@ function showContextMenu(
 
     if (type === "file") {
 
-        const fileName =
+        const file =
             element.dataset.file;
 
 
-        if (!state.selected.includes(fileName)) {
+        if (!state.selected.includes(file)) {
 
-            state.selected = [
-                fileName
-            ];
+            state.selected = [file];
 
 
             document
@@ -3240,12 +3641,16 @@ function showContextMenu(
             )
             .forEach(item => {
 
-                item.classList.remove("selected");
+                item.classList.remove(
+                    "selected"
+                );
 
             });
 
 
-            element.classList.add("selected");
+            element.classList.add(
+                "selected"
+            );
 
         }
 
@@ -3254,24 +3659,24 @@ function showContextMenu(
             "Ouvrir",
             function() {
 
-                setFileResult(
-                    mission,
-                    "L'ouverture n'est pas nécessaire pour cette mission.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Cette action n'est pas nécessaire pour cette mission."
                 );
 
             }
         );
 
 
-        addSeparator();
+        separator();
 
 
         addContextButton(
             "Copier",
             function() {
 
-                copyMission(
+                copyFileMission(
                     mission,
                     "clic droit → Copier"
                 );
@@ -3284,27 +3689,27 @@ function showContextMenu(
             "Couper",
             function() {
 
-                setFileResult(
-                    mission,
-                    "Pour cet exercice, utilisez Copier.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Pour cet exercice, utilisez « Copier »."
                 );
 
             }
         );
 
 
-        addSeparator();
+        separator();
 
 
         addContextButton(
             "Renommer",
             function() {
 
-                setFileResult(
-                    mission,
-                    "Le renommage n'est pas nécessaire.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
                 );
 
             }
@@ -3315,10 +3720,10 @@ function showContextMenu(
             "Supprimer",
             function() {
 
-                setFileResult(
-                    mission,
-                    "La suppression n'est pas nécessaire.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
                 );
 
             }
@@ -3329,16 +3734,15 @@ function showContextMenu(
 
     if (type === "destination") {
 
-        state.destinationActive = true;
+        state.destination = true;
 
 
         addContextButton(
             "Coller",
             function() {
 
-                pasteMission(
-                    mission,
-                    "clic droit → Coller"
+                pasteFileMission(
+                    mission
                 );
 
             },
@@ -3346,17 +3750,17 @@ function showContextMenu(
         );
 
 
-        addSeparator();
+        separator();
 
 
         addContextButton(
             "Nouveau",
             function() {
 
-                setFileResult(
-                    mission,
-                    "Cette action n'est pas nécessaire.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
                 );
 
             }
@@ -3367,10 +3771,10 @@ function showContextMenu(
             "Propriétés",
             function() {
 
-                setFileResult(
-                    mission,
-                    "Cette action n'est pas nécessaire.",
-                    false
+                fileResult(
+                    "fileResult" + mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
                 );
 
             }
@@ -3379,7 +3783,1525 @@ function showContextMenu(
     }
 
 
-    contextMenu.hidden = false;
+    contextMenu.hidden =
+        false;
+
+
+    let x =
+        event.clientX;
+
+    let y =
+        event.clientY;
+
+
+    const width = 190;
+
+    const height =
+        contextMenu.offsetHeight;
+
+
+    if (
+        x + width >
+        window.innerWidth
+    ) {
+
+        x =
+            window.innerWidth -
+            width -
+            10;
+
+    }
+
+
+    if (
+        y + height >
+        window.innerHeight
+    ) {
+
+        y =
+            window.innerHeight -
+            height -
+            10;
+
+    }
+
+
+    contextMenu.style.left =
+        x + "px";
+
+    contextMenu.style.top =
+        y + "px";
+
+}
+
+
+/* Clic droit fichiers */
+
+document
+.querySelectorAll(
+    "[data-mission][data-file]"
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "contextmenu",
+        function(event) {
+
+            showContextMenu(
+                event,
+                Number(
+                    this.dataset.mission
+                ),
+                "file",
+                this
+            );
+
+        }
+    );
+
+});
+
+
+/* Clic droit destinations */
+
+document
+.querySelectorAll(
+    ".destination-zone, .simple-destination"
+)
+.forEach(destination => {
+
+    destination.addEventListener(
+        "contextmenu",
+        function(event) {
+
+            showContextMenu(
+                event,
+                Number(
+                    this.dataset.mission
+                ),
+                "destination",
+                this
+            );
+
+        }
+    );
+
+});
+
+
+/* Escape */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            hideContextMenu();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    hideContextMenu
+);
+
+
+/* =====================================================
+   CLAVIER MISSIONS 7 À 9
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (!activeFileMission) {
+            return;
+        }
+
+
+        const state =
+            fileMissions[
+                activeFileMission
+            ];
+
+
+        if (!state) {
+            return;
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "c"
+        ) {
+
+            event.preventDefault();
+
+            copyFileMission(
+                activeFileMission,
+                "Ctrl + C"
+            );
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "v"
+        ) {
+
+            event.preventDefault();
+
+            pasteFileMission(
+                activeFileMission
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SELECTIONS 10 À 12
+===================================================== */
+
+const selectionStates = {
+
+    10: {
+        selected: []
+    },
+
+    11: {
+        selected: [],
+        lastIndex: null
+    },
+
+    12: {
+        selected: [],
+        active: false
+    }
+
+};
+
+
+/* =====================================================
+   MISSION 10 — CTRL CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-selection-mission="10"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function(event) {
+
+            const state =
+                selectionStates[10];
+
+
+            if (event.ctrlKey) {
+
+                const index =
+                    state.selected.indexOf(
+                        this.dataset.file
+                    );
+
+
+                if (index >= 0) {
+
+                    state.selected.splice(
+                        index,
+                        1
+                    );
+
+                    this.classList.remove(
+                        "selected"
+                    );
+
+                } else {
+
+                    state.selected.push(
+                        this.dataset.file
+                    );
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+            } else {
+
+                state.selected = [
+                    this.dataset.file
+                ];
+
+
+                document
+                .querySelectorAll(
+                    '[data-selection-mission="10"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            updateSelectionStatus(
+                10
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   MISSION 11 — SHIFT CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-selection-mission="11"]'
+)
+.forEach(
+    (file, index) => {
+
+        file.dataset.index =
+            index;
+
+
+        file.addEventListener(
+            "click",
+            function(event) {
+
+                const state =
+                    selectionStates[11];
+
+                const current =
+                    Number(
+                        this.dataset.index
+                    );
+
+
+                if (
+                    event.shiftKey &&
+                    state.lastIndex !== null
+                ) {
+
+                    const start =
+                        Math.min(
+                            state.lastIndex,
+                            current
+                        );
+
+                    const end =
+                        Math.max(
+                            state.lastIndex,
+                            current
+                        );
+
+
+                    state.selected = [];
+
+
+                    document
+                    .querySelectorAll(
+                        '[data-selection-mission="11"]'
+                    )
+                    .forEach(
+                        (item, itemIndex) => {
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+
+                            if (
+                                itemIndex >= start &&
+                                itemIndex <= end
+                            ) {
+
+                                item.classList.add(
+                                    "selected"
+                                );
+
+                                state.selected.push(
+                                    item.dataset.file
+                                );
+
+                            }
+
+                        }
+                    );
+
+                } else {
+
+                    state.selected = [
+                        this.dataset.file
+                    ];
+
+
+                    document
+                    .querySelectorAll(
+                        '[data-selection-mission="11"]'
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+
+                state.lastIndex =
+                    current;
+
+
+                updateSelectionStatus(
+                    11
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MISSION 12 — CTRL A
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-selection-mission="12"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function() {
+
+            selectionStates[12]
+                .active = true;
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "a"
+        ) {
+
+            const state =
+                selectionStates[12];
+
+
+            if (!state.active) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            state.selected = [];
+
+
+            document
+            .querySelectorAll(
+                '[data-selection-mission="12"]'
+            )
+            .forEach(file => {
+
+                file.classList.add(
+                    "selected"
+                );
+
+                state.selected.push(
+                    file.dataset.file
+                );
+
+            });
+
+
+            updateSelectionStatus(
+                12
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   VERIFICATION SELECTIONS
+===================================================== */
+
+function updateSelectionStatus(
+    number
+) {
+
+    const state =
+        selectionStates[number];
+
+    const element =
+        document.getElementById(
+            "selectionStatus" + number
+        );
+
+
+    if (!state.selected.length) {
+
+        element.innerHTML =
+            "<strong>Sélection :</strong> aucun fichier";
+
+        return;
+
+    }
+
+
+    element.innerHTML =
+        "<strong>Sélection :</strong> "
+        +
+        state.selected.join(", ");
+
+}
+
+
+function compareArrays(
+    a,
+    b
+) {
+
+    const first =
+        [...a].sort();
+
+    const second =
+        [...b].sort();
+
+
+    return (
+        first.length === second.length &&
+        first.every(
+            (value, index) =>
+                value === second[index]
+        )
+    );
+
+}
+
+
+function checkSelection10() {
+
+    const expected = [
+        "Photo 1.jpg",
+        "Photo 3.jpg",
+        "Photo 6.jpg"
+    ];
+
+
+    const correct =
+        compareArrays(
+            selectionStates[10].selected,
+            expected
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult10"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    if (correct) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> Vous avez réalisé une sélection précise avec Ctrl + clic.";
+
+        completeMission(10);
+
+    } else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Pas encore.</strong> Sélectionnez Photo 1, Photo 3 et Photo 6 avec Ctrl + clic.";
+
+    }
+
+}
+
+
+function checkSelection11() {
+
+    const expected = [
+        "Photo 2.jpg",
+        "Photo 3.jpg",
+        "Photo 4.jpg",
+        "Photo 5.jpg"
+    ];
+
+
+    const correct =
+        compareArrays(
+            selectionStates[11].selected,
+            expected
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult11"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    if (correct) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> Vous avez sélectionné le bloc avec Shift + clic.";
+
+        completeMission(11);
+
+    } else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Pas encore.</strong> Cliquez sur Photo 2 puis faites Shift + clic sur Photo 5.";
+
+    }
+
+}
+
+
+function checkSelection12() {
+
+    const expected = [
+        "Document 1.pdf",
+        "Document 2.pdf",
+        "Document 3.pdf",
+        "Document 4.pdf"
+    ];
+
+
+    const correct =
+        compareArrays(
+            selectionStates[12].selected,
+            expected
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult12"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    if (correct) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> Tous les fichiers ont été sélectionnés avec Ctrl + A.";
+
+        completeMission(12);
+
+    } else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Pas encore.</strong> Cliquez dans la liste puis utilisez Ctrl + A.";
+
+    }
+
+}
+
+
+/* =====================================================
+   PARTIE 4 — SELECTION + COPIER-COLLER
+===================================================== */
+
+const copySelectionStates = {
+
+    13: {
+        selected: [],
+        clipboard: [],
+        destination: false
+    },
+
+    14: {
+        selected: [],
+        clipboard: [],
+        destination: false,
+        lastIndex: null
+    },
+
+    15: {
+        selected: [],
+        clipboard: [],
+        destination: false
+    },
+
+    16: {
+        selected: [],
+        clipboard: [],
+        destination: false
+    }
+
+};
+
+
+/* =====================================================
+   MISSION 13 — CTRL CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-copy-selection="13"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function(event) {
+
+            const state =
+                copySelectionStates[13];
+
+
+            if (event.ctrlKey) {
+
+                const index =
+                    state.selected.indexOf(
+                        this.dataset.file
+                    );
+
+
+                if (index >= 0) {
+
+                    state.selected.splice(
+                        index,
+                        1
+                    );
+
+                    this.classList.remove(
+                        "selected"
+                    );
+
+                } else {
+
+                    state.selected.push(
+                        this.dataset.file
+                    );
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+            } else {
+
+                state.selected = [
+                    this.dataset.file
+                ];
+
+
+                document
+                .querySelectorAll(
+                    '[data-copy-selection="13"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            updateCopySelectionStatus(
+                13
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   MISSION 14 — SHIFT CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-copy-selection="14"]'
+)
+.forEach(
+    (file, index) => {
+
+        file.dataset.index =
+            index;
+
+
+        file.addEventListener(
+            "click",
+            function(event) {
+
+                const state =
+                    copySelectionStates[14];
+
+                const current =
+                    Number(
+                        this.dataset.index
+                    );
+
+
+                if (
+                    event.shiftKey &&
+                    state.lastIndex !== null
+                ) {
+
+                    const start =
+                        Math.min(
+                            state.lastIndex,
+                            current
+                        );
+
+                    const end =
+                        Math.max(
+                            state.lastIndex,
+                            current
+                        );
+
+
+                    state.selected = [];
+
+
+                    document
+                    .querySelectorAll(
+                        '[data-copy-selection="14"]'
+                    )
+                    .forEach(
+                        (item, itemIndex) => {
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+
+                            if (
+                                itemIndex >= start &&
+                                itemIndex <= end
+                            ) {
+
+                                item.classList.add(
+                                    "selected"
+                                );
+
+                                state.selected.push(
+                                    item.dataset.file
+                                );
+
+                            }
+
+                        }
+                    );
+
+                } else {
+
+                    state.selected = [
+                        this.dataset.file
+                    ];
+
+
+                    document
+                    .querySelectorAll(
+                        '[data-copy-selection="14"]'
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+
+                state.lastIndex =
+                    current;
+
+
+                updateCopySelectionStatus(
+                    14
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   MISSION 15 — CTRL A
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-copy-selection="15"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function() {
+
+            copySelectionStates[15]
+                .active = true;
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "a"
+        ) {
+
+            const state =
+                copySelectionStates[15];
+
+
+            if (!state.active) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            state.selected = [];
+
+
+            document
+            .querySelectorAll(
+                '[data-copy-selection="15"]'
+            )
+            .forEach(file => {
+
+                file.classList.add(
+                    "selected"
+                );
+
+                state.selected.push(
+                    file.dataset.file
+                );
+
+            });
+
+
+            updateCopySelectionStatus(
+                15
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MISSION 16 — CTRL CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-copy-selection="16"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function(event) {
+
+            const state =
+                copySelectionStates[16];
+
+
+            if (event.ctrlKey) {
+
+                const index =
+                    state.selected.indexOf(
+                        this.dataset.file
+                    );
+
+
+                if (index >= 0) {
+
+                    state.selected.splice(
+                        index,
+                        1
+                    );
+
+                    this.classList.remove(
+                        "selected"
+                    );
+
+                } else {
+
+                    state.selected.push(
+                        this.dataset.file
+                    );
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+            } else {
+
+                state.selected = [
+                    this.dataset.file
+                ];
+
+
+                document
+                .querySelectorAll(
+                    '[data-copy-selection="16"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            updateCopySelectionStatus(
+                16
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   DESTINATIONS PARTIE 4
+===================================================== */
+
+document
+.querySelectorAll(
+    "[data-copy-destination]"
+)
+.forEach(destination => {
+
+    destination.addEventListener(
+        "click",
+        function() {
+
+            const mission =
+                Number(
+                    this.dataset.copyDestination
+                );
+
+
+            copySelectionStates[mission]
+                .destination = true;
+
+
+            this.classList.add(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   STATUT SELECTION PARTIE 4
+===================================================== */
+
+function updateCopySelectionStatus(
+    mission
+) {
+
+    const state =
+        copySelectionStates[mission];
+
+    const clipboard =
+        document.getElementById(
+            "clipboard" + mission
+        );
+
+
+    if (!state.selected.length) {
+
+        clipboard.innerHTML =
+            "<strong>Presse-papiers :</strong> vide";
+
+        return;
+
+    }
+
+
+    clipboard.innerHTML =
+        "<strong>Sélection :</strong> "
+        +
+        state.selected.join(", ");
+
+}
+
+
+/* =====================================================
+   COPIE PARTIE 4
+===================================================== */
+
+function copyMultipleFiles(
+    mission,
+    method
+) {
+
+    const state =
+        copySelectionStates[mission];
+
+
+    if (!state.selected.length) {
+
+        showCopyResult(
+            mission,
+            false,
+            "Sélectionnez d'abord les fichiers à copier."
+        );
+
+        return;
+
+    }
+
+
+    state.clipboard =
+        [...state.selected];
+
+
+    document.getElementById(
+        "clipboard" + mission
+    ).innerHTML =
+        "<strong>Presse-papiers :</strong> "
+        +
+        state.clipboard.join(", ")
+        +
+        " — "
+        +
+        method;
+
+
+    showCopyResult(
+        mission,
+        true,
+        "Les fichiers ont été copiés. Sélectionnez maintenant la destination."
+    );
+
+}
+
+
+/* =====================================================
+   COLLAGE PARTIE 4
+===================================================== */
+
+function pasteMultipleFiles(
+    mission
+) {
+
+    const state =
+        copySelectionStates[mission];
+
+
+    if (!state.clipboard.length) {
+
+        showCopyResult(
+            mission,
+            false,
+            "Le presse-papiers est vide."
+        );
+
+        return;
+
+    }
+
+
+    if (!state.destination) {
+
+        showCopyResult(
+            mission,
+            false,
+            "Sélectionnez d'abord le dossier de destination."
+        );
+
+        return;
+
+    }
+
+
+    const expected = {
+
+        13: [
+            "Photo 1.jpg",
+            "Photo 3.jpg",
+            "Photo 5.jpg"
+        ],
+
+        14: [
+            "Document 2.pdf",
+            "Document 3.pdf",
+            "Document 4.pdf",
+            "Document 5.pdf"
+        ],
+
+        15: [
+            "Courrier.pdf",
+            "Facture.pdf",
+            "Contrat.pdf",
+            "Justificatif.pdf"
+        ],
+
+        16: [
+            "Rapport.pdf",
+            "Photo famille.jpg",
+            "Courrier.txt"
+        ]
+
+    };
+
+
+    const correct =
+        compareArrays(
+            state.clipboard,
+            expected[mission]
+        );
+
+
+    if (!correct) {
+
+        showCopyResult(
+            mission,
+            false,
+            "La sélection copiée ne correspond pas à ce qui est demandé."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "pasted" + mission
+    ).innerHTML =
+        '<div class="pasted-file">' +
+        "✓ " +
+        state.clipboard.join("<br>✓ ") +
+        "</div>";
+
+
+    showCopyResult(
+        mission,
+        true,
+        "Bravo ! Les fichiers ont été correctement copiés dans le dossier de destination."
+    );
+
+
+    completeMission(
+        mission
+    );
+
+}
+
+
+function showCopyResult(
+    mission,
+    success,
+    message
+) {
+
+    const result =
+        document.getElementById(
+            "copyResult" + mission
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    result.className =
+        success
+            ? "result success"
+            : "result error";
+
+
+    result.innerHTML =
+        success
+            ? "<strong>Bravo !</strong> " + message
+            : "<strong>Attention.</strong> " + message;
+
+}
+
+
+/* =====================================================
+   CLIC DROIT PARTIE 4
+===================================================== */
+
+function showCopyContextMenu(
+    event,
+    mission,
+    type,
+    element
+) {
+
+    event.preventDefault();
+
+    event.stopPropagation();
+
+
+    const state =
+        copySelectionStates[mission];
+
+
+    contextMenu.innerHTML =
+        "";
+
+
+    if (type === "file") {
+
+        const file =
+            element.dataset.file;
+
+
+        if (!state.selected.includes(file)) {
+
+            state.selected = [
+                file
+            ];
+
+
+            document
+            .querySelectorAll(
+                '[data-copy-selection="' +
+                mission +
+                '"]'
+            )
+            .forEach(item => {
+
+                item.classList.remove(
+                    "selected"
+                );
+
+            });
+
+
+            element.classList.add(
+                "selected"
+            );
+
+        }
+
+
+        addContextButton(
+            "Ouvrir",
+            function() {
+
+                showCopyResult(
+                    mission,
+                    false,
+                    "Cette action n'est pas nécessaire pour cette mission."
+                );
+
+            }
+        );
+
+
+        separator();
+
+
+        addContextButton(
+            "Copier",
+            function() {
+
+                copyMultipleFiles(
+                    mission,
+                    "clic droit → Copier"
+                );
+
+            }
+        );
+
+
+        addContextButton(
+            "Couper",
+            function() {
+
+                showCopyResult(
+                    mission,
+                    false,
+                    "Pour cet exercice, utilisez « Copier »."
+                );
+
+            }
+        );
+
+    }
+
+
+    if (type === "destination") {
+
+        state.destination =
+            true;
+
+
+        addContextButton(
+            "Coller",
+            function() {
+
+                pasteMultipleFiles(
+                    mission
+                );
+
+            },
+            state.clipboard.length === 0
+        );
+
+
+        separator();
+
+
+        addContextButton(
+            "Nouveau",
+            function() {
+
+                showCopyResult(
+                    mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
+                );
+
+            }
+        );
+
+
+        addContextButton(
+            "Propriétés",
+            function() {
+
+                showCopyResult(
+                    mission,
+                    false,
+                    "Cette action n'est pas nécessaire."
+                );
+
+            }
+        );
+
+    }
+
+
+    contextMenu.hidden =
+        false;
 
 
     let x =
@@ -3432,12 +5354,12 @@ function showContextMenu(
 
 
 /* =====================================================
-   CLIC DROIT FICHIERS
+   CLIC DROIT FICHIERS PARTIE 4
 ===================================================== */
 
 document
 .querySelectorAll(
-    '[data-mission][data-file]'
+    "[data-copy-selection]"
 )
 .forEach(file => {
 
@@ -3445,9 +5367,11 @@ document
         "contextmenu",
         function(event) {
 
-            showContextMenu(
+            showCopyContextMenu(
                 event,
-                Number(this.dataset.mission),
+                Number(
+                    this.dataset.copySelection
+                ),
                 "file",
                 this
             );
@@ -3459,12 +5383,12 @@ document
 
 
 /* =====================================================
-   CLIC DROIT DESTINATIONS
+   CLIC DROIT DESTINATIONS PARTIE 4
 ===================================================== */
 
 document
 .querySelectorAll(
-    ".destination-zone, .simple-destination"
+    "[data-copy-destination]"
 )
 .forEach(destination => {
 
@@ -3472,9 +5396,11 @@ document
         "contextmenu",
         function(event) {
 
-            showContextMenu(
+            showCopyContextMenu(
                 event,
-                Number(this.dataset.mission),
+                Number(
+                    this.dataset.copyDestination
+                ),
                 "destination",
                 this
             );
@@ -3485,19 +5411,107 @@ document
 });
 
 
-document.addEventListener(
-    "click",
-    hideContextMenu
-);
-
+/* =====================================================
+   CLAVIER PARTIE 4
+===================================================== */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        let mission = null;
 
-            hideContextMenu();
+
+        if (
+            event.target.closest(
+                '[data-copy-selection="13"]'
+            )
+            ||
+            event.target.closest(
+                '[data-copy-destination="13"]'
+            )
+        ) {
+
+            mission = 13;
+
+        }
+
+
+        if (
+            event.target.closest(
+                '[data-copy-selection="14"]'
+            )
+            ||
+            event.target.closest(
+                '[data-copy-destination="14"]'
+            )
+        ) {
+
+            mission = 14;
+
+        }
+
+
+        if (
+            event.target.closest(
+                '[data-copy-selection="15"]'
+            )
+            ||
+            event.target.closest(
+                '[data-copy-destination="15"]'
+            )
+        ) {
+
+            mission = 15;
+
+        }
+
+
+        if (
+            event.target.closest(
+                '[data-copy-selection="16"]'
+            )
+            ||
+            event.target.closest(
+                '[data-copy-destination="16"]'
+            )
+        ) {
+
+            mission = 16;
+
+        }
+
+
+        if (!mission) {
+            return;
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "c"
+        ) {
+
+            event.preventDefault();
+
+            copyMultipleFiles(
+                mission,
+                "Ctrl + C"
+            );
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "v"
+        ) {
+
+            event.preventDefault();
+
+            pasteMultipleFiles(
+                mission
+            );
 
         }
 
@@ -3506,544 +5520,84 @@ document.addEventListener(
 
 
 /* =====================================================
-   SÉLECTION MULTIPLE
+   CTRL + A PARTIE 4
 ===================================================== */
-
-const selectionStates = {
-
-    10: {
-        selected: []
-    },
-
-    11: {
-        selected: [],
-        lastIndex: null
-    },
-
-    12: {
-        selected: []
-    }
-
-};
-
-
-/* =====================================================
-   CTRL + CLIC
-===================================================== */
-
-document
-.querySelectorAll(
-    '[data-selection-mission="10"]'
-)
-.forEach((file, index) => {
-
-    file.addEventListener(
-        "click",
-        function(event) {
-
-            const state =
-                selectionStates[10];
-
-
-            if (event.ctrlKey) {
-
-                const position =
-                    state.selected.indexOf(
-                        this.dataset.file
-                    );
-
-
-                if (position >= 0) {
-
-                    state.selected.splice(
-                        position,
-                        1
-                    );
-
-                    this.classList.remove(
-                        "selected"
-                    );
-
-                } else {
-
-                    state.selected.push(
-                        this.dataset.file
-                    );
-
-                    this.classList.add(
-                        "selected"
-                    );
-
-                }
-
-            } else {
-
-                state.selected = [
-                    this.dataset.file
-                ];
-
-
-                document
-                .querySelectorAll(
-                    '[data-selection-mission="10"]'
-                )
-                .forEach(item => {
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                });
-
-
-                this.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            updateSelectionStatus(10);
-
-        }
-
-    );
-
-});
-
-
-function updateSelectionStatus(number) {
-
-    const state =
-        selectionStates[number];
-
-    const element =
-        document.getElementById(
-            "selectionStatus" + number
-        );
-
-
-    if (!state.selected.length) {
-
-        element.innerHTML =
-            "<strong>Sélection :</strong> aucun fichier";
-
-        return;
-
-    }
-
-
-    element.innerHTML =
-        "<strong>Sélection :</strong> "
-        +
-        state.selected.join(", ");
-
-}
-
-
-/* =====================================================
-   VÉRIFICATION CTRL
-===================================================== */
-
-function checkSelection10() {
-
-    const expected = [
-        "Photo 1.jpg",
-        "Photo 3.jpg",
-        "Photo 6.jpg"
-    ];
-
-
-    const actual =
-        [...selectionStates[10].selected]
-        .sort();
-
-    expected.sort();
-
-
-    const correct =
-        actual.length === expected.length
-        &&
-        actual.every(
-            (item, index) =>
-                item === expected[index]
-        );
-
-
-    const result =
-        document.getElementById(
-            "selectionResult10"
-        );
-
-
-    if (correct) {
-
-        result.textContent =
-            "Bravo ! Vous avez réalisé une sélection précise avec Ctrl + clic.";
-
-        result.className =
-            "result success";
-
-        completeMission(10);
-
-    } else {
-
-        result.textContent =
-            "Ce n'est pas la bonne sélection. Essayez avec Ctrl + clic.";
-
-        result.className =
-            "result error";
-
-    }
-
-}
-
-
-/* =====================================================
-   SHIFT + CLIC
-===================================================== */
-
-document
-.querySelectorAll(
-    '[data-selection-mission="11"]'
-)
-.forEach((file, index) => {
-
-    file.dataset.index =
-        index;
-
-
-    file.addEventListener(
-        "click",
-        function(event) {
-
-            const state =
-                selectionStates[11];
-
-            const currentIndex =
-                Number(this.dataset.index);
-
-
-            if (
-                event.shiftKey
-                &&
-                state.lastIndex !== null
-            ) {
-
-                const start =
-                    Math.min(
-                        state.lastIndex,
-                        currentIndex
-                    );
-
-                const end =
-                    Math.max(
-                        state.lastIndex,
-                        currentIndex
-                    );
-
-
-                state.selected = [];
-
-
-                document
-                .querySelectorAll(
-                    '[data-selection-mission="11"]'
-                )
-                .forEach(item => {
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                });
-
-
-                document
-                .querySelectorAll(
-                    '[data-selection-mission="11"]'
-                )
-                .forEach((item, itemIndex) => {
-
-                    if (
-                        itemIndex >= start
-                        &&
-                        itemIndex <= end
-                    ) {
-
-                        item.classList.add(
-                            "selected"
-                        );
-
-                        state.selected.push(
-                            item.dataset.file
-                        );
-
-                    }
-
-                });
-
-            } else {
-
-                state.selected = [
-                    this.dataset.file
-                ];
-
-
-                document
-                .querySelectorAll(
-                    '[data-selection-mission="11"]'
-                )
-                .forEach(item => {
-
-                    item.classList.remove(
-                        "selected"
-                    );
-
-                });
-
-
-                this.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            state.lastIndex =
-                currentIndex;
-
-
-            updateSelectionStatus(11);
-
-        }
-
-    );
-
-});
-
-
-function checkSelection11() {
-
-    const expected = [
-        "Photo 2.jpg",
-        "Photo 3.jpg",
-        "Photo 4.jpg",
-        "Photo 5.jpg"
-    ];
-
-
-    const actual =
-        [...selectionStates[11].selected]
-        .sort();
-
-    expected.sort();
-
-
-    const correct =
-        actual.length === expected.length
-        &&
-        actual.every(
-            (item, index) =>
-                item === expected[index]
-        );
-
-
-    const result =
-        document.getElementById(
-            "selectionResult11"
-        );
-
-
-    if (correct) {
-
-        result.textContent =
-            "Bravo ! Vous avez sélectionné tout le bloc avec Shift + clic.";
-
-        result.className =
-            "result success";
-
-        completeMission(11);
-
-    } else {
-
-        result.textContent =
-            "Ce n'est pas encore correct. Cliquez sur Photo 2 puis faites Shift + clic sur Photo 5.";
-
-        result.className =
-            "result error";
-
-    }
-
-}
-
-
-/* =====================================================
-   CTRL + A
-===================================================== */
-
-document
-.querySelectorAll(
-    '[data-selection-mission="12"]'
-)
-.forEach(file => {
-
-    file.addEventListener(
-        "click",
-        function() {
-
-            selectionStates[12].active =
-                true;
-
-        }
-    );
-
-});
-
 
 document.addEventListener(
     "keydown",
     function(event) {
 
         if (
-            event.ctrlKey
-            &&
+            event.ctrlKey &&
             event.key.toLowerCase() === "a"
         ) {
 
-            if (
-                !selectionStates[12].active
-            ) {
-                return;
-            }
+            [13,14,15,16].forEach(
+                mission => {
+
+                    const state =
+                        copySelectionStates[mission];
 
 
-            event.preventDefault();
+                    const elements =
+                        document.querySelectorAll(
+                            '[data-copy-selection="' +
+                            mission +
+                            '"]'
+                        );
 
 
-            const state =
-                selectionStates[12];
+                    if (!elements.length) {
+                        return;
+                    }
 
 
-            state.selected = [];
+                    const focused =
+                        document.activeElement;
 
 
-            document
-            .querySelectorAll(
-                '[data-selection-mission="12"]'
-            )
-            .forEach(file => {
+                    if (
+                        focused &&
+                        focused.closest(
+                            '[data-copy-selection="' +
+                            mission +
+                            '"]'
+                        )
+                    ) {
 
-                file.classList.add(
-                    "selected"
-                );
+                        event.preventDefault();
 
-                state.selected.push(
-                    file.dataset.file
-                );
-
-            });
+                        state.selected = [];
 
 
-            updateSelectionStatus(12);
+                        elements.forEach(
+                            element => {
+
+                                element.classList.add(
+                                    "selected"
+                                );
+
+                                state.selected.push(
+                                    element.dataset.file
+                                );
+
+                            }
+                        );
+
+
+                        updateCopySelectionStatus(
+                            mission
+                        );
+
+                    }
+
+                }
+            );
 
         }
 
     }
 );
-
-
-function checkSelection12() {
-
-    const expected = [
-        "Document 1.pdf",
-        "Document 2.pdf",
-        "Document 3.pdf",
-        "Document 4.pdf"
-    ];
-
-
-    const actual =
-        [...selectionStates[12].selected]
-        .sort();
-
-    expected.sort();
-
-
-    const correct =
-        actual.length === expected.length
-        &&
-        actual.every(
-            (item, index) =>
-                item === expected[index]
-        );
-
-
-    const result =
-        document.getElementById(
-            "selectionResult12"
-        );
-
-
-    if (correct) {
-
-        result.textContent =
-            "Bravo ! Ctrl + A vous a permis de sélectionner tous les fichiers.";
-
-        result.className =
-            "result success";
-
-        completeMission(12);
-
-    } else {
-
-        result.textContent =
-            "Tous les fichiers doivent être sélectionnés avec Ctrl + A.";
-
-        result.className =
-            "result error";
-
-    }
-
-}
-
-
-/* =====================================================
-   MISE À JOUR SÉLECTION
-===================================================== */
-
-function updateSelectionStatus(number) {
-
-    const state =
-        selectionStates[number];
-
-    const element =
-        document.getElementById(
-            "selectionStatus" + number
-        );
-
-
-    if (!element) {
-        return;
-    }
-
-
-    if (!state.selected.length) {
-
-        element.innerHTML =
-            "<strong>Sélection :</strong> aucun fichier";
-
-        return;
-
-    }
-
-
-    element.innerHTML =
-        "<strong>Sélection :</strong> "
-        +
-        state.selected.join(", ");
-
-}
 
 
 /* =====================================================
@@ -4055,6 +5609,14 @@ updateSelectionStatus(10);
 updateSelectionStatus(11);
 
 updateSelectionStatus(12);
+
+updateCopySelectionStatus(13);
+
+updateCopySelectionStatus(14);
+
+updateCopySelectionStatus(15);
+
+updateCopySelectionStatus(16);
 
 </script>
 
