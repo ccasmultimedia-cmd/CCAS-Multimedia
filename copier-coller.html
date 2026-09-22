@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Exercice Copier-Coller - Centre Multimédia du CCAS</title>
+<title>Copier-coller et sélection multiple - Centre Multimédia du CCAS</title>
 
 <style>
+
+/* =========================
+   BASE
+========================= */
 
 * {
     box-sizing: border-box;
@@ -18,6 +25,7 @@ body {
     background: #f5f7fb;
     color: #24344d;
 }
+
 
 /* =========================
    HEADER
@@ -78,13 +86,21 @@ nav a.active {
     background: #3d76c5;
 }
 
+
 /* =========================
    TITRE
 ========================= */
 
 .page-header {
-    background: linear-gradient(135deg, #fff0f7, #ffffff, #e9f0fa);
+    background: linear-gradient(
+        135deg,
+        #fff0f7,
+        #ffffff,
+        #e9f0fa
+    );
+
     text-align: center;
+
     padding: 45px 20px 40px;
 }
 
@@ -99,6 +115,7 @@ nav a.active {
     font-size: 18px;
     color: #4d5c70;
 }
+
 
 /* =========================
    CONTENU
@@ -119,9 +136,15 @@ main {
     line-height: 1.6;
 }
 
+.intro h2 {
+    margin-top: 0;
+    color: #285b96;
+}
+
 .intro strong {
     color: #8a3b68;
 }
+
 
 /* =========================
    MÉTHODES
@@ -142,7 +165,6 @@ main {
 }
 
 .method-box p {
-    margin-bottom: 18px;
     line-height: 1.6;
 }
 
@@ -150,6 +172,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+    margin-top: 18px;
 }
 
 .method {
@@ -157,21 +180,23 @@ main {
     border-radius: 10px;
     padding: 17px;
     border: 1px solid #d6e1f0;
+    line-height: 1.6;
 }
 
 .method strong {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: #285b96;
 }
 
-.method kbd {
+kbd {
     background: #26384f;
     color: white;
     padding: 4px 8px;
     border-radius: 5px;
     font-size: 14px;
 }
+
 
 /* =========================
    RACCOURCIS
@@ -207,6 +232,7 @@ main {
     color: #8a3b68;
 }
 
+
 /* =========================
    PROGRESSION
 ========================= */
@@ -241,19 +267,33 @@ main {
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, #8a3b68, #3d76c5);
+    background: linear-gradient(
+        90deg,
+        #8a3b68,
+        #3d76c5
+    );
     transition: width .4s;
 }
 
+
 /* =========================
-   SECTIONS
+   TITRES DE PARTIES
 ========================= */
 
 .section-title {
     color: #285b96;
-    font-size: 26px;
+    font-size: 27px;
     margin: 45px 0 20px;
 }
+
+.section-intro {
+    background: #f1f6fc;
+    border-radius: 10px;
+    padding: 17px 20px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
 
 /* =========================
    EXERCICES TEXTE
@@ -275,7 +315,6 @@ main {
 
 .exercise-instruction {
     line-height: 1.6;
-    margin-bottom: 15px;
 }
 
 .source-text {
@@ -284,7 +323,7 @@ main {
     border-radius: 8px;
     padding: 15px;
     line-height: 1.6;
-    margin-bottom: 15px;
+    margin: 15px 0;
     user-select: text;
 }
 
@@ -334,6 +373,7 @@ main {
     color: #b23a48;
 }
 
+
 /* =========================
    MISSIONS FICHIERS
 ========================= */
@@ -369,15 +409,16 @@ main {
     color: #285b96;
 }
 
+
 /* =========================
-   FAUX EXPLORATEUR
+   EXPLORATEUR
 ========================= */
 
 .explorer {
     border: 1px solid #cbd5e1;
     border-radius: 10px;
     overflow: hidden;
-    background: #fff;
+    background: white;
     box-shadow: 0 5px 18px rgba(0,0,0,.08);
     margin-top: 20px;
 }
@@ -467,7 +508,7 @@ main {
     margin-top: 18px;
     border: 2px dashed #9cb4d1;
     border-radius: 10px;
-    min-height: 110px;
+    min-height: 105px;
     padding: 18px;
     background: #f7faff;
     cursor: pointer;
@@ -494,6 +535,7 @@ main {
     border-radius: 7px;
     color: #287a4a;
 }
+
 
 /* =========================
    MISSION 7
@@ -561,128 +603,9 @@ main {
     border-color: #3d76c5;
 }
 
-/* =========================
-   MISSION 9 MULTI-SÉLECTION
-========================= */
-
-.multi-select-help {
-    background: #fff8e8;
-    border-left: 5px solid #d49b24;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 18px;
-    line-height: 1.6;
-}
-
-.multi-files {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.multi-file {
-    background: white;
-    border: 1px solid #d3dbe5;
-    border-radius: 9px;
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.multi-file:hover {
-    background: #f3f7fc;
-}
-
-.multi-file.selected {
-    background: #dceafe;
-    border-color: #76a7df;
-}
 
 /* =========================
-   MISSION 10
-========================= */
-
-.final-explorer {
-    border: 1px solid #b9c4d2;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #eef1f5;
-}
-
-.final-topbar {
-    background: #dce2e9;
-    padding: 10px 14px;
-    border-bottom: 1px solid #bcc7d4;
-    color: #34445a;
-    font-size: 14px;
-}
-
-.final-navigation {
-    display: flex;
-    gap: 8px;
-    padding: 10px;
-    background: #f5f7fa;
-    border-bottom: 1px solid #cdd5df;
-}
-
-.final-folder-button {
-    border: 1px solid #c3ccd8;
-    background: white;
-    border-radius: 6px;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-.final-folder-button:hover,
-.final-folder-button.active {
-    background: #dce9fa;
-}
-
-.final-content {
-    padding: 18px;
-    min-height: 180px;
-    background: white;
-}
-
-.final-file {
-    width: 230px;
-    border: 1px solid #d0d8e2;
-    border-radius: 8px;
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-}
-
-.final-file:hover {
-    background: #f1f5f9;
-}
-
-.final-file.selected {
-    background: #dbeafe;
-    border-color: #76a7df;
-}
-
-.final-destination {
-    margin-top: 20px;
-    border: 2px dashed #9cb4d1;
-    border-radius: 8px;
-    padding: 16px;
-    min-height: 80px;
-    background: #f8fafc;
-    cursor: pointer;
-}
-
-.final-destination.active {
-    background: #edf5ff;
-    border-color: #3d76c5;
-}
-
-/* =========================
-   PRESSE-PAPIER
+   PRESSE-PAPIERS
 ========================= */
 
 .clipboard-status {
@@ -697,6 +620,128 @@ main {
 .clipboard-status strong {
     color: #34445a;
 }
+
+
+/* =========================
+   SÉLECTION MULTIPLE
+========================= */
+
+.selection-help {
+    background: #fff8e8;
+    border-left: 5px solid #d49b24;
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.selection-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.selection-method {
+    background: #f5f8fc;
+    border: 1px solid #d5dfeb;
+    border-radius: 10px;
+    padding: 16px;
+    line-height: 1.5;
+}
+
+.selection-method strong {
+    display: block;
+    color: #285b96;
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   GRILLE FICHIERS
+========================= */
+
+.selection-files {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.selection-file {
+    background: white;
+    border: 1px solid #d3dbe5;
+    border-radius: 9px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    user-select: none;
+}
+
+.selection-file:hover {
+    background: #f3f7fc;
+}
+
+.selection-file.selected {
+    background: #dceafe;
+    border-color: #76a7df;
+}
+
+
+/* =========================
+   ZONE SÉLECTION
+========================= */
+
+.selection-zone {
+    margin-top: 20px;
+    border: 2px dashed #9cb4d1;
+    border-radius: 10px;
+    padding: 18px;
+    min-height: 90px;
+    background: #f8fbff;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   MISSION CTRL A
+========================= */
+
+.all-selection-area {
+    background: #f7f9fc;
+    border: 1px solid #d5dce5;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.all-selection-files {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.all-file {
+    background: white;
+    border: 1px solid #d3dbe5;
+    border-radius: 8px;
+    padding: 11px 13px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    user-select: none;
+}
+
+.all-file:hover {
+    background: #eef4fb;
+}
+
+.all-file.selected {
+    background: #dceafe;
+    border-color: #76a7df;
+}
+
 
 /* =========================
    MENU CLIC DROIT
@@ -739,8 +784,9 @@ main {
     margin: 5px 0;
 }
 
+
 /* =========================
-   CONSEIL
+   CONSEIL FINAL
 ========================= */
 
 .final-tip {
@@ -757,6 +803,7 @@ main {
     color: #327344;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -772,6 +819,7 @@ footer {
 footer p {
     margin: 5px;
 }
+
 
 /* =========================
    RESPONSIVE
@@ -801,7 +849,8 @@ footer p {
     .method-grid,
     .shortcuts,
     .simple-explorer,
-    .multi-files {
+    .selection-methods,
+    .selection-files {
         grid-template-columns: 1fr;
     }
 
@@ -817,979 +866,1710 @@ footer p {
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-    <div class="navbar">
+<div class="navbar">
 
-        <div class="logo">
-            <strong>Centre Multimédia du CCAS</strong>
-            <span>Apprendre, pratiquer, progresser</span>
-        </div>
+<div class="logo">
 
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="cours.html">Mes cours</a>
-            <a href="jeux.html">Jeux</a>
-            <a href="exercices.html" class="active">Exercices</a>
-            <a href="outils.html">Outils</a>
-            <a href="ressources.html">Ressources</a>
-            <a href="informations.html">Informations</a>
-        </nav>
+<strong>Centre Multimédia du CCAS</strong>
 
-    </div>
+<span>Apprendre, pratiquer, progresser</span>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Accueil</a>
+
+<a href="cours.html">Mes cours</a>
+
+<a href="jeux.html">Jeux</a>
+
+<a href="exercices.html" class="active">Exercices</a>
+
+<a href="outils.html">Outils</a>
+
+<a href="ressources.html">Ressources</a>
+
+<a href="informations.html">Informations</a>
+
+</nav>
+
+</div>
 
 </header>
 
 
+
 <section class="page-header">
 
-    <h1>Exercice Copier-Coller</h1>
+<h1>Copier-coller et sélection multiple</h1>
 
-    <p>
-        Entraînez-vous avec le clavier et la souris, sur du texte puis sur des fichiers.
-    </p>
+<p>
+Entraînez-vous à copier, coller et sélectionner plusieurs éléments.
+</p>
 
 </section>
 
 
+
 <main>
 
-    <div class="intro">
 
-        <p>
-            Le copier-coller est une fonction très pratique de l'ordinateur.
-            Il permet de <strong>dupliquer un texte ou un fichier</strong> sans avoir
-            à tout refaire.
-        </p>
+<!-- =========================
+     INTRO
+========================= -->
 
-        <p>
-            Les exercices commencent simplement puis deviennent progressivement
-            plus proches de situations que vous pourrez rencontrer sur votre ordinateur.
-        </p>
+<div class="intro">
 
-    </div>
+<h2>À quoi sert cet exercice ?</h2>
 
+<p>
+Le copier-coller est une fonction très pratique de l'ordinateur.
+Il permet de dupliquer rapidement du texte ou des fichiers.
+</p>
 
-    <!-- =========================
-         MÉTHODES
-    ========================== -->
+<p>
+Dans la dernière partie, nous apprendrons également à
+<strong>sélectionner plusieurs fichiers</strong>.
+</p>
 
-    <div class="method-box">
+<p>
+Les exercices sont volontairement progressifs.
+Vous pouvez prendre votre temps et refaire une mission plusieurs fois.
+</p>
 
-        <h2>Deux façons de faire</h2>
+</div>
 
-        <p>
-            Tout au long de cet exercice, vous pouvez choisir la méthode qui vous convient.
-            Vous pouvez aussi profiter des différentes missions pour vous entraîner
-            volontairement avec les deux méthodes.
-        </p>
 
-        <div class="method-grid">
 
-            <div class="method">
+<!-- =========================
+     MÉTHODES
+========================= -->
 
-                <strong>Avec le clavier</strong>
+<div class="method-box">
 
-                Sélectionnez l'élément puis utilisez :
+<h2>Deux façons de faire</h2>
 
-                <br><br>
+<p>
+Pendant les exercices, vous pouvez choisir la méthode qui vous convient.
+Vous pouvez également profiter des différentes missions pour vous entraîner
+avec les deux méthodes.
+</p>
 
-                <kbd>Ctrl</kbd> + <kbd>C</kbd>
-                pour copier
 
-                <br><br>
+<div class="method-grid">
 
-                puis
 
-                <br><br>
+<div class="method">
 
-                <kbd>Ctrl</kbd> + <kbd>V</kbd>
-                pour coller.
+<strong>Avec le clavier</strong>
 
-            </div>
+Sélectionnez l'élément puis utilisez :
 
+<br><br>
 
-            <div class="method">
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+pour copier.
 
-                <strong>Avec la souris</strong>
+<br><br>
 
-                Sélectionnez l'élément puis faites :
+Puis :
 
-                <br><br>
+<br><br>
 
-                <strong>clic droit → Copier</strong>
+<kbd>Ctrl</kbd> + <kbd>V</kbd>
+pour coller.
 
-                <br><br>
+</div>
 
-                puis dans l'emplacement de destination :
 
-                <br><br>
 
-                <strong>clic droit → Coller</strong>.
+<div class="method">
 
-            </div>
+<strong>Avec la souris</strong>
 
-        </div>
+Sélectionnez l'élément puis :
 
-    </div>
+<br><br>
 
+<strong>clic droit → Copier</strong>
 
-    <!-- =========================
-         RACCOURCIS
-    ========================== -->
+<br><br>
 
-    <div class="shortcuts">
+Puis dans la destination :
 
-        <div class="shortcut">
+<br><br>
 
-            <kbd>Ctrl + C</kbd>
+<strong>clic droit → Coller</strong>.
 
-            <strong>Copier</strong>
+</div>
 
-            <span>Place l'élément sélectionné dans le presse-papiers.</span>
 
-        </div>
+</div>
 
+</div>
 
-        <div class="shortcut">
 
-            <kbd>Ctrl + V</kbd>
 
-            <strong>Coller</strong>
+<!-- =========================
+     RACCOURCIS
+========================= -->
 
-            <span>Place la copie à l'endroit choisi.</span>
+<div class="shortcuts">
 
-        </div>
 
-    </div>
+<div class="shortcut">
 
+<kbd>Ctrl + C</kbd>
 
-    <!-- =========================
-         PROGRESSION
-    ========================== -->
+<strong>Copier</strong>
 
-    <div class="progress-box">
+<div>
+Copier l'élément sélectionné.
+</div>
 
-        <div class="progress-top">
+</div>
 
-            <strong>Progression</strong>
 
-            <span id="progressText">0 / 10 missions réussies</span>
 
-        </div>
+<div class="shortcut">
 
-        <div class="progress-bar">
+<kbd>Ctrl + V</kbd>
 
-            <div class="progress-fill" id="progressFill"></div>
+<strong>Coller</strong>
 
-        </div>
+<div>
+Coller la copie à l'endroit choisi.
+</div>
 
-    </div>
+</div>
 
 
-    <!-- =========================
-         PARTIE 1
-    ========================== -->
+</div>
 
-    <h2 class="section-title">
-        Partie 1 — Copier-coller du texte
-    </h2>
 
 
-    <!-- EXERCICE 1 -->
+<!-- =========================
+     PROGRESSION
+========================= -->
 
-    <div class="exercise">
+<div class="progress-box">
 
-        <h3>Exercice 1 — Copier une phrase</h3>
+<div class="progress-top">
 
-        <p class="exercise-instruction">
-            Sélectionnez toute la phrase ci-dessous, copiez-la puis collez-la
-            dans la zone prévue.
-        </p>
+<strong>Progression</strong>
 
-        <div class="source-text">
-            Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS.
-        </div>
+<span id="progressText">
+0 / 12 missions réussies
+</span>
 
-        <textarea id="text1" placeholder="Collez la phrase ici..."></textarea>
+</div>
 
-        <button class="check-button" onclick="checkTextExercise(1)">
-            Vérifier
-        </button>
 
-        <div id="result1" class="result"></div>
+<div class="progress-bar">
 
-    </div>
+<div
+class="progress-fill"
+id="progressFill">
+</div>
 
+</div>
 
-    <!-- EXERCICE 2 -->
+</div>
 
-    <div class="exercise">
 
-        <h3>Exercice 2 — Copier seulement une partie</h3>
 
-        <p class="exercise-instruction">
-            Dans la phrase ci-dessous, copiez uniquement les mots :
-            <strong>prendre mon temps</strong>
-        </p>
+<!-- =====================================================
+     PARTIE 1
+===================================================== -->
 
-        <div class="source-text">
-            Pour apprendre l'informatique, je peux prendre mon temps et pratiquer régulièrement.
-        </div>
+<h2 class="section-title">
 
-        <textarea id="text2" placeholder="Collez uniquement les mots demandés..."></textarea>
+Partie 1 — Copier-coller du texte
 
-        <button class="check-button" onclick="checkTextExercise(2)">
-            Vérifier
-        </button>
+</h2>
 
-        <div id="result2" class="result"></div>
 
-    </div>
 
+<div class="section-intro">
 
-    <!-- EXERCICE 3 -->
+Commencez par vous entraîner avec du texte.
+Vous pouvez utiliser le clavier ou le clic droit.
 
-    <div class="exercise">
+</div>
 
-        <h3>Exercice 3 — Copier deux fois le même texte</h3>
 
-        <p class="exercise-instruction">
-            Copiez la phrase suivante et collez-la dans chacune des deux zones.
-        </p>
 
-        <div class="source-text">
-            Je peux utiliser le copier-coller pour gagner du temps.
-        </div>
+<!-- EXERCICE 1 -->
 
-        <textarea id="text3a" placeholder="Première zone..."></textarea>
+<div class="exercise">
 
-        <br><br>
+<h3>Exercice 1 — Copier une phrase</h3>
 
-        <textarea id="text3b" placeholder="Deuxième zone..."></textarea>
+<p class="exercise-instruction">
 
-        <button class="check-button" onclick="checkTextExercise(3)">
-            Vérifier
-        </button>
+Sélectionnez toute la phrase ci-dessous,
+copiez-la puis collez-la dans la zone prévue.
 
-        <div id="result3" class="result"></div>
+</p>
 
-    </div>
 
+<div class="source-text">
 
-    <!-- EXERCICE 4 -->
+Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS.
 
-    <div class="exercise">
+</div>
 
-        <h3>Exercice 4 — Copier un seul mot</h3>
 
-        <p class="exercise-instruction">
-            Copiez uniquement le mot <strong>ordinateur</strong>.
-        </p>
+<textarea
+id="text1"
+placeholder="Collez la phrase ici..."
+></textarea>
 
-        <div class="source-text">
-            J'apprends à utiliser mon ordinateur tranquillement.
-        </div>
 
-        <textarea id="text4" placeholder="Copiez le mot demandé..."></textarea>
+<button
+class="check-button"
+onclick="checkTextExercise(1)"
+>
 
-        <button class="check-button" onclick="checkTextExercise(4)">
-            Vérifier
-        </button>
+Vérifier
 
-        <div id="result4" class="result"></div>
+</button>
 
-    </div>
 
+<div
+id="result1"
+class="result"
+></div>
 
-    <!-- EXERCICE 5 -->
+</div>
 
-    <div class="exercise">
 
-        <h3>Exercice 5 — Assembler une phrase</h3>
 
-        <p class="exercise-instruction">
-            Copiez les trois morceaux de texte ci-dessous et assemblez-les
-            dans la zone de réponse pour former la phrase complète.
-        </p>
+<!-- EXERCICE 2 -->
 
-        <div class="source-text">
+<div class="exercise">
 
-            <strong>Morceau 1 :</strong>
-            Je progresse
+<h3>Exercice 2 — Copier une partie du texte</h3>
 
-            <br><br>
+<p class="exercise-instruction">
 
-            <strong>Morceau 2 :</strong>
-            en pratiquant
+Copiez uniquement les mots :
 
-            <br><br>
+<strong>prendre mon temps</strong>
 
-            <strong>Morceau 3 :</strong>
-            régulièrement.
+</p>
 
-        </div>
 
-        <textarea id="text5" placeholder="Assemblez les trois morceaux ici..."></textarea>
+<div class="source-text">
 
-        <button class="check-button" onclick="checkTextExercise(5)">
-            Vérifier
-        </button>
+Pour apprendre l'informatique, je peux prendre mon temps et pratiquer régulièrement.
 
-        <div id="result5" class="result"></div>
+</div>
 
-    </div>
 
+<textarea
+id="text2"
+placeholder="Collez uniquement les mots demandés..."
+></textarea>
 
-    <!-- EXERCICE 6 -->
 
-    <div class="exercise">
+<button
+class="check-button"
+onclick="checkTextExercise(2)"
+>
 
-        <h3>Exercice 6 — Défi texte</h3>
+Vérifier
 
-        <p class="exercise-instruction">
-            Copiez la phrase suivante dans les deux zones.
-            Essayez de réaliser l'exercice avec une méthode différente
-            de celle que vous avez utilisée précédemment.
-        </p>
+</button>
 
-        <div class="source-text">
-            Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.
-        </div>
 
-        <textarea id="text6a" placeholder="Première copie..."></textarea>
+<div
+id="result2"
+class="result"
+></div>
 
-        <br><br>
+</div>
 
-        <textarea id="text6b" placeholder="Deuxième copie..."></textarea>
 
-        <button class="check-button" onclick="checkTextExercise(6)">
-            Vérifier
-        </button>
 
-        <div id="result6" class="result"></div>
+<!-- EXERCICE 3 -->
 
-    </div>
+<div class="exercise">
 
+<h3>Exercice 3 — Copier deux fois</h3>
 
-    <!-- =========================
-         PARTIE 2
-    ========================== -->
+<p class="exercise-instruction">
 
-    <h2 class="section-title">
-        Partie 2 — Copier-coller des fichiers
-    </h2>
+Copiez cette phrase et collez-la dans chacune des deux zones.
 
+</p>
 
-    <div class="intro">
 
-        <p>
-            Maintenant, nous allons passer à une situation très courante :
-            <strong>copier un fichier d'un dossier vers un autre dossier</strong>.
-        </p>
+<div class="source-text">
 
-        <p>
-            Ces explorateurs sont des simulations. Aucun véritable fichier de votre
-            ordinateur ne sera modifié.
-        </p>
+Je peux utiliser le copier-coller pour gagner du temps.
 
-        <p>
-            Pour les missions suivantes, vous pouvez utiliser
-            <strong>Ctrl+C / Ctrl+V</strong> ou
-            <strong>clic droit → Copier / Coller</strong>.
-        </p>
+</div>
 
-    </div>
 
+<textarea
+id="text3a"
+placeholder="Première zone..."
+></textarea>
 
-    <!-- =========================
-         MISSION 7
-    ========================== -->
 
-    <div class="file-mission">
+<br><br>
 
-        <h3>Mission 7 — Copier une photo dans Images</h3>
 
-        <p>
-            Vous venez de télécharger une photo.
-            Elle se trouve dans le dossier <strong>Téléchargements</strong>.
-        </p>
+<textarea
+id="text3b"
+placeholder="Deuxième zone..."
+></textarea>
 
-        <p>
-            Copiez-la dans le dossier <strong>Images</strong>.
-        </p>
 
-        <div class="file-tip">
+<button
+class="check-button"
+onclick="checkTextExercise(3)"
+>
 
-            <strong>À vous de choisir :</strong><br>
+Vérifier
 
-            Vous pouvez sélectionner la photo puis utiliser
-            <strong>Ctrl + C</strong> et <strong>Ctrl + V</strong>,
-            ou utiliser le <strong>clic droit</strong> pour choisir
-            Copier puis Coller.
+</button>
 
-        </div>
 
+<div
+id="result3"
+class="result"
+></div>
 
-        <div class="simple-explorer">
+</div>
 
-            <div class="simple-folder">
 
-                <div class="simple-folder-header">
-                    Téléchargements
-                </div>
 
-                <div class="simple-folder-body">
+<!-- EXERCICE 4 -->
 
-                    <div
-                        class="simple-file"
-                        id="mission7-file"
-                        data-mission="7"
-                        data-file="Photo vacances.jpg"
-                    >
+<div class="exercise">
 
-                        <span class="file-icon">🖼️</span>
+<h3>Exercice 4 — Copier un seul mot</h3>
 
-                        <span>
-                            Photo vacances.jpg
-                        </span>
+<p class="exercise-instruction">
 
-                    </div>
+Copiez uniquement le mot :
 
-                </div>
+<strong>ordinateur</strong>
 
-            </div>
+</p>
 
 
-            <div class="simple-folder">
+<div class="source-text">
 
-                <div class="simple-folder-header">
-                    Images
-                </div>
+J'apprends à utiliser mon ordinateur tranquillement.
 
-                <div
-                    class="simple-folder-body simple-destination"
-                    id="mission7-destination"
-                    data-mission="7"
-                >
+</div>
 
-                    <strong>
-                        Déposez la copie dans ce dossier
-                    </strong>
 
-                    <span>
-                        Cliquez ici pour sélectionner cette destination.
-                    </span>
+<textarea
+id="text4"
+placeholder="Copiez le mot demandé..."
+></textarea>
 
-                    <div id="mission7-pasted"></div>
 
-                </div>
+<button
+class="check-button"
+onclick="checkTextExercise(4)"
+>
 
-            </div>
+Vérifier
 
-        </div>
+</button>
 
-        <div class="clipboard-status" id="clipboard7">
-            <strong>Presse-papiers :</strong> vide
-        </div>
 
-        <div id="fileResult7" class="result"></div>
+<div
+id="result4"
+class="result"
+></div>
 
-    </div>
+</div>
 
 
-    <!-- =========================
-         MISSION 8
-    ========================== -->
 
-    <div class="file-mission">
+<!-- EXERCICE 5 -->
 
-        <h3>Mission 8 — Trouver le bon fichier</h3>
+<div class="exercise">
 
-        <p>
-            Cette fois, plusieurs fichiers se trouvent dans le dossier
-            <strong>Téléchargements</strong>.
-        </p>
+<h3>Exercice 5 — Assembler une phrase</h3>
 
-        <p>
-            Vous devez trouver le fichier
-            <strong>Document administratif.pdf</strong>
-            et le copier dans <strong>Documents</strong>.
-        </p>
+<p class="exercise-instruction">
 
-        <div class="file-tip">
+Copiez les trois morceaux et assemblez-les dans le bon ordre.
 
-            <strong>Petit défi :</strong><br>
+</p>
 
-            Ne copiez pas les autres fichiers.
-            Vous pouvez essayer le clavier puis refaire la mission
-            avec le clic droit si vous le souhaitez.
 
-        </div>
+<div class="source-text">
 
+<strong>Morceau 1 :</strong>
+Je progresse
 
-        <div class="explorer">
+<br><br>
 
-            <div class="explorer-titlebar">
-                Explorateur de fichiers
-            </div>
+<strong>Morceau 2 :</strong>
+en pratiquant
 
-            <div class="explorer-toolbar">
-                Accueil &gt; Téléchargements
-            </div>
+<br><br>
 
-            <div class="explorer-body">
+<strong>Morceau 3 :</strong>
+régulièrement.
 
-                <div class="explorer-sidebar">
+</div>
 
-                    <div class="folder active">
-                        Téléchargements
-                    </div>
 
-                    <div class="folder">
-                        Documents
-                    </div>
+<textarea
+id="text5"
+placeholder="Assemblez la phrase ici..."
+></textarea>
 
-                    <div class="folder">
-                        Images
-                    </div>
 
-                    <div class="folder">
-                        Musique
-                    </div>
+<button
+class="check-button"
+onclick="checkTextExercise(5)"
+>
 
-                </div>
+Vérifier
 
+</button>
 
-                <div class="explorer-content">
 
-                    <div class="file-list">
+<div
+id="result5"
+class="result"
+></div>
 
-                        <div
-                            class="file-item"
-                            data-mission="8"
-                            data-file="Document administratif.pdf"
-                        >
+</div>
 
-                            <span class="file-icon">📄</span>
 
-                            <span class="file-name">
-                                Document administratif.pdf
-                            </span>
 
-                        </div>
+<!-- EXERCICE 6 -->
 
+<div class="exercise">
 
-                        <div
-                            class="file-item"
-                            data-mission="8"
-                            data-file="Photo.jpg"
-                        >
+<h3>Exercice 6 — Défi texte</h3>
 
-                            <span class="file-icon">🖼️</span>
+<p class="exercise-instruction">
 
-                            <span class="file-name">
-                                Photo.jpg
-                            </span>
+Copiez la phrase dans les deux zones.
+Si vous le souhaitez, essayez une méthode différente
+de celle utilisée précédemment.
 
-                        </div>
+</p>
 
 
-                        <div
-                            class="file-item"
-                            data-mission="8"
-                            data-file="Recette.txt"
-                        >
+<div class="source-text">
 
-                            <span class="file-icon">📝</span>
+Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.
 
-                            <span class="file-name">
-                                Recette.txt
-                            </span>
+</div>
 
-                        </div>
 
-                    </div>
+<textarea
+id="text6a"
+placeholder="Première copie..."
+></textarea>
 
 
-                    <div
-                        class="destination-zone"
-                        data-mission="8"
-                        id="mission8-destination"
-                    >
+<br><br>
 
-                        <strong>
-                            Dossier Documents
-                        </strong>
 
-                        Cliquez ici pour sélectionner la destination.
+<textarea
+id="text6b"
+placeholder="Deuxième copie..."
+></textarea>
 
-                        <div id="mission8-pasted"></div>
 
-                    </div>
+<button
+class="check-button"
+onclick="checkTextExercise(6)"
+>
 
-                </div>
+Vérifier
 
-            </div>
+</button>
 
-        </div>
 
+<div
+id="result6"
+class="result"
+></div>
 
-        <div class="clipboard-status" id="clipboard8">
-            <strong>Presse-papiers :</strong> vide
-        </div>
+</div>
 
-        <div id="fileResult8" class="result"></div>
 
-    </div>
 
+<!-- =====================================================
+     PARTIE 2
+===================================================== -->
 
-    <!-- =========================
-         MISSION 9
-    ========================== -->
+<h2 class="section-title">
 
-    <div class="file-mission">
+Partie 2 — Copier-coller des fichiers
 
-        <h3>Mission 9 — Copier plusieurs fichiers</h3>
+</h2>
 
-        <p>
-            Vous devez maintenant sélectionner <strong>deux fichiers</strong>
-            en même temps.
-        </p>
 
-        <p>
-            Copiez <strong>Recette.txt</strong> et
-            <strong>Photo famille.jpg</strong>
-            dans le dossier <strong>Sauvegarde</strong>.
-        </p>
 
+<div class="section-intro">
 
-        <div class="multi-select-help">
+Maintenant, nous allons appliquer le copier-coller à de vrais cas
+d'utilisation de l'explorateur de fichiers.
 
-            <strong>Pour sélectionner plusieurs fichiers :</strong><br>
+</div>
 
-            Cliquez sur le premier fichier.
-            Maintenez ensuite la touche <strong>Ctrl</strong>
-            enfoncée et cliquez sur le deuxième fichier.
 
-            <br><br>
 
-            Une fois les deux fichiers sélectionnés,
-            vous pouvez utiliser <strong>Ctrl+C</strong>,
-            ou faire un <strong>clic droit → Copier</strong>.
+<!-- MISSION 7 -->
 
-        </div>
+<div class="file-mission">
 
+<h3>
+Mission 7 — Copier une photo dans Images
+</h3>
 
-        <div class="explorer">
 
-            <div class="explorer-titlebar">
-                Téléchargements
-            </div>
+<p>
 
-            <div class="explorer-toolbar">
-                Sélection de plusieurs fichiers
-            </div>
+Une photo se trouve dans le dossier
+<strong>Téléchargements</strong>.
 
-            <div class="explorer-body">
+Copiez-la dans le dossier
+<strong>Images</strong>.
 
-                <div class="explorer-sidebar">
+</p>
 
-                    <div class="folder active">
-                        Téléchargements
-                    </div>
 
-                    <div class="folder">
-                        Documents
-                    </div>
+<div class="file-tip">
 
-                    <div class="folder">
-                        Sauvegarde
-                    </div>
+<strong>Vous pouvez utiliser :</strong>
 
-                </div>
+<br>
 
+Ctrl + C puis Ctrl + V
 
-                <div class="explorer-content">
+<br>
 
-                    <div class="multi-files">
+ou
 
-                        <div
-                            class="multi-file"
-                            data-mission="9"
-                            data-file="Recette.txt"
-                        >
+<br>
 
-                            <span class="file-icon">📝</span>
+clic droit → Copier puis clic droit → Coller.
 
-                            <span>
-                                Recette.txt
-                            </span>
+</div>
 
-                        </div>
 
 
-                        <div
-                            class="multi-file"
-                            data-mission="9"
-                            data-file="Photo famille.jpg"
-                        >
+<div class="simple-explorer">
 
-                            <span class="file-icon">🖼️</span>
 
-                            <span>
-                                Photo famille.jpg
-                            </span>
+<div class="simple-folder">
 
-                        </div>
+<div class="simple-folder-header">
+Téléchargements
+</div>
 
 
-                        <div
-                            class="multi-file"
-                            data-mission="9"
-                            data-file="Courrier.pdf"
-                        >
+<div class="simple-folder-body">
 
-                            <span class="file-icon">📄</span>
 
-                            <span>
-                                Courrier.pdf
-                            </span>
+<div
+class="simple-file"
+data-mission="7"
+data-file="Photo vacances.jpg"
+>
 
-                        </div>
+<span class="file-icon">
+🖼️
+</span>
 
+<span>
+Photo vacances.jpg
+</span>
 
-                        <div
-                            class="multi-file"
-                            data-mission="9"
-                            data-file="Vacances.jpg"
-                        >
+</div>
 
-                            <span class="file-icon">🖼️</span>
 
-                            <span>
-                                Vacances.jpg
-                            </span>
+</div>
 
-                        </div>
+</div>
 
-                    </div>
 
 
-                    <div
-                        class="destination-zone"
-                        id="mission9-destination"
-                        data-mission="9"
-                    >
+<div class="simple-folder">
 
-                        <strong>
-                            Dossier Sauvegarde
-                        </strong>
+<div class="simple-folder-header">
+Images
+</div>
 
-                        Cliquez ici pour sélectionner la destination.
 
-                        <div id="mission9-pasted"></div>
+<div
+class="simple-folder-body simple-destination"
+id="mission7-destination"
+data-mission="7"
+>
 
-                    </div>
+<strong>
+Dossier Images
+</strong>
 
-                </div>
+Cliquez ici pour sélectionner la destination.
 
-            </div>
+<div id="mission7-pasted"></div>
 
-        </div>
+</div>
 
+</div>
 
-        <div class="clipboard-status" id="clipboard9">
-            <strong>Presse-papiers :</strong> vide
-        </div>
 
-        <div id="fileResult9" class="result"></div>
+</div>
 
-    </div>
 
+<div
+class="clipboard-status"
+id="clipboard7"
+>
 
-    <!-- =========================
-         MISSION 10
-    ========================== -->
+<strong>Presse-papiers :</strong>
+vide
 
-    <div class="file-mission">
+</div>
 
-        <h3>Mission 10 — Le défi final</h3>
 
-        <p>
-            Voici une situation plus proche d'un véritable explorateur de fichiers.
-        </p>
+<div
+id="fileResult7"
+class="result"
+></div>
 
-        <p>
-            Le fichier <strong>Facture.pdf</strong> se trouve dans
-            <strong>Documents</strong>.
-            Vous devez le copier dans <strong>Sauvegarde</strong>.
-        </p>
+</div>
 
-        <div class="file-tip">
 
-            <strong>Défi :</strong><br>
 
-            Il n'y a volontairement aucun bouton « Copier » ou « Coller ».
-            À vous de choisir entre le clavier et le clic droit.
+<!-- MISSION 8 -->
 
-            <br><br>
+<div class="file-mission">
 
-            Si vous voulez vous entraîner au clavier :
-            <strong>Ctrl+C puis Ctrl+V</strong>.
+<h3>
+Mission 8 — Trouver le bon fichier
+</h3>
 
-            <br><br>
 
-            Si vous voulez vous entraîner à la souris :
-            <strong>clic droit → Copier</strong>,
-            puis dans Sauvegarde :
-            <strong>clic droit → Coller</strong>.
+<p>
 
-        </div>
+Plusieurs fichiers sont présents dans
+<strong>Téléchargements</strong>.
 
+Trouvez le fichier :
 
-        <div class="final-explorer">
+<strong>Document administratif.pdf</strong>
 
-            <div class="final-topbar">
-                Explorateur de fichiers — Ce PC
-            </div>
+et copiez-le dans
+<strong>Documents</strong>.
 
+</p>
 
-            <div class="final-navigation">
 
-                <button
-                    class="final-folder-button active"
-                    id="finalDocuments"
-                    onclick="openFinalFolder('documents')"
-                >
-                    Documents
-                </button>
+<div class="file-tip">
 
-                <button
-                    class="final-folder-button"
-                    id="finalSauvegarde"
-                    onclick="openFinalFolder('sauvegarde')"
-                >
-                    Sauvegarde
-                </button>
+<strong>Attention :</strong>
 
-            </div>
+plusieurs fichiers sont présents.
+Un seul est le bon.
 
+</div>
 
-            <div
-                class="final-content"
-                id="finalContent"
-            >
 
-                <div
-                    class="final-file"
-                    id="mission10-file"
-                    data-mission="10"
-                    data-file="Facture.pdf"
-                >
 
-                    <span class="file-icon">📄</span>
+<div class="explorer">
 
-                    <span>
-                        Facture.pdf
-                    </span>
 
-                </div>
+<div class="explorer-titlebar">
+Explorateur de fichiers
+</div>
 
 
-                <div
-                    class="final-destination"
-                    id="mission10-destination"
-                    data-mission="10"
-                >
+<div class="explorer-toolbar">
+Accueil &gt; Téléchargements
+</div>
 
-                    <strong>
-                        Zone de destination
-                    </strong>
 
-                    Pour coller le fichier dans Sauvegarde,
-                    ouvrez le dossier Sauvegarde ci-dessus.
+<div class="explorer-body">
 
-                    <div id="mission10-pasted"></div>
 
-                </div>
+<div class="explorer-sidebar">
 
-            </div>
+<div class="folder active">
+Téléchargements
+</div>
 
-        </div>
+<div class="folder">
+Documents
+</div>
 
+<div class="folder">
+Images
+</div>
 
-        <div class="clipboard-status" id="clipboard10">
-            <strong>Presse-papiers :</strong> vide
-        </div>
+</div>
 
-        <div id="fileResult10" class="result"></div>
 
-    </div>
 
+<div class="explorer-content">
 
-    <!-- =========================
-         CONSEIL FINAL
-    ========================== -->
 
-    <div class="final-tip">
+<div class="file-list">
 
-        <h2>Bravo !</h2>
 
-        <p>
-            Si vous avez réussi les différentes missions, vous savez maintenant
-            utiliser le copier-coller sur du texte et sur des fichiers.
-        </p>
+<div
+class="file-item"
+data-mission="8"
+data-file="Document administratif.pdf"
+>
 
-        <p>
-            Le plus important est de savoir qu'il existe plusieurs façons de faire.
-            Vous pouvez utiliser le clavier, la souris, ou choisir la méthode
-            qui vous semble la plus confortable selon la situation.
-        </p>
+<span class="file-icon">
+📄
+</span>
 
-        <p>
-            N'hésitez pas à refaire certaines missions avec l'autre méthode :
-            c'est justement en pratiquant que les gestes deviennent naturels.
-        </p>
+<span class="file-name">
+Document administratif.pdf
+</span>
 
-    </div>
+</div>
+
+
+
+<div
+class="file-item"
+data-mission="8"
+data-file="Photo.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+<span class="file-name">
+Photo.jpg
+</span>
+
+</div>
+
+
+
+<div
+class="file-item"
+data-mission="8"
+data-file="Recette.txt"
+>
+
+<span class="file-icon">
+📝
+</span>
+
+<span class="file-name">
+Recette.txt
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<div
+class="destination-zone"
+data-mission="8"
+id="mission8-destination"
+>
+
+<strong>
+Documents
+</strong>
+
+Cliquez ici pour sélectionner la destination.
+
+<div id="mission8-pasted"></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard8"
+>
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+id="fileResult8"
+class="result"
+></div>
+
+</div>
+
+
+
+<!-- MISSION 9 -->
+
+<div class="file-mission">
+
+<h3>
+Mission 9 — Copier une facture
+</h3>
+
+
+<p>
+
+Le fichier
+<strong>Facture.pdf</strong>
+se trouve dans le dossier
+<strong>Documents</strong>.
+
+Copiez-le dans
+<strong>Sauvegarde</strong>.
+
+</p>
+
+
+<div class="file-tip">
+
+<strong>Défi :</strong>
+
+il n'y a volontairement aucun bouton « Copier » ou « Coller ».
+
+Utilisez le clavier ou le clic droit.
+
+</div>
+
+
+
+<div class="explorer">
+
+
+<div class="explorer-titlebar">
+Explorateur de fichiers
+</div>
+
+
+<div class="explorer-toolbar">
+Ce PC &gt; Documents
+</div>
+
+
+<div class="explorer-body">
+
+
+<div class="explorer-sidebar">
+
+<div class="folder active">
+Documents
+</div>
+
+<div class="folder">
+Images
+</div>
+
+<div class="folder">
+Sauvegarde
+</div>
+
+</div>
+
+
+
+<div class="explorer-content">
+
+
+<div class="file-list">
+
+
+<div
+class="file-item"
+data-mission="9"
+data-file="Facture.pdf"
+>
+
+<span class="file-icon">
+📄
+</span>
+
+<span class="file-name">
+Facture.pdf
+</span>
+
+</div>
+
+
+</div>
+
+
+<div
+class="destination-zone"
+id="mission9-destination"
+data-mission="9"
+>
+
+<strong>
+Sauvegarde
+</strong>
+
+Cliquez ici pour sélectionner la destination.
+
+<div id="mission9-pasted"></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="clipboard9"
+>
+
+<strong>Presse-papiers :</strong>
+vide
+
+</div>
+
+
+<div
+id="fileResult9"
+class="result"
+></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PARTIE 3
+===================================================== -->
+
+<h2 class="section-title">
+
+Partie 3 — Sélection multiple
+
+</h2>
+
+
+
+<div class="section-intro">
+
+Cette partie est consacrée uniquement à la sélection de plusieurs éléments.
+Prenez votre temps : chaque méthode correspond à une situation différente.
+
+</div>
+
+
+
+<!-- EXPLICATION -->
+
+<div class="selection-help">
+
+<strong>Les trois méthodes à retenir :</strong>
+
+<br><br>
+
+<strong>Ctrl + clic</strong> :
+je choisis précisément plusieurs éléments.
+
+<br><br>
+
+<strong>Shift + clic</strong> :
+je sélectionne tout un bloc entre deux éléments.
+
+<br><br>
+
+<strong>Ctrl + A</strong> :
+je sélectionne tous les éléments.
+
+</div>
+
+
+
+<div class="selection-methods">
+
+
+<div class="selection-method">
+
+<strong>Ctrl + clic</strong>
+
+Sélection précise de plusieurs fichiers,
+même s'ils sont séparés dans la liste.
+
+</div>
+
+
+
+<div class="selection-method">
+
+<strong>Shift + clic</strong>
+
+Sélection d'un bloc complet
+entre deux fichiers.
+
+</div>
+
+
+
+<div class="selection-method">
+
+<strong>Ctrl + A</strong>
+
+Sélection de tous les fichiers
+du dossier.
+
+</div>
+
+
+</div>
+
+
+
+<!-- MISSION 10 -->
+
+<div class="file-mission">
+
+<h3>
+Mission 10 — Sélection précise avec Ctrl + clic
+</h3>
+
+
+<p>
+
+Sélectionnez uniquement :
+
+<strong>Photo 1.jpg</strong>,
+<strong>Photo 3.jpg</strong>
+et
+<strong>Photo 6.jpg</strong>.
+
+</p>
+
+
+<div class="selection-help">
+
+Maintenez la touche
+<strong>Ctrl</strong>
+enfoncée pendant que vous cliquez sur les fichiers.
+
+Vous pouvez cliquer à nouveau avec Ctrl
+sur un fichier déjà sélectionné pour le retirer de la sélection.
+
+</div>
+
+
+
+<div class="explorer">
+
+
+<div class="explorer-titlebar">
+Images
+</div>
+
+
+<div class="explorer-toolbar">
+Sélection précise
+</div>
+
+
+<div class="explorer-body">
+
+
+<div class="explorer-sidebar">
+
+<div class="folder active">
+Images
+</div>
+
+<div class="folder">
+Documents
+</div>
+
+</div>
+
+
+
+<div class="explorer-content">
+
+
+<div class="selection-files">
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 1.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 1.jpg
+
+</div>
+
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 2.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 2.jpg
+
+</div>
+
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 3.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 3.jpg
+
+</div>
+
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 4.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 4.jpg
+
+</div>
+
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 5.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 5.jpg
+
+</div>
+
+
+
+<div
+class="selection-file"
+data-selection-mission="10"
+data-file="Photo 6.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 6.jpg
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div
+class="clipboard-status"
+id="selectionStatus10"
+>
+
+<strong>Sélection :</strong>
+aucun fichier
+
+</div>
+
+
+<button
+class="check-button"
+onclick="checkSelection10()"
+>
+
+Vérifier la sélection
+
+</button>
+
+
+<div
+id="selectionResult10"
+class="result"
+></div>
+
+</div>
+
+
+
+<!-- MISSION 11 -->
+
+<div class="file-mission">
+
+<h3>
+Mission 11 — Sélectionner un bloc avec Shift + clic
+</h3>
+
+
+<p>
+
+Cette fois, sélectionnez tous les fichiers
+<strong>de Photo 2.jpg à Photo 5.jpg</strong>.
+
+</p>
+
+
+<div class="selection-help">
+
+Cliquez d'abord sur
+<strong>Photo 2.jpg</strong>.
+
+Puis maintenez
+<strong>Shift</strong>
+et cliquez sur
+<strong>Photo 5.jpg</strong>.
+
+Tous les fichiers entre les deux doivent être sélectionnés.
+
+</div>
+
+
+
+<div class="explorer">
+
+
+<div class="explorer-titlebar">
+Photos
+</div>
+
+
+<div class="explorer-toolbar">
+Sélection d'un bloc
+</div>
+
+
+<div class="explorer-content">
+
+
+<div class="all-selection-files">
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 1.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 1.jpg
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 2.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 2.jpg
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 3.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 3.jpg
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 4.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 4.jpg
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 5.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 5.jpg
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="11"
+data-file="Photo 6.jpg"
+>
+
+<span class="file-icon">
+🖼️
+</span>
+
+Photo 6.jpg
+
+</div>
+
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="selectionStatus11"
+>
+
+<strong>Sélection :</strong>
+aucun fichier
+
+</div>
+
+
+<button
+class="check-button"
+onclick="checkSelection11()"
+>
+
+Vérifier la sélection
+
+</button>
+
+
+<div
+id="selectionResult11"
+class="result"
+></div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MISSION 12 -->
+
+<div class="file-mission">
+
+<h3>
+Mission 12 — Tout sélectionner avec Ctrl + A
+</h3>
+
+
+<p>
+
+Vous êtes dans un dossier contenant plusieurs documents.
+
+Sélectionnez <strong>tous les fichiers</strong> du dossier
+avec le raccourci :
+
+<strong>Ctrl + A</strong>.
+
+</p>
+
+
+<div class="selection-help">
+
+Cliquez dans la zone contenant les fichiers,
+puis utilisez :
+
+<br><br>
+
+<kbd>Ctrl</kbd> + <kbd>A</kbd>
+
+<br><br>
+
+Tous les fichiers doivent apparaître sélectionnés.
+
+</div>
+
+
+
+<div class="all-selection-area">
+
+
+<div class="all-selection-files">
+
+
+<div
+class="all-file"
+data-selection-mission="12"
+data-file="Document 1.pdf"
+>
+
+<span class="file-icon">
+📄
+</span>
+
+Document 1.pdf
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="12"
+data-file="Document 2.pdf"
+>
+
+<span class="file-icon">
+📄
+</span>
+
+Document 2.pdf
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="12"
+data-file="Document 3.pdf"
+>
+
+<span class="file-icon">
+📄
+</span>
+
+Document 3.pdf
+
+</div>
+
+
+
+<div
+class="all-file"
+data-selection-mission="12"
+data-file="Document 4.pdf"
+>
+
+<span class="file-icon">
+📄
+</span>
+
+Document 4.pdf
+
+</div>
+
+
+</div>
+
+
+<div
+class="clipboard-status"
+id="selectionStatus12"
+>
+
+<strong>Sélection :</strong>
+aucun fichier
+
+</div>
+
+
+<button
+class="check-button"
+onclick="checkSelection12()"
+>
+
+Vérifier la sélection
+
+</button>
+
+
+<div
+id="selectionResult12"
+class="result"
+></div>
+
+
+</div>
+
+
+
+<!-- =========================
+     CONSEIL FINAL
+========================= -->
+
+<div class="final-tip">
+
+<h2>Bravo !</h2>
+
+<p>
+
+Vous avez maintenant travaillé sur deux notions importantes :
+<strong>le copier-coller</strong> et
+<strong>la sélection multiple</strong>.
+
+</p>
+
+<p>
+
+Retenez surtout :
+
+<strong>Ctrl + clic</strong>
+pour choisir précisément,
+
+<strong>Shift + clic</strong>
+pour sélectionner un bloc,
+
+et
+
+<strong>Ctrl + A</strong>
+pour tout sélectionner.
+
+</p>
+
+<p>
+
+Vous pouvez refaire les exercices avec le clavier
+ou avec le clic droit afin de vous familiariser
+avec les différentes façons de faire.
+
+</p>
+
+</div>
+
 
 </main>
 
 
+
 <footer>
 
-    <p>
-        Centre Multimédia du CCAS
-    </p>
+<p>
+Centre Multimédia du CCAS
+</p>
 
-    <p>
-        Un espace pour apprendre, pratiquer et progresser.
-    </p>
+<p>
+Un espace pour apprendre, pratiquer et progresser.
+</p>
 
 </footer>
 
 
-<!-- =========================
-     MENU CLIC DROIT
-========================= -->
+
+<!-- MENU CLIC DROIT -->
 
 <div
-    id="contextMenu"
-    class="context-menu"
-    hidden
+id="contextMenu"
+class="context-menu"
+hidden
 ></div>
+
 
 
 <script>
 
-/* =========================================
+/* =====================================================
    PROGRESSION
-========================================= */
+===================================================== */
 
 const completedMissions = new Set();
 
@@ -1801,19 +2581,19 @@ function completeMission(number) {
 
     completedMissions.add(number);
 
-    const count = completedMissions.size;
+    const total = completedMissions.size;
 
     document.getElementById("progressText").textContent =
-        count + " / 10 missions réussies";
+        total + " / 12 missions réussies";
 
     document.getElementById("progressFill").style.width =
-        (count / 10 * 100) + "%";
+        (total / 12 * 100) + "%";
 }
 
 
-/* =========================================
-   EXERCICES TEXTE
-========================================= */
+/* =====================================================
+   TEXTE
+===================================================== */
 
 function normalizeText(text) {
 
@@ -1829,16 +2609,16 @@ function checkTextExercise(number) {
 
     let correct = false;
 
-    const result = document.getElementById("result" + number);
+    const result =
+        document.getElementById("result" + number);
 
 
     if (number === 1) {
 
-        const answer =
-            document.getElementById("text1").value;
-
         correct =
-            normalizeText(answer) ===
+            normalizeText(
+                document.getElementById("text1").value
+            ) ===
             normalizeText(
                 "Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS."
             );
@@ -1848,11 +2628,10 @@ function checkTextExercise(number) {
 
     if (number === 2) {
 
-        const answer =
-            document.getElementById("text2").value;
-
         correct =
-            normalizeText(answer) ===
+            normalizeText(
+                document.getElementById("text2").value
+            ) ===
             "prendre mon temps";
 
     }
@@ -1860,40 +2639,39 @@ function checkTextExercise(number) {
 
     if (number === 3) {
 
-        const answer1 =
-            document.getElementById("text3a").value;
-
-        const answer2 =
-            document.getElementById("text3b").value;
-
         const expected =
-            "Je peux utiliser le copier-coller pour gagner du temps.";
+            normalizeText(
+                "Je peux utiliser le copier-coller pour gagner du temps."
+            );
 
         correct =
-            normalizeText(answer1) === normalizeText(expected) &&
-            normalizeText(answer2) === normalizeText(expected);
+            normalizeText(
+                document.getElementById("text3a").value
+            ) === expected
+            &&
+            normalizeText(
+                document.getElementById("text3b").value
+            ) === expected;
 
     }
 
 
     if (number === 4) {
 
-        const answer =
-            document.getElementById("text4").value;
-
         correct =
-            normalizeText(answer) === "ordinateur";
+            normalizeText(
+                document.getElementById("text4").value
+            ) === "ordinateur";
 
     }
 
 
     if (number === 5) {
 
-        const answer =
-            document.getElementById("text5").value;
-
         correct =
-            normalizeText(answer) ===
+            normalizeText(
+                document.getElementById("text5").value
+            ) ===
             "je progresse en pratiquant régulièrement.";
 
     }
@@ -1901,20 +2679,24 @@ function checkTextExercise(number) {
 
     if (number === 6) {
 
-        const answer1 =
-            document.getElementById("text6a").value;
-
-        const answer2 =
-            document.getElementById("text6b").value;
-
         const expected =
-            "Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.";
+            normalizeText(
+                "Apprendre l'informatique devient plus facile lorsque je pratique régulièrement."
+            );
 
         correct =
-            normalizeText(answer1) === normalizeText(expected) &&
-            normalizeText(answer2) === normalizeText(expected);
+            normalizeText(
+                document.getElementById("text6a").value
+            ) === expected
+            &&
+            normalizeText(
+                document.getElementById("text6b").value
+            ) === expected;
 
     }
+
+
+    result.className = "result";
 
 
     if (correct) {
@@ -1922,8 +2704,7 @@ function checkTextExercise(number) {
         result.textContent =
             "Bravo ! Exercice réussi.";
 
-        result.className =
-            "result success";
+        result.classList.add("success");
 
         completeMission(number);
 
@@ -1932,17 +2713,16 @@ function checkTextExercise(number) {
         result.textContent =
             "Ce n'est pas encore correct. Vérifiez votre copier-coller.";
 
-        result.className =
-            "result error";
+        result.classList.add("error");
 
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
    ÉTAT DES MISSIONS FICHIERS
-========================================= */
+===================================================== */
 
 const missionStates = {
 
@@ -1962,12 +2742,6 @@ const missionStates = {
         selected: [],
         clipboard: [],
         destinationActive: false
-    },
-
-    10: {
-        selected: [],
-        clipboard: [],
-        destinationActive: false
     }
 
 };
@@ -1975,21 +2749,14 @@ const missionStates = {
 let activeMission = null;
 
 
-/* =========================================
-   UTILITAIRES
-========================================= */
-
-function getMissionState(mission) {
-
-    return missionStates[mission];
-
-}
-
+/* =====================================================
+   AFFICHAGE PRESSE-PAPIERS
+===================================================== */
 
 function updateClipboardDisplay(mission, method) {
 
     const state =
-        getMissionState(mission);
+        missionStates[mission];
 
     const element =
         document.getElementById("clipboard" + mission);
@@ -1998,22 +2765,34 @@ function updateClipboardDisplay(mission, method) {
         return;
     }
 
+
     if (state.clipboard.length === 0) {
 
         element.innerHTML =
             "<strong>Presse-papiers :</strong> vide";
 
         return;
+
     }
 
 
     element.innerHTML =
-        "<strong>Presse-papiers :</strong> " +
-        state.clipboard.join(", ") +
-        (method ? " — copie effectuée avec " + method : "");
+        "<strong>Presse-papiers :</strong> "
+        +
+        state.clipboard.join(", ")
+        +
+        (
+            method
+                ? " — " + method
+                : ""
+        );
 
 }
 
+
+/* =====================================================
+   RESULTAT FICHIER
+===================================================== */
 
 function setFileResult(mission, message, success) {
 
@@ -2034,126 +2813,94 @@ function setFileResult(mission, message, success) {
 }
 
 
-/* =========================================
-   SÉLECTION DES FICHIERS
-========================================= */
+/* =====================================================
+   SELECTION FICHIER SIMPLE
+===================================================== */
 
-document.querySelectorAll("[data-mission][data-file]").forEach(file => {
+document
+.querySelectorAll(
+    '[data-mission][data-file]'
+)
+.forEach(file => {
 
-    file.addEventListener("click", function(event) {
+    file.addEventListener(
+        "click",
+        function() {
 
-        const mission =
-            Number(this.dataset.mission);
+            const mission =
+                Number(this.dataset.mission);
 
-        activeMission = mission;
+            activeMission = mission;
 
-        const state =
-            getMissionState(mission);
+            const state =
+                missionStates[mission];
 
+            state.selected = [
+                this.dataset.file
+            ];
 
-        /* Mission 9 : sélection multiple */
-
-        if (mission === 9) {
-
-            if (event.ctrlKey) {
-
-                const index =
-                    state.selected.indexOf(this.dataset.file);
-
-                if (index >= 0) {
-
-                    state.selected.splice(index, 1);
-
-                    this.classList.remove("selected");
-
-                } else {
-
-                    state.selected.push(this.dataset.file);
-
-                    this.classList.add("selected");
-
-                }
-
-            } else {
-
-                state.selected = [this.dataset.file];
-
-                document
-                    .querySelectorAll('[data-mission="9"][data-file]')
-                    .forEach(item => {
-                        item.classList.remove("selected");
-                    });
-
-                this.classList.add("selected");
-
-            }
-
-        } else {
-
-            state.selected = [this.dataset.file];
 
             document
-                .querySelectorAll('[data-mission="' + mission + '"][data-file]')
-                .forEach(item => {
+            .querySelectorAll(
+                '[data-mission="' +
+                mission +
+                '"][data-file]'
+            )
+            .forEach(item => {
 
-                    item.classList.remove("selected");
+                item.classList.remove("selected");
 
-                });
+            });
+
 
             this.classList.add("selected");
 
         }
-
-    });
+    );
 
 });
 
 
-/* =========================================
-   DESTINATIONS
-========================================= */
+/* =====================================================
+   DESTINATION
+===================================================== */
 
-document.querySelectorAll(".destination-zone, .simple-destination, .final-destination")
+document
+.querySelectorAll(
+    ".destination-zone, .simple-destination"
+)
 .forEach(destination => {
 
-    destination.addEventListener("click", function() {
+    destination.addEventListener(
+        "click",
+        function() {
 
-        const mission =
-            Number(this.dataset.mission);
+            const mission =
+                Number(this.dataset.mission);
 
-        activeMission = mission;
+            activeMission = mission;
 
-        const state =
-            getMissionState(mission);
+            missionStates[mission]
+                .destinationActive = true;
 
-        state.destinationActive = true;
+            this.classList.add("active");
 
-
-        document
-            .querySelectorAll('[data-mission="' + mission + '"].destination-zone, [data-mission="' + mission + '"].simple-destination, [data-mission="' + mission + '"].final-destination')
-            .forEach(zone => {
-
-                zone.classList.remove("active");
-
-            });
-
-        this.classList.add("active");
-
-    });
+        }
+    );
 
 });
 
 
-/* =========================================
+/* =====================================================
    COPIER
-========================================= */
+===================================================== */
 
 function copyMission(mission, method) {
 
     const state =
-        getMissionState(mission);
+        missionStates[mission];
 
-    if (state.selected.length === 0) {
+    if (!state.selected.length) {
 
         setFileResult(
             mission,
@@ -2169,6 +2916,7 @@ function copyMission(mission, method) {
     state.clipboard =
         [...state.selected];
 
+
     updateClipboardDisplay(
         mission,
         method
@@ -2177,28 +2925,28 @@ function copyMission(mission, method) {
 
     setFileResult(
         mission,
-        "Fichier copié dans le presse-papiers. Choisissez maintenant la destination.",
+        "Copie effectuée. Sélectionnez maintenant la destination.",
         true
     );
 
 }
 
 
-/* =========================================
+/* =====================================================
    COLLER
-========================================= */
+===================================================== */
 
 function pasteMission(mission, method) {
 
     const state =
-        getMissionState(mission);
+        missionStates[mission];
 
 
-    if (state.clipboard.length === 0) {
+    if (!state.clipboard.length) {
 
         setFileResult(
             mission,
-            "Le presse-papiers est vide. Copiez d'abord un fichier.",
+            "Le presse-papiers est vide.",
             false
         );
 
@@ -2220,23 +2968,22 @@ function pasteMission(mission, method) {
     }
 
 
-    /* =====================================
-       MISSION 7
-    ===================================== */
-
     if (mission === 7) {
 
         if (
-            state.clipboard.length === 1 &&
+            state.clipboard.length === 1
+            &&
             state.clipboard[0] === "Photo vacances.jpg"
         ) {
 
-            document.getElementById("mission7-pasted").innerHTML =
+            document.getElementById(
+                "mission7-pasted"
+            ).innerHTML =
                 '<div class="pasted-file">🖼️ Photo vacances.jpg</div>';
 
             setFileResult(
-                mission,
-                "Bravo ! La photo a été copiée dans le dossier Images.",
+                7,
+                "Bravo ! La photo a été copiée dans Images.",
                 true
             );
 
@@ -2245,8 +2992,8 @@ function pasteMission(mission, method) {
         } else {
 
             setFileResult(
-                mission,
-                "Ce n'est pas le bon fichier pour cette mission.",
+                7,
+                "Ce n'est pas le bon fichier.",
                 false
             );
 
@@ -2255,23 +3002,23 @@ function pasteMission(mission, method) {
     }
 
 
-    /* =====================================
-       MISSION 8
-    ===================================== */
-
     if (mission === 8) {
 
         if (
-            state.clipboard.length === 1 &&
-            state.clipboard[0] === "Document administratif.pdf"
+            state.clipboard.length === 1
+            &&
+            state.clipboard[0] ===
+            "Document administratif.pdf"
         ) {
 
-            document.getElementById("mission8-pasted").innerHTML =
+            document.getElementById(
+                "mission8-pasted"
+            ).innerHTML =
                 '<div class="pasted-file">📄 Document administratif.pdf</div>';
 
             setFileResult(
-                mission,
-                "Bravo ! Vous avez trouvé le bon fichier et vous l'avez copié dans Documents.",
+                8,
+                "Bravo ! Vous avez trouvé le bon fichier.",
                 true
             );
 
@@ -2280,8 +3027,8 @@ function pasteMission(mission, method) {
         } else {
 
             setFileResult(
-                mission,
-                "Ce n'est pas le bon fichier. Relisez la consigne et essayez encore.",
+                8,
+                "Ce n'est pas le bon fichier.",
                 false
             );
 
@@ -2290,40 +3037,22 @@ function pasteMission(mission, method) {
     }
 
 
-    /* =====================================
-       MISSION 9
-    ===================================== */
-
     if (mission === 9) {
 
-        const expected = [
-            "Recette.txt",
-            "Photo famille.jpg"
-        ];
+        if (
+            state.clipboard.length === 1
+            &&
+            state.clipboard[0] === "Facture.pdf"
+        ) {
 
-        const sortedClipboard =
-            [...state.clipboard].sort();
-
-        const sortedExpected =
-            [...expected].sort();
-
-        const correct =
-            sortedClipboard.length === sortedExpected.length &&
-            sortedClipboard.every(
-                (file, index) =>
-                    file === sortedExpected[index]
-            );
-
-
-        if (correct) {
-
-            document.getElementById("mission9-pasted").innerHTML =
-                '<div class="pasted-file">📝 Recette.txt</div>' +
-                '<div class="pasted-file">🖼️ Photo famille.jpg</div>';
+            document.getElementById(
+                "mission9-pasted"
+            ).innerHTML =
+                '<div class="pasted-file">📄 Facture.pdf</div>';
 
             setFileResult(
-                mission,
-                "Bravo ! Les deux fichiers ont été sélectionnés et copiés dans Sauvegarde.",
+                9,
+                "Bravo ! Vous avez réussi la mission.",
                 true
             );
 
@@ -2332,42 +3061,7 @@ function pasteMission(mission, method) {
         } else {
 
             setFileResult(
-                mission,
-                "La sélection n'est pas correcte. Il faut sélectionner Recette.txt et Photo famille.jpg.",
-                false
-            );
-
-        }
-
-    }
-
-
-    /* =====================================
-       MISSION 10
-    ===================================== */
-
-    if (mission === 10) {
-
-        if (
-            state.clipboard.length === 1 &&
-            state.clipboard[0] === "Facture.pdf"
-        ) {
-
-            document.getElementById("mission10-pasted").innerHTML =
-                '<div class="pasted-file">📄 Facture.pdf</div>';
-
-            setFileResult(
-                mission,
-                "Bravo ! Vous avez réussi le défi final.",
-                true
-            );
-
-            completeMission(10);
-
-        } else {
-
-            setFileResult(
-                mission,
+                9,
                 "Ce n'est pas le bon fichier.",
                 false
             );
@@ -2385,90 +3079,83 @@ function pasteMission(mission, method) {
 }
 
 
-/* =========================================
+/* =====================================================
    RACCOURCIS CLAVIER
-========================================= */
+===================================================== */
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (!event.ctrlKey) {
-        return;
-    }
-
-    if (!activeMission) {
-        return;
-    }
+        if (!activeMission) {
+            return;
+        }
 
 
-    const mission =
-        activeMission;
-
-    const state =
-        getMissionState(mission);
+        const state =
+            missionStates[activeMission];
 
 
-    /* Ctrl + C */
+        if (!state) {
+            return;
+        }
 
-    if (event.key.toLowerCase() === "c") {
 
-        if (state.selected.length > 0) {
+        if (
+            event.ctrlKey
+            &&
+            event.key.toLowerCase() === "c"
+        ) {
 
             event.preventDefault();
 
             copyMission(
-                mission,
+                activeMission,
                 "Ctrl + C"
             );
 
         }
 
-    }
 
-
-    /* Ctrl + V */
-
-    if (event.key.toLowerCase() === "v") {
-
-        if (state.clipboard.length > 0) {
+        if (
+            event.ctrlKey
+            &&
+            event.key.toLowerCase() === "v"
+        ) {
 
             event.preventDefault();
 
             pasteMission(
-                mission,
+                activeMission,
                 "Ctrl + V"
             );
 
         }
 
     }
+);
 
-});
 
-
-/* =========================================
+/* =====================================================
    MENU CLIC DROIT
-========================================= */
+===================================================== */
 
 const contextMenu =
     document.getElementById("contextMenu");
-
-let contextMission = null;
-let contextType = null;
-let contextElement = null;
 
 
 function hideContextMenu() {
 
     contextMenu.hidden = true;
 
-    contextMission = null;
-    contextType = null;
-    contextElement = null;
-
 }
 
 
-function addContextButton(label, action, disabled = false) {
+function addContextButton(
+    label,
+    action,
+    disabled = false
+) {
 
     const button =
         document.createElement("button");
@@ -2477,17 +3164,22 @@ function addContextButton(label, action, disabled = false) {
 
     button.disabled = disabled;
 
-    button.addEventListener("click", function(event) {
 
-        event.stopPropagation();
+    button.addEventListener(
+        "click",
+        function(event) {
 
-        if (!disabled) {
-            action();
+            event.stopPropagation();
+
+            if (!disabled) {
+                action();
+            }
+
+            hideContextMenu();
+
         }
+    );
 
-        hideContextMenu();
-
-    });
 
     contextMenu.appendChild(button);
 
@@ -2507,28 +3199,25 @@ function addSeparator() {
 }
 
 
-function showContextMenu(event, mission, type, element) {
+function showContextMenu(
+    event,
+    mission,
+    type,
+    element
+) {
 
     event.preventDefault();
+
     event.stopPropagation();
 
     activeMission = mission;
 
-    contextMission = mission;
-    contextType = type;
-    contextElement = element;
-
-
     const state =
-        getMissionState(mission);
+        missionStates[mission];
 
 
     contextMenu.innerHTML = "";
 
-
-    /* ==========================
-       FICHIER
-    ========================== */
 
     if (type === "file") {
 
@@ -2536,22 +3225,25 @@ function showContextMenu(event, mission, type, element) {
             element.dataset.file;
 
 
-        /*
-         Si le fichier n'est pas sélectionné,
-         le clic droit le sélectionne.
-        */
-
         if (!state.selected.includes(fileName)) {
 
-            state.selected = [fileName];
+            state.selected = [
+                fileName
+            ];
+
 
             document
-                .querySelectorAll('[data-mission="' + mission + '"][data-file]')
-                .forEach(item => {
+            .querySelectorAll(
+                '[data-mission="' +
+                mission +
+                '"][data-file]'
+            )
+            .forEach(item => {
 
-                    item.classList.remove("selected");
+                item.classList.remove("selected");
 
-                });
+            });
+
 
             element.classList.add("selected");
 
@@ -2564,7 +3256,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "Dans cette simulation, l'ouverture du fichier n'est pas nécessaire.",
+                    "L'ouverture n'est pas nécessaire pour cette mission.",
                     false
                 );
 
@@ -2594,7 +3286,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "Pour cet exercice, utilisez Copier plutôt que Couper.",
+                    "Pour cet exercice, utilisez Copier.",
                     false
                 );
 
@@ -2611,7 +3303,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "Le renommage n'est pas nécessaire pour cette mission.",
+                    "Le renommage n'est pas nécessaire.",
                     false
                 );
 
@@ -2625,24 +3317,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "La suppression n'est pas nécessaire pour cette mission.",
-                    false
-                );
-
-            }
-        );
-
-
-        addSeparator();
-
-
-        addContextButton(
-            "Propriétés",
-            function() {
-
-                setFileResult(
-                    mission,
-                    "Les propriétés ne sont pas nécessaires pour cette mission.",
+                    "La suppression n'est pas nécessaire.",
                     false
                 );
 
@@ -2652,24 +3327,9 @@ function showContextMenu(event, mission, type, element) {
     }
 
 
-    /* ==========================
-       DESTINATION
-    ========================== */
-
     if (type === "destination") {
 
         state.destinationActive = true;
-
-
-        document
-            .querySelectorAll('[data-mission="' + mission + '"].destination-zone, [data-mission="' + mission + '"].simple-destination, [data-mission="' + mission + '"].final-destination')
-            .forEach(zone => {
-
-                zone.classList.remove("active");
-
-            });
-
-        element.classList.add("active");
 
 
         addContextButton(
@@ -2695,7 +3355,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "La création d'un nouveau fichier n'est pas nécessaire.",
+                    "Cette action n'est pas nécessaire.",
                     false
                 );
 
@@ -2709,7 +3369,7 @@ function showContextMenu(event, mission, type, element) {
 
                 setFileResult(
                     mission,
-                    "Les propriétés ne sont pas nécessaires pour cette mission.",
+                    "Cette action n'est pas nécessaire.",
                     false
                 );
 
@@ -2718,10 +3378,6 @@ function showContextMenu(event, mission, type, element) {
 
     }
 
-
-    /* ==========================
-       POSITION
-    ========================== */
 
     contextMenu.hidden = false;
 
@@ -2733,25 +3389,35 @@ function showContextMenu(event, mission, type, element) {
         event.clientY;
 
 
-    const menuWidth =
+    const width =
         190;
 
-    const menuHeight =
+    const height =
         contextMenu.offsetHeight;
 
 
-    if (x + menuWidth > window.innerWidth) {
+    if (
+        x + width >
+        window.innerWidth
+    ) {
 
         x =
-            window.innerWidth - menuWidth - 10;
+            window.innerWidth -
+            width -
+            10;
 
     }
 
 
-    if (y + menuHeight > window.innerHeight) {
+    if (
+        y + height >
+        window.innerHeight
+    ) {
 
         y =
-            window.innerHeight - menuHeight - 10;
+            window.innerHeight -
+            height -
+            10;
 
     }
 
@@ -2765,271 +3431,634 @@ function showContextMenu(event, mission, type, element) {
 }
 
 
-/* =========================================
-   ACTIVER LE CLIC DROIT SUR LES FICHIERS
-========================================= */
+/* =====================================================
+   CLIC DROIT FICHIERS
+===================================================== */
 
 document
-    .querySelectorAll("[data-mission][data-file]")
-    .forEach(file => {
-
-        file.addEventListener(
-            "contextmenu",
-            function(event) {
-
-                showContextMenu(
-                    event,
-                    Number(this.dataset.mission),
-                    "file",
-                    this
-                );
-
-            }
-        );
-
-    });
-
-
-/* =========================================
-   ACTIVER LE CLIC DROIT SUR LES DESTINATIONS
-========================================= */
-
-document
-    .querySelectorAll(".destination-zone, .simple-destination, .final-destination")
-    .forEach(destination => {
-
-        destination.addEventListener(
-            "contextmenu",
-            function(event) {
-
-                showContextMenu(
-                    event,
-                    Number(this.dataset.mission),
-                    "destination",
-                    this
-                );
-
-            }
-        );
-
-    });
-
-
-/* =========================================
-   FERMER LE MENU
-========================================= */
-
-document.addEventListener("click", function() {
-
-    hideContextMenu();
-
-});
-
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-
-        hideContextMenu();
-
-    }
-
-});
-
-
-window.addEventListener("scroll", function() {
-
-    hideContextMenu();
-
-});
-
-
-/* =========================================
-   MISSION 10 : NAVIGATION
-========================================= */
-
-function openFinalFolder(folder) {
-
-    const documentsButton =
-        document.getElementById("finalDocuments");
-
-    const sauvegardeButton =
-        document.getElementById("finalSauvegarde");
-
-    const content =
-        document.getElementById("finalContent");
-
-
-    if (folder === "documents") {
-
-        documentsButton.classList.add("active");
-
-        sauvegardeButton.classList.remove("active");
-
-
-        content.innerHTML = `
-
-            <div
-                class="final-file"
-                id="mission10-file"
-                data-mission="10"
-                data-file="Facture.pdf"
-            >
-
-                <span class="file-icon">📄</span>
-
-                <span>
-                    Facture.pdf
-                </span>
-
-            </div>
-
-            <div
-                class="final-destination"
-                id="mission10-destination"
-                data-mission="10"
-            >
-
-                <strong>
-                    Zone de destination
-                </strong>
-
-                Pour coller le fichier dans Sauvegarde,
-                ouvrez le dossier Sauvegarde ci-dessus.
-
-                <div id="mission10-pasted"></div>
-
-            </div>
-
-        `;
-
-        attachMission10Events();
-
-    }
-
-
-    if (folder === "sauvegarde") {
-
-        documentsButton.classList.remove("active");
-
-        sauvegardeButton.classList.add("active");
-
-
-        content.innerHTML = `
-
-            <div
-                class="final-destination"
-                id="mission10-destination"
-                data-mission="10"
-            >
-
-                <strong>
-                    Sauvegarde
-                </strong>
-
-                Cliquez ici ou faites un clic droit
-                pour choisir Coller.
-
-                <div id="mission10-pasted"></div>
-
-            </div>
-
-        `;
-
-        attachMission10Events();
-
-    }
-
-}
-
-
-/* =========================================
-   ÉVÉNEMENTS MISSION 10
-========================================= */
-
-function attachMission10Events() {
-
-    const file =
-        document.getElementById("mission10-file");
-
-    const destination =
-        document.getElementById("mission10-destination");
-
-
-    if (file) {
-
-        file.addEventListener("click", function(event) {
-
-            activeMission = 10;
-
-            const state =
-                missionStates[10];
-
-            state.selected = ["Facture.pdf"];
-
-            document
-                .querySelectorAll('[data-mission="10"][data-file]')
-                .forEach(item => {
-
-                    item.classList.remove("selected");
-
-                });
-
-            this.classList.add("selected");
-
-        });
-
-
-        file.addEventListener("contextmenu", function(event) {
+.querySelectorAll(
+    '[data-mission][data-file]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "contextmenu",
+        function(event) {
 
             showContextMenu(
                 event,
-                10,
+                Number(this.dataset.mission),
                 "file",
                 this
             );
 
-        });
+        }
+    );
 
-    }
-
-
-    if (destination) {
-
-        destination.addEventListener("click", function() {
-
-            activeMission = 10;
-
-            missionStates[10].destinationActive = true;
-
-            this.classList.add("active");
-
-        });
+});
 
 
-        destination.addEventListener("contextmenu", function(event) {
+/* =====================================================
+   CLIC DROIT DESTINATIONS
+===================================================== */
+
+document
+.querySelectorAll(
+    ".destination-zone, .simple-destination"
+)
+.forEach(destination => {
+
+    destination.addEventListener(
+        "contextmenu",
+        function(event) {
 
             showContextMenu(
                 event,
-                10,
+                Number(this.dataset.mission),
                 "destination",
                 this
             );
 
-        });
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "click",
+    hideContextMenu
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            hideContextMenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SÉLECTION MULTIPLE
+===================================================== */
+
+const selectionStates = {
+
+    10: {
+        selected: []
+    },
+
+    11: {
+        selected: [],
+        lastIndex: null
+    },
+
+    12: {
+        selected: []
+    }
+
+};
+
+
+/* =====================================================
+   CTRL + CLIC
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-selection-mission="10"]'
+)
+.forEach((file, index) => {
+
+    file.addEventListener(
+        "click",
+        function(event) {
+
+            const state =
+                selectionStates[10];
+
+
+            if (event.ctrlKey) {
+
+                const position =
+                    state.selected.indexOf(
+                        this.dataset.file
+                    );
+
+
+                if (position >= 0) {
+
+                    state.selected.splice(
+                        position,
+                        1
+                    );
+
+                    this.classList.remove(
+                        "selected"
+                    );
+
+                } else {
+
+                    state.selected.push(
+                        this.dataset.file
+                    );
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+                }
+
+            } else {
+
+                state.selected = [
+                    this.dataset.file
+                ];
+
+
+                document
+                .querySelectorAll(
+                    '[data-selection-mission="10"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            updateSelectionStatus(10);
+
+        }
+
+    );
+
+});
+
+
+function updateSelectionStatus(number) {
+
+    const state =
+        selectionStates[number];
+
+    const element =
+        document.getElementById(
+            "selectionStatus" + number
+        );
+
+
+    if (!state.selected.length) {
+
+        element.innerHTML =
+            "<strong>Sélection :</strong> aucun fichier";
+
+        return;
+
+    }
+
+
+    element.innerHTML =
+        "<strong>Sélection :</strong> "
+        +
+        state.selected.join(", ");
+
+}
+
+
+/* =====================================================
+   VÉRIFICATION CTRL
+===================================================== */
+
+function checkSelection10() {
+
+    const expected = [
+        "Photo 1.jpg",
+        "Photo 3.jpg",
+        "Photo 6.jpg"
+    ];
+
+
+    const actual =
+        [...selectionStates[10].selected]
+        .sort();
+
+    expected.sort();
+
+
+    const correct =
+        actual.length === expected.length
+        &&
+        actual.every(
+            (item, index) =>
+                item === expected[index]
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult10"
+        );
+
+
+    if (correct) {
+
+        result.textContent =
+            "Bravo ! Vous avez réalisé une sélection précise avec Ctrl + clic.";
+
+        result.className =
+            "result success";
+
+        completeMission(10);
+
+    } else {
+
+        result.textContent =
+            "Ce n'est pas la bonne sélection. Essayez avec Ctrl + clic.";
+
+        result.className =
+            "result error";
 
     }
 
 }
 
 
-/* =========================================
-   INITIALISATION MISSION 10
-========================================= */
+/* =====================================================
+   SHIFT + CLIC
+===================================================== */
 
-attachMission10Events();
+document
+.querySelectorAll(
+    '[data-selection-mission="11"]'
+)
+.forEach((file, index) => {
+
+    file.dataset.index =
+        index;
+
+
+    file.addEventListener(
+        "click",
+        function(event) {
+
+            const state =
+                selectionStates[11];
+
+            const currentIndex =
+                Number(this.dataset.index);
+
+
+            if (
+                event.shiftKey
+                &&
+                state.lastIndex !== null
+            ) {
+
+                const start =
+                    Math.min(
+                        state.lastIndex,
+                        currentIndex
+                    );
+
+                const end =
+                    Math.max(
+                        state.lastIndex,
+                        currentIndex
+                    );
+
+
+                state.selected = [];
+
+
+                document
+                .querySelectorAll(
+                    '[data-selection-mission="11"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                document
+                .querySelectorAll(
+                    '[data-selection-mission="11"]'
+                )
+                .forEach((item, itemIndex) => {
+
+                    if (
+                        itemIndex >= start
+                        &&
+                        itemIndex <= end
+                    ) {
+
+                        item.classList.add(
+                            "selected"
+                        );
+
+                        state.selected.push(
+                            item.dataset.file
+                        );
+
+                    }
+
+                });
+
+            } else {
+
+                state.selected = [
+                    this.dataset.file
+                ];
+
+
+                document
+                .querySelectorAll(
+                    '[data-selection-mission="11"]'
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            state.lastIndex =
+                currentIndex;
+
+
+            updateSelectionStatus(11);
+
+        }
+
+    );
+
+});
+
+
+function checkSelection11() {
+
+    const expected = [
+        "Photo 2.jpg",
+        "Photo 3.jpg",
+        "Photo 4.jpg",
+        "Photo 5.jpg"
+    ];
+
+
+    const actual =
+        [...selectionStates[11].selected]
+        .sort();
+
+    expected.sort();
+
+
+    const correct =
+        actual.length === expected.length
+        &&
+        actual.every(
+            (item, index) =>
+                item === expected[index]
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult11"
+        );
+
+
+    if (correct) {
+
+        result.textContent =
+            "Bravo ! Vous avez sélectionné tout le bloc avec Shift + clic.";
+
+        result.className =
+            "result success";
+
+        completeMission(11);
+
+    } else {
+
+        result.textContent =
+            "Ce n'est pas encore correct. Cliquez sur Photo 2 puis faites Shift + clic sur Photo 5.";
+
+        result.className =
+            "result error";
+
+    }
+
+}
+
+
+/* =====================================================
+   CTRL + A
+===================================================== */
+
+document
+.querySelectorAll(
+    '[data-selection-mission="12"]'
+)
+.forEach(file => {
+
+    file.addEventListener(
+        "click",
+        function() {
+
+            selectionStates[12].active =
+                true;
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.ctrlKey
+            &&
+            event.key.toLowerCase() === "a"
+        ) {
+
+            if (
+                !selectionStates[12].active
+            ) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const state =
+                selectionStates[12];
+
+
+            state.selected = [];
+
+
+            document
+            .querySelectorAll(
+                '[data-selection-mission="12"]'
+            )
+            .forEach(file => {
+
+                file.classList.add(
+                    "selected"
+                );
+
+                state.selected.push(
+                    file.dataset.file
+                );
+
+            });
+
+
+            updateSelectionStatus(12);
+
+        }
+
+    }
+);
+
+
+function checkSelection12() {
+
+    const expected = [
+        "Document 1.pdf",
+        "Document 2.pdf",
+        "Document 3.pdf",
+        "Document 4.pdf"
+    ];
+
+
+    const actual =
+        [...selectionStates[12].selected]
+        .sort();
+
+    expected.sort();
+
+
+    const correct =
+        actual.length === expected.length
+        &&
+        actual.every(
+            (item, index) =>
+                item === expected[index]
+        );
+
+
+    const result =
+        document.getElementById(
+            "selectionResult12"
+        );
+
+
+    if (correct) {
+
+        result.textContent =
+            "Bravo ! Ctrl + A vous a permis de sélectionner tous les fichiers.";
+
+        result.className =
+            "result success";
+
+        completeMission(12);
+
+    } else {
+
+        result.textContent =
+            "Tous les fichiers doivent être sélectionnés avec Ctrl + A.";
+
+        result.className =
+            "result error";
+
+    }
+
+}
+
+
+/* =====================================================
+   MISE À JOUR SÉLECTION
+===================================================== */
+
+function updateSelectionStatus(number) {
+
+    const state =
+        selectionStates[number];
+
+    const element =
+        document.getElementById(
+            "selectionStatus" + number
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    if (!state.selected.length) {
+
+        element.innerHTML =
+            "<strong>Sélection :</strong> aucun fichier";
+
+        return;
+
+    }
+
+
+    element.innerHTML =
+        "<strong>Sélection :</strong> "
+        +
+        state.selected.join(", ");
+
+}
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+updateSelectionStatus(10);
+
+updateSelectionStatus(11);
+
+updateSelectionStatus(12);
 
 </script>
 
+
 </body>
+
 </html>
