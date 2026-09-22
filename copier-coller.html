@@ -1,807 +1,843 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Exercice Copier-Coller - Centre Multimédia du CCAS</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f7fb;
-            color: #24344d;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-
-        /* =========================
-           MENU
-        ========================== */
-
-        header {
-            background: #1f3656;
-            color: white;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-
-        .logo strong {
-            font-size: 26px;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            font-size: 15px;
-            opacity: 0.8;
-        }
-
-        nav {
-            display: flex;
-            gap: 6px;
-            flex-wrap: nowrap;
-            justify-content: flex-end;
-            flex-shrink: 1;
-        }
-
-        nav a {
-            color: white;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: .3s;
-            white-space: nowrap;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background-color: #3d76c5;
-        }
-
-
-        /* =========================
-           EN-TÊTE
-        ========================== */
-
-        .page-header {
-            background: linear-gradient(
-                135deg,
-                #fff0f7,
-                #ffffff,
-                #e9f0fa
-            );
-
-            text-align: center;
-            padding: 70px 20px;
-        }
-
-        .page-header h1 {
-            margin: 0 0 15px;
-            font-size: 46px;
-            color: #8a3b68;
-        }
-
-        .page-header p {
-            margin: auto;
-            max-width: 800px;
-            font-size: 21px;
-            color: #617087;
-        }
-
-
-        /* =========================
-           CONTENU
-        ========================== */
-
-        main {
-            max-width: 950px;
-            margin: auto;
-            padding: 60px 25px;
-        }
-
-        .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-        }
-
-        .intro h2 {
-            margin-top: 0;
-            color: #203858;
-        }
-
-        .intro li {
-            margin-bottom: 8px;
-        }
-
-
-        /* =========================
-           RACCOURCIS
-        ========================== */
-
-        .shortcuts {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .shortcut {
-            background: #eaf0f8;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .shortcut strong {
-            display: block;
-            font-size: 26px;
-            color: #3975c6;
-            margin-bottom: 8px;
-        }
-
-
-        /* =========================
-           PROGRESSION
-        ========================== */
-
-        .progress-box {
-            background: white;
-            padding: 22px 25px;
-            border-radius: 15px;
-            margin-bottom: 35px;
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-            text-align: center;
-        }
-
-        .progress-box strong {
-            display: block;
-            color: #203858;
-            font-size: 19px;
-            margin-bottom: 12px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 14px;
-            background: #e3e9f1;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: #3975c6;
-            border-radius: 20px;
-            transition: width .4s ease;
-        }
-
-        #progressText {
-            margin-top: 10px;
-            color: #617087;
-            font-size: 16px;
-        }
-
-
-        /* =========================
-           TITRES DE PARTIES
-        ========================== */
-
-        .section-title {
-            margin: 60px 0 30px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid #dce4ee;
-        }
-
-        .section-title h2 {
-            margin: 0;
-            color: #203858;
-            font-size: 30px;
-        }
-
-        .section-title p {
-            margin: 6px 0 0;
-            color: #617087;
-        }
-
-
-        /* =========================
-           EXERCICES
-        ========================== */
-
-        .exercise {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
-        }
-
-        .exercise-number {
-            display: inline-block;
-            background: #d05f9d;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .exercise h2 {
-            margin-top: 0;
-            color: #24344d;
-        }
-
-        .exercise-info {
-            background: #f1f5fa;
-            border-left: 4px solid #3975c6;
-            padding: 14px 18px;
-            border-radius: 8px;
-            margin: 18px 0;
-            color: #526274;
-        }
-
-
-        /* =========================
-           TEXTE
-        ========================== */
-
-        .text-to-copy {
-            background: #fff4df;
-            border: 2px dashed #e09b32;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 19px;
-            margin: 20px 0;
-            user-select: text;
-        }
-
-        .small-text {
-            font-size: 17px;
-            background: #f7f9fc;
-            border: 1px solid #dce4ee;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 12px 0;
-        }
-
-
-        /* =========================
-           ZONES TEXTE
-        ========================== */
-
-        textarea {
-            width: 100%;
-            min-height: 100px;
-            padding: 15px;
-            font-size: 17px;
-            font-family: Arial, Helvetica, sans-serif;
-            border: 2px solid #d9e1ec;
-            border-radius: 10px;
-            resize: vertical;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #3975c6;
-        }
-
-        .multiple-targets {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .target-box label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 7px;
-            color: #394b63;
-        }
-
-
-        /* =========================
-           BOUTONS
-        ========================== */
-
-        .check-button {
-            margin-top: 15px;
-            padding: 13px 22px;
-            background: #d05f9d;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .check-button:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
-        }
-
-
-        /* =========================
-           RÉSULTATS
-        ========================== */
-
-        .result {
-            display: none;
-            margin-top: 20px;
-            padding: 18px;
-            border-radius: 10px;
-            font-size: 17px;
-        }
-
-        .success {
-            background: #e6f5ef;
-            color: #17604f;
-        }
-
-        .error {
-            background: #fdecec;
-            color: #8a2525;
-        }
-
-
-        /* =========================
-           MISSION FINALE
-        ========================== */
-
-        .final-exercise {
-            border: 3px solid #d05f9d;
-        }
-
-        .final-badge {
-            display: inline-block;
-            background: #f8e6f0;
-            color: #8a3b68;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .final-step {
-            background: #f7f9fc;
-            border: 1px solid #e0e6ef;
-            border-radius: 10px;
-            padding: 18px;
-            margin: 15px 0;
-        }
-
-        .final-step strong {
-            color: #203858;
-        }
-
-
-        /* =========================
-           EXPLORATEURS
-        ========================== */
-
-        .mini-explorer {
-            border: 2px solid #cbd5e1;
-            border-radius: 12px;
-            overflow: hidden;
-            background: white;
-            margin-top: 25px;
-        }
-
-        .explorer-titlebar {
-            background: #eef2f7;
-            padding: 12px 15px;
-            border-bottom: 1px solid #d7dee8;
-            font-weight: bold;
-            color: #35475f;
-        }
-
-        .explorer-path {
-            background: white;
-            margin: 12px;
-            padding: 9px 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            color: #526274;
-            font-size: 15px;
-        }
-
-        .explorer-content {
-            padding: 20px;
-        }
-
-        .explorer-folder-title {
-            color: #203858;
-            font-weight: bold;
-            font-size: 19px;
-            margin-bottom: 15px;
-        }
-
-        .file-area {
-            min-height: 150px;
-            border: 1px solid #e0e6ef;
-            background: #fafbfd;
-            border-radius: 10px;
-            padding: 18px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .file-card {
-            border: 2px solid transparent;
-            border-radius: 10px;
-            padding: 14px 8px;
-            text-align: center;
-            cursor: pointer;
-            user-select: none;
-            transition: .2s;
-        }
-
-        .file-card:hover {
-            background: #edf2f8;
-        }
-
-        .file-card.selected {
-            background: #dceafb;
-            border-color: #3975c6;
-        }
-
-        .file-icon {
-            font-size: 40px;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .file-name {
-            font-size: 14px;
-            word-break: break-word;
-        }
-
-        .file-size {
-            color: #7a8798;
-            font-size: 12px;
-            margin-top: 3px;
-        }
-
-
-        /* =========================
-           MINI INTERFACE 7
-        ========================== */
-
-        .simple-transfer {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            align-items: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .transfer-folder {
-            border: 2px solid #d8e0ea;
-            border-radius: 12px;
-            padding: 20px;
-            background: #fafbfd;
-            min-height: 190px;
-        }
-
-        .transfer-folder h3 {
-            margin-top: 0;
-            color: #203858;
-        }
-
-        .transfer-arrow {
-            text-align: center;
-            font-size: 32px;
-            color: #3975c6;
-        }
-
-        .single-file {
-            border: 2px solid #3975c6;
-            background: #eaf2fc;
-            padding: 18px 10px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .single-file.selected {
-            background: #cfe2f8;
-            border-color: #245a99;
-        }
-
-
-        /* =========================
-           MINI INTERFACE 8
-        ========================== */
-
-        .two-column-explorer {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .folder-panel {
-            border: 2px solid #d8e0ea;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #fafbfd;
-        }
-
-        .folder-panel-header {
-            background: #eef2f7;
-            padding: 12px 15px;
-            font-weight: bold;
-            color: #30445f;
-        }
-
-        .folder-panel-content {
-            padding: 18px;
-            min-height: 210px;
-        }
-
-        .file-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 6px;
-        }
-
-        .file-row:hover {
-            background: #edf2f8;
-        }
-
-        .file-row.selected {
-            background: #dceafb;
-            outline: 2px solid #3975c6;
-        }
-
-        .file-row-icon {
-            font-size: 27px;
-        }
-
-        .file-row-name {
-            font-size: 14px;
-        }
-
-
-        /* =========================
-           MISSION 9
-        ========================== */
-
-        .selection-help {
-            background: #fff8e8;
-            border: 2px dashed #dfa53c;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 18px;
-        }
-
-        .selection-counter {
-            margin-top: 15px;
-            color: #526274;
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           PRESSE-PAPIERS
-        ========================== */
-
-        .clipboard {
-            margin-top: 18px;
-            padding: 14px;
-            background: #fff8e8;
-            border: 2px dashed #dfa53c;
-            border-radius: 9px;
-            color: #76531d;
-        }
-
-
-        /* =========================
-           CONSEIL
-        ========================== */
-
-        .tip {
-            background: #eaf0f8;
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-
-        .tip h2 {
-            margin-top: 0;
-            color: #203858;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            background: #1f3656;
-            color: white;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 35px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .footer-title {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .footer-text {
-            opacity: 0.75;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 700px) {
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                padding: 10px 12px;
-            }
-
-            .page-header {
-                padding: 50px 20px;
-            }
-
-            .page-header h1 {
-                font-size: 34px;
-            }
-
-            main {
-                padding: 40px 20px;
-            }
-
-            .shortcuts {
-                grid-template-columns: 1fr;
-            }
-
-            .multiple-targets {
-                grid-template-columns: 1fr;
-            }
-
-            .simple-transfer {
-                grid-template-columns: 1fr;
-            }
-
-            .transfer-arrow {
-                transform: rotate(90deg);
-            }
-
-            .two-column-explorer {
-                grid-template-columns: 1fr;
-            }
-
-            .file-area {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exercice Copier-Coller - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #24344d;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo strong {
+    font-size: 26px;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: .8;
+    margin-top: 3px;
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 1;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: .3s;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3d76c5;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #fff0f7, #ffffff, #e9f0fa);
+    text-align: center;
+    padding: 45px 20px 40px;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    color: #8a3b68;
+    font-size: 34px;
+}
+
+.page-header p {
+    margin: 0;
+    font-size: 18px;
+    color: #4d5c70;
+}
+
+/* =========================
+   CONTENU
+========================= */
+
+main {
+    max-width: 950px;
+    margin: auto;
+    padding: 35px 20px 60px;
+}
+
+.intro {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.intro strong {
+    color: #8a3b68;
+}
+
+/* =========================
+   MÉTHODES
+========================= */
+
+.method-box {
+    background: #edf4ff;
+    border-left: 6px solid #3d76c5;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 30px;
+}
+
+.method-box h2 {
+    margin-top: 0;
+    color: #285b96;
+    font-size: 22px;
+}
+
+.method-box p {
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.method {
+    background: white;
+    border-radius: 10px;
+    padding: 17px;
+    border: 1px solid #d6e1f0;
+}
+
+.method strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #285b96;
+}
+
+.method kbd {
+    background: #26384f;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* =========================
+   RACCOURCIS
+========================= */
+
+.shortcuts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.shortcut {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.shortcut kbd {
+    display: inline-block;
+    background: #26384f;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.shortcut strong {
+    display: block;
+    color: #8a3b68;
+}
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.progress-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-top strong {
+    color: #8a3b68;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #e4e9f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #8a3b68, #3d76c5);
+    transition: width .4s;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section-title {
+    color: #285b96;
+    font-size: 26px;
+    margin: 45px 0 20px;
+}
+
+/* =========================
+   EXERCICES TEXTE
+========================= */
+
+.exercise {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.exercise h3 {
+    margin-top: 0;
+    color: #8a3b68;
+    font-size: 21px;
+}
+
+.exercise-instruction {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.source-text {
+    background: #f1f4f8;
+    border: 1px solid #d9e0e8;
+    border-radius: 8px;
+    padding: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    user-select: text;
+}
+
+.exercise textarea {
+    width: 100%;
+    min-height: 95px;
+    resize: vertical;
+    border: 2px solid #d5dce6;
+    border-radius: 9px;
+    padding: 13px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #24344d;
+    outline: none;
+}
+
+.exercise textarea:focus {
+    border-color: #3d76c5;
+}
+
+.check-button {
+    margin-top: 12px;
+    border: none;
+    background: #3d76c5;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.check-button:hover {
+    background: #285b96;
+}
+
+.result {
+    margin-top: 12px;
+    font-weight: bold;
+    min-height: 24px;
+}
+
+.success {
+    color: #287a4a;
+}
+
+.error {
+    color: #b23a48;
+}
+
+/* =========================
+   MISSIONS FICHIERS
+========================= */
+
+.file-mission {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.file-mission h3 {
+    color: #8a3b68;
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.file-mission p {
+    line-height: 1.6;
+}
+
+.file-tip {
+    background: #f5f8fc;
+    border-left: 5px solid #3d76c5;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 18px 0;
+    line-height: 1.6;
+}
+
+.file-tip strong {
+    color: #285b96;
+}
+
+/* =========================
+   FAUX EXPLORATEUR
+========================= */
+
+.explorer {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    margin-top: 20px;
+}
+
+.explorer-titlebar {
+    background: #e8edf4;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 11px 15px;
+    font-weight: bold;
+    color: #34445a;
+}
+
+.explorer-toolbar {
+    background: #f7f9fc;
+    border-bottom: 1px solid #d8dee8;
+    padding: 10px 15px;
+    color: #66758a;
+    font-size: 14px;
+}
+
+.explorer-body {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    min-height: 230px;
+}
+
+.explorer-sidebar {
+    background: #f4f6f9;
+    border-right: 1px solid #d8dee8;
+    padding: 12px;
+}
+
+.folder {
+    padding: 9px 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.folder:hover,
+.folder.active {
+    background: #dce9fa;
+}
+
+.explorer-content {
+    padding: 18px;
+    background: white;
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    user-select: none;
+}
+
+.file-item:hover {
+    background: #f0f5fb;
+}
+
+.file-item.selected {
+    background: #dbeafe;
+    border-color: #8ab4e8;
+}
+
+.file-icon {
+    font-size: 23px;
+    width: 30px;
+    text-align: center;
+}
+
+.file-name {
+    flex: 1;
+}
+
+.destination-zone {
+    margin-top: 18px;
+    border: 2px dashed #9cb4d1;
+    border-radius: 10px;
+    min-height: 110px;
+    padding: 18px;
+    background: #f7faff;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.destination-zone:hover,
+.destination-zone.active {
+    background: #edf5ff;
+    border-color: #3d76c5;
+}
+
+.destination-zone strong {
+    display: block;
+    color: #285b96;
+    margin-bottom: 8px;
+}
+
+.pasted-file {
+    margin-top: 10px;
+    padding: 9px 12px;
+    background: #e9f7ee;
+    border: 1px solid #a9d9b9;
+    border-radius: 7px;
+    color: #287a4a;
+}
+
+/* =========================
+   MISSION 7
+========================= */
+
+.simple-explorer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: #eef2f7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.simple-folder {
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.simple-folder-header {
+    background: #e6ebf2;
+    padding: 12px 15px;
+    font-weight: bold;
+    color: #34445a;
+}
+
+.simple-folder-body {
+    padding: 18px;
+    min-height: 170px;
+}
+
+.simple-file {
+    padding: 13px;
+    border-radius: 8px;
+    border: 1px solid #d9e0e8;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.simple-file:hover {
+    background: #f2f6fb;
+}
+
+.simple-file.selected {
+    background: #dbeafe;
+    border-color: #7ba9df;
+}
+
+.simple-destination {
+    min-height: 100px;
+    border: 2px dashed #9cb4d1;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    background: #f9fbfd;
+}
+
+.simple-destination.active {
+    background: #edf5ff;
+    border-color: #3d76c5;
+}
+
+/* =========================
+   MISSION 9 MULTI-SÉLECTION
+========================= */
+
+.multi-select-help {
+    background: #fff8e8;
+    border-left: 5px solid #d49b24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.multi-files {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.multi-file {
+    background: white;
+    border: 1px solid #d3dbe5;
+    border-radius: 9px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.multi-file:hover {
+    background: #f3f7fc;
+}
+
+.multi-file.selected {
+    background: #dceafe;
+    border-color: #76a7df;
+}
+
+/* =========================
+   MISSION 10
+========================= */
+
+.final-explorer {
+    border: 1px solid #b9c4d2;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #eef1f5;
+}
+
+.final-topbar {
+    background: #dce2e9;
+    padding: 10px 14px;
+    border-bottom: 1px solid #bcc7d4;
+    color: #34445a;
+    font-size: 14px;
+}
+
+.final-navigation {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: #f5f7fa;
+    border-bottom: 1px solid #cdd5df;
+}
+
+.final-folder-button {
+    border: 1px solid #c3ccd8;
+    background: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.final-folder-button:hover,
+.final-folder-button.active {
+    background: #dce9fa;
+}
+
+.final-content {
+    padding: 18px;
+    min-height: 180px;
+    background: white;
+}
+
+.final-file {
+    width: 230px;
+    border: 1px solid #d0d8e2;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.final-file:hover {
+    background: #f1f5f9;
+}
+
+.final-file.selected {
+    background: #dbeafe;
+    border-color: #76a7df;
+}
+
+.final-destination {
+    margin-top: 20px;
+    border: 2px dashed #9cb4d1;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 80px;
+    background: #f8fafc;
+    cursor: pointer;
+}
+
+.final-destination.active {
+    background: #edf5ff;
+    border-color: #3d76c5;
+}
+
+/* =========================
+   PRESSE-PAPIER
+========================= */
+
+.clipboard-status {
+    margin-top: 15px;
+    padding: 11px 14px;
+    background: #f3f5f8;
+    border-radius: 8px;
+    color: #56667b;
+    font-size: 14px;
+}
+
+.clipboard-status strong {
+    color: #34445a;
+}
+
+/* =========================
+   MENU CLIC DROIT
+========================= */
+
+.context-menu {
+    position: fixed;
+    z-index: 99999;
+    min-width: 190px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    padding: 6px 0;
+}
+
+.context-menu button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 15px;
+    color: #24344d;
+    cursor: pointer;
+}
+
+.context-menu button:hover:not(:disabled) {
+    background: #edf2f8;
+}
+
+.context-menu button:disabled {
+    color: #a4adba;
+    cursor: default;
+}
+
+.context-separator {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 5px 0;
+}
+
+/* =========================
+   CONSEIL
+========================= */
+
+.final-tip {
+    background: #edf7ef;
+    border-left: 6px solid #4b9b63;
+    padding: 22px;
+    border-radius: 10px;
+    margin-top: 40px;
+    line-height: 1.7;
+}
+
+.final-tip h2 {
+    margin-top: 0;
+    color: #327344;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    nav a {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .method-grid,
+    .shortcuts,
+    .simple-explorer,
+    .multi-files {
+        grid-template-columns: 1fr;
+    }
+
+    .explorer-body {
+        grid-template-columns: 1fr;
+    }
+
+    .explorer-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #d8dee8;
+    }
+
+}
+
+</style>
 </head>
 
-
 <body>
-
-
-<!-- =========================================
-     MENU
-========================================= -->
 
 <header>
 
     <div class="navbar">
 
         <div class="logo">
-
-            <strong>
-                Centre Multimédia du CCAS
-            </strong>
-
-            <span>
-                Apprendre • Découvrir • Progresser
-            </span>
-
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre, pratiquer, progresser</span>
         </div>
 
-
         <nav>
-
-            <a href="index.html">
-                Accueil
-            </a>
-
-            <a href="cours.html">
-                Mes cours
-            </a>
-
-            <a href="jeux.html">
-                Jeux
-            </a>
-
-            <a href="exercices.html" class="active">
-                Exercices
-            </a>
-
-            <a href="outils.html">
-                Outils
-            </a>
-
-            <a href="ressources.html">
-                Ressources
-            </a>
-
-            <a href="informations.html">
-                Informations
-            </a>
-
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html" class="active">Exercices</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="informations.html">Informations</a>
         </nav>
 
     </div>
@@ -809,1009 +845,447 @@
 </header>
 
 
-
-<!-- =========================================
-     EN-TÊTE
-========================================= -->
-
 <section class="page-header">
 
-    <h1>
-        Copier et coller
-    </h1>
+    <h1>Exercice Copier-Coller</h1>
 
     <p>
-        Entraînez-vous à copier et coller du texte et des fichiers.
+        Entraînez-vous avec le clavier et la souris, sur du texte puis sur des fichiers.
     </p>
 
 </section>
 
 
-
-<!-- =========================================
-     CONTENU
-========================================= -->
-
 <main>
 
-
-    <!-- =====================================
-         INTRO
-    ====================================== -->
-
-    <section class="intro">
-
-        <h2>
-            Comment faire ?
-        </h2>
+    <div class="intro">
 
         <p>
-            Ces exercices deviennent progressivement plus difficiles.
-            Prenez votre temps et lisez bien chaque consigne.
+            Le copier-coller est une fonction très pratique de l'ordinateur.
+            Il permet de <strong>dupliquer un texte ou un fichier</strong> sans avoir
+            à tout refaire.
         </p>
 
-        <ol>
+        <p>
+            Les exercices commencent simplement puis deviennent progressivement
+            plus proches de situations que vous pourrez rencontrer sur votre ordinateur.
+        </p>
 
-            <li>
-                Sélectionnez le texte ou le fichier demandé.
-            </li>
-
-            <li>
-                Copiez avec <strong>Ctrl + C</strong>.
-            </li>
-
-            <li>
-                Cliquez à l'endroit où vous souhaitez le placer.
-            </li>
-
-            <li>
-                Collez avec <strong>Ctrl + V</strong>.
-            </li>
-
-        </ol>
-
-    </section>
+    </div>
 
 
+    <!-- =========================
+         MÉTHODES
+    ========================== -->
 
-    <!-- =====================================
+    <div class="method-box">
+
+        <h2>Deux façons de faire</h2>
+
+        <p>
+            Tout au long de cet exercice, vous pouvez choisir la méthode qui vous convient.
+            Vous pouvez aussi profiter des différentes missions pour vous entraîner
+            volontairement avec les deux méthodes.
+        </p>
+
+        <div class="method-grid">
+
+            <div class="method">
+
+                <strong>Avec le clavier</strong>
+
+                Sélectionnez l'élément puis utilisez :
+
+                <br><br>
+
+                <kbd>Ctrl</kbd> + <kbd>C</kbd>
+                pour copier
+
+                <br><br>
+
+                puis
+
+                <br><br>
+
+                <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                pour coller.
+
+            </div>
+
+
+            <div class="method">
+
+                <strong>Avec la souris</strong>
+
+                Sélectionnez l'élément puis faites :
+
+                <br><br>
+
+                <strong>clic droit → Copier</strong>
+
+                <br><br>
+
+                puis dans l'emplacement de destination :
+
+                <br><br>
+
+                <strong>clic droit → Coller</strong>.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
          RACCOURCIS
-    ====================================== -->
+    ========================== -->
 
-    <section class="shortcuts">
-
-        <div class="shortcut">
-
-            <strong>
-                Ctrl + C
-            </strong>
-
-            Copier
-
-        </div>
+    <div class="shortcuts">
 
         <div class="shortcut">
 
-            <strong>
-                Ctrl + V
-            </strong>
+            <kbd>Ctrl + C</kbd>
 
-            Coller
+            <strong>Copier</strong>
+
+            <span>Place l'élément sélectionné dans le presse-papiers.</span>
 
         </div>
 
-    </section>
+
+        <div class="shortcut">
+
+            <kbd>Ctrl + V</kbd>
+
+            <strong>Coller</strong>
+
+            <span>Place la copie à l'endroit choisi.</span>
+
+        </div>
+
+    </div>
 
 
-
-    <!-- =====================================
+    <!-- =========================
          PROGRESSION
-    ====================================== -->
+    ========================== -->
 
-    <section class="progress-box">
+    <div class="progress-box">
 
-        <strong>
-            Votre progression
-        </strong>
+        <div class="progress-top">
+
+            <strong>Progression</strong>
+
+            <span id="progressText">0 / 10 missions réussies</span>
+
+        </div>
 
         <div class="progress-bar">
 
-            <div
-                class="progress-fill"
-                id="progressFill"
-            ></div>
+            <div class="progress-fill" id="progressFill"></div>
 
         </div>
-
-        <div id="progressText">
-            0 exercice réussi sur 10
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         PARTIE 1
-    ====================================== -->
-
-    <div class="section-title">
-
-        <h2>
-            Partie 1 — Copier-coller du texte
-        </h2>
-
-        <p>
-            Commencez par vous entraîner avec du texte.
-        </p>
 
     </div>
 
 
+    <!-- =========================
+         PARTIE 1
+    ========================== -->
 
-    <!-- =====================================
-         EXERCICE 1
-    ====================================== -->
+    <h2 class="section-title">
+        Partie 1 — Copier-coller du texte
+    </h2>
 
-    <section class="exercise">
 
-        <div class="exercise-number">
-            Exercice 1
-        </div>
+    <!-- EXERCICE 1 -->
 
-        <h2>
-            Copiez une phrase
-        </h2>
+    <div class="exercise">
 
-        <p>
-            Sélectionnez toute la phrase, copiez-la et collez-la
+        <h3>Exercice 1 — Copier une phrase</h3>
+
+        <p class="exercise-instruction">
+            Sélectionnez toute la phrase ci-dessous, copiez-la puis collez-la
             dans la zone prévue.
         </p>
 
-        <div class="text-to-copy">
-
+        <div class="source-text">
             Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS.
-
         </div>
 
-        <textarea
-            id="answer1"
-            placeholder="Collez votre texte ici..."
-        ></textarea>
+        <textarea id="text1" placeholder="Collez la phrase ici..."></textarea>
 
-        <button
-            class="check-button"
-            onclick="checkSingle(
-                'Bonjour, je découvre l\\'informatique avec le Centre Multimédia du CCAS.',
-                'answer1',
-                'result1',
-                1
-            )"
-        >
-            Vérifier ma réponse
+        <button class="check-button" onclick="checkTextExercise(1)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result1"
-        ></div>
+        <div id="result1" class="result"></div>
 
-    </section>
+    </div>
 
 
+    <!-- EXERCICE 2 -->
 
-    <!-- =====================================
-         EXERCICE 2
-    ====================================== -->
+    <div class="exercise">
 
-    <section class="exercise">
+        <h3>Exercice 2 — Copier seulement une partie</h3>
 
-        <div class="exercise-number">
-            Exercice 2
-        </div>
-
-        <h2>
-            Ne copiez qu'une partie de la phrase
-        </h2>
-
-        <p>
-            Sélectionnez uniquement les mots :
-            <strong>prendre mon temps</strong>.
+        <p class="exercise-instruction">
+            Dans la phrase ci-dessous, copiez uniquement les mots :
+            <strong>prendre mon temps</strong>
         </p>
 
-        <div class="text-to-copy">
-
-            Je peux apprendre à utiliser un ordinateur en prenant mon temps et en pratiquant régulièrement.
-
+        <div class="source-text">
+            Pour apprendre l'informatique, je peux prendre mon temps et pratiquer régulièrement.
         </div>
 
-        <textarea
-            id="answer2"
-            placeholder="Collez uniquement les mots demandés..."
-        ></textarea>
+        <textarea id="text2" placeholder="Collez uniquement les mots demandés..."></textarea>
 
-        <button
-            class="check-button"
-            onclick="checkExpected(
-                'prendre mon temps',
-                'answer2',
-                'result2',
-                2
-            )"
-        >
-            Vérifier ma réponse
+        <button class="check-button" onclick="checkTextExercise(2)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result2"
-        ></div>
+        <div id="result2" class="result"></div>
 
-    </section>
+    </div>
 
 
+    <!-- EXERCICE 3 -->
 
-    <!-- =====================================
-         EXERCICE 3
-    ====================================== -->
+    <div class="exercise">
 
-    <section class="exercise">
+        <h3>Exercice 3 — Copier deux fois le même texte</h3>
 
-        <div class="exercise-number">
-            Exercice 3
-        </div>
-
-        <h2>
-            Copiez plusieurs fois le même texte
-        </h2>
-
-        <p>
-            Copiez la phrase une seule fois, puis collez-la
-            dans les deux zones.
+        <p class="exercise-instruction">
+            Copiez la phrase suivante et collez-la dans chacune des deux zones.
         </p>
 
-        <div class="text-to-copy">
-
-            Pensez à enregistrer régulièrement votre travail.
-
+        <div class="source-text">
+            Je peux utiliser le copier-coller pour gagner du temps.
         </div>
 
-        <div class="multiple-targets">
+        <textarea id="text3a" placeholder="Première zone..."></textarea>
 
-            <div class="target-box">
+        <br><br>
 
-                <label for="answer3a">
-                    Première zone
-                </label>
+        <textarea id="text3b" placeholder="Deuxième zone..."></textarea>
 
-                <textarea
-                    id="answer3a"
-                    placeholder="Collez ici..."
-                ></textarea>
-
-            </div>
-
-            <div class="target-box">
-
-                <label for="answer3b">
-                    Deuxième zone
-                </label>
-
-                <textarea
-                    id="answer3b"
-                    placeholder="Collez ici..."
-                ></textarea>
-
-            </div>
-
-        </div>
-
-        <button
-            class="check-button"
-            onclick="checkMultiple(
-                'Pensez à enregistrer régulièrement votre travail.',
-                ['answer3a', 'answer3b'],
-                'result3',
-                3
-            )"
-        >
-            Vérifier mes réponses
+        <button class="check-button" onclick="checkTextExercise(3)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result3"
-        ></div>
+        <div id="result3" class="result"></div>
 
-    </section>
+    </div>
 
 
+    <!-- EXERCICE 4 -->
 
-    <!-- =====================================
-         EXERCICE 4
-    ====================================== -->
+    <div class="exercise">
 
-    <section class="exercise">
+        <h3>Exercice 4 — Copier un seul mot</h3>
 
-        <div class="exercise-number">
-            Exercice 4
-        </div>
-
-        <h2>
-            Copiez seulement un mot
-        </h2>
-
-        <p>
-            Sélectionnez uniquement le mot
-            <strong>ordinateur</strong>.
+        <p class="exercise-instruction">
+            Copiez uniquement le mot <strong>ordinateur</strong>.
         </p>
 
-        <div class="text-to-copy">
-
-            Mon ordinateur me permet de consulter mes documents.
-
+        <div class="source-text">
+            J'apprends à utiliser mon ordinateur tranquillement.
         </div>
 
-        <div class="exercise-info">
+        <textarea id="text4" placeholder="Copiez le mot demandé..."></textarea>
 
-            <strong>Objectif :</strong>
-            apprendre à sélectionner précisément une partie d'un texte.
-
-        </div>
-
-        <textarea
-            id="answer4"
-            placeholder="Collez uniquement le mot demandé..."
-        ></textarea>
-
-        <button
-            class="check-button"
-            onclick="checkExpected(
-                'ordinateur',
-                'answer4',
-                'result4',
-                4
-            )"
-        >
-            Vérifier ma réponse
+        <button class="check-button" onclick="checkTextExercise(4)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result4"
-        ></div>
+        <div id="result4" class="result"></div>
 
-    </section>
+    </div>
 
 
+    <!-- EXERCICE 5 -->
 
-    <!-- =====================================
-         EXERCICE 5
-    ====================================== -->
+    <div class="exercise">
 
-    <section class="exercise">
+        <h3>Exercice 5 — Assembler une phrase</h3>
 
-        <div class="exercise-number">
-            Exercice 5
-        </div>
-
-        <h2>
-            Assemblez une phrase
-        </h2>
-
-        <p>
-            Copiez les trois morceaux dans l'ordre
-            et assemblez-les dans la zone ci-dessous.
+        <p class="exercise-instruction">
+            Copiez les trois morceaux de texte ci-dessous et assemblez-les
+            dans la zone de réponse pour former la phrase complète.
         </p>
 
-        <div class="small-text">
+        <div class="source-text">
+
             <strong>Morceau 1 :</strong>
-            Aujourd'hui,
-        </div>
+            Je progresse
 
-        <div class="small-text">
+            <br><br>
+
             <strong>Morceau 2 :</strong>
-            je pratique
-        </div>
+            en pratiquant
 
-        <div class="small-text">
+            <br><br>
+
             <strong>Morceau 3 :</strong>
-            le copier-coller.
-        </div>
-
-        <div class="exercise-info">
-
-            <strong>Phrase à reconstituer :</strong><br>
-
-            Aujourd'hui, je pratique le copier-coller.
+            régulièrement.
 
         </div>
 
-        <textarea
-            id="answer5"
-            placeholder="Assemblez ici la phrase..."
-        ></textarea>
+        <textarea id="text5" placeholder="Assemblez les trois morceaux ici..."></textarea>
 
-        <button
-            class="check-button"
-            onclick="checkExpected(
-                'Aujourd’hui, je pratique le copier-coller.',
-                'answer5',
-                'result5',
-                5
-            )"
-        >
-            Vérifier ma réponse
+        <button class="check-button" onclick="checkTextExercise(5)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result5"
-        ></div>
+        <div id="result5" class="result"></div>
 
-    </section>
+    </div>
 
 
+    <!-- EXERCICE 6 -->
 
-    <!-- =====================================
-         EXERCICE 6
-    ====================================== -->
+    <div class="exercise">
 
-    <section class="exercise final-exercise">
+        <h3>Exercice 6 — Défi texte</h3>
 
-        <div class="final-badge">
-            Mission finale texte
-        </div>
-
-        <div class="exercise-number">
-            Exercice 6
-        </div>
-
-        <h2>
-            Le défi du copier-coller
-        </h2>
-
-        <p>
-            Sélectionnez la phrase, copiez-la,
-            puis collez-la dans les deux zones.
+        <p class="exercise-instruction">
+            Copiez la phrase suivante dans les deux zones.
+            Essayez de réaliser l'exercice avec une méthode différente
+            de celle que vous avez utilisée précédemment.
         </p>
 
-        <div class="text-to-copy">
-
-            Le numérique devient plus facile avec de la pratique.
-
+        <div class="source-text">
+            Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.
         </div>
 
-        <div class="multiple-targets">
+        <textarea id="text6a" placeholder="Première copie..."></textarea>
 
-            <div class="target-box">
+        <br><br>
 
-                <label for="answer6a">
-                    Zone 1
-                </label>
+        <textarea id="text6b" placeholder="Deuxième copie..."></textarea>
 
-                <textarea
-                    id="answer6a"
-                    placeholder="Premier collage..."
-                ></textarea>
-
-            </div>
-
-            <div class="target-box">
-
-                <label for="answer6b">
-                    Zone 2
-                </label>
-
-                <textarea
-                    id="answer6b"
-                    placeholder="Deuxième collage..."
-                ></textarea>
-
-            </div>
-
-        </div>
-
-        <button
-            class="check-button"
-            onclick="checkMultiple(
-                'Le numérique devient plus facile avec de la pratique.',
-                ['answer6a', 'answer6b'],
-                'result6',
-                6
-            )"
-        >
-            Vérifier la mission finale
+        <button class="check-button" onclick="checkTextExercise(6)">
+            Vérifier
         </button>
 
-        <div
-            class="result"
-            id="result6"
-        ></div>
+        <div id="result6" class="result"></div>
 
-    </section>
+    </div>
 
 
-
-    <!-- =====================================
+    <!-- =========================
          PARTIE 2
-    ====================================== -->
+    ========================== -->
 
-    <div class="section-title">
+    <h2 class="section-title">
+        Partie 2 — Copier-coller des fichiers
+    </h2>
 
-        <h2>
-            Partie 2 — Copier-coller des fichiers
-        </h2>
+
+    <div class="intro">
 
         <p>
-            Chaque mission possède maintenant sa propre interface.
+            Maintenant, nous allons passer à une situation très courante :
+            <strong>copier un fichier d'un dossier vers un autre dossier</strong>.
+        </p>
+
+        <p>
+            Ces explorateurs sont des simulations. Aucun véritable fichier de votre
+            ordinateur ne sera modifié.
+        </p>
+
+        <p>
+            Pour les missions suivantes, vous pouvez utiliser
+            <strong>Ctrl+C / Ctrl+V</strong> ou
+            <strong>clic droit → Copier / Coller</strong>.
         </p>
 
     </div>
 
 
-
-    <!-- =====================================
+    <!-- =========================
          MISSION 7
-    ====================================== -->
+    ========================== -->
 
-    <section class="exercise">
+    <div class="file-mission">
 
-        <div class="exercise-number">
-            Mission 7
-        </div>
-
-        <h2>
-            Copier une photo
-        </h2>
+        <h3>Mission 7 — Copier une photo dans Images</h3>
 
         <p>
-            Votre première mission consiste à copier
-            <strong>Photo vacances.jpg</strong>
-            du dossier <strong>Téléchargements</strong>
-            vers le dossier <strong>Images</strong>.
+            Vous venez de télécharger une photo.
+            Elle se trouve dans le dossier <strong>Téléchargements</strong>.
         </p>
 
-        <div class="exercise-info">
+        <p>
+            Copiez-la dans le dossier <strong>Images</strong>.
+        </p>
 
-            <strong>Étape 1 :</strong>
-            sélectionnez la photo.<br>
+        <div class="file-tip">
 
-            <strong>Étape 2 :</strong>
-            cliquez sur « Copier ». <br>
+            <strong>À vous de choisir :</strong><br>
 
-            <strong>Étape 3 :</strong>
-            cliquez sur « Coller » dans Images.
+            Vous pouvez sélectionner la photo puis utiliser
+            <strong>Ctrl + C</strong> et <strong>Ctrl + V</strong>,
+            ou utiliser le <strong>clic droit</strong> pour choisir
+            Copier puis Coller.
 
         </div>
 
 
-        <div class="simple-transfer">
+        <div class="simple-explorer">
 
+            <div class="simple-folder">
 
-            <div class="transfer-folder">
-
-                <h3>
+                <div class="simple-folder-header">
                     Téléchargements
-                </h3>
+                </div>
 
-                <div
-                    class="single-file"
-                    id="mission7File"
-                    onclick="selectMission7File()"
-                >
+                <div class="simple-folder-body">
 
-                    <div class="file-icon">
-                        🖼️
+                    <div
+                        class="simple-file"
+                        id="mission7-file"
+                        data-mission="7"
+                        data-file="Photo vacances.jpg"
+                    >
+
+                        <span class="file-icon">🖼️</span>
+
+                        <span>
+                            Photo vacances.jpg
+                        </span>
+
                     </div>
-
-                    Photo vacances.jpg
 
                 </div>
 
             </div>
 
 
-            <div class="transfer-arrow">
-                →
-            </div>
+            <div class="simple-folder">
 
-
-            <div class="transfer-folder">
-
-                <h3>
+                <div class="simple-folder-header">
                     Images
-                </h3>
-
-                <div
-                    id="mission7Destination"
-                    style="color:#7b8798;"
-                >
-                    Aucun fichier
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="file-actions"
-             style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
-
-            <button
-                class="file-action"
-                onclick="mission7Copy()"
-                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-            >
-                Copier
-            </button>
-
-            <button
-                class="file-action"
-                onclick="mission7Paste()"
-                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-            >
-                Coller
-            </button>
-
-        </div>
-
-
-        <div
-            class="result"
-            id="result7"
-        ></div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         MISSION 8
-    ====================================== -->
-
-    <section class="exercise">
-
-        <div class="exercise-number">
-            Mission 8
-        </div>
-
-        <h2>
-            Copier un document dans un autre dossier
-        </h2>
-
-        <p>
-            Vous devez copier
-            <strong>Document administratif.pdf</strong>
-            de <strong>Téléchargements</strong>
-            vers <strong>Documents</strong>.
-        </p>
-
-        <div class="exercise-info">
-
-            Cette fois, plusieurs fichiers sont présents.
-            À vous de repérer le bon document.
-
-        </div>
-
-
-        <div class="two-column-explorer">
-
-
-            <div class="folder-panel">
-
-                <div class="folder-panel-header">
-                    Téléchargements
-                </div>
-
-                <div class="folder-panel-content">
-
-                    <div
-                        class="file-row"
-                        id="mission8Doc"
-                        onclick="selectMission8File()"
-                    >
-
-                        <div class="file-row-icon">
-                            📄
-                        </div>
-
-                        <div class="file-row-name">
-                            Document administratif.pdf
-                        </div>
-
-                    </div>
-
-
-                    <div class="file-row">
-
-                        <div class="file-row-icon">
-                            🖼️
-                        </div>
-
-                        <div class="file-row-name">
-                            Photo.jpg
-                        </div>
-
-                    </div>
-
-
-                    <div class="file-row">
-
-                        <div class="file-row-icon">
-                            📝
-                        </div>
-
-                        <div class="file-row-name">
-                            Recette.txt
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="folder-panel">
-
-                <div class="folder-panel-header">
-                    Documents
                 </div>
 
                 <div
-                    class="folder-panel-content"
-                    id="mission8Destination"
+                    class="simple-folder-body simple-destination"
+                    id="mission7-destination"
+                    data-mission="7"
                 >
-
-                    <div style="color:#7b8798;">
-                        Le dossier est vide pour cette mission.
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="file-actions"
-             style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
-
-            <button
-                class="file-action"
-                onclick="mission8Copy()"
-                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-            >
-                Copier
-            </button>
-
-            <button
-                class="file-action"
-                onclick="mission8Paste()"
-                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-            >
-                Coller
-            </button>
-
-        </div>
-
-
-        <div
-            class="result"
-            id="result8"
-        ></div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         MISSION 9
-    ====================================== -->
-
-    <section class="exercise">
-
-        <div class="exercise-number">
-            Mission 9
-        </div>
-
-        <h2>
-            Copier plusieurs fichiers
-        </h2>
-
-        <p>
-            Sélectionnez les deux fichiers suivants :
-        </p>
-
-        <ul>
-
-            <li>
-                <strong>Recette.txt</strong>
-            </li>
-
-            <li>
-                <strong>Photo famille.jpg</strong>
-            </li>
-
-        </ul>
-
-        <p>
-            Copiez-les ensuite dans le dossier
-            <strong>Sauvegarde</strong>.
-        </p>
-
-        <div class="selection-help">
-
-            <strong>Astuce :</strong>
-            pour sélectionner plusieurs fichiers,
-            maintenez <strong>Ctrl</strong> enfoncé
-            pendant que vous cliquez sur les fichiers.
-
-        </div>
-
-
-        <div class="mini-explorer">
-
-            <div class="explorer-titlebar">
-                Explorateur de fichiers
-            </div>
-
-            <div class="explorer-path">
-                Ordinateur / Téléchargements
-            </div>
-
-            <div class="explorer-content">
-
-                <div class="explorer-folder-title">
-                    Téléchargements
-                </div>
-
-
-                <div class="file-area">
-
-                    <div
-                        class="file-card"
-                        id="mission9Recette"
-                        onclick="toggleMission9File('recette')"
-                    >
-
-                        <div class="file-icon">
-                            📝
-                        </div>
-
-                        <div class="file-name">
-                            Recette.txt
-                        </div>
-
-                        <div class="file-size">
-                            12 Ko
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="file-card"
-                        id="mission9Photo"
-                        onclick="toggleMission9File('photo')"
-                    >
-
-                        <div class="file-icon">
-                            🖼️
-                        </div>
-
-                        <div class="file-name">
-                            Photo famille.jpg
-                        </div>
-
-                        <div class="file-size">
-                            3,1 Mo
-                        </div>
-
-                    </div>
-
-
-                    <div class="file-card">
-
-                        <div class="file-icon">
-                            📄
-                        </div>
-
-                        <div class="file-name">
-                            Courrier.pdf
-                        </div>
-
-                        <div class="file-size">
-                            120 Ko
-                        </div>
-
-                    </div>
-
-
-                    <div class="file-card">
-
-                        <div class="file-icon">
-                            🖼️
-                        </div>
-
-                        <div class="file-name">
-                            Jardin.jpg
-                        </div>
-
-                        <div class="file-size">
-                            2,2 Mo
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="selection-counter">
-
-                    Fichiers sélectionnés :
-                    <span id="mission9Counter">0</span>
-
-                </div>
-
-
-                <div class="file-actions"
-                     style="display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;">
-
-                    <button
-                        class="file-action"
-                        onclick="mission9Copy()"
-                        style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-                    >
-                        Copier les fichiers
-                    </button>
-
-                    <button
-                        class="file-action"
-                        onclick="mission9Paste()"
-                        style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
-                    >
-                        Coller dans Sauvegarde
-                    </button>
-
-                </div>
-
-
-                <div class="clipboard">
 
                     <strong>
-                        Presse-papiers :
+                        Déposez la copie dans ce dossier
                     </strong>
 
-                    <span id="mission9Clipboard">
-                        Aucun fichier copié.
+                    <span>
+                        Cliquez ici pour sélectionner cette destination.
                     </span>
 
-                </div>
-
-
-                <div
-                    id="mission9Destination"
-                    style="
-                        margin-top:18px;
-                        padding:15px;
-                        background:#f1f5fa;
-                        border-radius:9px;
-                    "
-                >
-
-                    <strong>
-                        Sauvegarde
-                    </strong>
-
-                    <div
-                        id="mission9SavedFiles"
-                        style="margin-top:8px; color:#7b8798;"
-                    >
-                        Aucun fichier.
-
-                    </div>
+                    <div id="mission7-pasted"></div>
 
                 </div>
 
@@ -1819,217 +1293,144 @@
 
         </div>
 
-
-        <div
-            class="result"
-            id="result9"
-        ></div>
-
-    </section>
-
-
-
-    <!-- =====================================
-         MISSION 10
-    ====================================== -->
-
-    <section class="exercise final-exercise">
-
-        <div class="final-badge">
-            Grand défi
+        <div class="clipboard-status" id="clipboard7">
+            <strong>Presse-papiers :</strong> vide
         </div>
 
-        <div class="exercise-number">
-            Mission 10
-        </div>
+        <div id="fileResult7" class="result"></div>
 
-        <h2>
-            Utilisez Ctrl + C et Ctrl + V
-        </h2>
+    </div>
+
+
+    <!-- =========================
+         MISSION 8
+    ========================== -->
+
+    <div class="file-mission">
+
+        <h3>Mission 8 — Trouver le bon fichier</h3>
 
         <p>
-            Pour cette dernière mission,
-            les boutons ne vous donnent plus directement la solution.
+            Cette fois, plusieurs fichiers se trouvent dans le dossier
+            <strong>Téléchargements</strong>.
         </p>
 
-        <div class="final-step">
+        <p>
+            Vous devez trouver le fichier
+            <strong>Document administratif.pdf</strong>
+            et le copier dans <strong>Documents</strong>.
+        </p>
 
-            <strong>Objectif</strong>
+        <div class="file-tip">
 
-            <p>
-                Copiez <strong>Facture.pdf</strong>
-                du dossier <strong>Documents</strong>
-                vers <strong>Sauvegarde</strong>.
-            </p>
+            <strong>Petit défi :</strong><br>
 
-        </div>
-
-        <div class="final-step">
-
-            <strong>Étape 1</strong>
-
-            <p>
-                Cliquez sur Facture.pdf pour le sélectionner.
-            </p>
-
-        </div>
-
-        <div class="final-step">
-
-            <strong>Étape 2</strong>
-
-            <p>
-                Utilisez <strong>Ctrl + C</strong>.
-            </p>
-
-        </div>
-
-        <div class="final-step">
-
-            <strong>Étape 3</strong>
-
-            <p>
-                Cliquez sur Sauvegarde.
-            </p>
-
-        </div>
-
-        <div class="final-step">
-
-            <strong>Étape 4</strong>
-
-            <p>
-                Utilisez <strong>Ctrl + V</strong>.
-            </p>
+            Ne copiez pas les autres fichiers.
+            Vous pouvez essayer le clavier puis refaire la mission
+            avec le clic droit si vous le souhaitez.
 
         </div>
 
 
-        <div class="mini-explorer">
+        <div class="explorer">
 
             <div class="explorer-titlebar">
                 Explorateur de fichiers
             </div>
 
-            <div class="explorer-path"
-                 id="mission10Path">
-
-                Ordinateur / Documents
-
+            <div class="explorer-toolbar">
+                Accueil &gt; Téléchargements
             </div>
 
+            <div class="explorer-body">
 
-            <div class="explorer-content">
+                <div class="explorer-sidebar">
 
+                    <div class="folder active">
+                        Téléchargements
+                    </div>
 
-                <div
-                    id="mission10Documents"
-                >
-
-                    <div class="explorer-folder-title">
+                    <div class="folder">
                         Documents
                     </div>
 
+                    <div class="folder">
+                        Images
+                    </div>
 
-                    <div class="file-area">
+                    <div class="folder">
+                        Musique
+                    </div>
+
+                </div>
+
+
+                <div class="explorer-content">
+
+                    <div class="file-list">
 
                         <div
-                            class="file-card"
-                            id="mission10Facture"
-                            onclick="selectMission10Facture()"
+                            class="file-item"
+                            data-mission="8"
+                            data-file="Document administratif.pdf"
                         >
 
-                            <div class="file-icon">
-                                📄
-                            </div>
+                            <span class="file-icon">📄</span>
 
-                            <div class="file-name">
-                                Facture.pdf
-                            </div>
-
-                            <div class="file-size">
-                                320 Ko
-                            </div>
+                            <span class="file-name">
+                                Document administratif.pdf
+                            </span>
 
                         </div>
 
 
-                        <div class="file-card">
+                        <div
+                            class="file-item"
+                            data-mission="8"
+                            data-file="Photo.jpg"
+                        >
 
-                            <div class="file-icon">
-                                📄
-                            </div>
+                            <span class="file-icon">🖼️</span>
 
-                            <div class="file-name">
-                                Courrier CCAS.docx
-                            </div>
-
-                            <div class="file-size">
-                                46 Ko
-                            </div>
+                            <span class="file-name">
+                                Photo.jpg
+                            </span>
 
                         </div>
 
-                    </div>
 
-                </div>
+                        <div
+                            class="file-item"
+                            data-mission="8"
+                            data-file="Recette.txt"
+                        >
 
+                            <span class="file-icon">📝</span>
 
-                <div
-                    id="mission10Backup"
-                    style="display:none;"
-                >
+                            <span class="file-name">
+                                Recette.txt
+                            </span>
 
-                    <div class="explorer-folder-title">
-                        Sauvegarde
+                        </div>
+
                     </div>
 
 
                     <div
-                        id="mission10Saved"
-                        class="file-area"
+                        class="destination-zone"
+                        data-mission="8"
+                        id="mission8-destination"
                     >
 
-                        <div style="color:#7b8798;">
-                            Le dossier est vide.
-                        </div>
+                        <strong>
+                            Dossier Documents
+                        </strong>
+
+                        Cliquez ici pour sélectionner la destination.
+
+                        <div id="mission8-pasted"></div>
 
                     </div>
-
-                </div>
-
-
-                <div class="file-actions"
-                     style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
-
-                    <button
-                        class="file-action secondary"
-                        onclick="openMission10Documents()"
-                        style="border:none; background:#e8edf4; color:#30445f; padding:11px 16px; border-radius:7px; cursor:pointer;"
-                    >
-                        Documents
-                    </button>
-
-                    <button
-                        class="file-action secondary"
-                        onclick="openMission10Backup()"
-                        style="border:none; background:#e8edf4; color:#30445f; padding:11px 16px; border-radius:7px; cursor:pointer;"
-                    >
-                        Sauvegarde
-                    </button>
-
-                </div>
-
-
-                <div class="clipboard">
-
-                    <strong>
-                        Presse-papiers :
-                    </strong>
-
-                    <span id="mission10Clipboard">
-                        Aucun fichier copié.
-                    </span>
 
                 </div>
 
@@ -2038,852 +1439,1597 @@
         </div>
 
 
-        <div
-            class="result"
-            id="result10"
-        ></div>
+        <div class="clipboard-status" id="clipboard8">
+            <strong>Presse-papiers :</strong> vide
+        </div>
 
-    </section>
+        <div id="fileResult8" class="result"></div>
+
+    </div>
 
 
+    <!-- =========================
+         MISSION 9
+    ========================== -->
 
-    <!-- =====================================
-         CONSEIL
-    ====================================== -->
+    <div class="file-mission">
 
-    <section class="tip">
-
-        <h2>
-            Un petit conseil
-        </h2>
+        <h3>Mission 9 — Copier plusieurs fichiers</h3>
 
         <p>
-            Le principe est toujours le même :
-            <strong>sélectionner → copier → choisir l'endroit → coller</strong>.
+            Vous devez maintenant sélectionner <strong>deux fichiers</strong>
+            en même temps.
         </p>
 
         <p>
-            Lorsque vous copiez un fichier,
-            l'original reste à son emplacement.
-            Une copie est créée dans le nouveau dossier.
+            Copiez <strong>Recette.txt</strong> et
+            <strong>Photo famille.jpg</strong>
+            dans le dossier <strong>Sauvegarde</strong>.
+        </p>
+
+
+        <div class="multi-select-help">
+
+            <strong>Pour sélectionner plusieurs fichiers :</strong><br>
+
+            Cliquez sur le premier fichier.
+            Maintenez ensuite la touche <strong>Ctrl</strong>
+            enfoncée et cliquez sur le deuxième fichier.
+
+            <br><br>
+
+            Une fois les deux fichiers sélectionnés,
+            vous pouvez utiliser <strong>Ctrl+C</strong>,
+            ou faire un <strong>clic droit → Copier</strong>.
+
+        </div>
+
+
+        <div class="explorer">
+
+            <div class="explorer-titlebar">
+                Téléchargements
+            </div>
+
+            <div class="explorer-toolbar">
+                Sélection de plusieurs fichiers
+            </div>
+
+            <div class="explorer-body">
+
+                <div class="explorer-sidebar">
+
+                    <div class="folder active">
+                        Téléchargements
+                    </div>
+
+                    <div class="folder">
+                        Documents
+                    </div>
+
+                    <div class="folder">
+                        Sauvegarde
+                    </div>
+
+                </div>
+
+
+                <div class="explorer-content">
+
+                    <div class="multi-files">
+
+                        <div
+                            class="multi-file"
+                            data-mission="9"
+                            data-file="Recette.txt"
+                        >
+
+                            <span class="file-icon">📝</span>
+
+                            <span>
+                                Recette.txt
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="multi-file"
+                            data-mission="9"
+                            data-file="Photo famille.jpg"
+                        >
+
+                            <span class="file-icon">🖼️</span>
+
+                            <span>
+                                Photo famille.jpg
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="multi-file"
+                            data-mission="9"
+                            data-file="Courrier.pdf"
+                        >
+
+                            <span class="file-icon">📄</span>
+
+                            <span>
+                                Courrier.pdf
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="multi-file"
+                            data-mission="9"
+                            data-file="Vacances.jpg"
+                        >
+
+                            <span class="file-icon">🖼️</span>
+
+                            <span>
+                                Vacances.jpg
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="destination-zone"
+                        id="mission9-destination"
+                        data-mission="9"
+                    >
+
+                        <strong>
+                            Dossier Sauvegarde
+                        </strong>
+
+                        Cliquez ici pour sélectionner la destination.
+
+                        <div id="mission9-pasted"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="clipboard-status" id="clipboard9">
+            <strong>Presse-papiers :</strong> vide
+        </div>
+
+        <div id="fileResult9" class="result"></div>
+
+    </div>
+
+
+    <!-- =========================
+         MISSION 10
+    ========================== -->
+
+    <div class="file-mission">
+
+        <h3>Mission 10 — Le défi final</h3>
+
+        <p>
+            Voici une situation plus proche d'un véritable explorateur de fichiers.
         </p>
 
         <p>
-            Avec l'habitude,
-            <strong>Ctrl + C</strong> et <strong>Ctrl + V</strong>
-            permettent de travailler beaucoup plus rapidement.
+            Le fichier <strong>Facture.pdf</strong> se trouve dans
+            <strong>Documents</strong>.
+            Vous devez le copier dans <strong>Sauvegarde</strong>.
         </p>
 
-    </section>
+        <div class="file-tip">
 
+            <strong>Défi :</strong><br>
+
+            Il n'y a volontairement aucun bouton « Copier » ou « Coller ».
+            À vous de choisir entre le clavier et le clic droit.
+
+            <br><br>
+
+            Si vous voulez vous entraîner au clavier :
+            <strong>Ctrl+C puis Ctrl+V</strong>.
+
+            <br><br>
+
+            Si vous voulez vous entraîner à la souris :
+            <strong>clic droit → Copier</strong>,
+            puis dans Sauvegarde :
+            <strong>clic droit → Coller</strong>.
+
+        </div>
+
+
+        <div class="final-explorer">
+
+            <div class="final-topbar">
+                Explorateur de fichiers — Ce PC
+            </div>
+
+
+            <div class="final-navigation">
+
+                <button
+                    class="final-folder-button active"
+                    id="finalDocuments"
+                    onclick="openFinalFolder('documents')"
+                >
+                    Documents
+                </button>
+
+                <button
+                    class="final-folder-button"
+                    id="finalSauvegarde"
+                    onclick="openFinalFolder('sauvegarde')"
+                >
+                    Sauvegarde
+                </button>
+
+            </div>
+
+
+            <div
+                class="final-content"
+                id="finalContent"
+            >
+
+                <div
+                    class="final-file"
+                    id="mission10-file"
+                    data-mission="10"
+                    data-file="Facture.pdf"
+                >
+
+                    <span class="file-icon">📄</span>
+
+                    <span>
+                        Facture.pdf
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="final-destination"
+                    id="mission10-destination"
+                    data-mission="10"
+                >
+
+                    <strong>
+                        Zone de destination
+                    </strong>
+
+                    Pour coller le fichier dans Sauvegarde,
+                    ouvrez le dossier Sauvegarde ci-dessus.
+
+                    <div id="mission10-pasted"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="clipboard-status" id="clipboard10">
+            <strong>Presse-papiers :</strong> vide
+        </div>
+
+        <div id="fileResult10" class="result"></div>
+
+    </div>
+
+
+    <!-- =========================
+         CONSEIL FINAL
+    ========================== -->
+
+    <div class="final-tip">
+
+        <h2>Bravo !</h2>
+
+        <p>
+            Si vous avez réussi les différentes missions, vous savez maintenant
+            utiliser le copier-coller sur du texte et sur des fichiers.
+        </p>
+
+        <p>
+            Le plus important est de savoir qu'il existe plusieurs façons de faire.
+            Vous pouvez utiliser le clavier, la souris, ou choisir la méthode
+            qui vous semble la plus confortable selon la situation.
+        </p>
+
+        <p>
+            N'hésitez pas à refaire certaines missions avec l'autre méthode :
+            c'est justement en pratiquant que les gestes deviennent naturels.
+        </p>
+
+    </div>
 
 </main>
 
 
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
 <footer>
 
-    <div class="footer-container">
+    <p>
+        Centre Multimédia du CCAS
+    </p>
 
-        <div>
-
-            <div class="footer-title">
-                Centre Multimédia du CCAS
-            </div>
-
-            <div class="footer-text">
-                Apprendre • Découvrir • Progresser
-            </div>
-
-        </div>
-
-        <div class="footer-text">
-            © 2026 Centre Multimédia du CCAS
-        </div>
-
-    </div>
+    <p>
+        Un espace pour apprendre, pratiquer et progresser.
+    </p>
 
 </footer>
 
 
+<!-- =========================
+     MENU CLIC DROIT
+========================= -->
+
+<div
+    id="contextMenu"
+    class="context-menu"
+    hidden
+></div>
+
 
 <script>
 
-
-/* =========================================================
+/* =========================================
    PROGRESSION
-========================================================= */
+========================================= */
 
-let completedExercises = new Set();
+const completedMissions = new Set();
 
-const totalExercises = 10;
+function completeMission(number) {
 
+    if (completedMissions.has(number)) {
+        return;
+    }
 
-function markCompleted(number) {
+    completedMissions.add(number);
 
-    completedExercises.add(number);
+    const count = completedMissions.size;
 
-    const completed =
-        completedExercises.size;
-
-    const percentage =
-        (completed / totalExercises) * 100;
+    document.getElementById("progressText").textContent =
+        count + " / 10 missions réussies";
 
     document.getElementById("progressFill").style.width =
-        percentage + "%";
-
-    document.getElementById("progressText").innerText =
-        completed +
-        " exercice" +
-        (completed > 1 ? "s" : "") +
-        " réussi" +
-        (completed > 1 ? "s" : "") +
-        " sur " +
-        totalExercises;
-
+        (count / 10 * 100) + "%";
 }
 
 
-/* =========================================================
-   NORMALISATION TEXTE
-========================================================= */
+/* =========================================
+   EXERCICES TEXTE
+========================================= */
 
 function normalizeText(text) {
 
     return text
         .trim()
         .replace(/\s+/g, " ")
-        .replace(/[’]/g, "'");
+        .toLowerCase();
 
 }
 
 
-/* =========================================================
-   EXERCICE TEXTE SIMPLE
-========================================================= */
+function checkTextExercise(number) {
 
-function checkSingle(
-    expected,
-    answerId,
-    resultId,
-    number
-) {
+    let correct = false;
 
-    const answer =
-        normalizeText(
-            document.getElementById(answerId).value
-        );
-
-    const expectedText =
-        normalizeText(expected);
-
-    const result =
-        document.getElementById(resultId);
-
-    result.style.display = "block";
+    const result = document.getElementById("result" + number);
 
 
-    if (answer === expectedText) {
-
-        result.className =
-            "result success";
-
-        result.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Le texte a été correctement copié et collé.";
-
-        markCompleted(number);
-
-    }
-
-    else {
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Pas encore tout à fait.</strong> " +
-            "Vérifiez que vous avez bien sélectionné " +
-            "tout le texte.";
-
-    }
-
-}
-
-
-/* =========================================================
-   EXERCICE TEXTE PRÉCIS
-========================================================= */
-
-function checkExpected(
-    expected,
-    answerId,
-    resultId,
-    number
-) {
-
-    const answer =
-        normalizeText(
-            document.getElementById(answerId).value
-        );
-
-    const expectedText =
-        normalizeText(expected);
-
-    const result =
-        document.getElementById(resultId);
-
-    result.style.display = "block";
-
-
-    if (answer === expectedText) {
-
-        result.className =
-            "result success";
-
-        result.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Vous avez correctement sélectionné " +
-            "la partie demandée.";
-
-        markCompleted(number);
-
-    }
-
-    else {
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Ce n'est pas encore ça.</strong> " +
-            "Relisez bien la consigne.";
-
-    }
-
-}
-
-
-/* =========================================================
-   PLUSIEURS ZONES
-========================================================= */
-
-function checkMultiple(
-    expected,
-    answerIds,
-    resultId,
-    number
-) {
-
-    const expectedText =
-        normalizeText(expected);
-
-    const result =
-        document.getElementById(resultId);
-
-    let allCorrect = true;
-
-
-    answerIds.forEach(function(id) {
+    if (number === 1) {
 
         const answer =
+            document.getElementById("text1").value;
+
+        correct =
+            normalizeText(answer) ===
             normalizeText(
-                document.getElementById(id).value
+                "Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS."
             );
 
-        if (answer !== expectedText) {
+    }
 
-            allCorrect = false;
+
+    if (number === 2) {
+
+        const answer =
+            document.getElementById("text2").value;
+
+        correct =
+            normalizeText(answer) ===
+            "prendre mon temps";
+
+    }
+
+
+    if (number === 3) {
+
+        const answer1 =
+            document.getElementById("text3a").value;
+
+        const answer2 =
+            document.getElementById("text3b").value;
+
+        const expected =
+            "Je peux utiliser le copier-coller pour gagner du temps.";
+
+        correct =
+            normalizeText(answer1) === normalizeText(expected) &&
+            normalizeText(answer2) === normalizeText(expected);
+
+    }
+
+
+    if (number === 4) {
+
+        const answer =
+            document.getElementById("text4").value;
+
+        correct =
+            normalizeText(answer) === "ordinateur";
+
+    }
+
+
+    if (number === 5) {
+
+        const answer =
+            document.getElementById("text5").value;
+
+        correct =
+            normalizeText(answer) ===
+            "je progresse en pratiquant régulièrement.";
+
+    }
+
+
+    if (number === 6) {
+
+        const answer1 =
+            document.getElementById("text6a").value;
+
+        const answer2 =
+            document.getElementById("text6b").value;
+
+        const expected =
+            "Apprendre l'informatique devient plus facile lorsque je pratique régulièrement.";
+
+        correct =
+            normalizeText(answer1) === normalizeText(expected) &&
+            normalizeText(answer2) === normalizeText(expected);
+
+    }
+
+
+    if (correct) {
+
+        result.textContent =
+            "Bravo ! Exercice réussi.";
+
+        result.className =
+            "result success";
+
+        completeMission(number);
+
+    } else {
+
+        result.textContent =
+            "Ce n'est pas encore correct. Vérifiez votre copier-coller.";
+
+        result.className =
+            "result error";
+
+    }
+
+}
+
+
+/* =========================================
+   ÉTAT DES MISSIONS FICHIERS
+========================================= */
+
+const missionStates = {
+
+    7: {
+        selected: [],
+        clipboard: [],
+        destinationActive: false
+    },
+
+    8: {
+        selected: [],
+        clipboard: [],
+        destinationActive: false
+    },
+
+    9: {
+        selected: [],
+        clipboard: [],
+        destinationActive: false
+    },
+
+    10: {
+        selected: [],
+        clipboard: [],
+        destinationActive: false
+    }
+
+};
+
+let activeMission = null;
+
+
+/* =========================================
+   UTILITAIRES
+========================================= */
+
+function getMissionState(mission) {
+
+    return missionStates[mission];
+
+}
+
+
+function updateClipboardDisplay(mission, method) {
+
+    const state =
+        getMissionState(mission);
+
+    const element =
+        document.getElementById("clipboard" + mission);
+
+    if (!element) {
+        return;
+    }
+
+    if (state.clipboard.length === 0) {
+
+        element.innerHTML =
+            "<strong>Presse-papiers :</strong> vide";
+
+        return;
+    }
+
+
+    element.innerHTML =
+        "<strong>Presse-papiers :</strong> " +
+        state.clipboard.join(", ") +
+        (method ? " — copie effectuée avec " + method : "");
+
+}
+
+
+function setFileResult(mission, message, success) {
+
+    const element =
+        document.getElementById("fileResult" + mission);
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent = message;
+
+    element.className =
+        success
+            ? "result success"
+            : "result error";
+
+}
+
+
+/* =========================================
+   SÉLECTION DES FICHIERS
+========================================= */
+
+document.querySelectorAll("[data-mission][data-file]").forEach(file => {
+
+    file.addEventListener("click", function(event) {
+
+        const mission =
+            Number(this.dataset.mission);
+
+        activeMission = mission;
+
+        const state =
+            getMissionState(mission);
+
+
+        /* Mission 9 : sélection multiple */
+
+        if (mission === 9) {
+
+            if (event.ctrlKey) {
+
+                const index =
+                    state.selected.indexOf(this.dataset.file);
+
+                if (index >= 0) {
+
+                    state.selected.splice(index, 1);
+
+                    this.classList.remove("selected");
+
+                } else {
+
+                    state.selected.push(this.dataset.file);
+
+                    this.classList.add("selected");
+
+                }
+
+            } else {
+
+                state.selected = [this.dataset.file];
+
+                document
+                    .querySelectorAll('[data-mission="9"][data-file]')
+                    .forEach(item => {
+                        item.classList.remove("selected");
+                    });
+
+                this.classList.add("selected");
+
+            }
+
+        } else {
+
+            state.selected = [this.dataset.file];
+
+            document
+                .querySelectorAll('[data-mission="' + mission + '"][data-file]')
+                .forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+            this.classList.add("selected");
 
         }
 
     });
 
+});
 
-    result.style.display = "block";
 
+/* =========================================
+   DESTINATIONS
+========================================= */
 
-    if (allCorrect) {
+document.querySelectorAll(".destination-zone, .simple-destination, .final-destination")
+.forEach(destination => {
 
-        result.className =
-            "result success";
+    destination.addEventListener("click", function() {
 
-        result.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Tous les collages sont corrects.";
+        const mission =
+            Number(this.dataset.mission);
 
-        markCompleted(number);
+        activeMission = mission;
 
-    }
+        const state =
+            getMissionState(mission);
 
-    else {
+        state.destinationActive = true;
 
-        result.className =
-            "result error";
 
-        result.innerHTML =
-            "<strong>Pas encore tout à fait.</strong> " +
-            "Vérifiez les deux zones.";
+        document
+            .querySelectorAll('[data-mission="' + mission + '"].destination-zone, [data-mission="' + mission + '"].simple-destination, [data-mission="' + mission + '"].final-destination')
+            .forEach(zone => {
 
-    }
+                zone.classList.remove("active");
 
-}
+            });
 
+        this.classList.add("active");
 
-/* =========================================================
-   MISSION 7
-========================================================= */
+    });
 
-let mission7Selected = false;
+});
 
-let mission7Copied = false;
 
-let mission7Pasted = false;
+/* =========================================
+   COPIER
+========================================= */
 
+function copyMission(mission, method) {
 
-function selectMission7File() {
+    const state =
+        getMissionState(mission);
 
-    mission7Selected = true;
+    if (state.selected.length === 0) {
 
-    document
-        .getElementById("mission7File")
-        .classList.add("selected");
-
-}
-
-
-function mission7Copy() {
-
-    const result =
-        document.getElementById("result7");
-
-
-    if (!mission7Selected) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Commencez par sélectionner le fichier.</strong>";
-
-        return;
-
-    }
-
-
-    mission7Copied = true;
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Fichier copié.</strong> " +
-        "Vous pouvez maintenant le coller dans Images.";
-
-}
-
-
-function mission7Paste() {
-
-    const result =
-        document.getElementById("result7");
-
-
-    if (!mission7Copied) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Le fichier n'est pas encore copié.</strong>";
-
-        return;
-
-    }
-
-
-    mission7Pasted = true;
-
-
-    document.getElementById(
-        "mission7Destination"
-    ).innerHTML =
-
-        '<div style="color:#17604f; font-weight:bold;">' +
-        '🖼️ Photo vacances.jpg' +
-        '</div>';
-
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Bravo !</strong> " +
-        "La photo a bien été copiée dans Images.";
-
-    markCompleted(7);
-
-}
-
-
-/* =========================================================
-   MISSION 8
-========================================================= */
-
-let mission8Selected = false;
-
-let mission8Copied = false;
-
-
-function selectMission8File() {
-
-    mission8Selected = true;
-
-    document
-        .getElementById("mission8Doc")
-        .classList.add("selected");
-
-}
-
-
-function mission8Copy() {
-
-    const result =
-        document.getElementById("result8");
-
-
-    if (!mission8Selected) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Choisissez d'abord le bon fichier.</strong>";
-
-        return;
-
-    }
-
-
-    mission8Copied = true;
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Document copié.</strong> " +
-        "Vous pouvez maintenant le coller dans Documents.";
-
-}
-
-
-function mission8Paste() {
-
-    const result =
-        document.getElementById("result8");
-
-
-    if (!mission8Copied) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Vous devez d'abord copier le document.</strong>";
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "mission8Destination"
-    ).innerHTML =
-
-        '<div class="file-row selected">' +
-
-            '<div class="file-row-icon">📄</div>' +
-
-            '<div class="file-row-name">' +
-                'Document administratif.pdf' +
-            '</div>' +
-
-        '</div>';
-
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Bravo !</strong> " +
-        "Le document a été correctement copié dans Documents.";
-
-    markCompleted(8);
-
-}
-
-
-/* =========================================================
-   MISSION 9
-========================================================= */
-
-let mission9Selected = [];
-
-let mission9Copied = false;
-
-
-function toggleMission9File(file) {
-
-    const index =
-        mission9Selected.indexOf(file);
-
-
-    if (index === -1) {
-
-        mission9Selected.push(file);
-
-    }
-
-    else {
-
-        mission9Selected.splice(index, 1);
-
-    }
-
-
-    document
-        .getElementById("mission9Recette")
-        .classList.toggle(
-            "selected",
-            mission9Selected.includes("recette")
+        setFileResult(
+            mission,
+            "Sélectionnez d'abord un fichier.",
+            false
         );
 
+        return;
 
-    document
-        .getElementById("mission9Photo")
-        .classList.toggle(
-            "selected",
-            mission9Selected.includes("photo")
+    }
+
+
+    state.clipboard =
+        [...state.selected];
+
+    updateClipboardDisplay(
+        mission,
+        method
+    );
+
+
+    setFileResult(
+        mission,
+        "Fichier copié dans le presse-papiers. Choisissez maintenant la destination.",
+        true
+    );
+
+}
+
+
+/* =========================================
+   COLLER
+========================================= */
+
+function pasteMission(mission, method) {
+
+    const state =
+        getMissionState(mission);
+
+
+    if (state.clipboard.length === 0) {
+
+        setFileResult(
+            mission,
+            "Le presse-papiers est vide. Copiez d'abord un fichier.",
+            false
         );
 
+        return;
 
-    document.getElementById(
-        "mission9Counter"
-    ).innerText =
-        mission9Selected.length;
-
-}
+    }
 
 
-function mission9Copy() {
+    if (!state.destinationActive) {
 
-    const result =
-        document.getElementById("result9");
-
-
-    if (mission9Selected.length !== 2) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Sélectionnez les deux fichiers demandés.</strong>";
+        setFileResult(
+            mission,
+            "Sélectionnez d'abord le dossier de destination.",
+            false
+        );
 
         return;
 
     }
 
 
-    mission9Copied = true;
-
-
-    document.getElementById(
-        "mission9Clipboard"
-    ).innerText =
-        "Recette.txt + Photo famille.jpg";
-
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Les deux fichiers sont copiés.</strong> " +
-        "Vous pouvez maintenant les coller dans Sauvegarde.";
-
-}
-
-
-function mission9Paste() {
-
-    const result =
-        document.getElementById("result9");
-
-
-    if (!mission9Copied) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Vous devez d'abord copier les deux fichiers.</strong>";
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "mission9SavedFiles"
-    ).innerHTML =
-
-        '<div style="margin-bottom:7px;">📝 Recette.txt</div>' +
-
-        '<div>🖼️ Photo famille.jpg</div>';
-
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Bravo !</strong> " +
-        "Les deux fichiers ont bien été copiés dans Sauvegarde.";
-
-    markCompleted(9);
-
-}
-
-
-/* =========================================================
-   MISSION 10
-========================================================= */
-
-let mission10Selected = false;
-
-let mission10Copied = false;
-
-let mission10Folder = "Documents";
-
-
-function selectMission10Facture() {
-
-    mission10Selected = true;
-
-    document
-        .getElementById("mission10Facture")
-        .classList.add("selected");
-
-}
-
-
-function openMission10Documents() {
-
-    mission10Folder =
-        "Documents";
-
-
-    document.getElementById(
-        "mission10Documents"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "mission10Backup"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "mission10Path"
-    ).innerText =
-        "Ordinateur / Documents";
-
-}
-
-
-function openMission10Backup() {
-
-    mission10Folder =
-        "Sauvegarde";
-
-
-    document.getElementById(
-        "mission10Documents"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "mission10Backup"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "mission10Path"
-    ).innerText =
-        "Ordinateur / Sauvegarde";
-
-}
-
-
-function mission10Copy() {
-
-    mission10Copied = true;
-
-    document.getElementById(
-        "mission10Clipboard"
-    ).innerText =
-        "Facture.pdf";
-
-}
-
-
-function mission10Paste() {
-
-    const result =
-        document.getElementById("result10");
-
-
-    if (mission10Folder !== "Sauvegarde") {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Vous êtes encore dans Documents.</strong> " +
-            "Ouvrez d'abord le dossier Sauvegarde.";
-
-        return;
-
-    }
-
-
-    if (!mission10Copied) {
-
-        result.style.display = "block";
-
-        result.className =
-            "result error";
-
-        result.innerHTML =
-            "<strong>Le fichier n'a pas encore été copié.</strong> " +
-            "Utilisez Ctrl + C.";
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "mission10Saved"
-    ).innerHTML =
-
-        '<div class="file-card selected">' +
-
-            '<div class="file-icon">📄</div>' +
-
-            '<div class="file-name">Facture.pdf</div>' +
-
-            '<div class="file-size">320 Ko</div>' +
-
-        '</div>';
-
-
-    result.style.display = "block";
-
-    result.className =
-        "result success";
-
-    result.innerHTML =
-        "<strong>Mission réussie !</strong> " +
-        "Facture.pdf a bien été copié dans Sauvegarde.";
-
-    markCompleted(10);
-
-}
-
-
-/* =========================================================
-   CTRL + C / CTRL + V POUR LA MISSION FINALE
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
+    /* =====================================
+       MISSION 7
+    ===================================== */
+
+    if (mission === 7) {
 
         if (
-            event.ctrlKey &&
-            event.key.toLowerCase() === "c"
+            state.clipboard.length === 1 &&
+            state.clipboard[0] === "Photo vacances.jpg"
         ) {
 
-            if (
-                mission10Folder === "Documents" &&
-                mission10Selected
-            ) {
+            document.getElementById("mission7-pasted").innerHTML =
+                '<div class="pasted-file">🖼️ Photo vacances.jpg</div>';
 
-                event.preventDefault();
+            setFileResult(
+                mission,
+                "Bravo ! La photo a été copiée dans le dossier Images.",
+                true
+            );
 
-                mission10Copy();
+            completeMission(7);
 
-            }
+        } else {
 
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase() === "v"
-        ) {
-
-            if (
-                mission10Folder === "Sauvegarde"
-            ) {
-
-                event.preventDefault();
-
-                mission10Paste();
-
-            }
+            setFileResult(
+                mission,
+                "Ce n'est pas le bon fichier pour cette mission.",
+                false
+            );
 
         }
 
     }
-);
+
+
+    /* =====================================
+       MISSION 8
+    ===================================== */
+
+    if (mission === 8) {
+
+        if (
+            state.clipboard.length === 1 &&
+            state.clipboard[0] === "Document administratif.pdf"
+        ) {
+
+            document.getElementById("mission8-pasted").innerHTML =
+                '<div class="pasted-file">📄 Document administratif.pdf</div>';
+
+            setFileResult(
+                mission,
+                "Bravo ! Vous avez trouvé le bon fichier et vous l'avez copié dans Documents.",
+                true
+            );
+
+            completeMission(8);
+
+        } else {
+
+            setFileResult(
+                mission,
+                "Ce n'est pas le bon fichier. Relisez la consigne et essayez encore.",
+                false
+            );
+
+        }
+
+    }
+
+
+    /* =====================================
+       MISSION 9
+    ===================================== */
+
+    if (mission === 9) {
+
+        const expected = [
+            "Recette.txt",
+            "Photo famille.jpg"
+        ];
+
+        const sortedClipboard =
+            [...state.clipboard].sort();
+
+        const sortedExpected =
+            [...expected].sort();
+
+        const correct =
+            sortedClipboard.length === sortedExpected.length &&
+            sortedClipboard.every(
+                (file, index) =>
+                    file === sortedExpected[index]
+            );
+
+
+        if (correct) {
+
+            document.getElementById("mission9-pasted").innerHTML =
+                '<div class="pasted-file">📝 Recette.txt</div>' +
+                '<div class="pasted-file">🖼️ Photo famille.jpg</div>';
+
+            setFileResult(
+                mission,
+                "Bravo ! Les deux fichiers ont été sélectionnés et copiés dans Sauvegarde.",
+                true
+            );
+
+            completeMission(9);
+
+        } else {
+
+            setFileResult(
+                mission,
+                "La sélection n'est pas correcte. Il faut sélectionner Recette.txt et Photo famille.jpg.",
+                false
+            );
+
+        }
+
+    }
+
+
+    /* =====================================
+       MISSION 10
+    ===================================== */
+
+    if (mission === 10) {
+
+        if (
+            state.clipboard.length === 1 &&
+            state.clipboard[0] === "Facture.pdf"
+        ) {
+
+            document.getElementById("mission10-pasted").innerHTML =
+                '<div class="pasted-file">📄 Facture.pdf</div>';
+
+            setFileResult(
+                mission,
+                "Bravo ! Vous avez réussi le défi final.",
+                true
+            );
+
+            completeMission(10);
+
+        } else {
+
+            setFileResult(
+                mission,
+                "Ce n'est pas le bon fichier.",
+                false
+            );
+
+        }
+
+    }
+
+
+    updateClipboardDisplay(
+        mission,
+        method
+    );
+
+}
+
+
+/* =========================================
+   RACCOURCIS CLAVIER
+========================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (!event.ctrlKey) {
+        return;
+    }
+
+    if (!activeMission) {
+        return;
+    }
+
+
+    const mission =
+        activeMission;
+
+    const state =
+        getMissionState(mission);
+
+
+    /* Ctrl + C */
+
+    if (event.key.toLowerCase() === "c") {
+
+        if (state.selected.length > 0) {
+
+            event.preventDefault();
+
+            copyMission(
+                mission,
+                "Ctrl + C"
+            );
+
+        }
+
+    }
+
+
+    /* Ctrl + V */
+
+    if (event.key.toLowerCase() === "v") {
+
+        if (state.clipboard.length > 0) {
+
+            event.preventDefault();
+
+            pasteMission(
+                mission,
+                "Ctrl + V"
+            );
+
+        }
+
+    }
+
+});
+
+
+/* =========================================
+   MENU CLIC DROIT
+========================================= */
+
+const contextMenu =
+    document.getElementById("contextMenu");
+
+let contextMission = null;
+let contextType = null;
+let contextElement = null;
+
+
+function hideContextMenu() {
+
+    contextMenu.hidden = true;
+
+    contextMission = null;
+    contextType = null;
+    contextElement = null;
+
+}
+
+
+function addContextButton(label, action, disabled = false) {
+
+    const button =
+        document.createElement("button");
+
+    button.textContent = label;
+
+    button.disabled = disabled;
+
+    button.addEventListener("click", function(event) {
+
+        event.stopPropagation();
+
+        if (!disabled) {
+            action();
+        }
+
+        hideContextMenu();
+
+    });
+
+    contextMenu.appendChild(button);
+
+}
+
+
+function addSeparator() {
+
+    const separator =
+        document.createElement("div");
+
+    separator.className =
+        "context-separator";
+
+    contextMenu.appendChild(separator);
+
+}
+
+
+function showContextMenu(event, mission, type, element) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    activeMission = mission;
+
+    contextMission = mission;
+    contextType = type;
+    contextElement = element;
+
+
+    const state =
+        getMissionState(mission);
+
+
+    contextMenu.innerHTML = "";
+
+
+    /* ==========================
+       FICHIER
+    ========================== */
+
+    if (type === "file") {
+
+        const fileName =
+            element.dataset.file;
+
+
+        /*
+         Si le fichier n'est pas sélectionné,
+         le clic droit le sélectionne.
+        */
+
+        if (!state.selected.includes(fileName)) {
+
+            state.selected = [fileName];
+
+            document
+                .querySelectorAll('[data-mission="' + mission + '"][data-file]')
+                .forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+            element.classList.add("selected");
+
+        }
+
+
+        addContextButton(
+            "Ouvrir",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "Dans cette simulation, l'ouverture du fichier n'est pas nécessaire.",
+                    false
+                );
+
+            }
+        );
+
+
+        addSeparator();
+
+
+        addContextButton(
+            "Copier",
+            function() {
+
+                copyMission(
+                    mission,
+                    "clic droit → Copier"
+                );
+
+            }
+        );
+
+
+        addContextButton(
+            "Couper",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "Pour cet exercice, utilisez Copier plutôt que Couper.",
+                    false
+                );
+
+            }
+        );
+
+
+        addSeparator();
+
+
+        addContextButton(
+            "Renommer",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "Le renommage n'est pas nécessaire pour cette mission.",
+                    false
+                );
+
+            }
+        );
+
+
+        addContextButton(
+            "Supprimer",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "La suppression n'est pas nécessaire pour cette mission.",
+                    false
+                );
+
+            }
+        );
+
+
+        addSeparator();
+
+
+        addContextButton(
+            "Propriétés",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "Les propriétés ne sont pas nécessaires pour cette mission.",
+                    false
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ==========================
+       DESTINATION
+    ========================== */
+
+    if (type === "destination") {
+
+        state.destinationActive = true;
+
+
+        document
+            .querySelectorAll('[data-mission="' + mission + '"].destination-zone, [data-mission="' + mission + '"].simple-destination, [data-mission="' + mission + '"].final-destination')
+            .forEach(zone => {
+
+                zone.classList.remove("active");
+
+            });
+
+        element.classList.add("active");
+
+
+        addContextButton(
+            "Coller",
+            function() {
+
+                pasteMission(
+                    mission,
+                    "clic droit → Coller"
+                );
+
+            },
+            state.clipboard.length === 0
+        );
+
+
+        addSeparator();
+
+
+        addContextButton(
+            "Nouveau",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "La création d'un nouveau fichier n'est pas nécessaire.",
+                    false
+                );
+
+            }
+        );
+
+
+        addContextButton(
+            "Propriétés",
+            function() {
+
+                setFileResult(
+                    mission,
+                    "Les propriétés ne sont pas nécessaires pour cette mission.",
+                    false
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ==========================
+       POSITION
+    ========================== */
+
+    contextMenu.hidden = false;
+
+
+    let x =
+        event.clientX;
+
+    let y =
+        event.clientY;
+
+
+    const menuWidth =
+        190;
+
+    const menuHeight =
+        contextMenu.offsetHeight;
+
+
+    if (x + menuWidth > window.innerWidth) {
+
+        x =
+            window.innerWidth - menuWidth - 10;
+
+    }
+
+
+    if (y + menuHeight > window.innerHeight) {
+
+        y =
+            window.innerHeight - menuHeight - 10;
+
+    }
+
+
+    contextMenu.style.left =
+        x + "px";
+
+    contextMenu.style.top =
+        y + "px";
+
+}
+
+
+/* =========================================
+   ACTIVER LE CLIC DROIT SUR LES FICHIERS
+========================================= */
+
+document
+    .querySelectorAll("[data-mission][data-file]")
+    .forEach(file => {
+
+        file.addEventListener(
+            "contextmenu",
+            function(event) {
+
+                showContextMenu(
+                    event,
+                    Number(this.dataset.mission),
+                    "file",
+                    this
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================
+   ACTIVER LE CLIC DROIT SUR LES DESTINATIONS
+========================================= */
+
+document
+    .querySelectorAll(".destination-zone, .simple-destination, .final-destination")
+    .forEach(destination => {
+
+        destination.addEventListener(
+            "contextmenu",
+            function(event) {
+
+                showContextMenu(
+                    event,
+                    Number(this.dataset.mission),
+                    "destination",
+                    this
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================
+   FERMER LE MENU
+========================================= */
+
+document.addEventListener("click", function() {
+
+    hideContextMenu();
+
+});
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        hideContextMenu();
+
+    }
+
+});
+
+
+window.addEventListener("scroll", function() {
+
+    hideContextMenu();
+
+});
+
+
+/* =========================================
+   MISSION 10 : NAVIGATION
+========================================= */
+
+function openFinalFolder(folder) {
+
+    const documentsButton =
+        document.getElementById("finalDocuments");
+
+    const sauvegardeButton =
+        document.getElementById("finalSauvegarde");
+
+    const content =
+        document.getElementById("finalContent");
+
+
+    if (folder === "documents") {
+
+        documentsButton.classList.add("active");
+
+        sauvegardeButton.classList.remove("active");
+
+
+        content.innerHTML = `
+
+            <div
+                class="final-file"
+                id="mission10-file"
+                data-mission="10"
+                data-file="Facture.pdf"
+            >
+
+                <span class="file-icon">📄</span>
+
+                <span>
+                    Facture.pdf
+                </span>
+
+            </div>
+
+            <div
+                class="final-destination"
+                id="mission10-destination"
+                data-mission="10"
+            >
+
+                <strong>
+                    Zone de destination
+                </strong>
+
+                Pour coller le fichier dans Sauvegarde,
+                ouvrez le dossier Sauvegarde ci-dessus.
+
+                <div id="mission10-pasted"></div>
+
+            </div>
+
+        `;
+
+        attachMission10Events();
+
+    }
+
+
+    if (folder === "sauvegarde") {
+
+        documentsButton.classList.remove("active");
+
+        sauvegardeButton.classList.add("active");
+
+
+        content.innerHTML = `
+
+            <div
+                class="final-destination"
+                id="mission10-destination"
+                data-mission="10"
+            >
+
+                <strong>
+                    Sauvegarde
+                </strong>
+
+                Cliquez ici ou faites un clic droit
+                pour choisir Coller.
+
+                <div id="mission10-pasted"></div>
+
+            </div>
+
+        `;
+
+        attachMission10Events();
+
+    }
+
+}
+
+
+/* =========================================
+   ÉVÉNEMENTS MISSION 10
+========================================= */
+
+function attachMission10Events() {
+
+    const file =
+        document.getElementById("mission10-file");
+
+    const destination =
+        document.getElementById("mission10-destination");
+
+
+    if (file) {
+
+        file.addEventListener("click", function(event) {
+
+            activeMission = 10;
+
+            const state =
+                missionStates[10];
+
+            state.selected = ["Facture.pdf"];
+
+            document
+                .querySelectorAll('[data-mission="10"][data-file]')
+                .forEach(item => {
+
+                    item.classList.remove("selected");
+
+                });
+
+            this.classList.add("selected");
+
+        });
+
+
+        file.addEventListener("contextmenu", function(event) {
+
+            showContextMenu(
+                event,
+                10,
+                "file",
+                this
+            );
+
+        });
+
+    }
+
+
+    if (destination) {
+
+        destination.addEventListener("click", function() {
+
+            activeMission = 10;
+
+            missionStates[10].destinationActive = true;
+
+            this.classList.add("active");
+
+        });
+
+
+        destination.addEventListener("contextmenu", function(event) {
+
+            showContextMenu(
+                event,
+                10,
+                "destination",
+                this
+            );
+
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   INITIALISATION MISSION 10
+========================================= */
+
+attachMission10Events();
 
 </script>
 
-
 </body>
-
 </html>
