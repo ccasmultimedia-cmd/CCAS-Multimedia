@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,16 +43,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .logo strong {
             font-size: 26px;
+            white-space: nowrap;
         }
 
         .logo span {
@@ -61,15 +64,19 @@
 
         nav {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 6px;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            flex-shrink: 1;
         }
 
         nav a {
             color: white;
-            padding: 12px 18px;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 17px;
+            font-size: 16px;
+            transition: .3s;
+            white-space: nowrap;
         }
 
         nav a:hover,
@@ -113,7 +120,7 @@
         ========================== */
 
         main {
-            max-width: 900px;
+            max-width: 950px;
             margin: auto;
             padding: 60px 25px;
         }
@@ -129,6 +136,10 @@
         .intro h2 {
             margin-top: 0;
             color: #203858;
+        }
+
+        .intro li {
+            margin-bottom: 8px;
         }
 
 
@@ -159,6 +170,71 @@
 
 
         /* =========================
+           PROGRESSION
+        ========================== */
+
+        .progress-box {
+            background: white;
+            padding: 22px 25px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 5px 20px rgba(30, 50, 80, 0.08);
+            text-align: center;
+        }
+
+        .progress-box strong {
+            display: block;
+            color: #203858;
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 14px;
+            background: #e3e9f1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #3975c6;
+            border-radius: 20px;
+            transition: width .4s ease;
+        }
+
+        #progressText {
+            margin-top: 10px;
+            color: #617087;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           TITRES DE PARTIES
+        ========================== */
+
+        .section-title {
+            margin: 60px 0 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #dce4ee;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            color: #203858;
+            font-size: 30px;
+        }
+
+        .section-title p {
+            margin: 6px 0 0;
+            color: #617087;
+        }
+
+
+        /* =========================
            EXERCICES
         ========================== */
 
@@ -185,6 +261,15 @@
             color: #24344d;
         }
 
+        .exercise-info {
+            background: #f1f5fa;
+            border-left: 4px solid #3975c6;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            color: #526274;
+        }
+
 
         /* =========================
            TEXTE À COPIER
@@ -200,9 +285,18 @@
             user-select: text;
         }
 
+        .small-text {
+            font-size: 17px;
+            background: #f7f9fc;
+            border: 1px solid #dce4ee;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+
 
         /* =========================
-           ZONE DE COLLAGE
+           ZONES DE TEXTE
         ========================== */
 
         textarea {
@@ -210,6 +304,7 @@
             min-height: 100px;
             padding: 15px;
             font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
             border: 2px solid #d9e1ec;
             border-radius: 10px;
             resize: vertical;
@@ -220,34 +315,46 @@
             border-color: #3975c6;
         }
 
+        .multiple-targets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .target-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #394b63;
+        }
+
 
         /* =========================
-           BOUTON
+           BOUTONS
         ========================== */
 
         .check-button {
             margin-top: 15px;
             padding: 13px 22px;
-
             background: #d05f9d;
             color: white;
-
             border: none;
             border-radius: 8px;
-
             font-size: 17px;
             font-weight: bold;
-
             cursor: pointer;
+            transition: .2s;
         }
 
         .check-button:hover {
             opacity: 0.85;
+            transform: translateY(-1px);
         }
 
 
         /* =========================
-           RÉSULTAT
+           RÉSULTATS
         ========================== */
 
         .result {
@@ -270,6 +377,37 @@
 
 
         /* =========================
+           MISSION FINALE
+        ========================== */
+
+        .final-exercise {
+            border: 3px solid #d05f9d;
+        }
+
+        .final-badge {
+            display: inline-block;
+            background: #f8e6f0;
+            color: #8a3b68;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .final-step {
+            background: #f7f9fc;
+            border: 1px solid #e0e6ef;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+
+        .final-step strong {
+            color: #203858;
+        }
+
+
+        /* =========================
            CONSEIL
         ========================== */
 
@@ -287,6 +425,197 @@
 
 
         /* =========================
+           EXPLORATEUR DE FICHIERS
+        ========================== */
+
+        .file-explorer {
+            border: 2px solid #cdd7e5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            margin-top: 25px;
+        }
+
+        .explorer-top {
+            background: #eef2f7;
+            padding: 12px 15px;
+            border-bottom: 1px solid #d6dee9;
+        }
+
+        .explorer-path {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            padding: 9px 12px;
+            color: #46566c;
+            font-size: 15px;
+        }
+
+        .explorer-body {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            min-height: 330px;
+        }
+
+        .explorer-sidebar {
+            background: #f5f7fa;
+            border-right: 1px solid #d9e1eb;
+            padding: 15px 10px;
+        }
+
+        .folder-button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            text-align: left;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 15px;
+            color: #30445f;
+            cursor: pointer;
+            margin-bottom: 4px;
+        }
+
+        .folder-button:hover {
+            background: #e2e9f2;
+        }
+
+        .folder-button.active {
+            background: #dce9f8;
+            color: #245a99;
+            font-weight: bold;
+        }
+
+        .explorer-content {
+            padding: 20px;
+        }
+
+        .folder-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #203858;
+            margin-bottom: 18px;
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .file-item {
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: .2s;
+        }
+
+        .file-item:hover {
+            background: #f3f6fa;
+        }
+
+        .file-item.selected {
+            background: #dceafb;
+            border-color: #3975c6;
+        }
+
+        .file-icon {
+            font-size: 42px;
+            line-height: 1;
+            margin-bottom: 9px;
+        }
+
+        .file-name {
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .file-size {
+            font-size: 12px;
+            color: #7b8798;
+            margin-top: 3px;
+        }
+
+
+        /* =========================
+           BARRE D'ACTIONS FICHIERS
+        ========================== */
+
+        .file-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #dce3ec;
+        }
+
+        .file-action {
+            border: none;
+            background: #3975c6;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 7px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .file-action:hover {
+            background: #2f65ad;
+        }
+
+        .file-action.secondary {
+            background: #e8edf4;
+            color: #30445f;
+        }
+
+        .file-action.secondary:hover {
+            background: #dbe3ed;
+        }
+
+
+        /* =========================
+           PRESSE-PAPIER
+        ========================== */
+
+        .clipboard-box {
+            background: #fff8e8;
+            border: 2px dashed #e1a63c;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 18px;
+        }
+
+        .clipboard-title {
+            font-weight: bold;
+            color: #76531d;
+        }
+
+        #clipboardInfo {
+            margin-top: 5px;
+            color: #705f3b;
+        }
+
+
+        /* =========================
+           MISSIONS FICHIERS
+        ========================== */
+
+        .mission-list {
+            margin: 20px 0;
+            padding-left: 22px;
+        }
+
+        .mission-list li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
            FOOTER
         ========================== */
 
@@ -300,7 +629,6 @@
             max-width: 1200px;
             margin: auto;
             padding: 35px 25px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -322,11 +650,15 @@
            MOBILE
         ========================== */
 
-        @media (max-width: 650px) {
+        @media (max-width: 700px) {
 
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            nav {
+                flex-wrap: wrap;
             }
 
             nav a {
@@ -349,6 +681,23 @@
                 grid-template-columns: 1fr;
             }
 
+            .multiple-targets {
+                grid-template-columns: 1fr;
+            }
+
+            .explorer-body {
+                grid-template-columns: 1fr;
+            }
+
+            .explorer-sidebar {
+                border-right: none;
+                border-bottom: 1px solid #d9e1eb;
+            }
+
+            .file-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .footer-container {
                 flex-direction: column;
                 align-items: flex-start;
@@ -364,30 +713,56 @@
 <body>
 
 
+<!-- =========================================
+     MENU
+========================================= -->
+
 <header>
 
     <div class="navbar">
 
         <div class="logo">
 
-            <strong>Centre Multimédia du CCAS</strong>
+            <strong>
+                Centre Multimédia du CCAS
+            </strong>
 
-            <span>Apprendre • Découvrir • Progresser</span>
+            <span>
+                Apprendre • Découvrir • Progresser
+            </span>
 
         </div>
 
 
         <nav>
 
-            <a href="index.html">Accueil</a>
+            <a href="index.html">
+                Accueil
+            </a>
 
-            <a href="cours.html">Mes cours</a>
+            <a href="cours.html">
+                Mes cours
+            </a>
 
-            <a href="jeux.html">Jeux</a>
+            <a href="jeux.html">
+                Jeux
+            </a>
 
-            <a href="exercices.html" class="active">Exercices</a>
+            <a href="exercices.html" class="active">
+                Exercices
+            </a>
 
-            <a href="informations.html">Informations</a>
+            <a href="outils.html">
+                Outils
+            </a>
+
+            <a href="ressources.html">
+                Ressources
+            </a>
+
+            <a href="informations.html">
+                Informations
+            </a>
 
         </nav>
 
@@ -397,46 +772,86 @@
 
 
 
+<!-- =========================================
+     EN-TÊTE
+========================================= -->
+
 <section class="page-header">
 
-    <h1>Copier et coller</h1>
+    <h1>
+        Copier et coller
+    </h1>
 
     <p>
-        Entraînez-vous à sélectionner, copier et coller du texte.
+        Entraînez-vous à copier et coller du texte et des fichiers.
     </p>
 
 </section>
 
 
 
+<!-- =========================================
+     CONTENU
+========================================= -->
+
 <main>
 
 
+    <!-- =====================================
+         INTRODUCTION
+    ====================================== -->
+
     <section class="intro">
 
-        <h2>Comment faire ?</h2>
+        <h2>
+            Comment faire ?
+        </h2>
 
         <p>
-            Pour réaliser ces exercices :
+            Ces exercices deviennent progressivement plus difficiles.
+            Prenez votre temps et lisez bien chaque consigne.
         </p>
 
         <ol>
-            <li>Sélectionnez le texte avec votre souris.</li>
-            <li>Copiez le texte avec <strong>Ctrl + C</strong>.</li>
-            <li>Cliquez dans la zone prévue.</li>
-            <li>Collez le texte avec <strong>Ctrl + V</strong>.</li>
-            <li>Cliquez sur « Vérifier ma réponse ».</li>
+
+            <li>
+                Sélectionnez le texte ou le fichier demandé.
+            </li>
+
+            <li>
+                Copiez-le avec <strong>Ctrl + C</strong>.
+            </li>
+
+            <li>
+                Cliquez à l'endroit où vous souhaitez le placer.
+            </li>
+
+            <li>
+                Collez avec <strong>Ctrl + V</strong>.
+            </li>
+
+            <li>
+                Pour les fichiers, vous pouvez également utiliser
+                les boutons « Copier » et « Coller ».
+            </li>
+
         </ol>
 
     </section>
 
 
 
+    <!-- =====================================
+         RACCOURCIS
+    ====================================== -->
+
     <section class="shortcuts">
 
         <div class="shortcut">
 
-            <strong>Ctrl + C</strong>
+            <strong>
+                Ctrl + C
+            </strong>
 
             Copier
 
@@ -445,7 +860,9 @@
 
         <div class="shortcut">
 
-            <strong>Ctrl + V</strong>
+            <strong>
+                Ctrl + V
+            </strong>
 
             Coller
 
@@ -455,7 +872,54 @@
 
 
 
-    <!-- EXERCICE 1 -->
+    <!-- =====================================
+         PROGRESSION
+    ====================================== -->
+
+    <section class="progress-box">
+
+        <strong>
+            Votre progression
+        </strong>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+        <div id="progressText">
+            0 exercice réussi sur 10
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PARTIE 1
+    ====================================== -->
+
+    <div class="section-title">
+
+        <h2>
+            Partie 1 — Copier-coller du texte
+        </h2>
+
+        <p>
+            Commencez par vous entraîner avec du texte.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         EXERCICE 1
+    ====================================== -->
 
     <section class="exercise">
 
@@ -463,14 +927,19 @@
             Exercice 1
         </div>
 
-        <h2>Copiez cette phrase</h2>
+        <h2>
+            Copiez une phrase
+        </h2>
 
         <p>
-            Sélectionnez la phrase ci-dessous, copiez-la puis collez-la dans la zone de réponse.
+            Sélectionnez toute la phrase, copiez-la et collez-la
+            dans la zone prévue.
         </p>
 
-        <div class="text-to-copy" id="text1">
+        <div class="text-to-copy">
+
             Bonjour, je découvre l'informatique avec le Centre Multimédia du CCAS.
+
         </div>
 
         <textarea
@@ -480,18 +949,28 @@
 
         <button
             class="check-button"
-            onclick="checkAnswer('text1', 'answer1', 'result1')"
+            onclick="checkSingle(
+                'Bonjour, je découvre l\'informatique avec le Centre Multimédia du CCAS.',
+                'answer1',
+                'result1',
+                1
+            )"
         >
             Vérifier ma réponse
         </button>
 
-        <div class="result" id="result1"></div>
+        <div
+            class="result"
+            id="result1"
+        ></div>
 
     </section>
 
 
 
-    <!-- EXERCICE 2 -->
+    <!-- =====================================
+         EXERCICE 2
+    ====================================== -->
 
     <section class="exercise">
 
@@ -499,35 +978,50 @@
             Exercice 2
         </div>
 
-        <h2>Copiez cette information</h2>
+        <h2>
+            Ne copiez qu'une partie de la phrase
+        </h2>
 
         <p>
-            Cette fois, entraînez-vous avec une phrase plus longue.
+            Sélectionnez uniquement les mots :
+            <strong>prendre mon temps</strong>
         </p>
 
-        <div class="text-to-copy" id="text2">
+        <div class="text-to-copy">
+
             Je peux apprendre à utiliser un ordinateur en prenant mon temps et en pratiquant régulièrement.
+
         </div>
 
         <textarea
             id="answer2"
-            placeholder="Collez votre texte ici..."
+            placeholder="Collez uniquement les mots demandés..."
         ></textarea>
 
         <button
             class="check-button"
-            onclick="checkAnswer('text2', 'answer2', 'result2')"
+            onclick="checkExpected(
+                'prendre mon temps',
+                'answer2',
+                'result2',
+                2
+            )"
         >
             Vérifier ma réponse
         </button>
 
-        <div class="result" id="result2"></div>
+        <div
+            class="result"
+            id="result2"
+        ></div>
 
     </section>
 
 
 
-    <!-- EXERCICE 3 -->
+    <!-- =====================================
+         EXERCICE 3
+    ====================================== -->
 
     <section class="exercise">
 
@@ -535,42 +1029,699 @@
             Exercice 3
         </div>
 
-        <h2>Dernier exercice</h2>
+        <h2>
+            Copiez plusieurs fois le même texte
+        </h2>
 
         <p>
-            Copiez cette phrase sans la modifier.
+            Copiez la phrase une seule fois, puis collez-la
+            dans les deux zones.
         </p>
 
-        <div class="text-to-copy" id="text3">
-            Le copier-coller permet de déplacer rapidement du texte d'un endroit à un autre.
+        <div class="text-to-copy">
+
+            Pensez à enregistrer régulièrement votre travail.
+
         </div>
 
-        <textarea
-            id="answer3"
-            placeholder="Collez votre texte ici..."
-        ></textarea>
+        <div class="multiple-targets">
+
+            <div class="target-box">
+
+                <label for="answer3a">
+                    Première zone
+                </label>
+
+                <textarea
+                    id="answer3a"
+                    placeholder="Collez ici..."
+                ></textarea>
+
+            </div>
+
+            <div class="target-box">
+
+                <label for="answer3b">
+                    Deuxième zone
+                </label>
+
+                <textarea
+                    id="answer3b"
+                    placeholder="Collez ici..."
+                ></textarea>
+
+            </div>
+
+        </div>
 
         <button
             class="check-button"
-            onclick="checkAnswer('text3', 'answer3', 'result3')"
+            onclick="checkMultiple(
+                'Pensez à enregistrer régulièrement votre travail.',
+                ['answer3a', 'answer3b'],
+                'result3',
+                3
+            )"
         >
-            Vérifier ma réponse
+            Vérifier mes réponses
         </button>
 
-        <div class="result" id="result3"></div>
+        <div
+            class="result"
+            id="result3"
+        ></div>
 
     </section>
 
 
 
-    <section class="tip">
+    <!-- =====================================
+         EXERCICE 4
+    ====================================== -->
 
-        <h2>Un petit conseil</h2>
+    <section class="exercise">
+
+        <div class="exercise-number">
+            Exercice 4
+        </div>
+
+        <h2>
+            Copiez seulement un mot
+        </h2>
 
         <p>
-            Si vous préférez utiliser la souris, vous pouvez également faire
-            un clic droit sur le texte sélectionné puis choisir « Copier ».
-            Ensuite, faites un clic droit dans la zone de texte et choisissez « Coller ».
+            Sélectionnez uniquement le mot
+            <strong>ordinateur</strong>.
+        </p>
+
+        <div class="text-to-copy">
+
+            Mon ordinateur me permet de consulter mes documents.
+
+        </div>
+
+        <div class="exercise-info">
+
+            <strong>Objectif :</strong>
+            apprendre à sélectionner précisément une partie d'un texte.
+
+        </div>
+
+        <textarea
+            id="answer4"
+            placeholder="Collez uniquement le mot demandé..."
+        ></textarea>
+
+        <button
+            class="check-button"
+            onclick="checkExpected(
+                'ordinateur',
+                'answer4',
+                'result4',
+                4
+            )"
+        >
+            Vérifier ma réponse
+        </button>
+
+        <div
+            class="result"
+            id="result4"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXERCICE 5
+    ====================================== -->
+
+    <section class="exercise">
+
+        <div class="exercise-number">
+            Exercice 5
+        </div>
+
+        <h2>
+            Assemblez une phrase
+        </h2>
+
+        <p>
+            Copiez les trois morceaux dans l'ordre
+            et assemblez-les dans la zone ci-dessous.
+        </p>
+
+        <div class="small-text">
+            <strong>Morceau 1 :</strong>
+            Aujourd'hui,
+        </div>
+
+        <div class="small-text">
+            <strong>Morceau 2 :</strong>
+            je pratique
+        </div>
+
+        <div class="small-text">
+            <strong>Morceau 3 :</strong>
+            le copier-coller.
+        </div>
+
+        <div class="exercise-info">
+
+            <strong>Phrase à reconstituer :</strong><br>
+
+            Aujourd'hui, je pratique le copier-coller.
+
+        </div>
+
+        <textarea
+            id="answer5"
+            placeholder="Assemblez ici la phrase..."
+        ></textarea>
+
+        <button
+            class="check-button"
+            onclick="checkExpected(
+                'Aujourd’hui, je pratique le copier-coller.',
+                'answer5',
+                'result5',
+                5
+            )"
+        >
+            Vérifier ma réponse
+        </button>
+
+        <div
+            class="result"
+            id="result5"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXERCICE 6
+    ====================================== -->
+
+    <section class="exercise final-exercise">
+
+        <div class="final-badge">
+            Mission finale texte
+        </div>
+
+        <div class="exercise-number">
+            Exercice 6
+        </div>
+
+        <h2>
+            Le défi du copier-coller
+        </h2>
+
+        <p>
+            Sélectionnez uniquement la phrase suivante,
+            copiez-la, puis collez-la dans les deux zones.
+        </p>
+
+        <div class="text-to-copy">
+
+            Le numérique devient plus facile avec de la pratique.
+
+        </div>
+
+        <div class="multiple-targets">
+
+            <div class="target-box">
+
+                <label for="answer6a">
+                    Zone 1
+                </label>
+
+                <textarea
+                    id="answer6a"
+                    placeholder="Premier collage..."
+                ></textarea>
+
+            </div>
+
+            <div class="target-box">
+
+                <label for="answer6b">
+                    Zone 2
+                </label>
+
+                <textarea
+                    id="answer6b"
+                    placeholder="Deuxième collage..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+        <button
+            class="check-button"
+            onclick="checkMultiple(
+                'Le numérique devient plus facile avec de la pratique.',
+                ['answer6a', 'answer6b'],
+                'result6',
+                6
+            )"
+        >
+            Vérifier la mission finale
+        </button>
+
+        <div
+            class="result"
+            id="result6"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PARTIE 2
+    ====================================== -->
+
+    <div class="section-title">
+
+        <h2>
+            Partie 2 — Copier-coller des fichiers
+        </h2>
+
+        <p>
+            Maintenant, entraînez-vous à manipuler des fichiers
+            comme dans l'Explorateur de fichiers de votre ordinateur.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         EXERCICE 7
+    ====================================== -->
+
+    <section class="exercise">
+
+        <div class="exercise-number">
+            Exercice 7
+        </div>
+
+        <h2>
+            Copier un fichier dans un autre dossier
+        </h2>
+
+        <p>
+            Vous êtes dans un faux explorateur de fichiers.
+            Votre première mission est de copier
+            <strong>Photo vacances.jpg</strong>
+            dans le dossier <strong>Images</strong>.
+        </p>
+
+        <ol class="mission-list">
+
+            <li>
+                Ouvrez le dossier <strong>Téléchargements</strong>.
+            </li>
+
+            <li>
+                Cliquez sur <strong>Photo vacances.jpg</strong>.
+            </li>
+
+            <li>
+                Cliquez sur <strong>Copier</strong>
+                ou utilisez <strong>Ctrl + C</strong>.
+            </li>
+
+            <li>
+                Ouvrez le dossier <strong>Images</strong>.
+            </li>
+
+            <li>
+                Cliquez sur <strong>Coller</strong>
+                ou utilisez <strong>Ctrl + V</strong>.
+            </li>
+
+        </ol>
+
+
+        <div class="file-explorer">
+
+            <div class="explorer-top">
+
+                <div
+                    class="explorer-path"
+                    id="explorerPath"
+                >
+                    Ordinateur / Téléchargements
+                </div>
+
+            </div>
+
+
+            <div class="explorer-body">
+
+
+                <div class="explorer-sidebar">
+
+                    <button
+                        class="folder-button active"
+                        data-folder="Téléchargements"
+                        onclick="openFolder('Téléchargements')"
+                    >
+                        Téléchargements
+                    </button>
+
+                    <button
+                        class="folder-button"
+                        data-folder="Documents"
+                        onclick="openFolder('Documents')"
+                    >
+                        Documents
+                    </button>
+
+                    <button
+                        class="folder-button"
+                        data-folder="Images"
+                        onclick="openFolder('Images')"
+                    >
+                        Images
+                    </button>
+
+                    <button
+                        class="folder-button"
+                        data-folder="Sauvegarde"
+                        onclick="openFolder('Sauvegarde')"
+                    >
+                        Sauvegarde
+                    </button>
+
+                </div>
+
+
+                <div class="explorer-content">
+
+                    <div
+                        class="folder-title"
+                        id="folderTitle"
+                    >
+                        Téléchargements
+                    </div>
+
+
+                    <div
+                        class="file-grid"
+                        id="fileGrid"
+                    ></div>
+
+
+                    <div class="file-actions">
+
+                        <button
+                            class="file-action"
+                            onclick="copySelectedFile()"
+                        >
+                            Copier
+                        </button>
+
+                        <button
+                            class="file-action"
+                            onclick="pasteFile()"
+                        >
+                            Coller
+                        </button>
+
+                        <button
+                            class="file-action secondary"
+                            onclick="clearSelection()"
+                        >
+                            Désélectionner
+                        </button>
+
+                    </div>
+
+
+                    <div class="clipboard-box">
+
+                        <div class="clipboard-title">
+                            Presse-papiers
+                        </div>
+
+                        <div id="clipboardInfo">
+                            Aucun fichier copié.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="check-button"
+            onclick="checkFileMission1()"
+        >
+            Vérifier la mission
+        </button>
+
+
+        <div
+            class="result"
+            id="result7"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXERCICE 8
+    ====================================== -->
+
+    <section class="exercise">
+
+        <div class="exercise-number">
+            Exercice 8
+        </div>
+
+        <h2>
+            Copier un document
+        </h2>
+
+        <p>
+            Cette fois, vous devez copier
+            <strong>Document administratif.pdf</strong>
+            depuis <strong>Téléchargements</strong>
+            vers <strong>Documents</strong>.
+        </p>
+
+        <div class="exercise-info">
+
+            <strong>Attention :</strong>
+            vous devez utiliser le copier-coller.
+            Ne déplacez pas le fichier.
+
+        </div>
+
+
+        <button
+            class="check-button"
+            onclick="prepareFileMission(8)"
+        >
+            Commencer cette mission
+        </button>
+
+
+        <div
+            class="result"
+            id="result8"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXERCICE 9
+    ====================================== -->
+
+    <section class="exercise">
+
+        <div class="exercise-number">
+            Exercice 9
+        </div>
+
+        <h2>
+            Copier plusieurs fichiers
+        </h2>
+
+        <p>
+            Votre mission est de copier les deux fichiers suivants
+            dans le dossier <strong>Sauvegarde</strong> :
+        </p>
+
+        <ul class="mission-list">
+
+            <li>
+                <strong>Recette.txt</strong>
+            </li>
+
+            <li>
+                <strong>Photo famille.jpg</strong>
+            </li>
+
+        </ul>
+
+        <div class="exercise-info">
+
+            <strong>Astuce :</strong>
+            vous pouvez sélectionner plusieurs fichiers
+            en utilisant la touche <strong>Ctrl</strong>
+            pendant que vous cliquez dessus.
+
+        </div>
+
+
+        <button
+            class="check-button"
+            onclick="prepareFileMission(9)"
+        >
+            Commencer cette mission
+        </button>
+
+
+        <div
+            class="result"
+            id="result9"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXERCICE 10
+    ====================================== -->
+
+    <section class="exercise final-exercise">
+
+        <div class="final-badge">
+            Grand défi fichiers
+        </div>
+
+        <div class="exercise-number">
+            Exercice 10
+        </div>
+
+        <h2>
+            Utilisez les raccourcis clavier
+        </h2>
+
+        <p>
+            Dernière mission :
+            copiez <strong>Facture.pdf</strong>
+            depuis le dossier <strong>Documents</strong>
+            vers <strong>Sauvegarde</strong>.
+        </p>
+
+        <div class="final-step">
+
+            <strong>Étape 1</strong>
+
+            <p>
+                Ouvrez le dossier Documents.
+            </p>
+
+        </div>
+
+        <div class="final-step">
+
+            <strong>Étape 2</strong>
+
+            <p>
+                Sélectionnez Facture.pdf.
+            </p>
+
+        </div>
+
+        <div class="final-step">
+
+            <strong>Étape 3</strong>
+
+            <p>
+                Utilisez <strong>Ctrl + C</strong>.
+            </p>
+
+        </div>
+
+        <div class="final-step">
+
+            <strong>Étape 4</strong>
+
+            <p>
+                Ouvrez le dossier Sauvegarde.
+            </p>
+
+        </div>
+
+        <div class="final-step">
+
+            <strong>Étape 5</strong>
+
+            <p>
+                Utilisez <strong>Ctrl + V</strong>.
+            </p>
+
+        </div>
+
+
+        <button
+            class="check-button"
+            onclick="checkFinalFileMission()"
+        >
+            Vérifier la mission finale
+        </button>
+
+
+        <div
+            class="result"
+            id="result10"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CONSEIL
+    ====================================== -->
+
+    <section class="tip">
+
+        <h2>
+            Un petit conseil
+        </h2>
+
+        <p>
+            Pour du texte, vous pouvez utiliser
+            <strong>Ctrl + C</strong> puis <strong>Ctrl + V</strong>.
+        </p>
+
+        <p>
+            Pour les fichiers, le principe est exactement le même :
+            vous sélectionnez le fichier, vous le copiez,
+            puis vous le collez dans un autre dossier.
+        </p>
+
+        <p>
+            <strong>Copier</strong> crée une copie du fichier.
+            Le fichier original reste donc à son emplacement.
         </p>
 
     </section>
@@ -579,6 +1730,10 @@
 </main>
 
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
@@ -596,7 +1751,6 @@
 
         </div>
 
-
         <div class="footer-text">
             © 2026 Centre Multimédia du CCAS
         </div>
@@ -609,51 +1763,922 @@
 
 <script>
 
-function normalizeText(text) {
 
-    return text
-        .trim()
-        .replace(/\s+/g, " ");
+/* =========================================================
+   PROGRESSION GÉNÉRALE
+========================================================= */
+
+let completedExercises = new Set();
+
+const totalExercises = 10;
+
+
+function markCompleted(number) {
+
+    completedExercises.add(number);
+
+    const completed =
+        completedExercises.size;
+
+    const percentage =
+        (completed / totalExercises) * 100;
+
+    document.getElementById("progressFill").style.width =
+        percentage + "%";
+
+    document.getElementById("progressText").innerText =
+        completed +
+        " exercice" +
+        (completed > 1 ? "s" : "") +
+        " réussi" +
+        (completed > 1 ? "s" : "") +
+        " sur " +
+        totalExercises;
 
 }
 
 
-function checkAnswer(textId, answerId, resultId) {
 
-    const originalText =
-        normalizeText(
-            document.getElementById(textId).innerText
-        );
+/* =========================================================
+   NORMALISATION
+========================================================= */
 
-    const userAnswer =
+function normalizeText(text) {
+
+    return text
+        .trim()
+        .replace(/\s+/g, " ")
+        .replace(/[’]/g, "'");
+
+}
+
+
+
+/* =========================================================
+   EXERCICE TEXTE SIMPLE
+========================================================= */
+
+function checkSingle(
+    expected,
+    answerId,
+    resultId,
+    number
+) {
+
+    const answer =
         normalizeText(
             document.getElementById(answerId).value
         );
 
+    const expectedText =
+        normalizeText(expected);
+
     const result =
         document.getElementById(resultId);
+
+    result.style.display = "block";
+
+
+    if (answer === expectedText) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> " +
+            "Le texte a été correctement copié et collé.";
+
+        markCompleted(number);
+
+    }
+
+    else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Pas encore tout à fait.</strong> " +
+            "Vérifiez que vous avez bien sélectionné " +
+            "tout le texte.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   EXERCICE TEXTE PRÉCIS
+========================================================= */
+
+function checkExpected(
+    expected,
+    answerId,
+    resultId,
+    number
+) {
+
+    const answer =
+        normalizeText(
+            document.getElementById(answerId).value
+        );
+
+    const expectedText =
+        normalizeText(expected);
+
+    const result =
+        document.getElementById(resultId);
+
+    result.style.display = "block";
+
+
+    if (answer === expectedText) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> " +
+            "Vous avez correctement sélectionné " +
+            "la partie demandée.";
+
+        markCompleted(number);
+
+    }
+
+    else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Ce n'est pas encore ça.</strong> " +
+            "Relisez bien la consigne et vérifiez " +
+            "que vous n'avez copié que la partie demandée.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PLUSIEURS ZONES
+========================================================= */
+
+function checkMultiple(
+    expected,
+    answerIds,
+    resultId,
+    number
+) {
+
+    const expectedText =
+        normalizeText(expected);
+
+    const result =
+        document.getElementById(resultId);
+
+    let allCorrect = true;
+
+
+    answerIds.forEach(function(id) {
+
+        const answer =
+            normalizeText(
+                document.getElementById(id).value
+            );
+
+        if (answer !== expectedText) {
+
+            allCorrect = false;
+
+        }
+
+    });
 
 
     result.style.display = "block";
 
 
-    if (originalText === userAnswer) {
+    if (allCorrect) {
 
-        result.className = "result success";
-
-        result.innerHTML =
-            "<strong>Bravo !</strong> Le texte a été correctement copié et collé.";
-
-    } else {
-
-        result.className = "result error";
+        result.className =
+            "result success";
 
         result.innerHTML =
-            "<strong>Pas encore tout à fait.</strong> Vérifiez que vous avez bien sélectionné tout le texte avant de le copier.";
+            "<strong>Bravo !</strong> " +
+            "Tous les collages sont corrects.";
+
+        markCompleted(number);
+
+    }
+
+    else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Pas encore tout à fait.</strong> " +
+            "Vérifiez les deux zones.";
 
     }
 
 }
+
+
+
+/* =========================================================
+   DONNÉES DE L'EXPLORATEUR
+========================================================= */
+
+const folders = {
+
+    "Téléchargements": [
+
+        {
+            name: "Photo vacances.jpg",
+            icon: "🖼️",
+            size: "2,4 Mo"
+        },
+
+        {
+            name: "Document administratif.pdf",
+            icon: "📄",
+            size: "840 Ko"
+        },
+
+        {
+            name: "Recette.txt",
+            icon: "📝",
+            size: "12 Ko"
+        },
+
+        {
+            name: "Photo famille.jpg",
+            icon: "🖼️",
+            size: "3,1 Mo"
+        }
+
+    ],
+
+
+    "Documents": [
+
+        {
+            name: "Courrier CCAS.docx",
+            icon: "📄",
+            size: "46 Ko"
+        },
+
+        {
+            name: "Facture.pdf",
+            icon: "📄",
+            size: "320 Ko"
+        }
+
+    ],
+
+
+    "Images": [],
+
+
+    "Sauvegarde": []
+
+};
+
+
+let currentFolder = "Téléchargements";
+
+let selectedFiles = [];
+
+let clipboardFiles = [];
+
+
+
+/* =========================================================
+   AFFICHAGE DU DOSSIER
+========================================================= */
+
+function renderFolder() {
+
+    const grid =
+        document.getElementById("fileGrid");
+
+    const title =
+        document.getElementById("folderTitle");
+
+    const path =
+        document.getElementById("explorerPath");
+
+
+    title.innerText =
+        currentFolder;
+
+    path.innerText =
+        "Ordinateur / " + currentFolder;
+
+
+    grid.innerHTML = "";
+
+
+    folders[currentFolder].forEach(function(file, index) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "file-item";
+
+
+        if (
+            selectedFiles.some(
+                selected =>
+                    selected.folder === currentFolder &&
+                    selected.index === index
+            )
+        ) {
+
+            item.classList.add("selected");
+
+        }
+
+
+        item.innerHTML =
+
+            '<div class="file-icon">' +
+                file.icon +
+            '</div>' +
+
+            '<div class="file-name">' +
+                file.name +
+            '</div>' +
+
+            '<div class="file-size">' +
+                file.size +
+            '</div>';
+
+
+        item.onclick = function(event) {
+
+            selectFile(
+                index,
+                event.ctrlKey || event.metaKey
+            );
+
+        };
+
+
+        grid.appendChild(item);
+
+    });
+
+
+    updateFolderButtons();
+
+}
+
+
+
+/* =========================================================
+   CHANGEMENT DE DOSSIER
+========================================================= */
+
+function openFolder(folder) {
+
+    currentFolder = folder;
+
+    selectedFiles = [];
+
+    renderFolder();
+
+}
+
+
+
+/* =========================================================
+   BOUTONS DOSSIERS
+========================================================= */
+
+function updateFolderButtons() {
+
+    document
+        .querySelectorAll(".folder-button")
+        .forEach(function(button) {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.folder === currentFolder
+            );
+
+        });
+
+}
+
+
+
+/* =========================================================
+   SÉLECTION DES FICHIERS
+========================================================= */
+
+function selectFile(index, multiSelect) {
+
+    const key = {
+
+        folder: currentFolder,
+
+        index: index
+
+    };
+
+
+    if (!multiSelect) {
+
+        selectedFiles = [key];
+
+    }
+
+    else {
+
+        const alreadySelected =
+            selectedFiles.some(
+                selected =>
+                    selected.folder === currentFolder &&
+                    selected.index === index
+            );
+
+
+        if (alreadySelected) {
+
+            selectedFiles =
+                selectedFiles.filter(
+                    selected =>
+                        !(
+                            selected.folder === currentFolder &&
+                            selected.index === index
+                        )
+                );
+
+        }
+
+        else {
+
+            selectedFiles.push(key);
+
+        }
+
+    }
+
+
+    renderFolder();
+
+}
+
+
+
+/* =========================================================
+   DÉSÉLECTION
+========================================================= */
+
+function clearSelection() {
+
+    selectedFiles = [];
+
+    renderFolder();
+
+}
+
+
+
+/* =========================================================
+   COPIER UN OU PLUSIEURS FICHIERS
+========================================================= */
+
+function copySelectedFile() {
+
+    if (selectedFiles.length === 0) {
+
+        alert(
+            "Sélectionnez d'abord un fichier."
+        );
+
+        return;
+
+    }
+
+
+    clipboardFiles =
+        selectedFiles.map(function(selected) {
+
+            const file =
+                folders[selected.folder][selected.index];
+
+            return {
+
+                name: file.name,
+
+                icon: file.icon,
+
+                size: file.size
+
+            };
+
+        });
+
+
+    updateClipboard();
+
+
+    selectedFiles = [];
+
+    renderFolder();
+
+}
+
+
+
+/* =========================================================
+   COLLAGE
+========================================================= */
+
+function pasteFile() {
+
+    if (clipboardFiles.length === 0) {
+
+        alert(
+            "Le presse-papiers est vide. Copiez d'abord un fichier."
+        );
+
+        return;
+
+    }
+
+
+    clipboardFiles.forEach(function(file) {
+
+        const alreadyExists =
+            folders[currentFolder].some(
+                existing =>
+                    existing.name === file.name
+            );
+
+
+        if (!alreadyExists) {
+
+            folders[currentFolder].push({
+
+                name: file.name,
+
+                icon: file.icon,
+
+                size: file.size
+
+            });
+
+        }
+
+    });
+
+
+    renderFolder();
+
+
+    updateClipboard();
+
+
+    checkCurrentFileMissions();
+
+}
+
+
+
+/* =========================================================
+   PRESSE-PAPIERS
+========================================================= */
+
+function updateClipboard() {
+
+    const info =
+        document.getElementById("clipboardInfo");
+
+
+    if (clipboardFiles.length === 0) {
+
+        info.innerText =
+            "Aucun fichier copié.";
+
+        return;
+
+    }
+
+
+    if (clipboardFiles.length === 1) {
+
+        info.innerText =
+            "1 fichier copié : " +
+            clipboardFiles[0].name;
+
+    }
+
+    else {
+
+        info.innerText =
+            clipboardFiles.length +
+            " fichiers copiés : " +
+            clipboardFiles
+                .map(file => file.name)
+                .join(", ");
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MISSION 7
+========================================================= */
+
+function checkFileMission1() {
+
+    const exists =
+        folders["Images"].some(
+            file =>
+                file.name === "Photo vacances.jpg"
+        );
+
+
+    const result =
+        document.getElementById("result7");
+
+
+    result.style.display = "block";
+
+
+    if (exists) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Bravo !</strong> " +
+            "Photo vacances.jpg a bien été copié " +
+            "dans le dossier Images.";
+
+        markCompleted(7);
+
+    }
+
+    else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Mission non terminée.</strong> " +
+            "Copiez Photo vacances.jpg depuis " +
+            "Téléchargements vers Images.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PRÉPARATION MISSIONS 8 ET 9
+========================================================= */
+
+function prepareFileMission(number) {
+
+    let message = "";
+
+
+    if (number === 8) {
+
+        message =
+            "Mission activée : copiez Document administratif.pdf " +
+            "de Téléchargements vers Documents.";
+
+    }
+
+
+    if (number === 9) {
+
+        message =
+            "Mission activée : copiez Recette.txt et Photo famille.jpg " +
+            "de Téléchargements vers Sauvegarde.";
+
+    }
+
+
+    const result =
+        document.getElementById(
+            "result" + number
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    result.className =
+        "result success";
+
+
+    result.innerHTML =
+        "<strong>C'est parti !</strong> " +
+        message +
+        " Utilisez l'explorateur ci-dessus.";
+
+}
+
+
+
+/* =========================================================
+   VÉRIFICATION MISSIONS FICHIERS
+========================================================= */
+
+function checkCurrentFileMissions() {
+
+    const documentCopied =
+        folders["Documents"].some(
+            file =>
+                file.name ===
+                "Document administratif.pdf"
+        );
+
+
+    const sauvegardeRecette =
+        folders["Sauvegarde"].some(
+            file =>
+                file.name ===
+                "Recette.txt"
+        );
+
+
+    const sauvegardePhoto =
+        folders["Sauvegarde"].some(
+            file =>
+                file.name ===
+                "Photo famille.jpg"
+        );
+
+
+    if (documentCopied) {
+
+        const result8 =
+            document.getElementById("result8");
+
+        result8.style.display = "block";
+
+        result8.className =
+            "result success";
+
+        result8.innerHTML =
+            "<strong>Bravo !</strong> " +
+            "Document administratif.pdf a bien été copié " +
+            "dans Documents.";
+
+        markCompleted(8);
+
+    }
+
+
+    if (
+        sauvegardeRecette &&
+        sauvegardePhoto
+    ) {
+
+        const result9 =
+            document.getElementById("result9");
+
+        result9.style.display = "block";
+
+        result9.className =
+            "result success";
+
+        result9.innerHTML =
+            "<strong>Bravo !</strong> " +
+            "Les deux fichiers ont bien été copiés " +
+            "dans Sauvegarde.";
+
+        markCompleted(9);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MISSION 10
+========================================================= */
+
+function checkFinalFileMission() {
+
+    const exists =
+        folders["Sauvegarde"].some(
+            file =>
+                file.name === "Facture.pdf"
+        );
+
+
+    const result =
+        document.getElementById("result10");
+
+
+    result.style.display = "block";
+
+
+    if (exists) {
+
+        result.className =
+            "result success";
+
+        result.innerHTML =
+            "<strong>Mission réussie !</strong> " +
+            "Facture.pdf a bien été copié dans Sauvegarde. " +
+            "Vous maîtrisez maintenant le copier-coller de fichiers.";
+
+        markCompleted(10);
+
+    }
+
+    else {
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Mission non terminée.</strong> " +
+            "Copiez Facture.pdf depuis Documents " +
+            "vers Sauvegarde avec Ctrl+C puis Ctrl+V.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLAVIER CTRL+C / CTRL+V
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "c"
+        ) {
+
+            if (
+                selectedFiles.length > 0 &&
+                document.activeElement.tagName !== "TEXTAREA" &&
+                document.activeElement.tagName !== "INPUT"
+            ) {
+
+                event.preventDefault();
+
+                copySelectedFile();
+
+            }
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "v"
+        ) {
+
+            if (
+                document.activeElement.tagName !== "TEXTAREA" &&
+                document.activeElement.tagName !== "INPUT"
+            ) {
+
+                event.preventDefault();
+
+                pasteFile();
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+renderFolder();
 
 </script>
 
