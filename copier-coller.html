@@ -272,7 +272,7 @@
 
 
         /* =========================
-           TEXTE À COPIER
+           TEXTE
         ========================== */
 
         .text-to-copy {
@@ -296,7 +296,7 @@
 
 
         /* =========================
-           ZONES DE TEXTE
+           ZONES TEXTE
         ========================== */
 
         textarea {
@@ -408,6 +408,232 @@
 
 
         /* =========================
+           EXPLORATEURS
+        ========================== */
+
+        .mini-explorer {
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            margin-top: 25px;
+        }
+
+        .explorer-titlebar {
+            background: #eef2f7;
+            padding: 12px 15px;
+            border-bottom: 1px solid #d7dee8;
+            font-weight: bold;
+            color: #35475f;
+        }
+
+        .explorer-path {
+            background: white;
+            margin: 12px;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            color: #526274;
+            font-size: 15px;
+        }
+
+        .explorer-content {
+            padding: 20px;
+        }
+
+        .explorer-folder-title {
+            color: #203858;
+            font-weight: bold;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .file-area {
+            min-height: 150px;
+            border: 1px solid #e0e6ef;
+            background: #fafbfd;
+            border-radius: 10px;
+            padding: 18px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .file-card {
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 14px 8px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: .2s;
+        }
+
+        .file-card:hover {
+            background: #edf2f8;
+        }
+
+        .file-card.selected {
+            background: #dceafb;
+            border-color: #3975c6;
+        }
+
+        .file-icon {
+            font-size: 40px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .file-name {
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .file-size {
+            color: #7a8798;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+
+        /* =========================
+           MINI INTERFACE 7
+        ========================== */
+
+        .simple-transfer {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .transfer-folder {
+            border: 2px solid #d8e0ea;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fafbfd;
+            min-height: 190px;
+        }
+
+        .transfer-folder h3 {
+            margin-top: 0;
+            color: #203858;
+        }
+
+        .transfer-arrow {
+            text-align: center;
+            font-size: 32px;
+            color: #3975c6;
+        }
+
+        .single-file {
+            border: 2px solid #3975c6;
+            background: #eaf2fc;
+            padding: 18px 10px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .single-file.selected {
+            background: #cfe2f8;
+            border-color: #245a99;
+        }
+
+
+        /* =========================
+           MINI INTERFACE 8
+        ========================== */
+
+        .two-column-explorer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .folder-panel {
+            border: 2px solid #d8e0ea;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fafbfd;
+        }
+
+        .folder-panel-header {
+            background: #eef2f7;
+            padding: 12px 15px;
+            font-weight: bold;
+            color: #30445f;
+        }
+
+        .folder-panel-content {
+            padding: 18px;
+            min-height: 210px;
+        }
+
+        .file-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+
+        .file-row:hover {
+            background: #edf2f8;
+        }
+
+        .file-row.selected {
+            background: #dceafb;
+            outline: 2px solid #3975c6;
+        }
+
+        .file-row-icon {
+            font-size: 27px;
+        }
+
+        .file-row-name {
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MISSION 9
+        ========================== */
+
+        .selection-help {
+            background: #fff8e8;
+            border: 2px dashed #dfa53c;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 18px;
+        }
+
+        .selection-counter {
+            margin-top: 15px;
+            color: #526274;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PRESSE-PAPIERS
+        ========================== */
+
+        .clipboard {
+            margin-top: 18px;
+            padding: 14px;
+            background: #fff8e8;
+            border: 2px dashed #dfa53c;
+            border-radius: 9px;
+            color: #76531d;
+        }
+
+
+        /* =========================
            CONSEIL
         ========================== */
 
@@ -421,197 +647,6 @@
         .tip h2 {
             margin-top: 0;
             color: #203858;
-        }
-
-
-        /* =========================
-           EXPLORATEUR DE FICHIERS
-        ========================== */
-
-        .file-explorer {
-            border: 2px solid #cdd7e5;
-            border-radius: 12px;
-            overflow: hidden;
-            background: white;
-            margin-top: 25px;
-        }
-
-        .explorer-top {
-            background: #eef2f7;
-            padding: 12px 15px;
-            border-bottom: 1px solid #d6dee9;
-        }
-
-        .explorer-path {
-            background: white;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            padding: 9px 12px;
-            color: #46566c;
-            font-size: 15px;
-        }
-
-        .explorer-body {
-            display: grid;
-            grid-template-columns: 190px 1fr;
-            min-height: 330px;
-        }
-
-        .explorer-sidebar {
-            background: #f5f7fa;
-            border-right: 1px solid #d9e1eb;
-            padding: 15px 10px;
-        }
-
-        .folder-button {
-            width: 100%;
-            border: none;
-            background: transparent;
-            text-align: left;
-            padding: 10px;
-            border-radius: 7px;
-            font-size: 15px;
-            color: #30445f;
-            cursor: pointer;
-            margin-bottom: 4px;
-        }
-
-        .folder-button:hover {
-            background: #e2e9f2;
-        }
-
-        .folder-button.active {
-            background: #dce9f8;
-            color: #245a99;
-            font-weight: bold;
-        }
-
-        .explorer-content {
-            padding: 20px;
-        }
-
-        .folder-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #203858;
-            margin-bottom: 18px;
-        }
-
-        .file-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .file-item {
-            border: 2px solid transparent;
-            border-radius: 10px;
-            padding: 15px 10px;
-            text-align: center;
-            cursor: pointer;
-            user-select: none;
-            transition: .2s;
-        }
-
-        .file-item:hover {
-            background: #f3f6fa;
-        }
-
-        .file-item.selected {
-            background: #dceafb;
-            border-color: #3975c6;
-        }
-
-        .file-icon {
-            font-size: 42px;
-            line-height: 1;
-            margin-bottom: 9px;
-        }
-
-        .file-name {
-            font-size: 14px;
-            word-break: break-word;
-        }
-
-        .file-size {
-            font-size: 12px;
-            color: #7b8798;
-            margin-top: 3px;
-        }
-
-
-        /* =========================
-           BARRE D'ACTIONS FICHIERS
-        ========================== */
-
-        .file-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 1px solid #dce3ec;
-        }
-
-        .file-action {
-            border: none;
-            background: #3975c6;
-            color: white;
-            padding: 11px 16px;
-            border-radius: 7px;
-            font-size: 15px;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .file-action:hover {
-            background: #2f65ad;
-        }
-
-        .file-action.secondary {
-            background: #e8edf4;
-            color: #30445f;
-        }
-
-        .file-action.secondary:hover {
-            background: #dbe3ed;
-        }
-
-
-        /* =========================
-           PRESSE-PAPIER
-        ========================== */
-
-        .clipboard-box {
-            background: #fff8e8;
-            border: 2px dashed #e1a63c;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 18px;
-        }
-
-        .clipboard-title {
-            font-weight: bold;
-            color: #76531d;
-        }
-
-        #clipboardInfo {
-            margin-top: 5px;
-            color: #705f3b;
-        }
-
-
-        /* =========================
-           MISSIONS FICHIERS
-        ========================== */
-
-        .mission-list {
-            margin: 20px 0;
-            padding-left: 22px;
-        }
-
-        .mission-list li {
-            margin-bottom: 10px;
         }
 
 
@@ -685,16 +720,19 @@
                 grid-template-columns: 1fr;
             }
 
-            .explorer-body {
+            .simple-transfer {
                 grid-template-columns: 1fr;
             }
 
-            .explorer-sidebar {
-                border-right: none;
-                border-bottom: 1px solid #d9e1eb;
+            .transfer-arrow {
+                transform: rotate(90deg);
             }
 
-            .file-grid {
+            .two-column-explorer {
+                grid-template-columns: 1fr;
+            }
+
+            .file-area {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -798,7 +836,7 @@
 
 
     <!-- =====================================
-         INTRODUCTION
+         INTRO
     ====================================== -->
 
     <section class="intro">
@@ -819,7 +857,7 @@
             </li>
 
             <li>
-                Copiez-le avec <strong>Ctrl + C</strong>.
+                Copiez avec <strong>Ctrl + C</strong>.
             </li>
 
             <li>
@@ -828,11 +866,6 @@
 
             <li>
                 Collez avec <strong>Ctrl + V</strong>.
-            </li>
-
-            <li>
-                Pour les fichiers, vous pouvez également utiliser
-                les boutons « Copier » et « Coller ».
             </li>
 
         </ol>
@@ -856,7 +889,6 @@
             Copier
 
         </div>
-
 
         <div class="shortcut">
 
@@ -950,7 +982,7 @@
         <button
             class="check-button"
             onclick="checkSingle(
-                'Bonjour, je découvre l\'informatique avec le Centre Multimédia du CCAS.',
+                'Bonjour, je découvre l\\'informatique avec le Centre Multimédia du CCAS.',
                 'answer1',
                 'result1',
                 1
@@ -984,7 +1016,7 @@
 
         <p>
             Sélectionnez uniquement les mots :
-            <strong>prendre mon temps</strong>
+            <strong>prendre mon temps</strong>.
         </p>
 
         <div class="text-to-copy">
@@ -1240,8 +1272,8 @@
         </h2>
 
         <p>
-            Sélectionnez uniquement la phrase suivante,
-            copiez-la, puis collez-la dans les deux zones.
+            Sélectionnez la phrase, copiez-la,
+            puis collez-la dans les deux zones.
         </p>
 
         <div class="text-to-copy">
@@ -1312,8 +1344,7 @@
         </h2>
 
         <p>
-            Maintenant, entraînez-vous à manipuler des fichiers
-            comme dans l'Explorateur de fichiers de votre ordinateur.
+            Chaque mission possède maintenant sa propre interface.
         </p>
 
     </div>
@@ -1321,161 +1352,82 @@
 
 
     <!-- =====================================
-         EXERCICE 7
+         MISSION 7
     ====================================== -->
 
     <section class="exercise">
 
         <div class="exercise-number">
-            Exercice 7
+            Mission 7
         </div>
 
         <h2>
-            Copier un fichier dans un autre dossier
+            Copier une photo
         </h2>
 
         <p>
-            Vous êtes dans un faux explorateur de fichiers.
-            Votre première mission est de copier
+            Votre première mission consiste à copier
             <strong>Photo vacances.jpg</strong>
-            dans le dossier <strong>Images</strong>.
+            du dossier <strong>Téléchargements</strong>
+            vers le dossier <strong>Images</strong>.
         </p>
 
-        <ol class="mission-list">
+        <div class="exercise-info">
 
-            <li>
-                Ouvrez le dossier <strong>Téléchargements</strong>.
-            </li>
+            <strong>Étape 1 :</strong>
+            sélectionnez la photo.<br>
 
-            <li>
-                Cliquez sur <strong>Photo vacances.jpg</strong>.
-            </li>
+            <strong>Étape 2 :</strong>
+            cliquez sur « Copier ». <br>
 
-            <li>
-                Cliquez sur <strong>Copier</strong>
-                ou utilisez <strong>Ctrl + C</strong>.
-            </li>
+            <strong>Étape 3 :</strong>
+            cliquez sur « Coller » dans Images.
 
-            <li>
-                Ouvrez le dossier <strong>Images</strong>.
-            </li>
-
-            <li>
-                Cliquez sur <strong>Coller</strong>
-                ou utilisez <strong>Ctrl + V</strong>.
-            </li>
-
-        </ol>
+        </div>
 
 
-        <div class="file-explorer">
+        <div class="simple-transfer">
 
-            <div class="explorer-top">
+
+            <div class="transfer-folder">
+
+                <h3>
+                    Téléchargements
+                </h3>
 
                 <div
-                    class="explorer-path"
-                    id="explorerPath"
+                    class="single-file"
+                    id="mission7File"
+                    onclick="selectMission7File()"
                 >
-                    Ordinateur / Téléchargements
+
+                    <div class="file-icon">
+                        🖼️
+                    </div>
+
+                    Photo vacances.jpg
+
                 </div>
 
             </div>
 
 
-            <div class="explorer-body">
+            <div class="transfer-arrow">
+                →
+            </div>
 
 
-                <div class="explorer-sidebar">
+            <div class="transfer-folder">
 
-                    <button
-                        class="folder-button active"
-                        data-folder="Téléchargements"
-                        onclick="openFolder('Téléchargements')"
-                    >
-                        Téléchargements
-                    </button>
+                <h3>
+                    Images
+                </h3>
 
-                    <button
-                        class="folder-button"
-                        data-folder="Documents"
-                        onclick="openFolder('Documents')"
-                    >
-                        Documents
-                    </button>
-
-                    <button
-                        class="folder-button"
-                        data-folder="Images"
-                        onclick="openFolder('Images')"
-                    >
-                        Images
-                    </button>
-
-                    <button
-                        class="folder-button"
-                        data-folder="Sauvegarde"
-                        onclick="openFolder('Sauvegarde')"
-                    >
-                        Sauvegarde
-                    </button>
-
-                </div>
-
-
-                <div class="explorer-content">
-
-                    <div
-                        class="folder-title"
-                        id="folderTitle"
-                    >
-                        Téléchargements
-                    </div>
-
-
-                    <div
-                        class="file-grid"
-                        id="fileGrid"
-                    ></div>
-
-
-                    <div class="file-actions">
-
-                        <button
-                            class="file-action"
-                            onclick="copySelectedFile()"
-                        >
-                            Copier
-                        </button>
-
-                        <button
-                            class="file-action"
-                            onclick="pasteFile()"
-                        >
-                            Coller
-                        </button>
-
-                        <button
-                            class="file-action secondary"
-                            onclick="clearSelection()"
-                        >
-                            Désélectionner
-                        </button>
-
-                    </div>
-
-
-                    <div class="clipboard-box">
-
-                        <div class="clipboard-title">
-                            Presse-papiers
-                        </div>
-
-                        <div id="clipboardInfo">
-                            Aucun fichier copié.
-                        </div>
-
-                    </div>
-
+                <div
+                    id="mission7Destination"
+                    style="color:#7b8798;"
+                >
+                    Aucun fichier
                 </div>
 
             </div>
@@ -1483,12 +1435,26 @@
         </div>
 
 
-        <button
-            class="check-button"
-            onclick="checkFileMission1()"
-        >
-            Vérifier la mission
-        </button>
+        <div class="file-actions"
+             style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
+
+            <button
+                class="file-action"
+                onclick="mission7Copy()"
+                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+            >
+                Copier
+            </button>
+
+            <button
+                class="file-action"
+                onclick="mission7Paste()"
+                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+            >
+                Coller
+            </button>
+
+        </div>
 
 
         <div
@@ -1501,41 +1467,134 @@
 
 
     <!-- =====================================
-         EXERCICE 8
+         MISSION 8
     ====================================== -->
 
     <section class="exercise">
 
         <div class="exercise-number">
-            Exercice 8
+            Mission 8
         </div>
 
         <h2>
-            Copier un document
+            Copier un document dans un autre dossier
         </h2>
 
         <p>
-            Cette fois, vous devez copier
+            Vous devez copier
             <strong>Document administratif.pdf</strong>
-            depuis <strong>Téléchargements</strong>
+            de <strong>Téléchargements</strong>
             vers <strong>Documents</strong>.
         </p>
 
         <div class="exercise-info">
 
-            <strong>Attention :</strong>
-            vous devez utiliser le copier-coller.
-            Ne déplacez pas le fichier.
+            Cette fois, plusieurs fichiers sont présents.
+            À vous de repérer le bon document.
 
         </div>
 
 
-        <button
-            class="check-button"
-            onclick="prepareFileMission(8)"
-        >
-            Commencer cette mission
-        </button>
+        <div class="two-column-explorer">
+
+
+            <div class="folder-panel">
+
+                <div class="folder-panel-header">
+                    Téléchargements
+                </div>
+
+                <div class="folder-panel-content">
+
+                    <div
+                        class="file-row"
+                        id="mission8Doc"
+                        onclick="selectMission8File()"
+                    >
+
+                        <div class="file-row-icon">
+                            📄
+                        </div>
+
+                        <div class="file-row-name">
+                            Document administratif.pdf
+                        </div>
+
+                    </div>
+
+
+                    <div class="file-row">
+
+                        <div class="file-row-icon">
+                            🖼️
+                        </div>
+
+                        <div class="file-row-name">
+                            Photo.jpg
+                        </div>
+
+                    </div>
+
+
+                    <div class="file-row">
+
+                        <div class="file-row-icon">
+                            📝
+                        </div>
+
+                        <div class="file-row-name">
+                            Recette.txt
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="folder-panel">
+
+                <div class="folder-panel-header">
+                    Documents
+                </div>
+
+                <div
+                    class="folder-panel-content"
+                    id="mission8Destination"
+                >
+
+                    <div style="color:#7b8798;">
+                        Le dossier est vide pour cette mission.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="file-actions"
+             style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
+
+            <button
+                class="file-action"
+                onclick="mission8Copy()"
+                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+            >
+                Copier
+            </button>
+
+            <button
+                class="file-action"
+                onclick="mission8Paste()"
+                style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+            >
+                Coller
+            </button>
+
+        </div>
 
 
         <div
@@ -1548,13 +1607,13 @@
 
 
     <!-- =====================================
-         EXERCICE 9
+         MISSION 9
     ====================================== -->
 
     <section class="exercise">
 
         <div class="exercise-number">
-            Exercice 9
+            Mission 9
         </div>
 
         <h2>
@@ -1562,11 +1621,10 @@
         </h2>
 
         <p>
-            Votre mission est de copier les deux fichiers suivants
-            dans le dossier <strong>Sauvegarde</strong> :
+            Sélectionnez les deux fichiers suivants :
         </p>
 
-        <ul class="mission-list">
+        <ul>
 
             <li>
                 <strong>Recette.txt</strong>
@@ -1578,22 +1636,188 @@
 
         </ul>
 
-        <div class="exercise-info">
+        <p>
+            Copiez-les ensuite dans le dossier
+            <strong>Sauvegarde</strong>.
+        </p>
+
+        <div class="selection-help">
 
             <strong>Astuce :</strong>
-            vous pouvez sélectionner plusieurs fichiers
-            en utilisant la touche <strong>Ctrl</strong>
-            pendant que vous cliquez dessus.
+            pour sélectionner plusieurs fichiers,
+            maintenez <strong>Ctrl</strong> enfoncé
+            pendant que vous cliquez sur les fichiers.
 
         </div>
 
 
-        <button
-            class="check-button"
-            onclick="prepareFileMission(9)"
-        >
-            Commencer cette mission
-        </button>
+        <div class="mini-explorer">
+
+            <div class="explorer-titlebar">
+                Explorateur de fichiers
+            </div>
+
+            <div class="explorer-path">
+                Ordinateur / Téléchargements
+            </div>
+
+            <div class="explorer-content">
+
+                <div class="explorer-folder-title">
+                    Téléchargements
+                </div>
+
+
+                <div class="file-area">
+
+                    <div
+                        class="file-card"
+                        id="mission9Recette"
+                        onclick="toggleMission9File('recette')"
+                    >
+
+                        <div class="file-icon">
+                            📝
+                        </div>
+
+                        <div class="file-name">
+                            Recette.txt
+                        </div>
+
+                        <div class="file-size">
+                            12 Ko
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="file-card"
+                        id="mission9Photo"
+                        onclick="toggleMission9File('photo')"
+                    >
+
+                        <div class="file-icon">
+                            🖼️
+                        </div>
+
+                        <div class="file-name">
+                            Photo famille.jpg
+                        </div>
+
+                        <div class="file-size">
+                            3,1 Mo
+                        </div>
+
+                    </div>
+
+
+                    <div class="file-card">
+
+                        <div class="file-icon">
+                            📄
+                        </div>
+
+                        <div class="file-name">
+                            Courrier.pdf
+                        </div>
+
+                        <div class="file-size">
+                            120 Ko
+                        </div>
+
+                    </div>
+
+
+                    <div class="file-card">
+
+                        <div class="file-icon">
+                            🖼️
+                        </div>
+
+                        <div class="file-name">
+                            Jardin.jpg
+                        </div>
+
+                        <div class="file-size">
+                            2,2 Mo
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="selection-counter">
+
+                    Fichiers sélectionnés :
+                    <span id="mission9Counter">0</span>
+
+                </div>
+
+
+                <div class="file-actions"
+                     style="display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;">
+
+                    <button
+                        class="file-action"
+                        onclick="mission9Copy()"
+                        style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+                    >
+                        Copier les fichiers
+                    </button>
+
+                    <button
+                        class="file-action"
+                        onclick="mission9Paste()"
+                        style="border:none; background:#3975c6; color:white; padding:11px 16px; border-radius:7px; cursor:pointer;"
+                    >
+                        Coller dans Sauvegarde
+                    </button>
+
+                </div>
+
+
+                <div class="clipboard">
+
+                    <strong>
+                        Presse-papiers :
+                    </strong>
+
+                    <span id="mission9Clipboard">
+                        Aucun fichier copié.
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="mission9Destination"
+                    style="
+                        margin-top:18px;
+                        padding:15px;
+                        background:#f1f5fa;
+                        border-radius:9px;
+                    "
+                >
+
+                    <strong>
+                        Sauvegarde
+                    </strong>
+
+                    <div
+                        id="mission9SavedFiles"
+                        style="margin-top:8px; color:#7b8798;"
+                    >
+                        Aucun fichier.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
         <div
@@ -1606,36 +1830,46 @@
 
 
     <!-- =====================================
-         EXERCICE 10
+         MISSION 10
     ====================================== -->
 
     <section class="exercise final-exercise">
 
         <div class="final-badge">
-            Grand défi fichiers
+            Grand défi
         </div>
 
         <div class="exercise-number">
-            Exercice 10
+            Mission 10
         </div>
 
         <h2>
-            Utilisez les raccourcis clavier
+            Utilisez Ctrl + C et Ctrl + V
         </h2>
 
         <p>
-            Dernière mission :
-            copiez <strong>Facture.pdf</strong>
-            depuis le dossier <strong>Documents</strong>
-            vers <strong>Sauvegarde</strong>.
+            Pour cette dernière mission,
+            les boutons ne vous donnent plus directement la solution.
         </p>
+
+        <div class="final-step">
+
+            <strong>Objectif</strong>
+
+            <p>
+                Copiez <strong>Facture.pdf</strong>
+                du dossier <strong>Documents</strong>
+                vers <strong>Sauvegarde</strong>.
+            </p>
+
+        </div>
 
         <div class="final-step">
 
             <strong>Étape 1</strong>
 
             <p>
-                Ouvrez le dossier Documents.
+                Cliquez sur Facture.pdf pour le sélectionner.
             </p>
 
         </div>
@@ -1645,7 +1879,7 @@
             <strong>Étape 2</strong>
 
             <p>
-                Sélectionnez Facture.pdf.
+                Utilisez <strong>Ctrl + C</strong>.
             </p>
 
         </div>
@@ -1655,7 +1889,7 @@
             <strong>Étape 3</strong>
 
             <p>
-                Utilisez <strong>Ctrl + C</strong>.
+                Cliquez sur Sauvegarde.
             </p>
 
         </div>
@@ -1665,28 +1899,143 @@
             <strong>Étape 4</strong>
 
             <p>
-                Ouvrez le dossier Sauvegarde.
-            </p>
-
-        </div>
-
-        <div class="final-step">
-
-            <strong>Étape 5</strong>
-
-            <p>
                 Utilisez <strong>Ctrl + V</strong>.
             </p>
 
         </div>
 
 
-        <button
-            class="check-button"
-            onclick="checkFinalFileMission()"
-        >
-            Vérifier la mission finale
-        </button>
+        <div class="mini-explorer">
+
+            <div class="explorer-titlebar">
+                Explorateur de fichiers
+            </div>
+
+            <div class="explorer-path"
+                 id="mission10Path">
+
+                Ordinateur / Documents
+
+            </div>
+
+
+            <div class="explorer-content">
+
+
+                <div
+                    id="mission10Documents"
+                >
+
+                    <div class="explorer-folder-title">
+                        Documents
+                    </div>
+
+
+                    <div class="file-area">
+
+                        <div
+                            class="file-card"
+                            id="mission10Facture"
+                            onclick="selectMission10Facture()"
+                        >
+
+                            <div class="file-icon">
+                                📄
+                            </div>
+
+                            <div class="file-name">
+                                Facture.pdf
+                            </div>
+
+                            <div class="file-size">
+                                320 Ko
+                            </div>
+
+                        </div>
+
+
+                        <div class="file-card">
+
+                            <div class="file-icon">
+                                📄
+                            </div>
+
+                            <div class="file-name">
+                                Courrier CCAS.docx
+                            </div>
+
+                            <div class="file-size">
+                                46 Ko
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="mission10Backup"
+                    style="display:none;"
+                >
+
+                    <div class="explorer-folder-title">
+                        Sauvegarde
+                    </div>
+
+
+                    <div
+                        id="mission10Saved"
+                        class="file-area"
+                    >
+
+                        <div style="color:#7b8798;">
+                            Le dossier est vide.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="file-actions"
+                     style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
+
+                    <button
+                        class="file-action secondary"
+                        onclick="openMission10Documents()"
+                        style="border:none; background:#e8edf4; color:#30445f; padding:11px 16px; border-radius:7px; cursor:pointer;"
+                    >
+                        Documents
+                    </button>
+
+                    <button
+                        class="file-action secondary"
+                        onclick="openMission10Backup()"
+                        style="border:none; background:#e8edf4; color:#30445f; padding:11px 16px; border-radius:7px; cursor:pointer;"
+                    >
+                        Sauvegarde
+                    </button>
+
+                </div>
+
+
+                <div class="clipboard">
+
+                    <strong>
+                        Presse-papiers :
+                    </strong>
+
+                    <span id="mission10Clipboard">
+                        Aucun fichier copié.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
         <div
@@ -1709,19 +2058,20 @@
         </h2>
 
         <p>
-            Pour du texte, vous pouvez utiliser
-            <strong>Ctrl + C</strong> puis <strong>Ctrl + V</strong>.
+            Le principe est toujours le même :
+            <strong>sélectionner → copier → choisir l'endroit → coller</strong>.
         </p>
 
         <p>
-            Pour les fichiers, le principe est exactement le même :
-            vous sélectionnez le fichier, vous le copiez,
-            puis vous le collez dans un autre dossier.
+            Lorsque vous copiez un fichier,
+            l'original reste à son emplacement.
+            Une copie est créée dans le nouveau dossier.
         </p>
 
         <p>
-            <strong>Copier</strong> crée une copie du fichier.
-            Le fichier original reste donc à son emplacement.
+            Avec l'habitude,
+            <strong>Ctrl + C</strong> et <strong>Ctrl + V</strong>
+            permettent de travailler beaucoup plus rapidement.
         </p>
 
     </section>
@@ -1765,7 +2115,7 @@
 
 
 /* =========================================================
-   PROGRESSION GÉNÉRALE
+   PROGRESSION
 ========================================================= */
 
 let completedExercises = new Set();
@@ -1798,9 +2148,8 @@ function markCompleted(number) {
 }
 
 
-
 /* =========================================================
-   NORMALISATION
+   NORMALISATION TEXTE
 ========================================================= */
 
 function normalizeText(text) {
@@ -1811,7 +2160,6 @@ function normalizeText(text) {
         .replace(/[’]/g, "'");
 
 }
-
 
 
 /* =========================================================
@@ -1867,7 +2215,6 @@ function checkSingle(
 }
 
 
-
 /* =========================================================
    EXERCICE TEXTE PRÉCIS
 ========================================================= */
@@ -1914,13 +2261,11 @@ function checkExpected(
 
         result.innerHTML =
             "<strong>Ce n'est pas encore ça.</strong> " +
-            "Relisez bien la consigne et vérifiez " +
-            "que vous n'avez copié que la partie demandée.";
+            "Relisez bien la consigne.";
 
     }
 
 }
-
 
 
 /* =========================================================
@@ -1989,642 +2334,508 @@ function checkMultiple(
 }
 
 
-
-/* =========================================================
-   DONNÉES DE L'EXPLORATEUR
-========================================================= */
-
-const folders = {
-
-    "Téléchargements": [
-
-        {
-            name: "Photo vacances.jpg",
-            icon: "🖼️",
-            size: "2,4 Mo"
-        },
-
-        {
-            name: "Document administratif.pdf",
-            icon: "📄",
-            size: "840 Ko"
-        },
-
-        {
-            name: "Recette.txt",
-            icon: "📝",
-            size: "12 Ko"
-        },
-
-        {
-            name: "Photo famille.jpg",
-            icon: "🖼️",
-            size: "3,1 Mo"
-        }
-
-    ],
-
-
-    "Documents": [
-
-        {
-            name: "Courrier CCAS.docx",
-            icon: "📄",
-            size: "46 Ko"
-        },
-
-        {
-            name: "Facture.pdf",
-            icon: "📄",
-            size: "320 Ko"
-        }
-
-    ],
-
-
-    "Images": [],
-
-
-    "Sauvegarde": []
-
-};
-
-
-let currentFolder = "Téléchargements";
-
-let selectedFiles = [];
-
-let clipboardFiles = [];
-
-
-
-/* =========================================================
-   AFFICHAGE DU DOSSIER
-========================================================= */
-
-function renderFolder() {
-
-    const grid =
-        document.getElementById("fileGrid");
-
-    const title =
-        document.getElementById("folderTitle");
-
-    const path =
-        document.getElementById("explorerPath");
-
-
-    title.innerText =
-        currentFolder;
-
-    path.innerText =
-        "Ordinateur / " + currentFolder;
-
-
-    grid.innerHTML = "";
-
-
-    folders[currentFolder].forEach(function(file, index) {
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "file-item";
-
-
-        if (
-            selectedFiles.some(
-                selected =>
-                    selected.folder === currentFolder &&
-                    selected.index === index
-            )
-        ) {
-
-            item.classList.add("selected");
-
-        }
-
-
-        item.innerHTML =
-
-            '<div class="file-icon">' +
-                file.icon +
-            '</div>' +
-
-            '<div class="file-name">' +
-                file.name +
-            '</div>' +
-
-            '<div class="file-size">' +
-                file.size +
-            '</div>';
-
-
-        item.onclick = function(event) {
-
-            selectFile(
-                index,
-                event.ctrlKey || event.metaKey
-            );
-
-        };
-
-
-        grid.appendChild(item);
-
-    });
-
-
-    updateFolderButtons();
-
-}
-
-
-
-/* =========================================================
-   CHANGEMENT DE DOSSIER
-========================================================= */
-
-function openFolder(folder) {
-
-    currentFolder = folder;
-
-    selectedFiles = [];
-
-    renderFolder();
-
-}
-
-
-
-/* =========================================================
-   BOUTONS DOSSIERS
-========================================================= */
-
-function updateFolderButtons() {
-
-    document
-        .querySelectorAll(".folder-button")
-        .forEach(function(button) {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.folder === currentFolder
-            );
-
-        });
-
-}
-
-
-
-/* =========================================================
-   SÉLECTION DES FICHIERS
-========================================================= */
-
-function selectFile(index, multiSelect) {
-
-    const key = {
-
-        folder: currentFolder,
-
-        index: index
-
-    };
-
-
-    if (!multiSelect) {
-
-        selectedFiles = [key];
-
-    }
-
-    else {
-
-        const alreadySelected =
-            selectedFiles.some(
-                selected =>
-                    selected.folder === currentFolder &&
-                    selected.index === index
-            );
-
-
-        if (alreadySelected) {
-
-            selectedFiles =
-                selectedFiles.filter(
-                    selected =>
-                        !(
-                            selected.folder === currentFolder &&
-                            selected.index === index
-                        )
-                );
-
-        }
-
-        else {
-
-            selectedFiles.push(key);
-
-        }
-
-    }
-
-
-    renderFolder();
-
-}
-
-
-
-/* =========================================================
-   DÉSÉLECTION
-========================================================= */
-
-function clearSelection() {
-
-    selectedFiles = [];
-
-    renderFolder();
-
-}
-
-
-
-/* =========================================================
-   COPIER UN OU PLUSIEURS FICHIERS
-========================================================= */
-
-function copySelectedFile() {
-
-    if (selectedFiles.length === 0) {
-
-        alert(
-            "Sélectionnez d'abord un fichier."
-        );
-
-        return;
-
-    }
-
-
-    clipboardFiles =
-        selectedFiles.map(function(selected) {
-
-            const file =
-                folders[selected.folder][selected.index];
-
-            return {
-
-                name: file.name,
-
-                icon: file.icon,
-
-                size: file.size
-
-            };
-
-        });
-
-
-    updateClipboard();
-
-
-    selectedFiles = [];
-
-    renderFolder();
-
-}
-
-
-
-/* =========================================================
-   COLLAGE
-========================================================= */
-
-function pasteFile() {
-
-    if (clipboardFiles.length === 0) {
-
-        alert(
-            "Le presse-papiers est vide. Copiez d'abord un fichier."
-        );
-
-        return;
-
-    }
-
-
-    clipboardFiles.forEach(function(file) {
-
-        const alreadyExists =
-            folders[currentFolder].some(
-                existing =>
-                    existing.name === file.name
-            );
-
-
-        if (!alreadyExists) {
-
-            folders[currentFolder].push({
-
-                name: file.name,
-
-                icon: file.icon,
-
-                size: file.size
-
-            });
-
-        }
-
-    });
-
-
-    renderFolder();
-
-
-    updateClipboard();
-
-
-    checkCurrentFileMissions();
-
-}
-
-
-
-/* =========================================================
-   PRESSE-PAPIERS
-========================================================= */
-
-function updateClipboard() {
-
-    const info =
-        document.getElementById("clipboardInfo");
-
-
-    if (clipboardFiles.length === 0) {
-
-        info.innerText =
-            "Aucun fichier copié.";
-
-        return;
-
-    }
-
-
-    if (clipboardFiles.length === 1) {
-
-        info.innerText =
-            "1 fichier copié : " +
-            clipboardFiles[0].name;
-
-    }
-
-    else {
-
-        info.innerText =
-            clipboardFiles.length +
-            " fichiers copiés : " +
-            clipboardFiles
-                .map(file => file.name)
-                .join(", ");
-
-    }
-
-}
-
-
-
 /* =========================================================
    MISSION 7
 ========================================================= */
 
-function checkFileMission1() {
+let mission7Selected = false;
 
-    const exists =
-        folders["Images"].some(
-            file =>
-                file.name === "Photo vacances.jpg"
-        );
+let mission7Copied = false;
 
+let mission7Pasted = false;
+
+
+function selectMission7File() {
+
+    mission7Selected = true;
+
+    document
+        .getElementById("mission7File")
+        .classList.add("selected");
+
+}
+
+
+function mission7Copy() {
 
     const result =
         document.getElementById("result7");
 
 
-    result.style.display = "block";
+    if (!mission7Selected) {
 
-
-    if (exists) {
-
-        result.className =
-            "result success";
-
-        result.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Photo vacances.jpg a bien été copié " +
-            "dans le dossier Images.";
-
-        markCompleted(7);
-
-    }
-
-    else {
+        result.style.display = "block";
 
         result.className =
             "result error";
 
         result.innerHTML =
-            "<strong>Mission non terminée.</strong> " +
-            "Copiez Photo vacances.jpg depuis " +
-            "Téléchargements vers Images.";
+            "<strong>Commencez par sélectionner le fichier.</strong>";
 
-    }
-
-}
-
-
-
-/* =========================================================
-   PRÉPARATION MISSIONS 8 ET 9
-========================================================= */
-
-function prepareFileMission(number) {
-
-    let message = "";
-
-
-    if (number === 8) {
-
-        message =
-            "Mission activée : copiez Document administratif.pdf " +
-            "de Téléchargements vers Documents.";
+        return;
 
     }
 
 
-    if (number === 9) {
+    mission7Copied = true;
 
-        message =
-            "Mission activée : copiez Recette.txt et Photo famille.jpg " +
-            "de Téléchargements vers Sauvegarde.";
-
-    }
-
-
-    const result =
-        document.getElementById(
-            "result" + number
-        );
-
-
-    result.style.display =
-        "block";
-
+    result.style.display = "block";
 
     result.className =
         "result success";
 
-
     result.innerHTML =
-        "<strong>C'est parti !</strong> " +
-        message +
-        " Utilisez l'explorateur ci-dessus.";
+        "<strong>Fichier copié.</strong> " +
+        "Vous pouvez maintenant le coller dans Images.";
 
 }
 
+
+function mission7Paste() {
+
+    const result =
+        document.getElementById("result7");
+
+
+    if (!mission7Copied) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Le fichier n'est pas encore copié.</strong>";
+
+        return;
+
+    }
+
+
+    mission7Pasted = true;
+
+
+    document.getElementById(
+        "mission7Destination"
+    ).innerHTML =
+
+        '<div style="color:#17604f; font-weight:bold;">' +
+        '🖼️ Photo vacances.jpg' +
+        '</div>';
+
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Bravo !</strong> " +
+        "La photo a bien été copiée dans Images.";
+
+    markCompleted(7);
+
+}
 
 
 /* =========================================================
-   VÉRIFICATION MISSIONS FICHIERS
+   MISSION 8
 ========================================================= */
 
-function checkCurrentFileMissions() {
+let mission8Selected = false;
 
-    const documentCopied =
-        folders["Documents"].some(
-            file =>
-                file.name ===
-                "Document administratif.pdf"
-        );
+let mission8Copied = false;
 
 
-    const sauvegardeRecette =
-        folders["Sauvegarde"].some(
-            file =>
-                file.name ===
-                "Recette.txt"
-        );
+function selectMission8File() {
 
+    mission8Selected = true;
 
-    const sauvegardePhoto =
-        folders["Sauvegarde"].some(
-            file =>
-                file.name ===
-                "Photo famille.jpg"
-        );
-
-
-    if (documentCopied) {
-
-        const result8 =
-            document.getElementById("result8");
-
-        result8.style.display = "block";
-
-        result8.className =
-            "result success";
-
-        result8.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Document administratif.pdf a bien été copié " +
-            "dans Documents.";
-
-        markCompleted(8);
-
-    }
-
-
-    if (
-        sauvegardeRecette &&
-        sauvegardePhoto
-    ) {
-
-        const result9 =
-            document.getElementById("result9");
-
-        result9.style.display = "block";
-
-        result9.className =
-            "result success";
-
-        result9.innerHTML =
-            "<strong>Bravo !</strong> " +
-            "Les deux fichiers ont bien été copiés " +
-            "dans Sauvegarde.";
-
-        markCompleted(9);
-
-    }
+    document
+        .getElementById("mission8Doc")
+        .classList.add("selected");
 
 }
 
+
+function mission8Copy() {
+
+    const result =
+        document.getElementById("result8");
+
+
+    if (!mission8Selected) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Choisissez d'abord le bon fichier.</strong>";
+
+        return;
+
+    }
+
+
+    mission8Copied = true;
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Document copié.</strong> " +
+        "Vous pouvez maintenant le coller dans Documents.";
+
+}
+
+
+function mission8Paste() {
+
+    const result =
+        document.getElementById("result8");
+
+
+    if (!mission8Copied) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Vous devez d'abord copier le document.</strong>";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "mission8Destination"
+    ).innerHTML =
+
+        '<div class="file-row selected">' +
+
+            '<div class="file-row-icon">📄</div>' +
+
+            '<div class="file-row-name">' +
+                'Document administratif.pdf' +
+            '</div>' +
+
+        '</div>';
+
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Bravo !</strong> " +
+        "Le document a été correctement copié dans Documents.";
+
+    markCompleted(8);
+
+}
+
+
+/* =========================================================
+   MISSION 9
+========================================================= */
+
+let mission9Selected = [];
+
+let mission9Copied = false;
+
+
+function toggleMission9File(file) {
+
+    const index =
+        mission9Selected.indexOf(file);
+
+
+    if (index === -1) {
+
+        mission9Selected.push(file);
+
+    }
+
+    else {
+
+        mission9Selected.splice(index, 1);
+
+    }
+
+
+    document
+        .getElementById("mission9Recette")
+        .classList.toggle(
+            "selected",
+            mission9Selected.includes("recette")
+        );
+
+
+    document
+        .getElementById("mission9Photo")
+        .classList.toggle(
+            "selected",
+            mission9Selected.includes("photo")
+        );
+
+
+    document.getElementById(
+        "mission9Counter"
+    ).innerText =
+        mission9Selected.length;
+
+}
+
+
+function mission9Copy() {
+
+    const result =
+        document.getElementById("result9");
+
+
+    if (mission9Selected.length !== 2) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Sélectionnez les deux fichiers demandés.</strong>";
+
+        return;
+
+    }
+
+
+    mission9Copied = true;
+
+
+    document.getElementById(
+        "mission9Clipboard"
+    ).innerText =
+        "Recette.txt + Photo famille.jpg";
+
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Les deux fichiers sont copiés.</strong> " +
+        "Vous pouvez maintenant les coller dans Sauvegarde.";
+
+}
+
+
+function mission9Paste() {
+
+    const result =
+        document.getElementById("result9");
+
+
+    if (!mission9Copied) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Vous devez d'abord copier les deux fichiers.</strong>";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "mission9SavedFiles"
+    ).innerHTML =
+
+        '<div style="margin-bottom:7px;">📝 Recette.txt</div>' +
+
+        '<div>🖼️ Photo famille.jpg</div>';
+
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Bravo !</strong> " +
+        "Les deux fichiers ont bien été copiés dans Sauvegarde.";
+
+    markCompleted(9);
+
+}
 
 
 /* =========================================================
    MISSION 10
 ========================================================= */
 
-function checkFinalFileMission() {
+let mission10Selected = false;
 
-    const exists =
-        folders["Sauvegarde"].some(
-            file =>
-                file.name === "Facture.pdf"
-        );
+let mission10Copied = false;
 
+let mission10Folder = "Documents";
+
+
+function selectMission10Facture() {
+
+    mission10Selected = true;
+
+    document
+        .getElementById("mission10Facture")
+        .classList.add("selected");
+
+}
+
+
+function openMission10Documents() {
+
+    mission10Folder =
+        "Documents";
+
+
+    document.getElementById(
+        "mission10Documents"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "mission10Backup"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "mission10Path"
+    ).innerText =
+        "Ordinateur / Documents";
+
+}
+
+
+function openMission10Backup() {
+
+    mission10Folder =
+        "Sauvegarde";
+
+
+    document.getElementById(
+        "mission10Documents"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "mission10Backup"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "mission10Path"
+    ).innerText =
+        "Ordinateur / Sauvegarde";
+
+}
+
+
+function mission10Copy() {
+
+    mission10Copied = true;
+
+    document.getElementById(
+        "mission10Clipboard"
+    ).innerText =
+        "Facture.pdf";
+
+}
+
+
+function mission10Paste() {
 
     const result =
         document.getElementById("result10");
 
 
-    result.style.display = "block";
+    if (mission10Folder !== "Sauvegarde") {
 
-
-    if (exists) {
-
-        result.className =
-            "result success";
-
-        result.innerHTML =
-            "<strong>Mission réussie !</strong> " +
-            "Facture.pdf a bien été copié dans Sauvegarde. " +
-            "Vous maîtrisez maintenant le copier-coller de fichiers.";
-
-        markCompleted(10);
-
-    }
-
-    else {
+        result.style.display = "block";
 
         result.className =
             "result error";
 
         result.innerHTML =
-            "<strong>Mission non terminée.</strong> " +
-            "Copiez Facture.pdf depuis Documents " +
-            "vers Sauvegarde avec Ctrl+C puis Ctrl+V.";
+            "<strong>Vous êtes encore dans Documents.</strong> " +
+            "Ouvrez d'abord le dossier Sauvegarde.";
+
+        return;
 
     }
+
+
+    if (!mission10Copied) {
+
+        result.style.display = "block";
+
+        result.className =
+            "result error";
+
+        result.innerHTML =
+            "<strong>Le fichier n'a pas encore été copié.</strong> " +
+            "Utilisez Ctrl + C.";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "mission10Saved"
+    ).innerHTML =
+
+        '<div class="file-card selected">' +
+
+            '<div class="file-icon">📄</div>' +
+
+            '<div class="file-name">Facture.pdf</div>' +
+
+            '<div class="file-size">320 Ko</div>' +
+
+        '</div>';
+
+
+    result.style.display = "block";
+
+    result.className =
+        "result success";
+
+    result.innerHTML =
+        "<strong>Mission réussie !</strong> " +
+        "Facture.pdf a bien été copié dans Sauvegarde.";
+
+    markCompleted(10);
 
 }
 
 
-
 /* =========================================================
-   CLAVIER CTRL+C / CTRL+V
+   CTRL + C / CTRL + V POUR LA MISSION FINALE
 ========================================================= */
 
 document.addEventListener(
@@ -2637,14 +2848,13 @@ document.addEventListener(
         ) {
 
             if (
-                selectedFiles.length > 0 &&
-                document.activeElement.tagName !== "TEXTAREA" &&
-                document.activeElement.tagName !== "INPUT"
+                mission10Folder === "Documents" &&
+                mission10Selected
             ) {
 
                 event.preventDefault();
 
-                copySelectedFile();
+                mission10Copy();
 
             }
 
@@ -2657,13 +2867,12 @@ document.addEventListener(
         ) {
 
             if (
-                document.activeElement.tagName !== "TEXTAREA" &&
-                document.activeElement.tagName !== "INPUT"
+                mission10Folder === "Sauvegarde"
             ) {
 
                 event.preventDefault();
 
-                pasteFile();
+                mission10Paste();
 
             }
 
@@ -2671,14 +2880,6 @@ document.addEventListener(
 
     }
 );
-
-
-
-/* =========================================================
-   INITIALISATION
-========================================================= */
-
-renderFolder();
 
 </script>
 
