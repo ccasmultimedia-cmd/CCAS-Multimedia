@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier de frappe - Centre Multimédia du CCAS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #26364a;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo strong {
+    font-size: 26px;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: .8;
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-shrink: 1;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: .3s;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3d76c5;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    padding: 45px 20px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 38px;
+    color: #315f94;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1050px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+}
+
+/* =========================
+   CHOIX DU MODE
+========================= */
+
+.mode-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.mode-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    border-top: 6px solid #3975c6;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.mode-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0,0,0,.12);
+}
+
+.mode-card.active {
+    background: #eef5ff;
+    box-shadow: 0 0 0 3px #3975c6;
+}
+
+.mode-card h2 {
+    margin: 5px 0 10px;
+    font-size: 22px;
+}
+
+.mode-card p {
+    margin: 0;
+    line-height: 1.5;
+    color: #56677c;
+}
+
+.mode-icon {
+    font-size: 38px;
+}
+
+/* =========================
+   CONFIGURATION
+========================= */
+
+.configuration {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.configuration h2 {
+    margin-top: 0;
+    color: #315f94;
+}
+
+.options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.options label {
+    font-weight: bold;
+}
+
+select {
+    padding: 11px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+/* =========================
+   ZONE DE JEU
+========================= */
+
+.game-area {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.09);
+}
+
+.game-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: #f4f7fb;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+    font-size: 28px;
+    color: #315f94;
+}
+
+.stat span {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* =========================
+   TEXTE
+========================= */
+
+.text-container {
+    background: #f8fafc;
+    border: 2px solid #dbe4ef;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.text-display {
+    font-size: 22px;
+    line-height: 1.9;
+    letter-spacing: .2px;
+    color: #475569;
+    user-select: none;
+}
+
+.text-display span {
+    border-radius: 3px;
+}
+
+.text-display .correct {
+    color: #27804c;
+}
+
+.text-display .incorrect {
+    color: #c0392b;
+    background: #ffe5e2;
+}
+
+.text-display .current {
+    background: #dbeafe;
+    border-bottom: 3px solid #3975c6;
+}
+
+/* =========================
+   ZONE DE SAISIE
+========================= */
+
+textarea {
+    width: 100%;
+    min-height: 160px;
+    resize: vertical;
+    padding: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #26364a;
+    outline: none;
+    transition: .2s;
+}
+
+textarea:focus {
+    border-color: #3975c6;
+    box-shadow: 0 0 0 3px rgba(57,117,198,.12);
+}
+
+textarea.error {
+    border-color: #c0392b;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 13px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: #3975c6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2d62a8;
+}
+
+.btn-secondary {
+    background: #e7edf5;
+    color: #26364a;
+}
+
+.btn-secondary:hover {
+    background: #d7e0ec;
+}
+
+.btn-success {
+    background: #2e8b78;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #24705f;
+}
+
+/* =========================
+   MESSAGE D'INFO
+========================= */
+
+.info-box {
+    margin-top: 25px;
+    background: #eef7ef;
+    border-left: 5px solid #2e8b78;
+    padding: 18px 20px;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+/* =========================
+   RESULTAT
+========================= */
+
+.result {
+    display: none;
+    margin-top: 30px;
+    background: #f8fafc;
+    border-radius: 18px;
+    padding: 25px;
+    border: 2px solid #dbe4ef;
+}
+
+.result.visible {
+    display: block;
+}
+
+.result h2 {
+    margin-top: 0;
+    color: #315f94;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.result-card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.result-card strong {
+    display: block;
+    font-size: 30px;
+    color: #315f94;
+    margin-bottom: 5px;
+}
+
+.result-card span {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.error-list {
+    background: #fff5f3;
+    border-left: 5px solid #c0392b;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.error-list h3 {
+    margin-top: 0;
+    color: #a93226;
+}
+
+.error-list ul {
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+
+.good-result {
+    background: #eef7ef;
+    border-left: 5px solid #2e8b78;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* =========================
+   HISTORIQUE
+========================= */
+
+.history {
+    margin-top: 35px;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.history h2 {
+    margin-top: 0;
+    color: #315f94;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.history-table th,
+.history-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.history-table th {
+    background: #f4f7fb;
+}
+
+.empty-history {
+    color: #64748b;
+}
+
+/* =========================
+   DICTEE
+========================= */
+
+.dictation-help {
+    background: #fff8e8;
+    border-left: 5px solid #d89b35;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.dictation-help strong {
+    color: #9a641c;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    line-height: 1.6;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .navbar {
+        gap: 15px;
+    }
+
+    nav {
+        gap: 4px;
+    }
+
+    nav a {
+        padding: 9px 11px;
+        font-size: 15px;
+    }
+
+    .mode-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .game-top,
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .text-display {
+        font-size: 19px;
+    }
+
+    textarea {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 0 12px;
+    }
+
+    .game-area,
+    .configuration,
+    .history {
+        padding: 20px;
+    }
+
+    .game-top,
+    .result-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .text-container {
+        padding: 17px;
+    }
+
+    .text-display {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    textarea {
+        min-height: 140px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre, pratiquer, progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html" class="active">Jeux</a>
+            <a href="exercices.html">Exercices</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <h1>Atelier de frappe</h1>
+
+    <p>
+        Entraînez-vous à utiliser votre clavier, améliorez votre vitesse
+        de frappe et travaillez votre précision et votre orthographe.
+    </p>
+
+</section>
+
+
+<main>
+
+
+    <!-- =========================
+         CHOIX DU MODE
+    ========================== -->
+
+    <div class="mode-selector">
+
+        <div class="mode-card active" id="modeTraining">
+
+            <div class="mode-icon">⌨️</div>
+
+            <h2>Entraînement</h2>
+
+            <p>
+                Prenez le temps de taper correctement et améliorez
+                progressivement votre vitesse.
+            </p>
+
+        </div>
+
+
+        <div class="mode-card" id="modeDictation">
+
+            <div class="mode-icon">📝</div>
+
+            <h2>Dictée</h2>
+
+            <p>
+                Travaillez la frappe, l'orthographe, les accents
+                et la ponctuation.
+            </p>
+
+        </div>
+
+
+        <div class="mode-card" id="modeChallenge">
+
+            <div class="mode-icon">⏱️</div>
+
+            <h2>Défi 60 secondes</h2>
+
+            <p>
+                Tapez le maximum de texte en une minute
+                tout en restant précis.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONFIGURATION
+    ========================== -->
+
+    <div class="configuration">
+
+        <h2>Choisissez votre exercice</h2>
+
+        <div class="options">
+
+            <label for="difficulty">Niveau :</label>
+
+            <select id="difficulty">
+
+                <option value="easy">Débutant</option>
+                <option value="medium">Intermédiaire</option>
+                <option value="hard">Difficile</option>
+
+            </select>
+
+
+            <label for="textChoice">Texte :</label>
+
+            <select id="textChoice"></select>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ZONE DICTEE
+    ========================== -->
+
+    <div id="dictationHelp" class="dictation-help" style="display:none;">
+
+        <strong>Mode dictée :</strong>
+        le texte apparaît normalement à l'écran pour cet exercice.
+        Pour une véritable séance de dictée, l'animateur peut lire
+        le texte à voix haute et demander au participant de taper
+        sans regarder le modèle.
+
+    </div>
+
+
+    <!-- =========================
+         JEU
+    ========================== -->
+
+    <section class="game-area">
+
+        <div class="game-top">
+
+            <div class="stat">
+                <strong id="timer">00:00</strong>
+                <span>Temps</span>
+            </div>
+
+            <div class="stat">
+                <strong id="wpm">0</strong>
+                <span>Mots / minute</span>
+            </div>
+
+            <div class="stat">
+                <strong id="accuracy">100 %</strong>
+                <span>Précision</span>
+            </div>
+
+            <div class="stat">
+                <strong id="errors">0</strong>
+                <span>Fautes</span>
+            </div>
+
+        </div>
+
+
+        <div class="text-container">
+
+            <div id="textDisplay" class="text-display"></div>
+
+        </div>
+
+
+        <textarea
+            id="typingInput"
+            placeholder="Cliquez ici puis commencez à taper..."
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off">
+        </textarea>
+
+
+        <div class="buttons">
+
+            <button
+                id="startButton"
+                class="btn-primary">
+                Commencer
+            </button>
+
+            <button
+                id="restartButton"
+                class="btn-secondary">
+                Recommencer
+            </button>
+
+            <button
+                id="nextButton"
+                class="btn-success"
+                style="display:none;">
+                Exercice suivant
+            </button>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <strong>Conseil :</strong>
+            ne cherchez pas à taper le plus vite possible au début.
+            Essayez surtout de faire peu de fautes. La vitesse viendra
+            naturellement avec l'entraînement.
+
+        </div>
+
+
+        <!-- =========================
+             RESULTAT
+        ========================== -->
+
+        <div id="result" class="result">
+
+            <h2>Votre résultat</h2>
+
+            <div class="result-grid">
+
+                <div class="result-card">
+                    <strong id="resultWpm">0</strong>
+                    <span>Mots / minute</span>
+                </div>
+
+                <div class="result-card">
+                    <strong id="resultAccuracy">0 %</strong>
+                    <span>Précision</span>
+                </div>
+
+                <div class="result-card">
+                    <strong id="resultErrors">0</strong>
+                    <span>Fautes</span>
+                </div>
+
+                <div class="result-card">
+                    <strong id="resultTime">0 s</strong>
+                    <span>Temps</span>
+                </div>
+
+            </div>
+
+            <div id="resultMessage"></div>
+
+            <div id="errorDetails"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTORIQUE
+    ========================== -->
+
+    <section class="history">
+
+        <h2>Mes meilleurs résultats</h2>
+
+        <p>
+            Vos résultats sont enregistrés uniquement sur cet ordinateur.
+            Rien n'est envoyé sur Internet.
+        </p>
+
+        <div id="historyContent"></div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    Centre Multimédia du CCAS<br>
+    Un espace pour apprendre, pratiquer et progresser à son rythme.
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   TEXTES
+========================================================= */
+
+const texts = {
+
+    easy: [
+
+        {
+            title: "Les bases",
+            text: "Bonjour et bienvenue au Centre Multimédia du CCAS."
+        },
+
+        {
+            title: "Une journée",
+            text: "Aujourd'hui, nous allons apprendre à mieux utiliser le clavier."
+        },
+
+        {
+            title: "Prendre son temps",
+            text: "Pour bien apprendre, il est important de prendre son temps et de pratiquer régulièrement."
+        },
+
+        {
+            title: "Le clavier",
+            text: "Le clavier permet d'écrire des lettres, des chiffres et de nombreux signes."
+        }
+
+    ],
+
+
+    medium: [
+
+        {
+            title: "L'ordinateur",
+            text: "Un ordinateur permet de réaliser de nombreuses tâches : écrire un document, consulter Internet, classer ses fichiers ou encore envoyer un courrier électronique."
+        },
+
+        {
+            title: "Apprendre progressivement",
+            text: "Lorsque l'on apprend à utiliser un ordinateur, il est normal de faire quelques erreurs. Le plus important est de pratiquer régulièrement et de comprendre progressivement les différentes fonctions."
+        },
+
+        {
+            title: "Les raccourcis clavier",
+            text: "Les raccourcis clavier permettent de gagner du temps. Les touches Ctrl, C et V sont notamment utilisées pour copier et coller du texte ou des fichiers."
+        },
+
+        {
+            title: "Internet",
+            text: "Sur Internet, il est possible de rechercher des informations, consulter les actualités, communiquer avec ses proches et effectuer de nombreuses démarches en ligne."
+        }
+
+    ],
+
+
+    hard: [
+
+        {
+            title: "Texte difficile",
+            text: "Lorsque l'on utilise régulièrement un ordinateur, certaines manipulations deviennent progressivement plus naturelles. Pourtant, la précision reste essentielle, notamment lorsqu'il faut saisir une adresse électronique, un mot de passe ou une information administrative."
+        },
+
+        {
+            title: "Les pièges de la langue française",
+            text: "Les accents, les apostrophes, les majuscules et la ponctuation demandent parfois davantage d'attention que les simples lettres. Une phrase correctement écrite est plus agréable à lire et permet d'éviter certaines erreurs."
+        },
+
+        {
+            title: "Organisation",
+            text: "Une bonne organisation permet de retrouver plus facilement ses documents. Il est conseillé de créer des dossiers clairement nommés, de ranger régulièrement ses fichiers et de conserver une copie des documents importants."
+        },
+
+        {
+            title: "Internet et vigilance",
+            text: "Avant de communiquer une information personnelle sur Internet, il est préférable de vérifier le site utilisé, l'adresse de la page et la présence d'une connexion sécurisée."
+        }
+
+    ]
+
+};
+
+
+/* =========================================================
+   DICTEES DIFFICILES
+   ========================================================= */
+
+const dictations = [
+
+    {
+        title: "Dictée difficile – Les petits détails",
+        text: "Les petits détails qui semblent insignifiants sont parfois ceux auxquels il faut accorder le plus d'attention."
+    },
+
+    {
+        title: "Dictée difficile – Une matinée particulière",
+        text: "Ce matin-là, malgré une pluie incessante, plusieurs personnes décidèrent de se rendre à pied jusqu'au centre-ville."
+    },
+
+    {
+        title: "Dictée difficile – Les souvenirs",
+        text: "Lorsque nous étions enfants, nous passions de longues après-midi à inventer des histoires dont nous étions les héros."
+    },
+
+    {
+        title: "Dictée difficile – La vigilance",
+        text: "Même lorsqu'une information paraît parfaitement crédible, il convient de vérifier sa source avant de la transmettre à quelqu'un d'autre."
+    },
+
+    {
+        title: "Dictée difficile – Le temps",
+        text: "Quoi qu'il arrive, il faut parfois savoir prendre le temps nécessaire pour comprendre ce que l'on fait."
+    },
+
+    {
+        title: "Dictée très difficile – Les habitudes",
+        text: "Bien qu'elles paraissent anodines, certaines habitudes peuvent avoir des conséquences importantes lorsqu'elles deviennent quotidiennes."
+    },
+
+    {
+        title: "Dictée très difficile – Une décision",
+        text: "Après avoir longuement réfléchi, ils se demandèrent s'il valait mieux attendre quelques jours ou prendre immédiatement une décision."
+    },
+
+    {
+        title: "Dictée très difficile – Une étrange coïncidence",
+        text: "C'était une étrange coïncidence : trois personnes, qui ne s'étaient jamais rencontrées auparavant, avaient pourtant choisi le même itinéraire."
+    }
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentMode = "training";
+
+let currentText = "";
+
+let currentTitle = "";
+
+let started = false;
+
+let finished = false;
+
+let startTime = null;
+
+let timerInterval = null;
+
+let elapsedSeconds = 0;
+
+let totalErrors = 0;
+
+let challengeMode = false;
+
+let challengeDuration = 60;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const modeTraining = document.getElementById("modeTraining");
+const modeDictation = document.getElementById("modeDictation");
+const modeChallenge = document.getElementById("modeChallenge");
+
+const difficulty = document.getElementById("difficulty");
+const textChoice = document.getElementById("textChoice");
+
+const typingInput = document.getElementById("typingInput");
+const textDisplay = document.getElementById("textDisplay");
+
+const timer = document.getElementById("timer");
+const wpm = document.getElementById("wpm");
+const accuracy = document.getElementById("accuracy");
+const errors = document.getElementById("errors");
+
+const startButton = document.getElementById("startButton");
+const restartButton = document.getElementById("restartButton");
+const nextButton = document.getElementById("nextButton");
+
+const result = document.getElementById("result");
+
+const resultWpm = document.getElementById("resultWpm");
+const resultAccuracy = document.getElementById("resultAccuracy");
+const resultErrors = document.getElementById("resultErrors");
+const resultTime = document.getElementById("resultTime");
+
+const resultMessage = document.getElementById("resultMessage");
+const errorDetails = document.getElementById("errorDetails");
+
+const dictationHelp = document.getElementById("dictationHelp");
+
+const historyContent = document.getElementById("historyContent");
+
+
+/* =========================================================
+   CHARGER LES TEXTES
+========================================================= */
+
+function loadTextChoices() {
+
+    textChoice.innerHTML = "";
+
+    if (currentMode === "dictation") {
+
+        dictations.forEach((item, index) => {
+
+            const option = document.createElement("option");
+
+            option.value = index;
+
+            option.textContent = item.title;
+
+            textChoice.appendChild(option);
+
+        });
+
+        return;
+    }
+
+
+    let list = texts[difficulty.value];
+
+    list.forEach((item, index) => {
+
+        const option = document.createElement("option");
+
+        option.value = index;
+
+        option.textContent = item.title;
+
+        textChoice.appendChild(option);
+
+    });
+
+}
+
+
+/* =========================================================
+   CHARGER UN TEXTE
+========================================================= */
+
+function loadCurrentText() {
+
+    let item;
+
+    if (currentMode === "dictation") {
+
+        item = dictations[Number(textChoice.value)];
+
+    } else {
+
+        item = texts[difficulty.value][Number(textChoice.value)];
+
+    }
+
+    if (!item) {
+        return;
+    }
+
+    currentTitle = item.title;
+
+    currentText = item.text;
+
+    renderText();
+
+    resetGame();
+
+}
+
+
+/* =========================================================
+   AFFICHER LE TEXTE
+========================================================= */
+
+function renderText() {
+
+    textDisplay.innerHTML = "";
+
+    [...currentText].forEach((character, index) => {
+
+        const span = document.createElement("span");
+
+        span.textContent = character;
+
+        span.dataset.index = index;
+
+        textDisplay.appendChild(span);
+
+    });
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetGame() {
+
+    clearInterval(timerInterval);
+
+    started = false;
+
+    finished = false;
+
+    startTime = null;
+
+    elapsedSeconds = 0;
+
+    totalErrors = 0;
+
+    timer.textContent = "00:00";
+
+    wpm.textContent = "0";
+
+    accuracy.textContent = "100 %";
+
+    errors.textContent = "0";
+
+    typingInput.value = "";
+
+    typingInput.disabled = false;
+
+    typingInput.classList.remove("error");
+
+    result.classList.remove("visible");
+
+    nextButton.style.display = "none";
+
+    startButton.style.display = "inline-block";
+
+    startButton.textContent = "Commencer";
+
+    renderText();
+
+}
+
+
+/* =========================================================
+   DEMARRER
+========================================================= */
+
+function startGame() {
+
+    if (started || finished) {
+        return;
+    }
+
+    started = true;
+
+    startTime = Date.now();
+
+    typingInput.focus();
+
+    startButton.style.display = "none";
+
+    timerInterval = setInterval(updateTimer, 1000);
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function updateTimer() {
+
+    if (!started || finished) {
+        return;
+    }
+
+    elapsedSeconds = Math.floor(
+        (Date.now() - startTime) / 1000
+    );
+
+    updateTimerDisplay();
+
+    updateStats();
+
+
+    if (challengeMode && elapsedSeconds >= challengeDuration) {
+
+        finishChallenge();
+
+    }
+
+}
+
+
+/* =========================================================
+   AFFICHAGE TIMER
+========================================================= */
+
+function updateTimerDisplay() {
+
+    const minutes = Math.floor(elapsedSeconds / 60);
+
+    const seconds = elapsedSeconds % 60;
+
+    timer.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/* =========================================================
+   ANALYSE DE LA SAISIE
+========================================================= */
+
+function analyzeInput() {
+
+    const typed = typingInput.value;
+
+    let correctCharacters = 0;
+
+    let mistakes = 0;
+
+    let firstErrorIndex = -1;
+
+
+    [...currentText].forEach((character, index) => {
+
+        const span = textDisplay.children[index];
+
+        if (!span) {
+            return;
+        }
+
+        span.classList.remove(
+            "correct",
+            "incorrect",
+            "current"
+        );
+
+
+        if (index < typed.length) {
+
+            if (typed[index] === character) {
+
+                span.classList.add("correct");
+
+                correctCharacters++;
+
+            } else {
+
+                span.classList.add("incorrect");
+
+                mistakes++;
+
+                if (firstErrorIndex === -1) {
+                    firstErrorIndex = index;
+                }
+
+            }
+
+        }
+
+    });
+
+
+    if (typed.length < currentText.length) {
+
+        const currentSpan =
+            textDisplay.children[typed.length];
+
+        if (currentSpan) {
+
+            currentSpan.classList.add("current");
+
+        }
+
+    }
+
+
+    const typedCharacters = typed.length;
+
+    const wrongCharacters =
+        Math.max(0, typedCharacters - correctCharacters);
+
+    totalErrors =
+        mistakes + wrongCharacters;
+
+
+    const accuracyValue =
+        typedCharacters === 0
+            ? 100
+            : Math.max(
+                0,
+                Math.round(
+                    (correctCharacters / typedCharacters) * 100
+                )
+            );
+
+
+    return {
+        typed,
+        correctCharacters,
+        mistakes,
+        totalErrors,
+        accuracyValue,
+        firstErrorIndex
+    };
+
+}
+
+
+/* =========================================================
+   STATISTIQUES
+========================================================= */
+
+function updateStats() {
+
+    const data = analyzeInput();
+
+    errors.textContent = data.totalErrors;
+
+    accuracy.textContent =
+        data.accuracyValue + " %";
+
+
+    const minutes =
+        elapsedSeconds / 60;
+
+
+    if (minutes > 0) {
+
+        const words =
+            data.typed.trim() === ""
+                ? 0
+                : data.typed.trim().split(/\s+/).length;
+
+
+        const calculatedWpm =
+            Math.round(words / minutes);
+
+
+        wpm.textContent =
+            isFinite(calculatedWpm)
+                ? calculatedWpm
+                : 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERIFIER FIN
+========================================================= */
+
+function checkCompletion() {
+
+    if (!started || finished || challengeMode) {
+        return;
+    }
+
+    const typed = typingInput.value;
+
+    if (typed === currentText) {
+
+        finishGame();
+
+    }
+
+}
+
+
+/* =========================================================
+   FIN DU JEU
+========================================================= */
+
+function finishGame() {
+
+    if (finished) {
+        return;
+    }
+
+    finished = true;
+
+    started = false;
+
+    clearInterval(timerInterval);
+
+    updateStats();
+
+    typingInput.disabled = true;
+
+    showResult();
+
+}
+
+
+/* =========================================================
+   FIN DU DEFI
+========================================================= */
+
+function finishChallenge() {
+
+    if (finished) {
+        return;
+    }
+
+    finished = true;
+
+    started = false;
+
+    clearInterval(timerInterval);
+
+    elapsedSeconds = challengeDuration;
+
+    updateTimerDisplay();
+
+    updateStats();
+
+    typingInput.disabled = true;
+
+    showResult();
+
+}
+
+
+/* =========================================================
+   RESULTAT
+========================================================= */
+
+function showResult() {
+
+    const data = analyzeInput();
+
+    const typedWords =
+        data.typed.trim() === ""
+            ? 0
+            : data.typed.trim().split(/\s+/).length;
+
+
+    const minutes =
+        Math.max(elapsedSeconds, 1) / 60;
+
+
+    const calculatedWpm =
+        Math.round(typedWords / minutes);
+
+
+    const finalWpm =
+        isFinite(calculatedWpm)
+            ? calculatedWpm
+            : 0;
+
+
+    const finalAccuracy =
+        data.accuracyValue;
+
+
+    resultWpm.textContent =
+        finalWpm;
+
+
+    resultAccuracy.textContent =
+        finalAccuracy + " %";
+
+
+    resultErrors.textContent =
+        data.totalErrors;
+
+
+    resultTime.textContent =
+        elapsedSeconds + " s";
+
+
+    let message = "";
+
+
+    if (finalAccuracy >= 98 && finalWpm >= 40) {
+
+        message =
+            "Excellent ! Vous êtes à la fois rapide et très précis.";
+
+    } else if (finalAccuracy >= 95) {
+
+        message =
+            "Très bon travail ! Votre précision est excellente.";
+
+    } else if (finalAccuracy >= 85) {
+
+        message =
+            "Bon travail. Continuez à pratiquer pour gagner progressivement en vitesse.";
+
+    } else {
+
+        message =
+            "Prenez votre temps et concentrez-vous d'abord sur la précision.";
+
+    }
+
+
+    resultMessage.innerHTML =
+        `<div class="good-result">${message}</div>`;
+
+
+    buildErrorDetails(data);
+
+    result.classList.add("visible");
+
+
+    saveResult({
+        mode: currentMode,
+        title: currentTitle,
+        wpm: finalWpm,
+        accuracy: finalAccuracy,
+        errors: data.totalErrors,
+        time: elapsedSeconds
+    });
+
+}
+
+
+/* =========================================================
+   DETAILS DES ERREURS
+========================================================= */
+
+function buildErrorDetails(data) {
+
+    if (data.totalErrors === 0) {
+
+        errorDetails.innerHTML =
+            `<div class="good-result">
+                Aucune faute détectée. Bravo !
+            </div>`;
+
+        return;
+
+    }
+
+
+    const typed = data.typed;
+
+    const mistakes = [];
+
+    const maxLength =
+        Math.max(
+            typed.length,
+            currentText.length
+        );
+
+
+    for (let i = 0; i < maxLength; i++) {
+
+        const expected =
+            currentText[i];
+
+        const received =
+            typed[i];
+
+
+        if (expected !== received) {
+
+            let expectedDisplay =
+                expected === " "
+                    ? "espace"
+                    : expected || "rien";
+
+
+            let receivedDisplay =
+                received === " "
+                    ? "espace"
+                    : received || "rien";
+
+
+            mistakes.push(
+                `<li>
+                    Position ${i + 1} :
+                    attendu <strong>${escapeHtml(expectedDisplay)}</strong>,
+                    saisi <strong>${escapeHtml(receivedDisplay)}</strong>
+                </li>`
+            );
+
+        }
+
+
+        if (mistakes.length >= 12) {
+            break;
+        }
+
+    }
+
+
+    errorDetails.innerHTML = `
+        <div class="error-list">
+
+            <h3>Quelques erreurs à revoir</h3>
+
+            <ul>
+                ${mistakes.join("")}
+            </ul>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   SECURITE HTML
+========================================================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   SAUVEGARDE HISTORIQUE
+========================================================= */
+
+function saveResult(data) {
+
+    const key =
+        "ccas_dactylographie_results";
+
+
+    let history =
+        JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
+
+
+    history.push({
+        ...data,
+        date: new Date().toLocaleDateString("fr-FR")
+    });
+
+
+    history =
+        history
+            .sort((a, b) => b.wpm - a.wpm)
+            .slice(0, 10);
+
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(history)
+    );
+
+
+    displayHistory();
+
+}
+
+
+/* =========================================================
+   HISTORIQUE
+========================================================= */
+
+function displayHistory() {
+
+    const key =
+        "ccas_dactylographie_results";
+
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
+
+
+    if (history.length === 0) {
+
+        historyContent.innerHTML =
+            `<p class="empty-history">
+                Aucun résultat enregistré pour le moment.
+            </p>`;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table class="history-table">
+
+            <thead>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Exercice</th>
+                    <th>Vitesse</th>
+                    <th>Précision</th>
+                    <th>Fautes</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+    `;
+
+
+    history.forEach(item => {
+
+        html += `
+
+            <tr>
+
+                <td>${escapeHtml(item.date)}</td>
+
+                <td>${escapeHtml(item.title)}</td>
+
+                <td>${item.wpm} MPM</td>
+
+                <td>${item.accuracy} %</td>
+
+                <td>${item.errors}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    historyContent.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   CHANGEMENT DE MODE
+========================================================= */
+
+function setMode(mode) {
+
+    currentMode = mode;
+
+    modeTraining.classList.remove("active");
+    modeDictation.classList.remove("active");
+    modeChallenge.classList.remove("active");
+
+
+    if (mode === "training") {
+
+        modeTraining.classList.add("active");
+
+        difficulty.disabled = false;
+
+        challengeMode = false;
+
+        dictationHelp.style.display = "none";
+
+    }
+
+
+    if (mode === "dictation") {
+
+        modeDictation.classList.add("active");
+
+        difficulty.disabled = true;
+
+        challengeMode = false;
+
+        dictationHelp.style.display = "block";
+
+    }
+
+
+    if (mode === "challenge") {
+
+        modeChallenge.classList.add("active");
+
+        difficulty.disabled = false;
+
+        challengeMode = true;
+
+        dictationHelp.style.display = "none";
+
+    }
+
+
+    loadTextChoices();
+
+    loadCurrentText();
+
+}
+
+
+/* =========================================================
+   EVENEMENTS MODES
+========================================================= */
+
+modeTraining.addEventListener(
+    "click",
+    () => setMode("training")
+);
+
+modeDictation.addEventListener(
+    "click",
+    () => setMode("dictation")
+);
+
+modeChallenge.addEventListener(
+    "click",
+    () => setMode("challenge")
+);
+
+
+/* =========================================================
+   CHANGEMENT NIVEAU
+========================================================= */
+
+difficulty.addEventListener(
+    "change",
+    loadTextChoices
+);
+
+
+difficulty.addEventListener(
+    "change",
+    loadCurrentText
+);
+
+
+textChoice.addEventListener(
+    "change",
+    loadCurrentText
+);
+
+
+/* =========================================================
+   SAISIE
+========================================================= */
+
+typingInput.addEventListener(
+    "focus",
+    () => {
+
+        if (!started && !finished) {
+            startGame();
+        }
+
+    }
+);
+
+
+typingInput.addEventListener(
+    "input",
+    () => {
+
+        if (!started && !finished) {
+            startGame();
+        }
+
+        if (started) {
+
+            const data =
+                analyzeInput();
+
+
+            typingInput.classList.toggle(
+                "error",
+                data.totalErrors > 0
+            );
+
+
+            updateStats();
+
+            checkCompletion();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
+
+startButton.addEventListener(
+    "click",
+    () => {
+
+        startGame();
+
+    }
+);
+
+
+restartButton.addEventListener(
+    "click",
+    () => {
+
+        resetGame();
+
+        typingInput.focus();
+
+    }
+);
+
+
+nextButton.addEventListener(
+    "click",
+    () => {
+
+        let nextIndex =
+            Number(textChoice.value) + 1;
+
+
+        if (currentMode === "dictation") {
+
+            if (nextIndex >= dictations.length) {
+                nextIndex = 0;
+            }
+
+        } else {
+
+            const list =
+                texts[difficulty.value];
+
+
+            if (nextIndex >= list.length) {
+                nextIndex = 0;
+            }
+
+        }
+
+
+        textChoice.value = nextIndex;
+
+        loadCurrentText();
+
+        typingInput.focus();
+
+    }
+);
+
+
+/* =========================================================
+   INITIALISATION
+========================================================= */
+
+loadTextChoices();
+
+loadCurrentText();
+
+displayHistory();
+
+</script>
+
+</body>
+</html>
