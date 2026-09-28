@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Atelier de frappe - Centre Multimédia du CCAS</title>
@@ -19,10 +21,6 @@ body {
     background: #f5f7fb;
     color: #26364a;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 header {
     background: #1f3656;
@@ -78,12 +76,14 @@ nav a.active {
     background: #3d76c5;
 }
 
-/* =========================
-   PAGE HEADER
-========================= */
-
 .page-header {
-    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    background:
+        linear-gradient(
+            135deg,
+            #e9f0fa,
+            #ffffff,
+            #eef7ef
+        );
     padding: 45px 20px;
     text-align: center;
 }
@@ -101,19 +101,11 @@ nav a.active {
     line-height: 1.6;
 }
 
-/* =========================
-   MAIN
-========================= */
-
 main {
     max-width: 1050px;
     margin: 40px auto 60px;
     padding: 0 20px;
 }
-
-/* =========================
-   MODES
-========================= */
 
 .mode-selector {
     display: grid;
@@ -158,10 +150,6 @@ main {
     font-size: 38px;
 }
 
-/* =========================
-   CONFIGURATION
-========================= */
-
 .configuration {
     background: white;
     border-radius: 18px;
@@ -194,9 +182,19 @@ select {
     background: white;
 }
 
-/* =========================
-   ZONE DE JEU
-========================= */
+.dictation-help {
+    display: none;
+    background: #fff8e8;
+    border-left: 5px solid #d89b35;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.dictation-help strong {
+    color: #9a641c;
+}
 
 .game-area {
     background: white;
@@ -229,10 +227,6 @@ select {
     font-size: 14px;
     color: #64748b;
 }
-
-/* =========================
-   TEXTE
-========================= */
 
 .text-container {
     background: #f8fafc;
@@ -268,51 +262,86 @@ select {
     border-bottom: 3px solid #3975c6;
 }
 
-/* =========================
-   COPIE PROGRESSIVE
-========================= */
-
-.dictation-help {
-    background: #fff8e8;
-    border-left: 5px solid #d89b35;
-    padding: 18px 20px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    line-height: 1.6;
+.progressive-container {
+    display: none;
 }
 
-.dictation-help strong {
-    color: #9a641c;
+.progressive-container.visible {
+    display: block;
 }
 
-.dictation-progress {
-    margin-top: 15px;
+.progressive-title {
+    font-size: 19px;
+    font-weight: bold;
+    color: #315f94;
+    margin-bottom: 12px;
 }
 
-.dictation-progress-bar {
+.progressive-text {
+    background: #f8fafc;
+    border: 2px solid #dbe4ef;
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 22px;
+    line-height: 1.9;
+    letter-spacing: .2px;
+    min-height: 120px;
+    user-select: none;
+    overflow-wrap: anywhere;
+}
+
+.progressive-text span {
+    border-radius: 3px;
+}
+
+.progressive-text .correct {
+    color: #27804c;
+}
+
+.progressive-text .incorrect {
+    color: #c0392b;
+    background: #ffe5e2;
+}
+
+.progressive-text .current {
+    background: #dbeafe;
+    border-bottom: 3px solid #3975c6;
+}
+
+.progressive-text .hidden {
+    display: none;
+}
+
+.progress-container {
+    display: none;
+    margin: 20px 0;
+}
+
+.progress-container.visible {
+    display: block;
+}
+
+.progress-bar {
+    width: 100%;
     height: 12px;
     background: #e5e7eb;
     border-radius: 20px;
     overflow: hidden;
 }
 
-.dictation-progress-fill {
+.progress-fill {
     height: 100%;
     width: 0%;
     background: #3975c6;
     transition: width .2s;
 }
 
-.dictation-progress-text {
-    margin-top: 8px;
+.progress-text {
+    margin-top: 7px;
     text-align: center;
     font-weight: bold;
     color: #315f94;
 }
-
-/* =========================
-   ZONE DE SAISIE
-========================= */
 
 textarea {
     width: 100%;
@@ -331,16 +360,14 @@ textarea {
 
 textarea:focus {
     border-color: #3975c6;
-    box-shadow: 0 0 0 3px rgba(57,117,198,.12);
+    box-shadow:
+        0 0 0 3px
+        rgba(57,117,198,.12);
 }
 
 textarea.error {
     border-color: #c0392b;
 }
-
-/* =========================
-   BOUTONS
-========================= */
 
 .buttons {
     display: flex;
@@ -396,10 +423,6 @@ button {
     background: #b98025;
 }
 
-/* =========================
-   INFO
-========================= */
-
 .info-box {
     margin-top: 25px;
     background: #eef7ef;
@@ -408,10 +431,6 @@ button {
     border-radius: 10px;
     line-height: 1.6;
 }
-
-/* =========================
-   RESULTAT
-========================= */
 
 .result {
     display: none;
@@ -458,6 +477,14 @@ button {
     font-size: 14px;
 }
 
+.good-result {
+    background: #eef7ef;
+    border-left: 5px solid #2e8b78;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
 .error-list {
     background: #fff5f3;
     border-left: 5px solid #c0392b;
@@ -476,17 +503,25 @@ button {
     line-height: 1.8;
 }
 
-.good-result {
-    background: #eef7ef;
-    border-left: 5px solid #2e8b78;
-    padding: 18px 20px;
-    border-radius: 10px;
+.model-text {
+    display: none;
     margin-top: 20px;
+    background: white;
+    border: 2px solid #dbe4ef;
+    border-radius: 12px;
+    padding: 20px;
+    line-height: 1.8;
+    white-space: pre-wrap;
 }
 
-/* =========================
-   HISTORIQUE
-========================= */
+.model-text.visible {
+    display: block;
+}
+
+.model-text h3 {
+    margin-top: 0;
+    color: #315f94;
+}
 
 .history {
     margin-top: 35px;
@@ -522,33 +557,6 @@ button {
     color: #64748b;
 }
 
-/* =========================
-   TEXTE MODELE
-========================= */
-
-.model-text {
-    display: none;
-    margin-top: 20px;
-    background: white;
-    border: 2px solid #dbe4ef;
-    border-radius: 12px;
-    padding: 20px;
-    line-height: 1.8;
-}
-
-.model-text.visible {
-    display: block;
-}
-
-.model-text h3 {
-    margin-top: 0;
-    color: #315f94;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
 footer {
     background: #1f3656;
     color: white;
@@ -556,10 +564,6 @@ footer {
     padding: 25px 20px;
     line-height: 1.6;
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 950px) {
 
@@ -584,6 +588,7 @@ footer {
     .result-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
 @media (max-width: 750px) {
@@ -602,13 +607,15 @@ footer {
         font-size: 30px;
     }
 
-    .text-display {
+    .text-display,
+    .progressive-text {
         font-size: 19px;
     }
 
     textarea {
         font-size: 18px;
     }
+
 }
 
 @media (max-width: 600px) {
@@ -632,7 +639,8 @@ footer {
         padding: 17px;
     }
 
-    .text-display {
+    .text-display,
+    .progressive-text {
         font-size: 18px;
         line-height: 1.8;
     }
@@ -640,9 +648,11 @@ footer {
     textarea {
         min-height: 140px;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -652,73 +662,120 @@ footer {
     <div class="navbar">
 
         <div class="logo">
-            <strong>Centre Multimédia du CCAS</strong>
-            <span>Apprendre, pratiquer, progresser</span>
+
+            <strong>
+                Centre Multimédia du CCAS
+            </strong>
+
+            <span>
+                Apprendre, pratiquer, progresser
+            </span>
+
         </div>
 
         <nav>
-            <a href="index.html">Accueil</a>
-            <a href="cours.html">Mes cours</a>
-            <a href="jeux.html">Jeux</a>
-            <a href="exercices.html" class="active">Exercices</a>
-            <a href="outils.html">Outils</a>
-            <a href="ressources.html">Ressources</a>
-            <a href="informations.html">Informations</a>
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="cours.html">
+                Mes cours
+            </a>
+
+            <a href="jeux.html">
+                Jeux
+            </a>
+
+            <a href="exercices.html" class="active">
+                Exercices
+            </a>
+
+            <a href="outils.html">
+                Outils
+            </a>
+
+            <a href="ressources.html">
+                Ressources
+            </a>
+
+            <a href="informations.html">
+                Informations
+            </a>
+
         </nav>
 
     </div>
 
 </header>
 
-
 <section class="page-header">
 
-    <h1>Atelier de frappe</h1>
+    <h1>
+        Atelier de frappe
+    </h1>
 
     <p>
-        Entraînez-vous à utiliser votre clavier, améliorez votre vitesse
-        de frappe et travaillez votre précision et votre orthographe.
+        Entraînez-vous à utiliser votre clavier,
+        améliorez votre vitesse de frappe
+        et travaillez votre précision et votre orthographe.
     </p>
 
 </section>
-
 
 <main>
 
     <div class="mode-selector">
 
-        <div class="mode-card active" id="modeTraining">
+        <div
+            class="mode-card active"
+            id="modeTraining">
 
-            <div class="mode-icon">⌨️</div>
+            <div class="mode-icon">
+                ⌨️
+            </div>
 
-            <h2>Entraînement</h2>
+            <h2>
+                Entraînement
+            </h2>
 
             <p>
-                Prenez le temps de taper correctement et améliorez
-                progressivement votre vitesse.
+                Prenez le temps de taper correctement
+                et améliorez progressivement votre vitesse.
             </p>
 
         </div>
 
+        <div
+            class="mode-card"
+            id="modeDictation">
 
-        <div class="mode-card" id="modeDictation">
+            <div class="mode-icon">
+                📝
+            </div>
 
-            <div class="mode-icon">📖</div>
-
-            <h2>Défis longs</h2>
+            <h2>
+                Dictées
+            </h2>
 
             <p>
-                Des textes longs à recopier progressivement pendant plusieurs minutes.
+                De longs textes à recopier progressivement,
+                avec un véritable défi de précision et d'endurance.
             </p>
 
         </div>
 
+        <div
+            class="mode-card"
+            id="modeChallenge">
 
-        <div class="mode-card" id="modeChallenge">
+            <div class="mode-icon">
+                ⏱️
+            </div>
 
-            <div class="mode-icon">⏱️</div>
-
-            <h2>Défi 60 secondes</h2>
+            <h2>
+                Défi 60 secondes
+            </h2>
 
             <p>
                 Tapez le maximum de texte en une minute
@@ -729,37 +786,56 @@ footer {
 
     </div>
 
-
     <div class="configuration">
 
-        <h2>Choisissez votre exercice</h2>
+        <h2>
+            Choisissez votre exercice
+        </h2>
 
         <div class="options">
 
-            <label for="difficulty">Niveau :</label>
+            <label for="difficulty">
+                Niveau :
+            </label>
 
             <select id="difficulty">
 
-                <option value="easy">Débutant</option>
-                <option value="medium">Intermédiaire</option>
-                <option value="hard">Difficile</option>
-                <option value="veryHard">Très difficile</option>
+                <option value="easy">
+                    Débutant
+                </option>
+
+                <option value="medium">
+                    Intermédiaire
+                </option>
+
+                <option value="hard">
+                    Difficile
+                </option>
+
+                <option value="veryHard">
+                    Très difficile
+                </option>
 
             </select>
 
+            <label for="textChoice">
+                Texte :
+            </label>
 
-            <label for="textChoice">Texte :</label>
-
-            <select id="textChoice"></select>
+            <select id="textChoice">
+            </select>
 
         </div>
 
     </div>
 
+    <div
+        id="dictationHelp"
+        class="dictation-help">
 
-    <div id="dictationHelp" class="dictation-help" style="display:none;">
-
-        <strong>Mode copie progressive</strong>
+        <strong>
+            Mode copie progressive
+        </strong>
 
         <br>
 
@@ -773,29 +849,7 @@ footer {
         les apostrophes, les majuscules,
         les espaces et la ponctuation.
 
-        <div class="dictation-progress">
-
-            <div class="dictation-progress-bar">
-
-                <div
-                    id="dictationProgressFill"
-                    class="dictation-progress-fill">
-                </div>
-
-            </div>
-
-            <div
-                id="dictationProgressText"
-                class="dictation-progress-text">
-
-                0 %
-
-            </div>
-
-        </div>
-
     </div>
-
 
     <section class="game-area">
 
@@ -803,41 +857,53 @@ footer {
 
             <div class="stat">
 
-                <strong id="timer">00:00</strong>
+                <strong id="timer">
+                    00:00
+                </strong>
 
-                <span>Temps</span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong id="wpm">0</strong>
-
-                <span>Mots / minute</span>
+                <span>
+                    Temps
+                </span>
 
             </div>
 
-
             <div class="stat">
 
-                <strong id="accuracy">100 %</strong>
+                <strong id="wpm">
+                    0
+                </strong>
 
-                <span>Précision</span>
+                <span>
+                    Mots / minute
+                </span>
 
             </div>
 
+            <div class="stat">
+
+                <strong id="accuracy">
+                    100 %
+                </strong>
+
+                <span>
+                    Précision
+                </span>
+
+            </div>
 
             <div class="stat">
 
-                <strong id="errors">0</strong>
+                <strong id="errors">
+                    0
+                </strong>
 
-                <span>Fautes</span>
+                <span>
+                    Fautes
+                </span>
 
             </div>
 
         </div>
-
 
         <div
             id="normalTextContainer"
@@ -850,6 +916,43 @@ footer {
 
         </div>
 
+        <div
+            id="progressiveContainer"
+            class="progressive-container">
+
+            <div class="progressive-title">
+                Texte à recopier
+            </div>
+
+            <div
+                id="progressiveText"
+                class="progressive-text">
+            </div>
+
+        </div>
+
+        <div
+            id="progressContainer"
+            class="progress-container">
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+            <div
+                id="progressText"
+                class="progress-text">
+
+                0 %
+
+            </div>
+
+        </div>
 
         <textarea
             id="typingInput"
@@ -858,7 +961,6 @@ footer {
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"></textarea>
-
 
         <div class="buttons">
 
@@ -870,7 +972,6 @@ footer {
 
             </button>
 
-
             <button
                 id="restartButton"
                 class="btn-secondary">
@@ -878,7 +979,6 @@ footer {
                 Recommencer
 
             </button>
-
 
             <button
                 id="nextButton"
@@ -889,120 +989,144 @@ footer {
 
             </button>
 
-
             <button
                 id="showModelButton"
                 class="btn-orange"
                 style="display:none;">
 
-                Voir le texte modèle
+                Voir le texte complet
 
             </button>
 
         </div>
 
-
         <div class="info-box">
 
-            <strong>Conseil :</strong>
-            ne cherchez pas à taper le plus vite possible au début.
-            Essayez surtout de faire peu de fautes.
-            La vitesse viendra naturellement avec l'entraînement.
+            <strong>
+                Conseil :
+            </strong>
+
+            ne cherchez pas à taper le plus vite possible.
+            Essayez d'abord de faire peu de fautes.
+            La vitesse viendra progressivement avec l'entraînement.
 
         </div>
-
 
         <div
-            id="modelText"
-            class="model-text">
+            id="result"
+            class="result">
 
-            <h3>Texte modèle</h3>
-
-            <div id="modelTextContent"></div>
-
-        </div>
-
-
-        <div id="result" class="result">
-
-            <h2>Votre résultat</h2>
+            <h2>
+                Votre résultat
+            </h2>
 
             <div class="result-grid">
 
                 <div class="result-card">
 
-                    <strong id="resultWpm">0</strong>
+                    <strong id="resultWpm">
+                        0
+                    </strong>
 
-                    <span>Mots / minute</span>
-
-                </div>
-
-
-                <div class="result-card">
-
-                    <strong id="resultAccuracy">0 %</strong>
-
-                    <span>Précision</span>
+                    <span>
+                        Mots / minute
+                    </span>
 
                 </div>
 
-
                 <div class="result-card">
 
-                    <strong id="resultErrors">0</strong>
+                    <strong id="resultAccuracy">
+                        0 %
+                    </strong>
 
-                    <span>Fautes</span>
+                    <span>
+                        Précision
+                    </span>
 
                 </div>
 
+                <div class="result-card">
+
+                    <strong id="resultErrors">
+                        0
+                    </strong>
+
+                    <span>
+                        Fautes
+                    </span>
+
+                </div>
 
                 <div class="result-card">
 
-                    <strong id="resultTime">0 s</strong>
+                    <strong id="resultTime">
+                        0 s
+                    </strong>
 
-                    <span>Temps</span>
+                    <span>
+                        Temps
+                    </span>
 
                 </div>
 
             </div>
 
-            <div id="resultMessage"></div>
+            <div id="resultMessage">
+            </div>
 
-            <div id="errorDetails"></div>
+            <div id="errorDetails">
+            </div>
+
+        </div>
+
+        <div
+            id="modelText"
+            class="model-text">
+
+            <h3>
+                Texte complet
+            </h3>
+
+            <div id="modelTextContent">
+            </div>
 
         </div>
 
     </section>
 
-
     <section class="history">
 
-        <h2>Mes meilleurs résultats</h2>
+        <h2>
+            Mes meilleurs résultats
+        </h2>
 
         <p>
-            Vos résultats sont enregistrés uniquement sur cet ordinateur.
+            Vos résultats sont enregistrés uniquement
+            sur cet ordinateur.
             Rien n'est envoyé sur Internet.
         </p>
 
-        <div id="historyContent"></div>
+        <div id="historyContent">
+        </div>
 
     </section>
 
 </main>
 
-
 <footer>
 
     Centre Multimédia du CCAS<br>
-    Un espace pour apprendre, pratiquer et progresser à son rythme.
+
+    Un espace pour apprendre,
+    pratiquer et progresser à son rythme.
 
 </footer>
-
 
 <script>
 
 /* =========================================================
-   TEXTES D'ENTRAÎNEMENT
+   TEXTES COURTS
 ========================================================= */
 
 const texts = {
@@ -1011,82 +1135,74 @@ const texts = {
 
         {
             title: "Les bases",
-            text: "Bonjour et bienvenue au Centre Multimédia du CCAS."
+            text:
+                "Bonjour et bienvenue au Centre Multimédia du CCAS."
         },
 
         {
             title: "Une journée",
-            text: "Aujourd'hui, nous allons apprendre à mieux utiliser le clavier."
+            text:
+                "Aujourd'hui, nous allons apprendre à mieux utiliser le clavier."
         },
 
         {
             title: "Prendre son temps",
-            text: "Pour bien apprendre, il est important de prendre son temps et de pratiquer régulièrement."
+            text:
+                "Pour bien apprendre, il est important de prendre son temps et de pratiquer régulièrement."
         },
 
         {
             title: "Le clavier",
-            text: "Le clavier permet d'écrire des lettres, des chiffres et de nombreux signes."
+            text:
+                "Le clavier permet d'écrire des lettres, des chiffres et de nombreux signes."
         }
 
     ],
-
 
     medium: [
 
         {
             title: "L'ordinateur",
-            text: "Un ordinateur permet de réaliser de nombreuses tâches : écrire un document, consulter Internet, classer ses fichiers ou encore envoyer un courrier électronique."
+            text:
+                "Un ordinateur permet de réaliser de nombreuses tâches : écrire un document, consulter Internet, classer ses fichiers ou encore envoyer un courrier électronique."
         },
 
         {
             title: "Apprendre progressivement",
-            text: "Lorsque l'on apprend à utiliser un ordinateur, il est normal de faire quelques erreurs. Le plus important est de pratiquer régulièrement et de comprendre progressivement les différentes fonctions."
+            text:
+                "Lorsque l'on apprend une nouvelle manipulation, il est normal de faire quelques erreurs. Avec de la patience et de la pratique, les gestes deviennent progressivement plus faciles."
         },
 
         {
-            title: "Les raccourcis clavier",
-            text: "Les raccourcis clavier permettent de gagner du temps. Les touches Ctrl, C et V sont notamment utilisées pour copier et coller du texte ou des fichiers."
-        },
-
-        {
-            title: "Internet",
-            text: "Sur Internet, il est possible de rechercher des informations, consulter les actualités, communiquer avec ses proches et effectuer de nombreuses démarches en ligne."
+            title: "Les fichiers",
+            text:
+                "Un fichier peut être enregistré dans un dossier afin de pouvoir être retrouvé facilement plus tard."
         }
 
     ],
-
 
     hard: [
 
         {
-            title: "Texte difficile",
-            text: "Lorsque l'on utilise régulièrement un ordinateur, certaines manipulations deviennent progressivement plus naturelles. Pourtant, la précision reste essentielle, notamment lorsqu'il faut saisir une adresse électronique, un mot de passe ou une information administrative."
+            title: "Internet",
+            text:
+                "Avant de communiquer une information personnelle sur Internet, il est préférable de vérifier l'adresse du site et de s'assurer que l'on se trouve bien sur la page officielle du service concerné."
         },
 
         {
-            title: "Les pièges de la langue française",
-            text: "Les accents, les apostrophes, les majuscules et la ponctuation demandent parfois davantage d'attention que les simples lettres. Une phrase correctement écrite est plus agréable à lire et permet d'éviter certaines erreurs."
-        },
-
-        {
-            title: "Organisation",
-            text: "Une bonne organisation permet de retrouver plus facilement ses documents. Il est conseillé de créer des dossiers clairement nommés, de ranger régulièrement ses fichiers et de conserver une copie des documents importants."
-        },
-
-        {
-            title: "Internet et vigilance",
-            text: "Avant de communiquer une information personnelle sur Internet, il est préférable de vérifier le site utilisé, l'adresse de la page et la présence d'une connexion sécurisée."
+            title: "La précision",
+            text:
+                "Les accents, les apostrophes, les majuscules et la ponctuation demandent parfois davantage d'attention que les simples lettres."
         }
 
     ],
 
-
     veryHard: [
 
         {
-            title: "Très difficile – Le français",
-            text: "L'attention portée aux détails devient particulièrement importante lorsque l'on rédige un texte long, car une simple erreur de ponctuation, d'accentuation ou d'orthographe peut modifier le sens d'une phrase."
+            title: "Texte très difficile",
+            text:
+                "Lorsque l'on rédige un texte long, une simple erreur de ponctuation, d'accentuation ou d'orthographe peut modifier le sens d'une phrase et demander une relecture attentive."
         }
 
     ]
@@ -1095,7 +1211,7 @@ const texts = {
 
 
 /* =========================================================
-   DEFIS LONGS
+   DICTEES LONGUES
 ========================================================= */
 
 const longDictations = {
@@ -1106,20 +1222,18 @@ const longDictations = {
             title: "Le scribe Otis",
 
             text:
-`Vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd'hui avec vous, je dirais que c'est d'abord des rencontres. Des gens qui m'ont tendu la main, peut-être à un moment où je ne pouvais pas, où j'étais seul chez moi. Et c'est assez curieux de se dire que les hasards, les rencontres forgent une destinée. Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l'interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n'est pas mon cas, comme je disais là, puisque moi au contraire, j'ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie, je ne suis qu'amour. Et finalement, quand beaucoup de gens aujourd'hui me disent « mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c'est ce goût de l'amour ce goût donc qui m'a poussé aujourd'hui à entreprendre une construction mécanique, mais demain qui sait ?`
-
+`Vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd'hui avec vous, je dirais que c'est d'abord des rencontres. Des gens qui m'ont tendu la main, peut-être à un moment où je ne pouvais pas, où j'étais seul chez moi. Et c'est assez curieux de se dire que les hasards, les rencontres forgent une destinée. Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l'interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n'est pas mon cas, comme je disais là, puisque moi au contraire, j'ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie, je ne suis qu'amour. Et finalement, quand beaucoup de gens aujourd'hui me disent « mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c'est ce goût de l'amour ce goût donc qui m'a poussé aujourd'hui à entreprendre une construction mécanique, mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi...`
         }
 
     ],
 
-
     medium: [
 
         {
-            title: "Jules Verne – L’Île mystérieuse",
+            title: "Jules Verne – L'Île mystérieuse",
 
             text:
-`Chevelure hérissée, barbe inculte descendant jusqu’à la poitrine, corps à peu près nu, sauf un lambeau de couverture sur les reins, yeux farouches, mains énormes, ongles démesurément longs, teint sombre comme l’acajou, pieds durcis comme s’ils eussent été faits de corne : telle était la misérable créature qu’il fallait bien, pourtant, appeler un homme ! Mais on avait droit, vraiment, de se demander si dans ce corps il y avait encore une âme, ou si le vulgaire instinct de la brute avait seul survécu en lui !
+`Chevelure hérissée, barbe inculte descendant jusqu'à la poitrine, corps à peu près nu, sauf un lambeau de couverture sur les reins, yeux farouches, mains énormes, ongles démesurément longs, teint sombre comme l’acajou, pieds durcis comme s’ils eussent été faits de corne : telle était la misérable créature qu’il fallait bien, pourtant, appeler un homme ! Mais on avait droit, vraiment, de se demander si dans ce corps il y avait encore une âme, ou si le vulgaire instinct de la brute avait seul survécu en lui !
 
 « Êtes-vous bien sûr que ce soit un homme ou qu’il l’ait été ? demanda Pencroff au reporter.
 
@@ -1128,43 +1242,24 @@ const longDictations = {
 — Ce serait donc le naufragé ? dit Harbert.
 
 — Oui, répondit Gédéon Spilett, mais l’infortuné n’a plus rien d’humain ! »`
-
         },
 
         {
-            title: "Défi long – Une matinée au centre multimédia",
+            title: "Une matinée au centre multimédia",
 
             text:
 `Ce matin, le centre multimédia ouvre ses portes comme chaque semaine. Peu à peu, les participants arrivent avec leur ordinateur portable, leur tablette ou leur téléphone. Certains sont déjà installés et savent exactement ce qu'ils souhaitent travailler. D'autres prennent quelques minutes pour retrouver leurs habitudes et vérifier qu'ils ont bien leur carnet de notes.
 
 Dans la salle, chacun avance à son propre rythme. Une personne apprend à utiliser le clavier, tandis qu'une autre s'exerce à classer des documents dans différents dossiers. Un participant souhaite comprendre comment télécharger une pièce jointe reçue par courrier électronique. Il demande de l'aide, puis recommence seul afin de vérifier qu'il a bien compris les différentes étapes.
 
-L'objectif n'est pas de faire les choses rapidement. Il s'agit surtout de comprendre ce que l'on fait et de pouvoir recommencer ensuite sans aide. Une manipulation qui semble compliquée au début devient souvent beaucoup plus simple après quelques répétitions. Il est donc important de ne pas se décourager lorsqu'une erreur apparaît.
+L'objectif n'est pas de faire les choses rapidement. Il s'agit surtout de comprendre ce que l'on fait et de pouvoir recommencer ensuite sans aide. Une manipulation qui semble compliquée au début devient souvent beaucoup plus simple après quelques répétitions.
 
 Pendant la séance, les participants prennent également le temps de poser des questions. Pourquoi un fichier porte-t-il une certaine extension ? Où est enregistré un document téléchargé ? Comment retrouver une photo qui vient d'être copiée depuis un téléphone ? Toutes ces questions sont utiles, car elles permettent de mieux comprendre le fonctionnement général de l'ordinateur.
 
-La fin de la matinée approche. Avant de partir, chacun prend quelques minutes pour refaire une manipulation apprise pendant la séance. Cette dernière étape est importante : elle permet de vérifier que les nouvelles connaissances commencent réellement à devenir des habitudes.`
-
-        },
-
-        {
-            title: "Défi long – Une promenade bien organisée",
-
-            text:
-`Avant de partir pour une longue promenade, il est parfois utile de préparer quelques détails. Il faut regarder la météo, vérifier l'itinéraire, penser à prendre de l'eau et s'assurer que le téléphone est suffisamment chargé. Ces petites précautions prennent peu de temps, mais elles permettent de profiter de la journée plus sereinement.
-
-Le trajet commence dans une rue calme, puis se poursuit par un chemin bordé d'arbres. Au début, la marche semble facile. Le paysage change progressivement et les bruits de la ville deviennent moins présents. On entend seulement quelques oiseaux, le vent dans les feuilles et, de temps en temps, le passage d'un cycliste.
-
-Après une première heure de marche, une pause est nécessaire. On s'assoit quelques instants sur un banc et l'on regarde la carte enregistrée sur le téléphone. Le chemin prévu continue encore pendant plusieurs kilomètres. Il serait possible de modifier l'itinéraire, mais la météo reste agréable et il n'y a aucune raison de se presser.
-
-En reprenant la route, on découvre un petit village que l'on n'avait encore jamais visité. Quelques maisons anciennes entourent une place centrale. Une boulangerie vient d'ouvrir et l'odeur du pain chaud se répand dans la rue. Après quelques minutes d'hésitation, on décide de faire une nouvelle pause.
-
-Cette promenade rappelle qu'il n'est pas toujours nécessaire d'aller très loin pour découvrir quelque chose de nouveau. Il suffit parfois de prendre le temps de regarder autour de soi. Une rue que l'on connaît depuis longtemps peut présenter un détail que l'on n'avait jamais remarqué, et un itinéraire habituel peut conduire à une découverte inattendue.`
-
+La fin de la matinée approche. Avant de partir, chacun prend quelques minutes pour refaire une manipulation apprise pendant la séance. Cette dernière étape permet de vérifier que les nouvelles connaissances commencent réellement à devenir des habitudes.`
         }
 
     ],
-
 
     hard: [
 
@@ -1203,11 +1298,10 @@ De la manche, les maçons essuient la sueur de leur front, avec la satisfaction 
 Mais une lividité soudaine envahit leur face. La porte… cette porte qu’ils ont mis tant de conscience (et d’inconscience) à murer, cette porte est la seule issue de la chambre !
 
 Et bien que l’aventure date de pas mal de temps, le monsieur riche ne peut passer devant cette maçonnerie sans rire de bon cœur.`
-
         },
 
         {
-            title: "Défi long – Le courrier important",
+            title: "Le courrier important",
 
             text:
 `Lorsqu'un courrier important arrive dans une boîte aux lettres, il est tentant de l'ouvrir rapidement puis de le mettre de côté. Pourtant, certains documents méritent une attention particulière. Une lettre peut contenir une date limite, une demande de justificatif, une référence de dossier ou une information qui devra être conservée pendant plusieurs mois.
@@ -1216,16 +1310,14 @@ La première chose à faire consiste donc à lire tranquillement l'ensemble du d
 
 Si une réponse est nécessaire, il convient ensuite de vérifier la manière dont elle doit être envoyée. Certaines démarches peuvent être réalisées en ligne, tandis que d'autres nécessitent encore un courrier postal. Dans tous les cas, il est prudent de conserver une copie des documents transmis.
 
-Les démarches sur Internet demandent une attention supplémentaire. Avant de saisir une information personnelle, il faut vérifier l'adresse du site et s'assurer que l'on se trouve bien sur la page officielle du service concerné. Un message reçu par courrier électronique peut parfois contenir un lien qui ressemble à celui d'un organisme connu sans réellement provenir de cet organisme.
+Les démarches sur Internet demandent une attention supplémentaire. Avant de saisir une information personnelle, il faut vérifier l'adresse du site et s'assurer que l'on se trouve bien sur la page officielle du service concerné.
 
-Lorsqu'un doute apparaît, mieux vaut prendre quelques minutes pour vérifier que de risquer de transmettre des informations confidentielles au mauvais destinataire. On peut rechercher directement le site officiel à l'aide d'un moteur de recherche ou utiliser une adresse déjà connue.
+Lorsqu'un doute apparaît, mieux vaut prendre quelques minutes pour vérifier que de risquer de transmettre des informations confidentielles au mauvais destinataire.
 
-Cette manière de procéder demande parfois un peu plus de temps, mais elle permet d'éviter de nombreuses erreurs. Dans les démarches administratives comme dans l'utilisation quotidienne d'Internet, prendre son temps est souvent une véritable protection.`
-
+Cette manière de procéder demande parfois un peu plus de temps, mais elle permet d'éviter de nombreuses erreurs.`
         }
 
     ],
-
 
     veryHard: [
 
@@ -1233,24 +1325,34 @@ Cette manière de procéder demande parfois un peu plus de temps, mais elle perm
             title: "Prosper Mérimée",
 
             text:
-`Il faut parfois beaucoup de patience pour recopier correctement un texte difficile. Les phrases longues, les mots peu courants, les accents, les apostrophes et les signes de ponctuation demandent une attention constante. Une seule erreur peut obliger à relire toute une phrase afin de retrouver précisément l'endroit où la faute s'est produite.
+`Pour parler sans ambiguïté, ce dîner à Sainte-Adresse, près du Havre, malgré les effluves embaumés de la mer, malgré les vins de très bons crus, les cuisseaux de veau et les cuissots de chevreuil prodigués par l'amphitryon, fut un vrai guêpier.
 
-Lorsque la fatigue apparaît, il devient plus difficile de rester concentré. Pourtant, il ne faut pas chercher à accélérer inutilement. Une frappe régulière et attentive permet souvent de progresser davantage qu'une succession de corrections précipitées. Chaque répétition améliore peu à peu la précision, la vitesse et la confiance devant le clavier.`
+Quelles que soient, et quelque exiguës qu'aient pu paraître, à côté de la somme due, les arrhes qu'étaient censés avoir données la douairière et le marguillier, il était infâme d'en vouloir pour cela à ces fusiliers jumeaux et mal bâtis, et de leur infliger une raclée, alors qu'ils ne songeaient qu'à prendre des rafraîchissements avec leurs coreligionnaires.
 
+Quoi qu'il en soit, c'est bien à tort que la douairière, par un contresens exorbitant, s'est laissé entraîner à prendre un râteau et qu'elle s'est crue obligée de frapper l'exigeant marguillier sur son omoplate vieillie. Deux alvéoles furent brisés ; une dysenterie se déclara, suivie d'une phtisie, et l'imbécillité du malheureux s'accrut.
+
+— Par saint Martin ! quelle hémorragie ! s'écria ce bélître.
+
+À cet événement, saisissant son goupillon, ridicule excédent de bagage, il la poursuivit dans l'église tout entière.`
         },
 
         {
-            title: "Défi très difficile – Le temps et les habitudes",
+            title: "Le temps et les habitudes",
 
             text:
-`Nous avons souvent l'impression de manquer de temps, alors même que certaines journées sont remplies de moments qui pourraient être mieux organisés. Le problème ne vient pas nécessairement du nombre de tâches à accomplir, mais parfois de la manière dont elles sont réparties. Une succession de petites interruptions peut donner l'impression d'une journée particulièrement chargée, alors qu'une organisation différente permettrait de travailler plus calmement.
+`Nous avons souvent l'impression de manquer de temps, alors même que certaines journées sont remplies de moments qui pourraient être mieux organisés. Le problème ne vient pas nécessairement du nombre de tâches à accomplir, mais parfois de la manière dont elles sont réparties.
 
-Les habitudes jouent ici un rôle important. Lorsqu'une personne consulte régulièrement son téléphone au milieu d'une tâche, elle interrompt son attention et doit ensuite retrouver le fil de ce qu'elle faisait. La même chose peut se produire devant un ordinateur : une notification, un message ou une fenêtre supplémentaire suffit parfois à détourner l'attention pendant plusieurs minutes.
+Les habitudes jouent ici un rôle important. Lorsqu'une personne consulte régulièrement son téléphone au milieu d'une tâche, elle interrompt son attention et doit ensuite retrouver le fil de ce qu'elle faisait.
+
+La même chose peut se produire devant un ordinateur : une notification, un message ou une fenêtre supplémentaire suffit parfois à détourner l'attention pendant plusieurs minutes.
 
 Cela ne signifie pas qu'il faille supprimer toutes les distractions. Il est simplement utile de choisir les moments où l'on souhaite être disponible et ceux où l'on préfère rester concentré.
 
-La patience joue également un rôle essentiel. Une erreur n'est pas forcément le signe que l'on n'a pas compris. Elle peut simplement indiquer qu'une étape mérite d'être répétée. En prenant le temps d'observer ce qui s'est passé, puis en recommençant, on transforme une difficulté en occasion d'apprentissage.`
+Apprendre à utiliser un ordinateur ne consiste pas à mémoriser une longue liste de commandes. Il s'agit plutôt de comprendre quelques principes et de savoir les appliquer dans des situations différentes.
 
+La patience joue également un rôle essentiel. Une erreur n'est pas forcément le signe que l'on n'a pas compris. Elle peut simplement indiquer qu'une étape mérite d'être répétée.
+
+Au fil des semaines, ces petites répétitions produisent des résultats importants. Une manipulation qui demandait autrefois plusieurs minutes peut finalement être réalisée presque automatiquement.`
         }
 
     ]
@@ -1270,9 +1372,10 @@ let finished = false;
 let startTime = null;
 let timerInterval = null;
 let elapsedSeconds = 0;
+let totalErrors = 0;
 let challengeMode = false;
-let challengeDuration = 60;
 
+const challengeDuration = 60;
 const revealWindow = 90;
 
 
@@ -1280,86 +1383,175 @@ const revealWindow = 90;
    ELEMENTS
 ========================================================= */
 
-const modeTraining = document.getElementById("modeTraining");
-const modeDictation = document.getElementById("modeDictation");
-const modeChallenge = document.getElementById("modeChallenge");
+const modeTraining =
+    document.getElementById("modeTraining");
 
-const difficulty = document.getElementById("difficulty");
-const textChoice = document.getElementById("textChoice");
+const modeDictation =
+    document.getElementById("modeDictation");
 
-const typingInput = document.getElementById("typingInput");
-const textDisplay = document.getElementById("textDisplay");
+const modeChallenge =
+    document.getElementById("modeChallenge");
 
-const timer = document.getElementById("timer");
-const wpm = document.getElementById("wpm");
-const accuracy = document.getElementById("accuracy");
-const errors = document.getElementById("errors");
+const difficulty =
+    document.getElementById("difficulty");
 
-const startButton = document.getElementById("startButton");
-const restartButton = document.getElementById("restartButton");
-const nextButton = document.getElementById("nextButton");
-const showModelButton = document.getElementById("showModelButton");
+const textChoice =
+    document.getElementById("textChoice");
 
-const result = document.getElementById("result");
-const resultWpm = document.getElementById("resultWpm");
-const resultAccuracy = document.getElementById("resultAccuracy");
-const resultErrors = document.getElementById("resultErrors");
-const resultTime = document.getElementById("resultTime");
+const typingInput =
+    document.getElementById("typingInput");
 
-const resultMessage = document.getElementById("resultMessage");
-const errorDetails = document.getElementById("errorDetails");
+const textDisplay =
+    document.getElementById("textDisplay");
 
-const dictationHelp = document.getElementById("dictationHelp");
-const dictationProgressFill = document.getElementById("dictationProgressFill");
-const dictationProgressText = document.getElementById("dictationProgressText");
+const normalTextContainer =
+    document.getElementById("normalTextContainer");
 
-const historyContent = document.getElementById("historyContent");
+const progressiveContainer =
+    document.getElementById("progressiveContainer");
 
-const modelText = document.getElementById("modelText");
-const modelTextContent = document.getElementById("modelTextContent");
+const progressiveText =
+    document.getElementById("progressiveText");
+
+const progressContainer =
+    document.getElementById("progressContainer");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const progressText =
+    document.getElementById("progressText");
+
+const dictationHelp =
+    document.getElementById("dictationHelp");
+
+const timer =
+    document.getElementById("timer");
+
+const wpm =
+    document.getElementById("wpm");
+
+const accuracy =
+    document.getElementById("accuracy");
+
+const errors =
+    document.getElementById("errors");
+
+const startButton =
+    document.getElementById("startButton");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const showModelButton =
+    document.getElementById("showModelButton");
+
+const result =
+    document.getElementById("result");
+
+const resultWpm =
+    document.getElementById("resultWpm");
+
+const resultAccuracy =
+    document.getElementById("resultAccuracy");
+
+const resultErrors =
+    document.getElementById("resultErrors");
+
+const resultTime =
+    document.getElementById("resultTime");
+
+const resultMessage =
+    document.getElementById("resultMessage");
+
+const errorDetails =
+    document.getElementById("errorDetails");
+
+const modelText =
+    document.getElementById("modelText");
+
+const modelTextContent =
+    document.getElementById("modelTextContent");
+
+const historyContent =
+    document.getElementById("historyContent");
 
 
 /* =========================================================
-   LISTE DU NIVEAU
+   LISTE DES DICTEES
 ========================================================= */
 
-function getLongDictationList() {
+function getDictationList() {
 
-    return longDictations[difficulty.value] || longDictations.easy;
+    const level =
+        difficulty.value;
+
+    if (
+        Array.isArray(
+            longDictations[level]
+        )
+    ) {
+
+        return longDictations[level];
+
+    }
+
+    return longDictations.easy || [];
 
 }
 
 
 /* =========================================================
-   CHARGER LES TEXTES
+   LISTE DES TEXTES
+========================================================= */
+
+function getNormalTextList() {
+
+    return (
+        texts[difficulty.value] ||
+        texts.easy
+    );
+
+}
+
+
+/* =========================================================
+   CHARGER LES CHOIX
 ========================================================= */
 
 function loadTextChoices() {
 
     textChoice.innerHTML = "";
 
-    let list;
+    const list =
+        currentMode === "dictation"
+            ? getDictationList()
+            : getNormalTextList();
 
-    if (currentMode === "dictation") {
 
-        list = getLongDictationList();
+    list.forEach(
+        (item, index) => {
 
-    } else {
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        list = texts[difficulty.value] || texts.easy;
+            option.value =
+                index;
 
-    }
+            option.textContent =
+                item.title;
 
-    list.forEach((item, index) => {
+            textChoice.appendChild(
+                option
+            );
 
-        const option = document.createElement("option");
-
-        option.value = index;
-        option.textContent = item.title;
-
-        textChoice.appendChild(option);
-
-    });
+        }
+    );
 
 }
 
@@ -1370,125 +1562,234 @@ function loadTextChoices() {
 
 function loadCurrentText() {
 
-    let list;
+    const list =
+        currentMode === "dictation"
+            ? getDictationList()
+            : getNormalTextList();
 
-    if (currentMode === "dictation") {
 
-        list = getLongDictationList();
+    const index =
+        Number(
+            textChoice.value
+        );
 
-    } else {
-
-        list = texts[difficulty.value] || texts.easy;
-
-    }
 
     const item =
-        list[Number(textChoice.value)] || list[0];
+        list[index];
+
 
     if (!item) {
+
         return;
+
     }
 
-    currentTitle = item.title;
-    currentText = item.text;
+
+    currentTitle =
+        item.title;
+
+    currentText =
+        item.text;
+
 
     renderText();
+
     resetGame();
 
 }
 
 
 /* =========================================================
-   AFFICHAGE DU TEXTE
+   TEXTE NORMAL
 ========================================================= */
 
-function renderText() {
+function renderNormalText() {
 
     textDisplay.innerHTML = "";
 
-    const typedLength =
-        typingInput.value.length;
 
-    let start = 0;
-    let end = currentText.length;
+    [
+        ...currentText
+    ].forEach(
+        (character, index) => {
 
-    if (
-        currentMode === "dictation"
-    ) {
+            const span =
+                document.createElement(
+                    "span"
+                );
 
-        start = Math.max(
-            0,
-            typedLength - 20
-        );
+            span.textContent =
+                character;
 
-        end = Math.min(
-            currentText.length,
-            typedLength + revealWindow
-        );
+            span.dataset.index =
+                index;
 
-    }
+            textDisplay.appendChild(
+                span
+            );
 
-    for (
-        let index = start;
-        index < end;
-        index++
-    ) {
-
-        const span =
-            document.createElement("span");
-
-        span.textContent =
-            currentText[index];
-
-        span.dataset.index =
-            index;
-
-        textDisplay.appendChild(span);
-
-    }
-
-    updateTextColors();
+        }
+    );
 
 }
 
 
 /* =========================================================
-   COULEURS DE LA SAISIE
+   TEXTE PROGRESSIF
 ========================================================= */
 
-function updateTextColors() {
+function renderProgressiveText() {
 
-    const typed =
-        typingInput.value;
+    progressiveText.innerHTML = "";
+
+
+    [
+        ...currentText
+    ].forEach(
+        (character, index) => {
+
+            const span =
+                document.createElement(
+                    "span"
+                );
+
+            span.textContent =
+                character;
+
+            span.dataset.index =
+                index;
+
+            span.classList.add(
+                "hidden"
+            );
+
+            progressiveText.appendChild(
+                span
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDU
+========================================================= */
+
+function renderText() {
+
+    renderNormalText();
+
+    renderProgressiveText();
+
+}
+
+
+/* =========================================================
+   AFFICHAGE PROGRESSIF
+========================================================= */
+
+function updateProgressiveDisplay() {
+
+    if (
+        currentMode !== "dictation"
+    ) {
+
+        return;
+
+    }
+
 
     const spans =
-        textDisplay.querySelectorAll("span");
+        progressiveText.children;
 
-    spans.forEach(span => {
 
-        const index =
-            Number(span.dataset.index);
+    for (
+        let i = 0;
+        i < spans.length;
+        i++
+    ) {
 
-        span.classList.remove(
+        spans[i].classList.add(
+            "hidden"
+        );
+
+        spans[i].classList.remove(
             "correct",
             "incorrect",
             "current"
         );
 
-        if (
-            index < typed.length
-        ) {
+    }
+
+
+    const data =
+        analyzeInput();
+
+
+    const revealFrom =
+        Math.max(
+            0,
+            data.expectedIndex - 10
+        );
+
+
+    const revealUntil =
+        Math.min(
+            currentText.length,
+            data.expectedIndex +
+            revealWindow
+        );
+
+
+    for (
+        let i = revealFrom;
+        i < revealUntil;
+        i++
+    ) {
+
+        if (spans[i]) {
+
+            spans[i].classList.remove(
+                "hidden"
+            );
+
+        }
+
+    }
+
+
+    data.alignment.forEach(
+        item => {
+
+            const span =
+                spans[item.expectedIndex];
+
+            if (!span) {
+                return;
+            }
+
+            span.classList.remove(
+                "hidden"
+            );
+
 
             if (
-                typed[index] ===
-                currentText[index]
+                item.type === "correct"
             ) {
 
                 span.classList.add(
                     "correct"
                 );
 
-            } else {
+            }
+
+
+            else if (
+                item.type === "incorrect" ||
+                item.type === "omitted"
+            ) {
 
                 span.classList.add(
                     "incorrect"
@@ -1497,62 +1798,245 @@ function updateTextColors() {
             }
 
         }
+    );
 
-        if (
-            index === typed.length
-        ) {
 
-            span.classList.add(
+    if (
+        data.expectedIndex <
+        currentText.length
+    ) {
+
+        const currentSpan =
+            spans[data.expectedIndex];
+
+
+        if (currentSpan) {
+
+            currentSpan.classList.remove(
+                "hidden"
+            );
+
+            currentSpan.classList.add(
                 "current"
             );
 
         }
 
-    });
+    }
+
+
+    const percentage =
+        currentText.length === 0
+            ? 0
+            : Math.min(
+                100,
+                Math.round(
+                    (
+                        data.expectedIndex /
+                        currentText.length
+                    ) * 100
+                )
+            );
+
+
+    progressFill.style.width =
+        percentage + "%";
+
+    progressText.textContent =
+        percentage + " %";
 
 }
 
 
 /* =========================================================
-   TEMPS
+   RESET
 ========================================================= */
 
-function updateTimerDisplay() {
+function resetGame() {
 
-    const minutes =
-        Math.floor(
-            elapsedSeconds / 60
-        );
+    clearInterval(
+        timerInterval
+    );
 
-    const seconds =
-        elapsedSeconds % 60;
+
+    started = false;
+    finished = false;
+    startTime = null;
+    elapsedSeconds = 0;
+    totalErrors = 0;
+
 
     timer.textContent =
-        String(minutes).padStart(2, "0")
-        + ":"
-        + String(seconds).padStart(2, "0");
+        "00:00";
+
+    wpm.textContent =
+        "0";
+
+    accuracy.textContent =
+        "100 %";
+
+    errors.textContent =
+        "0";
+
+
+    typingInput.value = "";
+
+    typingInput.disabled =
+        false;
+
+    typingInput.classList.remove(
+        "error"
+    );
+
+
+    result.classList.remove(
+        "visible"
+    );
+
+
+    modelText.classList.remove(
+        "visible"
+    );
+
+
+    showModelButton.style.display =
+        "none";
+
+    showModelButton.textContent =
+        "Voir le texte complet";
+
+
+    nextButton.style.display =
+        "none";
+
+
+    startButton.style.display =
+        "inline-block";
+
+
+    progressFill.style.width =
+        "0%";
+
+    progressText.textContent =
+        "0 %";
+
+
+    if (
+        currentMode === "dictation"
+    ) {
+
+        normalTextContainer.style.display =
+            "none";
+
+        progressiveContainer.classList.add(
+            "visible"
+        );
+
+        progressContainer.classList.add(
+            "visible"
+        );
+
+        dictationHelp.style.display =
+            "block";
+
+        updateProgressiveDisplay();
+
+    } else {
+
+        normalTextContainer.style.display =
+            "block";
+
+        progressiveContainer.classList.remove(
+            "visible"
+        );
+
+        progressContainer.classList.remove(
+            "visible"
+        );
+
+        dictationHelp.style.display =
+            "none";
+
+    }
+
+
+    renderText();
 
 }
 
 
+/* =========================================================
+   DEMARRER
+========================================================= */
+
+function startGame() {
+
+    if (
+        started ||
+        finished
+    ) {
+
+        return;
+
+    }
+
+
+    started = true;
+
+    startTime =
+        Date.now();
+
+
+    startButton.style.display =
+        "none";
+
+
+    typingInput.focus();
+
+
+    timerInterval =
+        setInterval(
+            updateTimer,
+            1000
+        );
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
 function updateTimer() {
 
-    if (!started) {
+    if (
+        !started ||
+        finished
+    ) {
+
         return;
+
     }
+
 
     elapsedSeconds =
         Math.floor(
-            (Date.now() - startTime) / 1000
+            (
+                Date.now() -
+                startTime
+            ) / 1000
         );
+
 
     updateTimerDisplay();
 
     updateStats();
 
+
     if (
         challengeMode &&
-        elapsedSeconds >= challengeDuration
+        elapsedSeconds >=
+        challengeDuration
     ) {
 
         finishChallenge();
@@ -1563,7 +2047,33 @@ function updateTimer() {
 
 
 /* =========================================================
-   ANALYSE
+   AFFICHAGE TIMER
+========================================================= */
+
+function updateTimerDisplay() {
+
+    const minutes =
+        Math.floor(
+            elapsedSeconds / 60
+        );
+
+
+    const seconds =
+        elapsedSeconds % 60;
+
+
+    timer.textContent =
+        String(minutes)
+            .padStart(2, "0") +
+        ":" +
+        String(seconds)
+            .padStart(2, "0");
+
+}
+
+
+/* =========================================================
+   ANALYSE DE LA SAISIE
 ========================================================= */
 
 function analyzeInput() {
@@ -1571,67 +2081,310 @@ function analyzeInput() {
     const typed =
         typingInput.value;
 
+
     let correctCharacters = 0;
     let mistakes = 0;
+    let omissions = 0;
+    let additions = 0;
 
-    const max =
-        Math.min(
-            typed.length,
-            currentText.length
-        );
 
-    for (
-        let i = 0;
-        i < max;
-        i++
+    let expectedIndex = 0;
+    let typedIndex = 0;
+
+
+    const alignment = [];
+
+
+    while (
+        typedIndex < typed.length &&
+        expectedIndex < currentText.length
     ) {
 
+        const typedChar =
+            typed[typedIndex];
+
+        const expectedChar =
+            currentText[expectedIndex];
+
+
+        /* CARACTERE CORRECT */
+
         if (
-            typed[i] ===
-            currentText[i]
+            typedChar === expectedChar
         ) {
+
+            alignment.push({
+
+                type: "correct",
+
+                expectedIndex:
+                    expectedIndex,
+
+                typedIndex:
+                    typedIndex
+
+            });
+
 
             correctCharacters++;
 
-        } else {
+            typedIndex++;
+            expectedIndex++;
 
-            mistakes++;
+            continue;
 
         }
 
+
+        /* CARACTERE ATTENDU OUBLIE */
+
+        if (
+            expectedIndex + 1 <
+                currentText.length &&
+            typedChar ===
+                currentText[
+                    expectedIndex + 1
+                ]
+        ) {
+
+            alignment.push({
+
+                type: "omitted",
+
+                expectedIndex:
+                    expectedIndex,
+
+                typedIndex:
+                    typedIndex
+
+            });
+
+
+            omissions++;
+
+            expectedIndex++;
+
+            continue;
+
+        }
+
+
+        /* CARACTERE AJOUTE */
+
+        if (
+            typedIndex + 1 <
+                typed.length &&
+            typed[
+                typedIndex + 1
+            ] === expectedChar
+        ) {
+
+            alignment.push({
+
+                type: "added",
+
+                expectedIndex:
+                    expectedIndex,
+
+                typedIndex:
+                    typedIndex
+
+            });
+
+
+            additions++;
+
+            typedIndex++;
+
+            continue;
+
+        }
+
+
+        /* ERREUR REELLE */
+
+        alignment.push({
+
+            type: "incorrect",
+
+            expectedIndex:
+                expectedIndex,
+
+            typedIndex:
+                typedIndex
+
+        });
+
+
+        mistakes++;
+
+        typedIndex++;
+        expectedIndex++;
+
     }
 
-    const extraCharacters =
-        Math.max(
-            0,
+
+    /* RESTE DU TEXTE ATTENDU */
+
+    if (
+        expectedIndex <
+        currentText.length
+    ) {
+
+        omissions +=
+            currentText.length -
+            expectedIndex;
+
+    }
+
+
+    /* CARACTERES EN TROP */
+
+    if (
+        typedIndex <
+        typed.length
+    ) {
+
+        additions +=
             typed.length -
-            currentText.length
-        );
+            typedIndex;
+
+    }
+
 
     const totalErrors =
         mistakes +
-        extraCharacters;
+        omissions +
+        additions;
+
+
+    const comparedCharacters =
+        correctCharacters +
+        mistakes +
+        additions;
+
 
     const accuracyValue =
-        typed.length === 0
+        comparedCharacters === 0
             ? 100
             : Math.max(
                 0,
                 Math.round(
                     (
                         correctCharacters /
-                        typed.length
+                        comparedCharacters
                     ) * 100
                 )
             );
 
+
+    const spans =
+        currentMode === "dictation"
+            ? progressiveText.children
+            : textDisplay.children;
+
+
+    for (
+        let i = 0;
+        i < spans.length;
+        i++
+    ) {
+
+        spans[i].classList.remove(
+            "correct",
+            "incorrect",
+            "current"
+        );
+
+    }
+
+
+    alignment.forEach(
+        item => {
+
+            const span =
+                spans[
+                    item.expectedIndex
+                ];
+
+
+            if (!span) {
+
+                return;
+
+            }
+
+
+            if (
+                item.type === "correct"
+            ) {
+
+                span.classList.add(
+                    "correct"
+                );
+
+            }
+
+            else if (
+                item.type === "incorrect" ||
+                item.type === "omitted"
+            ) {
+
+                span.classList.add(
+                    "incorrect"
+                );
+
+            }
+
+        }
+    );
+
+
+    if (
+        expectedIndex <
+        currentText.length
+    ) {
+
+        const currentSpan =
+            spans[
+                expectedIndex
+            ];
+
+
+        if (currentSpan) {
+
+            currentSpan.classList.add(
+                "current"
+            );
+
+        }
+
+    }
+
+
+    totalErrors =
+        totalErrors;
+
+
     return {
 
         typed,
+
         correctCharacters,
+
         mistakes,
+
+        omissions,
+
+        additions,
+
         totalErrors,
-        accuracyValue
+
+        accuracyValue,
+
+        alignment,
+
+        expectedIndex
 
     };
 
@@ -1647,15 +2400,19 @@ function updateStats() {
     const data =
         analyzeInput();
 
+
     errors.textContent =
         data.totalErrors;
+
 
     accuracy.textContent =
         data.accuracyValue +
         " %";
 
+
     const minutes =
         elapsedSeconds / 60;
+
 
     if (
         minutes > 0
@@ -1669,133 +2426,62 @@ function updateStats() {
                     .split(/\s+/)
                     .length;
 
+
         const calculatedWpm =
             Math.round(
-                words / minutes
+                words /
+                minutes
             );
+
 
         wpm.textContent =
-            isFinite(calculatedWpm)
-                ? calculatedWpm
-                : 0;
+            calculatedWpm;
 
     }
-
-    updateDictationProgress();
 
 }
 
 
 /* =========================================================
-   PROGRESSION
-========================================================= */
-
-function updateDictationProgress() {
-
-    if (
-        currentMode !== "dictation"
-    ) {
-
-        return;
-
-    }
-
-    const percentage =
-        currentText.length === 0
-            ? 0
-            : Math.min(
-                100,
-                Math.round(
-                    (
-                        typingInput.value.length /
-                        currentText.length
-                    ) * 100
-                )
-            );
-
-    dictationProgressFill.style.width =
-        percentage + "%";
-
-    dictationProgressText.textContent =
-        percentage + " %";
-
-}
-
-
-/* =========================================================
-   DEMARRER
-========================================================= */
-
-function startGame() {
-
-    if (
-        started
-    ) {
-
-        return;
-
-    }
-
-    if (
-        finished
-    ) {
-
-        resetGame();
-
-    }
-
-    started = true;
-    finished = false;
-
-    startTime =
-        Date.now() -
-        (elapsedSeconds * 1000);
-
-    clearInterval(
-        timerInterval
-    );
-
-    timerInterval =
-        setInterval(
-            updateTimer,
-            250
-        );
-
-    typingInput.disabled =
-        false;
-
-    typingInput.focus();
-
-    startButton.style.display =
-        "none";
-
-}
-
-
-/* =========================================================
-   VERIFIER FIN
+   FIN DE L'EXERCICE
 ========================================================= */
 
 function checkCompletion() {
 
     if (
-        !started ||
-        finished ||
-        challengeMode
+        finished
     ) {
 
         return;
 
     }
 
+
     if (
-        typingInput.value ===
-        currentText
+        typingInput.value.length <
+        currentText.length
     ) {
 
-        finishGame();
+        return;
 
     }
+
+
+    const data =
+        analyzeInput();
+
+
+    if (
+        data.expectedIndex <
+        currentText.length
+    ) {
+
+        return;
+
+    }
+
+
+    finishGame();
 
 }
 
@@ -1814,22 +2500,92 @@ function finishGame() {
 
     }
 
+
     finished = true;
-    started = false;
 
     clearInterval(
         timerInterval
     );
 
-    updateStats();
+
+    const data =
+        analyzeInput();
+
 
     typingInput.disabled =
         true;
 
-    showResult();
 
-    nextButton.style.display =
-        "inline-block";
+    result.classList.add(
+        "visible"
+    );
+
+
+    resultWpm.textContent =
+        wpm.textContent;
+
+
+    resultAccuracy.textContent =
+        data.accuracyValue +
+        " %";
+
+
+    resultErrors.textContent =
+        data.totalErrors;
+
+
+    resultTime.textContent =
+        elapsedSeconds +
+        " s";
+
+
+    if (
+        data.totalErrors === 0
+    ) {
+
+        resultMessage.innerHTML =
+            `<div class="good-result">
+                Excellent ! Aucune faute.
+            </div>`;
+
+    }
+
+    else if (
+        data.accuracyValue >= 95
+    ) {
+
+        resultMessage.innerHTML =
+            `<div class="good-result">
+                Très bon travail ! La frappe est très précise.
+            </div>`;
+
+    }
+
+    else if (
+        data.accuracyValue >= 85
+    ) {
+
+        resultMessage.innerHTML =
+            `<div class="good-result">
+                Bon travail ! Continuez à pratiquer pour gagner en précision.
+            </div>`;
+
+    }
+
+    else {
+
+        resultMessage.innerHTML =
+            `<div class="error-list">
+                Prenez votre temps et essayez surtout de réduire les fautes.
+            </div>`;
+
+    }
+
+
+    buildErrorDetails(
+        data
+    );
+
 
     if (
         currentMode === "dictation"
@@ -1839,6 +2595,35 @@ function finishGame() {
             "inline-block";
 
     }
+
+
+    nextButton.style.display =
+        "inline-block";
+
+
+    saveResult({
+
+        mode:
+            currentMode,
+
+        title:
+            currentTitle,
+
+        wpm:
+            Number(
+                wpm.textContent
+            ) || 0,
+
+        accuracy:
+            data.accuracyValue,
+
+        errors:
+            data.totalErrors,
+
+        time:
+            elapsedSeconds
+
+    });
 
 }
 
@@ -1857,144 +2642,59 @@ function finishChallenge() {
 
     }
 
+
     finished = true;
-    started = false;
 
     clearInterval(
         timerInterval
     );
 
-    elapsedSeconds =
-        challengeDuration;
-
-    updateTimerDisplay();
-    updateStats();
-
-    typingInput.disabled =
-        true;
-
-    showResult();
-
-    nextButton.style.display =
-        "inline-block";
-
-}
-
-
-/* =========================================================
-   RESULTAT
-========================================================= */
-
-function showResult() {
 
     const data =
         analyzeInput();
 
-    const typedWords =
-        data.typed.trim() === ""
-            ? 0
-            : data.typed
-                .trim()
-                .split(/\s+/)
-                .length;
 
-    const minutes =
-        Math.max(
-            elapsedSeconds,
-            1
-        ) / 60;
+    typingInput.disabled =
+        true;
 
-    const calculatedWpm =
-        Math.round(
-            typedWords /
-            minutes
-        );
 
-    const finalWpm =
-        isFinite(calculatedWpm)
-            ? calculatedWpm
-            : 0;
+    result.classList.add(
+        "visible"
+    );
+
 
     resultWpm.textContent =
-        finalWpm;
+        wpm.textContent;
+
 
     resultAccuracy.textContent =
         data.accuracyValue +
         " %";
 
+
     resultErrors.textContent =
         data.totalErrors;
 
+
     resultTime.textContent =
-        elapsedSeconds +
+        challengeDuration +
         " s";
-
-
-    let message;
-
-    if (
-        data.accuracyValue >= 98 &&
-        finalWpm >= 40
-    ) {
-
-        message =
-            "Excellent ! Vous êtes à la fois rapide et très précis.";
-
-    } else if (
-        data.accuracyValue >= 95
-    ) {
-
-        message =
-            "Très bon travail ! Votre précision est excellente.";
-
-    } else if (
-        data.accuracyValue >= 85
-    ) {
-
-        message =
-            "Bon travail. Continuez à pratiquer pour gagner progressivement en vitesse.";
-
-    } else {
-
-        message =
-            "Prenez votre temps et concentrez-vous d'abord sur la précision.";
-
-    }
-
-
-    if (
-        currentMode === "dictation"
-    ) {
-
-        if (
-            data.accuracyValue >= 95
-        ) {
-
-            message =
-                "Bravo ! Vous avez réussi à maintenir une bonne précision sur un texte long.";
-
-        } else {
-
-            message =
-                "Le texte était long. Recommencez pour essayer de réduire progressivement vos erreurs.";
-
-        }
-
-    }
 
 
     resultMessage.innerHTML =
         `<div class="good-result">
-            ${message}
+            Défi terminé ! Votre objectif était de taper le plus précisément possible pendant 60 secondes.
         </div>`;
+
 
     buildErrorDetails(
         data
     );
 
-    result.classList.add(
-        "visible"
-    );
+
+    nextButton.style.display =
+        "inline-block";
+
 
     saveResult({
 
@@ -2005,7 +2705,9 @@ function showResult() {
             currentTitle,
 
         wpm:
-            finalWpm,
+            Number(
+                wpm.textContent
+            ) || 0,
 
         accuracy:
             data.accuracyValue,
@@ -2014,7 +2716,7 @@ function showResult() {
             data.totalErrors,
 
         time:
-            elapsedSeconds
+            challengeDuration
 
     });
 
@@ -2022,7 +2724,7 @@ function showResult() {
 
 
 /* =========================================================
-   ERREURS
+   DETAILS DES ERREURS
 ========================================================= */
 
 function buildErrorDetails(data) {
@@ -2040,16 +2742,20 @@ function buildErrorDetails(data) {
 
     }
 
+
     const typed =
         data.typed;
 
+
     const mistakes = [];
+
 
     const maxLength =
         Math.max(
             typed.length,
             currentText.length
         );
+
 
     for (
         let i = 0;
@@ -2063,6 +2769,7 @@ function buildErrorDetails(data) {
         const received =
             typed[i];
 
+
         if (
             expected !==
             received
@@ -2073,26 +2780,33 @@ function buildErrorDetails(data) {
                     ? "espace"
                     : expected || "rien";
 
+
             const receivedDisplay =
                 received === " "
                     ? "espace"
                     : received || "rien";
+
 
             mistakes.push(
                 `<li>
                     Position ${i + 1} :
                     attendu
                     <strong>
-                        ${escapeHtml(expectedDisplay)}
+                        ${escapeHtml(
+                            expectedDisplay
+                        )}
                     </strong>,
                     saisi
                     <strong>
-                        ${escapeHtml(receivedDisplay)}
+                        ${escapeHtml(
+                            receivedDisplay
+                        )}
                     </strong>
                 </li>`
             );
 
         }
+
 
         if (
             mistakes.length >= 12
@@ -2104,10 +2818,13 @@ function buildErrorDetails(data) {
 
     }
 
+
     errorDetails.innerHTML =
         `<div class="error-list">
 
-            <h3>Quelques erreurs à revoir</h3>
+            <h3>
+                Quelques erreurs à revoir
+            </h3>
 
             <ul>
                 ${mistakes.join("")}
@@ -2125,11 +2842,31 @@ function buildErrorDetails(data) {
 function escapeHtml(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
@@ -2143,11 +2880,13 @@ function saveResult(data) {
     const key =
         "ccas_dactylographie_results";
 
+
     let history =
         JSON.parse(
             localStorage.getItem(key) ||
             "[]"
         );
+
 
     history.push({
 
@@ -2161,6 +2900,7 @@ function saveResult(data) {
 
     });
 
+
     history =
         history
             .sort(
@@ -2173,6 +2913,7 @@ function saveResult(data) {
                 10
             );
 
+
     localStorage.setItem(
         key,
         JSON.stringify(
@@ -2180,21 +2921,28 @@ function saveResult(data) {
         )
     );
 
+
     displayHistory();
 
 }
 
+
+/* =========================================================
+   AFFICHER HISTORIQUE
+========================================================= */
 
 function displayHistory() {
 
     const key =
         "ccas_dactylographie_results";
 
+
     const history =
         JSON.parse(
             localStorage.getItem(key) ||
             "[]"
         );
+
 
     if (
         history.length === 0
@@ -2209,36 +2957,57 @@ function displayHistory() {
 
     }
 
-    let html = `
-        <table class="history-table">
+
+    let html =
+        `<table class="history-table">
 
             <thead>
 
                 <tr>
-                    <th>Date</th>
-                    <th>Exercice</th>
-                    <th>Vitesse</th>
-                    <th>Précision</th>
-                    <th>Fautes</th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Exercice
+                    </th>
+
+                    <th>
+                        Vitesse
+                    </th>
+
+                    <th>
+                        Précision
+                    </th>
+
+                    <th>
+                        Fautes
+                    </th>
+
                 </tr>
 
             </thead>
 
-            <tbody>
-    `;
+            <tbody>`;
+
 
     history.forEach(
         item => {
 
-            html += `
-                <tr>
+            html +=
+                `<tr>
 
                     <td>
-                        ${escapeHtml(item.date)}
+                        ${escapeHtml(
+                            item.date
+                        )}
                     </td>
 
                     <td>
-                        ${escapeHtml(item.title)}
+                        ${escapeHtml(
+                            item.title
+                        )}
                     </td>
 
                     <td>
@@ -2253,16 +3022,16 @@ function displayHistory() {
                         ${item.errors}
                     </td>
 
-                </tr>
-            `;
+                </tr>`;
 
         }
     );
 
-    html += `
-            </tbody>
-        </table>
-    `;
+
+    html +=
+        `</tbody>
+        </table>`;
+
 
     historyContent.innerHTML =
         html;
@@ -2271,82 +3040,14 @@ function displayHistory() {
 
 
 /* =========================================================
-   REINITIALISER
-========================================================= */
-
-function resetGame() {
-
-    clearInterval(
-        timerInterval
-    );
-
-    started = false;
-    finished = false;
-    elapsedSeconds = 0;
-    startTime = null;
-
-    typingInput.value = "";
-
-    typingInput.disabled =
-        false;
-
-    timer.textContent =
-        "00:00";
-
-    wpm.textContent =
-        "0";
-
-    accuracy.textContent =
-        "100 %";
-
-    errors.textContent =
-        "0";
-
-    result.classList.remove(
-        "visible"
-    );
-
-    errorDetails.innerHTML =
-        "";
-
-    resultMessage.innerHTML =
-        "";
-
-    modelText.classList.remove(
-        "visible"
-    );
-
-    showModelButton.style.display =
-        "none";
-
-    showModelButton.textContent =
-        "Voir le texte modèle";
-
-    nextButton.style.display =
-        "none";
-
-    startButton.style.display =
-        "inline-block";
-
-    dictationProgressFill.style.width =
-        "0%";
-
-    dictationProgressText.textContent =
-        "0 %";
-
-    renderText();
-
-}
-
-
-/* =========================================================
-   CHANGEMENT DE MODE
+   CHANGER DE MODE
 ========================================================= */
 
 function setMode(mode) {
 
     currentMode =
         mode;
+
 
     modeTraining.classList.remove(
         "active"
@@ -2361,6 +3062,10 @@ function setMode(mode) {
     );
 
 
+    challengeMode =
+        false;
+
+
     if (
         mode === "training"
     ) {
@@ -2368,15 +3073,6 @@ function setMode(mode) {
         modeTraining.classList.add(
             "active"
         );
-
-        challengeMode =
-            false;
-
-        difficulty.disabled =
-            false;
-
-        dictationHelp.style.display =
-            "none";
 
     }
 
@@ -2388,15 +3084,6 @@ function setMode(mode) {
         modeDictation.classList.add(
             "active"
         );
-
-        challengeMode =
-            false;
-
-        difficulty.disabled =
-            false;
-
-        dictationHelp.style.display =
-            "block";
 
     }
 
@@ -2412,16 +3099,11 @@ function setMode(mode) {
         challengeMode =
             true;
 
-        difficulty.disabled =
-            false;
-
-        dictationHelp.style.display =
-            "none";
-
     }
 
 
     loadTextChoices();
+
     loadCurrentText();
 
 }
@@ -2434,19 +3116,27 @@ function setMode(mode) {
 modeTraining.addEventListener(
     "click",
     () =>
-        setMode("training")
+        setMode(
+            "training"
+        )
 );
+
 
 modeDictation.addEventListener(
     "click",
     () =>
-        setMode("dictation")
+        setMode(
+            "dictation"
+        )
 );
+
 
 modeChallenge.addEventListener(
     "click",
     () =>
-        setMode("challenge")
+        setMode(
+            "challenge"
+        )
 );
 
 
@@ -2455,6 +3145,7 @@ difficulty.addEventListener(
     () => {
 
         loadTextChoices();
+
         loadCurrentText();
 
     }
@@ -2466,6 +3157,10 @@ textChoice.addEventListener(
     loadCurrentText
 );
 
+
+/* =========================================================
+   SAISIE
+========================================================= */
 
 typingInput.addEventListener(
     "focus",
@@ -2497,12 +3192,28 @@ typingInput.addEventListener(
 
         }
 
-        if (
-            started
-        ) {
 
-            updateTextColors();
-            renderText();
+        if (started) {
+
+            const data =
+                analyzeInput();
+
+
+            typingInput.classList.toggle(
+                "error",
+                data.totalErrors > 0
+            );
+
+
+            if (
+                currentMode === "dictation"
+            ) {
+
+                updateProgressiveDisplay();
+
+            }
+
+
             updateStats();
 
             checkCompletion();
@@ -2512,6 +3223,10 @@ typingInput.addEventListener(
     }
 );
 
+
+/* =========================================================
+   BOUTON COMMENCER
+========================================================= */
 
 startButton.addEventListener(
     "click",
@@ -2523,16 +3238,25 @@ startButton.addEventListener(
 );
 
 
+/* =========================================================
+   BOUTON RECOMMENCER
+========================================================= */
+
 restartButton.addEventListener(
     "click",
     () => {
 
         resetGame();
+
         typingInput.focus();
 
     }
 );
 
+
+/* =========================================================
+   EXERCICE SUIVANT
+========================================================= */
 
 nextButton.addEventListener(
     "click",
@@ -2540,26 +3264,30 @@ nextButton.addEventListener(
 
         const list =
             currentMode === "dictation"
-                ? getLongDictationList()
-                : (
-                    texts[difficulty.value] ||
-                    texts.easy
-                );
+                ? getDictationList()
+                : getNormalTextList();
+
 
         let nextIndex =
-            Number(textChoice.value) + 1;
+            Number(
+                textChoice.value
+            ) + 1;
+
 
         if (
             nextIndex >=
             list.length
         ) {
 
-            nextIndex = 0;
+            nextIndex =
+                0;
 
         }
 
+
         textChoice.value =
             nextIndex;
+
 
         loadCurrentText();
 
@@ -2569,6 +3297,10 @@ nextButton.addEventListener(
 );
 
 
+/* =========================================================
+   AFFICHER LE TEXTE COMPLET
+========================================================= */
+
 showModelButton.addEventListener(
     "click",
     () => {
@@ -2576,9 +3308,11 @@ showModelButton.addEventListener(
         modelTextContent.textContent =
             currentText;
 
+
         modelText.classList.toggle(
             "visible"
         );
+
 
         if (
             modelText.classList.contains(
@@ -2587,12 +3321,12 @@ showModelButton.addEventListener(
         ) {
 
             showModelButton.textContent =
-                "Masquer le texte modèle";
+                "Masquer le texte";
 
         } else {
 
             showModelButton.textContent =
-                "Voir le texte modèle";
+                "Voir le texte complet";
 
         }
 
@@ -2613,4 +3347,5 @@ displayHistory();
 </script>
 
 </body>
+
 </html>
