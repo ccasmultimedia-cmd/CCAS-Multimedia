@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>S'entraîner aux CAPTCHA - Centre Multimédia du CCAS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #24344d;
+    line-height: 1.6;
+}
+
+header {
+    background: #1f3656;
+    color: white;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo strong {
+    font-size: 26px;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 15px;
+    opacity: .8;
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3d76c5;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #e9f0fa, #ffffff, #eef7ef);
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 12px;
+    font-size: 40px;
+    color: #1f3656;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 19px;
+    color: #52657a;
+}
+
+main {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.intro-box {
+    background: white;
+    border: 1px solid #e1e7ef;
+    border-left: 6px solid #3d76c5;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 28px;
+}
+
+.intro-box h2 {
+    margin-top: 0;
+    color: #1f3656;
+}
+
+.intro-box p {
+    margin-bottom: 0;
+}
+
+.progress-area {
+    background: white;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1f3656;
+}
+
+.progress-track {
+    height: 12px;
+    background: #e6ebf2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #3d9b72;
+    transition: width .3s;
+}
+
+.exercise {
+    background: white;
+    border: 1px solid #e1e7ef;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 18px rgba(31, 54, 86, .06);
+}
+
+.exercise h2 {
+    color: #1f3656;
+    margin-top: 0;
+    font-size: 25px;
+}
+
+.exercise-number {
+    display: inline-block;
+    background: #eaf2ff;
+    color: #285d9e;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.instruction {
+    background: #f3f7fc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 18px 0;
+    color: #334b67;
+}
+
+.robot-box {
+    border: 1px solid #cbd3dd;
+    border-radius: 5px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 390px;
+    margin: 22px 0;
+    background: #fafafa;
+}
+
+.robot-box input {
+    width: 28px;
+    height: 28px;
+    accent-color: #3975c6;
+    cursor: pointer;
+}
+
+.robot-box label {
+    font-size: 18px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.robot-symbol {
+    font-size: 30px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 540px;
+    margin: 20px 0;
+}
+
+.image-tile {
+    min-height: 115px;
+    border: 3px solid #d9e0e9;
+    border-radius: 10px;
+    background: #f8fafc;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    color: #24344d;
+    font: inherit;
+    transition: .15s;
+}
+
+.image-tile:hover {
+    background: #edf4ff;
+    border-color: #8aaddd;
+}
+
+.image-tile.selected {
+    border-color: #3975c6;
+    background: #eaf2ff;
+    box-shadow: inset 0 0 0 2px #3975c6;
+}
+
+.tile-symbol {
+    font-size: 37px;
+}
+
+.tile-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.image-tile:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #f0a52b;
+    outline-offset: 3px;
+}
+
+.code-display {
+    max-width: 390px;
+    margin: 20px 0;
+    padding: 25px;
+    background: #edf2f8;
+    border: 2px dashed #9baabd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.code-display strong {
+    display: block;
+    font-size: 34px;
+    letter-spacing: 9px;
+    color: #1f3656;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    text-decoration: line-through;
+    text-decoration-color: #a5b2c2;
+    transform: rotate(-2deg);
+}
+
+.code-display small {
+    display: block;
+    margin-top: 12px;
+    color: #66788c;
+}
+
+.code-input {
+    width: 100%;
+    max-width: 390px;
+    padding: 14px;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 5px 0 18px;
+}
+
+.action-button {
+    display: inline-block;
+    border: 0;
+    background: #3975c6;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+}
+
+.action-button:hover {
+    background: #285d9e;
+}
+
+.secondary-button {
+    background: #64748b;
+}
+
+.secondary-button:hover {
+    background: #475569;
+}
+
+.feedback {
+    display: none;
+    padding: 15px;
+    border-radius: 9px;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+.feedback.success {
+    display: block;
+    background: #e8f6ed;
+    color: #23683b;
+    border: 1px solid #a8d8b6;
+}
+
+.feedback.error {
+    display: block;
+    background: #fff0ed;
+    color: #9b3327;
+    border: 1px solid #efb5aa;
+}
+
+.feedback.info {
+    display: block;
+    background: #edf4ff;
+    color: #285d9e;
+    border: 1px solid #b8d0ef;
+}
+
+.help-text {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.result-box {
+    display: none;
+    background: #eef7ef;
+    border: 2px solid #3d9b72;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.result-box h2 {
+    color: #286c50;
+    margin-top: 0;
+}
+
+.result-box p {
+    font-size: 18px;
+}
+
+.tip {
+    background: #fff8e8;
+    border-left: 5px solid #e5a52c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.tip h2 {
+    color: #805817;
+    margin-top: 0;
+}
+
+.tip p {
+    margin-bottom: 0;
+}
+
+footer {
+    margin-top: 50px;
+    background: #1f3656;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+@media (max-width: 750px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 10px 12px;
+    }
+
+    .page-header h1 {
+        font-size: 31px;
+    }
+
+    .page-header p {
+        font-size: 17px;
+    }
+
+    main {
+        padding: 0 13px;
+    }
+
+    .exercise {
+        padding: 20px;
+    }
+
+    .image-tile {
+        min-height: 95px;
+    }
+
+    .tile-symbol {
+        font-size: 30px;
+    }
+
+    .tile-name {
+        font-size: 12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            <strong>Centre Multimédia du CCAS</strong>
+            <span>Apprendre • Découvrir • Progresser</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="cours.html">Mes cours</a>
+            <a href="jeux.html">Jeux</a>
+            <a href="exercices.html" class="active">Exercices</a>
+            <a href="outils.html">Outils</a>
+            <a href="ressources.html">Ressources</a>
+            <a href="informations.html">Informations</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<section class="page-header">
+
+    <h1>S'entraîner aux CAPTCHA</h1>
+
+    <p>
+        Apprenez à reconnaître et à réussir les petits tests
+        qui permettent aux sites Internet de vérifier que vous êtes humain.
+    </p>
+
+</section>
+
+
+<main>
+
+    <section class="intro-box">
+
+        <h2>Qu'est-ce qu'un CAPTCHA ?</h2>
+
+        <p>
+            Un CAPTCHA est un petit test que certains sites Internet
+            affichent pour vérifier que vous êtes une personne
+            et non un programme automatique.
+            Il peut vous demander de cocher une case, de reconnaître
+            des images ou de recopier quelques caractères.
+        </p>
+
+    </section>
+
+
+    <section class="progress-area">
+
+        <div class="progress-label">
+            <span>Votre progression</span>
+            <span id="progressText">0 / 3 exercices réussis</span>
+        </div>
+
+        <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Progression des exercices"
+            aria-valuemin="0"
+            aria-valuemax="3"
+            aria-valuenow="0"
+            id="progressTrack"
+        >
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+    </section>
+
+
+    <!-- EXERCICE 1 -->
+
+    <section class="exercise" id="exercise1">
+
+        <span class="exercise-number">Exercice 1 – Débutant</span>
+
+        <h2>La case « Je ne suis pas un robot »</h2>
+
+        <p>
+            Certains sites affichent une case à cocher
+            pour commencer la vérification.
+        </p>
+
+        <div class="instruction">
+            <strong>Votre mission :</strong><br>
+            Cochez la case « Je ne suis pas un robot »,
+            puis cliquez sur le bouton Vérifier.
+        </div>
+
+        <div class="robot-box">
+
+            <input
+                type="checkbox"
+                id="robotCheck"
+            >
+
+            <label for="robotCheck">
+                Je ne suis pas un robot
+            </label>
+
+            <span class="robot-symbol" aria-hidden="true">□</span>
+
+        </div>
+
+        <button
+            class="action-button"
+            type="button"
+            onclick="checkRobot()"
+        >
+            Vérifier
+        </button>
+
+        <div
+            class="feedback"
+            id="robotFeedback"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </section>
+
+
+    <!-- EXERCICE 2 -->
+
+    <section class="exercise" id="exercise2">
+
+        <span class="exercise-number">Exercice 2 – Intermédiaire</span>
+
+        <h2>Reconnaître les images</h2>
+
+        <p>
+            Certains CAPTCHA vous demandent de sélectionner
+            toutes les images qui représentent un objet précis.
+        </p>
+
+        <div class="instruction">
+            <strong>Votre mission :</strong><br>
+            Sélectionnez toutes les images qui représentent
+            un vélo, puis cliquez sur Vérifier.
+        </div>
+
+        <div class="image-grid" id="imageGrid">
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚗</span>
+                <span class="tile-name">Voiture</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="true" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚲</span>
+                <span class="tile-name">Vélo</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚌</span>
+                <span class="tile-name">Bus</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="true" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚲</span>
+                <span class="tile-name">Vélo</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚂</span>
+                <span class="tile-name">Train</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚕</span>
+                <span class="tile-name">Taxi</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🛵</span>
+                <span class="tile-name">Scooter</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="true" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚲</span>
+                <span class="tile-name">Vélo</span>
+            </button>
+
+            <button class="image-tile" type="button" data-correct="false" aria-pressed="false">
+                <span class="tile-symbol" aria-hidden="true">🚜</span>
+                <span class="tile-name">Tracteur</span>
+            </button>
+
+        </div>
+
+        <p class="help-text">
+            Cliquez une fois sur une image pour la sélectionner.
+            Cliquez à nouveau pour la désélectionner.
+        </p>
+
+        <button
+            class="action-button"
+            type="button"
+            onclick="checkImages()"
+        >
+            Vérifier ma sélection
+        </button>
+
+        <button
+            class="action-button secondary-button"
+            type="button"
+            onclick="resetImages()"
+        >
+            Recommencer
+        </button>
+
+        <div
+            class="feedback"
+            id="imageFeedback"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </section>
+
+
+    <!-- EXERCICE 3 -->
+
+    <section class="exercise" id="exercise3">
+
+        <span class="exercise-number">Exercice 3 – Intermédiaire</span>
+
+        <h2>Recopier un code</h2>
+
+        <p>
+            Certains CAPTCHA affichent un code composé
+            de lettres et de chiffres qu'il faut recopier.
+        </p>
+
+        <div class="instruction">
+            <strong>Votre mission :</strong><br>
+            Regardez le code ci-dessous, puis recopiez-le
+            dans la zone prévue.
+        </div>
+
+        <div class="code-display">
+
+            <strong id="captchaCode">M7K4P</strong>
+
+            <small>
+                Code de démonstration
+            </small>
+
+        </div>
+
+        <label for="codeInput">
+            <strong>Recopiez le code :</strong>
+        </label>
+
+        <br>
+
+        <input
+            type="text"
+            id="codeInput"
+            class="code-input"
+            maxlength="5"
+            autocomplete="off"
+            autocapitalize="characters"
+            placeholder="Votre code"
+        >
+
+        <br>
+
+        <button
+            class="action-button"
+            type="button"
+            onclick="checkCode()"
+        >
+            Vérifier le code
+        </button>
+
+        <button
+            class="action-button secondary-button"
+            type="button"
+            onclick="newCode()"
+        >
+            Changer le code
+        </button>
+
+        <div
+            class="feedback"
+            id="codeFeedback"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </section>
+
+
+    <!-- RÉSULTAT FINAL -->
+
+    <section class="result-box" id="finalResult">
+
+        <h2>Bravo, vous avez terminé !</h2>
+
+        <p>
+            Vous avez réussi les trois exercices.
+            Vous savez maintenant reconnaître plusieurs formes
+            de CAPTCHA et comprendre ce que les sites vous demandent.
+        </p>
+
+        <button
+            class="action-button"
+            type="button"
+            onclick="restartAll()"
+        >
+            Refaire les exercices
+        </button>
+
+    </section>
+
+
+    <!-- CONSEIL -->
+
+    <section class="tip">
+
+        <h2>Quelques conseils à retenir</h2>
+
+        <p>
+            Prenez le temps de lire la consigne avant de cliquer.
+            Regardez bien toutes les images avant de faire votre choix.
+            Si un code est difficile à lire, certains vrais sites
+            proposent de le renouveler ou d'utiliser une autre méthode
+            de vérification.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p><strong>Centre Multimédia du CCAS</strong></p>
+    <p>Apprendre • Découvrir • Progresser</p>
+
+</footer>
+
+
+<script>
+
+const completed = {
+    robot: false,
+    images: false,
+    code: false
+};
+
+function updateProgress() {
+
+    const total = Object.values(completed).filter(Boolean).length;
+
+    document.getElementById("progressText").textContent =
+        total + " / 3 exercices réussis";
+
+    document.getElementById("progressBar").style.width =
+        (total / 3 * 100) + "%";
+
+    document.getElementById("progressTrack").setAttribute(
+        "aria-valuenow",
+        total
+    );
+
+    if (total === 3) {
+        document.getElementById("finalResult").style.display = "block";
+    }
+
+}
+
+function showFeedback(id, message, type) {
+
+    const element = document.getElementById(id);
+
+    element.textContent = message;
+    element.className = "feedback " + type;
+
+}
+
+function checkRobot() {
+
+    const checked = document.getElementById("robotCheck").checked;
+
+    if (!checked) {
+
+        showFeedback(
+            "robotFeedback",
+            "Vous devez d'abord cocher la case pour continuer.",
+            "error"
+        );
+
+        return;
+    }
+
+    completed.robot = true;
+
+    showFeedback(
+        "robotFeedback",
+        "Bravo ! Vous avez coché la case. Sur un vrai site, cette étape peut être suivie d'une autre vérification.",
+        "success"
+    );
+
+    updateProgress();
+
+}
+
+
+// EXERCICE DES IMAGES
+
+document.querySelectorAll(".image-tile").forEach(tile => {
+
+    tile.addEventListener("click", () => {
+
+        const selected = tile.classList.toggle("selected");
+
+        tile.setAttribute("aria-pressed", selected ? "true" : "false");
+
+        document.getElementById("imageFeedback").className = "feedback";
+        document.getElementById("imageFeedback").textContent = "";
+
+    });
+
+});
+
+function checkImages() {
+
+    const tiles = [...document.querySelectorAll(".image-tile")];
+
+    const correctTiles = tiles.filter(tile =>
+        tile.dataset.correct === "true"
+    );
+
+    const selectedTiles = tiles.filter(tile =>
+        tile.classList.contains("selected")
+    );
+
+    const allCorrect = selectedTiles.length === correctTiles.length &&
+        selectedTiles.every(tile => tile.dataset.correct === "true");
+
+    if (allCorrect) {
+
+        completed.images = true;
+
+        showFeedback(
+            "imageFeedback",
+            "Excellent ! Vous avez sélectionné tous les vélos et aucune autre image.",
+            "success"
+        );
+
+        updateProgress();
+
+    } else {
+
+        showFeedback(
+            "imageFeedback",
+            "Ce n'est pas encore tout à fait ça. Relisez la consigne et vérifiez les images sélectionnées.",
+            "error"
+        );
+
+    }
+
+}
+
+function resetImages() {
+
+    document.querySelectorAll(".image-tile").forEach(tile => {
+
+        tile.classList.remove("selected");
+        tile.setAttribute("aria-pressed", "false");
+
+    });
+
+    document.getElementById("imageFeedback").className = "feedback";
+    document.getElementById("imageFeedback").textContent = "";
+
+}
+
+
+// EXERCICE DU CODE
+
+let currentCode = "M7K4P";
+
+const codes = [
+    "M7K4P",
+    "R8T2B",
+    "C5N9L",
+    "P3D6A",
+    "H4W7F",
+    "K2V8M",
+    "B9R5T"
+];
+
+function checkCode() {
+
+    const input = document.getElementById("codeInput");
+
+    const answer = input.value.trim().toUpperCase();
+
+    if (answer === "") {
+
+        showFeedback(
+            "codeFeedback",
+            "Vous devez recopier le code avant de vérifier.",
+            "error"
+        );
+
+        input.focus();
+        return;
+    }
+
+    if (answer === currentCode) {
+
+        completed.code = true;
+
+        showFeedback(
+            "codeFeedback",
+            "Bravo ! Le code est correct. Vous avez réussi cet exercice.",
+            "success"
+        );
+
+        updateProgress();
+
+    } else {
+
+        showFeedback(
+            "codeFeedback",
+            "Le code ne correspond pas. Regardez à nouveau les caractères et réessayez.",
+            "error"
+        );
+
+        input.focus();
+
+    }
+
+}
+
+function newCode() {
+
+    const choices = codes.filter(code => code !== currentCode);
+
+    currentCode = choices[Math.floor(Math.random() * choices.length)];
+
+    document.getElementById("captchaCode").textContent = currentCode;
+    document.getElementById("codeInput").value = "";
+
+    document.getElementById("codeFeedback").className = "feedback";
+    document.getElementById("codeFeedback").textContent = "";
+
+}
+
+function restartAll() {
+
+    completed.robot = false;
+    completed.images = false;
+    completed.code = false;
+
+    document.getElementById("robotCheck").checked = false;
+
+    document.getElementById("robotFeedback").className = "feedback";
+    document.getElementById("robotFeedback").textContent = "";
+
+    resetImages();
+
+    document.getElementById("codeInput").value = "";
+    document.getElementById("codeFeedback").className = "feedback";
+    document.getElementById("codeFeedback").textContent = "";
+
+    currentCode = "M7K4P";
+    document.getElementById("captchaCode").textContent = currentCode;
+
+    document.getElementById("finalResult").style.display = "none";
+
+    updateProgress();
+
+    document.getElementById("exercise1").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
