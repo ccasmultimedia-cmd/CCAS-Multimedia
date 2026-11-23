@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grand Brandade Auto : Objectif Écusson</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;font-family:"Trebuchet MS",Verdana,sans-serif;background:#bfdcf0}
+canvas{display:block}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #f2b632;outline-offset:2px}
+#hud{position:fixed;top:8px;left:8px;background:rgba(20,38,58,.88);color:#fff;padding:10px 14px;border-radius:12px;font-size:17px;line-height:1.5;max-width:62vw}
+#arrow{display:inline-block;font-size:26px;color:#f2b632;vertical-align:middle}
+#set{position:fixed;top:8px;right:8px;display:flex;flex-direction:column;gap:6px}
+#set button{background:rgba(20,38,58,.88);color:#fff;border:0;border-radius:10px;padding:8px 12px;font-size:14px;text-align:left}
+#toast{position:fixed;top:42%;left:50%;transform:translateX(-50%);background:#14263a;color:#fff;padding:10px 18px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;font-size:18px}
+#ov{position:fixed;inset:0;background:rgba(20,38,58,.62);display:flex;align-items:center;justify-content:center;padding:12px}
+.card{background:#fff;color:#14263a;border-radius:16px;padding:22px 26px;max-width:580px;width:100%;max-height:92vh;overflow:auto;font-size:18px;line-height:1.45}
+.card h1{font-size:30px;margin:0 0 .3em;line-height:1.15}
+.card h2{font-size:24px;margin:0 0 .4em}
+.card p{margin:.5em 0}
+.c{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border:2px solid #14263a;border-radius:10px;background:#fff;color:#14263a;font-size:17px}
+.c:hover{background:#fff4d0}
+.go{background:#f2b632;color:#14263a;border:0;border-radius:10px;padding:12px 24px;font-size:19px;font-weight:bold;margin-top:10px}
+.skip{background:none;border:0;color:#14263a;text-decoration:underline;font-size:15px;margin-left:10px}
+blockquote{background:#eef3f8;margin:10px 0;padding:10px 14px;border-radius:8px;border-left:5px solid #f2b632}
+input{font:inherit;padding:10px;width:100%;margin:6px 0;border:2px solid #14263a;border-radius:8px}
+.ok{color:#1b7a4b;font-weight:bold}.ko{color:#b3261e;font-weight:bold}
+#tc{position:fixed;bottom:14px;left:0;right:0;display:none;justify-content:space-between;padding:0 14px;pointer-events:none}
+#tc div{pointer-events:auto;display:flex;gap:10px}
+#tc b{width:68px;height:68px;border-radius:50%;background:rgba(20,38,58,.7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;user-select:none;touch-action:none}
+@media(hover:none){#tc{display:flex}}
+</style>
+</head>
+<body>
+<div id="hud">📦 <b id="mis"></b><br><span id="arrow">▲</span> <span id="dist"></span> &nbsp;⭐ <span id="sc">0</span> pts &nbsp;🛵 <span id="nb">0</span> livraison(s)</div>
+<div id="set">
+  <button id="b1">📷 Caméra : haute</button>
+  <button id="b2">🧍 +10 piétons</button>
+  <button id="b3">🚗 +5 voitures</button>
+  <button id="b4">🐢 Mode léger : non</button>
+</div>
+<div id="toast"></div>
+<div id="tc"><div><b data-k="left">◀</b><b data-k="right">▶</b></div><div><b data-k="up">▲</b><b data-k="down">▼</b></div></div>
+<div id="ov"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+if(typeof THREE==='undefined'){
+  $('ov').innerHTML='<div class="card"><h2>Chargement impossible</h2><p>Le jeu a besoin d’une connexion internet pour charger la 3D. Vérifie la connexion puis recharge la page.</p></div>';
+  throw new Error('Three.js absent');
+}
+
+/* ---------- état ---------- */
+let paused=true,score=0,nb=0,Q=null,camHigh=true,lite=false,tgt=null,last=0,tt=0;
+const K={up:0,down:0,left:0,right:0};
+const MAP={ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right'};
+const rnd=a=>a[Math.random()*a.length|0];
+addEventListener('keydown',e=>{if(MAP[e.code]&&!paused){K[MAP[e.code]]=1;e.preventDefault()}});
+addEventListener('keyup',e=>{if(MAP[e.code])K[MAP[e.code]]=0});
+document.querySelectorAll('#tc b').forEach(b=>{const k=b.dataset.k;b.onpointerdown=()=>{K[k]=1};b.onpointerup=b.onpointerleave=b.onpointercancel=()=>{K[k]=0}});
+
+/* ---------- scène ---------- */
+const R=new THREE.WebGLRenderer({antialias:false});
+R.setPixelRatio(Math.min(devicePixelRatio||1,1.5));R.setSize(innerWidth,innerHeight);
+document.body.prepend(R.domElement);
+const S=new THREE.Scene();S.background=new THREE.Color(0xbfdcf0);S.fog=new THREE.Fog(0xbfdcf0,50,150);
+const C=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.5,300);
+S.add(new THREE.AmbientLight(0xffffff,.78));
+const sun=new THREE.DirectionalLight(0xfff0d0,.65);sun.position.set(40,80,30);S.add(sun);
+
+const BG=new THREE.BoxGeometry(1,1,1),mats={};
+const M=c=>mats[c]||(mats[c]=new THREE.MeshLambertMaterial({color:c}));
+function box(w,h,d,x,y,z,c,par){const m=new THREE.Mesh(BG,M(c));m.scale.set(w,h,d);m.position.set(x,y,z);(par||S).add(m);return m}
+const boxes=[];const col=(x,z,hw,hd)=>boxes.push({x,z,hw,hd});
+function label(t,x,y,z){
+  const c=document.createElement('canvas');c.width=512;c.height=96;const g=c.getContext('2d');
+  g.fillStyle='rgba(255,255,255,.92)';g.fillRect(0,0,512,96);g.fillStyle='#14263a';
+  g.font='bold 44px sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText(t,256,50);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),fog:false}));
+  sp.position.set(x,y,z);sp.scale.set(16,3,1);S.add(sp);
+}
+
+/* ---------- ville ---------- */
+box(400,.1,400,0,-.05,0,0xcdb98c);
+const ST=[-112,-80,-48,-16,16,48,80,112];
+ST.forEach(s=>{box(8,.1,250,s,.03,0,0x6b6357);box(250,.1,8,0,.03,s,0x6b6357)});
+const PAL=[0xe8c99b,0xd9a066,0xf0dcc0,0xc98f5a,0xe6b98a,0xf2c9a0];
+const SPEC={'3,3':1,'3,1':1,'1,1':1,'5,5':1,'2,4':1};
+for(let i=0;i<7;i++)for(let j=0;j<7;j++){
+  if(SPEC[i+','+j])continue;
+  const cx=(i-3)*32,cz=(j-3)*32;
+  for(const [ox,oz] of [[-6,-6],[6,-6],[-6,6],[6,6]]){
+    const w=10+Math.random()*2,d=10+Math.random()*2,h=7+Math.random()*9,x=cx+ox,z=cz+oz;
+    box(w,h,d,x,h/2,z,rnd(PAL));box(w+.6,.6,d+.6,x,h+.3,z,0xb5532f);col(x,z,w/2,d/2);
+  }
+}
+const ST_C=0xeadfc6;
+/* Arènes */
+const ar=new THREE.Mesh(new THREE.CylinderGeometry(11,11,8,40,1,true),new THREE.MeshLambertMaterial({color:ST_C,side:THREE.DoubleSide}));
+ar.scale.z=.78;ar.position.y=4;S.add(ar);
+const fl=new THREE.Mesh(new THREE.CylinderGeometry(10.5,10.5,.3,40),M(0xe3c58b));fl.scale.z=.78;fl.position.y=.15;S.add(fl);
+for(let r=0;r<2;r++)for(let k=0;k<36;k++){
+  const a=k/36*6.2832,nx=8.58*Math.cos(a),nz=11*Math.sin(a);
+  const m=box(1.2,2.4,.4,11.05*Math.cos(a),1.8+r*3.4,8.6*Math.sin(a),0x6e5a3c);m.rotation.y=Math.atan2(nx,nz);
+}
+col(0,0,11.5,9);label('Arènes',0,12,0);
+/* Maison Carrée */
+{const g=new THREE.Group();g.position.set(0,0,-64);S.add(g);
+ box(12,1.4,22,0,.7,0,ST_C,g);box(9,7,17,0,4.9,-2,ST_C,g);
+ for(let i=0;i<6;i++){const c=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,6.6,10),M(ST_C));c.position.set(-4.2+i*1.68,4.7,9);g.add(c)}
+ box(11,.8,5,0,8.4,9,ST_C,g);
+ const r1=box(6.4,.5,22,-2.7,9.8,0,0xb5532f,g);r1.rotation.z=.32;
+ const r2=box(6.4,.5,22,2.7,9.8,0,0xb5532f,g);r2.rotation.z=-.32;
+ col(0,-64,6.5,11.5);label('Maison Carrée',0,14,-64);}
+/* Tour Magne */
+{const t=new THREE.Mesh(new THREE.CylinderGeometry(3,4.2,18,10),M(0xb8a888));t.position.set(-64,9,-64);S.add(t);
+ box(7,1,7,-64,18.5,-64,0xb8a888);col(-64,-64,4.3,4.3);label('Tour Magne',-64,23,-64);}
+/* Gare */
+box(22,9,14,64,4.5,64,0x9fb4c4);box(23,.8,15,64,9.4,64,0x5b6b7a);col(64,64,11,7);label('Gare',64,14,64);
+/* Centre Multimédia */
+box(20,10,18,-32,5,32,0x4a90c8);box(21,.8,19,-32,10.4,32,0x2d5f8a);col(-32,32,10,9);label('Centre Multimédia',-32,15,32);
+
+/* ---------- joueur ---------- */
+const P={x:-16,z:16,h:0,v:0};
+const pl=new THREE.Group();S.add(pl);
+box(1,.7,2.6,0,.7,0,0xe0a020,pl);box(.9,1,.9,0,1.5,.1,0x2b6cb0,pl);
+const hd=new THREE.Mesh(new THREE.SphereGeometry(.4,10,8),M(0xf0c8a0));hd.position.set(0,2.3,.1);pl.add(hd);
+box(.9,.8,.9,0,1.4,-1,0xf4e6c4,pl);
+const CT=new THREE.Vector3();
+C.position.set(P.x,17,P.z+15);
+
+/* ---------- piétons et voitures ---------- */
+const PG=new THREE.CylinderGeometry(.35,.35,1.5,8),HG=new THREE.SphereGeometry(.3,8,6);
+const peds=[],cars=[];
+function addPed(){
+  const g=new THREE.Group();
+  const b=new THREE.Mesh(PG,M(rnd([0x3a7bd5,0xd53a3a,0x3aa56b,0xe0a030,0x8a4fb5])));b.position.y=.75;
+  const h=new THREE.Mesh(HG,M(rnd([0xf0c8a0,0xc08a60,0x8a5a3a])));h.position.y=1.8;g.add(b,h);S.add(g);
+  peds.push({g,ax:Math.random()<.5,s:rnd(ST.slice(1,7))+(Math.random()<.5?-3.2:3.2),p:Math.random()*220-110,d:Math.random()<.5?-1:1,sp:1.2+Math.random(),ph:Math.random()*6,j:0});
+}
+function addCar(){
+  const g=new THREE.Group();
+  box(2,.9,4,0,.8,0,rnd([0xd53a3a,0x2b6cb0,0xf0f0f0,0xe0a030,0x2f2f2f]),g);box(1.7,.7,2,0,1.6,.2,0xbfd8e8,g);S.add(g);
+  const ax=Math.random()<.5,d=Math.random()<.5?-1:1;
+  g.rotation.y=-Math.atan2(ax?d:0,ax?0:-d);
+  cars.push({g,ax,d,s:rnd(ST.slice(1,7))+d*(ax?2:-2),p:Math.random()*220-110,sp:6+Math.random()*4});
+}
+for(let i=0;i<20;i++)addPed();for(let i=0;i<8;i++)addCar();
+
+/* ---------- missions ---------- */
+const LM=[
+ {n:'les Arènes',x:0,z:16,q:['Les Arènes de Nîmes datent de quelle époque ?',['L’époque romaine (Antiquité)','Le Moyen Âge','Les années 1900'],'Ce sont des arènes romaines, vieilles de près de 2000 ans. Astuce : tape « Arènes de Nîmes histoire » dans un moteur de recherche.']},
+ {n:'la Maison Carrée',x:0,z:-48,q:['La Maison Carrée est un ancien…',['Temple romain','Château fort','Gare ferroviaire'],'C’est un temple romain, l’un des mieux conservés au monde.']},
+ {n:'la Tour Magne',x:-64,z:-48,q:['La Tour Magne est un vestige de quoi ?',['De l’enceinte romaine de la ville','D’un phare','D’un château d’eau moderne'],'Elle faisait partie de l’enceinte romaine de Nîmes.']},
+ {n:'la Gare',x:64,z:48,q:['Quel animal figure sur les armoiries de Nîmes ?',['Le crocodile','Le taureau','Le loup'],'Le crocodile enchaîné à un palmier est le symbole de la ville.']}
+];
+const bcm=new THREE.MeshBasicMaterial({color:0xf2b632,transparent:true,opacity:.45,side:THREE.DoubleSide,fog:false});
+const bc=new THREE.Mesh(new THREE.CylinderGeometry(2.2,2.2,40,16,1,true),bcm);bc.position.y=20;S.add(bc);
+const rg=new THREE.Mesh(new THREE.CylinderGeometry(5,5,.2,24),new THREE.MeshBasicMaterial({color:0xf2b632,transparent:true,opacity:.5}));rg.position.y=.2;S.add(rg);
+function hud(){$('sc').textContent=score;$('nb').textContent=nb}
+function nextTarget(){
+  let t;do{t=rnd(LM)}while(t===tgt);tgt=t;
+  bc.position.x=rg.position.x=t.x;bc.position.z=rg.position.z=t.z;
+  $('mis').textContent='Livre la brandade à '+t.n;hud();
+}
+function toast(t){const e=$('toast');e.textContent=t;e.style.opacity=1;clearTimeout(tt);tt=setTimeout(()=>{e.style.opacity=0},1400)}
+
+/* ---------- fenêtres et épreuves numériques ---------- */
+function openOv(h){$('ov').innerHTML='<div class="card">'+h+'</div>';$('ov').style.display='flex';paused=true;K.up=K.down=K.left=K.right=0}
+function closeOv(){$('ov').style.display='none';paused=false}
+function fin(ok,msg){
+  if(ok){score+=100;hud()}
+  $('fb').innerHTML=(ok?'<span class="ok">✅ Bravo ! +100 points.</span> ':'<span class="ko">❌ Pas tout à fait.</span> ')+msg+'<br><button class="go" onclick="closeOv();nextTarget()">Continuer ▶</button>';
+}
+function quiz(t,intro,opts,expl){
+  const a=opts.map((o,i)=>[o,i]).sort(()=>Math.random()-.5);
+  Q={g:a.findIndex(x=>x[1]===0),e:expl,d:0};
+  openOv('<h2>'+t+'</h2><p>'+intro+'</p>'+a.map((x,i)=>'<button class="c" onclick="pick('+i+')">'+x[0]+'</button>').join('')+'<p id="fb"></p>');
+}
+function pick(i){if(Q.d)return;Q.d=1;fin(i===Q.g,Q.e)}
+function copyCh(){
+  openOv('<h2>📋 Copier-coller</h2><p>Le client t’a écrit. Sélectionne son <b>adresse</b> avec la souris, copie-la (<b>Ctrl+C</b>) puis colle-la (<b>Ctrl+V</b>) dans la case.</p>'+
+  '<blockquote>Bonjour, merci de livrer ma brandade au <b>12 rue de l’Aspic</b>, au 2e étage. Vous pouvez sonner deux fois. Cordialement, M. Martin</blockquote>'+
+  '<input id="t" placeholder="Colle l’adresse ici" autocomplete="off"><button class="go" onclick="chk()">Valider</button><button class="skip" onclick="fin(false,\'Ce n’est pas grave, on réessaiera !\')">Passer</button><p id="fb"></p>');
+}
+function chk(){
+  const v=$('t').value.toLowerCase().replace(/’/g,"'").replace(/[.,\s]+$/,'').trim();
+  if(v==="12 rue de l'aspic")fin(true,'Astuce : un double-clic sélectionne un mot, un triple-clic sélectionne toute la ligne.');
+  else $('fb').textContent='Pas tout à fait… sélectionne exactement l’adresse (numéro et nom de la rue). Réessaie, ou passe.';
+}
+function phish(){
+  const sc=rnd([
+   [['<b>De :</b> livraison@centre-multimedia.fr<br><b>Objet :</b> Votre commande de brandade est prête','<b>De :</b> securite@caf-verif.top<br><b>Objet :</b> URGENT ! Compte bloqué sous 24 h, cliquez ici et donnez votre RIB','<b>De :</b> mairie@ville-nimes.fr<br><b>Objet :</b> Horaires d’été du marché'],'Indices : adresse d’expéditeur étrange (« .top »), message urgent et menaçant, demande de données bancaires. Un organisme sérieux ne demande jamais ça par mail.'],
+   [['<b>De :</b> colis-express@livr4ison-suivi.com<br><b>Objet :</b> Colis bloqué : payez 1,99 € pour le débloquer','<b>De :</b> atelier@centre-multimedia.fr<br><b>Objet :</b> Rappel : atelier mardi à 14 h','<b>De :</b> Marie (ma sœur)<br><b>Objet :</b> Photos du week-end'],'Indices : fausse adresse de suivi de colis, petit paiement à effectuer pour « débloquer ». C’est une arnaque très courante.']
+  ]);
+  // la bonne réponse (l’arnaque) doit être en premier dans la liste
+  const bad=sc[0].findIndex(x=>/top|livr4ison/.test(x));
+  const l=sc[0].slice();l.unshift(l.splice(bad,1)[0]);
+  quiz('🎣 Repère l’arnaque','Parmi ces trois mails, lequel est un <b>faux</b> ? Clique dessus.',l,sc[1]);
+}
+function pwd(){
+  quiz('🔑 Le bon mot de passe','Le code de la porte doit être solide. Lequel choisis-tu ?',['Brandade-Taureau-Olive-92!','azerty123','Nimes2024'],'Un bon mot de passe est <b>long</b> (une phrase ou plusieurs mots) et mélange lettres, chiffres et symboles. « azerty123 » et les dates se devinent en quelques secondes.');
+}
+function search(){const q=tgt.q;quiz('🔎 Mini-enquête',q[0]+'<br><small>Tu ne sais pas ? Cherche sur le web dans un autre onglet !</small>',q[1],q[2])}
+function arrive(){
+  nb++;score+=100;hud();
+  [copyCh,phish,pwd,search][(nb-1)%4]();
+}
+
+/* ---------- réglages ---------- */
+$('b1').onclick=e=>{camHigh=!camHigh;e.target.textContent='📷 Caméra : '+(camHigh?'haute':'basse');e.target.blur()};
+$('b2').onclick=e=>{for(let i=0;i<10&&peds.length<60;i++)addPed();e.target.blur()};
+$('b3').onclick=e=>{for(let i=0;i<5&&cars.length<40;i++)addCar();e.target.blur()};
+$('b4').onclick=e=>{lite=!lite;R.setPixelRatio(lite?.6:Math.min(devicePixelRatio||1,1.5));R.setSize(innerWidth,innerHeight);e.target.textContent='🐢 Mode léger : '+(lite?'oui':'non');e.target.blur()};
+onresize=()=>{R.setSize(innerWidth,innerHeight);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix()};
+
+/* ---------- boucle ---------- */
+function update(dt){
+  const a=K.up-K.down;
+  P.v+=a*24*dt;P.v-=P.v*(a?1.1:2.6)*dt;P.v=Math.max(-6,Math.min(17,P.v));
+  P.h+=(K.right-K.left)*2*dt*Math.max(-1,Math.min(1,P.v/5));
+  const fx=Math.sin(P.h),fz=-Math.cos(P.h);
+  P.x+=fx*P.v*dt;P.z+=fz*P.v*dt;
+  for(const b of boxes){
+    const dx=P.x-b.x,dz=P.z-b.z,px=b.hw+1-Math.abs(dx),pz=b.hd+1-Math.abs(dz);
+    if(px>0&&pz>0){if(px<pz)P.x+=(dx<0?-1:1)*px;else P.z+=(dz<0?-1:1)*pz;P.v*=.9}
+  }
+  P.x=Math.max(-118,Math.min(118,P.x));P.z=Math.max(-118,Math.min(118,P.z));
+  pl.position.set(P.x,0,P.z);pl.rotation.y=-P.h;
+  const D=camHigh?15:9,H=camHigh?17:6;
+  CT.set(P.x-fx*D,H,P.z-fz*D);C.position.lerp(CT,1-Math.pow(.002,dt));
+  C.lookAt(P.x+fx*5,1,P.z+fz*5);
+  for(const p of peds){
+    p.p+=p.d*p.sp*dt;if(Math.abs(p.p)>118)p.p=-p.d*118;
+    const x=p.ax?p.p:p.s,z=p.ax?p.s:p.p;p.ph+=dt*6;p.j=Math.max(0,p.j-dt);
+    p.g.position.set(x,Math.abs(Math.sin(p.ph))*.1+(p.j>0?Math.sin(p.j*5)*.6:0),z);
+    if(p.j<=0&&Math.abs(x-P.x)<1.4&&Math.abs(z-P.z)<1.4){p.j=.6;P.v*=.7;toast('Pardon ! 🙏')}
+  }
+  for(const c of cars){
+    c.p+=c.d*c.sp*dt;if(Math.abs(c.p)>118)c.p=-c.d*118;
+    const x=c.ax?c.p:c.s,z=c.ax?c.s:c.p;c.g.position.set(x,0,z);
+    const dx=x-P.x,dz=z-P.z;
+    if(dx*dx+dz*dz<6){P.v=-P.v*.4;P.x-=dx*.2;P.z-=dz*.2;toast('Piiiip ! Attention 🚗')}
+  }
+  const dx=tgt.x-P.x,dz=tgt.z-P.z,d=Math.hypot(dx,dz);
+  $('dist').textContent=Math.round(d)+' m';
+  $('arrow').style.transform='rotate('+(Math.atan2(dx,-dz)-P.h)+'rad)';
+  bcm.opacity=.35+.15*Math.sin(performance.now()/250);rg.rotation.y+=dt;
+  if(d<5)arrive();
+}
+function frame(t){
+  requestAnimationFrame(frame);
+  const dt=last?Math.min((t-last)/1000,.05):.016;last=t;
+  if(!paused)update(dt);
+  R.render(S,C);
+}
+
+nextTarget();
+openOv('<h1>Grand Brandade Auto<br>Objectif Écusson</h1><p>Tu es livreur de brandade à Nîmes. Rejoins les lieux célèbres de la ville avant que la brandade refroidisse !</p>'+
+ '<p><b>Conduire :</b> flèches du clavier ou Z Q S D (ou les boutons à l’écran).<br><b>Se repérer :</b> suis la flèche jaune et la colonne de lumière.<br><b>À chaque livraison :</b> une petite épreuve numérique t’attend.</p><button class="go" onclick="closeOv()">Jouer ▶</button>');
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
