@@ -551,16 +551,46 @@ $('b6').onclick=e=>{
       for(let s=4;s<l-3&&pts.length<2600;s+=16){side=-side;pts.push([a[0]+ux*s-uz*o*side,a[1]+uz*s+ux*o*side])}
     }
   }
-  const n=pts.length,tr=new THREE.InstancedMesh(new THREE.CylinderGeometry(.22,.3,3,5),M(0x6b4a2b),n),
-    fo=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(2.3,0),new THREE.MeshLambertMaterial({color:0xffffff}),n),
-    o=new THREE.Object3D(),col=new THREE.Color(),GC=[0x5f9a4a,0x6faa55,0x4f8a42,0x7fb25a,0x86a84a];
+  /* feuillage : cartes croisées portant une texture de feuilles (touffu, pour très peu de polygones) */
+  const lc=document.createElement('canvas');lc.width=lc.height=256;const lg=lc.getContext('2d');
+  for(let i=0;i<1100;i++){
+    const a=Math.random()*6.283,r=Math.sqrt(Math.random())*112,x=128+Math.cos(a)*r,y=128+Math.sin(a)*r*.92,sh=y/256;
+    lg.save();lg.translate(x,y);lg.rotate(Math.random()*6.283);
+    lg.fillStyle='hsl('+(88+Math.random()*26)+','+(38+Math.random()*22)+'%,'+(18+(1-sh)*26+Math.random()*10)+'%)';
+    lg.beginPath();lg.ellipse(0,0,5+Math.random()*7,2.5+Math.random()*3.5,0,0,6.283);lg.fill();lg.restore();
+  }
+  for(let i=0;i<220;i++){
+    const a=Math.random()*6.283,r=Math.sqrt(Math.random())*100,x=128+Math.cos(a)*r,y=100+Math.sin(a)*r*.7;
+    lg.save();lg.translate(x,y);lg.rotate(Math.random()*6.283);lg.fillStyle='hsl('+(96+Math.random()*20)+',55%,'+(48+Math.random()*14)+'%)';
+    lg.beginPath();lg.ellipse(0,0,4+Math.random()*5,2+Math.random()*2.5,0,0,6.283);lg.fill();lg.restore();
+  }
+  const LT=new THREE.CanvasTexture(lc);LT.anisotropy=4;
+  const cpos=[],cuv=[],cnor=[];
+  function card(w,h,ry,tilt,yy){
+    const c=Math.cos(ry),s=Math.sin(ry),ct=Math.cos(tilt),st=Math.sin(tilt);
+    const P=[[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]],U=[[0,0],[1,0],[1,1],[0,1]];
+    const V=P.map(([x,y])=>{const Y=y*ct,Z=y*st;return[x*c+Z*s,Y+yy,-x*s+Z*c]});
+    [0,1,2,0,2,3].forEach(k=>{const v=V[k];cpos.push(v[0],v[1],v[2]);cuv.push(U[k][0],U[k][1]);const ny=v[1]+1.5,l=Math.hypot(v[0],ny,v[2])||1;cnor.push(v[0]/l,ny/l,v[2]/l)});
+  }
+  card(7.4,6.2,0,0,0);card(7.4,6.2,1.047,0,0);card(7.4,6.2,2.094,0,0);card(6.6,6.6,.3,Math.PI/2,-.9);card(5.4,5.4,.9,Math.PI/2,.9);
+  const FG=new THREE.BufferGeometry();
+  FG.setAttribute('position',new THREE.Float32BufferAttribute(cpos,3));FG.setAttribute('uv',new THREE.Float32BufferAttribute(cuv,2));FG.setAttribute('normal',new THREE.Float32BufferAttribute(cnor,3));
+  const bk=document.createElement('canvas');bk.width=64;bk.height=128;const bg=bk.getContext('2d');
+  bg.fillStyle='#7d7360';bg.fillRect(0,0,64,128);
+  for(let i=0;i<70;i++){bg.fillStyle=['rgba(205,195,165,.5)','rgba(80,70,52,.45)','rgba(150,160,120,.35)'][i%3];bg.beginPath();bg.ellipse(Math.random()*64,Math.random()*128,4+Math.random()*9,3+Math.random()*8,0,0,6.3);bg.fill()}
+  const BT=new THREE.CanvasTexture(bk);BT.wrapS=BT.wrapT=THREE.RepeatWrapping;
+  const n=pts.length,
+    tr=new THREE.InstancedMesh(new THREE.CylinderGeometry(.2,.34,4.4,8),new THREE.MeshLambertMaterial({map:BT}),n),
+    fo=new THREE.InstancedMesh(FG,new THREE.MeshLambertMaterial({map:LT,alphaTest:.5,side:THREE.DoubleSide}),n),
+    o=new THREE.Object3D(),col=new THREE.Color(),GC=[0xffffff,0xe8f6d8,0xd8ecc0,0xf2fadc,0xc9e2b0];
+  fo.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(Math.max(1,n)*3),3);
   pts.forEach((q,i)=>{
-    const s=.8+Math.random()*.6;
-    o.position.set(q[0],1.5*s,q[1]);o.rotation.set(0,0,0);o.scale.set(1,s,1);o.updateMatrix();tr.setMatrixAt(i,o.matrix);
-    o.position.set(q[0],3*s+1.8,q[1]);o.rotation.y=Math.random()*6;o.scale.set(s,s*.9,s);o.updateMatrix();fo.setMatrixAt(i,o.matrix);
+    const s=.8+Math.random()*.5;
+    o.position.set(q[0],2.2*s,q[1]);o.rotation.set(0,Math.random()*6,0);o.scale.set(s,s,s);o.updateMatrix();tr.setMatrixAt(i,o.matrix);
+    o.position.set(q[0],6.6*s,q[1]);o.rotation.set(0,Math.random()*6,0);o.scale.set(s,s*(.9+Math.random()*.25),s);o.updateMatrix();fo.setMatrixAt(i,o.matrix);
     col.setHex(GC[i%5]);fo.setColorAt(i,col);
   });
-  tr.frustumCulled=fo.frustumCulled=false;S.add(tr,fo);
+  tr.castShadow=true;tr.frustumCulled=fo.frustumCulled=false;S.add(tr,fo);
 }
 D.L.forEach(l=>label(l.n[0].toUpperCase()+l.n.slice(1),l.lx,l.ly,l.lz));
 label('Centre Multimédia (CCAS)',D.S[0],18,D.S[1]);box(.5,16,.5,D.S[0]+2.5,8,D.S[1],0x4a90c8);
